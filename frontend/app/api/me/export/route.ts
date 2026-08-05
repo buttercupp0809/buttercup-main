@@ -14,7 +14,7 @@ export async function POST() {
     status: 200,
     headers: {
       "Content-Type": "application/json",
-      "Content-Disposition": `attachment; filename="poppy-export-${user.id}.json"`,
+      "Content-Disposition": `attachment; filename="buttercupp-export-${user.id}.json"`,
       "Cache-Control": "no-store",
     },
   });

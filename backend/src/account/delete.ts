@@ -5,7 +5,7 @@
 // deleted, so SB 243 accountability history is preserved for the
 // legally required window. Every other user-owned table is fully removed.
 
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 import { writeAuditLog } from "../utils/audit";
 import { track } from "../analytics/tracker";
 

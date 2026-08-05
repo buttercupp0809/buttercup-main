@@ -1,9 +1,9 @@
 ---
-name: poppy-design-language
-description: Use whenever building, editing, or reviewing any Poppy screen, component, form, or style. Enforces the Poppy visual language (sky + glass), the shared token contract, and the reusable-component rule so features do not fork one-off styles.
+name: buttercupp-design-language
+description: Use whenever building, editing, or reviewing any ButterCupp screen, component, form, or style. Enforces the ButterCupp visual language (sky + glass), the shared token contract, and the reusable-component rule so features do not fork one-off styles.
 ---
 
-# Poppy design language (STUB)
+# ButterCupp design language (STUB)
 
 Status: Phase 00 stub. UI phases fill this in. Do not one-off styles in the
 meantime; if a token is missing, add it here and to `frontend/app/globals.css`
@@ -16,21 +16,21 @@ in the same PR.
 - Surfaces are glassy: soft translucency, gentle shadow, `border-white/10` on
   dark and `border-slate-200` on light.
 - Motion is calm: 150 to 250ms ease-out for most transitions. No bounce.
-- Radii are consistent (`--poppy-radius`, currently 0.75rem). Corners never
+- Radii are consistent (`--buttercupp-radius`, currently 0.75rem). Corners never
   vary within a single surface.
 
 ## Design tokens (source of truth)
 
 The tokens live in `frontend/app/globals.css` under `:root`. Reference them
-via HSL wrappers (Tailwind arbitrary values or CSS `hsl(var(--poppy-*))`)
+via HSL wrappers (Tailwind arbitrary values or CSS `hsl(var(--buttercupp-*))`)
 rather than hardcoded hex.
 
 Current tokens (see the CSS file for canonical values):
 
-- Color: `--poppy-bg`, `--poppy-fg`, `--poppy-muted`, `--poppy-primary`,
-  `--poppy-primary-fg`, `--poppy-accent`, `--poppy-border`.
-- Shape: `--poppy-radius`.
-- Elevation: `--poppy-shadow-glass`.
+- Color: `--buttercupp-bg`, `--buttercupp-fg`, `--buttercupp-muted`, `--buttercupp-primary`,
+  `--buttercupp-primary-fg`, `--buttercupp-accent`, `--buttercupp-border`.
+- Shape: `--buttercupp-radius`.
+- Elevation: `--buttercupp-shadow-glass`.
 
 Dark mode is handled via `@media (prefers-color-scheme: dark)` today; when the
 app introduces an explicit toggle, switch to a `.dark` class and duplicate the

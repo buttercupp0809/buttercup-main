@@ -1,7 +1,7 @@
-import { characterListQuerySchema } from "@poppy/shared";
+import { characterListQuerySchema } from "@buttercupp/shared";
 import { listCharacters, getFacetTags } from "@/lib/characters";
 import { getViewer } from "@/lib/viewer";
-import { viewerAllowsMature } from "@poppy/database";
+import { viewerAllowsMature } from "@buttercupp/database";
 import { GalleryToolbar } from "@/components/gallery/GalleryToolbar";
 import { CharacterGrid } from "@/components/gallery/CharacterGrid";
 
@@ -42,7 +42,7 @@ export default async function GalleryPage({
         <h1 className="font-display text-4xl font-semibold tracking-tight">Discover</h1>
         <p
           className="text-sm"
-          style={{ color: "hsl(var(--poppy-muted, 215 16% 47%))" }}
+          style={{ color: "hsl(var(--buttercupp-muted, 215 16% 47%))" }}
         >
           Real personas, live characters. Sort, search, and pick your companion.
         </p>

@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { useSearchParams } from "next/navigation";
-import type { CharacterCardDTO, CharacterListResponse } from "@poppy/shared";
+import type { CharacterCardDTO, CharacterListResponse } from "@buttercupp/shared";
 import { CharacterCard } from "./CharacterCard";
 import { Button } from "@/components/ui/button";
 
@@ -63,7 +63,7 @@ export function CharacterGrid({
       {items.length === 0 ? (
         <p
           className="py-12 text-center text-sm"
-          style={{ color: "hsl(var(--poppy-muted, 215 16% 47%))" }}
+          style={{ color: "hsl(var(--buttercupp-muted, 215 16% 47%))" }}
         >
           No characters match this filter.
         </p>

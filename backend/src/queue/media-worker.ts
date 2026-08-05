@@ -4,7 +4,7 @@
 // notifies the user; on InsufficientTokensError it bails immediately with no
 // retry.
 
-import type { MediaJobData } from "@poppy/shared";
+import type { MediaJobData } from "@buttercupp/shared";
 import { withRetry, RETRY_PRESETS } from "../utils/retry";
 import { markProcessing, markReady, markFailed } from "../media/asset";
 import { debitTokens, refundTokens, InsufficientTokensError } from "../media/token-ledger";
@@ -14,7 +14,7 @@ import { consumePlanQuota } from "../subscription/enforce";
 import { entitlementsFor } from "../subscription/entitlements";
 import { notifyMediaReady, notifyMediaError } from "./ws-notify";
 import { createWorkerConnection } from "./connection";
-import { MEDIA_QUEUE_NAME } from "@poppy/shared";
+import { MEDIA_QUEUE_NAME } from "@buttercupp/shared";
 import { logInfo, logWarn, logError } from "../utils/log";
 import { recordMediaJobOutcome } from "../metrics";
 

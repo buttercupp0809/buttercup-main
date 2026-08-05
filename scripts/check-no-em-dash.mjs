@@ -19,7 +19,7 @@ const SKIP_DIRS = new Set([
   ".cache",
   ".git",
   // Plans/ ships upstream spec docs (Master PRD, phase prompts) whose prose
-  // is not written by Poppy code and is out of scope for our em-dash rule.
+  // is not written by ButterCupp code and is out of scope for our em-dash rule.
   "Plans",
 ]);
 

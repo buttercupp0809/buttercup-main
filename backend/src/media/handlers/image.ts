@@ -4,8 +4,8 @@
 // via signed S3 URLs (IP-Adapter conditioning) or a LoRA ref when the
 // character has trained weights.
 
-import { prisma } from "@poppy/database";
-import type { MediaJobData } from "@poppy/shared";
+import { prisma } from "@buttercupp/database";
+import type { MediaJobData } from "@buttercupp/shared";
 import type { HandlerOutput } from "./index";
 import { buildImagePrompt } from "../image/prompt";
 import { generateImage } from "../image/providers";

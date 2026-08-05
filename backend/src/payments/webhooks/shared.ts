@@ -3,7 +3,7 @@
 // provided by an INSERT on WebhookEvent with the (provider, eventId)
 // unique index; a duplicate delivery loses the race and we short-circuit.
 
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 import { normalizeTier } from "../../subscription/tier";
 import { grantMonthlyTokens, activatePlan, tierForPlan } from "../../subscription/grant";
 import { isPlan } from "../../subscription/plans";

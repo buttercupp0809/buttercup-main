@@ -1,5 +1,5 @@
-import { prisma } from "@poppy/database";
-import { LoginDto } from "@poppy/shared";
+import { prisma } from "@buttercupp/database";
+import { LoginDto } from "@buttercupp/shared";
 import { verifyPassword } from "@/lib/password";
 import { signAuthToken, setAuthCookie } from "@/lib/auth";
 import { jsonError, jsonOk, parseJson } from "@/lib/api-helpers";

@@ -1,4 +1,4 @@
-# Poppy prompt templates - fill-in guide
+# ButterCupp prompt templates - fill-in guide
 
 This directory holds the LLM system prompt in fill-in template form.
 `prompts.ts` composes these files at chat time and passes the joined

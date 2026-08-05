@@ -14,16 +14,16 @@ Reference: PRD §5.10 (settings), §16 (analytics/observability), §15 (security
 
 ## Prerequisites
 - Phases 00 through 11 green. In particular: auth (phase 01), memory endpoints `GET /api/memory` and `DELETE /api/memory/:id` (phase 05), conversations (phase 04), Prisma schema with `User`, `Conversation`, `Message`, `Memory`, `MemorySummary`, `Character`, `RelationshipState`, `TokenLedger`, `Subscription`, `MediaAsset`, `AnalyticsEvent`, `AuditLog` (phase 02).
-- `packages/database` Prisma singleton `@poppy/database`.
+- `packages/database` Prisma singleton `@buttercupp/database`.
 - `backend/src/analytics/tracker.ts` and `backend/src/utils/audit.ts` present.
 
 ## Context to paste into Cursor
-> Build Phase 12 (Settings, account, observability) for Poppy per Master PRD §5.10, §16, §15. Mirror Pellow for the tracker, metrics, and security headers.
+> Build Phase 12 (Settings, account, observability) for ButterCupp per Master PRD §5.10, §16, §15. Mirror Pellow for the tracker, metrics, and security headers.
 >
 > Pellow reference files to read and mirror (in `../Pellow`):
-> - `backend/src/analytics/tracker.ts`: the fire-and-forget `track(eventName, properties?, userId?)` writer to `AnalyticsEvent`. Copy verbatim, rename import to `@poppy/database`.
-> - `backend/src/metrics.ts`: in-process `incrementCounter`/`getCounter`, `recordLatency`/`getLatencyP95` (p95 over a rolling sample window), `recordReplyOutcome`/`getFallbackRate` (rolling per-hour fallback rate), and `getHealthSnapshot()` exposed on the health endpoint. Mirror the shape for Poppy's LLM + media outcomes.
-> - `frontend/next.config.ts`: the `securityHeaders` array (HSTS with preload, X-Content-Type-Options nosniff, X-Frame-Options DENY, COOP, Referrer-Policy, Permissions-Policy, and a full Content-Security-Policy with dev-only `'unsafe-eval'`), plus `withSentryConfig` wrapping and the `/api/(.*)` no-store cache header. Adapt the CSP allowlist to Poppy's providers (OpenRouter, Fal/Replicate, ElevenLabs/Cartesia, S3/CloudFront, adult-friendly payment processor, Sentry).
+> - `backend/src/analytics/tracker.ts`: the fire-and-forget `track(eventName, properties?, userId?)` writer to `AnalyticsEvent`. Copy verbatim, rename import to `@buttercupp/database`.
+> - `backend/src/metrics.ts`: in-process `incrementCounter`/`getCounter`, `recordLatency`/`getLatencyP95` (p95 over a rolling sample window), `recordReplyOutcome`/`getFallbackRate` (rolling per-hour fallback rate), and `getHealthSnapshot()` exposed on the health endpoint. Mirror the shape for ButterCupp's LLM + media outcomes.
+> - `frontend/next.config.ts`: the `securityHeaders` array (HSTS with preload, X-Content-Type-Options nosniff, X-Frame-Options DENY, COOP, Referrer-Policy, Permissions-Policy, and a full Content-Security-Policy with dev-only `'unsafe-eval'`), plus `withSentryConfig` wrapping and the `/api/(.*)` no-store cache header. Adapt the CSP allowlist to ButterCupp's providers (OpenRouter, Fal/Replicate, ElevenLabs/Cartesia, S3/CloudFront, adult-friendly payment processor, Sentry).
 > - `backend/src/utils/audit.ts`: `writeAuditLog` for the deletion/export audit trail.
 >
 > Locked decisions (PRD §0): mature-gated web-first PWA on AWS. No em dashes anywhere. TypeScript strict. Zod on every mutation. Server-centric Next.js 16.
@@ -61,7 +61,7 @@ Reference: PRD §5.10 (settings), §16 (analytics/observability), §15 (security
 - Fire events at their source (signup route, age gate, chat pipeline, memory extractor, voice/image jobs, billing webhook, publish route). `crisis_event` already fired in phase 11.
 
 ### 7. Metrics counters: `backend/src/metrics.ts`
-- Mirror Pellow: `incrementCounter`/`getCounter`, `recordLatency`/`getLatencyP95`, and a Poppy-specific `recordProviderOutcome({ provider, success })` for LLM provider outcomes and `recordMediaJobOutcome({ kind, status })` for image/voice jobs, plus rolling fallback-rate helpers.
+- Mirror Pellow: `incrementCounter`/`getCounter`, `recordLatency`/`getLatencyP95`, and a ButterCupp-specific `recordProviderOutcome({ provider, success })` for LLM provider outcomes and `recordMediaJobOutcome({ kind, status })` for image/voice jobs, plus rolling fallback-rate helpers.
 - `getHealthSnapshot()` exposes counters + p95 latencies. Wire it into the backend health endpoint (`GET /healthz`) added in phase 00/13.
 
 ### 8. Sentry: frontend + backend
@@ -69,7 +69,7 @@ Reference: PRD §5.10 (settings), §16 (analytics/observability), §15 (security
 - Backend: `@sentry/node` init in `backend/src/index.ts`; capture unhandled rejections and pipeline errors. Add a `GET /api/_debug/throw` (dev-only, flag-gated) that throws a test error to verify capture.
 
 ### 9. Security headers: `frontend/next.config.ts`
-- Add the `securityHeaders` array mirroring Pellow: HSTS (`max-age=63072000; includeSubDomains; preload`), `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy`, `Permissions-Policy` (`microphone=(self)` for voice notes), and a full CSP. Adapt `connect-src`/`img-src`/`frame-src` to Poppy providers: OpenRouter, Fal/Replicate, ElevenLabs/Cartesia, CloudFront/S3 media host, the adult-friendly payment processor, and `*.sentry.io`. Keep `'unsafe-eval'` dev-only. Add the `/api/(.*)` `no-store` cache header.
+- Add the `securityHeaders` array mirroring Pellow: HSTS (`max-age=63072000; includeSubDomains; preload`), `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy`, `Permissions-Policy` (`microphone=(self)` for voice notes), and a full CSP. Adapt `connect-src`/`img-src`/`frame-src` to ButterCupp providers: OpenRouter, Fal/Replicate, ElevenLabs/Cartesia, CloudFront/S3 media host, the adult-friendly payment processor, and `*.sentry.io`. Keep `'unsafe-eval'` dev-only. Add the `/api/(.*)` `no-store` cache header.
 
 ## Test instructions
 Vitest (`backend/src/account/__tests__/`, `backend/src/analytics/__tests__/`):

@@ -12,7 +12,7 @@ Reference: PRD §2.8 (memory/RAG/DB hardening), §4 (guardrails: parameterized S
 
 ## Context to paste into Cursor
 ```
-You are implementing Phase 23 of Poppy (see prds/experience-monetization-prd.md §2.8, §4).
+You are implementing Phase 23 of ButterCupp (see prds/experience-monetization-prd.md §2.8, §4).
 
 HARDEN the memory/RAG pipeline. Do NOT change retrieval scoring, weights, or the
 extraction prompt/thresholds. Retrieval quality must stay identical; this is reliability

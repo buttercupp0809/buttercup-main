@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import crypto from "node:crypto";
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 import {
   PaywallError,
   assertCanChat,

@@ -29,10 +29,10 @@ export function WizardShell({ children }: { children: React.ReactNode }) {
               style={{
                 color:
                   i === currentIndex
-                    ? "hsl(var(--poppy-accent-rose))"
+                    ? "hsl(var(--buttercupp-accent-rose))"
                     : i < currentIndex
-                      ? "hsl(var(--poppy-fg))"
-                      : "hsl(var(--poppy-muted))",
+                      ? "hsl(var(--buttercupp-fg))"
+                      : "hsl(var(--buttercupp-muted))",
                 fontWeight: i === currentIndex ? 600 : 400,
               }}
             >
@@ -41,7 +41,7 @@ export function WizardShell({ children }: { children: React.ReactNode }) {
               </span>
               {s.label}
               {i < CHARACTER_STEPS.length - 1 ? (
-                <span style={{ color: "hsl(var(--poppy-border))" }}>-</span>
+                <span style={{ color: "hsl(var(--buttercupp-border))" }}>-</span>
               ) : null}
             </li>
           ))}
@@ -50,8 +50,8 @@ export function WizardShell({ children }: { children: React.ReactNode }) {
         <div
           className="rounded-xl border p-6"
           style={{
-            backgroundColor: "hsl(var(--poppy-surface))",
-            borderColor: "hsl(var(--poppy-border))",
+            backgroundColor: "hsl(var(--buttercupp-surface))",
+            borderColor: "hsl(var(--buttercupp-border))",
           }}
         >
           {children}
@@ -63,7 +63,7 @@ export function WizardShell({ children }: { children: React.ReactNode }) {
             onClick={goBack}
             disabled={currentIndex === 0}
             className="rounded-md border px-4 py-2 text-sm disabled:opacity-50"
-            style={{ borderColor: "hsl(var(--poppy-border))", color: "hsl(var(--poppy-fg))" }}
+            style={{ borderColor: "hsl(var(--buttercupp-border))", color: "hsl(var(--buttercupp-fg))" }}
           >
             Back
           </button>
@@ -73,8 +73,8 @@ export function WizardShell({ children }: { children: React.ReactNode }) {
             disabled={!canContinue || (isLast && saving)}
             className="rounded-md px-4 py-2 text-sm font-semibold disabled:opacity-50"
             style={{
-              backgroundColor: "hsl(var(--poppy-accent-rose))",
-              color: "hsl(var(--poppy-primary-fg))",
+              backgroundColor: "hsl(var(--buttercupp-accent-rose))",
+              color: "hsl(var(--buttercupp-primary-fg))",
             }}
           >
             {isLast ? (saving ? "Saving..." : "Finish") : "Next"}

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { CharacterCardDTO } from "@poppy/shared";
+import type { CharacterCardDTO } from "@buttercupp/shared";
 import { cn } from "@/lib/utils";
 import { taglineFrom } from "@/lib/text";
 
@@ -46,13 +46,13 @@ export function CharacterCard({
       className={cn(
         "group relative flex aspect-[4/5] flex-col overflow-hidden rounded-2xl shadow-md ring-1",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400",
-        "motion-safe:transition motion-safe:duration-300 motion-safe:animate-[poppy-card-in_400ms_ease-out_both]",
+        "motion-safe:transition motion-safe:duration-300 motion-safe:animate-[buttercupp-card-in_400ms_ease-out_both]",
         "motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-xl",
       )}
       style={{
         animationDelay: `${delay}ms`,
-        backgroundColor: "hsl(var(--poppy-surface, 210 40% 96%))",
-        borderColor: "hsl(var(--poppy-border, 214 32% 91%))",
+        backgroundColor: "hsl(var(--buttercupp-surface, 210 40% 96%))",
+        borderColor: "hsl(var(--buttercupp-border, 214 32% 91%))",
       }}
     >
       {character.avatarUrl ? (
@@ -70,7 +70,7 @@ export function CharacterCard({
       ) : (
         <div
           className="absolute inset-0 flex items-center justify-center text-4xl font-semibold"
-          style={{ color: "hsl(var(--poppy-muted, 215 16% 47%))" }}
+          style={{ color: "hsl(var(--buttercupp-muted, 215 16% 47%))" }}
         >
           {character.name[0]?.toUpperCase() ?? "?"}
         </div>

@@ -10,8 +10,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@poppy/database": "*",
-    "@poppy/shared": "*",
+    "@buttercupp/database": "*",
+    "@buttercupp/shared": "*",
     "bcryptjs": "^2.4.3",
     "jose": "^5.9.0",
     "next": "^16.0.0",

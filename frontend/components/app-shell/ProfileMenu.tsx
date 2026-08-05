@@ -86,7 +86,7 @@ export function ProfileMenu({
           "flex w-full items-center gap-2 rounded-md p-2 text-left hover:bg-white/5 focus:outline-none focus-visible:ring-2",
           collapsed && "justify-center",
         )}
-        style={{ outlineColor: "hsl(var(--poppy-accent-rose))" }}
+        style={{ outlineColor: "hsl(var(--buttercupp-accent-rose))" }}
       >
         <Avatar src={user.avatarUrl ?? null} name={name} />
         {!collapsed ? (
@@ -107,11 +107,11 @@ export function ProfileMenu({
             align === "right" ? "right-0" : "left-0",
           )}
           style={{
-            backgroundColor: "hsl(var(--poppy-surface))",
-            borderColor: "hsl(var(--poppy-border))",
+            backgroundColor: "hsl(var(--buttercupp-surface))",
+            borderColor: "hsl(var(--buttercupp-border))",
           }}
         >
-          <div className="border-b px-3 py-2 text-xs text-slate-400" style={{ borderColor: "hsl(var(--poppy-border))" }}>
+          <div className="border-b px-3 py-2 text-xs text-slate-400" style={{ borderColor: "hsl(var(--buttercupp-border))" }}>
             {user.email}
           </div>
           <MenuLink href="/settings" icon={<UserIcon className="h-4 w-4" />} onClick={() => setOpen(false)}>
@@ -166,7 +166,7 @@ function Avatar({ src, name }: { src: string | null; name: string }) {
   return (
     <div
       className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full text-xs font-semibold text-white"
-      style={{ backgroundColor: "hsl(var(--poppy-accent-violet) / 0.4)" }}
+      style={{ backgroundColor: "hsl(var(--buttercupp-accent-violet) / 0.4)" }}
     >
       {src ? (
         <img src={src} alt={name} className="h-full w-full object-cover" />
@@ -186,12 +186,12 @@ function TierBadge({ tier }: { tier: string }) {
       style={
         isPaid
           ? {
-              backgroundColor: "hsl(var(--poppy-accent-rose) / 0.18)",
-              color: "hsl(var(--poppy-accent-rose))",
+              backgroundColor: "hsl(var(--buttercupp-accent-rose) / 0.18)",
+              color: "hsl(var(--buttercupp-accent-rose))",
             }
           : {
-              backgroundColor: "hsl(var(--poppy-surface-2))",
-              color: "hsl(var(--poppy-muted))",
+              backgroundColor: "hsl(var(--buttercupp-surface-2))",
+              color: "hsl(var(--buttercupp-muted))",
             }
       }
     >

@@ -14,7 +14,7 @@ This phase covers PRD (`prds/experience-monetization-prd.md`) §2.2 (auth: signu
 
 ## Context to paste into Cursor
 ```
-You are building Phase 16 of "Poppy" (mature-gated AI companion platform): auth polish. Google signup/login button + password show/hide + real-time strength checklist + a stronger shared password schema.
+You are building Phase 16 of "ButterCupp" (mature-gated AI companion platform): auth polish. Google signup/login button + password show/hide + real-time strength checklist + a stronger shared password schema.
 
 Authoritative spec: prds/experience-monetization-prd.md §2.2. Requirements:
 - Signup supports email/password AND Google (GIS button). Keep DOB + jurisdiction + ToS/Privacy capture (compliance) exactly as-is.
@@ -45,7 +45,7 @@ Do NOT run git commit/push, deploy, or migrate a non-local DB.
 
 ### 3. Reusable password field component
 - `frontend/components/auth/PasswordField.tsx`. A controlled input with a show/hide eye toggle (button toggles `type` between `password` and `text`, `aria-pressed`, `aria-label` "Show password" / "Hide password"). Props: `value`, `onChange`, `label`, `autoComplete`, and optional `showChecklist?: boolean`. When `showChecklist`, render `frontend/components/auth/PasswordChecklist.tsx` below it.
-- `frontend/components/auth/PasswordChecklist.tsx`. Import `passwordChecklist` and `PASSWORD_RULES` from `@poppy/shared`. Render each rule as a row with a pass (check) / fail (dot) icon + label, plus a strength bar whose fill = fraction of rules passing (color ramps weak -> strong). Expose the boolean "all required rules pass" to the parent (via a callback prop `onValidityChange(valid: boolean)` or by the parent recomputing from the same helper). ARIA: the checklist is an `aria-live="polite"` region so screen readers hear updates; each row conveys its pass/fail state to assistive tech (not color alone).
+- `frontend/components/auth/PasswordChecklist.tsx`. Import `passwordChecklist` and `PASSWORD_RULES` from `@buttercupp/shared`. Render each rule as a row with a pass (check) / fail (dot) icon + label, plus a strength bar whose fill = fraction of rules passing (color ramps weak -> strong). Expose the boolean "all required rules pass" to the parent (via a callback prop `onValidityChange(valid: boolean)` or by the parent recomputing from the same helper). ARIA: the checklist is an `aria-live="polite"` region so screen readers hear updates; each row conveys its pass/fail state to assistive tech (not color alone).
 
 ### 4. Google Identity Services button
 - `frontend/components/auth/GoogleButton.tsx`. Client component that renders the GIS button and calls the existing backend route.

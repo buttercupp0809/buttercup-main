@@ -8,7 +8,7 @@
 // exported so a request-time trigger can also invoke it when a threshold is
 // crossed (e.g. > 100 memories for a pair).
 
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 import { callLLM } from "../llm/provider";
 import { embed } from "../llm/embeddings";
 import { assertSafeId } from "../utils/safe-types";

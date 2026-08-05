@@ -3,7 +3,7 @@
 // UI (via /billing/entitlements) both call this. It NEVER increments;
 // mutation lives in Phase 21.
 
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 import {
   FREE_MESSAGE_LIMIT,
   PLANS,

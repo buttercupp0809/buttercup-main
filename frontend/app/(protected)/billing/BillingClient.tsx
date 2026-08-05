@@ -176,9 +176,9 @@ export function BillingClient({ tokenBalance, ledger }: Props) {
         <div
           className="rounded-md border p-3 text-sm"
           style={{
-            borderColor: "hsl(var(--poppy-accent-rose) / 0.5)",
-            backgroundColor: "hsl(var(--poppy-accent-rose) / 0.12)",
-            color: "hsl(var(--poppy-fg))",
+            borderColor: "hsl(var(--buttercupp-accent-rose) / 0.5)",
+            backgroundColor: "hsl(var(--buttercupp-accent-rose) / 0.12)",
+            color: "hsl(var(--buttercupp-fg))",
           }}
         >
           {error}
@@ -191,14 +191,14 @@ export function BillingClient({ tokenBalance, ledger }: Props) {
         <div className="flex flex-wrap items-center justify-center gap-6">
           <div className="flex items-center gap-2">
             <Laurel />
-            <span className="text-sm font-semibold" style={{ color: "hsl(var(--poppy-fg))" }}>
+            <span className="text-sm font-semibold" style={{ color: "hsl(var(--buttercupp-fg))" }}>
               Trusted by 50M Users
             </span>
             <Laurel flip />
           </div>
           <div className="flex flex-col items-center">
             <Stars n={5} />
-            <span className="text-xs" style={{ color: "hsl(var(--poppy-muted))" }}>
+            <span className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
               1000+ Ratings
             </span>
           </div>
@@ -208,7 +208,7 @@ export function BillingClient({ tokenBalance, ledger }: Props) {
       {/* Plan tiles */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3" data-testid="plan-cards">
         {paid.length === 0 && loading
-          ? [0, 1, 2].map((i) => <div key={i} className="h-72 rounded-2xl" style={{ backgroundColor: "hsl(var(--poppy-surface))" }} />)
+          ? [0, 1, 2].map((i) => <div key={i} className="h-72 rounded-2xl" style={{ backgroundColor: "hsl(var(--buttercupp-surface))" }} />)
           : paid.map((p, i) => {
               const isBest = i === 0;
               const isCurrent = ent?.active && ent.plan === p.plan;
@@ -221,10 +221,10 @@ export function BillingClient({ tokenBalance, ledger }: Props) {
                   className="relative flex flex-col overflow-hidden rounded-2xl border p-5"
                   style={{
                     borderColor: isBest
-                      ? "hsl(var(--poppy-accent-rose))"
-                      : "hsl(var(--poppy-border))",
-                    backgroundColor: "hsl(var(--poppy-surface))",
-                    boxShadow: isBest ? "0 0 0 1px hsl(var(--poppy-accent-rose) / 0.4)" : undefined,
+                      ? "hsl(var(--buttercupp-accent-rose))"
+                      : "hsl(var(--buttercupp-border))",
+                    backgroundColor: "hsl(var(--buttercupp-surface))",
+                    boxShadow: isBest ? "0 0 0 1px hsl(var(--buttercupp-accent-rose) / 0.4)" : undefined,
                   }}
                 >
                   {isBest ? (
@@ -233,7 +233,7 @@ export function BillingClient({ tokenBalance, ledger }: Props) {
                       className="pointer-events-none absolute inset-x-0 bottom-0 h-40"
                       style={{
                         background:
-                          "linear-gradient(180deg, transparent, hsl(var(--poppy-accent-rose) / 0.18))",
+                          "linear-gradient(180deg, transparent, hsl(var(--buttercupp-accent-rose) / 0.18))",
                       }}
                     />
                   ) : null}
@@ -254,24 +254,24 @@ export function BillingClient({ tokenBalance, ledger }: Props) {
                   {isBest ? (
                     <span
                       className="relative mt-1 text-xs font-bold uppercase tracking-wide"
-                      style={{ color: "hsl(var(--poppy-accent-rose))" }}
+                      style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
                     >
                       Best value
                     </span>
                   ) : (
-                    <span className="relative mt-1 text-xs" style={{ color: "hsl(var(--poppy-muted))" }}>
+                    <span className="relative mt-1 text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
                       {formatDuration(p.durationDays)} pass
                     </span>
                   )}
 
                   <div className="relative mt-6 flex items-baseline gap-1">
                     <span className="font-display text-4xl font-bold">${p.priceUsd}</span>
-                    <span className="text-sm" style={{ color: "hsl(var(--poppy-muted))" }}>
+                    <span className="text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
                       / {formatDuration(p.durationDays)}
                     </span>
                   </div>
 
-                  <ul className="relative mt-4 space-y-1 text-sm" style={{ color: "hsl(var(--poppy-muted))" }}>
+                  <ul className="relative mt-4 space-y-1 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
                     <li>{formatCount(p.chats)} chats</li>
                     <li>{formatCount(p.images)} images</li>
                     <li>{formatCount(p.videos)} videos</li>
@@ -287,13 +287,13 @@ export function BillingClient({ tokenBalance, ledger }: Props) {
                       isBest
                         ? {
                             background:
-                              "linear-gradient(90deg, hsl(var(--poppy-accent-rose)), hsl(var(--poppy-accent-violet)))",
-                            color: "hsl(var(--poppy-primary-fg))",
+                              "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
+                            color: "hsl(var(--buttercupp-primary-fg))",
                           }
                         : {
-                            backgroundColor: "hsl(var(--poppy-surface-2))",
-                            color: "hsl(var(--poppy-fg))",
-                            border: "1px solid hsl(var(--poppy-border))",
+                            backgroundColor: "hsl(var(--buttercupp-surface-2))",
+                            color: "hsl(var(--buttercupp-fg))",
+                            border: "1px solid hsl(var(--buttercupp-border))",
                           }
                     }
                   >
@@ -313,8 +313,8 @@ export function BillingClient({ tokenBalance, ledger }: Props) {
               key={b.label}
               className="flex items-center gap-3 rounded-xl border px-4 py-3"
               style={{
-                borderColor: "hsl(var(--poppy-border))",
-                backgroundColor: "hsl(var(--poppy-surface))",
+                borderColor: "hsl(var(--buttercupp-border))",
+                backgroundColor: "hsl(var(--buttercupp-surface))",
               }}
             >
               <span className="text-lg" aria-hidden>
@@ -335,18 +335,18 @@ export function BillingClient({ tokenBalance, ledger }: Props) {
               key={r.title}
               className="flex flex-col gap-2 rounded-2xl border p-5"
               style={{
-                borderColor: "hsl(var(--poppy-border))",
-                backgroundColor: "hsl(var(--poppy-surface))",
+                borderColor: "hsl(var(--buttercupp-border))",
+                backgroundColor: "hsl(var(--buttercupp-surface))",
               }}
             >
               <div className="flex items-center justify-between">
                 <span className="font-semibold">{r.title}</span>
-                <span className="text-xs" style={{ color: "hsl(var(--poppy-muted))" }}>
+                <span className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
                   {r.who}
                 </span>
               </div>
               <Stars n={5} emerald />
-              <p className="text-sm" style={{ color: "hsl(var(--poppy-muted))" }}>
+              <p className="text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
                 {r.body}
               </p>
             </div>
@@ -359,18 +359,18 @@ export function BillingClient({ tokenBalance, ledger }: Props) {
         <h2 className="font-display text-xl font-semibold">Your account</h2>
         <div
           className="rounded-2xl border p-5"
-          style={{ borderColor: "hsl(var(--poppy-border))", backgroundColor: "hsl(var(--poppy-surface))" }}
+          style={{ borderColor: "hsl(var(--buttercupp-border))", backgroundColor: "hsl(var(--buttercupp-surface))" }}
           data-testid="current-plan"
         >
           <div className="flex flex-wrap items-baseline justify-between gap-4">
             <div>
-              <div className="text-xs uppercase tracking-wide" style={{ color: "hsl(var(--poppy-muted))" }}>
+              <div className="text-xs uppercase tracking-wide" style={{ color: "hsl(var(--buttercupp-muted))" }}>
                 Current plan
               </div>
               <div className="font-display text-2xl font-semibold capitalize">
                 {ent ? planLabel(activePlan, plans) : "..."}
               </div>
-              <div className="text-xs" style={{ color: "hsl(var(--poppy-muted))" }}>
+              <div className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
                 {ent?.active && ent.expiresAt
                   ? `Expires ${new Date(ent.expiresAt).toLocaleString()}`
                   : ent
@@ -381,7 +381,7 @@ export function BillingClient({ tokenBalance, ledger }: Props) {
               </div>
             </div>
             <div className="text-right">
-              <div className="text-xs uppercase tracking-wide" style={{ color: "hsl(var(--poppy-muted))" }}>
+              <div className="text-xs uppercase tracking-wide" style={{ color: "hsl(var(--buttercupp-muted))" }}>
                 Tokens
               </div>
               <div className="font-display text-2xl font-semibold">{tokenBalance}</div>
@@ -395,7 +395,7 @@ export function BillingClient({ tokenBalance, ledger }: Props) {
               <QuotaMeter label="Videos remaining" bucket={ent.videos} note={activePlan === "free" ? "No media on Free" : undefined} />
             </div>
           ) : loading ? (
-            <div className="mt-4 text-xs" style={{ color: "hsl(var(--poppy-muted))" }}>Loading entitlements...</div>
+            <div className="mt-4 text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>Loading entitlements...</div>
           ) : null}
         </div>
       </div>
@@ -408,19 +408,19 @@ export function BillingClient({ tokenBalance, ledger }: Props) {
             <div
               key={p.id}
               className="rounded-2xl border p-4"
-              style={{ borderColor: "hsl(var(--poppy-border))", backgroundColor: "hsl(var(--poppy-surface))" }}
+              style={{ borderColor: "hsl(var(--buttercupp-border))", backgroundColor: "hsl(var(--buttercupp-surface))" }}
             >
               <div className="font-display text-base font-semibold">{p.label}</div>
-              <div className="text-sm" style={{ color: "hsl(var(--poppy-muted))" }}>{p.price}</div>
+              <div className="text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>{p.price}</div>
               <button
                 type="button"
                 onClick={() => buy(p.id)}
                 disabled={pending === p.id}
                 className="mt-3 w-full rounded-xl py-2 text-sm font-medium disabled:opacity-50"
                 style={{
-                  backgroundColor: "hsl(var(--poppy-surface-2))",
-                  color: "hsl(var(--poppy-fg))",
-                  border: "1px solid hsl(var(--poppy-border))",
+                  backgroundColor: "hsl(var(--buttercupp-surface-2))",
+                  color: "hsl(var(--buttercupp-fg))",
+                  border: "1px solid hsl(var(--buttercupp-border))",
                 }}
               >
                 {pending === p.id ? "Redirecting..." : "Buy"}
@@ -435,12 +435,12 @@ export function BillingClient({ tokenBalance, ledger }: Props) {
         <h2 className="font-display mb-3 text-xl font-semibold">Recent activity</h2>
         <div
           className="overflow-hidden rounded-2xl border"
-          style={{ borderColor: "hsl(var(--poppy-border))" }}
+          style={{ borderColor: "hsl(var(--buttercupp-border))" }}
         >
           <table className="w-full text-sm">
             <thead
               className="text-xs uppercase"
-              style={{ backgroundColor: "hsl(var(--poppy-surface-2))", color: "hsl(var(--poppy-muted))" }}
+              style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))", color: "hsl(var(--buttercupp-muted))" }}
             >
               <tr>
                 <th className="px-3 py-2 text-left">Date</th>
@@ -452,13 +452,13 @@ export function BillingClient({ tokenBalance, ledger }: Props) {
             <tbody>
               {ledger.length === 0 ? (
                 <tr>
-                  <td className="px-3 py-4 text-center" style={{ color: "hsl(var(--poppy-muted))" }} colSpan={4}>
+                  <td className="px-3 py-4 text-center" style={{ color: "hsl(var(--buttercupp-muted))" }} colSpan={4}>
                     No activity yet.
                   </td>
                 </tr>
               ) : (
                 ledger.map((row) => (
-                  <tr key={row.id} style={{ borderTop: "1px solid hsl(var(--poppy-border))" }}>
+                  <tr key={row.id} style={{ borderTop: "1px solid hsl(var(--buttercupp-border))" }}>
                     <td className="px-3 py-2">{new Date(row.createdAt).toLocaleString()}</td>
                     <td className="px-3 py-2">{row.reason}</td>
                     <td className={`px-3 py-2 text-right ${row.delta < 0 ? "text-rose-400" : "text-emerald-400"}`}>
@@ -504,7 +504,7 @@ function Laurel({ flip }: { flip?: boolean }) {
       height="24"
       viewBox="0 0 18 24"
       aria-hidden
-      style={{ transform: flip ? "scaleX(-1)" : undefined, color: "hsl(var(--poppy-muted))" }}
+      style={{ transform: flip ? "scaleX(-1)" : undefined, color: "hsl(var(--buttercupp-muted))" }}
     >
       <path
         d="M14 2c-6 2-9 7-9 14 0 2 .3 4 1 6M11 6c-3 0-5 1-6 3M12 11c-3 0-5 1-6 3M13 16c-2 0-4 1-5 3"
@@ -535,27 +535,27 @@ function QuotaMeter({
   return (
     <div
       className="rounded-xl border p-3"
-      style={{ backgroundColor: "hsl(var(--poppy-surface-2))", borderColor: "hsl(var(--poppy-border))" }}
+      style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))", borderColor: "hsl(var(--buttercupp-border))" }}
     >
       <div className="flex items-baseline justify-between">
-        <div className="text-xs uppercase tracking-wide" style={{ color: "hsl(var(--poppy-muted))" }}>{label}</div>
+        <div className="text-xs uppercase tracking-wide" style={{ color: "hsl(var(--buttercupp-muted))" }}>{label}</div>
         <div className="text-sm font-semibold">{formatQuota(bucket)}</div>
       </div>
       <div
         aria-hidden
         className="mt-2 h-1.5 w-full overflow-hidden rounded-full"
-        style={{ backgroundColor: "hsl(var(--poppy-border))" }}
+        style={{ backgroundColor: "hsl(var(--buttercupp-border))" }}
       >
         <div
           className="h-full"
           style={{
             width: `${pct}%`,
             background:
-              "linear-gradient(90deg, hsl(var(--poppy-accent-rose)), hsl(var(--poppy-accent-violet)))",
+              "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
           }}
         />
       </div>
-      {note ? <div className="mt-1 text-[11px]" style={{ color: "hsl(var(--poppy-muted))" }}>{note}</div> : null}
+      {note ? <div className="mt-1 text-[11px]" style={{ color: "hsl(var(--buttercupp-muted))" }}>{note}</div> : null}
     </div>
   );
 }

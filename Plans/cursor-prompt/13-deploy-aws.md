@@ -1,10 +1,10 @@
 # Phase 13: Deployment (AWS, mirrors Pellow)
 
 > **READ THIS FIRST. DEPLOY REQUIRES EXPLICIT HUMAN APPROVAL.**
-> This file describes how to **prepare** Poppy's infrastructure and CI. It does **not** authorize any deploy. Every actual push, image publish, `terraform apply`/console change against non-local infrastructure, and every migration against a non-local database is **GATED on a fresh, explicit, per-action human approval**. Cursor must **prepare artifacts and STOP** at every deploy boundary and ask. Silence is not approval. A previous approval does not carry to the next action.
+> This file describes how to **prepare** ButterCupp's infrastructure and CI. It does **not** authorize any deploy. Every actual push, image publish, `terraform apply`/console change against non-local infrastructure, and every migration against a non-local database is **GATED on a fresh, explicit, per-action human approval**. Cursor must **prepare artifacts and STOP** at every deploy boundary and ask. Silence is not approval. A previous approval does not carry to the next action.
 
 ## Goal
-Prepare (not execute) the AWS infrastructure and CI to ship Poppy, mirroring Pellow:
+Prepare (not execute) the AWS infrastructure and CI to ship ButterCupp, mirroring Pellow:
 - **Amplify** for the Next.js 16 frontend (SSR / `WEB_COMPUTE`), mirroring Pellow `amplify.yml`.
 - **ECS Fargate** for the backend API + WebSocket gateway + BullMQ worker, behind an **ALB with WebSocket + sticky-session support**.
 - **RDS Postgres + pgvector** with pooling (`pgbouncer=true&connect_timeout=15`).
@@ -20,14 +20,14 @@ Reference: PRD §14 (infra), §15 (security), §7 (architecture), §7.2 (WS gate
 ## Prerequisites
 - Phases 00 through 12 green locally: full app builds, all tests pass, `.env.example` catalog complete (phase 00), Dockerfile scaffolded (phase 00), health endpoint `GET /healthz` (phase 12) present.
 - AWS account access exists but is **not** to be mutated by Cursor. All AWS CLI/console/IaC changes are human-executed after approval.
-- `packages/database` Prisma singleton `@poppy/database`.
+- `packages/database` Prisma singleton `@buttercupp/database`.
 
 ## Context to paste into Cursor
-> Build Phase 13 (Deployment prep) for Poppy per Master PRD §14. Mirror Pellow's deploy topology. **Produce config and scripts only. Do not run any deploy, push, image publish, or non-local migration. Stop and ask before every such action.**
+> Build Phase 13 (Deployment prep) for ButterCupp per Master PRD §14. Mirror Pellow's deploy topology. **Produce config and scripts only. Do not run any deploy, push, image publish, or non-local migration. Stop and ask before every such action.**
 >
 > Pellow reference files to read and mirror (in `../Pellow`):
 > - `Dockerfile`: multistage: stage 1 `node:20-slim` builder (openssl, python3/make/g++, libvips-dev; `prisma generate` + `tsc`; `npm prune --production`); stage 2 runtime (openssl, ffmpeg, tini, ca-certificates), non-root user uid/gid 10001, `ENTRYPOINT ["/usr/bin/tini","--"]`, `STOPSIGNAL SIGTERM`. Mirror exactly; add BullMQ worker start path.
-> - `amplify.yml`: `appRoot: frontend`, preBuild symlinks `@poppy/database` into `node_modules`, copies Prisma client/adapter-pg, builds with `next build --webpack` (not Turbopack, because Turbopack auto-externalizes native `.node` binaries), and injects server env vars into `.next/server-env.json`. Mirror the structure; swap the env catalog to Poppy's.
+> - `amplify.yml`: `appRoot: frontend`, preBuild symlinks `@buttercupp/database` into `node_modules`, copies Prisma client/adapter-pg, builds with `next build --webpack` (not Turbopack, because Turbopack auto-externalizes native `.node` binaries), and injects server env vars into `.next/server-env.json`. Mirror the structure; swap the env catalog to ButterCupp's.
 > - `frontend/next.config.ts`: security headers already added in phase 12; confirm they ship.
 >
 > Locked decisions (PRD §0): AWS (Amplify + ECS Fargate + RDS + pgvector + Redis + S3 + CloudFront), mature-gated. No em dashes anywhere.
@@ -38,7 +38,7 @@ Reference: PRD §14 (infra), §15 (security), §7 (architecture), §7.2 (WS gate
 
 ### 1. Finalize the Dockerfile: `/Dockerfile`
 - Mirror Pellow's two stages. Runtime deps: `openssl ffmpeg ca-certificates tini`. Non-root `app` uid/gid 10001. `tini` as PID 1. `STOPSIGNAL SIGTERM`.
-- Poppy runs three roles from one image; select at runtime via `PROCESS_ROLE` env (`api` | `worker`): `CMD` defaults to the API+WS server (`node dist/index.js`); the worker task overrides the command to `node dist/worker.js` (BullMQ). Document this in a comment.
+- ButterCupp runs three roles from one image; select at runtime via `PROCESS_ROLE` env (`api` | `worker`): `CMD` defaults to the API+WS server (`node dist/index.js`); the worker task overrides the command to `node dist/worker.js` (BullMQ). Document this in a comment.
 - `.dockerignore`: exclude `node_modules`, `.next`, `.git`, `*.test.ts`, e2e artifacts.
 
 ### 2. Docker Compose smoke stack: `/docker-compose.yml`
@@ -46,8 +46,8 @@ Reference: PRD §14 (infra), §15 (security), §7 (architecture), §7.2 (WS gate
 - Include a healthcheck on each service; backend healthcheck hits `GET /healthz`.
 
 ### 3. Amplify config: `/amplify.yml`
-- Mirror Pellow: `appRoot: frontend`, preBuild symlinks `@poppy/database`, copies the Prisma client + `adapter-pg` + transitive deps, `next build --webpack`, and injects `.next/server-env.json`.
-- Replace Pellow's env block with Poppy's catalog (see step 6). Keep the webpack (not Turbopack) note as a comment explaining why.
+- Mirror Pellow: `appRoot: frontend`, preBuild symlinks `@buttercupp/database`, copies the Prisma client + `adapter-pg` + transitive deps, `next build --webpack`, and injects `.next/server-env.json`.
+- Replace Pellow's env block with ButterCupp's catalog (see step 6). Keep the webpack (not Turbopack) note as a comment explaining why.
 
 ### 4. ECS task definitions: `/infra/ecs/`
 - `task-api.json`: API + WebSocket gateway task (`PROCESS_ROLE=api`), port 4000, health check on `/healthz`, secrets pulled from SSM/Secrets Manager (referenced by ARN, **never inlined**).
@@ -56,7 +56,7 @@ Reference: PRD §14 (infra), §15 (security), §7 (architecture), §7.2 (WS gate
 - Document (comment) the WS scale-out choice: sticky sessions at the ALB plus Redis pub/sub fan-out for cross-node delivery (PRD §18 open question).
 
 ### 5. IaC / infra notes: `/infra/README.md`
-- Describe (do not create resources) the RDS Postgres + pgvector instance (parameter group enabling the `vector` extension, connection string with `pgbouncer=true&connect_timeout=15`), ElastiCache Redis, S3 media bucket + CloudFront distribution with **signed URLs**, Route 53 records, and the ECS cluster `poppy-prod`.
+- Describe (do not create resources) the RDS Postgres + pgvector instance (parameter group enabling the `vector` extension, connection string with `pgbouncer=true&connect_timeout=15`), ElastiCache Redis, S3 media bucket + CloudFront distribution with **signed URLs**, Route 53 records, and the ECS cluster `buttercupp-prod`.
 - Each subsection ends with: "Provisioning is a human-approved step. Do not run apply/create."
 
 ### 6. Env catalog wiring: `/.env.example` (confirm) + `/infra/env-catalog.md`
@@ -74,7 +74,7 @@ Reference: PRD §14 (infra), §15 (security), §7 (architecture), §7.2 (WS gate
 
 ## Test instructions
 Local only (no deploy):
-- `docker build -t poppy:local .`: image builds clean (multistage, non-root).
+- `docker build -t buttercupp:local .`: image builds clean (multistage, non-root).
 - `docker compose -f docker-compose.yml up --build -d` then `curl -sf http://localhost:4000/healthz`: backend + redis + postgres smoke test passes; worker connects to Redis.
 - `npx tsc --noEmit` across workspaces, `npm run lint`, `npm run test` (Vitest), `npx playwright test`: CI steps run green locally.
 - Config validation: `aws ecs register-task-definition --cli-input-json file://infra/ecs/task-api.json --generate-cli-skeleton` style dry-run / a JSON schema lint on the task defs, and `yamllint amplify.yml .github/workflows/ci.yml`. Validation only, no registration.

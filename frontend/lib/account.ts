@@ -3,7 +3,7 @@
 // routes can consume them without a cross-workspace import. The backend
 // modules remain the canonical spec.
 
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 
 export async function buildUserExport(userId: string) {
   const [user, conversations, messages, memories, memorySummaries, characters, relationshipStates, tokenLedger, subscription, mediaAssets, ageVerifications] = await Promise.all([

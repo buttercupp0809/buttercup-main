@@ -46,8 +46,8 @@ Maps every runtime env var to its **home**:
 
 ## Provisioning checklist (human-executed)
 
-1. Create Secrets Manager entries at `poppy/<VAR>` for every ECS row above. STOP for approval before each write.
-2. Grant `poppy-ecs-execution` `secretsmanager:GetSecretValue` on `arn:aws:secretsmanager:REGION:ACCT_ID:secret:poppy/*`.
+1. Create Secrets Manager entries at `buttercupp/<VAR>` for every ECS row above. STOP for approval before each write.
+2. Grant `buttercupp-ecs-execution` `secretsmanager:GetSecretValue` on `arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/*`.
 3. Populate the Amplify console env for the app's production branch with every "Amplify" row.
 4. Confirm `NEXT_PUBLIC_*` values are also visible to Amplify's SSR runtime (they are baked into `.next/server-env.json` by `amplify.yml`).
 5. Never commit any of these values to the repository. `.env` is git-ignored; `.env.example` holds placeholders only.

@@ -14,7 +14,7 @@ Covers PRD §2.7 (prompt placeholder structure). Requirement 16. Couples with Ph
 - Existing snapshot test at `backend/src/llm/prompts.test.ts` (do not delete; extend).
 
 ## Context to paste into Cursor
-> Building Poppy Phase 22 (fill-in prompt template structure). Read `prds/experience-monetization-prd.md` §2.7 first. This is an ADDITIVE refactor: the composed system prompt for a fixed character must be equivalent to today's output. TypeScript strict, no em dashes.
+> Building ButterCupp Phase 22 (fill-in prompt template structure). Read `prds/experience-monetization-prd.md` §2.7 first. This is an ADDITIVE refactor: the composed system prompt for a fixed character must be equivalent to today's output. TypeScript strict, no em dashes.
 >
 > Ground truth to respect:
 > - `buildPromptLayers` is the single composition entry point and stays the public API (engine.ts calls it). Layer ORDER is load-bearing and must not change: identity -> persona -> state -> relationship -> memory -> user -> output -> safety -> disclosure.

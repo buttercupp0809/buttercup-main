@@ -1,5 +1,5 @@
 {
-  "name": "@poppy/database",
+  "name": "@buttercupp/database",
   "version": "0.1.0",
   "private": true,
   "main": "./dist/index.js",
@@ -14,7 +14,7 @@
     "build": "prisma generate && npx tsc"
   },
   "dependencies": {
-    "@poppy/shared": "*",
+    "@buttercupp/shared": "*",
     "@prisma/adapter-pg": "^6.6.0",
     "@prisma/client": "^6.6.0",
     "pg": "^8.11.0"

@@ -9,7 +9,7 @@ export default function PublishStep() {
     <div className="flex flex-col gap-6">
       <div>
         <h1 className="font-display text-2xl font-semibold">Publish</h1>
-        <p className="mt-1 text-sm" style={{ color: "hsl(var(--poppy-muted))" }}>
+        <p className="mt-1 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
           Last step. Choose who can see your companion.
         </p>
       </div>
@@ -50,7 +50,7 @@ export default function PublishStep() {
 
       <div
         className="rounded-md p-3 text-xs"
-        style={{ backgroundColor: "hsl(var(--poppy-surface-2))", color: "hsl(var(--poppy-muted))" }}
+        style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))", color: "hsl(var(--buttercupp-muted))" }}
       >
         Clicking Finish saves your companion and drops you straight into a chat.
       </div>

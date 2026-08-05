@@ -2,14 +2,14 @@ import { LegalPage } from "@/components/legal/LegalPage";
 import { LEGAL } from "@/lib/legal/config";
 
 export const dynamic = "force-static";
-export const metadata = { title: "Privacy Policy | Poppy" };
+export const metadata = { title: "Privacy Policy | ButterCupp" };
 
 export default function PrivacyPage() {
   return (
     <LegalPage title="Privacy Policy">
       <p>
         This Privacy Policy explains what data {LEGAL.COMPANY} collects when
-        you use Poppy, how we use it, and the rights you have over it.
+        you use ButterCupp, how we use it, and the rights you have over it.
       </p>
 
       <h2>1. Data we collect</h2>

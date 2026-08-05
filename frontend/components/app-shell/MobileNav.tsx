@@ -75,12 +75,12 @@ export function MobileNav({ user, recents }: DrawerProps) {
             data-testid="mobile-nav-drawer"
             className="absolute inset-y-0 left-0 flex w-72 max-w-[85vw] flex-col border-r"
             style={{
-              backgroundColor: "hsl(var(--poppy-bg))",
-              borderColor: "hsl(var(--poppy-border))",
+              backgroundColor: "hsl(var(--buttercupp-bg))",
+              borderColor: "hsl(var(--buttercupp-border))",
             }}
           >
             <div className="flex items-center justify-between px-4 py-4">
-              <span className="font-display text-xl">Poppy</span>
+              <span className="font-display text-xl">ButterCupp</span>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
@@ -106,7 +106,7 @@ export function MobileNav({ user, recents }: DrawerProps) {
                       active ? "text-white" : "text-slate-300",
                     )}
                     style={{
-                      backgroundColor: active ? "hsl(var(--poppy-surface-2))" : "transparent",
+                      backgroundColor: active ? "hsl(var(--buttercupp-surface-2))" : "transparent",
                     }}
                   >
                     <Icon className="h-5 w-5" />
@@ -129,7 +129,7 @@ export function MobileNav({ user, recents }: DrawerProps) {
                       >
                         <div
                           className="h-6 w-6 shrink-0 overflow-hidden rounded-full"
-                          style={{ backgroundColor: "hsl(var(--poppy-surface-2))" }}
+                          style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))" }}
                         >
                           {r.avatarUrl ? (
                             <img src={r.avatarUrl} alt={r.characterName} className="h-full w-full object-cover" />
@@ -148,7 +148,7 @@ export function MobileNav({ user, recents }: DrawerProps) {
             ) : (
               <div className="flex-1" />
             )}
-            <div className="border-t p-2" style={{ borderColor: "hsl(var(--poppy-border))" }}>
+            <div className="border-t p-2" style={{ borderColor: "hsl(var(--buttercupp-border))" }}>
               <ProfileMenu user={user} />
             </div>
           </aside>
@@ -171,8 +171,8 @@ export function MobileBottomBar() {
       aria-label="Primary mobile bottom"
       className="fixed inset-x-0 bottom-0 z-40 flex border-t md:hidden"
       style={{
-        backgroundColor: "hsl(var(--poppy-bg))",
-        borderColor: "hsl(var(--poppy-border))",
+        backgroundColor: "hsl(var(--buttercupp-bg))",
+        borderColor: "hsl(var(--buttercupp-border))",
       }}
     >
       {items.map((it) => {
@@ -188,7 +188,7 @@ export function MobileBottomBar() {
               "flex flex-1 flex-col items-center gap-1 px-2 py-2 text-[10px]",
               active ? "text-white" : "text-slate-500",
             )}
-            style={active ? { color: "hsl(var(--poppy-accent-rose))" } : undefined}
+            style={active ? { color: "hsl(var(--buttercupp-accent-rose))" } : undefined}
           >
             <Icon className="h-5 w-5" />
             {it.label}

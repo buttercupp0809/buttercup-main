@@ -1,6 +1,6 @@
 // LLM provider chain. Streaming + non-streaming call surfaces with an
 // ordered provider fallback and a circuit breaker per provider. Ported from
-// ../Pellow/backend/src/llm/provider.ts with Poppy's ordering: OpenRouter
+// ../Pellow/backend/src/llm/provider.ts with ButterCupp's ordering: OpenRouter
 // uncensored is the primary for mature chat; Anthropic/OpenAI premium is the
 // quality fallback; a hardcoded string is the final safety net.
 //

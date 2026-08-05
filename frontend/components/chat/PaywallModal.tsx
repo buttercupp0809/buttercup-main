@@ -98,13 +98,13 @@ export function PaywallModal({ scope, kind, used, limit, plans, onResumed }: Pay
       aria-labelledby="paywall-title"
       data-testid="paywall-modal"
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ backgroundColor: "hsl(var(--poppy-bg) / 0.8)" }}
+      style={{ backgroundColor: "hsl(var(--buttercupp-bg) / 0.8)" }}
     >
       <div
         className="w-full max-w-2xl rounded-2xl p-6 shadow-2xl"
         style={{
-          backgroundColor: "hsl(var(--poppy-surface, 210 40% 96%))",
-          border: "1px solid hsl(var(--poppy-border, 214 32% 91%))",
+          backgroundColor: "hsl(var(--buttercupp-surface, 210 40% 96%))",
+          border: "1px solid hsl(var(--buttercupp-border, 214 32% 91%))",
         }}
       >
         <h2 id="paywall-title" className="font-display text-2xl font-semibold">
@@ -127,8 +127,8 @@ export function PaywallModal({ scope, kind, used, limit, plans, onResumed }: Pay
                 data-testid={`paywall-plan-${p.plan}`}
                 className="rounded-xl p-4"
                 style={{
-                  backgroundColor: "hsl(var(--poppy-surface-2, 210 40% 96%))",
-                  border: "1px solid hsl(var(--poppy-border, 214 32% 91%))",
+                  backgroundColor: "hsl(var(--buttercupp-surface-2, 210 40% 96%))",
+                  border: "1px solid hsl(var(--buttercupp-border, 214 32% 91%))",
                 }}
               >
                 <div className="flex items-baseline justify-between">
@@ -151,7 +151,7 @@ export function PaywallModal({ scope, kind, used, limit, plans, onResumed }: Pay
                   className="mt-3 w-full rounded-md py-2 text-sm font-medium text-white shadow-sm disabled:opacity-50"
                   style={{
                     background:
-                      "linear-gradient(90deg, hsl(var(--poppy-accent-rose, 344 84% 71%)), hsl(var(--poppy-accent-violet, 262 72% 68%)))",
+                      "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose, 344 84% 71%)), hsl(var(--buttercupp-accent-violet, 262 72% 68%)))",
                   }}
                 >
                   {pending === p.plan ? "Redirecting..." : `Continue - $${p.priceUsd}`}

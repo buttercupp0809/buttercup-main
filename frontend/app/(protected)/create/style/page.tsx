@@ -16,7 +16,7 @@ export default function StyleStep() {
     <div className="flex flex-col gap-6">
       <div>
         <h1 className="font-display text-2xl font-semibold">Pick a style</h1>
-        <p className="mt-1 text-sm" style={{ color: "hsl(var(--poppy-muted))" }}>
+        <p className="mt-1 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
           This sets the base look and how images are generated.
         </p>
       </div>

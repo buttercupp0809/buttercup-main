@@ -1,4 +1,4 @@
-# Poppy AWS infrastructure notes
+# ButterCupp AWS infrastructure notes
 
 This directory documents the target AWS shape. **No resource is provisioned by Cursor.** Every subsection ends with the same reminder: provisioning is a human-approved step.
 
@@ -11,15 +11,15 @@ This directory documents the target AWS shape. **No resource is provisioned by C
            |
            ALB (HTTPS + WSS, stickiness on, idle 300s)
            |
-           ECS Fargate cluster: poppy-prod
-             - service: poppy-api      (>=2 tasks, PROCESS_ROLE=api)
-             - service: poppy-worker   (>=1 task, PROCESS_ROLE=worker)
+           ECS Fargate cluster: buttercupp-prod
+             - service: buttercupp-api      (>=2 tasks, PROCESS_ROLE=api)
+             - service: buttercupp-worker   (>=1 task, PROCESS_ROLE=worker)
            |
            +-- RDS Postgres 16 + pgvector
            +-- ElastiCache Redis (queue + presence + pub/sub)
 ```
 
-Frontend (Next.js 16 SSR) is served from **AWS Amplify** at the apex domain. Backend + WS gateway live on ECS behind the ALB at a subdomain (e.g. `api.poppy.app`) that Amplify's SSR functions and the browser both call.
+Frontend (Next.js 16 SSR) is served from **AWS Amplify** at the apex domain. Backend + WS gateway live on ECS behind the ALB at a subdomain (e.g. `api.buttercupp.app`) that Amplify's SSR functions and the browser both call.
 
 ## Components
 
@@ -42,25 +42,25 @@ Frontend (Next.js 16 SSR) is served from **AWS Amplify** at the apex domain. Bac
 
 ### Route 53
 - Records:
-  - `poppy.app` -> Amplify domain (A/ALIAS)
-  - `api.poppy.app` -> ALB (A/ALIAS)
-  - `media.poppy.app` -> CloudFront distribution (A/ALIAS)
+  - `buttercupp.app` -> Amplify domain (A/ALIAS)
+  - `api.buttercupp.app` -> ALB (A/ALIAS)
+  - `media.buttercupp.app` -> CloudFront distribution (A/ALIAS)
 - Provisioning is a human-approved step. Do not run apply/create.
 
-### ECS cluster `poppy-prod`
+### ECS cluster `buttercupp-prod`
 - Fargate only, awsvpc network mode.
 - Two services (see `ecs/service-api.json`, `ecs/service-worker.json`).
 - Task definitions in `ecs/task-api.json`, `ecs/task-worker.json` reference secrets by ARN; **no secret is ever inlined**.
 - Provisioning is a human-approved step. Do not run apply/create.
 
 ### SSM / Secrets Manager
-- One secret per env var listed in `env-catalog.md`. Naming convention: `poppy/<VAR_NAME>` at path `arn:aws:secretsmanager:REGION:ACCT_ID:secret:poppy/<VAR>`.
-- IAM: `poppy-ecs-execution` role has `secretsmanager:GetSecretValue` on the `poppy/*` prefix only.
+- One secret per env var listed in `env-catalog.md`. Naming convention: `buttercupp/<VAR_NAME>` at path `arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/<VAR>`.
+- IAM: `buttercupp-ecs-execution` role has `secretsmanager:GetSecretValue` on the `buttercupp/*` prefix only.
 - Provisioning is a human-approved step. Do not run apply/create.
 
 ## Cross-instance fan-out
 
-The WS gateway (`backend/src/ws/gateway.ts`) subscribes each user's connection to a Redis pub/sub channel `poppy:ws:{userId}`. The media worker (`backend/src/queue/ws-notify.ts`) publishes `media.ready` to the same channel. Any API task that has that user's WS connection forwards the payload. This is what makes ALB stickiness a UX niceness (not a correctness requirement) for chat streams and what unblocks horizontal scale-out.
+The WS gateway (`backend/src/ws/gateway.ts`) subscribes each user's connection to a Redis pub/sub channel `buttercupp:ws:{userId}`. The media worker (`backend/src/queue/ws-notify.ts`) publishes `media.ready` to the same channel. Any API task that has that user's WS connection forwards the payload. This is what makes ALB stickiness a UX niceness (not a correctness requirement) for chat streams and what unblocks horizontal scale-out.
 
 ## What lives where
 

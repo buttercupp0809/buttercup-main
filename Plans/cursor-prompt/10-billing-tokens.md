@@ -1,7 +1,7 @@
 # Phase 10 - Monetization (subscription tiers + token economy)
 
 ## Goal
-Deliver Poppy's money layer: **subscription tiers** (Free / Premium / Pro) with a feature + limit matrix mirroring Pellow `subscription/tier.ts`; a **`TokenLedger`-based consumable credit** system (images, voice, premium-model messages) with atomic debits/grants reusing the Phase-07 ledger; an **adult-friendly `PaymentProvider` abstraction** (Stripe is NOT usable for mature content -> target CCBill / Verotel / SegPay + optional crypto) with normalized webhooks mirroring Pellow's multi-provider payment pattern; **server-side paywall + usage-limit enforcement** (usage/counter.ts pattern); and a **billing UI** (tier comparison, current status, token balance, buy-tokens, invoice history).
+Deliver ButterCupp's money layer: **subscription tiers** (Free / Premium / Pro) with a feature + limit matrix mirroring Pellow `subscription/tier.ts`; a **`TokenLedger`-based consumable credit** system (images, voice, premium-model messages) with atomic debits/grants reusing the Phase-07 ledger; an **adult-friendly `PaymentProvider` abstraction** (Stripe is NOT usable for mature content -> target CCBill / Verotel / SegPay + optional crypto) with normalized webhooks mirroring Pellow's multi-provider payment pattern; **server-side paywall + usage-limit enforcement** (usage/counter.ts pattern); and a **billing UI** (tier comparison, current status, token balance, buy-tokens, invoice history).
 
 Hard constraint (PRD §0, §12): **mature content never routes to Stripe/PayPal.** The provider abstraction must make that structurally impossible for mature accounts.
 
@@ -15,15 +15,15 @@ Reference: PRD §5.8 (billing), §13 (monetization matrix), §12 (payment constr
 
 ## Context to paste into Cursor
 ```
-You are implementing Phase 10 of Poppy (see prds/master-prd.md §5.8, §13, §12, §7.2(5)).
+You are implementing Phase 10 of ButterCupp (see prds/master-prd.md §5.8, §13, §12, §7.2(5)).
 
 Mirror Pellow's structure:
-- Tier semantics single source of truth: ../Pellow/backend/src/subscription/tier.ts (helpers isPaidUser/normalizeTier). Poppy has THREE tiers: free | premium | pro (Pellow collapsed to free|active; do NOT collapse).
+- Tier semantics single source of truth: ../Pellow/backend/src/subscription/tier.ts (helpers isPaidUser/normalizeTier). ButterCupp has THREE tiers: free | premium | pro (Pellow collapsed to free|active; do NOT collapse).
 - Per-tier limits: ../Pellow/backend/src/usage/limits.ts (TIER_LIMITS map, -1 = unlimited, getLimitsForTier).
 - Server-side enforcement: ../Pellow/backend/src/usage/counter.ts (upsert usage counters, checkUsageLimit -> {allowed,current,limit,period}). Reuse this pattern for daily/monthly caps.
 - Multi-provider payments: ../Pellow/frontend/lib/payments/provider.ts (failover chain with health/circuit-breaker), types.ts (CheckoutRequest/Response, NormalizedEvent, NormalizedEventType), webhooks/shared.ts (processSubscriptionEvent with an in-memory processedEvents dedupe set for idempotency).
 
-CRITICAL: Poppy is mature-gated. Stripe/PayPal are FORBIDDEN for mature content. Replace Pellow's dodo/creem/stripe adapters with CCBill / Verotel / SegPay (+ optional crypto). A mature account must be structurally unable to reach a Stripe adapter.
+CRITICAL: ButterCupp is mature-gated. Stripe/PayPal are FORBIDDEN for mature content. Replace Pellow's dodo/creem/stripe adapters with CCBill / Verotel / SegPay (+ optional crypto). A mature account must be structurally unable to reach a Stripe adapter.
 
 Token economy sits ON TOP of tiers: images/voice/premium-model messages consume TokenLedger credits (Phase 07 debit); tiers grant a monthly token allotment + set feature limits. Buy-tokens purchases add credits via a grant ledger entry.
 No em dashes. TypeScript strict. Zod on every mutation + webhook body. Server-side enforcement, never trust the client.
@@ -60,7 +60,7 @@ No em dashes. TypeScript strict. Zod on every mutation + webhook body. Server-si
 
 7. **Webhook normalization + idempotency**: `backend/src/payments/webhooks/{ccbill,verotel,segpay,crypto}.ts` + `shared.ts` (mirrors Pellow `webhooks/shared.ts`)
    - Per-provider: **verify signature** (each processor's HMAC/salt scheme), then normalize to `NormalizedEvent`.
-   - `shared.ts` `processSubscriptionEvent(event)`: dedupe via a `processedEvents` set keyed `provider:eventId` (Pellow pattern; back it with a persisted `WebhookEvent` row or Redis SETNX for cross-instance idempotency since Poppy runs multiple ECS tasks). On `subscription.activated`/`transaction.completed`: upsert `Subscription`, set `User.subscriptionTier`, `grantMonthlyTokens`. On `canceled`/`past_due`/`payment_failed`: downgrade to `free`.
+   - `shared.ts` `processSubscriptionEvent(event)`: dedupe via a `processedEvents` set keyed `provider:eventId` (Pellow pattern; back it with a persisted `WebhookEvent` row or Redis SETNX for cross-instance idempotency since ButterCupp runs multiple ECS tasks). On `subscription.activated`/`transaction.completed`: upsert `Subscription`, set `User.subscriptionTier`, `grantMonthlyTokens`. On `canceled`/`past_due`/`payment_failed`: downgrade to `free`.
    - Route: `POST /api/webhooks/[provider]/route.ts` (PRD §9.1) -> verify -> normalize -> `processSubscriptionEvent`. Always return 200 after persistence; side effects fail-soft.
 
 8. **Buy-tokens flow**: `backend/src/payments/tokens.ts` + `POST /api/billing/tokens`

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import type { CharacterCardDTO } from "@poppy/shared";
+import type { CharacterCardDTO } from "@buttercupp/shared";
 import { Button } from "@/components/ui/button";
 import { PersonaPreviewCard } from "@/components/marketing/PersonaPreviewCard";
 

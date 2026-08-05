@@ -1,7 +1,7 @@
 # AWS Amplify build spec for the Next.js 16 frontend (SSR / WEB_COMPUTE).
 # Mirrors ../Pellow/amplify.yml. Key notes:
 #   - appRoot: frontend  (monorepo)
-#   - preBuild symlinks @poppy/database + @poppy/shared into the frontend's
+#   - preBuild symlinks @buttercupp/database + @buttercupp/shared into the frontend's
 #     node_modules AND copies the generated Prisma client + adapter-pg,
 #     because Amplify's node_modules cache does not follow workspace links.
 #   - build uses `next build --webpack`, NOT Turbopack: Turbopack currently
@@ -31,9 +31,9 @@ applications:
             - cd packages/database && npx prisma generate && npx tsc && cd ../..
             # Amplify does not preserve workspace symlinks; hydrate the
             # frontend's node_modules with a symlink to each workspace pkg.
-            - mkdir -p frontend/node_modules/@poppy
-            - ln -snf ../../../packages/database frontend/node_modules/@poppy/database
-            - ln -snf ../../../packages/shared frontend/node_modules/@poppy/shared
+            - mkdir -p frontend/node_modules/@buttercupp
+            - ln -snf ../../../packages/database frontend/node_modules/@buttercupp/database
+            - ln -snf ../../../packages/shared frontend/node_modules/@buttercupp/shared
             # Copy the generated Prisma client + adapter-pg + pg driver so
             # the SSR bundle can require them without workspace resolution.
             - mkdir -p frontend/node_modules/@prisma

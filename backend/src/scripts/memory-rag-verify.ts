@@ -12,7 +12,7 @@
 //   npm run verify:memory
 // Exits 0 on pass, 1 on any failure so CI can gate on it.
 
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 import { writeMemory } from "../memory/store";
 import { getRelevantMemories } from "../llm/memory-retriever";
 import { embed, EMBEDDING_DIM } from "../llm/embeddings";

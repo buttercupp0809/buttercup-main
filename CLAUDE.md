@@ -1,4 +1,4 @@
-# Poppy conventions
+# ButterCupp conventions
 
 This file is the source of truth for repo-wide rules. Later phases extend but
 never contradict it. If a rule below conflicts with something you find in a
@@ -7,13 +7,13 @@ subdir, this file wins.
 ## Monorepo layout
 
 ```
-poppy/
+buttercupp/
   frontend/            Next.js 16 App Router, React 19, Tailwind 4, shadcn/ui
   backend/             Node + TypeScript server (REST helpers, WS gateway,
                        BullMQ worker in later phases)
-  packages/database/   @poppy/database. Prisma 6 + Postgres + pgvector.
+  packages/database/   @buttercupp/database. Prisma 6 + Postgres + pgvector.
                        Exports the singleton `prisma` client.
-  packages/shared/     @poppy/shared. Zod schemas and shared TypeScript
+  packages/shared/     @buttercupp/shared. Zod schemas and shared TypeScript
                        types used on both sides of the wire.
   e2e/                 Playwright specs (baseURL http://localhost:3000).
   Plans/               Product and phase plans (source of truth for scope).
@@ -38,7 +38,7 @@ inside `packages/database/src/client.ts` and nowhere else.
 Canonical import, from any workspace:
 
 ```ts
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 ```
 
 Never write `new PrismaClient()` outside `packages/database/src/client.ts`.
@@ -50,7 +50,7 @@ Reviewers reject PRs that violate this rule.
 
 Do not use the em dash character (U+2014, `\u2014`) anywhere: code, comments,
 docs, commit messages, PR descriptions. Use commas, periods, or parentheses.
-Enforced by `eslint.config.mjs` (the `poppy/no-em-dash` custom rule) and by
+Enforced by `eslint.config.mjs` (the `buttercupp/no-em-dash` custom rule) and by
 `npm run check:no-em-dash` (a repo-wide scan that covers Markdown, Prisma,
 Docker, YAML).
 

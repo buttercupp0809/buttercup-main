@@ -8,8 +8,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /*
- * Poppy design tokens. Documented in
- *   .cursor/skills/poppy-design-language/SKILL.md
+ * ButterCupp design tokens. Documented in
+ *   .cursor/skills/buttercupp-design-language/SKILL.md
  *
  * ONE dark cinematic theme across the WHOLE product (marketing, auth,
  * dashboard, discover, billing, create) inspired by Candy.ai / Nastia.ai:
@@ -17,23 +17,23 @@
  * There is no separate light shell anymore.
  */
 :root {
-  --poppy-bg: 240 20% 5%;
-  --poppy-surface: 240 14% 9%;
-  --poppy-surface-2: 240 12% 13%;
-  --poppy-fg: 0 0% 98%;
-  --poppy-muted: 240 6% 65%;
-  --poppy-border: 240 10% 18%;
+  --buttercupp-bg: 240 20% 5%;
+  --buttercupp-surface: 240 14% 9%;
+  --buttercupp-surface-2: 240 12% 13%;
+  --buttercupp-fg: 0 0% 98%;
+  --buttercupp-muted: 240 6% 65%;
+  --buttercupp-border: 240 10% 18%;
 
-  --poppy-accent-rose: 344 84% 71%;
-  --poppy-accent-rose-soft: 348 62% 77%;
-  --poppy-accent-violet: 262 72% 68%;
+  --buttercupp-accent-rose: 344 84% 71%;
+  --buttercupp-accent-rose-soft: 348 62% 77%;
+  --buttercupp-accent-violet: 262 72% 68%;
 
   /* Back-compat aliases used across older components. */
-  --poppy-primary: var(--poppy-accent-rose);
-  --poppy-primary-fg: 240 20% 5%;
-  --poppy-accent: var(--poppy-accent-violet);
-  --poppy-radius: 0.75rem;
-  --poppy-shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.45);
+  --buttercupp-primary: var(--buttercupp-accent-rose);
+  --buttercupp-primary-fg: 240 20% 5%;
+  --buttercupp-accent: var(--buttercupp-accent-violet);
+  --buttercupp-radius: 0.75rem;
+  --buttercupp-shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.45);
 
   /* Both map to the Geist face loaded by next/font (see app/layout.tsx). Do
      NOT self-reference (--font-body: var(--font-body, ...)) or the value cycles
@@ -44,8 +44,8 @@
 
 html,
 body {
-  background-color: hsl(var(--poppy-bg));
-  color: hsl(var(--poppy-fg));
+  background-color: hsl(var(--buttercupp-bg));
+  color: hsl(var(--buttercupp-fg));
   font-family: var(--font-body);
 }
 
@@ -56,37 +56,37 @@ body {
  */
 body {
   background-image:
-    radial-gradient(60rem 60rem at 15% -10%, hsl(var(--poppy-accent-violet) / 0.10), transparent 60%),
-    radial-gradient(50rem 50rem at 100% 0%, hsl(var(--poppy-accent-rose) / 0.10), transparent 55%);
+    radial-gradient(60rem 60rem at 15% -10%, hsl(var(--buttercupp-accent-violet) / 0.10), transparent 60%),
+    radial-gradient(50rem 50rem at 100% 0%, hsl(var(--buttercupp-accent-rose) / 0.10), transparent 55%);
   background-attachment: fixed;
 }
 
 /*
- * .poppy-app is kept as the authenticated shell wrapper. It now re-declares
+ * .buttercupp-app is kept as the authenticated shell wrapper. It now re-declares
  * the same tokens (no-op override) so nested usage and existing selectors
  * keep working. The whole product is dark, so this is just a marker class.
  */
-.poppy-app {
-  background-color: hsl(var(--poppy-bg));
-  color: hsl(var(--poppy-fg));
+.buttercupp-app {
+  background-color: hsl(var(--buttercupp-bg));
+  color: hsl(var(--buttercupp-fg));
 }
 
 /* Bottom-scrim gradient used behind large image cards. */
-.poppy-scrim {
+.buttercupp-scrim {
   background-image: linear-gradient(
     to top,
-    hsl(var(--poppy-bg) / 0.95),
-    hsl(var(--poppy-bg) / 0.4) 45%,
+    hsl(var(--buttercupp-bg) / 0.95),
+    hsl(var(--buttercupp-bg) / 0.4) 45%,
     transparent 75%
   );
 }
 
 /* Frosted glass surface used by cards, modals, and forms. */
-.poppy-glass {
-  background-color: hsl(var(--poppy-surface) / 0.7);
-  border: 1px solid hsl(var(--poppy-border));
+.buttercupp-glass {
+  background-color: hsl(var(--buttercupp-surface) / 0.7);
+  border: 1px solid hsl(var(--buttercupp-border));
   backdrop-filter: blur(12px);
-  box-shadow: var(--poppy-shadow-glass);
+  box-shadow: var(--buttercupp-shadow-glass);
 }
 
 /* Heading utility: same Geist face, distinguished by weight + tight tracking. */
@@ -98,10 +98,10 @@ body {
 
 /*
  * Persona-card entrance animation. Consumed by CharacterCard via
- * `animate-[poppy-card-in_...]`. prefers-reduced-motion callers get a still
+ * `animate-[buttercupp-card-in_...]`. prefers-reduced-motion callers get a still
  * card because the class is scoped through Tailwind's `motion-safe:` variant.
  */
-@keyframes poppy-card-in {
+@keyframes buttercupp-card-in {
   from {
     opacity: 0;
     transform: translateY(8px);

@@ -4,7 +4,7 @@
 // (backstory / behavioral / greeting / bio) so choosing one satisfies
 // validation without the user typing anything.
 
-import type { CharacterDraft } from "@poppy/shared";
+import type { CharacterDraft } from "@buttercupp/shared";
 
 export interface Option<T extends string = string> {
   value: T;

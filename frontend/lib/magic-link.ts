@@ -4,7 +4,7 @@
 // leaks, an attacker cannot recover a usable link.
 
 import { randomBytes, createHash, timingSafeEqual } from "node:crypto";
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 import { MAGIC_LINK_TTL_S } from "@/lib/constants";
 
 const TOKEN_BYTES = 32;

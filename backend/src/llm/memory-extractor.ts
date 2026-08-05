@@ -4,7 +4,7 @@
 // fire-and-forget from the chat engine so it never blocks the response.
 
 import { createHash } from "node:crypto";
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 import { callLLM } from "./provider";
 import { writeMemory } from "../memory/store";
 import { deadLetter } from "../memory/dead-letter";

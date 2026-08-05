@@ -1,9 +1,9 @@
-# Poppy — Master PRD
+# ButterCupp — Master PRD
 
 **Competitive AI Companion Platform**
 Status: Draft v1.0 · Owner: Kshitij · Last updated: 2026-07-30
 
-> This is the authoritative product + technical requirements document for Poppy. It is the single source of truth that the phased Cursor implementation prompts in `cursor-prompt/` build against. When code and this PRD disagree, update this PRD in the same change.
+> This is the authoritative product + technical requirements document for ButterCupp. It is the single source of truth that the phased Cursor implementation prompts in `cursor-prompt/` build against. When code and this PRD disagree, update this PRD in the same change.
 
 ---
 
@@ -23,9 +23,9 @@ These four decisions are settled. Do not reintroduce SFW-only, Vercel/Neon, or n
 ## 1. Overview & vision
 
 ### 1.1 Product thesis
-Poppy is an AI companion platform where users chat with richly-personified AI characters that **remember**, **speak** (voice), **send selfies** (image), and can be **created and shared** by users. It competes in the Character.AI / Candy.AI / Janitor AI category, positioned on three wedges competitors execute poorly:
+ButterCupp is an AI companion platform where users chat with richly-personified AI characters that **remember**, **speak** (voice), **send selfies** (image), and can be **created and shared** by users. It competes in the Character.AI / Candy.AI / Janitor AI category, positioned on three wedges competitors execute poorly:
 
-1. **Memory that actually persists** — the #1 recurring complaint across every competitor is that companions forget. Poppy treats long-term RAG memory as the core product, not a feature.
+1. **Memory that actually persists** — the #1 recurring complaint across every competitor is that companions forget. ButterCupp treats long-term RAG memory as the core product, not a feature.
 2. **True multimodality in one place** — streaming text + per-character voice + character-consistent image generation, unified under one relationship, not bolted on.
 3. **Creator-grade character creation** — a guided wizard producing consistent, publishable personas (appearance sheet + voice profile + personality), feeding a community gallery.
 
@@ -34,21 +34,21 @@ Poppy is an AI companion platform where users chat with richly-personified AI ch
 - Secondary: creators who design and publish characters for the community.
 
 ### 1.3 Positioning
-| Competitor | Strength | Gap Poppy exploits |
+| Competitor | Strength | Gap ButterCupp exploits |
 |---|---|---|
 | Character.AI | Scale, creation | SFW-filtered; weak memory; no real voice/image depth |
 | Replika | Emotional bond | Single companion; dated; limited creation |
 | Candy.AI | Visual gratification | Thin memory; limited user creation |
 | Janitor AI | Uncensored, BYO-model | Technical UX; no integrated voice/image/memory |
 
-Poppy = uncensored + deep memory + integrated voice/image + strong creation, in a polished web-first PWA.
+ButterCupp = uncensored + deep memory + integrated voice/image + strong creation, in a polished web-first PWA.
 
 ---
 
 ## 2. Market & competitive context
 
 - **Market size**: ~$8.36B (2025), ~20.7% CAGR to 2035. 220M cumulative downloads by mid-2025; H1-2025 downloads +88% YoY.
-- **Monetization split**: subscriptions = 70–85% of revenue; microtransactions (tokens, image credits, voice packs) = 15–30%. → **Poppy must support both a subscription tier and a consumable token economy from MVP.**
+- **Monetization split**: subscriptions = 70–85% of revenue; microtransactions (tokens, image credits, voice packs) = 15–30%. → **ButterCupp must support both a subscription tier and a consumable token economy from MVP.**
 - **The memory gap**: the single loudest user complaint across platforms is lack of memory → our central differentiator.
 - **Compliance is now statutory**: California SB 243 (effective Jan 1, 2026) mandates AI-disclosure, a self-harm/suicide-ideation intervention protocol, break reminders for minors, and creates a **private right of action ($1,000/violation)**. EU AI Act + UK Online Safety Act + GDPR/CCPA add obligations. → **Safety/compliance is a first-class module.**
 
@@ -191,7 +191,7 @@ Data: RDS Postgres + pgvector │ S3 (media) │ ElastiCache Redis (queue/presen
 
 ### 7.1 Inherited from Pellow (conventions, reused verbatim)
 - Monorepo npm workspaces: `frontend/`, `backend/`, `packages/database/`, `packages/shared/`.
-- `packages/database`: Prisma 6 + Postgres + pgvector, **singleton** export (`import { prisma } from "@poppy/database"`; never `new PrismaClient()`). Ref `../Pellow/packages/database/src/client.ts`.
+- `packages/database`: Prisma 6 + Postgres + pgvector, **singleton** export (`import { prisma } from "@buttercupp/database"`; never `new PrismaClient()`). Ref `../Pellow/packages/database/src/client.ts`.
 - Multi-provider LLM fallback with lazy init + graceful degradation. Ref `../Pellow/backend/src/llm/provider.ts`.
 - RAG memory extractor/retriever/compactor/tiering + hybrid search. Ref `../Pellow/backend/src/llm/memory-*.ts`, `../Pellow/backend/src/memory/*`, `../Pellow/backend/src/knowledge/store.ts`.
 - Voice provider chain. Ref `../Pellow/backend/src/media/voice.ts`. Image decision/prompt split. Ref `../Pellow/backend/src/media/image*.ts`.
@@ -203,7 +203,7 @@ Data: RDS Postgres + pgvector │ S3 (media) │ ElastiCache Redis (queue/presen
 - Testing: Vitest + Playwright. Deploy: multistage Dockerfile (non-root, tini, ffmpeg), Amplify + ECS + RDS (`pgbouncer=true`).
 
 ### 7.2 Deliberate divergences from Pellow (net-new)
-1. **Real-time transport** — Pellow polls; Poppy adds a WebSocket gateway on ECS for streaming + typing + media-ready push, with SSE fallback for token streaming.
+1. **Real-time transport** — Pellow polls; ButterCupp adds a WebSocket gateway on ECS for streaming + typing + media-ready push, with SSE fallback for token streaming.
 2. **Async media queue** — BullMQ + Redis worker; media never blocks chat (Pellow generates media synchronously).
 3. **Multi-character model** — `Character`/`CharacterVersion`, per-(user,character) `Conversation` + `RelationshipState` (Pellow = one companion per user).
 4. **Mature-gating layer** — `AgeVerification`, `contentRating`, jurisdiction gating, SFW/uncensored model routing, adult-friendly payment abstraction.
@@ -307,7 +307,7 @@ All DTOs validated with **Zod** in `packages/shared`.
 ## 14. Infrastructure & deployment (AWS, mirrors Pellow)
 
 - **Frontend**: AWS Amplify (Next.js 16 SSR/WEB_COMPUTE), CloudFront + Route 53.
-- **Backend + WS + worker**: ECS Fargate (cluster e.g. `poppy-prod`), ALB with WS support; separate task or same task for BullMQ worker.
+- **Backend + WS + worker**: ECS Fargate (cluster e.g. `buttercupp-prod`), ALB with WS support; separate task or same task for BullMQ worker.
 - **DB**: RDS Postgres + pgvector, connection pooling (`pgbouncer=true&connect_timeout=15`).
 - **Cache/queue**: ElastiCache Redis. **Storage**: S3 (media) behind CloudFront signed URLs.
 - **Docker**: multistage (Node 20-slim, non-root uid 10001, tini PID 1, ffmpeg for voice, openssl for Prisma).

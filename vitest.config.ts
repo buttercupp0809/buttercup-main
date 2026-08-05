@@ -2,11 +2,11 @@ import { defineConfig } from "vitest/config";
 import path from "node:path";
 
 // Aliases mirror the tsconfig paths so tests can `import "@/lib/..."` and
-// `import "@poppy/database"` even without a full build in dev.
+// `import "@buttercupp/database"` even without a full build in dev.
 const alias = {
   "@": path.resolve(__dirname, "frontend"),
-  "@poppy/database": path.resolve(__dirname, "packages/database/src/index.ts"),
-  "@poppy/shared": path.resolve(__dirname, "packages/shared/src/index.ts"),
+  "@buttercupp/database": path.resolve(__dirname, "packages/database/src/index.ts"),
+  "@buttercupp/shared": path.resolve(__dirname, "packages/shared/src/index.ts"),
 };
 
 export default defineConfig({

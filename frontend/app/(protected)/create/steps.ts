@@ -10,7 +10,7 @@ import {
   personalityStepSchema,
   publishStepSchema,
   type CharacterDraft,
-} from "@poppy/shared";
+} from "@buttercupp/shared";
 import type { ZodTypeAny } from "zod";
 
 export type StepKey = "style" | "identity" | "appearance" | "personality" | "publish";

@@ -2,7 +2,7 @@
 // character has no VoiceProfile row (system characters, drafts), we fall
 // back to the ElevenLabs default so the pipeline still produces audio.
 
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 import { DEFAULT_VOICE_IDS } from "./constants";
 
 export interface EffectiveVoiceProfile {

@@ -4,7 +4,7 @@
 // specific EU member-state rules). Callers pass the jurisdiction from
 // User.jurisdiction and the content rating being accessed.
 
-import type { ContentRating } from "@poppy/database";
+import type { ContentRating } from "@buttercupp/database";
 
 export interface JurisdictionInput {
   jurisdiction: string | null;

@@ -12,7 +12,7 @@
 // unreachable we just log and move on, because raising here would defeat
 // the whole point.
 
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 import { logError, logWarn } from "../utils/log";
 
 export interface DeadLetterContext {

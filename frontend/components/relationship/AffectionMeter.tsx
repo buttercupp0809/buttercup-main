@@ -36,19 +36,19 @@ export function AffectionMeter({
       <Heart
         className={cn(size === "sm" ? "h-3.5 w-3.5" : "h-4 w-4")}
         style={{
-          color: "hsl(var(--poppy-accent-rose))",
-          fill: clamped > 0 ? "hsl(var(--poppy-accent-rose) / 0.6)" : "transparent",
+          color: "hsl(var(--buttercupp-accent-rose))",
+          fill: clamped > 0 ? "hsl(var(--buttercupp-accent-rose) / 0.6)" : "transparent",
         }}
       />
       <div
         className={cn("overflow-hidden rounded-full", barW, barH)}
-        style={{ backgroundColor: "hsl(var(--poppy-surface-2))" }}
+        style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))" }}
       >
         <div
           className="h-full transition-all"
           style={{
             width: `${pct}%`,
-            backgroundColor: "hsl(var(--poppy-accent-rose))",
+            backgroundColor: "hsl(var(--buttercupp-accent-rose))",
           }}
           aria-hidden
         />
@@ -57,15 +57,15 @@ export function AffectionMeter({
         <span
           className="rounded-full px-2 py-0.5 text-[10px] uppercase tracking-wider"
           style={{
-            backgroundColor: "hsl(var(--poppy-accent-violet) / 0.15)",
-            color: "hsl(var(--poppy-accent-violet))",
+            backgroundColor: "hsl(var(--buttercupp-accent-violet) / 0.15)",
+            color: "hsl(var(--buttercupp-accent-violet))",
           }}
         >
           {mood}
         </span>
       ) : null}
       {showLabel ? (
-        <span className="text-xs" style={{ color: "hsl(var(--poppy-muted))" }}>
+        <span className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
           {pct}%
         </span>
       ) : null}

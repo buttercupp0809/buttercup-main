@@ -5,7 +5,7 @@ import { SideNav } from "@/components/app-shell/SideNav";
 import { MobileNav, MobileBottomBar } from "@/components/app-shell/MobileNav";
 import { ProfileMenu } from "@/components/app-shell/ProfileMenu";
 
-// Dark cinematic in-app shell (PRD §2.3 + §1). The `.poppy-app` wrapper
+// Dark cinematic in-app shell (PRD §2.3 + §1). The `.buttercupp-app` wrapper
 // scopes the dark theme + rose/violet accents to authenticated surfaces so
 // the marketing shell stays light. requireAgeVerified() still runs first so
 // the age gate cannot regress; middleware has already checked the auth
@@ -22,12 +22,12 @@ export default async function ProtectedLayout({ children }: { children: React.Re
   };
 
   return (
-    <div className="poppy-app flex min-h-screen">
+    <div className="buttercupp-app flex min-h-screen">
       <SideNav user={profileUser} recents={recents} />
       <div className="flex min-h-screen min-w-0 flex-1 flex-col">
         <header
           className="flex items-center justify-between border-b px-4 py-3 md:px-6"
-          style={{ borderColor: "hsl(var(--poppy-border))" }}
+          style={{ borderColor: "hsl(var(--buttercupp-border))" }}
         >
           <MobileNav user={profileUser} recents={recents} />
           <div className="ml-auto flex items-center gap-3">

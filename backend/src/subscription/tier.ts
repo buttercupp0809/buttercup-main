@@ -1,4 +1,4 @@
-// Tier semantics. Poppy has THREE tiers (free / premium / pro), do NOT
+// Tier semantics. ButterCupp has THREE tiers (free / premium / pro), do NOT
 // collapse to Pellow's two-tier scheme. Every enforcement check runs
 // through these helpers so an accidental typo in a route can't invent a
 // new tier string.

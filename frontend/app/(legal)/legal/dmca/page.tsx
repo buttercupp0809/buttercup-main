@@ -2,14 +2,14 @@ import { LegalPage } from "@/components/legal/LegalPage";
 import { LEGAL } from "@/lib/legal/config";
 
 export const dynamic = "force-static";
-export const metadata = { title: "DMCA Policy | Poppy" };
+export const metadata = { title: "DMCA Policy | ButterCupp" };
 
 export default function DmcaPage() {
   return (
     <LegalPage title="DMCA Policy">
       <p>
         {LEGAL.COMPANY} respects the intellectual property rights of others
-        and expects users of Poppy to do the same. We respond to notices of
+        and expects users of ButterCupp to do the same. We respond to notices of
         alleged copyright infringement under the U.S. Digital Millennium
         Copyright Act (DMCA).
       </p>
@@ -23,7 +23,7 @@ export default function DmcaPage() {
       <ol>
         <li>Your physical or electronic signature.</li>
         <li>Identification of the copyrighted work claimed to be infringed.</li>
-        <li>The URL of the material on Poppy you are asking us to remove.</li>
+        <li>The URL of the material on ButterCupp you are asking us to remove.</li>
         <li>Your contact information (address, telephone, email).</li>
         <li>A statement of good-faith belief that the disputed use is not authorized by the copyright owner, its agent, or the law.</li>
         <li>A statement, under penalty of perjury, that the information is accurate and that you are authorized to act on behalf of the rights holder.</li>

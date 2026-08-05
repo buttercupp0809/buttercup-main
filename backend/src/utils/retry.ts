@@ -1,5 +1,5 @@
 // Port of ../Pellow/backend/src/utils/retry.ts shape. Presets renamed for
-// Poppy's provider mix: llm (OpenRouter/Anthropic/OpenAI), database (Prisma),
+// ButterCupp's provider mix: llm (OpenRouter/Anthropic/OpenAI), database (Prisma),
 // media (Fal/Replicate/ElevenLabs/Cartesia), payment (CCBill/Verotel/Segpay).
 
 export interface RetryConfig {

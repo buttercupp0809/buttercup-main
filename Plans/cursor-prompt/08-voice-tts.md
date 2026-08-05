@@ -15,14 +15,14 @@ Reference: PRD §5.5 (voice TTS), §11 (media pipeline), §6 (latency targets).
 
 ## Context to paste into Cursor
 ```
-You are implementing Phase 08 of Poppy (see prds/master-prd.md §5.5, §11, §6).
+You are implementing Phase 08 of ButterCupp (see prds/master-prd.md §5.5, §11, §6).
 
 Register a "voice" handler into the Phase-07 pipeline (backend/src/media/handlers/index.ts). Do NOT re-implement the queue, worker, S3, or token ledger, reuse Phase 07.
 
 Mirror Pellow ../Pellow/backend/src/media/voice.ts EXACTLY in shape:
 - Provider chain with per-provider try/catch and session-level disable flags (elevenLabsDisabled, cartesiaDisabled, googleTtsDisabled).
 - 401/403 -> disable that provider for the session, do not retry it.
-- Voice IDs / params come from a per-character VoiceProfile (Poppy is multi-character; Pellow keyed by archetype). Keep the VOICES-map shape from ../Pellow/backend/src/media/constants.ts but source the id from VoiceProfile.
+- Voice IDs / params come from a per-character VoiceProfile (ButterCupp is multi-character; Pellow keyed by archetype). Keep the VOICES-map shape from ../Pellow/backend/src/media/constants.ts but source the id from VoiceProfile.
 - ffmpeg -> ogg/opus conversion helper (Docker already has ffmpeg per PRD §14).
 - Truncate to MAX_VOICE_WORDS.
 
@@ -51,7 +51,7 @@ No em dashes. TypeScript strict. Zod on any new route/DTO.
    - `convertElevenLabsBatch(text, voiceId)`: the non-streaming `client.textToSpeech.convert(...)` path from Pellow `voice.ts` as the fallback within the ElevenLabs step.
 
 4. **Providers: Cartesia + Google**: `backend/src/media/voice/providers.ts`
-   - Port `generateWithCartesia` and `generateWithGoogleTTS` verbatim from Pellow `voice.ts` (adjust imports to `@poppy/*`). Keep the wav -> ogg/opus conversion via `convertToOggOpus` (ffmpeg).
+   - Port `generateWithCartesia` and `generateWithGoogleTTS` verbatim from Pellow `voice.ts` (adjust imports to `@buttercupp/*`). Keep the wav -> ogg/opus conversion via `convertToOggOpus` (ffmpeg).
 
 5. **Audio conversion**: `backend/src/media/voice/audio.ts`
    - `convertToOggOpus(input, "mp3" | "wav")` ported from Pellow `voice.ts` (write to `/tmp`, `ffmpeg -c:a libopus -b:a 48k -ar 48000 -ac 1`, cleanup in `finally`).
@@ -66,7 +66,7 @@ No em dashes. TypeScript strict. Zod on any new route/DTO.
    - Replace the Phase-07 `mockHandler` for `kind: "voice"` with `voiceHandler`.
 
 8. **Voice-decision**: `backend/src/media/voice/decision.ts`
-   - Port `isVoiceRequest(text)` (the regex set) and `shouldSendAsVoice(...)` from Pellow `voice-decision.ts`. Adapt gating to Poppy: check the user's tier/token balance (voice is a paid consumable per PRD §13) and per-(user,character) recent-voice count instead of Pellow's `Boundary.voiceNotesEnabled`. Keep the `userRequested` fast path.
+   - Port `isVoiceRequest(text)` (the regex set) and `shouldSendAsVoice(...)` from Pellow `voice-decision.ts`. Adapt gating to ButterCupp: check the user's tier/token balance (voice is a paid consumable per PRD §13) and per-(user,character) recent-voice count instead of Pellow's `Boundary.voiceNotesEnabled`. Keep the `userRequested` fast path.
 
 9. **Chat integration**: extend the Phase-04 chat turn
    - After the assistant text is produced, call `shouldSendAsVoice`. If true (or `isVoiceRequest` on the user's message), enqueue a `voice` media job (Phase-07 `enqueueMediaJob`) with `payload.text` = the reply and `tokenCost = VOICE_TOKEN_COST`. The text reply still streams immediately; the voice clip arrives later via `media.ready`. Chat is never blocked.

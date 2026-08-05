@@ -13,13 +13,13 @@ export default async function PublicLayout({ children }: { children: React.React
       <header
         className="sticky top-0 z-30 border-b backdrop-blur"
         style={{
-          borderColor: "hsl(var(--poppy-border))",
-          backgroundColor: "hsl(var(--poppy-bg) / 0.75)",
+          borderColor: "hsl(var(--buttercupp-border))",
+          backgroundColor: "hsl(var(--buttercupp-bg) / 0.75)",
         }}
       >
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-6 py-3">
           <Link href="/" className="font-display text-xl font-semibold tracking-tight">
-            Poppy
+            ButterCupp
           </Link>
           <nav className="flex flex-wrap items-center gap-2 text-sm sm:gap-4">
             <Link

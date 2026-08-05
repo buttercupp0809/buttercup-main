@@ -3,7 +3,7 @@
 // consumers can fetch signed URLs separately. Sensitive fields
 // (passwordHash) are redacted.
 
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 
 export interface UserExportBundle {
   exportedAt: string;

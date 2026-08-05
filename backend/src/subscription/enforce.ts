@@ -5,10 +5,10 @@
 // counterType, period) unique key so an INSERT..ON CONFLICT upsert is the
 // atomic increment.
 
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 import { getLimitsForTier, isUnlimited, type TierLimits } from "./limits";
 import { normalizeTier, type Tier } from "./tier";
-import { MEDIA_TOKEN_COSTS, type MediaKind } from "@poppy/shared";
+import { MEDIA_TOKEN_COSTS, type MediaKind } from "@buttercupp/shared";
 import { entitlementsFor, type Entitlements } from "./entitlements";
 import {
   FREE_MESSAGE_LIMIT,

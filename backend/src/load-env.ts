@@ -1,6 +1,6 @@
 // Loads the monorepo root .env into process.env. Must be the FIRST import in
 // every backend entrypoint (index.ts, worker.ts), before any module that reads
-// env at import time (e.g. the Prisma singleton in @poppy/database).
+// env at import time (e.g. the Prisma singleton in @buttercupp/database).
 //
 // In production (Docker/ECS) the file is absent and env is injected by the
 // platform; dotenv simply no-ops when the path does not exist.

@@ -1,7 +1,7 @@
 // Periodic AI reminders, dependency-signal checks, manipulation-risk
 // guards. All read-only pure logic + fire-and-forget analytics writes.
 
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 
 const REMINDER_HOURS = 72;
 const REMINDER_MESSAGES = 10;

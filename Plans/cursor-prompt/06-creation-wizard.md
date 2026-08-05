@@ -10,10 +10,10 @@ Covers PRD §5.7 (wizard) and §5.2 (character system / versioning / gallery ind
 - Age/identity helpers from Phase 01 (`getSession`, age-verification state). S3/media upload will be fully wired in Phases 07–09; in this phase avatar "generate" may enqueue a stub media job or accept an uploaded file (see step 3).
 
 ## Context to paste into Cursor
-> Building Poppy Phase 06 (character-creation wizard). Read `prds/master-prd.md` §5.7 and §5.2 first. Mirror Pellow's onboarding wizard architecture:
+> Building ButterCupp Phase 06 (character-creation wizard). Read `prds/master-prd.md` §5.7 and §5.2 first. Mirror Pellow's onboarding wizard architecture:
 > - `../Pellow/frontend/app/onboard/context.tsx`: a React Context provider (`OnboardingProvider` + `useOnboarding`) holding `data`, `currentStep`, `updateData(partial)`, `canContinue` (gates Next per step/micro-step), `goNext`/`goBack`, `persistProgress` (fire-and-forget save), and localStorage autosave via a `useEffect` on `data` change (with a `sanitizeForStorage` that strips sensitive fields). Render nothing until `hydrated`.
 > - `../Pellow/frontend/app/onboard/steps.ts`: an exported `STEPS: StepConfig[]` array; each `StepConfig` has `key`, `label`, `path`, `requiredFields: string[]`, `microSteps`, optional `microStepRequiredFields: string[][]` for per-micro-step validation, plus `getEffectiveRequiredFields(step)` helpers.
-> Adapt those patterns to a 5-step character builder (`CharacterWizardProvider` / `useCharacterWizard` + `CHARACTER_STEPS`). Prisma singleton `import { prisma } from "@poppy/database"`, Zod on every route, TypeScript strict, no em dashes.
+> Adapt those patterns to a 5-step character builder (`CharacterWizardProvider` / `useCharacterWizard` + `CHARACTER_STEPS`). Prisma singleton `import { prisma } from "@buttercupp/database"`, Zod on every route, TypeScript strict, no em dashes.
 
 ## Build steps
 Do these in order. Name files exactly as below.
@@ -26,7 +26,7 @@ Do these in order. Name files exactly as below.
    - Export `CHARACTER_STEPS: CharacterStepConfig[]` with keys `["style","identity","appearance","personality","publish"]`. Each entry: `key`, `label`, `path`, `requiredFields: (keyof CharacterDraft)[]`, and per-field validators referencing the step Zod slice. Add `getEffectiveRequiredFields(step)` and a `validateStep(step, draft)` returning `{ ok, fieldErrors }`. The identity step's validator enforces `age >= 18`.
 
 3. **Wizard context/provider**: `frontend/app/(app)/create/context.tsx`
-   - `CharacterWizardProvider` + `useCharacterWizard()`. Value shape (mirror Pellow's `OnboardingContextValue`): `draft`, `currentStep`, `currentStepConfig`, `updateDraft(partial)`, `canContinue` (from `validateStep`), `fieldErrors`, `saving`, `goNext`/`goBack`, `persistDraft()` (fire-and-forget autosave), `previewThumbUrl`. Autosave: a `useEffect` on `draft` writes to `localStorage` under a `poppy_character_draft` key via `sanitizeForStorage` (never persist raw uploaded file blobs). Hydrate from localStorage on mount; render children only once `hydrated`.
+   - `CharacterWizardProvider` + `useCharacterWizard()`. Value shape (mirror Pellow's `OnboardingContextValue`): `draft`, `currentStep`, `currentStepConfig`, `updateDraft(partial)`, `canContinue` (from `validateStep`), `fieldErrors`, `saving`, `goNext`/`goBack`, `persistDraft()` (fire-and-forget autosave), `previewThumbUrl`. Autosave: a `useEffect` on `draft` writes to `localStorage` under a `buttercupp_character_draft` key via `sanitizeForStorage` (never persist raw uploaded file blobs). Hydrate from localStorage on mount; render children only once `hydrated`.
 
 4. **Wizard shell + step routes**: `frontend/app/(app)/create/layout.tsx` (wraps provider + progress rail) and one page per step:
    - `create/style/page.tsx`: three style cards (Hyper-realistic / Stylized 3D / Anime); selecting sets `draft.style` and the downstream generation-pipeline params (comment the mapping to Phase 09 image params).

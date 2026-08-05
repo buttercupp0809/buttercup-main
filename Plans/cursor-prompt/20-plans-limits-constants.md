@@ -9,15 +9,15 @@ Reference: PRD §2.6 (strict monetization + plans block), §3 (data model change
 
 ## Prerequisites
 - Phase 10 green: `backend/src/subscription/{tier,limits,grant,enforce}.ts`, `backend/src/payments/webhooks/shared.ts` (`processSubscriptionEvent`, `grantMonthlyTokens`, `TOKEN_PACKS`), `UsageCounter` model, `TokenLedger` model, `Subscription` model.
-- `packages/database` Prisma singleton (`import { prisma } from "@poppy/database"`, never `new PrismaClient()`).
+- `packages/database` Prisma singleton (`import { prisma } from "@buttercupp/database"`, never `new PrismaClient()`).
 - `backend/src/test-utils/db.ts` (`dbReachable()` -> `DB_UP`) for DB-guarded integration tests.
 - Local Postgres up (docker-compose) if you want the DB-backed tests to run rather than skip.
 
 ## Context to paste into Cursor
 ```
-You are implementing Phase 20 of Poppy (see prds/experience-monetization-prd.md §2.6, §3).
+You are implementing Phase 20 of ButterCupp (see prds/experience-monetization-prd.md §2.6, §3).
 
-Poppy is moving from recurring tiers to DURATION PASSES. A user buys a pass that is
+ButterCupp is moving from recurring tiers to DURATION PASSES. A user buys a pass that is
 valid for N days and grants a fixed number of chats/images/videos for that window.
 Free users get a LIFETIME free trial of 10 chats (no media).
 

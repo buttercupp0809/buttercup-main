@@ -2,7 +2,7 @@ import { LegalPage } from "@/components/legal/LegalPage";
 import { LEGAL } from "@/lib/legal/config";
 
 export const dynamic = "force-static";
-export const metadata = { title: "Contact | Poppy" };
+export const metadata = { title: "Contact | ButterCupp" };
 
 export default function ContactPage() {
   return (

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import crypto from "node:crypto";
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 import { entitlementsFor } from "../entitlements";
 import { activatePlan } from "../grant";
 import { planPeriodKey } from "../period";

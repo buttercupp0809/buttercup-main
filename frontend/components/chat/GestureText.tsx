@@ -20,7 +20,7 @@ export const GestureText = React.memo(function GestureText({ content }: GestureT
             key={i}
             className="italic"
             data-testid="gesture"
-            style={{ color: "hsl(var(--poppy-accent-rose) / 0.85)" }}
+            style={{ color: "hsl(var(--buttercupp-accent-rose) / 0.85)" }}
           >
             {seg.value}
           </span>

@@ -8,10 +8,10 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-[hsl(var(--poppy-accent-rose))] text-[hsl(var(--poppy-primary-fg))] hover:opacity-90",
+          "bg-[hsl(var(--buttercupp-accent-rose))] text-[hsl(var(--buttercupp-primary-fg))] hover:opacity-90",
         outline:
-          "border border-[hsl(var(--poppy-border))] bg-transparent text-[hsl(var(--poppy-fg))] hover:bg-white/5",
-        ghost: "text-[hsl(var(--poppy-fg))] hover:bg-white/5",
+          "border border-[hsl(var(--buttercupp-border))] bg-transparent text-[hsl(var(--buttercupp-fg))] hover:bg-white/5",
+        ghost: "text-[hsl(var(--buttercupp-fg))] hover:bg-white/5",
       },
       size: {
         default: "h-10 px-4 py-2",

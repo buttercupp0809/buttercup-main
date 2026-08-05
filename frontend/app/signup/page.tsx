@@ -63,17 +63,17 @@ export default function SignupPage() {
   }
 
   const inputStyle = {
-    borderColor: "hsl(var(--poppy-border))",
-    backgroundColor: "hsl(var(--poppy-surface))",
-    color: "hsl(var(--poppy-fg))",
+    borderColor: "hsl(var(--buttercupp-border))",
+    backgroundColor: "hsl(var(--buttercupp-surface))",
+    color: "hsl(var(--buttercupp-fg))",
   } as const;
   const inputCls = "rounded-md border px-3 py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400";
 
   return (
     <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center px-6 py-10">
-      <div className="poppy-glass rounded-2xl p-8">
+      <div className="buttercupp-glass rounded-2xl p-8">
         <a href="/" className="font-display text-2xl font-semibold tracking-tight">
-          Poppy
+          ButterCupp
         </a>
         <h1 className="font-display mt-6 mb-6 text-3xl font-semibold tracking-tight">
           Create your account
@@ -124,7 +124,7 @@ export default function SignupPage() {
         <Button type="submit" disabled={busy || !passwordValid}>
           {busy ? "Creating account..." : "Create account"}
         </Button>
-        <p className="text-center text-xs" style={{ color: "hsl(var(--poppy-muted))" }}>
+        <p className="text-center text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
           By creating an account you agree to our{" "}
           <a href="/legal/terms" target="_blank" rel="noopener noreferrer" className="underline">
             Terms of Service
@@ -138,16 +138,16 @@ export default function SignupPage() {
       </form>
       <div
         className="my-6 flex items-center gap-3 text-xs"
-        style={{ color: "hsl(var(--poppy-muted))" }}
+        style={{ color: "hsl(var(--buttercupp-muted))" }}
       >
-        <div className="h-px flex-1" style={{ backgroundColor: "hsl(var(--poppy-border))" }} />
+        <div className="h-px flex-1" style={{ backgroundColor: "hsl(var(--buttercupp-border))" }} />
         <span>or</span>
-        <div className="h-px flex-1" style={{ backgroundColor: "hsl(var(--poppy-border))" }} />
+        <div className="h-px flex-1" style={{ backgroundColor: "hsl(var(--buttercupp-border))" }} />
       </div>
       <GoogleButton mode="signup_with" />
-      <p className="mt-6 text-sm" style={{ color: "hsl(var(--poppy-muted))" }}>
+      <p className="mt-6 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
         Already have an account?{" "}
-        <a href="/login" className="font-medium underline" style={{ color: "hsl(var(--poppy-accent-rose))" }}>
+        <a href="/login" className="font-medium underline" style={{ color: "hsl(var(--buttercupp-accent-rose))" }}>
           Sign in
         </a>
       </p>

@@ -10,7 +10,7 @@ import {
   CHARACTER_DRAFT_STORAGE_KEY,
   type CharacterDraft,
   type CreateCharacterInput,
-} from "@poppy/shared";
+} from "@buttercupp/shared";
 import { CHARACTER_STEPS, getStep, validateStep, type StepKey } from "./steps";
 import { useRouter, usePathname } from "next/navigation";
 

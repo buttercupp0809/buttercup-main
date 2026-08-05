@@ -12,7 +12,7 @@ Reference: PRD §2.6 (strict, un-bypassable enforcement, server-side only), §4 
 
 ## Context to paste into Cursor
 ```
-You are implementing Phase 21 of Poppy (see prds/experience-monetization-prd.md §2.6, §4).
+You are implementing Phase 21 of ButterCupp (see prds/experience-monetization-prd.md §2.6, §4).
 
 The paywall is currently DEAD CODE. assertCanConsume()/checkUsageLimit() exist in
 backend/src/subscription/enforce.ts but no route calls them. Wire strict server-side

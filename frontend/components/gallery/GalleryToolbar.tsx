@@ -71,22 +71,22 @@ export function GalleryToolbar({ viewerAllowsMature, availableTags }: GalleryToo
   const controlBase =
     "rounded-md px-3 py-1.5 text-sm border transition focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400";
   const controlStyle: React.CSSProperties = {
-    backgroundColor: "hsl(var(--poppy-surface-2, 210 40% 96%))",
-    borderColor: "hsl(var(--poppy-border, 214 32% 91%))",
+    backgroundColor: "hsl(var(--buttercupp-surface-2, 210 40% 96%))",
+    borderColor: "hsl(var(--buttercupp-border, 214 32% 91%))",
     color: "inherit",
   };
 
   return (
     <div
       className="flex flex-wrap items-center gap-3 border-b pb-4"
-      style={{ borderColor: "hsl(var(--poppy-border, 214 32% 91%))" }}
+      style={{ borderColor: "hsl(var(--buttercupp-border, 214 32% 91%))" }}
     >
       {/* Segmented sort control: one tap per sort mode. */}
       <div
         role="tablist"
         aria-label="Sort characters"
         className="inline-flex overflow-hidden rounded-md border"
-        style={{ borderColor: "hsl(var(--poppy-border, 214 32% 91%))" }}
+        style={{ borderColor: "hsl(var(--buttercupp-border, 214 32% 91%))" }}
       >
         {SORTS.map((s) => {
           const active = sort === s;
@@ -104,8 +104,8 @@ export function GalleryToolbar({ viewerAllowsMature, availableTags }: GalleryToo
               )}
               style={{
                 backgroundColor: active
-                  ? "hsl(var(--poppy-accent-rose, 344 84% 71%))"
-                  : "hsl(var(--poppy-surface-2, 210 40% 96%))",
+                  ? "hsl(var(--buttercupp-accent-rose, 344 84% 71%))"
+                  : "hsl(var(--buttercupp-surface-2, 210 40% 96%))",
               }}
             >
               {s}
@@ -177,8 +177,8 @@ export function GalleryToolbar({ viewerAllowsMature, availableTags }: GalleryToo
                 )}
                 style={{
                   backgroundColor: on
-                    ? "hsl(var(--poppy-accent-rose, 344 84% 71%))"
-                    : "hsl(var(--poppy-surface-2, 210 40% 96%))",
+                    ? "hsl(var(--buttercupp-accent-rose, 344 84% 71%))"
+                    : "hsl(var(--buttercupp-surface-2, 210 40% 96%))",
                 }}
               >
                 {t}

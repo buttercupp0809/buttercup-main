@@ -1,5 +1,5 @@
 // Model IDs per provider. Kept in one file so a model swap is a single edit.
-// Poppy's chat purpose favours the OpenRouter uncensored model for mature
+// ButterCupp's chat purpose favours the OpenRouter uncensored model for mature
 // content and the premium Anthropic/OpenAI models for SFW + quality-critical
 // flows. Extract/summary use the cheap tier of whichever provider serves.
 

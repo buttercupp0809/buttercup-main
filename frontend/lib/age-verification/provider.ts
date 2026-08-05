@@ -4,7 +4,7 @@
 // call getAgeProvider("vendor") once wired. The factory reads
 // AGE_VERIFICATION_PROVIDER env, defaulting to "self_declared".
 
-import type { AgeVerificationLevel } from "@poppy/database";
+import type { AgeVerificationLevel } from "@buttercupp/database";
 
 export interface AgeVerificationInput {
   userId: string;

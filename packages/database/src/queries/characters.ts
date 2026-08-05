@@ -1,4 +1,4 @@
-// Pure query-builder for the character gallery. Lives in @poppy/database (not
+// Pure query-builder for the character gallery. Lives in @buttercupp/database (not
 // backend/) because frontend/app/api/characters/route.ts is the primary
 // caller and cannot import from the backend workspace at compile time.
 // backend/src/characters/query.ts re-exports these so the Phase 03 plan's
@@ -9,7 +9,7 @@ import {
   styleWireToEnum,
   type CharacterListQuery,
   type CharacterSort,
-} from "@poppy/shared";
+} from "@buttercupp/shared";
 
 export interface CharacterViewer {
   id: string | null;

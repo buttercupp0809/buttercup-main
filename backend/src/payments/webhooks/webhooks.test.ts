@@ -1,10 +1,10 @@
-// Webhook integration test. Uses the live poppy_dev DB so recordEvent
+// Webhook integration test. Uses the live buttercupp_dev DB so recordEvent
 // exercises the real unique-index dedupe. Signature-verification unit
 // tests live alongside each provider file to stay in the same commit as
 // any signing change.
 
 import { describe, expect, it } from "vitest";
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 import { processSubscriptionEvent } from "./shared";
 import type { NormalizedEvent } from "../types";
 import { verifySignature as verifyCcbill } from "./ccbill";

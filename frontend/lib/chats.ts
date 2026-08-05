@@ -2,7 +2,7 @@
 // Wraps the same shape loadRecents() in feed.ts uses so the two surfaces stay
 // consistent; adds an optional relationship snapshot for badging.
 
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 
 export interface ConversationRow {
   characterId: string;

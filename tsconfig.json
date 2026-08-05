@@ -15,10 +15,10 @@
     "sourceMap": true,
     "baseUrl": ".",
     "paths": {
-      "@poppy/database": ["packages/database/src/index.ts"],
-      "@poppy/database/*": ["packages/database/src/*"],
-      "@poppy/shared": ["packages/shared/src/index.ts"],
-      "@poppy/shared/*": ["packages/shared/src/*"]
+      "@buttercupp/database": ["packages/database/src/index.ts"],
+      "@buttercupp/database/*": ["packages/database/src/*"],
+      "@buttercupp/shared": ["packages/shared/src/index.ts"],
+      "@buttercupp/shared/*": ["packages/shared/src/*"]
     }
   },
   "exclude": ["node_modules", "dist", ".next"]

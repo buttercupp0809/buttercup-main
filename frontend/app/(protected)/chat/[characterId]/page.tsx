@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 import { requireAgeVerified } from "@/lib/auth";
 import { ChatWindow } from "@/components/chat/ChatWindow";
 import { getRelationship } from "@/lib/relationship";

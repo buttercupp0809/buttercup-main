@@ -4,8 +4,8 @@
 // AuditLog rows have no FK to User so they survive account deletion.
 
 import type http from "node:http";
-import type { Prisma } from "@poppy/database";
-import { prisma } from "@poppy/database";
+import type { Prisma } from "@buttercupp/database";
+import { prisma } from "@buttercupp/database";
 
 export interface AuditParams {
   action: string;

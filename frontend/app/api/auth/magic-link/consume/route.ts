@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 import { consumeMagicLink } from "@/lib/magic-link";
 import { signAuthToken, setAuthCookie } from "@/lib/auth";
 

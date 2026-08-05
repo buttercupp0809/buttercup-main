@@ -15,7 +15,7 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Poppy",
+  title: "ButterCupp",
   description: "AI companions built for adults.",
 };
 

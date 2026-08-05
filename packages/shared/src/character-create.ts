@@ -77,4 +77,4 @@ export type PatchCharacterInput = z.infer<typeof patchCharacterInputSchema>;
 // slice schemas above.
 export type CharacterDraft = Partial<CreateCharacterInput>;
 
-export const CHARACTER_DRAFT_STORAGE_KEY = "poppy_character_draft";
+export const CHARACTER_DRAFT_STORAGE_KEY = "buttercupp_character_draft";

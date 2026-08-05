@@ -2,10 +2,10 @@
 // INSIDE the protected dark app shell (sidebar + dark theme) so clicking
 // "Discover" in the sidenav never bounces the user out to the light public
 // shell. Auth + age gate already enforced by (protected)/layout.tsx.
-import { characterListQuerySchema } from "@poppy/shared";
+import { characterListQuerySchema } from "@buttercupp/shared";
 import { listCharacters, getFacetTags } from "@/lib/characters";
 import { getViewer } from "@/lib/viewer";
-import { viewerAllowsMature } from "@poppy/database";
+import { viewerAllowsMature } from "@buttercupp/database";
 import { GalleryToolbar } from "@/components/gallery/GalleryToolbar";
 import { CharacterGrid } from "@/components/gallery/CharacterGrid";
 
@@ -42,7 +42,7 @@ export default async function DiscoverPage({
     <section className="mx-auto max-w-6xl px-6 py-8">
       <div className="mb-6 flex flex-col gap-2">
         <h1 className="font-display text-4xl font-semibold tracking-tight">Discover</h1>
-        <p className="text-sm" style={{ color: "hsl(var(--poppy-muted))" }}>
+        <p className="text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
           Real personas, live characters. Sort, search, and pick your companion.
         </p>
       </div>

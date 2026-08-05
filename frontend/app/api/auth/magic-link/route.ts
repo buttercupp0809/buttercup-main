@@ -1,5 +1,5 @@
-import { prisma } from "@poppy/database";
-import { MagicLinkRequestDto } from "@poppy/shared";
+import { prisma } from "@buttercupp/database";
+import { MagicLinkRequestDto } from "@buttercupp/shared";
 import { issueMagicLink } from "@/lib/magic-link";
 import { jsonOk, parseJson } from "@/lib/api-helpers";
 

@@ -7,7 +7,7 @@
 // The snapshot function must match Pellow's persona-block layout so a
 // snapshot renders identically to a live buildPromptLayers persona layer.
 
-import type { CreateCharacterInput } from "@poppy/shared";
+import type { CreateCharacterInput } from "@buttercupp/shared";
 
 function personaBlock(personality: string, backstory: string, behavioralInstructions: string): string {
   return `## Persona\n${personality.trim()}\n\n## Backstory\n${backstory.trim()}\n\n## Behavioral instructions\n${behavioralInstructions.trim()}`;

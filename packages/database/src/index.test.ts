@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { prisma } from "./index";
 
-describe("@poppy/database", () => {
+describe("@buttercupp/database", () => {
   it("does trivial math", () => {
     expect(1 + 1).toBe(2);
   });

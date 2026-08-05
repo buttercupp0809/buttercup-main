@@ -27,7 +27,7 @@ test.describe("app shell (seeded verified user)", () => {
     // Login helper: mirrors the pattern used by auth-age-gate.spec.ts when
     // that harness lands. Adjust these to whatever env-based creds the seed
     // script exposes.
-    const email = process.env.E2E_USER_EMAIL ?? "test@poppy.local";
+    const email = process.env.E2E_USER_EMAIL ?? "test@buttercupp.local";
     const password = process.env.E2E_USER_PASSWORD ?? "TestPassword-1!";
     await page.goto("/login");
     await page.getByLabel("Email").fill(email);

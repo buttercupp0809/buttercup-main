@@ -18,11 +18,11 @@ const COMPANY_LINKS = LEGAL_PAGES.filter((p) => p.group === "company").map((p) =
 // PLACEHOLDER: real social URL
 const SOCIAL_LINKS: Array<{ href: string; label: string }> = [
   // PLACEHOLDER: real social URL
-  { href: "https://x.com/poppy", label: "X" },
+  { href: "https://x.com/buttercupp", label: "X" },
   // PLACEHOLDER: real social URL
-  { href: "https://instagram.com/poppy", label: "Instagram" },
+  { href: "https://instagram.com/buttercupp", label: "Instagram" },
   // PLACEHOLDER: real social URL
-  { href: "https://discord.gg/poppy", label: "Discord" },
+  { href: "https://discord.gg/buttercupp", label: "Discord" },
 ];
 
 export function Footer() {
@@ -35,7 +35,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-6 py-12 sm:grid-cols-4">
         <div className="col-span-2 flex flex-col gap-3 sm:col-span-1">
           <Link href="/" className="text-base font-semibold text-slate-900 dark:text-white">
-            Poppy
+            ButterCupp
           </Link>
           <p className="max-w-xs text-xs">
             Unfiltered AI companions built for grown-ups.
@@ -93,7 +93,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-slate-200 py-6 text-center text-xs dark:border-slate-800">
-        &copy; {year} Poppy Labs. All rights reserved.
+        &copy; {year} ButterCupp Labs. All rights reserved.
       </div>
     </footer>
   );

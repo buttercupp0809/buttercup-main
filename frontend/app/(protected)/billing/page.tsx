@@ -1,5 +1,5 @@
 import { requireAuth } from "@/lib/auth";
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 import { BillingClient } from "./BillingClient";
 
 // Server component: fetches the ledger + current token balance. Plan

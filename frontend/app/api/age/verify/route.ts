@@ -1,5 +1,5 @@
-import { prisma } from "@poppy/database";
-import { AgeGateDto, computeAgeYears, MIN_AGE_YEARS } from "@poppy/shared";
+import { prisma } from "@buttercupp/database";
+import { AgeGateDto, computeAgeYears, MIN_AGE_YEARS } from "@buttercupp/shared";
 import { getAuthUserId } from "@/lib/auth";
 import { getAgeProvider } from "@/lib/age-verification/provider";
 import { requiresVendorVerification } from "@/lib/age-verification/jurisdiction";

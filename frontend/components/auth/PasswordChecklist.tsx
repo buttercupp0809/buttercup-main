@@ -1,10 +1,10 @@
 "use client";
 
 import * as React from "react";
-import { passwordChecklist, PASSWORD_RULES } from "@poppy/shared";
+import { passwordChecklist, PASSWORD_RULES } from "@buttercupp/shared";
 import { cn } from "@/lib/utils";
 
-// Real-time password-strength UI. Pulls the rule set from @poppy/shared so
+// Real-time password-strength UI. Pulls the rule set from @buttercupp/shared so
 // there is exactly one definition of what makes a password strong. Each row
 // carries its pass/fail state to assistive tech via role + aria-label so we
 // do not rely on color alone.

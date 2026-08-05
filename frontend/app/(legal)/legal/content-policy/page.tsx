@@ -2,13 +2,13 @@ import { LegalPage } from "@/components/legal/LegalPage";
 import { LEGAL } from "@/lib/legal/config";
 
 export const dynamic = "force-static";
-export const metadata = { title: "Content and Community Policy | Poppy" };
+export const metadata = { title: "Content and Community Policy | ButterCupp" };
 
 export default function ContentPolicyPage() {
   return (
     <LegalPage title="Content and Community Policy">
       <p>
-        Poppy is a mature-content platform for adults. We allow a wide range
+        ButterCupp is a mature-content platform for adults. We allow a wide range
         of creative, romantic, and sexual content between fictional adult
         characters. The following categories are always prohibited, on both
         user prompts and AI-generated output.

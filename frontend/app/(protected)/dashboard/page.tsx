@@ -3,7 +3,7 @@ import { Sparkles } from "lucide-react";
 import { requireAgeVerified } from "@/lib/auth";
 import { getViewer } from "@/lib/viewer";
 import { getDashboardFeed } from "@/lib/feed";
-import { viewerAllowsMature } from "@poppy/database";
+import { viewerAllowsMature } from "@buttercupp/database";
 import { CharacterCard } from "@/components/gallery/CharacterCard";
 
 export const dynamic = "force-dynamic";
@@ -18,7 +18,7 @@ export default async function DashboardPage() {
     <section className="mx-auto flex max-w-6xl flex-col gap-10 px-6 py-8">
       <header className="flex flex-col gap-1">
         <h1 className="font-display text-4xl font-semibold tracking-tight">Welcome back</h1>
-        <p className="text-sm" style={{ color: "hsl(var(--poppy-muted))" }}>
+        <p className="text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
           Signed in as {user.email}.
         </p>
       </header>
@@ -27,7 +27,7 @@ export default async function DashboardPage() {
         <section>
           <h2
             className="mb-3 text-xs font-semibold uppercase tracking-wider"
-            style={{ color: "hsl(var(--poppy-muted))" }}
+            style={{ color: "hsl(var(--buttercupp-muted))" }}
           >
             Continue chatting
           </h2>
@@ -38,27 +38,27 @@ export default async function DashboardPage() {
                 href={`/chat/${r.characterId}`}
                 className="group flex w-40 shrink-0 flex-col items-center gap-2 rounded-xl border p-3 text-center transition hover:-translate-y-0.5"
                 style={{
-                  borderColor: "hsl(var(--poppy-border))",
-                  backgroundColor: "hsl(var(--poppy-surface))",
+                  borderColor: "hsl(var(--buttercupp-border))",
+                  backgroundColor: "hsl(var(--buttercupp-surface))",
                 }}
               >
                 <div
                   className="h-24 w-24 overflow-hidden rounded-full"
-                  style={{ backgroundColor: "hsl(var(--poppy-surface-2))" }}
+                  style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))" }}
                 >
                   {r.avatarUrl ? (
                     <img src={r.avatarUrl} alt={r.characterName} className="h-full w-full object-cover" />
                   ) : (
                     <div
                       className="flex h-full w-full items-center justify-center text-lg font-semibold"
-                      style={{ color: "hsl(var(--poppy-muted))" }}
+                      style={{ color: "hsl(var(--buttercupp-muted))" }}
                     >
                       {r.characterName[0]}
                     </div>
                   )}
                 </div>
                 <span className="text-sm font-medium">{r.characterName}</span>
-                <span className="text-xs" style={{ color: "hsl(var(--poppy-muted))" }}>
+                <span className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
                   {r.messageCount} messages
                 </span>
               </Link>
@@ -73,29 +73,29 @@ export default async function DashboardPage() {
         data-testid="create-cta"
         className="group relative overflow-hidden rounded-2xl border p-6 transition hover:-translate-y-0.5"
         style={{
-          borderColor: "hsl(var(--poppy-accent-rose) / 0.35)",
+          borderColor: "hsl(var(--buttercupp-accent-rose) / 0.35)",
           background:
-            "linear-gradient(135deg, hsl(var(--poppy-accent-rose) / 0.18), hsl(var(--poppy-accent-violet) / 0.18))",
+            "linear-gradient(135deg, hsl(var(--buttercupp-accent-rose) / 0.18), hsl(var(--buttercupp-accent-violet) / 0.18))",
         }}
       >
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-start gap-4">
             <div
               className="flex h-12 w-12 items-center justify-center rounded-xl"
-              style={{ backgroundColor: "hsl(var(--poppy-accent-rose) / 0.25)" }}
+              style={{ backgroundColor: "hsl(var(--buttercupp-accent-rose) / 0.25)" }}
             >
-              <Sparkles className="h-6 w-6" style={{ color: "hsl(var(--poppy-accent-rose))" }} />
+              <Sparkles className="h-6 w-6" style={{ color: "hsl(var(--buttercupp-accent-rose))" }} />
             </div>
             <div>
               <h2 className="font-display text-2xl font-semibold">Create your companion</h2>
-              <p className="mt-1 text-sm" style={{ color: "hsl(var(--poppy-muted))" }}>
+              <p className="mt-1 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
                 Design a persona with a look, voice, and personality all your own.
               </p>
             </div>
           </div>
           <span
             className="rounded-full px-4 py-2 text-sm font-semibold text-black"
-            style={{ backgroundColor: "hsl(var(--poppy-accent-rose))" }}
+            style={{ backgroundColor: "hsl(var(--buttercupp-accent-rose))" }}
           >
             Start creating
           </span>

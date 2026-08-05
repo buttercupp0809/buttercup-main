@@ -17,7 +17,7 @@
 import { MEMORY_PLACEHOLDER } from "./persona-prompts";
 import { render, TEMPLATE_NAMES } from "./prompt-templates/loader";
 import { PROMPT_FILLS } from "./prompt-fills";
-import type { ContentRating } from "@poppy/database";
+import type { ContentRating } from "@buttercupp/database";
 
 export interface PromptContext {
   characterVersion: {
@@ -53,7 +53,7 @@ function contentRatingLabel(r: ContentRating): string {
 function userLine(userAge: number | null): string {
   return userAge !== null
     ? `User is ${userAge} years old.`
-    : "User is an adult member of Poppy (18+).";
+    : "User is an adult member of ButterCupp (18+).";
 }
 
 export function buildPromptLayers(ctx: PromptContext): string {

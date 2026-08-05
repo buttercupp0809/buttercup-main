@@ -34,7 +34,7 @@ export default function AppearanceStep() {
     <div className="flex flex-col gap-6">
       <div>
         <h1 className="font-display text-2xl font-semibold">Appearance</h1>
-        <p className="mt-1 text-sm" style={{ color: "hsl(var(--poppy-muted))" }}>
+        <p className="mt-1 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
           Pick a look. These choices drive image generation later.
         </p>
       </div>
@@ -109,7 +109,7 @@ export default function AppearanceStep() {
 
       <div
         className="rounded-md p-3 text-xs"
-        style={{ backgroundColor: "hsl(var(--poppy-surface-2))", color: "hsl(var(--poppy-muted))" }}
+        style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))", color: "hsl(var(--buttercupp-muted))" }}
       >
         Image prompt preview: <span className="italic">{composedPreview || "(pick a look above)"}</span>
       </div>

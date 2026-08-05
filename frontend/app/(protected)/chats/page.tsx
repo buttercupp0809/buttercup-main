@@ -16,7 +16,7 @@ export default async function ChatsPage() {
         <Link
           href="/gallery"
           className="text-sm underline"
-          style={{ color: "hsl(var(--poppy-accent-rose))" }}
+          style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
         >
           Discover new companions
         </Link>
@@ -26,18 +26,18 @@ export default async function ChatsPage() {
         <div
           className="rounded-2xl border p-8 text-center"
           style={{
-            borderColor: "hsl(var(--poppy-border))",
-            backgroundColor: "hsl(var(--poppy-surface))",
+            borderColor: "hsl(var(--buttercupp-border))",
+            backgroundColor: "hsl(var(--buttercupp-surface))",
           }}
         >
           <h2 className="font-display text-xl">No conversations yet</h2>
-          <p className="mt-2 text-sm" style={{ color: "hsl(var(--poppy-muted))" }}>
+          <p className="mt-2 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
             Pick a companion in Discover and say hi.
           </p>
           <Link
             href="/gallery"
             className="mt-4 inline-block rounded-md px-4 py-2 text-sm font-semibold text-black"
-            style={{ backgroundColor: "hsl(var(--poppy-accent-rose))" }}
+            style={{ backgroundColor: "hsl(var(--buttercupp-accent-rose))" }}
           >
             Browse companions
           </Link>
@@ -50,13 +50,13 @@ export default async function ChatsPage() {
                 href={`/chat/${r.characterId}`}
                 className="flex items-center gap-3 rounded-xl border p-3 transition hover:-translate-y-0.5"
                 style={{
-                  borderColor: "hsl(var(--poppy-border))",
-                  backgroundColor: "hsl(var(--poppy-surface))",
+                  borderColor: "hsl(var(--buttercupp-border))",
+                  backgroundColor: "hsl(var(--buttercupp-surface))",
                 }}
               >
                 <div
                   className="h-12 w-12 shrink-0 overflow-hidden rounded-full"
-                  style={{ backgroundColor: "hsl(var(--poppy-surface-2))" }}
+                  style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))" }}
                 >
                   {r.avatarUrl ? (
                     <img src={r.avatarUrl} alt={r.characterName} className="h-full w-full object-cover" />
@@ -77,7 +77,7 @@ export default async function ChatsPage() {
                       />
                     ) : null}
                   </div>
-                  <div className="text-xs" style={{ color: "hsl(var(--poppy-muted))" }}>
+                  <div className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
                     {r.messageCount} messages
                     {r.lastMessageAt ? ` · ${new Date(r.lastMessageAt).toLocaleString()}` : ""}
                   </div>

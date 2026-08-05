@@ -13,7 +13,7 @@ export default function IdentityStep() {
     <div className="flex flex-col gap-6">
       <div>
         <h1 className="font-display text-2xl font-semibold">Identity</h1>
-        <p className="mt-1 text-sm" style={{ color: "hsl(var(--poppy-muted))" }}>
+        <p className="mt-1 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
           Tap to choose. You can tweak anything later.
         </p>
       </div>
@@ -53,9 +53,9 @@ export default function IdentityStep() {
           placeholder="Pick a suggestion or type your own"
           className="rounded-md border px-3 py-2 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
           style={{
-            borderColor: "hsl(var(--poppy-border))",
-            backgroundColor: "hsl(var(--poppy-surface-2))",
-            color: "hsl(var(--poppy-fg))",
+            borderColor: "hsl(var(--buttercupp-border))",
+            backgroundColor: "hsl(var(--buttercupp-surface-2))",
+            color: "hsl(var(--buttercupp-fg))",
           }}
         />
         <div className="flex flex-wrap gap-2">

@@ -1,4 +1,4 @@
-// Poppy root ESLint flat config.
+// ButterCupp root ESLint flat config.
 // Includes a custom rule that flags the em dash character (U+2014) in source
 // files, including inside comments. Per CLAUDE.md, em dashes are never used.
 
@@ -65,10 +65,10 @@ export default [
     },
     plugins: {
       "@typescript-eslint": tseslint,
-      poppy: noEmDashPlugin,
+      buttercupp: noEmDashPlugin,
     },
     rules: {
-      "poppy/no-em-dash": "error",
+      "buttercupp/no-em-dash": "error",
       "@typescript-eslint/no-unused-vars": [
         "warn",
         { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },

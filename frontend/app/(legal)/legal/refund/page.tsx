@@ -2,13 +2,13 @@ import { LegalPage } from "@/components/legal/LegalPage";
 import { LEGAL } from "@/lib/legal/config";
 
 export const dynamic = "force-static";
-export const metadata = { title: "Refund Policy | Poppy" };
+export const metadata = { title: "Refund Policy | ButterCupp" };
 
 export default function RefundPage() {
   return (
     <LegalPage title="Refund Policy">
       <p>
-        Poppy sells time-boxed access via duration passes and token packs.
+        ButterCupp sells time-boxed access via duration passes and token packs.
         This policy explains when purchases are refundable.
       </p>
 

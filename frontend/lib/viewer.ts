@@ -2,7 +2,7 @@
 // the gallery query builder expects. Never throws; visitor is the safe
 // default.
 
-import type { CharacterViewer } from "@poppy/database";
+import type { CharacterViewer } from "@buttercupp/database";
 import { getCurrentUser } from "@/lib/auth";
 
 export async function getViewer(): Promise<CharacterViewer> {

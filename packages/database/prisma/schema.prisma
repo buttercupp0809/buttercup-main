@@ -1,4 +1,4 @@
-// Poppy database schema. Source of truth: prds/master-prd.md §8.
+// ButterCupp database schema. Source of truth: prds/master-prd.md §8.
 //
 // Embedding dimension: vector(384), matching in-process Xenova/all-MiniLM-L6-v2.
 // This is the ONE dimension used by Memory.embedding and MemorySummary.embedding.

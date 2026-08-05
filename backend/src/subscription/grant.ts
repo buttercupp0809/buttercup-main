@@ -2,7 +2,7 @@
 // or activates; safe to call more than once per period thanks to the
 // (userId, refId) idempotency key.
 
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 import { refundTokens } from "../media/token-ledger";
 import { getLimitsForTier } from "./limits";
 import type { Tier } from "./tier";

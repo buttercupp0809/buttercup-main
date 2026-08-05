@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 import { requireAuth } from "@/lib/auth";
 
 export const runtime = "nodejs";

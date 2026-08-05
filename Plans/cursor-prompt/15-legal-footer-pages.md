@@ -12,7 +12,7 @@ This phase covers PRD (`prds/experience-monetization-prd.md`) §2.1 (legal pages
 
 ## Context to paste into Cursor
 ```
-You are building Phase 15 of "Poppy" (mature-gated AI companion platform): the public legal + footer content pages, and fixing the currently-broken /legal/* links.
+You are building Phase 15 of "ButterCupp" (mature-gated AI companion platform): the public legal + footer content pages, and fixing the currently-broken /legal/* links.
 
 Authoritative spec: prds/experience-monetization-prd.md §2.1. Requirements:
 - Create app/(legal)/legal/* pages: Terms of Service, Privacy Policy, Cookie Policy, Content/Community Policy, DMCA, USC 2257 Compliance Statement, Refund Policy, About, Contact.
@@ -20,7 +20,7 @@ Authoritative spec: prds/experience-monetization-prd.md §2.1. Requirements:
 - This fixes the existing broken /legal/terms and /legal/privacy links used by the age gate and signup.
 - Legal pages require NO auth and NO age gate: a logged-out visitor can read all of them.
 
-Poppy is a mature-gated (18+) AI companion product with AI voice, AI images, and a strict paywall (Daily/Weekly/Monthly passes + 10 free chats), so the boilerplate must at minimum acknowledge: AI-generated companions and content, 18+ / adult content, the USC 2257 record-keeping statement for mature imagery, a refund/duration-pass policy, DMCA takedown contact, and California SB 243 AI-disclosure framing. These are placeholders for counsel, not legal advice.
+ButterCupp is a mature-gated (18+) AI companion product with AI voice, AI images, and a strict paywall (Daily/Weekly/Monthly passes + 10 free chats), so the boilerplate must at minimum acknowledge: AI-generated companions and content, 18+ / adult content, the USC 2257 record-keeping statement for mature imagery, a refund/duration-pass policy, DMCA takedown contact, and California SB 243 AI-disclosure framing. These are placeholders for counsel, not legal advice.
 
 Hard rules: TypeScript strict; server-centric Next.js 16 App Router; no auth on these routes; no em dashes anywhere; do not invent a real company name or address (leave placeholders).
 Do NOT run git commit/push, deploy, or migrate a non-local DB.
@@ -32,7 +32,7 @@ Do NOT run git commit/push, deploy, or migrate a non-local DB.
 - `frontend/lib/legal/config.ts`. Export a single `LEGAL = { COMPANY: "{{COMPANY}}", JURISDICTION: "{{JURISDICTION}}", CONTACT_EMAIL: "{{CONTACT_EMAIL}}", LAST_UPDATED: "{{LAST_UPDATED}}" }` object plus a `LEGAL_PAGES` array of `{ slug, title, group }` (group is `legal` or `company`) for Terms, Privacy, Cookie, Content, DMCA, 2257, Refund, About, Contact. The Phase 14 footer can import `LEGAL_PAGES` so the two stay in sync. Keeping placeholders in one object makes the legal-review find/replace a single pass. Do NOT resolve placeholders from env; they are literal placeholder strings until counsel supplies copy.
 
 ### 2. Shared legal layout
-- `frontend/app/(legal)/layout.tsx`. A public server layout wrapping all legal pages with readable long-form typography: a centered narrow measure (about `max-w-3xl`), comfortable line-height, styled headings/lists/links (Tailwind typography classes or hand-rolled), and a top bar with a "Back to Poppy" link home. Do NOT call `requireAuth()`; these are public. If Phase 14 mounted the `Footer` only on `(public)`, either reuse the shared `Footer` component here too or add a minimal footer link back to `/`.
+- `frontend/app/(legal)/layout.tsx`. A public server layout wrapping all legal pages with readable long-form typography: a centered narrow measure (about `max-w-3xl`), comfortable line-height, styled headings/lists/links (Tailwind typography classes or hand-rolled), and a top bar with a "Back to ButterCupp" link home. Do NOT call `requireAuth()`; these are public. If Phase 14 mounted the `Footer` only on `(public)`, either reuse the shared `Footer` component here too or add a minimal footer link back to `/`.
 - `frontend/components/legal/LegalPage.tsx`. A reusable presentational wrapper: props `{ title: string; children: React.ReactNode }`. Renders an H1 title, a prominent "Draft template pending legal review" banner, a "Last updated: {{LAST_UPDATED}}" line pulled from `LEGAL.LAST_UPDATED`, then the body. Give the article `data-testid="legal-page"` so tests can assert it rendered.
 
 ### 3. The nine pages
@@ -47,7 +47,7 @@ Under `frontend/app/(legal)/legal/`, one folder per slug, each a server componen
 - `about/page.tsx` (About): short company-mission placeholder, 18+ positioning.
 - `contact/page.tsx` (Contact): `{{CONTACT_EMAIL}}` and a placeholder mailing address, support expectations. (A form is out of scope; a mailto link is enough.)
 
-Each page should `export const metadata = { title: "<Page> | Poppy" }` and may `export const dynamic = "force-static"` since content is static.
+Each page should `export const metadata = { title: "<Page> | ButterCupp" }` and may `export const dynamic = "force-static"` since content is static.
 
 ### 4. Fix the broken links
 - `frontend/app/(auth)/age-gate/page.tsx`. The ToS + privacy `<a href="/legal/terms">` / `/legal/privacy` links now resolve; open them in a new tab (`target="_blank"`, `rel="noopener noreferrer"`) so the user does not lose the gate form. No behavior change beyond that.

@@ -3,7 +3,7 @@
 // Phase 07 every kind is served by mockHandler so the pipeline is testable
 // end-to-end.
 
-import type { MediaJobData, MediaKind } from "@poppy/shared";
+import type { MediaJobData, MediaKind } from "@buttercupp/shared";
 
 export interface HandlerOutput {
   buffer: Buffer;

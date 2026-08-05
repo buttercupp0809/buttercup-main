@@ -66,7 +66,7 @@ EXPOSE 4000
 
 USER app
 
-# Poppy runs two roles from a single image:
+# ButterCupp runs two roles from a single image:
 #   PROCESS_ROLE=api    (default) -> node dist/index.js  (HTTP + WS gateway)
 #   PROCESS_ROLE=worker           -> node dist/worker.js (BullMQ consumer)
 # The ECS worker task overrides CMD to ["node","dist/worker.js"]. The default

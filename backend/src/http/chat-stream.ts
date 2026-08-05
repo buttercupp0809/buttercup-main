@@ -5,7 +5,7 @@
 //
 // Contract:
 //   POST /chat/stream
-//     Headers: Cookie: poppy_auth=... (same JWT as the WS gateway)
+//     Headers: Cookie: buttercupp_auth=... (same JWT as the WS gateway)
 //     Body: { conversationId: string, text: string }
 //   Response: text/event-stream
 //     Events: `token` (delta), `done` (messageId + provider), `safety`,
@@ -37,13 +37,13 @@ function parseCookies(header: string | undefined): Record<string, string> {
 
 async function authenticateReq(req: IncomingMessage): Promise<string | null> {
   const cookies = parseCookies(req.headers.cookie);
-  const token = cookies["poppy_auth"];
+  const token = cookies["buttercupp_auth"];
   if (!token) return null;
   const secret = process.env.JWT_SECRET;
   if (!secret) return null;
   try {
     const { payload } = await jwtVerify(token, new TextEncoder().encode(secret), {
-      audience: "poppy:auth",
+      audience: "buttercupp:auth",
     });
     return typeof payload.sub === "string" ? payload.sub : null;
   } catch {

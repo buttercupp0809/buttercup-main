@@ -1,6 +1,6 @@
 import "./load-env";
 import http from "node:http";
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 import { attachWsGateway } from "./ws/gateway";
 import { handleChatStream } from "./http/chat-stream";
 import { handleMediaRoute } from "./http/media";

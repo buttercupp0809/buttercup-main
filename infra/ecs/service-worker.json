@@ -1,8 +1,8 @@
 {
   "_comment": "ECS service definition for the media worker. No load balancer; the worker pulls jobs from Redis. Desired count starts at 1 and scales on queue depth (BullMQ Prometheus exporter or CloudWatch metric).",
-  "cluster": "poppy-prod",
-  "serviceName": "poppy-worker",
-  "taskDefinition": "poppy-worker",
+  "cluster": "buttercupp-prod",
+  "serviceName": "buttercupp-worker",
+  "taskDefinition": "buttercupp-worker",
   "desiredCount": 1,
   "launchType": "FARGATE",
   "deploymentConfiguration": {
@@ -13,7 +13,7 @@
   "networkConfiguration": {
     "awsvpcConfiguration": {
       "subnets": ["subnet-PRIVATE_1", "subnet-PRIVATE_2"],
-      "securityGroups": ["sg-poppy-worker"],
+      "securityGroups": ["sg-buttercupp-worker"],
       "assignPublicIp": "DISABLED"
     }
   }

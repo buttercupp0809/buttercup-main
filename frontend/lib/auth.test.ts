@@ -39,8 +39,8 @@ describe("auth JWT round-trip", () => {
     const wrongAudToken = await new SignJWT({})
       .setProtectedHeader({ alg: "HS256" })
       .setSubject("user-xyz")
-      .setIssuer("poppy")
-      .setAudience("poppy:reset")
+      .setIssuer("buttercupp")
+      .setAudience("buttercupp:reset")
       .setIssuedAt()
       .setExpirationTime("5m")
       .sign(getSecret());
@@ -52,8 +52,8 @@ describe("auth JWT round-trip", () => {
     const foreign = await new SignJWT({})
       .setProtectedHeader({ alg: "HS256" })
       .setSubject("user-xyz")
-      .setIssuer("poppy")
-      .setAudience("poppy:auth")
+      .setIssuer("buttercupp")
+      .setAudience("buttercupp:auth")
       .setIssuedAt()
       .setExpirationTime("5m")
       .sign(new TextEncoder().encode("some-other-secret-that-is-also-32-chars"));

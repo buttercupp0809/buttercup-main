@@ -4,7 +4,7 @@
 
 import { z } from "zod";
 
-export const MEDIA_QUEUE_NAME = "poppy-media";
+export const MEDIA_QUEUE_NAME = "buttercupp-media";
 
 export const mediaKindSchema = z.enum(["image", "voice", "video"]);
 export type MediaKind = z.infer<typeof mediaKindSchema>;

@@ -9,7 +9,7 @@
 import type { IncomingMessage, Server as HttpServer } from "node:http";
 import { WebSocketServer, type WebSocket } from "ws";
 import { jwtVerify } from "jose";
-import { wsClientEventSchema, type WSClientEvent, type WSServerEvent } from "@poppy/shared";
+import { wsClientEventSchema, type WSClientEvent, type WSServerEvent } from "@buttercupp/shared";
 import { runChatTurn } from "../chat/engine";
 import { assertCanChat, recordChatConsumption, PaywallError, type PaywallInfo } from "../subscription/enforce";
 import { writeAuditLog } from "../utils/audit";
@@ -60,14 +60,14 @@ function parseCookies(header: string | undefined): Record<string, string> {
 
 async function authenticate(req: IncomingMessage): Promise<string | null> {
   const cookies = parseCookies(req.headers.cookie);
-  // Cookie name matches frontend/lib/constants.ts POPPY_AUTH_COOKIE.
-  const token = cookies["poppy_auth"];
+  // Cookie name matches frontend/lib/constants.ts BUTTERCUPP_AUTH_COOKIE.
+  const token = cookies["buttercupp_auth"];
   if (!token) return null;
   const secret = process.env.JWT_SECRET;
   if (!secret) return null;
   try {
     const { payload } = await jwtVerify(token, new TextEncoder().encode(secret), {
-      audience: "poppy:auth",
+      audience: "buttercupp:auth",
     });
     return typeof payload.sub === "string" ? payload.sub : null;
   } catch {

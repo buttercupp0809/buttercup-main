@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 import { requireAuth, clearAuthCookie } from "@/lib/auth";
 // clearAuthCookie takes the NextResponse; we pass it below.
 import { jsonError } from "@/lib/api-helpers";

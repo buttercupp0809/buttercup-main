@@ -6,7 +6,7 @@ Upgrade Discover/gallery from plain bordered cards into an **image-forward, cine
 This is a **visual layer** over existing gallery data and gating. Query builder, list/detail endpoints, DTOs, and mature gating logic are unchanged. Covers PRD (experience-monetization) §2.4 and §1 (design direction).
 
 ## Prerequisites
-- Phase 17 green (dark app shell, `.poppy-app` theme tokens including `--poppy-accent-rose`, `--poppy-accent-violet`, `.poppy-scrim`, and the Fraunces display / body sans font pairing).
+- Phase 17 green (dark app shell, `.buttercupp-app` theme tokens including `--buttercupp-accent-rose`, `--buttercupp-accent-violet`, `.buttercupp-scrim`, and the Fraunces display / body sans font pairing).
 - Existing gallery stack from Phase 03 intact:
   - `frontend/components/gallery/CharacterCard.tsx` (4:5 image, name, bio clamp, tag chips, content-rating badge, mature blur + "18+ verify to view" overlay when `contentRating === "mature" && !viewerAllowsMature`).
   - `frontend/components/gallery/CharacterGrid.tsx` (responsive grid + "Load more" via `nextCursor`, client-fetches `/api/characters`).
@@ -15,15 +15,15 @@ This is a **visual layer** over existing gallery data and gating. Query builder,
   - `frontend/app/(public)/gallery/page.tsx` (server; parses `searchParams` through `characterListQuerySchema`, calls `listCharacters(query, viewer)`, renders `GalleryToolbar` + `CharacterGrid`).
   - `frontend/app/(public)/characters/[id]/page.tsx` (server; `getCharacterDetail`, fire-and-forget `bumpCharacterView`, computes `ChatCTAState`, renders hero + tags + greeting; gated mature payload sets `requiresAgeVerification`).
 - DTO contracts (do not change): `CharacterCardDTO` (id, name, bio, tags, style, contentRating, avatarUrl, popularityScore, createdAt) and `CharacterDetailDTO` (card fields + greeting, personalitySummary, creatorLabel, version, requiresAgeVerification?) in `packages/shared/src/characters.ts`.
-- `frontend/lib/viewer.ts` `getViewer()` and `viewerAllowsMature(viewer)` from `@poppy/database` gate mature content. Endpoints `/api/characters` and `/api/characters/[id]` already enforce gating server-side.
+- `frontend/lib/viewer.ts` `getViewer()` and `viewerAllowsMature(viewer)` from `@buttercupp/database` gate mature content. Endpoints `/api/characters` and `/api/characters/[id]` already enforce gating server-side.
 - Playwright runs from repo root `e2e/` (baseURL `http://localhost:3000`); `e2e/gallery.spec.ts` already exercises visitor gallery, filters, search, and the CTA-prompts-signup path.
 
 ## Context to paste into Cursor
 Paste this block at the top of the Cursor agent session:
 
-> Building Poppy Phase 18 (persona discovery and selection, Candy/Nastia style). Read `prds/experience-monetization-prd.md` §2.4 and §1 first. This is a restyle over existing gallery data and gating: do NOT change the query builder, the `/api/characters` list/detail endpoints, the Zod query schema, the `CharacterCardDTO` / `CharacterDetailDTO` shapes, or the mature-gating rules. Server-side mature gating and age-gating stay authoritative; the UI only reflects it.
+> Building ButterCupp Phase 18 (persona discovery and selection, Candy/Nastia style). Read `prds/experience-monetization-prd.md` §2.4 and §1 first. This is a restyle over existing gallery data and gating: do NOT change the query builder, the `/api/characters` list/detail endpoints, the Zod query schema, the `CharacterCardDTO` / `CharacterDetailDTO` shapes, or the mature-gating rules. Server-side mature gating and age-gating stay authoritative; the UI only reflects it.
 >
-> Conventions: Next.js 16 App Router, server components by default, `"use client"` only for the toolbar and any hover/interaction logic. Prisma singleton `import { prisma } from "@poppy/database"`. Tailwind 4, design tokens as CSS vars, reuse `.poppy-app` / rose / violet / `.poppy-scrim` tokens from Phase 17, `cn()` from `frontend/lib/utils`, `.font-display` (Fraunces) for names/headings. TypeScript strict. No em dashes anywhere.
+> Conventions: Next.js 16 App Router, server components by default, `"use client"` only for the toolbar and any hover/interaction logic. Prisma singleton `import { prisma } from "@buttercupp/database"`. Tailwind 4, design tokens as CSS vars, reuse `.buttercupp-app` / rose / violet / `.buttercupp-scrim` tokens from Phase 17, `cn()` from `frontend/lib/utils`, `.font-display` (Fraunces) for names/headings. TypeScript strict. No em dashes anywhere.
 >
 > Design (PRD §1): image-forward large cards with a gradient scrim, name + tagline overlaid on the image, an online/mood dot, hover lift + slow image zoom, staggered reveal on load. The detail page is immersive: large hero image with scrim, name in the display face, tagline, tags, greeting preview, and a bold "Start chat" CTA. Keep mature cards blurred with the "18+ verify to view" overlay for unverified viewers.
 >
@@ -34,7 +34,7 @@ Do these in order. Name files exactly as below. Restyle in place; do not fork co
 
 1. **Card restyle** `frontend/components/gallery/CharacterCard.tsx`
    - Keep the `CharacterCardProps` contract (`character: CharacterCardDTO`, `viewerAllowsMature: boolean`) and the optional `relationship?` prop added in Phase 17. Keep `data-testid="character-card"` and the `Link` to `/characters/{id}`.
-   - Move to a **full-bleed image card**: the 4:5 image fills the card; overlay a bottom gradient scrim (`.poppy-scrim` or a `bg-gradient-to-t from-black/80 via-black/20 to-transparent`). Overlay, at the bottom, the **name** (`.font-display`, white) and a **tagline** (first line of bio or a dedicated short line, clamped to 1 line). Tag chips render as small translucent pills on the scrim (max 3).
+   - Move to a **full-bleed image card**: the 4:5 image fills the card; overlay a bottom gradient scrim (`.buttercupp-scrim` or a `bg-gradient-to-t from-black/80 via-black/20 to-transparent`). Overlay, at the bottom, the **name** (`.font-display`, white) and a **tagline** (first line of bio or a dedicated short line, clamped to 1 line). Tag chips render as small translucent pills on the scrim (max 3).
    - **Online/mood dot**: top-left, a small dot. Rose when `relationship?.affectionLevel > 0` or `relationship?.mood` present; otherwise a neutral "available" dot. Add `title`/`aria-label` describing it.
    - **Content-rating badge** stays (top-right), restyled translucent.
    - **Hover motion**: on `group-hover`, lift the card (`-translate-y-1`) and slow-zoom the image (`scale-105`, `duration-500`), raise the scrim slightly. Respect `prefers-reduced-motion` (disable transforms).
@@ -57,7 +57,7 @@ Do these in order. Name files exactly as below. Restyle in place; do not fork co
 5. **Gallery page (public + in-app Discover)** `frontend/app/(public)/gallery/page.tsx`
    - Keep the existing parse of `searchParams` through `characterListQuerySchema`, `getViewer()`, `listCharacters(query, viewer)`, and `viewerAllowsMature(viewer)`. Do not change the data flow.
    - Pass `availableTags={await getFacetTags(viewer)}` into `GalleryToolbar` (or omit if you skip step 4).
-   - Restyle the header: `Discover` in `.font-display`, a one-line subhead. Since this route now serves both public and in-app Discover, ensure it looks correct on the dark theme when nested in the app shell and still acceptable on the public shell (the page itself can wrap its content in a neutral container; the app shell supplies `.poppy-app`). Do not add auth requirements to this public route.
+   - Restyle the header: `Discover` in `.font-display`, a one-line subhead. Since this route now serves both public and in-app Discover, ensure it looks correct on the dark theme when nested in the app shell and still acceptable on the public shell (the page itself can wrap its content in a neutral container; the app shell supplies `.buttercupp-app`). Do not add auth requirements to this public route.
 
 6. **Immersive detail page** `frontend/app/(public)/characters/[id]/page.tsx`
    - Keep the data flow: `await params`, `getViewer()`, `getCharacterDetail(id, viewer)`, `notFound()` on null, fire-and-forget `bumpCharacterView(detail.id)`, and the exact `ChatCTAState` computation (visitor -> `visitor`, gated mature -> `needsAgeGateMature`, member not age-verified -> `needsAgeGate`, else `eligible`). Keep `requiresAgeVerification` gating and the blurred hero for gated viewers.
@@ -66,7 +66,7 @@ Do these in order. Name files exactly as below. Restyle in place; do not fork co
    - Optionally show `<AffectionMeter>` (Phase 17) when a `RelationshipState` exists for an authed viewer (fetch via `getRelationship`), but never for visitors and never leaking mature imagery.
 
 7. **In-app Discover parity check**
-   - Confirm the Phase 17 sidebar "Discover" item points to `/gallery` and that the restyled gallery + card + detail render correctly within `.poppy-app`. No separate Discover route is needed; the public route is the single source. If any wrapper styles fight the dark shell, scope fixes to the gallery components, not the shell.
+   - Confirm the Phase 17 sidebar "Discover" item points to `/gallery` and that the restyled gallery + card + detail render correctly within `.buttercupp-app`. No separate Discover route is needed; the public route is the single source. If any wrapper styles fight the dark shell, scope fixes to the gallery components, not the shell.
 
 8. **Reduced-motion + accessibility pass**
    - All hover/zoom/stagger animations are wrapped in `@media (prefers-reduced-motion: reduce)` no-op guards. Cards remain fully keyboard-focusable (the whole card is a `Link`); the online/mood dot and rating badge have text alternatives; scrim text meets AA contrast against the darkened image (the scrim guarantees this, note it in a comment).

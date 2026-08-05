@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@poppy/database";
-import { patchCharacterInputSchema, styleWireToEnum, createCharacterInputSchema } from "@poppy/shared";
+import { prisma } from "@buttercupp/database";
+import { patchCharacterInputSchema, styleWireToEnum, createCharacterInputSchema } from "@buttercupp/shared";
 import { getCharacterDetail } from "@/lib/characters";
 import { getViewer } from "@/lib/viewer";
 import { jsonError } from "@/lib/api-helpers";

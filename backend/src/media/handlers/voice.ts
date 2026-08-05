@@ -3,7 +3,7 @@
 // provider chain, and returns a buffer for the Phase-07 worker to upload
 // to S3 + emit media.ready.
 
-import type { MediaJobData } from "@poppy/shared";
+import type { MediaJobData } from "@buttercupp/shared";
 import type { HandlerOutput } from "./index";
 import { resolveVoiceProfile } from "../voice/profile";
 import { generateVoiceNote } from "../voice/generate";

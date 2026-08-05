@@ -59,7 +59,7 @@ export function SettingsClient(props: Props) {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "poppy-export.json";
+    a.download = "buttercupp-export.json";
     a.click();
     URL.revokeObjectURL(url);
   }
@@ -140,7 +140,7 @@ export function SettingsClient(props: Props) {
       <section className="rounded-lg border border-slate-200 p-4 dark:border-slate-800">
         <h2 className="mb-2 text-lg font-semibold">Session</h2>
         <p className="mb-2 text-sm text-slate-600 dark:text-slate-400">
-          Sign out of Poppy on this device. Other devices stay signed in.
+          Sign out of ButterCupp on this device. Other devices stay signed in.
         </p>
         <button
           type="button"

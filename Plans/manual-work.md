@@ -1,4 +1,4 @@
-# Poppy: end-to-end sanity results and remaining manual work
+# ButterCupp: end-to-end sanity results and remaining manual work
 
 Generated: 2026-07-30
 Scope: after phases 00 through 13 (deploy prep) were scaffolded.
@@ -58,7 +58,7 @@ You need Postgres 16 with `pgvector` and Redis 7. Two options:
 ```bash
 docker compose up -d postgres redis
 # then in another shell:
-DATABASE_URL="postgresql://poppy:poppy@localhost:5432/poppy_dev?schema=public" \
+DATABASE_URL="postgresql://buttercupp:buttercupp@localhost:5432/buttercupp_dev?schema=public" \
   npm run db:migrate
 npm run db:seed
 npm run dev:backend    # PORT 4000
@@ -70,11 +70,11 @@ npm run dev:frontend   # PORT 3000
 brew install postgresql@16 pgvector redis
 brew services start postgresql@16
 brew services start redis
-createuser -s poppy
-createdb -O poppy poppy_dev
-createdb -O poppy poppy_test
-psql -d poppy_dev -c 'CREATE EXTENSION IF NOT EXISTS vector;'
-psql -d poppy_test -c 'CREATE EXTENSION IF NOT EXISTS vector;'
+createuser -s buttercupp
+createdb -O buttercupp buttercupp_dev
+createdb -O buttercupp buttercupp_test
+psql -d buttercupp_dev -c 'CREATE EXTENSION IF NOT EXISTS vector;'
+psql -d buttercupp_test -c 'CREATE EXTENSION IF NOT EXISTS vector;'
 npm run db:migrate
 npm run db:seed
 ```
@@ -123,12 +123,12 @@ Follow `infra/README.md` for the topology. Every step is human-executed:
 1. Create the RDS Postgres 16 instance. Attach a parameter group with `vector` in `shared_preload_libraries`. Run `CREATE EXTENSION vector;` once. Enable RDS Proxy or run pgbouncer.
 2. Create the ElastiCache Redis (single primary + 1 replica is enough).
 3. Create the private S3 bucket + CloudFront distribution with a trusted key group and OAC. Save the key pair; put the private key into Secrets Manager.
-4. Register the Route 53 hosted zone. Add `poppy.app`, `api.poppy.app`, `media.poppy.app`.
+4. Register the Route 53 hosted zone. Add `buttercupp.app`, `api.buttercupp.app`, `media.buttercupp.app`.
 5. Create the ACM certificates (us-east-1 for CloudFront, target region for the ALB).
-6. Create the ECS cluster `poppy-prod`, the ALB with an HTTPS listener (stickiness + 300s idle timeout), and the target groups.
-7. Populate Secrets Manager entries at `poppy/<VAR>` for every ECS row in `infra/env-catalog.md`. Grant the `poppy-ecs-execution` role `secretsmanager:GetSecretValue` on `poppy/*`.
+6. Create the ECS cluster `buttercupp-prod`, the ALB with an HTTPS listener (stickiness + 300s idle timeout), and the target groups.
+7. Populate Secrets Manager entries at `buttercupp/<VAR>` for every ECS row in `infra/env-catalog.md`. Grant the `buttercupp-ecs-execution` role `secretsmanager:GetSecretValue` on `buttercupp/*`.
 8. Populate the Amplify console env for the production branch with every "Amplify" row in `infra/env-catalog.md`.
-9. Create the ECR repository `poppy`.
+9. Create the ECR repository `buttercupp`.
 10. Push the first image (see `infra/DEPLOY.md` step 2 for the approval-gated commands).
 11. Register the task definitions (`infra/ecs/task-*.json`) and create the services (`infra/ecs/service-*.json`).
 
@@ -183,7 +183,7 @@ Before you go live:
 - [ ] Local dev works end-to-end: signup -> age gate -> pick character -> chat -> voice note -> image gen -> subscribe.
 - [ ] All lint errors in §2 fixed.
 - [ ] All vendor keys in §3.2 populated in the production environment.
-- [ ] Adult payment processor account approved and webhooks pointing at `https://api.poppy.app/webhooks/{ccbill|verotel|segpay}`.
+- [ ] Adult payment processor account approved and webhooks pointing at `https://api.buttercupp.app/webhooks/{ccbill|verotel|segpay}`.
 - [ ] Age vendor account wired into `frontend/lib/age-verification/provider.ts`.
 - [ ] Legal review of ToS, Privacy Policy, SB 243 disclosure copy, and crisis intervention copy.
 - [ ] AWS provisioning complete per §3.4.

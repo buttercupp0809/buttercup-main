@@ -1,4 +1,4 @@
-// Poppy edge middleware.
+// ButterCupp edge middleware.
 //
 // Two important limits shape this file:
 //   1. It runs in the Next.js edge runtime and CANNOT import Node-only APIs
@@ -16,9 +16,9 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { jwtVerify } from "jose";
 
-const AUTH_COOKIE = "poppy_auth";
-const JWT_ISSUER = "poppy";
-const JWT_AUD_AUTH = "poppy:auth";
+const AUTH_COOKIE = "buttercupp_auth";
+const JWT_ISSUER = "buttercupp";
+const JWT_AUD_AUTH = "buttercupp:auth";
 
 const PROTECTED_PATH_PREFIXES = [
   "/dashboard",

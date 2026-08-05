@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { CharacterCardDTO } from "@poppy/shared";
+import type { CharacterCardDTO } from "@buttercupp/shared";
 import { cn } from "@/lib/utils";
 import { taglineFrom } from "@/lib/text";
 

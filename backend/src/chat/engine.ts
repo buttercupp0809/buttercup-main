@@ -11,8 +11,8 @@
 //
 // Used by both the WS gateway and the SSE fallback route.
 
-import { prisma } from "@poppy/database";
-import type { ContentRating } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
+import type { ContentRating } from "@buttercupp/database";
 import { buildPromptLayers } from "../llm/prompts";
 import { streamLLM } from "../llm/provider";
 import { StreamGuard, stripThinkingBlocks } from "../llm/sanitize";

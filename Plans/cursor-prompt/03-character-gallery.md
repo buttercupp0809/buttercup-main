@@ -6,14 +6,14 @@ Ship the public discovery surface: a browsable grid of character cards (avatar, 
 Covers PRD §5.2 (character system / gallery & discovery) and §3 (personas & journeys: Visitor → gallery preview → auth → dashboard/feed).
 
 ## Prerequisites
-- Phases 00–02 green: monorepo scaffold, `packages/database` Prisma singleton (`import { prisma } from "@poppy/database"`), `packages/shared` Zod DTOs, cookie JWT auth + middleware guards (Phase 01), full Prisma schema + migrations + system-character seed (Phase 02).
+- Phases 00–02 green: monorepo scaffold, `packages/database` Prisma singleton (`import { prisma } from "@buttercupp/database"`), `packages/shared` Zod DTOs, cookie JWT auth + middleware guards (Phase 01), full Prisma schema + migrations + system-character seed (Phase 02).
 - Seeded `system` characters exist (ownerUserId null, moderationStatus approved, mix of `visibility=public`, `contentRating` sfw|mature, styles realistic|3d|anime) with `popularityScore` populated so sort has signal.
 - `Character`, `CharacterVersion`, `AppearanceSheet`, `VoiceProfile` tables and `RelationshipState` / `Conversation` tables present (dashboard recents read from `Conversation`).
 
 ## Context to paste into Cursor
 Paste this block at the top of the Cursor agent session:
 
-> Building Poppy Phase 03 (character gallery & discovery). Read `prds/master-prd.md` §5.2 and §3 first. Mirror Pellow conventions: Prisma singleton `import { prisma } from "@poppy/database"` (never `new PrismaClient()`), Zod DTOs live in `packages/shared`, Next.js 16 App Router server components by default, Tailwind 4 + shadcn/ui, design tokens as CSS vars, TypeScript strict. No em dashes anywhere. Auth/session helpers from Phase 01 (`frontend/lib/auth.ts`, cookie JWT via `jose`) already exist; reuse `getSession()`/middleware rather than reimplementing.
+> Building ButterCupp Phase 03 (character gallery & discovery). Read `prds/master-prd.md` §5.2 and §3 first. Mirror Pellow conventions: Prisma singleton `import { prisma } from "@buttercupp/database"` (never `new PrismaClient()`), Zod DTOs live in `packages/shared`, Next.js 16 App Router server components by default, Tailwind 4 + shadcn/ui, design tokens as CSS vars, TypeScript strict. No em dashes anywhere. Auth/session helpers from Phase 01 (`frontend/lib/auth.ts`, cookie JWT via `jose`) already exist; reuse `getSession()`/middleware rather than reimplementing.
 >
 > Reference Pellow paths for patterns:
 > - Prisma singleton + query style: `../Pellow/packages/database/src/client.ts`

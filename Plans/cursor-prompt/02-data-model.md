@@ -1,29 +1,29 @@
 # Phase 02: Data model
 
 ## Goal
-Deliver the complete Prisma schema for every model in PRD §8, with relations, enums, and pgvector columns + indexes for `Memory.embedding` and `MemorySummary.embedding`. Wire the local migration workflow (`db:migrate` / `db:push` / `db:studio`, mirroring Pellow), enable the pgvector extension, port the `audit.ts` fire-and-forget writer now that `AuditLog` exists, and add a seed script that creates a small roster of system-owned characters. After this phase the schema is the single source of truth all later phases (gallery, chat, memory, wizard, media, billing, safety) build against, and `@poppy/database` imports resolve from both `frontend/` and `backend/`.
+Deliver the complete Prisma schema for every model in PRD §8, with relations, enums, and pgvector columns + indexes for `Memory.embedding` and `MemorySummary.embedding`. Wire the local migration workflow (`db:migrate` / `db:push` / `db:studio`, mirroring Pellow), enable the pgvector extension, port the `audit.ts` fire-and-forget writer now that `AuditLog` exists, and add a seed script that creates a small roster of system-owned characters. After this phase the schema is the single source of truth all later phases (gallery, chat, memory, wizard, media, billing, safety) build against, and `@buttercupp/database` imports resolve from both `frontend/` and `backend/`.
 
 This phase covers PRD §8 (data model).
 
 ## Prerequisites
-- Phase 00 green: `@poppy/database` singleton + migrations dir.
+- Phase 00 green: `@buttercupp/database` singleton + migrations dir.
 - Phase 01 green: `User`, `AgeVerification`, `MagicLink` models already exist. This phase EXTENDS them to the full §8 shape and adds every remaining model. Do not redeclare models Phase 01 created; reconcile field names (they were chosen to match §8).
 - Local Postgres 16 with pgvector available via `DATABASE_URL`. All migrations run LOCALLY only.
 
 ## Context to paste into Cursor
 ```
-You are building Phase 02 of "Poppy": the full data model.
+You are building Phase 02 of "ButterCupp": the full data model.
 
 Authoritative spec: prds/master-prd.md §8 (data model, Prisma outline). pgvector-indexed fields are Memory.embedding and MemorySummary.embedding. All ids cuid/uuid, timestamps on every table.
 
 Mirror Pellow's Prisma conventions:
-- ../Pellow/packages/database/prisma/schema.prisma, generator client block (previewFeatures ["driverAdapters"], binaryTargets ["native","rhel-openssl-3.0.x","linux-arm64-openssl-3.0.x"]); datasource postgresql; pgvector columns declared as `embedding Unsupported("vector(N)")?`; @@index patterns; enums modeled either as Prisma enums or string fields with defaults (prefer real Prisma enums for the closed sets Poppy calls out).
+- ../Pellow/packages/database/prisma/schema.prisma, generator client block (previewFeatures ["driverAdapters"], binaryTargets ["native","rhel-openssl-3.0.x","linux-arm64-openssl-3.0.x"]); datasource postgresql; pgvector columns declared as `embedding Unsupported("vector(N)")?`; @@index patterns; enums modeled either as Prisma enums or string fields with defaults (prefer real Prisma enums for the closed sets ButterCupp calls out).
 - ../Pellow/packages/database/src/client.ts + src/index.ts, the singleton already exists from Phase 00; do not touch it beyond re-exporting new enums/types.
 - ../Pellow/backend/src/utils/audit.ts, port the fire-and-forget writeAuditLog + auditContext now that AuditLog exists.
 
-Decide embedding dimension by the model you standardize on. Pellow uses vector(384) (bge-small class). Poppy's RAG (Phase 05) will use a specific embedder; pick ONE dimension now (recommend vector(1536) for OpenAI text-embedding-3-small, OR vector(384) if using a local small model) and use it consistently for Memory.embedding and MemorySummary.embedding. Document the choice in a comment; changing it later means a migration.
+Decide embedding dimension by the model you standardize on. Pellow uses vector(384) (bge-small class). ButterCupp's RAG (Phase 05) will use a specific embedder; pick ONE dimension now (recommend vector(1536) for OpenAI text-embedding-3-small, OR vector(384) if using a local small model) and use it consistently for Memory.embedding and MemorySummary.embedding. Document the choice in a comment; changing it later means a migration.
 
-Hard rules: never new PrismaClient() outside packages/database/src/client.ts; import { prisma } from "@poppy/database"; TypeScript strict; no em dashes. Do NOT run git commit/push, deploy, or migrate a non-local DB. `npm run db:migrate` is LOCAL only.
+Hard rules: never new PrismaClient() outside packages/database/src/client.ts; import { prisma } from "@buttercupp/database"; TypeScript strict; no em dashes. Do NOT run git commit/push, deploy, or migrate a non-local DB. `npm run db:migrate` is LOCAL only.
 ```
 
 ## Build steps
@@ -67,8 +67,8 @@ Add/extend these models in `schema.prisma`. Every model has an id (`@default(uui
 - `MagicLink` (from Phase 01), keep as-is (`tokenHash @unique`, `purpose`, `expiresAt`, `consumedAt`).
 
 ### 3. Regenerate types + re-export enums
-- `packages/database/src/types.ts`. re-export the new Prisma enums (`SubscriptionTier`, `ContentRating`, `Visibility`, `CharacterStyle`, `ModerationStatus`, `MemoryTier`, `MediaKind`, `MediaStatus`, `TokenReason`, `MessageRole`, `AgeVerificationLevel`) so both frontend and backend consume them from `@poppy/database`.
-- Keep `@poppy/shared` string-literal unions in sync with these enum values (Phase 00 seeded `SubscriptionTier`/`ContentRating`/`Visibility`); add the rest.
+- `packages/database/src/types.ts`. re-export the new Prisma enums (`SubscriptionTier`, `ContentRating`, `Visibility`, `CharacterStyle`, `ModerationStatus`, `MemoryTier`, `MediaKind`, `MediaStatus`, `TokenReason`, `MessageRole`, `AgeVerificationLevel`) so both frontend and backend consume them from `@buttercupp/database`.
+- Keep `@buttercupp/shared` string-literal unions in sync with these enum values (Phase 00 seeded `SubscriptionTier`/`ContentRating`/`Visibility`); add the rest.
 
 ### 4. pgvector extension + vector indexes (raw SQL in the migration)
 - Ensure the migration enables the extension: `CREATE EXTENSION IF NOT EXISTS vector;` (Prisma cannot express this from the schema; add it to the generated migration SQL or run it before `db:migrate` against the LOCAL db).
@@ -79,19 +79,19 @@ Add/extend these models in `schema.prisma`. Every model has an id (`@default(uui
 - Put these in a hand-edited migration step so they are reproducible; do not rely on `db push` for the extension.
 
 ### 5. Audit writer
-- `backend/src/utils/audit.ts`. port `../Pellow/backend/src/utils/audit.ts`: `auditContext(req)` (extract ip + user-agent from a Node request) and `writeAuditLog(params)` (fire-and-forget, never throws, never blocks, no raw PII beyond userId). Uses `import { prisma } from "@poppy/database"`.
+- `backend/src/utils/audit.ts`. port `../Pellow/backend/src/utils/audit.ts`: `auditContext(req)` (extract ip + user-agent from a Node request) and `writeAuditLog(params)` (fire-and-forget, never throws, never blocks, no raw PII beyond userId). Uses `import { prisma } from "@buttercupp/database"`.
 
 ### 6. Seed script (system-owned characters)
 - `packages/database/prisma/seed.ts`. create a small roster (3 to 5) of `Character` rows with `ownerUserId = null` (system-owned), each with a `CharacterVersion` (personality/backstory/greeting/systemPromptSnapshot), an `AppearanceSheet`, and a `VoiceProfile`. Set `currentVersionId`, `visibility = public`, `moderationStatus = approved`, `contentRating` mixed (`sfw` and `mature`), varied `style`. All ages 18+. Make the seed idempotent (upsert by a stable natural key like name).
-- Wire `packages/database/package.json` `prisma.seed` config and a `db:seed` root script (`npm run seed --workspace=@poppy/database`).
+- Wire `packages/database/package.json` `prisma.seed` config and a `db:seed` root script (`npm run seed --workspace=@buttercupp/database`).
 
 ### 7. Local migration
 - Run `npm run db:migrate` (prisma migrate dev) against LOCAL Postgres only. Then `npm run db:seed`.
 
 ## Test instructions
 ```
-# Local test DB (never a shared/prod DB). Point TEST_DATABASE_URL at a local db, e.g. poppy_test.
-createdb poppy_test 2>/dev/null || true
+# Local test DB (never a shared/prod DB). Point TEST_DATABASE_URL at a local db, e.g. buttercupp_test.
+createdb buttercupp_test 2>/dev/null || true
 psql "$TEST_DATABASE_URL" -c "CREATE EXTENSION IF NOT EXISTS vector;"
 
 # Apply the schema to the local test DB
@@ -118,15 +118,15 @@ npm run typecheck
 - [ ] `prisma migrate dev` runs clean against LOCAL Postgres; every §8 model + enum exists.
 - [ ] pgvector extension enabled; `Memory.embedding` and `MemorySummary.embedding` are `vector(N)` with the SAME N, documented.
 - [ ] Vector indexes exist (`memory_embedding_idx`, `memory_summary_embedding_idx`); a `<=>` similarity `$queryRaw` returns rows.
-- [ ] All enums are real Prisma enums and are re-exported from `@poppy/database`; `@poppy/shared` unions match the enum values.
+- [ ] All enums are real Prisma enums and are re-exported from `@buttercupp/database`; `@buttercupp/shared` unions match the enum values.
 - [ ] Relations are correct (User -> Character/Conversation/Memory/..., Character -> CharacterVersion -> AppearanceSheet/VoiceProfile, Conversation -> Message).
 - [ ] `AuditLog` has no FK relation (survives user deletion); `writeAuditLog` is fire-and-forget and never throws.
 - [ ] Seed creates >= 3 system-owned characters (`ownerUserId = null`), each with a version + appearance sheet + voice profile, all ages 18+; seed is idempotent.
-- [ ] `import { prisma } from "@poppy/database"` type-checks from both `frontend/` and `backend/`; no `new PrismaClient()` outside the singleton.
+- [ ] `import { prisma } from "@buttercupp/database"` type-checks from both `frontend/` and `backend/`; no `new PrismaClient()` outside the singleton.
 - [ ] `npm run typecheck` passes; no em dashes in the diff.
 
 ## Done criteria
-The full PRD §8 schema is migrated locally with pgvector enabled and vector indexes in place. Enums are shared through `@poppy/database`. A local test-DB Vitest run exercises migrate + CRUD + a working similarity query. The seed produces a small system-character roster. `@poppy/database` singleton imports resolve from both workspaces. Downstream phases (gallery, chat, memory, wizard, media, billing, safety) now have their tables.
+The full PRD §8 schema is migrated locally with pgvector enabled and vector indexes in place. Enums are shared through `@buttercupp/database`. A local test-DB Vitest run exercises migrate + CRUD + a working similarity query. The seed produces a small system-character roster. `@buttercupp/database` singleton imports resolve from both workspaces. Downstream phases (gallery, chat, memory, wizard, media, billing, safety) now have their tables.
 
 ## Guardrail note
-Stop and ask for explicit, fresh, per-action human approval before any `git commit`, `git push`, deploy, or migration against a non-local database. `npm run db:migrate`, `db:push`, `db:seed`, and `psql` are allowed ONLY against your LOCAL Postgres (including a local `poppy_test`). Never point `DATABASE_URL`/`TEST_DATABASE_URL` at a shared, staging, or production database in this phase. When unsure whether a target DB is non-local, assume it is and ask first.
+Stop and ask for explicit, fresh, per-action human approval before any `git commit`, `git push`, deploy, or migration against a non-local database. `npm run db:migrate`, `db:push`, `db:seed`, and `psql` are allowed ONLY against your LOCAL Postgres (including a local `buttercupp_test`). Never point `DATABASE_URL`/`TEST_DATABASE_URL` at a shared, staging, or production database in this phase. When unsure whether a target DB is non-local, assume it is and ask first.

@@ -27,13 +27,13 @@ export function Chip({
       style={
         selected
           ? {
-              borderColor: "hsl(var(--poppy-accent-rose))",
-              backgroundColor: "hsl(var(--poppy-accent-rose) / 0.15)",
-              color: "hsl(var(--poppy-fg))",
+              borderColor: "hsl(var(--buttercupp-accent-rose))",
+              backgroundColor: "hsl(var(--buttercupp-accent-rose) / 0.15)",
+              color: "hsl(var(--buttercupp-fg))",
             }
           : {
-              borderColor: "hsl(var(--poppy-border))",
-              color: "hsl(var(--poppy-muted))",
+              borderColor: "hsl(var(--buttercupp-border))",
+              color: "hsl(var(--buttercupp-muted))",
             }
       }
     >
@@ -65,17 +65,17 @@ export function OptionCard({
       style={
         selected
           ? {
-              borderColor: "hsl(var(--poppy-accent-rose))",
-              backgroundColor: "hsl(var(--poppy-accent-rose) / 0.12)",
+              borderColor: "hsl(var(--buttercupp-accent-rose))",
+              backgroundColor: "hsl(var(--buttercupp-accent-rose) / 0.12)",
             }
-          : { borderColor: "hsl(var(--poppy-border))" }
+          : { borderColor: "hsl(var(--buttercupp-border))" }
       }
     >
-      <span className="text-sm font-medium" style={{ color: "hsl(var(--poppy-fg))" }}>
+      <span className="text-sm font-medium" style={{ color: "hsl(var(--buttercupp-fg))" }}>
         {label}
       </span>
       {hint ? (
-        <span className="text-xs" style={{ color: "hsl(var(--poppy-muted))" }}>
+        <span className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
           {hint}
         </span>
       ) : null}
@@ -93,7 +93,7 @@ export function FieldGroup({
 }) {
   return (
     <div className="flex flex-col gap-2">
-      <span className="text-sm font-medium" style={{ color: "hsl(var(--poppy-fg))" }}>
+      <span className="text-sm font-medium" style={{ color: "hsl(var(--buttercupp-fg))" }}>
         {title}
       </span>
       {children}

@@ -47,9 +47,9 @@ function ResetPasswordInner() {
 
   return (
     <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center px-6 py-10">
-      <div className="poppy-glass rounded-2xl p-8">
+      <div className="buttercupp-glass rounded-2xl p-8">
         <a href="/" className="font-display text-2xl font-semibold tracking-tight">
-          Poppy
+          ButterCupp
         </a>
         <h1 className="font-display mt-6 mb-6 text-3xl font-semibold tracking-tight">
           Choose a new password
@@ -75,7 +75,7 @@ function ResetPasswordInner() {
             <a
               href="/forgot-password"
               className="font-medium underline"
-              style={{ color: "hsl(var(--poppy-accent-rose))" }}
+              style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
             >
               request a new one
             </a>

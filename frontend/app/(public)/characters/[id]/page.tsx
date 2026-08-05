@@ -48,8 +48,8 @@ export default async function CharacterDetailPage({
           <div
             className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl ring-1"
             style={{
-              backgroundColor: "hsl(var(--poppy-surface-2, 210 40% 96%))",
-              borderColor: "hsl(var(--poppy-border, 214 32% 91%))",
+              backgroundColor: "hsl(var(--buttercupp-surface-2, 210 40% 96%))",
+              borderColor: "hsl(var(--buttercupp-border, 214 32% 91%))",
             }}
           >
             {detail.avatarUrl ? (
@@ -64,7 +64,7 @@ export default async function CharacterDetailPage({
             ) : (
               <div
                 className="absolute inset-0 flex items-center justify-center text-5xl font-semibold"
-                style={{ color: "hsl(var(--poppy-muted, 215 16% 47%))" }}
+                style={{ color: "hsl(var(--buttercupp-muted, 215 16% 47%))" }}
               >
                 {detail.name[0]?.toUpperCase()}
               </div>
@@ -97,8 +97,8 @@ export default async function CharacterDetailPage({
             className="rounded-2xl p-4"
             style={{
               background:
-                "linear-gradient(135deg, hsl(var(--poppy-accent-rose, 344 84% 71%) / 0.18), hsl(var(--poppy-accent-violet, 262 72% 68%) / 0.18))",
-              border: "1px solid hsl(var(--poppy-accent-rose, 344 84% 71%) / 0.35)",
+                "linear-gradient(135deg, hsl(var(--buttercupp-accent-rose, 344 84% 71%) / 0.18), hsl(var(--buttercupp-accent-violet, 262 72% 68%) / 0.18))",
+              border: "1px solid hsl(var(--buttercupp-accent-rose, 344 84% 71%) / 0.35)",
             }}
           >
             <ChatCTA state={ctaState} />
@@ -106,14 +106,14 @@ export default async function CharacterDetailPage({
         </div>
 
         <div className="flex flex-col gap-6">
-          <div className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-wide" style={{ color: "hsl(var(--poppy-muted, 215 16% 47%))" }}>
+          <div className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-wide" style={{ color: "hsl(var(--buttercupp-muted, 215 16% 47%))" }}>
             <span>{detail.creatorLabel}</span>
             <span aria-hidden>&middot;</span>
             <span>{detail.contentRating}</span>
             <span aria-hidden>&middot;</span>
             <span>{detail.style}</span>
           </div>
-          <p className="text-base leading-7" style={{ color: "hsl(var(--poppy-fg, 222 47% 11%))" }}>
+          <p className="text-base leading-7" style={{ color: "hsl(var(--buttercupp-fg, 222 47% 11%))" }}>
             {detail.bio}
           </p>
           {detail.tags.length > 0 ? (
@@ -123,8 +123,8 @@ export default async function CharacterDetailPage({
                   key={t}
                   className="rounded-full px-3 py-1 text-xs"
                   style={{
-                    backgroundColor: "hsl(var(--poppy-accent-rose, 344 84% 71%) / 0.15)",
-                    color: "hsl(var(--poppy-accent-rose, 344 84% 71%))",
+                    backgroundColor: "hsl(var(--buttercupp-accent-rose, 344 84% 71%) / 0.15)",
+                    color: "hsl(var(--buttercupp-accent-rose, 344 84% 71%))",
                   }}
                 >
                   {t}
@@ -143,11 +143,11 @@ export default async function CharacterDetailPage({
                 <div>
                   <h2
                     className="mb-2 text-xs font-semibold uppercase tracking-wider"
-                    style={{ color: "hsl(var(--poppy-muted, 215 16% 47%))" }}
+                    style={{ color: "hsl(var(--buttercupp-muted, 215 16% 47%))" }}
                   >
                     Personality
                   </h2>
-                  <p className="text-sm leading-7" style={{ color: "hsl(var(--poppy-fg, 222 47% 11%))" }}>
+                  <p className="text-sm leading-7" style={{ color: "hsl(var(--buttercupp-fg, 222 47% 11%))" }}>
                     {detail.personalitySummary}
                   </p>
                 </div>
@@ -156,15 +156,15 @@ export default async function CharacterDetailPage({
                 <div>
                   <h2
                     className="mb-2 text-xs font-semibold uppercase tracking-wider"
-                    style={{ color: "hsl(var(--poppy-muted, 215 16% 47%))" }}
+                    style={{ color: "hsl(var(--buttercupp-muted, 215 16% 47%))" }}
                   >
                     Greeting
                   </h2>
                   <p
                     className="rounded-xl border p-4 italic leading-7"
                     style={{
-                      borderColor: "hsl(var(--poppy-border, 214 32% 91%))",
-                      backgroundColor: "hsl(var(--poppy-surface, 210 40% 96%))",
+                      borderColor: "hsl(var(--buttercupp-border, 214 32% 91%))",
+                      backgroundColor: "hsl(var(--buttercupp-surface, 210 40% 96%))",
                     }}
                   >
                     &ldquo;{detail.greeting}&rdquo;

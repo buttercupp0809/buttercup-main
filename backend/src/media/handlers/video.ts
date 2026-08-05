@@ -8,8 +8,8 @@
 // end. Set FAL_VIDEO_MODEL/REPLICATE_VIDEO_MODEL (+ keys) to switch to real
 // generation with zero other changes.
 
-import { prisma } from "@poppy/database";
-import type { MediaJobData } from "@poppy/shared";
+import { prisma } from "@buttercupp/database";
+import type { MediaJobData } from "@buttercupp/shared";
 import type { HandlerOutput } from "./index";
 import { buildVideoPrompt } from "../video/prompt";
 import { generateVideo, videoProvidersConfigured } from "../video/providers";

@@ -1,6 +1,6 @@
-# Poppy — Cursor Implementation Prompts
+# ButterCupp — Cursor Implementation Prompts
 
-This folder contains the **sequenced, copy-paste prompts** that build Poppy phase by phase in Cursor. Each file corresponds to one phase in the Master PRD roadmap (`../prds/master-prd.md` §17). Run them **in order** — each assumes the previous phases are green.
+This folder contains the **sequenced, copy-paste prompts** that build ButterCupp phase by phase in Cursor. Each file corresponds to one phase in the Master PRD roadmap (`../prds/master-prd.md` §17). Run them **in order** — each assumes the previous phases are green.
 
 ## How to use
 1. Open the project in Cursor.
@@ -9,7 +9,7 @@ This folder contains the **sequenced, copy-paste prompts** that build Poppy phas
 4. Do not skip phases; later phases depend on earlier scaffolding, schema, and utilities.
 
 ## Ground rules for every phase (apply to all prompts)
-- **Mirror Pellow** (`../Pellow`) for conventions: npm-workspaces monorepo, `packages/database` Prisma singleton (`import { prisma } from "@poppy/database"`, never `new PrismaClient()`), multi-provider fallback chains, `retry.ts`/`safe-types.ts`/`audit.ts`/`config/flags.ts` utilities, cookie JWT via `jose`, design tokens as CSS vars + reusable components, Vitest + Playwright.
+- **Mirror Pellow** (`../Pellow`) for conventions: npm-workspaces monorepo, `packages/database` Prisma singleton (`import { prisma } from "@buttercupp/database"`, never `new PrismaClient()`), multi-provider fallback chains, `retry.ts`/`safe-types.ts`/`audit.ts`/`config/flags.ts` utilities, cookie JWT via `jose`, design tokens as CSS vars + reusable components, Vitest + Playwright.
 - **Locked decisions** (PRD §0): mature-gated from day 1 (age verification, adult-friendly payment processor, OpenRouter uncensored model, SB 243 protocol), AWS infra (Amplify + ECS Fargate + RDS + pgvector + Redis + S3), all four hard capabilities in MVP, web-first responsive PWA.
 - **TypeScript strict**; Zod validation on every mutation; server-centric Next.js 16 App Router.
 - **No em dashes** in code, comments, or docs (use commas/periods/parentheses).

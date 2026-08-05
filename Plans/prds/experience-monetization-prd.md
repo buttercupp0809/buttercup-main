@@ -1,4 +1,4 @@
-# Poppy — Experience, Monetization & Prompt PRD (v2)
+# ButterCupp — Experience, Monetization & Prompt PRD (v2)
 
 **Scope:** marketing site, auth polish, Candy/Nastia-inspired product UI, chat gesture formatting, strict paywall + Daily/Weekly/Monthly plans, fill-in prompt structure, memory/RAG + DB hardening.
 Status: Draft v1 · Owner: Kshitij · Last updated: 2026-08-02
@@ -32,7 +32,7 @@ Status: Draft v1 · Owner: Kshitij · Last updated: 2026-08-02
 
 Reference products: **Candy AI** (most visually polished, image-forward, deep creation, strong memory) and **Nastia AI** (best companion writing + gamification, 8-step builder, group chat). Both are **dark, cinematic, image-forward, sidebar-driven**.
 
-**Poppy product aesthetic** = dark, cinematic, sensual-but-refined, image-forward:
+**ButterCupp product aesthetic** = dark, cinematic, sensual-but-refined, image-forward:
 - **Theme:** dark base (near-black `#0B0B0F`), warm skin-tone/rose accent (`#FF6B8A`/`#E8A0BF`) + soft violet secondary, high-contrast white text. NOT the current light slate look. (Marketing site may use a lighter hero; the *app* is dark.)
 - **Typography:** a distinctive display face for headings (e.g. a warm humanist serif or a characterful grotesque) paired with a clean body sans. Avoid generic Inter-only. (Exact pairing chosen in the build prompt.)
 - **Persona cards:** large image-forward cards with gradient scrim, name + tagline overlay, online/mood dot, hover motion.

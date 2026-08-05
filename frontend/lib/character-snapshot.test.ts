@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { buildCharacterSystemPrompt, moderateCharacter } from "./character-snapshot";
-import type { CreateCharacterInput } from "@poppy/shared";
+import type { CreateCharacterInput } from "@buttercupp/shared";
 
 const DRAFT: CreateCharacterInput = {
   style: "anime",

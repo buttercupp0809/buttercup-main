@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@poppy/database";
-import { memoryListQuerySchema, type MemoryDTO } from "@poppy/shared";
+import { prisma } from "@buttercupp/database";
+import { memoryListQuerySchema, type MemoryDTO } from "@buttercupp/shared";
 import { requireAuth } from "@/lib/auth";
 import { assertSafeId } from "@/lib/safe-types";
 import { jsonError } from "@/lib/api-helpers";

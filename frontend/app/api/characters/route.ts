@@ -3,8 +3,8 @@ import {
   characterListQuerySchema,
   createCharacterInputSchema,
   styleWireToEnum,
-} from "@poppy/shared";
-import { prisma } from "@poppy/database";
+} from "@buttercupp/shared";
+import { prisma } from "@buttercupp/database";
 import { listCharacters } from "@/lib/characters";
 import { getViewer } from "@/lib/viewer";
 import { jsonError } from "@/lib/api-helpers";

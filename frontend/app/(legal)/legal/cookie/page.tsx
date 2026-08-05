@@ -2,19 +2,19 @@ import { LegalPage } from "@/components/legal/LegalPage";
 import { LEGAL } from "@/lib/legal/config";
 
 export const dynamic = "force-static";
-export const metadata = { title: "Cookie Policy | Poppy" };
+export const metadata = { title: "Cookie Policy | ButterCupp" };
 
 export default function CookiePage() {
   return (
     <LegalPage title="Cookie Policy">
       <p>
-        This policy explains the cookies Poppy sets and how to control them.
+        This policy explains the cookies ButterCupp sets and how to control them.
       </p>
 
       <h2>1. Strictly necessary</h2>
       <ul>
         <li>
-          <strong>poppy_auth</strong> &mdash; HTTP-only session cookie holding
+          <strong>buttercupp_auth</strong> &mdash; HTTP-only session cookie holding
           the signed JWT that keeps you logged in. Removing it logs you out.
         </li>
       </ul>
@@ -39,7 +39,7 @@ export default function CookiePage() {
       <h2>4. Controls</h2>
       <p>
         You can clear cookies at any time from your browser settings. Doing
-        so will sign you out of Poppy.
+        so will sign you out of ButterCupp.
       </p>
 
       <h2>5. Contact</h2>

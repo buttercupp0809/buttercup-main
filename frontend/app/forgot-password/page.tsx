@@ -22,28 +22,28 @@ export default function ForgotPasswordPage() {
 
   return (
     <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center px-6 py-10">
-      <div className="poppy-glass rounded-2xl p-8">
+      <div className="buttercupp-glass rounded-2xl p-8">
         <a href="/" className="font-display text-2xl font-semibold tracking-tight">
-          Poppy
+          ButterCupp
         </a>
         <h1 className="font-display mt-6 text-3xl font-semibold tracking-tight">Reset password</h1>
         {sent ? (
           <div className="mt-4 flex flex-col gap-3">
-            <p className="text-sm" style={{ color: "hsl(var(--poppy-muted))" }}>
+            <p className="text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
               If an account exists for <strong>{email}</strong>, a reset link is on its way. Check
               your inbox (and spam). The link expires shortly.
             </p>
             <a
               href="/login"
               className="text-sm font-medium underline"
-              style={{ color: "hsl(var(--poppy-accent-rose))" }}
+              style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
             >
               Back to sign in
             </a>
           </div>
         ) : (
           <>
-            <p className="mb-6 mt-1 text-sm" style={{ color: "hsl(var(--poppy-muted))" }}>
+            <p className="mb-6 mt-1 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
               Enter your email and we will send you a link to choose a new password.
             </p>
             <form onSubmit={submit} className="flex flex-col gap-4">
@@ -55,9 +55,9 @@ export default function ForgotPasswordPage() {
                   autoComplete="email"
                   className="rounded-md border px-3 py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
                   style={{
-                    borderColor: "hsl(var(--poppy-border))",
-                    backgroundColor: "hsl(var(--poppy-surface))",
-                    color: "hsl(var(--poppy-fg))",
+                    borderColor: "hsl(var(--buttercupp-border))",
+                    backgroundColor: "hsl(var(--buttercupp-surface))",
+                    color: "hsl(var(--buttercupp-fg))",
                   }}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -67,12 +67,12 @@ export default function ForgotPasswordPage() {
                 {busy ? "Sending..." : "Send reset link"}
               </Button>
             </form>
-            <p className="mt-6 text-sm" style={{ color: "hsl(var(--poppy-muted))" }}>
+            <p className="mt-6 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
               Remembered it?{" "}
               <a
                 href="/login"
                 className="font-medium underline"
-                style={{ color: "hsl(var(--poppy-accent-rose))" }}
+                style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
               >
                 Sign in
               </a>

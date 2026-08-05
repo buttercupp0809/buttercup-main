@@ -1,4 +1,4 @@
-// Payment types. Poppy targets adult-friendly processors ONLY. Stripe and
+// Payment types. ButterCupp targets adult-friendly processors ONLY. Stripe and
 // PayPal are structurally absent from this file so there is no path a
 // mature account could reach a mainstream processor.
 

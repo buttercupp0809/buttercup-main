@@ -29,7 +29,7 @@ Notes:
 1. Import the repo in Vercel.
 2. **Root Directory = `frontend`** (Project Settings > General). Vercel detects
    the npm workspace and `frontend/vercel.json` supplies the install/build
-   commands (build `@poppy/shared` + `@poppy/database`, then `next build`).
+   commands (build `@buttercupp/shared` + `@buttercupp/database`, then `next build`).
 3. Framework preset: **Next.js** (auto-detected).
 4. Leave Build/Install command overrides blank in the dashboard; `vercel.json`
    wins.

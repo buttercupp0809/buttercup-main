@@ -8,7 +8,7 @@
 //           promptOverride and resources are appended.
 // LEVEL_1 = distress signals. Adds warmth to the persona prompt.
 
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 
 export type CrisisLevel = 0 | 1 | 2 | 3;
 

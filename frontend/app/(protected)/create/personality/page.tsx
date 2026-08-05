@@ -38,7 +38,7 @@ export default function PersonalityStep() {
     <div className="flex flex-col gap-6">
       <div>
         <h1 className="font-display text-2xl font-semibold">Personality</h1>
-        <p className="mt-1 text-sm" style={{ color: "hsl(var(--poppy-muted))" }}>
+        <p className="mt-1 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
           Pick a personality to start. One tap fills everything.
         </p>
       </div>
@@ -63,7 +63,7 @@ export default function PersonalityStep() {
             <Chip key={t} label={t} selected={tags.includes(t)} onClick={() => toggleTag(t)} />
           ))}
         </div>
-        <span className="text-xs" style={{ color: "hsl(var(--poppy-muted))" }}>
+        <span className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
           {tags.length > 0 ? `${tags.length} selected` : "Pick at least one"}
         </span>
       </FieldGroup>
@@ -84,9 +84,9 @@ export default function PersonalityStep() {
       {activeArchetype ? (
         <div
           className="rounded-md p-3 text-xs"
-          style={{ backgroundColor: "hsl(var(--poppy-surface-2))", color: "hsl(var(--poppy-muted))" }}
+          style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))", color: "hsl(var(--buttercupp-muted))" }}
         >
-          <span style={{ color: "hsl(var(--poppy-fg))" }}>First message: </span>
+          <span style={{ color: "hsl(var(--buttercupp-fg))" }}>First message: </span>
           <span className="italic">{draft.greeting}</span>
         </div>
       ) : null}
@@ -98,7 +98,7 @@ export default function PersonalityStep() {
           type="button"
           onClick={() => setShowDetails((v) => !v)}
           className="cursor-pointer text-xs underline"
-          style={{ color: "hsl(var(--poppy-muted))" }}
+          style={{ color: "hsl(var(--buttercupp-muted))" }}
         >
           {showDetails ? "Hide details" : "Fine-tune details (optional)"}
         </button>
@@ -135,9 +135,9 @@ export default function PersonalityStep() {
 }
 
 const inputStyle = {
-  borderColor: "hsl(var(--poppy-border))",
-  backgroundColor: "hsl(var(--poppy-surface-2))",
-  color: "hsl(var(--poppy-fg))",
+  borderColor: "hsl(var(--buttercupp-border))",
+  backgroundColor: "hsl(var(--buttercupp-surface-2))",
+  color: "hsl(var(--buttercupp-fg))",
 } as const;
 
 function DetailField({
@@ -153,7 +153,7 @@ function DetailField({
 }) {
   return (
     <label className="flex flex-col gap-1 text-sm">
-      <span style={{ color: "hsl(var(--poppy-muted))" }}>{label}</span>
+      <span style={{ color: "hsl(var(--buttercupp-muted))" }}>{label}</span>
       <input
         value={value}
         maxLength={maxLength}
@@ -178,7 +178,7 @@ function DetailArea({
 }) {
   return (
     <label className="flex flex-col gap-1 text-sm">
-      <span style={{ color: "hsl(var(--poppy-muted))" }}>{label}</span>
+      <span style={{ color: "hsl(var(--buttercupp-muted))" }}>{label}</span>
       <textarea
         value={value}
         rows={rows}

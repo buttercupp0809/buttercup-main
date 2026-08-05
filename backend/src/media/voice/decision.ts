@@ -2,7 +2,7 @@
 //   isVoiceRequest(text)     -> the user explicitly asked for audio
 //   shouldSendAsVoice(ctx)   -> the system decides to deliver voice
 //
-// Poppy-specific gating: voice is a paid consumable, and we cap the recent
+// ButterCupp-specific gating: voice is a paid consumable, and we cap the recent
 // per-(user, character) voice count so a chatty character does not burn
 // the user's balance without consent.
 

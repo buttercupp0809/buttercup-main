@@ -62,9 +62,9 @@ export function PasswordField({
             "focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400",
           )}
           style={{
-            borderColor: "hsl(var(--poppy-border))",
-            backgroundColor: "hsl(var(--poppy-surface))",
-            color: "hsl(var(--poppy-fg))",
+            borderColor: "hsl(var(--buttercupp-border))",
+            backgroundColor: "hsl(var(--buttercupp-surface))",
+            color: "hsl(var(--buttercupp-fg))",
           }}
           value={value}
           onChange={(e) => onChange(e.target.value)}
@@ -95,7 +95,7 @@ export function PasswordField({
             <PasswordChecklist value={value} onValidityChange={handleValidity} />
           </div>
           {value.length > 0 && valid ? (
-            <p className="text-xs" style={{ color: "hsl(var(--poppy-accent-rose))" }}>
+            <p className="text-xs" style={{ color: "hsl(var(--buttercupp-accent-rose))" }}>
               Password meets every requirement.
             </p>
           ) : null}

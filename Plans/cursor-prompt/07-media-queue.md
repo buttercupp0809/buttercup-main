@@ -8,7 +8,7 @@ The hard contract: **chat is never blocked by a media job**. A media request enq
 Reference: PRD §7.2(2) (async media queue divergence), §11 (media pipeline), §5.8 (token accounting), §9.2 (WS event contract).
 
 ## Prerequisites
-- Phase 00 green: monorepo, `packages/database` Prisma singleton (`import { prisma } from "@poppy/database"`), `packages/shared` Zod DTOs, `backend/src/utils/retry.ts` with `RETRY_PRESETS`, `config/flags.ts`, `audit.ts`.
+- Phase 00 green: monorepo, `packages/database` Prisma singleton (`import { prisma } from "@buttercupp/database"`), `packages/shared` Zod DTOs, `backend/src/utils/retry.ts` with `RETRY_PRESETS`, `config/flags.ts`, `audit.ts`.
 - Phase 02 green: `MediaAsset`, `TokenLedger`, `Conversation`, `Message` tables exist in the Prisma schema.
 - Phase 04 green: WebSocket gateway on ECS with per-connection auth (cookie JWT) and a way to emit server->client events to a given user/connection.
 - Local Redis reachable via `REDIS_URL` (ElastiCache in prod; `redis://localhost:6379` locally).
@@ -16,12 +16,12 @@ Reference: PRD §7.2(2) (async media queue divergence), §11 (media pipeline), �
 
 ## Context to paste into Cursor
 ```
-You are implementing Phase 07 of Poppy (see prds/master-prd.md §7.2(2), §11, §5.8, §9.2).
+You are implementing Phase 07 of ButterCupp (see prds/master-prd.md §7.2(2), §11, §5.8, §9.2).
 
 Build the GENERIC async media pipeline only. Voice (Phase 08) and image (Phase 09) plug handlers into it later. Do not implement provider calls now; use a mock generator behind the handler interface.
 
 Mirror Pellow conventions:
-- Prisma singleton: import { prisma } from "@poppy/database". Never new PrismaClient().
+- Prisma singleton: import { prisma } from "@buttercupp/database". Never new PrismaClient().
 - Retry/backoff via RETRY_PRESETS + withRetry from backend/src/utils/retry.ts (../Pellow/backend/src/utils/retry.ts). Add a "media" preset.
 - Provider-chain + graceful-degradation shape mirrors ../Pellow/backend/src/media/voice.ts (per-provider try/catch, session disable flags), but here it is the QUEUE that owns retries, not the handler.
 - Zod DTOs live in packages/shared. TypeScript strict. Server-side validation on every mutation.
@@ -40,7 +40,7 @@ Token rule: debit TokenLedger atomically when the job STARTS work; on failure, r
    - `MediaJobData` Zod schema: `{ mediaAssetId, userId, conversationId, characterId, kind, tokenCost, payload }` where `payload` is an opaque `Record<string, unknown>` (per-kind handlers own its shape).
    - `EnqueueMediaRequest` / `EnqueueMediaResponse` (`{ jobId, mediaAssetId, status: "queued" }`).
    - `MediaReadyEvent` (matches PRD §9.2 `media.ready { mediaAssetId, url }`, plus `kind`, `conversationId`).
-   - Export a `MEDIA_QUEUE_NAME = "poppy-media"` constant.
+   - Export a `MEDIA_QUEUE_NAME = "buttercupp-media"` constant.
 
 2. **Redis connection factory**: `backend/src/queue/connection.ts`
    - `getRedisConnection()` returns a lazily-created `ioredis` client from `REDIS_URL` with `maxRetriesPerRequest: null` (BullMQ requirement) and `enableReadyCheck: false`.
@@ -78,7 +78,7 @@ Token rule: debit TokenLedger atomically when the job STARTS work; on failure, r
    - Add `RETRY_PRESETS.media` to `backend/src/utils/retry.ts` (`maxRetries: 2, baseDelayMs: 2000, maxDelayMs: 8000`, no retry on 401/403).
 
 9. **WS bridge**: `backend/src/queue/ws-notify.ts`
-   - `notifyMediaReady(userId, event: MediaReadyEvent)` and `notifyMediaError(userId, ...)` call into the Phase-04 gateway's user->connection emit. Since the worker may run in a separate process/task, publish via a Redis pub/sub channel (`poppy:ws:{userId}`) that the gateway subscribes to. This is the ECS scale-out fan-out noted in PRD §18.
+   - `notifyMediaReady(userId, event: MediaReadyEvent)` and `notifyMediaError(userId, ...)` call into the Phase-04 gateway's user->connection emit. Since the worker may run in a separate process/task, publish via a Redis pub/sub channel (`buttercupp:ws:{userId}`) that the gateway subscribes to. This is the ECS scale-out fan-out noted in PRD §18.
 
 10. **Enqueue route**: `backend/app/api/media/[kind]/route.ts` (or backend REST handler)
     - Validate `EnqueueMediaRequest` with Zod. Auth via cookie JWT (Phase 01). Resolve `tokenCost` for the kind from a `MEDIA_TOKEN_COSTS` map in `packages/shared`.
@@ -107,7 +107,7 @@ Vitest cases to author (`backend/src/media/__tests__/`, `backend/src/queue/__tes
 - **token debit atomic**: balance decremented exactly by `tokenCost`, a `TokenLedger` row written with correct `balanceAfter`; two concurrent jobs on the same user never drive balance negative.
 - **insufficient balance**: enqueue route returns `402` paywall body when balance < cost; worker `debitTokens` throws `InsufficientTokensError` and marks the asset `failed` without retry.
 - **failure + refund**: handler throws on all attempts -> asset `failed`, tokens refunded (net-zero ledger), `error` emitted.
-- **integration**: enqueue -> worker -> assert a `media.ready` event is published on `poppy:ws:{userId}` and delivered to a subscribed fake gateway connection.
+- **integration**: enqueue -> worker -> assert a `media.ready` event is published on `buttercupp:ws:{userId}` and delivered to a subscribed fake gateway connection.
 
 ## Sanity checklist
 - [ ] Requesting media returns a `jobId` immediately; the chat WebSocket keeps streaming tokens with no stall (chat never blocked by a media job).

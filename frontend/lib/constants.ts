@@ -1,7 +1,7 @@
 // Frontend-wide constants. Kept in one place so cookie names, TTLs, and JWT
 // scopes cannot drift between the auth lib and the middleware.
 
-export const AUTH_COOKIE = "poppy_auth";
+export const AUTH_COOKIE = "buttercupp_auth";
 
 // One week. Short enough that stolen tokens age out, long enough that users
 // are not forced to log in every day. Extend/refresh flow lands in a later
@@ -14,10 +14,10 @@ export const MAGIC_LINK_TTL_S = 15 * 60;
 // Reset token TTL: 1 hour.
 export const RESET_MAX_AGE = 60 * 60;
 
-export const JWT_ISSUER = "poppy";
-export const JWT_AUD_AUTH = "poppy:auth";
-export const JWT_AUD_RESET = "poppy:reset";
-export const JWT_AUD_MAGIC = "poppy:magic";
+export const JWT_ISSUER = "buttercupp";
+export const JWT_AUD_AUTH = "buttercupp:auth";
+export const JWT_AUD_RESET = "buttercupp:reset";
+export const JWT_AUD_MAGIC = "buttercupp:magic";
 
 // Origins the app itself calls (auth cookie is same-site Lax so this is
 // primarily for CORS on /api). NEXT_PUBLIC_APP_URL is the source of truth.

@@ -6,7 +6,7 @@ import {
   viewerAllowsMature,
   type CharacterViewer,
 } from "./query";
-import { characterListQuerySchema } from "@poppy/shared";
+import { characterListQuerySchema } from "@buttercupp/shared";
 
 const VERIFIED_MEMBER: CharacterViewer = { id: "user-1", ageVerified: true };
 const UNVERIFIED_MEMBER: CharacterViewer = { id: "user-2", ageVerified: false };

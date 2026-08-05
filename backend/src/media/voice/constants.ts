@@ -1,5 +1,5 @@
 // Voice pipeline constants. MEDIA_TOKEN_COSTS.voice already covers the
-// ledger side (defined in @poppy/shared/media). This module owns per-provider
+// ledger side (defined in @buttercupp/shared/media). This module owns per-provider
 // model + output selection so a swap does not touch generate.ts.
 
 export const MAX_VOICE_WORDS = 250;

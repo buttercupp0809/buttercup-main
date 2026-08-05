@@ -1,19 +1,19 @@
 # Phase 01: Auth & age/compliance gate
 
 ## Goal
-Deliver Poppy's identity and mature-gating layer: cookie-based JWT auth via `jose` (httpOnly, Secure, SameSite=Lax, audience-scoped) mirroring `../Pellow/frontend/lib/auth.ts`; email+password signup/login (argon2 or bcrypt hashing), Google OAuth, and optional passwordless magic-link (SHA-256 hashed token at rest, short TTL, timing-safe compare); a Next.js middleware guarding protected routes mirroring `../Pellow/frontend/middleware.ts`; and the AGE & COMPLIANCE GATE (date-of-birth capture, 18+ enforcement, ToS/privacy acceptance, jurisdiction capture) that must pass before any character interaction. Ships the `AgeVerificationProvider` interface (self-declared baseline + vendor-escalation hook) and a persistent AI-disclosure UI scaffold (SB 243). All request/response DTOs are Zod schemas in `@poppy/shared`.
+Deliver ButterCupp's identity and mature-gating layer: cookie-based JWT auth via `jose` (httpOnly, Secure, SameSite=Lax, audience-scoped) mirroring `../Pellow/frontend/lib/auth.ts`; email+password signup/login (argon2 or bcrypt hashing), Google OAuth, and optional passwordless magic-link (SHA-256 hashed token at rest, short TTL, timing-safe compare); a Next.js middleware guarding protected routes mirroring `../Pellow/frontend/middleware.ts`; and the AGE & COMPLIANCE GATE (date-of-birth capture, 18+ enforcement, ToS/privacy acceptance, jurisdiction capture) that must pass before any character interaction. Ships the `AgeVerificationProvider` interface (self-declared baseline + vendor-escalation hook) and a persistent AI-disclosure UI scaffold (SB 243). All request/response DTOs are Zod schemas in `@buttercupp/shared`.
 
 This phase covers PRD §5.1 (auth & age verification), §12 (compliance & safety, the age/disclosure parts), and §15 (security).
 
 ## Prerequisites
-- Phase 00 green: monorepo, `@poppy/database` singleton, `@poppy/shared`, tooling, Dockerfile.
+- Phase 00 green: monorepo, `@buttercupp/database` singleton, `@buttercupp/shared`, tooling, Dockerfile.
 - Phase 02 (full data model) is NOT required to start, but this phase adds the auth-relevant models. If Phase 02 has not run, add the `User`, `AgeVerification`, and `MagicLink` models here as a forward-compatible subset that Phase 02 will absorb (same field names). Do not duplicate models: if Phase 02 already defined them, extend rather than redeclare.
 - Local Postgres reachable via `DATABASE_URL`; run migrations LOCALLY only.
 - `JWT_SECRET` set locally to a value >= 32 chars.
 
 ## Context to paste into Cursor
 ```
-You are building Phase 01 of "Poppy" (mature-gated AI companion platform): auth + the age/compliance gate.
+You are building Phase 01 of "ButterCupp" (mature-gated AI companion platform): auth + the age/compliance gate.
 
 Authoritative spec: prds/master-prd.md. Read:
 - §5.1 Auth & age verification (email/password + Google OAuth + magic-link; age & compliance gate before any character interaction; AgeVerificationProvider abstraction; httpOnly cookie JWT via jose, audience-scoped; middleware guards).
@@ -25,13 +25,13 @@ Mirror Pellow exactly for auth mechanics:
 - ../Pellow/frontend/middleware.ts, edge-runtime middleware: re-implements the same fail-closed secret guard (cannot import lib/auth.ts in edge), verifies the auth cookie on protected paths, redirects unauthenticated users, applies rate-limit + CORS + content-type checks on /api. matcher covers protected + api paths.
 - ../Pellow/backend/src/utils/safe-types.ts, assertSafeId/assertSafeString runtime guards for any user value entering a Prisma where.
 
-Poppy-specific requirements on top of Pellow:
+ButterCupp-specific requirements on top of Pellow:
 - Add an AGE & COMPLIANCE GATE that runs after auth but BEFORE any /chat or character interaction. It captures date of birth, enforces 18+, records ToS + privacy acceptance, and captures jurisdiction (country/region). A user who has not passed the gate is redirected to /age-gate from every protected character route, and cannot reach chat by typing the URL directly.
 - Add an AgeVerificationProvider interface: baseline "self_declared" implementation now, plus a "vendor_verified" escalation hook (stub) triggered by mature-content access + jurisdiction rules. Persist results in an AgeVerification row and stamp User.ageVerifiedAt / User.ageVerificationLevel.
 - Add a persistent AI-disclosure UI scaffold (a always-visible "You are talking to an AI" indicator component) to satisfy SB 243. Wire the component into the app shell; the chat surface (Phase 04) will consume it.
-- SameSite for the main auth cookie is Lax (Poppy uses OAuth redirects). Keep httpOnly + Secure(in prod). Do NOT store raw magic-link tokens: hash with SHA-256, store the hash, compare timing-safe, short TTL (e.g. 15 min), single-use (consumedAt).
+- SameSite for the main auth cookie is Lax (ButterCupp uses OAuth redirects). Keep httpOnly + Secure(in prod). Do NOT store raw magic-link tokens: hash with SHA-256, store the hash, compare timing-safe, short TTL (e.g. 15 min), single-use (consumedAt).
 
-Hard rules: TypeScript strict; every mutation validated with a Zod DTO from @poppy/shared; no em dashes; server-centric Next.js 16 App Router; never new PrismaClient() (import { prisma } from "@poppy/database").
+Hard rules: TypeScript strict; every mutation validated with a Zod DTO from @buttercupp/shared; no em dashes; server-centric Next.js 16 App Router; never new PrismaClient() (import { prisma } from "@buttercupp/database").
 Do NOT run git commit/push, deploy, or migrate a non-local DB.
 ```
 
@@ -45,14 +45,14 @@ In `packages/database/prisma/schema.prisma` add (or extend, if Phase 02 already 
 Then run LOCAL migration only: `npm run db:migrate` (prisma migrate dev). Never target a non-local DB.
 
 ### 2. Constants + secret guard
-- `frontend/lib/constants.ts`. cookie names (`AUTH_COOKIE = "poppy_auth"`), TTLs (`TOKEN_MAX_AGE`, `MAGIC_LINK_TTL_S = 900`), `JWT_ISSUER = "poppy"`, audiences (`JWT_AUD_AUTH`, `JWT_AUD_RESET`, `JWT_AUD_MAGIC`), `ALLOWED_ORIGINS`.
+- `frontend/lib/constants.ts`. cookie names (`AUTH_COOKIE = "buttercupp_auth"`), TTLs (`TOKEN_MAX_AGE`, `MAGIC_LINK_TTL_S = 900`), `JWT_ISSUER = "buttercupp"`, audiences (`JWT_AUD_AUTH`, `JWT_AUD_RESET`, `JWT_AUD_MAGIC`), `ALLOWED_ORIGINS`.
 - `frontend/lib/auth.ts`. port from `../Pellow/frontend/lib/auth.ts`: `getSecret()` fail-closed >= 32-char/32-byte guard; `signAuthToken(userId)` / `verifyAuthToken(token)` (issuer + `JWT_AUD_AUTH`); `setAuthCookie`/`clearAuthCookie` (httpOnly, `secure: isProd()`, `sameSite: "lax"`, path `/`, maxAge `TOKEN_MAX_AGE`); `getAuthUserId()`, `getCurrentUser()`, `requireAuth()` (redirect to `/login`), `requireAuthApi(requestedUserId)` (401/403). Add a `requireAgeVerified()` helper: loads the user, and if `ageVerifiedAt` is null OR gate acceptance is missing, `redirect("/age-gate")`.
 
 ### 3. Password + token crypto helpers
 - `frontend/lib/password.ts`. `hashPassword` / `verifyPassword` using argon2id (preferred) or bcrypt. Never log plaintext.
 - `frontend/lib/magic-link.ts`. generate a random token (crypto.randomBytes), return the raw token to email and store only `sha256(token)`; `verifyMagicLink(rawToken)` hashes the input and does a timing-safe compare against the stored hash, checks `expiresAt` and `consumedAt`, and single-uses it (`consumedAt = now`).
 
-### 4. Zod DTOs in `@poppy/shared`
+### 4. Zod DTOs in `@buttercupp/shared`
 - `packages/shared/src/dto/auth.ts`. `SignupDto` (email, password, dob, jurisdiction, tosAccepted, privacyAccepted), `LoginDto` (email, password), `MagicLinkRequestDto` (email), `AgeGateDto` (dob, jurisdiction, tosAccepted true, privacyAccepted true). Enforce 18+ in `AgeGateDto`/`SignupDto` via a refinement computing age from dob.
 - Export from `packages/shared/src/index.ts`. Every API route parses input with these.
 
@@ -106,8 +106,8 @@ npm run test:e2e -- auth-age-gate      # covers:
 - [ ] `AgeVerification` row + `User.ageVerifiedAt`/`ageVerificationLevel` are stamped on gate pass; the `AgeVerificationProvider` interface exists with `SelfDeclaredProvider` live and `VendorProvider` stubbed.
 - [ ] ToS + privacy acceptance timestamps persisted; jurisdiction captured.
 - [ ] Persistent AI-disclosure indicator renders on the protected shell (SB 243).
-- [ ] Every auth/age API route validates input with a `@poppy/shared` Zod DTO; user values entering Prisma `where` pass through `assertSafeId`/`assertSafeString`.
-- [ ] `import { prisma } from "@poppy/database"` used everywhere; no `new PrismaClient()`.
+- [ ] Every auth/age API route validates input with a `@buttercupp/shared` Zod DTO; user values entering Prisma `where` pass through `assertSafeId`/`assertSafeString`.
+- [ ] `import { prisma } from "@buttercupp/database"` used everywhere; no `new PrismaClient()`.
 - [ ] No em dashes in the diff.
 
 ## Done criteria

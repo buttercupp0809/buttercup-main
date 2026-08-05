@@ -1,37 +1,37 @@
 # Phase 14: Marketing landing + top nav + footer
 
 ## Goal
-Turn Poppy's placeholder landing (`frontend/app/page.tsx`, a bare hero with two buttons) into a real marketing home page: a hero with dynamic companion previews pulled from real public characters, value props (unfiltered chat, voice, image, memory, create-your-own), a live persona carousel, social-proof band, and clear CTAs ("Create your companion" / "Browse"). Upgrade the public top bar in `frontend/app/(public)/layout.tsx` (currently "Poppy / Browse / Sign in / Sign up") into a polished marketing header with Log in + Sign up (and a Dashboard link for logged-in users). Add a site-wide `Footer` component that links every legal page (built in Phase 15), socials, an 18+ mark, and a company line, and mount it on the public shell.
+Turn ButterCupp's placeholder landing (`frontend/app/page.tsx`, a bare hero with two buttons) into a real marketing home page: a hero with dynamic companion previews pulled from real public characters, value props (unfiltered chat, voice, image, memory, create-your-own), a live persona carousel, social-proof band, and clear CTAs ("Create your companion" / "Browse"). Upgrade the public top bar in `frontend/app/(public)/layout.tsx` (currently "ButterCupp / Browse / Sign in / Sign up") into a polished marketing header with Log in + Sign up (and a Dashboard link for logged-in users). Add a site-wide `Footer` component that links every legal page (built in Phase 15), socials, an 18+ mark, and a company line, and mount it on the public shell.
 
 This phase covers PRD (`prds/experience-monetization-prd.md`) §2.1 (marketing website: landing + footer) and §1 (design direction). Marketing may use a lighter hero; the dark in-app shell is Phase 17. This is a visual layer over existing data: the characters query, gallery, and character routes are unchanged.
 
 ## Prerequisites
 - Existing public shell green: `frontend/app/(public)/layout.tsx`, `frontend/app/(public)/gallery/page.tsx`, `frontend/app/(public)/characters/[id]/page.tsx`.
-- Existing characters read path works: `listCharacters(query, viewer)` in `frontend/lib/characters.ts`, `getViewer()` in `frontend/lib/viewer.ts`, `characterListQuerySchema` + `CharacterCardDTO` in `@poppy/shared`, `viewerAllowsMature` in `@poppy/database`.
+- Existing characters read path works: `listCharacters(query, viewer)` in `frontend/lib/characters.ts`, `getViewer()` in `frontend/lib/viewer.ts`, `characterListQuerySchema` + `CharacterCardDTO` in `@buttercupp/shared`, `viewerAllowsMature` in `@buttercupp/database`.
 - Phase 15 (legal pages) can run before or after, but the `Footer` links target `/legal/*` routes. If Phase 15 has not run yet, the links still render; they resolve once Phase 15 ships. Do NOT hardcode a different legal path.
 - Local Postgres reachable so the landing can render real characters. If the DB is empty, the hero must degrade gracefully (see build step 3).
 
 ## Context to paste into Cursor
 ```
-You are building Phase 14 of "Poppy" (mature-gated AI companion platform): the marketing landing page, an upgraded public top nav, and a site-wide footer.
+You are building Phase 14 of "ButterCupp" (mature-gated AI companion platform): the marketing landing page, an upgraded public top nav, and a site-wide footer.
 
 Authoritative spec: prds/experience-monetization-prd.md. Read:
 - §2.1 Marketing website: landing (/) has a hero with dynamic companion previews, value props (unfiltered chat, voice, image, memory, create-your-own), a live persona carousel pulling REAL public characters, social proof, and CTAs ("Create your companion", "Browse"). Top bar: logo, Browse, Log in / Sign up. Site-wide Footer links all legal pages + socials + an "18+" mark + a company line.
 - §1 Design direction: the product app is dark and cinematic (Phase 17), but the MARKETING landing may use a lighter hero. Persona cards are large and image-forward with a gradient scrim, name + tagline overlay, and hover motion.
 
 Reuse existing code, do not fork data access:
-- Pull real public characters through the SAME read path the gallery uses: frontend/lib/characters.ts listCharacters(query, viewer), frontend/lib/viewer.ts getViewer(), characterListQuerySchema from @poppy/shared. Sort by "popular" (or "trending" if present) and take a small limit for the hero/carousel.
+- Pull real public characters through the SAME read path the gallery uses: frontend/lib/characters.ts listCharacters(query, viewer), frontend/lib/viewer.ts getViewer(), characterListQuerySchema from @buttercupp/shared. Sort by "popular" (or "trending" if present) and take a small limit for the hero/carousel.
 - CharacterCardDTO fields available: id, name, bio, tags, style, contentRating, avatarUrl (nullable), popularityScore, createdAt. There is NO tagline field: derive a short tagline from bio (truncate) for overlays. Respect mature gating exactly like CharacterCard.tsx: a mature card for a non-mature viewer must be blurred/gated, never shown clearly.
 - The landing is a public server component (visitors are unauthenticated). Never require auth on / or the footer.
 
-Hard rules: TypeScript strict; server-centric Next.js 16 App Router; no new PrismaClient (import { prisma } from "@poppy/database", but prefer going through frontend/lib/characters.ts); no em dashes anywhere; keep the existing public gallery + character-detail routes working unchanged.
+Hard rules: TypeScript strict; server-centric Next.js 16 App Router; no new PrismaClient (import { prisma } from "@buttercupp/database", but prefer going through frontend/lib/characters.ts); no em dashes anywhere; keep the existing public gallery + character-detail routes working unchanged.
 Do NOT run git commit/push, deploy, or migrate a non-local DB.
 ```
 
 ## Build steps
 
 ### 1. Marketing data helper
-- `frontend/lib/marketing.ts`. A small server helper `getLandingCharacters()` that calls `getViewer()` then `listCharacters(...)` with a query built from `characterListQuerySchema.parse({ sort: "popular", limit: 12 })` (use whatever sort keys the schema actually supports; fall back to default sort if "popular" is not a valid enum value). Return `{ items, viewerAllowsMature }` where `viewerAllowsMature` comes from `viewerAllowsMature(viewer)` in `@poppy/database`. Never throw: wrap in try/catch and return `{ items: [], viewerAllowsMature: false }` on any error so an empty/unreachable DB does not 500 the home page. Add a `taglineFrom(bio: string)` pure helper that trims bio to about 80 chars on a word boundary for card overlays.
+- `frontend/lib/marketing.ts`. A small server helper `getLandingCharacters()` that calls `getViewer()` then `listCharacters(...)` with a query built from `characterListQuerySchema.parse({ sort: "popular", limit: 12 })` (use whatever sort keys the schema actually supports; fall back to default sort if "popular" is not a valid enum value). Return `{ items, viewerAllowsMature }` where `viewerAllowsMature` comes from `viewerAllowsMature(viewer)` in `@buttercupp/database`. Never throw: wrap in try/catch and return `{ items: [], viewerAllowsMature: false }` on any error so an empty/unreachable DB does not 500 the home page. Add a `taglineFrom(bio: string)` pure helper that trims bio to about 80 chars on a word boundary for card overlays.
 
 ### 2. Persona preview card (marketing variant)
 - `frontend/components/marketing/PersonaPreviewCard.tsx`. A presentational card for a `CharacterCardDTO`: large image-forward tile, gradient scrim from the bottom, name + derived tagline overlay, a small online/mood dot, hover lift. Reuse the gating logic from `frontend/components/gallery/CharacterCard.tsx`: if `contentRating === "mature" && !viewerAllowsMature`, blur the image and show an "18+ verify to view" chip instead of the clear image. Wrap the card in a `Link` to `/characters/${id}` (public detail route, already exists). Give it `data-testid="persona-preview"`.

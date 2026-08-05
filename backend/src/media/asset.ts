@@ -3,8 +3,8 @@
 // implementation. Illegal transitions throw; the worker relies on that to
 // bail out early on a re-delivery.
 
-import { prisma } from "@poppy/database";
-import type { MediaAsset, MediaKind, MediaStatus, Prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
+import type { MediaAsset, MediaKind, MediaStatus, Prisma } from "@buttercupp/database";
 
 const ALLOWED: Record<MediaStatus, MediaStatus[]> = {
   queued: ["processing", "failed"],

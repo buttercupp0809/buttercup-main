@@ -13,7 +13,7 @@ test.describe("chat gestures", () => {
     test.skip(!seeded || !cookie || !characterId,
       "needs E2E_SEEDED=1, E2E_VERIFIED_COOKIE, and E2E_CHARACTER_ID");
     await context.addCookies([
-      { name: "poppy_auth", value: cookie, url: "http://localhost:3000" },
+      { name: "buttercupp_auth", value: cookie, url: "http://localhost:3000" },
     ]);
   });
 

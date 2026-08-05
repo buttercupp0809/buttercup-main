@@ -4,8 +4,8 @@
 // invalid query), returns an empty items array so `/` renders skeleton tiles
 // instead of a 500.
 
-import { characterListQuerySchema, type CharacterCardDTO } from "@poppy/shared";
-import { viewerAllowsMature } from "@poppy/database";
+import { characterListQuerySchema, type CharacterCardDTO } from "@buttercupp/shared";
+import { viewerAllowsMature } from "@buttercupp/database";
 import { listCharacters } from "@/lib/characters";
 import { getViewer } from "@/lib/viewer";
 

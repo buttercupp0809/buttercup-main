@@ -1,7 +1,7 @@
 # Phase 11: Safety & compliance hardening
 
 ## Goal
-Make Poppy compliant with California SB 243 and safe by construction. This phase delivers:
+Make ButterCupp compliant with California SB 243 and safe by construction. This phase delivers:
 - **Crisis detection** (fast keyword/flag pass + LLM confirmation) mirroring Pellow `crisis-detector.ts`, wired to run **BEFORE generation** in the chat pipeline from phase 04, so urgent cases divert to the **SB 243 self-harm/suicide protocol** (supportive intervention message + crisis resources + suppress harmful generation + log `CrisisEvent`).
 - **SB 243 obligations**: persistent AI-disclosure (finalize the phase-01 scaffold), **break reminders** on continuous-use thresholds, accountability/audit logging (audit.ts fire-and-forget pattern), and rigorous logging discipline driven by the **private right of action** ($1,000/violation).
 - **Jurisdiction gating** for mature-content availability by region.
@@ -12,12 +12,12 @@ Reference: PRD §5.9, §12 (SB 243 checklist), §10 (safety interception order).
 
 ## Prerequisites
 - Phases 00 through 10 green: monorepo, Prisma schema (incl. `CrisisEvent`, `AuditLog`, `AnalyticsEvent`, `Character.moderationStatus`, `User.jurisdiction`), auth + age gate (phase 01, has the AI-disclosure scaffold), chat streaming pipeline (phase 04), memory (phase 05), creation wizard + publish (phase 06), billing (phase 10).
-- `packages/database` Prisma singleton exported as `@poppy/database`. Never `new PrismaClient()`.
+- `packages/database` Prisma singleton exported as `@buttercupp/database`. Never `new PrismaClient()`.
 - Utilities present from phase 00: `backend/src/utils/audit.ts`, `backend/src/utils/safe-types.ts` (`assertSafeId`, `assertSafeString`), `backend/src/analytics/tracker.ts` (`track`), `backend/src/utils/retry.ts`.
 - LLM provider chain from phase 04 (`backend/src/llm/provider.ts`) callable for the confirmation pass.
 
 ## Context to paste into Cursor
-> Build Phase 11 (Safety & compliance) for Poppy per Master PRD §5.9 and §12. Mirror the Pellow safety module verbatim in structure, then extend for SB 243 and mature-content gating.
+> Build Phase 11 (Safety & compliance) for ButterCupp per Master PRD §5.9 and §12. Mirror the Pellow safety module verbatim in structure, then extend for SB 243 and mature-content gating.
 >
 > Pellow reference files to read and mirror (in `../Pellow`):
 > - `backend/src/safety/crisis-detector.ts`: tiered keyword phrase lists (LEVEL_1/2/3), `detectCrisisLevel`, `getCrisisResult`, `logCrisisEvent`, `checkCrisis`. Copy the tiering model and the `CrisisResult` shape (`level`, `promptOverride`, `responseAppend`, `immediateResponse`, `flagMessage`).
@@ -32,7 +32,7 @@ Reference: PRD §5.9, §12 (SB 243 checklist), §10 (safety interception order).
 ## Build steps
 
 ### 1. Crisis detector (fast pass): `backend/src/safety/crisis-detector.ts`
-Mirror Pellow's file. Keep the three tiers and the `CrisisResult` interface. Adapt to Poppy's schema:
+Mirror Pellow's file. Keep the three tiers and the `CrisisResult` interface. Adapt to ButterCupp's schema:
 - Export `type CrisisLevel = 0 | 1 | 2 | 3` and `interface CrisisResult { level; promptOverride; responseAppend; immediateResponse; flagMessage }`.
 - Keep `LEVEL_3_PHRASES`, `LEVEL_2_PHRASES`, `LEVEL_1_PHRASES` (self-harm/suicide ideation) and the `RESOURCES` constant (988 Suicide & Crisis Lifeline, Crisis Text Line 741741).
 - `detectCrisisLevel(text)`: normalize then phrase-match, return highest matched tier.
@@ -59,7 +59,7 @@ Mirror Pellow's file. Keep the three tiers and the `CrisisResult` interface. Ada
 - Order matters: the crisis gate must sit above memory retrieval and generation. Add an inline comment marking the ordering invariant so later edits do not reorder it.
 
 ### 5. Ethical guardrails: `backend/src/safety/ethical-guardrails.ts`
-Mirror Pellow. Adapt person/memory queries to Poppy's `Message`, `Memory`, `RelationshipState` schema:
+Mirror Pellow. Adapt person/memory queries to ButterCupp's `Message`, `Memory`, `RelationshipState` schema:
 - `shouldSendAIReminder(userId)`: 72h + 10-message threshold, rotating reminder text, records `analyticsEvent` "ethical_ai_reminder_sent".
 - `checkManipulationRisk(...)`: loneliness exploitation (do not increase frequency), social-graph decline redirect, dependency-formation redirect, distress-based upselling **block** (never surface a subscription/token prompt while the user is in a distress state).
 - `checkDependencySignals(userId)`: returns dependency level + optional `redirectContext` string for the prompt layer.

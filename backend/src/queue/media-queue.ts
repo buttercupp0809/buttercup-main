@@ -2,7 +2,7 @@
 // directly, and so we can degrade gracefully when Redis / BullMQ are not
 // installed (compile without the SDK, throw at runtime with a clear error).
 
-import { MEDIA_QUEUE_NAME, type MediaJobData } from "@poppy/shared";
+import { MEDIA_QUEUE_NAME, type MediaJobData } from "@buttercupp/shared";
 import { getRedisConnection } from "./connection";
 
 let _queue: unknown = null;

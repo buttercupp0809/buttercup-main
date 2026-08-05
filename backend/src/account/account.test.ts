@@ -1,8 +1,8 @@
 // End-to-end account tests. Exercises the real Prisma cascade against
-// poppy_dev; each test seeds a fresh user so re-runs are safe.
+// buttercupp_dev; each test seeds a fresh user so re-runs are safe.
 
 import { describe, expect, it } from "vitest";
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 import { buildUserExport } from "./export";
 import { deleteUserCascade } from "./delete";
 import { dbReachable } from "../test-utils/db";

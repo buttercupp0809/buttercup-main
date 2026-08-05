@@ -47,11 +47,11 @@ function parseCookies(header: string | undefined): Record<string, string> {
 }
 
 async function authenticate(req: IncomingMessage): Promise<string | null> {
-  const token = parseCookies(req.headers.cookie)["poppy_auth"];
+  const token = parseCookies(req.headers.cookie)["buttercupp_auth"];
   if (!token || !process.env.JWT_SECRET) return null;
   try {
     const { payload } = await jwtVerify(token, new TextEncoder().encode(process.env.JWT_SECRET), {
-      audience: "poppy:auth",
+      audience: "buttercupp:auth",
     });
     return typeof payload.sub === "string" ? payload.sub : null;
   } catch {

@@ -13,7 +13,7 @@ Reference: PRD §5.6 (image/selfie generation), §11 (media pipeline, character 
 
 ## Context to paste into Cursor
 ```
-You are implementing Phase 09 of Poppy (see prds/master-prd.md §5.6, §11, §5.2, §12).
+You are implementing Phase 09 of ButterCupp (see prds/master-prd.md §5.6, §11, §5.2, §12).
 
 Register an "image" handler into the Phase-07 pipeline (backend/src/media/handlers/index.ts). Do NOT re-implement the queue, worker, S3, or token ledger, reuse Phase 07.
 
@@ -24,8 +24,8 @@ CHARACTER CONSISTENCY is the whole point. Build the prompt from the character's 
 - style (realistic|3d|anime) selects the base model + pipeline params
 
 Mirror Pellow's split:
-- ../Pellow/backend/src/media/image-decision.ts -> when to send an image (isImageRequest + shouldSendImage), Poppy-adapted.
-- ../Pellow/backend/src/media/image-prompt.ts -> buildImagePrompt/caption, but Poppy builds from the AppearanceSheet (NOT Pellow's SFW time/mood templates; Poppy is mature-gated and character-driven).
+- ../Pellow/backend/src/media/image-decision.ts -> when to send an image (isImageRequest + shouldSendImage), ButterCupp-adapted.
+- ../Pellow/backend/src/media/image-prompt.ts -> buildImagePrompt/caption, but ButterCupp builds from the AppearanceSheet (NOT Pellow's SFW time/mood templates; ButterCupp is mature-gated and character-driven).
 - ../Pellow/backend/src/media/image.ts -> provider fallback shape (DALL-E -> Pollinations there; Fal -> Replicate here).
 
 18+ enforcement: subjects must be the character (age >= 18, enforced at creation) and never a minor. Apply a hard negative-prompt safety block and reject prompts that request minors. Token debit happens in the Phase-07 worker (reason: "image_gen").
@@ -49,7 +49,7 @@ No em dashes. TypeScript strict. Zod on any new route/DTO.
 
 3. **Image-decision**: `backend/src/media/image/decision.ts` (mirrors Pellow `image-decision.ts`)
    - Port `isImageRequest(text)` (the regex set: send/show/give a pic/selfie/photo, etc.).
-   - `shouldSendImage(userId, characterId, { userRequested })`: Poppy-adapted gating, check tier/token balance (image is a paid consumable, PRD §13) and per-(user,character) recent-image count. Keep the `userRequested` fast path.
+   - `shouldSendImage(userId, characterId, { userRequested })`: ButterCupp-adapted gating, check tier/token balance (image is a paid consumable, PRD §13) and per-(user,character) recent-image count. Keep the `userRequested` fast path.
 
 4. **Providers**: `backend/src/media/image/providers.ts` (mirrors `image.ts` fallback shape)
    - `generateWithFal({ prompt, negativePrompt, style, referenceImages, loraRef })`: call Fal.ai SDXL/Flux; pass IP-Adapter reference image(s) or LoRA weights. Return a Buffer.

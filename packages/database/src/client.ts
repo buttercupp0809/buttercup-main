@@ -1,6 +1,6 @@
 // SINGLETON. This is the ONLY file in the repo allowed to construct
 // `new PrismaClient()`. Every other consumer imports `prisma` from
-// "@poppy/database". See CLAUDE.md for the rule.
+// "@buttercupp/database". See CLAUDE.md for the rule.
 //
 // Shape ported from ../Pellow/packages/database/src/client.ts:
 //   - globalThis cache so `next dev` HMR does not leak connections

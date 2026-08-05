@@ -5,7 +5,7 @@ import path from "node:path";
 // directory. See frontend/.env.example for the required keys.
 
 // Security headers per master-prd.md §15. CSP allowlist is scoped to
-// Poppy's actual providers (LLMs, media, adult-friendly payment
+// ButterCupp's actual providers (LLMs, media, adult-friendly payment
 // processors, Sentry). 'unsafe-eval' is dev-only; the prod CSP would omit
 // it entirely.
 
@@ -51,8 +51,8 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  transpilePackages: ["@poppy/database", "@poppy/shared"],
-  // Monorepo: the build runs from frontend/ but @poppy/* and the Prisma
+  transpilePackages: ["@buttercupp/database", "@buttercupp/shared"],
+  // Monorepo: the build runs from frontend/ but @buttercupp/* and the Prisma
   // engine live one level up. Tracing from the repo root ensures those files
   // are bundled into the serverless output on Vercel (and silences Next's
   // multi-lockfile root inference warning). The build always runs with cwd =

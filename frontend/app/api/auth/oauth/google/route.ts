@@ -1,6 +1,6 @@
 import type { NextResponse } from "next/server";
-import { prisma } from "@poppy/database";
-import { GoogleOAuthDto } from "@poppy/shared";
+import { prisma } from "@buttercupp/database";
+import { GoogleOAuthDto } from "@buttercupp/shared";
 import { signAuthToken, setAuthCookie } from "@/lib/auth";
 import { jsonError, jsonOk, parseJson } from "@/lib/api-helpers";
 import { jwtVerify, createRemoteJWKSet } from "jose";
@@ -31,7 +31,7 @@ async function verifyGoogleIdToken(idToken: string): Promise<GooglePayload | nul
 
 export async function POST(req: Request) {
   if (!process.env.GOOGLE_CLIENT_ID) {
-    // OAuth is a Poppy-supported flow but not fully wired in Phase 01.
+    // OAuth is a ButterCupp-supported flow but not fully wired in Phase 01.
     // Returning 501 (not 500) makes the "not configured yet" state
     // observable to the client without leaking config details.
     return jsonError(501, "google_oauth_not_configured");

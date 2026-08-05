@@ -2,7 +2,7 @@
 // writes stay in the chat pipeline. Returns null (never throws) when a row
 // does not exist, so a fresh user + character pair renders cleanly.
 
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 
 export interface RelationshipSnapshot {
   affectionLevel: number;

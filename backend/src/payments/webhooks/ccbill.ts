@@ -14,7 +14,7 @@ interface CcBillPayload {
   clientSubacc?: string;
   timestamp?: string;
   digest?: string;
-  userId?: string; // we pass poppy user id through as customFields[0]
+  userId?: string; // we pass buttercupp user id through as customFields[0]
   tier?: string;
   tokenPackId?: string;
   amount?: string;

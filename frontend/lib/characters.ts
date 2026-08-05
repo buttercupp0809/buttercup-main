@@ -2,15 +2,15 @@
 // wire DTOs. Anything that produces a card also produces the joined
 // avatar/greeting fields; the query builder handles filtering + ordering.
 
-import { prisma, buildCharacterWhere, buildCharacterOrderBy, type CharacterViewer } from "@poppy/database";
-import type { Character, CharacterVersion, AppearanceSheet, Prisma } from "@poppy/database";
+import { prisma, buildCharacterWhere, buildCharacterOrderBy, type CharacterViewer } from "@buttercupp/database";
+import type { Character, CharacterVersion, AppearanceSheet, Prisma } from "@buttercupp/database";
 import {
   styleEnumToWire,
   type CharacterCardDTO,
   type CharacterDetailDTO,
   type CharacterListQuery,
   type CharacterListResponse,
-} from "@poppy/shared";
+} from "@buttercupp/shared";
 import { assertSafeId } from "@/lib/safe-types";
 
 // CloudFront URL is optional; when not set (local dev) we return the raw S3
@@ -112,7 +112,7 @@ export async function getCharacterDetail(
     },
     requiresAgeVerification: gatedMature || undefined,
   };
-  // styleEnumToWire lives in @poppy/shared and is currently only used by the
+  // styleEnumToWire lives in @buttercupp/shared and is currently only used by the
   // client; kept in scope here so future consumers do not accidentally send
   // "threeD" over the wire.
   void styleEnumToWire;

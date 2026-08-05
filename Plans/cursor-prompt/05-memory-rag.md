@@ -1,7 +1,7 @@
 # Phase 05: Long-term memory (RAG)
 
 ## Goal
-Give Poppy the memory that is the product's central wedge (PRD §1.1). Build a pgvector-backed `Memory` store plus the full Pellow-style pipeline: an async post-turn extractor that pulls salient facts and summaries, a hybrid keyword-plus-semantic retriever returning top-K, an embeddings module, and summarization + tiering (hot/warm/cold) + compaction to keep context bounded. Wire retrieved memory and the latest summary into the layered system prompt built in Phase 04 (replacing the placeholder there). Memory is strictly isolated per `(user, character)`. Expose user-facing memory management endpoints (`GET /api/memory`, `DELETE /api/memory/:id`).
+Give ButterCupp the memory that is the product's central wedge (PRD §1.1). Build a pgvector-backed `Memory` store plus the full Pellow-style pipeline: an async post-turn extractor that pulls salient facts and summaries, a hybrid keyword-plus-semantic retriever returning top-K, an embeddings module, and summarization + tiering (hot/warm/cold) + compaction to keep context bounded. Wire retrieved memory and the latest summary into the layered system prompt built in Phase 04 (replacing the placeholder there). Memory is strictly isolated per `(user, character)`. Expose user-facing memory management endpoints (`GET /api/memory`, `DELETE /api/memory/:id`).
 
 Covers PRD §5.4 (memory RAG) and §10 (memory pipeline + system-prompt injection).
 
@@ -11,7 +11,7 @@ Covers PRD §5.4 (memory RAG) and §10 (memory pipeline + system-prompt injectio
 - `packages/database` Prisma singleton; `backend/src/utils/retry.ts`, `safe-types.ts`, `audit.ts`, `config/flags.ts` present (Phase 00).
 
 ## Context to paste into Cursor
-> Building Poppy Phase 05 (long-term memory / RAG). Read `prds/master-prd.md` §5.4 and §10 first. This mirrors Pellow's memory system almost verbatim, but every store, query, and prompt injection is scoped to `(userId, characterId)` instead of Pellow's single-companion `(userId)`. Prisma singleton `import { prisma } from "@poppy/database"`. pgvector queried with raw SQL using the cosine distance operator `<=>` and converted to similarity as `1 - distance`. TypeScript strict, Zod on the memory endpoints, no em dashes.
+> Building ButterCupp Phase 05 (long-term memory / RAG). Read `prds/master-prd.md` §5.4 and §10 first. This mirrors Pellow's memory system almost verbatim, but every store, query, and prompt injection is scoped to `(userId, characterId)` instead of Pellow's single-companion `(userId)`. Prisma singleton `import { prisma } from "@buttercupp/database"`. pgvector queried with raw SQL using the cosine distance operator `<=>` and converted to similarity as `1 - distance`. TypeScript strict, Zod on the memory endpoints, no em dashes.
 >
 > Reference Pellow files to mirror (adapt the isolation key to add `characterId`):
 > - Extractor: `../Pellow/backend/src/llm/memory-extractor.ts`: `extractMemories()`, `purpose: "extract"`, `DUPLICATE_THRESHOLD = 0.6`, VALID_TOPICS, hard/soft + importance + confidence + emotional valence.
@@ -21,7 +21,7 @@ Covers PRD §5.4 (memory RAG) and §10 (memory pipeline + system-prompt injectio
 > - Tiering: `../Pellow/backend/src/memory/tiering.ts`: `rebalanceTiers()`, three tiers, CORE_CAP=25, access-count + recency + importance precedence.
 > - Hybrid retrieval reference (RRF + tsvector keyword + vector): `../Pellow/backend/src/knowledge/store.ts`.
 >
-> Naming note: Poppy's schema uses tier values `hot | warm | cold` (PRD §8). Map Pellow's core/recall/archive to hot/warm/cold respectively.
+> Naming note: ButterCupp's schema uses tier values `hot | warm | cold` (PRD §8). Map Pellow's core/recall/archive to hot/warm/cold respectively.
 
 ## Build steps
 Do these in order. Name files exactly as below.
@@ -47,7 +47,7 @@ Do these in order. Name files exactly as below.
 
 5. **Summarization + tiering + compaction**: `backend/src/memory/compactor.ts` and `backend/src/memory/tiering.ts`
    - `compactor.ts`: `runCompaction(userId, characterId)` summarizes recent memories/messages via `callLLM({ purpose: "summary", temperature: 0 })`, writes a `MemorySummary` (with its own `embed(summary)`), and archives stale contributing memories (demote to `cold`). Port `buildCompactionPrompt`, JSON result shape (summary/themes/sentiment/keyEvents). BATCH_SIZE=5 for multi-user runs.
-   - `tiering.ts`: `rebalanceTiers(userId, characterId)` recomputes tier per memory. Map Pellow rules to Poppy's `hot|warm|cold`:
+   - `tiering.ts`: `rebalanceTiers(userId, characterId)` recomputes tier per memory. Map Pellow rules to ButterCupp's `hot|warm|cold`:
      - `hot` = sacred/pinned, or high importance on identity/relationship topics, or accessCount ≥ 5 within 30 days. Hard cap (CORE_CAP 25) on hot per `(user,character)`.
      - `warm` = default, retrieved when relevant.
      - `cold` = not accessed ≥ 90 days + low importance, or expired `validUntil`.

@@ -13,8 +13,8 @@
 // The rendered block is what buildPromptLayers injects into the system
 // prompt (Phase 04's memory slot).
 
-import { prisma } from "@poppy/database";
-import type { Memory, MemorySummary } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
+import type { Memory, MemorySummary } from "@buttercupp/database";
 import { embed } from "./embeddings";
 import { vectorSearchMemories, markMemoriesAccessed } from "../memory/store";
 import { assertSafeId } from "../utils/safe-types";

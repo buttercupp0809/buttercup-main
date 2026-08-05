@@ -1,8 +1,8 @@
 // Consume a password-reset link: verify the reset JWT, enforce the strong
 // password rule (same as signup), update the hash, and sign the user in.
 import type { NextResponse } from "next/server";
-import { prisma } from "@poppy/database";
-import { ResetPasswordDto } from "@poppy/shared";
+import { prisma } from "@buttercupp/database";
+import { ResetPasswordDto } from "@buttercupp/shared";
 import { verifyResetToken, signAuthToken, setAuthCookie } from "@/lib/auth";
 import { hashPassword } from "@/lib/password";
 import { jsonOk, jsonError, parseJson } from "@/lib/api-helpers";

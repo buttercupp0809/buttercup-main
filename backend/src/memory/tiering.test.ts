@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { classifyTier, CORE_CAP, HOT_ACCESS_THRESHOLD } from "./tiering";
-import type { Memory } from "@poppy/database";
+import type { Memory } from "@buttercupp/database";
 
 function mem(overrides: Partial<Memory>): Memory {
   const now = new Date();

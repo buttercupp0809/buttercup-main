@@ -11,9 +11,9 @@ export function TypingDots() {
         aria-live="polite"
         className="flex items-center gap-1 rounded-2xl px-4 py-3 shadow-sm ring-1"
         style={{
-          backgroundColor: "hsl(var(--poppy-surface))",
-          borderColor: "hsl(var(--poppy-border))",
-          color: "hsl(var(--poppy-fg))",
+          backgroundColor: "hsl(var(--buttercupp-surface))",
+          borderColor: "hsl(var(--buttercupp-border))",
+          color: "hsl(var(--buttercupp-fg))",
         }}
       >
         <span className="sr-only">Typing</span>
@@ -23,7 +23,7 @@ export function TypingDots() {
             aria-hidden
             className="motion-safe:animate-bounce inline-block h-1.5 w-1.5 rounded-full"
             style={{
-              backgroundColor: "hsl(var(--poppy-accent-rose))",
+              backgroundColor: "hsl(var(--buttercupp-accent-rose))",
               animationDelay: `${i * 120}ms`,
               animationDuration: "900ms",
             }}

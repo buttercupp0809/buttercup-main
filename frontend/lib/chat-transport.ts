@@ -37,7 +37,7 @@ export interface ChatTransport {
 }
 
 export interface ChatTransportOptions {
-  wsUrl?: string; // ws://localhost:4000/ws for local, wss://api.poppy.example/ws in prod
+  wsUrl?: string; // ws://localhost:4000/ws for local, wss://api.buttercupp.example/ws in prod
   onOpen?: () => void;
   onClose?: () => void;
 }

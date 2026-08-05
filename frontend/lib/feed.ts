@@ -2,9 +2,9 @@
 // small set of curated feeds. Each section reuses listCharacters (via the
 // same query builder) so the mature gating logic stays in one place.
 
-import { prisma } from "@poppy/database";
-import type { CharacterViewer } from "@poppy/database";
-import type { CharacterCardDTO } from "@poppy/shared";
+import { prisma } from "@buttercupp/database";
+import type { CharacterViewer } from "@buttercupp/database";
+import type { CharacterCardDTO } from "@buttercupp/shared";
 import { listCharacters } from "@/lib/characters";
 
 export interface RecentChat {

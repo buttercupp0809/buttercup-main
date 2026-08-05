@@ -7,7 +7,7 @@
 //   import { dbReachable } from "../test-utils/db";
 //   const DB_UP = await dbReachable();
 //   describe.skipIf(!DB_UP)("...", () => { ... });
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 
 export async function dbReachable(): Promise<boolean> {
   try {

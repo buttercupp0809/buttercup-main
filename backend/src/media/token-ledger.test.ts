@@ -1,9 +1,9 @@
 // Integration tests for the atomic token ledger. Requires a live local DB
-// with the poppy schema (poppy_dev). Uses randomized email addresses so the
+// with the buttercupp schema (buttercupp_dev). Uses randomized email addresses so the
 // tests are safe to re-run without cleanup.
 
 import { describe, expect, it } from "vitest";
-import { prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
 import { debitTokens, refundTokens, InsufficientTokensError } from "./token-ledger";
 import { dbReachable } from "../test-utils/db";
 

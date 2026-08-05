@@ -1,18 +1,18 @@
-// Poppy auth. Ported from ../Pellow/frontend/lib/auth.ts with the pieces
-// Poppy needs today (auth + reset + magic-link scopes; no onboarding/billing
+// ButterCupp auth. Ported from ../Pellow/frontend/lib/auth.ts with the pieces
+// ButterCupp needs today (auth + reset + magic-link scopes; no onboarding/billing
 // scopes; no Amplify server-env fallback yet). Every scope uses a distinct
 // JWT audience; a token minted for one scope MUST fail verification for the
 // others. See CLAUDE.md for the singleton rule (this file imports `prisma`).
 //
-// Cookie is httpOnly, Secure in prod, SameSite=Lax (Poppy uses OAuth
+// Cookie is httpOnly, Secure in prod, SameSite=Lax (ButterCupp uses OAuth
 // redirects, so Strict would break the round-trip). isProd gates Secure so
 // local http:// dev works.
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { SignJWT, jwtVerify, type JWTPayload } from "jose";
-import { prisma } from "@poppy/database";
-import type { User } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
+import type { User } from "@buttercupp/database";
 import {
   AUTH_COOKIE,
   TOKEN_MAX_AGE,

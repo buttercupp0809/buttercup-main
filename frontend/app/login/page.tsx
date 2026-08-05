@@ -41,12 +41,12 @@ function LoginPageInner() {
 
   return (
     <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center px-6 py-10">
-      <div className="poppy-glass rounded-2xl p-8">
+      <div className="buttercupp-glass rounded-2xl p-8">
         <a href="/" className="font-display text-2xl font-semibold tracking-tight">
-          Poppy
+          ButterCupp
         </a>
         <h1 className="font-display mt-6 text-3xl font-semibold tracking-tight">Welcome back</h1>
-        <p className="mb-6 mt-1 text-sm" style={{ color: "hsl(var(--poppy-muted))" }}>
+        <p className="mb-6 mt-1 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
           Sign in to continue to your companions.
         </p>
         <form onSubmit={submit} className="flex flex-col gap-4">
@@ -58,9 +58,9 @@ function LoginPageInner() {
               autoComplete="email"
               className="rounded-md border px-3 py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
               style={{
-                borderColor: "hsl(var(--poppy-border))",
-                backgroundColor: "hsl(var(--poppy-surface))",
-                color: "hsl(var(--poppy-fg))",
+                borderColor: "hsl(var(--buttercupp-border))",
+                backgroundColor: "hsl(var(--buttercupp-surface))",
+                color: "hsl(var(--buttercupp-fg))",
               }}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -75,7 +75,7 @@ function LoginPageInner() {
           <a
             href="/forgot-password"
             className="-mt-2 self-end text-xs underline"
-            style={{ color: "hsl(var(--poppy-muted))" }}
+            style={{ color: "hsl(var(--buttercupp-muted))" }}
           >
             Forgot password?
           </a>
@@ -86,16 +86,16 @@ function LoginPageInner() {
         </form>
         <div
           className="my-6 flex items-center gap-3 text-xs"
-          style={{ color: "hsl(var(--poppy-muted))" }}
+          style={{ color: "hsl(var(--buttercupp-muted))" }}
         >
-          <div className="h-px flex-1" style={{ backgroundColor: "hsl(var(--poppy-border))" }} />
+          <div className="h-px flex-1" style={{ backgroundColor: "hsl(var(--buttercupp-border))" }} />
           <span>or</span>
-          <div className="h-px flex-1" style={{ backgroundColor: "hsl(var(--poppy-border))" }} />
+          <div className="h-px flex-1" style={{ backgroundColor: "hsl(var(--buttercupp-border))" }} />
         </div>
         <GoogleButton dest={params.get("next") ?? "/dashboard"} mode="signin_with" />
-        <p className="mt-6 text-sm" style={{ color: "hsl(var(--poppy-muted))" }}>
+        <p className="mt-6 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
           No account?{" "}
-          <a href="/signup" className="font-medium underline" style={{ color: "hsl(var(--poppy-accent-rose))" }}>
+          <a href="/signup" className="font-medium underline" style={{ color: "hsl(var(--buttercupp-accent-rose))" }}>
             Create one
           </a>
         </p>

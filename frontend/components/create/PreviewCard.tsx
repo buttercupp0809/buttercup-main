@@ -1,4 +1,4 @@
-import type { CharacterDraft } from "@poppy/shared";
+import type { CharacterDraft } from "@buttercupp/shared";
 
 // Mirrors the Phase 03 CharacterCard layout so the creator sees exactly
 // what the gallery will render.

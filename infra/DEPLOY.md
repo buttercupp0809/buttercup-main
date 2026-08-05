@@ -1,4 +1,4 @@
-# Poppy deploy runbook
+# ButterCupp deploy runbook
 
 > **STOP AND GET APPROVAL** is required before every step. This runbook is intentionally manual. Cursor does not execute any of these commands. A previous approval never carries to the next action.
 
@@ -16,7 +16,7 @@ npm run typecheck
 npm run lint
 npm test
 npm run check:no-em-dash
-docker build -t poppy:local .
+docker build -t buttercupp:local .
 docker compose up --build -d
 curl -sf http://localhost:4000/healthz
 ```
@@ -31,7 +31,7 @@ All of the above must be green before proceeding.
 
 ```bash
 # Set the RDS pooled URL for the target environment.
-export DATABASE_URL="postgresql://USER:PASS@RDS_HOST:5432/poppy?schema=public&pgbouncer=true&connect_timeout=15"
+export DATABASE_URL="postgresql://USER:PASS@RDS_HOST:5432/buttercupp?schema=public&pgbouncer=true&connect_timeout=15"
 # Verify the target explicitly.
 psql "$DATABASE_URL" -c 'SELECT current_database(), inet_server_addr();'
 # Then apply.
@@ -53,12 +53,12 @@ aws ecr get-login-password --region "$REGION" \
   | docker login --username AWS --password-stdin "$ACCT_ID.dkr.ecr.$REGION.amazonaws.com"
 
 # Build (safe).
-docker build -t "poppy:$(git rev-parse --short HEAD)" .
+docker build -t "buttercupp:$(git rev-parse --short HEAD)" .
 
 # ---- STOP FOR SECOND APPROVAL BEFORE THE PUSH ----
 
-docker tag  "poppy:$(git rev-parse --short HEAD)" "$ACCT_ID.dkr.ecr.$REGION.amazonaws.com/poppy:$(git rev-parse --short HEAD)"
-docker push "$ACCT_ID.dkr.ecr.$REGION.amazonaws.com/poppy:$(git rev-parse --short HEAD)"
+docker tag  "buttercupp:$(git rev-parse --short HEAD)" "$ACCT_ID.dkr.ecr.$REGION.amazonaws.com/buttercupp:$(git rev-parse --short HEAD)"
+docker push "$ACCT_ID.dkr.ecr.$REGION.amazonaws.com/buttercupp:$(git rev-parse --short HEAD)"
 ```
 
 ---
@@ -73,11 +73,11 @@ aws ecs register-task-definition --cli-input-json file://infra/ecs/task-api.json
 aws ecs register-task-definition --cli-input-json file://infra/ecs/task-worker.json
 
 # Roll the services.
-aws ecs update-service --cluster poppy-prod --service poppy-api    --force-new-deployment
-aws ecs update-service --cluster poppy-prod --service poppy-worker --force-new-deployment
+aws ecs update-service --cluster buttercupp-prod --service buttercupp-api    --force-new-deployment
+aws ecs update-service --cluster buttercupp-prod --service buttercupp-worker --force-new-deployment
 
 # Watch the rollout; abort if circuit breaker trips.
-aws ecs wait services-stable --cluster poppy-prod --services poppy-api poppy-worker
+aws ecs wait services-stable --cluster buttercupp-prod --services buttercupp-api buttercupp-worker
 ```
 
 ---
@@ -101,14 +101,14 @@ Watch the job in the Amplify console; do not close the tab until it is green.
 
 ```bash
 # Backend health.
-curl -sf https://api.poppy.app/healthz | jq
+curl -sf https://api.buttercupp.app/healthz | jq
 
 # WebSocket handshake (needs wscat or a small script).
-wscat -c "wss://api.poppy.app/ws" -H "Cookie: poppy_auth=$JWT"
+wscat -c "wss://api.buttercupp.app/ws" -H "Cookie: buttercupp_auth=$JWT"
 # expect: connection stays open, ping/pong flows.
 
 # Frontend.
-curl -sfI https://poppy.app/ | grep -iE "strict-transport|content-security"
+curl -sfI https://buttercupp.app/ | grep -iE "strict-transport|content-security"
 ```
 
 If any of these fail, halt and get a fresh approval before touching anything.
@@ -119,10 +119,10 @@ If any of these fail, halt and get a fresh approval before touching anything.
 
 ```bash
 # Roll the ECS service back to the previous task-def revision.
-aws ecs update-service --cluster poppy-prod --service poppy-api \
-  --task-definition poppy-api:PREVIOUS_REVISION --force-new-deployment
-aws ecs update-service --cluster poppy-prod --service poppy-worker \
-  --task-definition poppy-worker:PREVIOUS_REVISION --force-new-deployment
+aws ecs update-service --cluster buttercupp-prod --service buttercupp-api \
+  --task-definition buttercupp-api:PREVIOUS_REVISION --force-new-deployment
+aws ecs update-service --cluster buttercupp-prod --service buttercupp-worker \
+  --task-definition buttercupp-worker:PREVIOUS_REVISION --force-new-deployment
 
 # For Amplify, redeploy the last known-good commit.
 aws amplify start-job --app-id "$AMPLIFY_APP_ID" --branch-name main \

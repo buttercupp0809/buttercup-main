@@ -11,8 +11,8 @@
 // gated as before. This closes a theoretical SQL-injection surface without
 // changing query semantics or the returned shape.
 
-import { prisma } from "@poppy/database";
-import type { MemoryTier, Prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
+import type { MemoryTier, Prisma } from "@buttercupp/database";
 import { embed } from "../llm/embeddings";
 import { assertSafeId } from "../utils/safe-types";
 

@@ -15,7 +15,7 @@ Covers PRD §2.5 (chat experience + gesture formatting) and §1 (immersive produ
 - Backend prompt building: `backend/src/llm/prompts.ts` (`buildPromptLayers`) + `backend/src/llm/persona-prompts.ts` (`OUTPUT_RULES` literal). `backend/src/chat/engine.ts` calls `buildPromptLayers(...)` then `streamLLM(...)`.
 
 ## Context to paste into Cursor
-> Building Poppy Phase 19 (engaging chat + gesture/dialogue formatting). Read `prds/experience-monetization-prd.md` §2.5 and §1 first. This is an ADDITIVE, non-regressive visual + parsing layer over an existing, working chat. Routing, API, transport, and data contracts are UNCHANGED. TypeScript strict, no em dashes.
+> Building ButterCupp Phase 19 (engaging chat + gesture/dialogue formatting). Read `prds/experience-monetization-prd.md` §2.5 and §1 first. This is an ADDITIVE, non-regressive visual + parsing layer over an existing, working chat. Routing, API, transport, and data contracts are UNCHANGED. TypeScript strict, no em dashes.
 >
 > Ground truth to respect:
 > - `frontend/components/chat/ChatWindow.tsx` holds `MessageBubble` as a local function that renders `whitespace-pre-wrap` raw text with a pulsing `|` cursor while streaming. You are replacing the RENDER of assistant text only. User bubbles stay plain.

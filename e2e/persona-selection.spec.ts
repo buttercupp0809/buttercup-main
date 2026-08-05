@@ -23,7 +23,7 @@ test.describe("persona selection", () => {
     );
     await page.context().addCookies([
       {
-        name: "poppy_auth",
+        name: "buttercupp_auth",
         value: process.env.E2E_VERIFIED_COOKIE!,
         url: "http://localhost:3000",
       },

@@ -3,7 +3,7 @@
 // per-user Redis pub/sub channel and any gateway node with a live
 // connection for that user forwards the payload.
 
-import type { MediaReadyEventPayload } from "@poppy/shared";
+import type { MediaReadyEventPayload } from "@buttercupp/shared";
 import { getRedisConnection } from "./connection";
 
 export type WsBridgeMessage =
@@ -11,7 +11,7 @@ export type WsBridgeMessage =
   | { type: "media.error"; payload: { mediaAssetId: string; message: string } };
 
 export function userChannel(userId: string): string {
-  return `poppy:ws:${userId}`;
+  return `buttercupp:ws:${userId}`;
 }
 
 // Fire-and-forget publish. Callers do not await network I/O to keep the

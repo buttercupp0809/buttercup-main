@@ -33,7 +33,7 @@ export interface SideNavProps {
   recents: RecentEntry[];
 }
 
-const STORAGE_KEY = "poppy.sidenav.collapsed";
+const STORAGE_KEY = "buttercupp.sidenav.collapsed";
 
 export function SideNav({ user, recents }: SideNavProps) {
   const pathname = usePathname() ?? "/";
@@ -67,16 +67,16 @@ export function SideNav({ user, recents }: SideNavProps) {
         "sticky top-0 h-screen",
         collapsed ? "w-16" : "w-64",
       )}
-      style={{ borderColor: "hsl(var(--poppy-border))" }}
+      style={{ borderColor: "hsl(var(--buttercupp-border))" }}
     >
       <div className={cn("flex items-center px-4 py-5", collapsed ? "justify-center" : "justify-between")}>
         {!collapsed ? (
           <Link
             href="/dashboard"
             className="font-display text-2xl font-semibold tracking-tight"
-            style={{ color: "hsl(var(--poppy-fg))" }}
+            style={{ color: "hsl(var(--buttercupp-fg))" }}
           >
-            Poppy
+            ButterCupp
           </Link>
         ) : null}
         <button
@@ -85,7 +85,7 @@ export function SideNav({ user, recents }: SideNavProps) {
           aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
           aria-pressed={collapsed}
           className="rounded-md p-1 text-slate-400 hover:text-white focus:outline-none focus-visible:ring-2"
-          style={{ outlineColor: "hsl(var(--poppy-accent-rose))" }}
+          style={{ outlineColor: "hsl(var(--buttercupp-accent-rose))" }}
         >
           {collapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
         </button>
@@ -117,24 +117,24 @@ export function SideNav({ user, recents }: SideNavProps) {
               style={{
                 backgroundColor: active
                   ? collapsed
-                    ? "hsl(var(--poppy-accent-rose) / 0.15)"
-                    : "hsl(var(--poppy-surface-2))"
+                    ? "hsl(var(--buttercupp-accent-rose) / 0.15)"
+                    : "hsl(var(--buttercupp-surface-2))"
                   : collapsed
-                    ? "hsl(var(--poppy-surface-2))"
+                    ? "hsl(var(--buttercupp-surface-2))"
                     : "transparent",
                 borderColor: active
-                  ? "hsl(var(--poppy-accent-rose))"
+                  ? "hsl(var(--buttercupp-accent-rose))"
                   : collapsed
-                    ? "hsl(var(--poppy-border))"
+                    ? "hsl(var(--buttercupp-border))"
                     : "transparent",
-                outlineColor: "hsl(var(--poppy-accent-rose))",
+                outlineColor: "hsl(var(--buttercupp-accent-rose))",
               }}
             >
               {active && !collapsed ? (
                 <span
                   aria-hidden
                   className="absolute inset-y-1 left-0 w-0.5 rounded-full"
-                  style={{ backgroundColor: "hsl(var(--poppy-accent-rose))" }}
+                  style={{ backgroundColor: "hsl(var(--buttercupp-accent-rose))" }}
                 />
               ) : null}
               <Icon className="h-5 w-5 shrink-0" />
@@ -181,7 +181,7 @@ export function SideNav({ user, recents }: SideNavProps) {
         <div className="flex-1" />
       )}
 
-      <div className="border-t p-2" style={{ borderColor: "hsl(var(--poppy-border))" }}>
+      <div className="border-t p-2" style={{ borderColor: "hsl(var(--buttercupp-border))" }}>
         <ProfileMenu user={user} collapsed={collapsed} />
       </div>
     </aside>
@@ -192,7 +192,7 @@ function Avatar({ src, name }: { src: string | null; name: string }) {
   return (
     <div
       className="flex h-6 w-6 shrink-0 items-center justify-center overflow-hidden rounded-full text-[10px] font-semibold"
-      style={{ backgroundColor: "hsl(var(--poppy-surface-2))" }}
+      style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))" }}
     >
       {src ? (
         <img src={src} alt={name} className="h-full w-full object-cover" />

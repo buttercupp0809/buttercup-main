@@ -1,5 +1,5 @@
 {
-  "name": "poppy",
+  "name": "buttercupp",
   "version": "0.1.0",
   "private": true,
   "workspaces": [
@@ -10,13 +10,13 @@
   "scripts": {
     "typecheck": "(cd packages/shared && npx tsc) && (cd packages/database && npx tsc) && (cd packages/database && npx tsc --noEmit) && (cd packages/shared && npx tsc --noEmit) && (cd backend && npx tsc --noEmit) && (cd frontend && npx tsc --noEmit)",
     "build": "npm run build --workspaces --if-present",
-    "build:packages": "npm run build --workspace=@poppy/shared && npm run build --workspace=@poppy/database",
+    "build:packages": "npm run build --workspace=@buttercupp/shared && npm run build --workspace=@buttercupp/database",
     "postinstall": "npm run db:generate",
-    "db:generate": "npm run generate --workspace=@poppy/database",
-    "db:push": "npm run push --workspace=@poppy/database",
-    "db:migrate": "npm run migrate --workspace=@poppy/database",
-    "db:studio": "npm run studio --workspace=@poppy/database",
-    "db:seed": "npm run seed --workspace=@poppy/database",
+    "db:generate": "npm run generate --workspace=@buttercupp/database",
+    "db:push": "npm run push --workspace=@buttercupp/database",
+    "db:migrate": "npm run migrate --workspace=@buttercupp/database",
+    "db:studio": "npm run studio --workspace=@buttercupp/database",
+    "db:seed": "npm run seed --workspace=@buttercupp/database",
     "dev:frontend": "npm run dev --workspace=frontend",
     "dev:backend": "npm run dev --workspace=backend",
     "dev:clean": "lsof -ti:4000 -ti:3000 | xargs kill -9 2>/dev/null; true",

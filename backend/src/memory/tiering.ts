@@ -1,6 +1,6 @@
 // Tier rebalancer. Runs on a schedule (or on threshold) per (user, character)
 // and reassigns hot/warm/cold based on Pellow's precedence rules mapped to
-// Poppy's three-tier scheme:
+// ButterCupp's three-tier scheme:
 //   sacred  -> hot (pinned OR importance>=0.9 on identity/relationship)
 //   cold    -> stale AND low importance, OR expired validUntil
 //   hot     -> frequently accessed recent memories, capped at CORE_CAP
@@ -9,8 +9,8 @@
 // Access counts and lastAccessedAt are maintained by the retriever
 // (markMemoriesAccessed).
 
-import { prisma } from "@poppy/database";
-import type { Memory, MemoryTier } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
+import type { Memory, MemoryTier } from "@buttercupp/database";
 
 export const CORE_CAP = 25;
 export const COLD_MIN_AGE_DAYS = 90;

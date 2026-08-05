@@ -5,8 +5,8 @@
 // transaction; if zero rows matched, throw InsufficientTokensError and
 // abort the tx.
 
-import { prisma } from "@poppy/database";
-import type { TokenReason, Prisma } from "@poppy/database";
+import { prisma } from "@buttercupp/database";
+import type { TokenReason, Prisma } from "@buttercupp/database";
 
 export class InsufficientTokensError extends Error {
   constructor(

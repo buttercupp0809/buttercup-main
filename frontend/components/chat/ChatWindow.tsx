@@ -154,7 +154,7 @@ export function ChatWindow({
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, hsl(var(--poppy-bg) / 0.6), hsl(var(--poppy-bg) / 0.9))",
+                "linear-gradient(180deg, hsl(var(--buttercupp-bg) / 0.6), hsl(var(--buttercupp-bg) / 0.9))",
             }}
           />
         </div>
@@ -162,12 +162,12 @@ export function ChatWindow({
 
       <div
         className="flex items-center justify-between border-b pb-3"
-        style={{ borderColor: "hsl(var(--poppy-border))" }}
+        style={{ borderColor: "hsl(var(--buttercupp-border))" }}
       >
         <div className="flex items-center gap-3">
           <div
             className="h-10 w-10 shrink-0 overflow-hidden rounded-full"
-            style={{ backgroundColor: "hsl(var(--poppy-surface-2))" }}
+            style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))" }}
           >
             {avatarUrl ? (
               <img src={avatarUrl} alt={characterName} className="h-full w-full object-cover" />
@@ -193,7 +193,7 @@ export function ChatWindow({
 
       <div
         className="flex-1 space-y-3 overflow-y-auto rounded-md p-4"
-        style={{ backgroundColor: "hsl(var(--poppy-surface) / 0.55)" }}
+        style={{ backgroundColor: "hsl(var(--buttercupp-surface) / 0.55)" }}
       >
         {messages.map((m) => (
           <MessageBubble key={m.id} role={m.role} content={m.content} />
@@ -228,9 +228,9 @@ export function ChatWindow({
           data-testid="chat-input"
           className="flex-1 rounded-md border px-3 py-2 text-sm"
           style={{
-            backgroundColor: "hsl(var(--poppy-surface-2))",
-            borderColor: "hsl(var(--poppy-border))",
-            color: "hsl(var(--poppy-fg))",
+            backgroundColor: "hsl(var(--buttercupp-surface-2))",
+            borderColor: "hsl(var(--buttercupp-border))",
+            color: "hsl(var(--buttercupp-fg))",
           }}
         />
         <button
@@ -240,7 +240,7 @@ export function ChatWindow({
           className="rounded-md px-4 py-2 text-sm font-medium text-white shadow-sm disabled:opacity-50"
           style={{
             background:
-              "linear-gradient(90deg, hsl(var(--poppy-accent-rose)), hsl(var(--poppy-accent-violet)))",
+              "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
           }}
         >
           Send
@@ -281,12 +281,12 @@ function MessageBubble({
           mine
             ? {
                 background:
-                  "linear-gradient(90deg, hsl(var(--poppy-accent-rose)), hsl(var(--poppy-accent-violet)))",
+                  "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
               }
             : {
-                backgroundColor: "hsl(var(--poppy-surface))",
-                color: "hsl(var(--poppy-fg))",
-                borderColor: "hsl(var(--poppy-border))",
+                backgroundColor: "hsl(var(--buttercupp-surface))",
+                color: "hsl(var(--buttercupp-fg))",
+                borderColor: "hsl(var(--buttercupp-border))",
               }
         }
       >
