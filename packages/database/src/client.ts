@@ -24,6 +24,13 @@ const isServerless = !!(
 
 function getDbUrl(): string {
   const url = process.env.DATABASE_URL || "";
+  // No DATABASE_URL (e.g. `next build` collecting route data on a host where
+  // the runtime env is not injected at build time): return empty so the
+  // placeholder in createPrismaClient() is used. Appending params to an empty
+  // string yields "?connect_timeout=15", which is NOT a valid URL and throws
+  // in `new URL()`, crashing the build. The client stays lazy either way; a
+  // real query without a DATABASE_URL still fails at runtime, as intended.
+  if (!url) return "";
   if (isServerless) {
     const params: string[] = [];
     if (!url.includes("connect_timeout")) params.push("connect_timeout=15");
