@@ -1,0 +1,144 @@
+# Poppy CI.
+#
+# HARD RULE: this workflow ENDS after `build-images`. There is no push, no
+# registry login, no `amplify` / `ecs` / `aws deploy` step, and the (commented)
+# deploy stub must not be enabled without a fresh explicit human approval.
+# See infra/DEPLOY.md for the human runbook.
+name: ci
+on:
+  pull_request:
+  push:
+    branches-ignore: [main]
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+      - run: npm ci --no-audit --no-fund
+      - name: Cache workspace node_modules
+        uses: actions/upload-artifact@v4
+        with:
+          name: node_modules
+          path: |
+            node_modules
+            frontend/node_modules
+            backend/node_modules
+            packages/database/node_modules
+            packages/shared/node_modules
+          retention-days: 1
+
+  typecheck:
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20", cache: "npm" }
+      - run: npm ci --no-audit --no-fund
+      - run: npm run typecheck
+
+  lint:
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20", cache: "npm" }
+      - run: npm ci --no-audit --no-fund
+      - run: npm run lint
+      - run: npm run check:no-em-dash
+
+  test-unit:
+    needs: install
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_USER: poppy
+          POSTGRES_PASSWORD: poppy
+          POSTGRES_DB: poppy_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U poppy -d poppy_test"
+          --health-interval 10s --health-timeout 5s --health-retries 10
+      redis:
+        image: redis:7-alpine
+        ports: ["6379:6379"]
+    env:
+      DATABASE_URL: postgresql://poppy:poppy@localhost:5432/poppy_test?schema=public
+      TEST_DATABASE_URL: postgresql://poppy:poppy@localhost:5432/poppy_test?schema=public
+      REDIS_URL: redis://localhost:6379
+      JWT_SECRET: ci-secret-do-not-use-in-prod-32-chars-min-length-please
+      NODE_ENV: test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20", cache: "npm" }
+      - run: npm ci --no-audit --no-fund
+      - name: Enable pgvector
+        run: psql "$DATABASE_URL" -c 'CREATE EXTENSION IF NOT EXISTS vector;'
+      - name: Prisma migrate + generate
+        run: |
+          cd packages/database
+          npx prisma migrate deploy
+          npx prisma generate
+      - run: npm test
+
+  test-e2e:
+    needs: [typecheck, lint, test-unit]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20", cache: "npm" }
+      - run: npm ci --no-audit --no-fund
+      - name: Boot compose stack
+        run: |
+          docker compose up --build -d postgres redis backend worker
+          # Wait for backend healthz.
+          for i in $(seq 1 30); do
+            if curl -sf http://localhost:4000/healthz >/dev/null; then break; fi
+            sleep 2
+          done
+          curl -sf http://localhost:4000/healthz
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+      - name: Playwright
+        run: npx playwright test
+        env:
+          BASE_URL: http://localhost:3000
+      - name: Compose logs on failure
+        if: failure()
+        run: docker compose logs --no-color
+
+  build-images:
+    needs: [typecheck, lint, test-unit]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Docker build (backend image)
+        run: docker build -t poppy:ci-${{ github.sha }} .
+      # No `docker push` here. No registry login. No AWS creds. See guardrail.
+
+  # ---------------------------------------------------------------------------
+  # DO NOT enable without explicit human approval per project guardrail.
+  # This job would push to ECR + roll ECS + trigger Amplify. It must remain
+  # commented out. Any change to un-comment it requires a fresh human approval
+  # AND a matching entry in infra/DEPLOY.md acknowledging the change.
+  # ---------------------------------------------------------------------------
+  # deploy:
+  #   needs: [test-e2e, build-images]
+  #   if: false  # HARD-DISABLED. Do not remove `if: false` without approval.
+  #   runs-on: ubuntu-latest
+  #   environment:
+  #     name: production
+  #     url: https://poppy.app
+  #   steps:
+  #     - run: echo "Not authorized. See infra/DEPLOY.md."
+  #     - run: exit 1

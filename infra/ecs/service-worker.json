@@ -1,0 +1,20 @@
+{
+  "_comment": "ECS service definition for the media worker. No load balancer; the worker pulls jobs from Redis. Desired count starts at 1 and scales on queue depth (BullMQ Prometheus exporter or CloudWatch metric).",
+  "cluster": "poppy-prod",
+  "serviceName": "poppy-worker",
+  "taskDefinition": "poppy-worker",
+  "desiredCount": 1,
+  "launchType": "FARGATE",
+  "deploymentConfiguration": {
+    "maximumPercent": 200,
+    "minimumHealthyPercent": 0,
+    "deploymentCircuitBreaker": { "enable": true, "rollback": true }
+  },
+  "networkConfiguration": {
+    "awsvpcConfiguration": {
+      "subnets": ["subnet-PRIVATE_1", "subnet-PRIVATE_2"],
+      "securityGroups": ["sg-poppy-worker"],
+      "assignPublicIp": "DISABLED"
+    }
+  }
+}

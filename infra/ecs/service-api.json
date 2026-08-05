@@ -1,0 +1,39 @@
+{
+  "_comment": "ECS service definition for poppy-api behind an ALB. WebSocket support requires two ALB knobs beyond a default HTTP service: (1) target-group stickiness so the same client re-lands on the same task for the WS upgrade sequence, and (2) an idle timeout raised well above the default 60s so long-lived chat streams do not disconnect. Redis pub/sub (see backend/src/queue/ws-notify.ts) handles cross-task fan-out for media.ready.",
+  "cluster": "poppy-prod",
+  "serviceName": "poppy-api",
+  "taskDefinition": "poppy-api",
+  "desiredCount": 2,
+  "launchType": "FARGATE",
+  "deploymentConfiguration": {
+    "maximumPercent": 200,
+    "minimumHealthyPercent": 100,
+    "deploymentCircuitBreaker": { "enable": true, "rollback": true }
+  },
+  "networkConfiguration": {
+    "awsvpcConfiguration": {
+      "subnets": ["subnet-PRIVATE_1", "subnet-PRIVATE_2"],
+      "securityGroups": ["sg-poppy-api"],
+      "assignPublicIp": "DISABLED"
+    }
+  },
+  "loadBalancers": [
+    {
+      "targetGroupArn": "arn:aws:elasticloadbalancing:REGION:ACCT_ID:targetgroup/poppy-api-tg/HASH",
+      "containerName": "api",
+      "containerPort": 4000
+    }
+  ],
+  "healthCheckGracePeriodSeconds": 60,
+  "_alb_target_group_attributes": {
+    "_comment": "Apply on the target group itself via aws elbv2 modify-target-group-attributes.",
+    "stickiness.enabled": "true",
+    "stickiness.type": "lb_cookie",
+    "stickiness.lb_cookie.duration_seconds": "3600",
+    "deregistration_delay.timeout_seconds": "60"
+  },
+  "_alb_listener_rules": {
+    "_comment": "Idle timeout must be raised on the ALB (not the target group) via aws elbv2 modify-load-balancer-attributes. Suggested 300s. HTTPS listener terminates TLS; forwards to HTTP on the target group.",
+    "idle_timeout_seconds": 300
+  }
+}

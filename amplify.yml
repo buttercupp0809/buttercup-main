@@ -1,0 +1,71 @@
+# AWS Amplify build spec for the Next.js 16 frontend (SSR / WEB_COMPUTE).
+# Mirrors ../Pellow/amplify.yml. Key notes:
+#   - appRoot: frontend  (monorepo)
+#   - preBuild symlinks @poppy/database + @poppy/shared into the frontend's
+#     node_modules AND copies the generated Prisma client + adapter-pg,
+#     because Amplify's node_modules cache does not follow workspace links.
+#   - build uses `next build --webpack`, NOT Turbopack: Turbopack currently
+#     auto-externalizes native `.node` binaries (Prisma engines, sharp),
+#     which breaks the SSR bundle in App Runner. Webpack keeps them bundled.
+#   - server env vars are baked into `.next/server-env.json` so the runtime
+#     picks them up without a re-read of process.env at cold start.
+#
+# Provisioning + env-var writes happen in the Amplify console; this file only
+# describes the build.
+
+version: 1
+applications:
+  - appRoot: frontend
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - node -v
+            - npm -v
+            - cd ..
+            # Install monorepo dependencies (workspaces).
+            - npm ci --no-audit --no-fund
+            # Regenerate Prisma client + build shared/database so their
+            # dist/ output exists for the frontend to consume.
+            - cd packages/shared && npx tsc && cd ../..
+            - cd packages/database && npx prisma generate && npx tsc && cd ../..
+            # Amplify does not preserve workspace symlinks; hydrate the
+            # frontend's node_modules with a symlink to each workspace pkg.
+            - mkdir -p frontend/node_modules/@poppy
+            - ln -snf ../../../packages/database frontend/node_modules/@poppy/database
+            - ln -snf ../../../packages/shared frontend/node_modules/@poppy/shared
+            # Copy the generated Prisma client + adapter-pg + pg driver so
+            # the SSR bundle can require them without workspace resolution.
+            - mkdir -p frontend/node_modules/@prisma
+            - cp -R node_modules/@prisma/client frontend/node_modules/@prisma/ || true
+            - cp -R node_modules/@prisma/adapter-pg frontend/node_modules/@prisma/ || true
+            - cp -R node_modules/pg frontend/node_modules/pg 2>/dev/null || true
+            - cd frontend
+        build:
+          commands:
+            # Use webpack, not Turbopack. See top-of-file note.
+            - npx next build --webpack
+            # Bake server env into the build so cold starts read from disk,
+            # not process.env. Amplify injects the values from the console.
+            - |
+              node -e "
+                const fs = require('fs');
+                const keys = [
+                  'DATABASE_URL',
+                  'JWT_SECRET',
+                  'NEXT_PUBLIC_BACKEND_URL',
+                  'SENTRY_DSN',
+                ];
+                const out = Object.fromEntries(keys.map(k => [k, process.env[k] ?? null]));
+                fs.mkdirSync('.next/server', { recursive: true });
+                fs.writeFileSync('.next/server-env.json', JSON.stringify(out, null, 2));
+              "
+      artifacts:
+        baseDirectory: frontend/.next
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - node_modules/**/*
+          - frontend/node_modules/**/*
+          - frontend/.next/cache/**/*

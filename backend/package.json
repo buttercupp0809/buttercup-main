@@ -1,0 +1,34 @@
+{
+  "name": "@poppy/backend",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "worker": "tsx watch src/worker.ts",
+    "build": "tsc && node -e \"const{cpSync,mkdirSync,existsSync}=require('fs');const p='dist/llm/prompt-templates';mkdirSync(p,{recursive:true});cpSync('src/llm/prompt-templates',p,{recursive:true,filter:(s)=>s.endsWith('.md')||!s.includes('.')});\"",
+    "start": "node dist/index.js",
+    "start:worker": "node dist/worker.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.115.0",
+    "@aws-sdk/client-s3": "^3.1098.0",
+    "@aws-sdk/cloudfront-signer": "^3.1098.0",
+    "@aws-sdk/s3-request-presigner": "^3.1098.0",
+    "@huggingface/transformers": "^4.2.0",
+    "@poppy/database": "*",
+    "@poppy/shared": "*",
+    "bullmq": "^5.81.3",
+    "ioredis": "^5.11.1",
+    "jose": "^5.9.0",
+    "openai": "^6.49.0",
+    "ws": "^8.20.1",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/ws": "^8.5.12",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}

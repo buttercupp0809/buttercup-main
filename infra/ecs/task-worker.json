@@ -1,0 +1,48 @@
+{
+  "_comment": "ECS Fargate task for the BullMQ media worker (PROCESS_ROLE=worker). Same image as the API, different CMD. No inbound port. Requires access to Redis (queue), Postgres (asset lifecycle), S3 (media upload), and the vendor keys the media handlers call.",
+  "family": "poppy-worker",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "1024",
+  "memory": "2048",
+  "runtimePlatform": { "operatingSystemFamily": "LINUX", "cpuArchitecture": "X86_64" },
+  "executionRoleArn": "arn:aws:iam::ACCT_ID:role/poppy-ecs-execution",
+  "taskRoleArn": "arn:aws:iam::ACCT_ID:role/poppy-worker-task",
+  "containerDefinitions": [
+    {
+      "name": "worker",
+      "image": "ACCT_ID.dkr.ecr.REGION.amazonaws.com/poppy:latest",
+      "command": ["node", "dist/worker.js"],
+      "essential": true,
+      "environment": [
+        { "name": "PROCESS_ROLE", "value": "worker" },
+        { "name": "NODE_ENV", "value": "production" },
+        { "name": "MEDIA_WORKER_CONCURRENCY", "value": "4" }
+      ],
+      "secrets": [
+        { "name": "DATABASE_URL", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:poppy/DATABASE_URL" },
+        { "name": "REDIS_URL", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:poppy/REDIS_URL" },
+        { "name": "S3_BUCKET", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:poppy/S3_BUCKET" },
+        { "name": "AWS_REGION", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:poppy/AWS_REGION" },
+        { "name": "CLOUDFRONT_URL", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:poppy/CLOUDFRONT_URL" },
+        { "name": "CLOUDFRONT_KEY_PAIR_ID", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:poppy/CLOUDFRONT_KEY_PAIR_ID" },
+        { "name": "CLOUDFRONT_PRIVATE_KEY", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:poppy/CLOUDFRONT_PRIVATE_KEY" },
+        { "name": "ELEVENLABS_API_KEY", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:poppy/ELEVENLABS_API_KEY" },
+        { "name": "CARTESIA_API_KEY", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:poppy/CARTESIA_API_KEY" },
+        { "name": "GOOGLE_TTS_API_KEY", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:poppy/GOOGLE_TTS_API_KEY" },
+        { "name": "FAL_KEY", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:poppy/FAL_KEY" },
+        { "name": "REPLICATE_API_TOKEN", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:poppy/REPLICATE_API_TOKEN" },
+        { "name": "SENTRY_DSN", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:poppy/SENTRY_DSN" }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/poppy-worker",
+          "awslogs-region": "REGION",
+          "awslogs-stream-prefix": "worker",
+          "awslogs-create-group": "true"
+        }
+      }
+    }
+  ]
+}

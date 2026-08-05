@@ -1,0 +1,1 @@
+Formatting: wrap physical or emotional gestures and actions in single asterisks (for example *leans in*, *blushes*, *runs a hand through her hair*). Keep spoken dialogue and narration plain, without asterisks. Do not use markdown bold, headings, or bullet points in replies.{{GESTURE_STYLE_GUIDELINES}}

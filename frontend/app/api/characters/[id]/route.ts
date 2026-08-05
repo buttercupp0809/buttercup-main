@@ -1,0 +1,141 @@
+import { NextResponse } from "next/server";
+import { prisma } from "@poppy/database";
+import { patchCharacterInputSchema, styleWireToEnum, createCharacterInputSchema } from "@poppy/shared";
+import { getCharacterDetail } from "@/lib/characters";
+import { getViewer } from "@/lib/viewer";
+import { jsonError } from "@/lib/api-helpers";
+import { requireAuth } from "@/lib/auth";
+import { assertSafeId } from "@/lib/safe-types";
+import { buildCharacterSystemPrompt } from "@/lib/character-snapshot";
+import { ZodError } from "zod";
+
+export const runtime = "nodejs";
+
+export async function GET(_req: Request, ctx: { params: Promise<{ id: string }> }) {
+  const { id } = await ctx.params;
+  const viewer = await getViewer();
+  try {
+    const detail = await getCharacterDetail(id, viewer);
+    if (!detail) return jsonError(404, "not_found");
+    return NextResponse.json(detail);
+  } catch (err) {
+    if (err instanceof TypeError) return jsonError(400, "invalid_id");
+    throw err;
+  }
+}
+
+// PATCH creates a NEW immutable CharacterVersion. Prior versions are never
+// mutated; existing conversations pin their own version so persona history
+// is preserved.
+export async function PATCH(req: Request, ctx: { params: Promise<{ id: string }> }) {
+  const user = await requireAuth();
+  const { id: rawId } = await ctx.params;
+  let id: string;
+  try {
+    id = assertSafeId(rawId, "characterId");
+  } catch {
+    return jsonError(400, "invalid_id");
+  }
+
+  let patch;
+  try {
+    patch = patchCharacterInputSchema.parse(await req.json());
+  } catch (err) {
+    if (err instanceof ZodError) return jsonError(400, "validation_failed", { issues: err.issues });
+    return jsonError(400, "invalid_body");
+  }
+
+  const owned = await prisma.character.findFirst({
+    where: { id, ownerUserId: user.id },
+    include: {
+      currentVersion: {
+        include: { appearanceSheet: true, voiceProfile: true },
+      },
+    },
+  });
+  if (!owned || !owned.currentVersion) return jsonError(404, "not_found");
+
+  // Merge patch onto the current version to build the next full draft. The
+  // snapshot builder needs a fully-populated CreateCharacterInput.
+  const current = owned.currentVersion;
+  const appearance = current.appearanceSheet;
+  const merged = createCharacterInputSchema.safeParse({
+    style: patch.style ?? (owned.style === "threeD" ? "3d" : owned.style),
+    name: patch.name ?? owned.name,
+    age: patch.age ?? owned.age,
+    gender: patch.gender ?? owned.gender,
+    avatarKey: patch.avatarKey,
+    traits: patch.traits ?? (appearance ? (appearance.traits as object) : {}),
+    stylePrompt: patch.stylePrompt ?? appearance?.stylePrompt ?? "",
+    negativePrompt: patch.negativePrompt ?? appearance?.negativePrompt ?? "",
+    referenceImageKeys: patch.referenceImageKeys ?? appearance?.referenceImageKeys ?? [],
+    backstory: patch.backstory ?? current.backstory,
+    traitTags: patch.traitTags ?? owned.tags,
+    behavioralInstructions: patch.behavioralInstructions ?? current.behavioralInstructions,
+    greeting: patch.greeting ?? current.greeting,
+    voiceProfile: patch.voiceProfile ?? {
+      provider: current.voiceProfile?.provider ?? "system",
+      voiceId: current.voiceProfile?.voiceId ?? "default",
+    },
+    bio: patch.bio ?? owned.bio,
+    visibility: patch.visibility ?? owned.visibility,
+    contentRating: patch.contentRating ?? owned.contentRating,
+  });
+  if (!merged.success) return jsonError(400, "invalid_merge", { issues: merged.error.issues });
+
+  const snapshot = buildCharacterSystemPrompt(merged.data);
+  const nextVersionNo =
+    (
+      await prisma.characterVersion.aggregate({
+        where: { characterId: id },
+        _max: { versionNo: true },
+      })
+    )._max.versionNo ?? 0;
+
+  const nextVersion = await prisma.$transaction(async (tx) => {
+    const appearanceRow = await tx.appearanceSheet.create({
+      data: {
+        traits: merged.data.traits as unknown as object,
+        stylePrompt: merged.data.stylePrompt,
+        negativePrompt: merged.data.negativePrompt ?? "",
+        referenceImageKeys: merged.data.referenceImageKeys ?? [],
+      },
+    });
+    const voiceRow = await tx.voiceProfile.create({
+      data: {
+        provider: merged.data.voiceProfile.provider,
+        voiceId: merged.data.voiceProfile.voiceId,
+        params: {},
+      },
+    });
+    const version = await tx.characterVersion.create({
+      data: {
+        characterId: id,
+        versionNo: nextVersionNo + 1,
+        personality: merged.data.traitTags.join(", "),
+        backstory: merged.data.backstory,
+        behavioralInstructions: merged.data.behavioralInstructions,
+        greeting: merged.data.greeting,
+        appearanceSheetId: appearanceRow.id,
+        voiceProfileId: voiceRow.id,
+        systemPromptSnapshot: snapshot,
+      },
+    });
+    await tx.character.update({
+      where: { id },
+      data: {
+        currentVersionId: version.id,
+        name: merged.data.name,
+        age: merged.data.age,
+        gender: merged.data.gender,
+        bio: merged.data.bio,
+        tags: merged.data.traitTags,
+        style: styleWireToEnum(merged.data.style),
+        contentRating: merged.data.contentRating,
+      },
+    });
+    return version;
+  });
+
+  return NextResponse.json({ id, versionId: nextVersion.id, versionNo: nextVersion.versionNo });
+}

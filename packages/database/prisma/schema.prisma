@@ -1,0 +1,501 @@
+// Poppy database schema. Source of truth: prds/master-prd.md §8.
+//
+// Embedding dimension: vector(384), matching in-process Xenova/all-MiniLM-L6-v2.
+// This is the ONE dimension used by Memory.embedding and MemorySummary.embedding.
+// Changing it later requires a migration and a full re-embed of every row.
+//
+// Naming: enums use PascalCase types, snake_case values (matching PRD §8 text).
+// Every table has createdAt; mutable tables also have updatedAt.
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-3.0.x", "linux-arm64-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// =============================================================================
+// Enums (closed sets from PRD §8)
+// =============================================================================
+
+enum SubscriptionTier {
+  free
+  premium
+  pro
+}
+
+enum ContentRating {
+  sfw
+  mature
+}
+
+enum Visibility {
+  private
+  public
+}
+
+enum CharacterStyle {
+  // enum value cannot start with a digit, so "3d" is spelled threeD in the
+  // Prisma enum. UI labels it "3D".
+  realistic
+  threeD
+  anime
+}
+
+enum ModerationStatus {
+  pending
+  approved
+  rejected
+}
+
+enum MemoryTier {
+  hot
+  warm
+  cold
+}
+
+enum MediaKind {
+  image
+  voice
+  video
+}
+
+enum MediaStatus {
+  queued
+  processing
+  ready
+  failed
+}
+
+enum TokenReason {
+  purchase
+  image_gen
+  voice_gen
+  premium_msg
+  grant
+}
+
+enum MessageRole {
+  user
+  assistant
+  system
+}
+
+enum AgeVerificationLevel {
+  none
+  self_declared
+  vendor_verified
+}
+
+// =============================================================================
+// Users, auth, age & compliance
+// =============================================================================
+
+model User {
+  id                     String               @id @default(uuid())
+  email                  String               @unique
+  passwordHash           String?
+  oauthProvider          String?
+  googleId               String?              @unique
+  dob                    DateTime?
+  jurisdiction           String?
+  subscriptionTier       SubscriptionTier     @default(free)
+  tokenBalance           Int                  @default(0)
+  // Phase 20: lifetime free-trial counter (see FREE_MESSAGE_LIMIT). Additive.
+  freeMessagesUsed       Int                  @default(0)
+  ageVerifiedAt          DateTime?
+  ageVerificationLevel   AgeVerificationLevel @default(none)
+  tosAcceptedAt          DateTime?
+  privacyAcceptedAt      DateTime?
+  createdAt              DateTime             @default(now())
+  updatedAt              DateTime             @updatedAt
+
+  characters             Character[]           @relation("CharacterOwner")
+  ageVerifications       AgeVerification[]
+  conversations          Conversation[]
+  memories               Memory[]
+  memorySummaries        MemorySummary[]
+  relationshipStates     RelationshipState[]
+  subscription           Subscription?
+  tokenLedger            TokenLedger[]
+  mediaAssets            MediaAsset[]
+  crisisEvents           CrisisEvent[]
+  magicLinks             MagicLink[]
+}
+
+model AgeVerification {
+  id           String               @id @default(uuid())
+  userId       String
+  provider     String
+  level        AgeVerificationLevel
+  status       String
+  evidenceRef  String?
+  verifiedAt   DateTime?
+  createdAt    DateTime             @default(now())
+
+  user         User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model MagicLink {
+  id          String    @id @default(uuid())
+  userId      String
+  tokenHash   String    @unique
+  purpose     String    @default("login")
+  expiresAt   DateTime
+  consumedAt  DateTime?
+  createdAt   DateTime  @default(now())
+
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+  @@index([expiresAt])
+}
+
+// =============================================================================
+// Characters (system-owned and user-owned) + versions + assets
+// =============================================================================
+
+model Character {
+  id                String            @id @default(uuid())
+  ownerUserId       String?
+  name              String
+  age               Int
+  gender            String
+  bio               String
+  tags              String[]
+  style             CharacterStyle
+  contentRating     ContentRating     @default(sfw)
+  visibility        Visibility        @default(private)
+  moderationStatus  ModerationStatus  @default(pending)
+  currentVersionId  String?
+  popularityScore   Float             @default(0)
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+
+  owner             User?             @relation("CharacterOwner", fields: [ownerUserId], references: [id], onDelete: SetNull)
+  versions          CharacterVersion[] @relation("CharacterVersions")
+  currentVersion    CharacterVersion?  @relation("CharacterCurrentVersion", fields: [currentVersionId], references: [id], onDelete: SetNull)
+  conversations     Conversation[]
+
+  @@index([visibility, moderationStatus])
+  @@index([contentRating])
+  @@index([popularityScore])
+  @@index([ownerUserId])
+}
+
+model CharacterVersion {
+  id                       String            @id @default(uuid())
+  characterId              String
+  versionNo                Int
+  personality              String
+  backstory                String
+  behavioralInstructions   String
+  greeting                 String
+  appearanceSheetId        String?
+  voiceProfileId           String?
+  systemPromptSnapshot     String
+  createdAt                DateTime          @default(now())
+
+  character                Character         @relation("CharacterVersions", fields: [characterId], references: [id], onDelete: Cascade)
+  appearanceSheet          AppearanceSheet?  @relation(fields: [appearanceSheetId], references: [id], onDelete: SetNull)
+  voiceProfile             VoiceProfile?     @relation(fields: [voiceProfileId], references: [id], onDelete: SetNull)
+  currentOf                Character[]       @relation("CharacterCurrentVersion")
+  conversations            Conversation[]
+
+  @@unique([characterId, versionNo])
+  @@index([characterId])
+}
+
+model AppearanceSheet {
+  id                  String   @id @default(uuid())
+  traits              Json
+  stylePrompt         String
+  negativePrompt      String
+  referenceImageKeys  String[]
+  loraRef             String?
+  createdAt           DateTime @default(now())
+
+  versions            CharacterVersion[]
+}
+
+model VoiceProfile {
+  id          String   @id @default(uuid())
+  provider    String
+  voiceId     String
+  params      Json
+  previewKey  String?
+  createdAt   DateTime @default(now())
+
+  versions    CharacterVersion[]
+}
+
+// =============================================================================
+// Conversations, messages, memory
+// =============================================================================
+
+model Conversation {
+  id                   String            @id @default(uuid())
+  userId               String
+  characterId          String
+  characterVersionId   String
+  lastMessageAt        DateTime?
+  messageCount         Int               @default(0)
+  createdAt            DateTime          @default(now())
+  updatedAt            DateTime          @updatedAt
+
+  user                 User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  character            Character         @relation(fields: [characterId], references: [id], onDelete: Cascade)
+  characterVersion     CharacterVersion  @relation(fields: [characterVersionId], references: [id], onDelete: Restrict)
+  messages             Message[]
+
+  @@unique([userId, characterId])
+  @@index([userId, lastMessageAt])
+  @@index([characterId])
+}
+
+model Message {
+  id              String       @id @default(uuid())
+  conversationId  String
+  role            MessageRole
+  content         String
+  mediaAssetId    String?
+  tokenCost       Int?
+  createdAt       DateTime     @default(now())
+
+  conversation    Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  mediaAsset      MediaAsset?  @relation(fields: [mediaAssetId], references: [id], onDelete: SetNull)
+
+  @@index([conversationId, createdAt])
+}
+
+// pgvector column declared as Unsupported so Prisma passes it through raw.
+// The vector index (HNSW cosine) is added by the accompanying migration SQL.
+model Memory {
+  id                String                       @id @default(uuid())
+  userId            String
+  characterId       String
+  content           String
+  category          String
+  embedding         Unsupported("vector(384)")?
+  tier              MemoryTier                   @default(hot)
+  salience          Float                        @default(0.5)
+  importance        Float                        @default(0.5)
+  confidence        Float                        @default(1.0)
+  emotionalValence  Float                        @default(0.0)
+  pinned            Boolean                      @default(false)
+  accessCount       Int                          @default(0)
+  lastAccessedAt    DateTime?
+  validUntil        DateTime?
+  sourceMessageId   String?
+  // Phase 23: sha256 of the normalized content. Nullable/additive so old rows
+  // pre-migration keep working. Combined with (userId, characterId,
+  // sourceMessageId) it makes concurrent extractor invocations for the same
+  // turn idempotent on top of the existing Jaccard 0.6 dedup.
+  contentHash       String?
+  createdAt         DateTime                     @default(now())
+  updatedAt         DateTime                     @updatedAt
+
+  user              User                         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, characterId])
+  @@index([userId, characterId, tier])
+  @@index([userId, characterId, sourceMessageId])
+}
+
+// Phase 23: append-only visibility for terminal memory-pipeline failures.
+// The extractor and compactor never throw into the reply path; a persistent
+// failure lands here so an operator can query it and alert on volume.
+model MemoryDeadLetter {
+  id               String   @id @default(uuid())
+  userId           String?
+  characterId      String?
+  sourceMessageId  String?
+  stage            String
+  error            String
+  createdAt        DateTime @default(now())
+
+  @@index([stage, createdAt])
+  @@index([userId, characterId])
+}
+
+model MemorySummary {
+  id           String                       @id @default(uuid())
+  userId       String
+  characterId  String
+  periodStart  DateTime
+  periodEnd    DateTime
+  summary      String
+  themes       String[]
+  sentiment    String?
+  keyEvents    Json?
+  embedding    Unsupported("vector(384)")?
+  createdAt    DateTime                     @default(now())
+
+  user         User                         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, characterId])
+}
+
+model RelationshipState {
+  id              String    @id @default(uuid())
+  userId          String
+  characterId     String
+  affectionLevel  Int       @default(0)
+  milestones      String[]
+  mood            String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, characterId])
+}
+
+// =============================================================================
+// Billing, tokens, media
+// =============================================================================
+
+model Subscription {
+  id                String            @id @default(uuid())
+  userId            String            @unique
+  provider          String
+  tier              SubscriptionTier  @default(free)
+  // Phase 20: duration-pass plan. Null = user never bought a pass. Values:
+  // "free" | "daily" | "weekly" | "monthly" (see backend plans.ts).
+  plan              String?
+  status            String            @default("inactive")
+  currentPeriodEnd  DateTime?
+  externalId        String?
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+
+  user              User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([provider, status])
+}
+
+// Per-provider webhook dedupe. INSERT..ON CONFLICT on (provider, eventId) is
+// the cross-instance idempotency primitive; a duplicate event fails the
+// insert and the shared handler short-circuits.
+model WebhookEvent {
+  id         String   @id @default(uuid())
+  provider   String
+  eventId    String
+  eventType  String
+  payload    Json
+  createdAt  DateTime @default(now())
+
+  @@unique([provider, eventId])
+  @@index([createdAt])
+}
+
+// Daily/monthly counters for tier limit enforcement (messages, images,
+// voice). Period is a bucket key like "2026-07" or "2026-07-30".
+model UsageCounter {
+  id          String   @id @default(uuid())
+  userId      String
+  counterType String
+  period      String
+  count       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([userId, counterType, period])
+  @@index([userId])
+}
+
+model TokenLedger {
+  id            String       @id @default(uuid())
+  userId        String
+  delta         Int
+  reason        TokenReason
+  balanceAfter  Int
+  refId         String?
+  createdAt     DateTime     @default(now())
+
+  user          User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+}
+
+model MediaAsset {
+  id            String       @id @default(uuid())
+  userId        String
+  characterId   String?
+  kind          MediaKind
+  s3Key         String?
+  status        MediaStatus  @default(queued)
+  jobId         String?
+  meta          Json?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  user          User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages      Message[]
+
+  @@index([userId, createdAt])
+  @@index([status])
+  @@index([jobId])
+}
+
+// =============================================================================
+// Safety, audit, analytics, flags
+// =============================================================================
+
+model CrisisEvent {
+  id         String   @id @default(uuid())
+  userId     String
+  level      Int
+  trigger    String
+  action     String
+  createdAt  DateTime @default(now())
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([level])
+}
+
+// AuditLog intentionally has NO foreign-key relation to User: audit rows must
+// survive user deletion. userId/actorId are stored as opaque strings.
+model AuditLog {
+  id         String   @id @default(uuid())
+  userId     String?
+  actorId    String?
+  action     String
+  resource   String?
+  metadata   Json?
+  ip         String?
+  userAgent  String?
+  createdAt  DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@index([action, createdAt])
+}
+
+model AnalyticsEvent {
+  id         String   @id @default(uuid())
+  userId     String?
+  name       String
+  props      Json?
+  createdAt  DateTime @default(now())
+
+  @@index([name])
+  @@index([userId])
+  @@index([createdAt])
+}
+
+model FeatureFlag {
+  id        String   @id @default(uuid())
+  key       String   @unique
+  enabled   Boolean  @default(false)
+  rollout   Int      @default(0)
+  metadata  Json?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
