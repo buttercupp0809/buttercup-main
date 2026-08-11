@@ -8,6 +8,7 @@ import {
   X,
   MessageCircle,
   Compass,
+  Clapperboard,
   Sparkles,
   User as UserIcon,
 } from "lucide-react";
@@ -19,6 +20,7 @@ import type { RecentEntry } from "@/components/app-shell/SideNav";
 const ICONS: Record<NavIcon, React.ComponentType<{ className?: string }>> = {
   chats: MessageCircle,
   discover: Compass,
+  reels: Clapperboard,
   create: Sparkles,
   settings: UserIcon,
 };
@@ -162,7 +164,8 @@ export function MobileBottomBar() {
   const pathname = usePathname() ?? "/";
   const items = [
     { href: "/chats", label: "Chats", icon: MessageCircle, testid: "bottom-chats" },
-    { href: "/gallery", label: "Discover", icon: Compass, testid: "bottom-discover" },
+    { href: "/discover", label: "Discover", icon: Compass, testid: "bottom-discover" },
+    { href: "/reels", label: "Reels", icon: Clapperboard, testid: "bottom-reels" },
     { href: "/create", label: "Create", icon: Sparkles, testid: "bottom-create" },
     { href: "/settings", label: "Profile", icon: UserIcon, testid: "bottom-profile" },
   ];

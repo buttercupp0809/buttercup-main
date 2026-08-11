@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import {
   MessageCircle,
   Compass,
+  Clapperboard,
   Sparkles,
   Settings as SettingsIcon,
   ChevronLeft,
@@ -18,6 +19,7 @@ import { ProfileMenu, type ProfileUser } from "@/components/app-shell/ProfileMen
 const ICONS: Record<NavIcon, React.ComponentType<{ className?: string }>> = {
   chats: MessageCircle,
   discover: Compass,
+  reels: Clapperboard,
   create: Sparkles,
   settings: SettingsIcon,
 };

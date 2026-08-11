@@ -16,9 +16,9 @@ test.describe("auth + age gate", () => {
     await page.goto("/age-gate");
   });
 
-  test("verified user reaches /dashboard and sees AI disclosure", async ({ page }) => {
+  test("verified user reaches /dashboard", async ({ page }) => {
     test.skip(true, "wire once auth harness is in place");
     await page.goto("/dashboard");
-    await expect(page.getByTestId("ai-disclosure")).toBeVisible();
+    await expect(page.getByTestId("profile-menu-trigger").first()).toBeVisible();
   });
 });

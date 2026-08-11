@@ -48,10 +48,10 @@ test.describe("app shell (seeded verified user)", () => {
     await expect(page).toHaveURL(/\/chats/);
   });
 
-  test("AI disclosure is visible on every protected surface", async ({ page }) => {
+  test("header profile menu is available on every protected surface", async ({ page }) => {
     for (const path of ["/dashboard", "/gallery", "/create", "/settings", "/chats"]) {
       await page.goto(path);
-      await expect(page.getByTestId("ai-disclosure").first()).toBeVisible();
+      await expect(page.getByTestId("profile-menu-trigger").first()).toBeVisible();
     }
   });
 

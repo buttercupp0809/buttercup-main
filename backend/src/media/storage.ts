@@ -91,11 +91,34 @@ export async function uploadMedia(buffer: Buffer, ctx: UploadContext): Promise<s
   return key;
 }
 
+export function isStorageConfigured(): boolean {
+  return Boolean(
+    (process.env.POPPY_S3_BUCKET_GENERATED ?? process.env.S3_BUCKET) &&
+      process.env.CLOUDFRONT_URL &&
+      process.env.CLOUDFRONT_KEY_PAIR_ID &&
+      process.env.CLOUDFRONT_PRIVATE_KEY,
+  );
+}
+
+// Uploads to the generated-assets bucket (POPPY_S3_BUCKET_GENERATED or S3_BUCKET fallback).
+// Returns the s3Key. Throws if neither bucket env var is set.
+export async function uploadGenerated(buffer: Buffer, ctx: UploadContext): Promise<string> {
+  const bucket = process.env.POPPY_S3_BUCKET_GENERATED ?? process.env.S3_BUCKET;
+  if (!bucket) throw new Error("POPPY_S3_BUCKET_GENERATED not configured");
+  const deps = loadS3();
+  if (!deps) throw new Error("aws sdk not available");
+  const ext = extensionFor(ctx.contentType);
+  const key = `${ctx.kind}s/${ctx.userId}/${crypto.randomUUID()}.${ext}`;
+  const PutCtor = deps.PutObjectCommand as new (args: Record<string, unknown>) => unknown;
+  const cmd = new PutCtor({ Bucket: bucket, Key: key, Body: buffer, ContentType: ctx.contentType });
+  const send = (deps.client as { send: (c: unknown) => Promise<unknown> }).send.bind(deps.client);
+  await send(cmd);
+  return key;
+}
+
 // 15-minute TTL by default; safe for a chat UI that renders a media asset
 // once. Callers can override for long-form embeds.
 export async function getSignedUrl(s3Key: string, ttlSeconds = 15 * 60): Promise<string> {
-  const bucket = process.env.S3_BUCKET;
-  if (!bucket) throw new Error("S3_BUCKET not configured");
   const deps = loadS3();
   if (!deps) throw new Error("aws sdk not installed");
 
@@ -112,6 +135,8 @@ export async function getSignedUrl(s3Key: string, ttlSeconds = 15 * 60): Promise
     });
   }
 
+  const bucket = process.env.S3_BUCKET;
+  if (!bucket) throw new Error("S3_BUCKET not configured");
   const GetCtor = deps.GetObjectCommand as new (args: Record<string, unknown>) => unknown;
   const cmd = new GetCtor({ Bucket: bucket, Key: s3Key });
   return deps.getSignedUrl(deps.client, cmd, { expiresIn: ttlSeconds });

@@ -2,7 +2,8 @@
 // backend/src/media/voice/generate.ts. Providers are called via raw fetch
 // so the file compiles without SDK deps.
 
-import { FAL_MODELS, REPLICATE_MODELS, IMAGE_SIZE } from "./constants";
+import { FAL_MODELS, REPLICATE_MODELS, IMAGE_SIZE, COMFY } from "./constants";
+import { resolvePoppyBaseUrl, poppyConfigured } from "../../inference/poppyEndpoint";
 
 interface GenerateParams {
   prompt: string;
@@ -15,7 +16,7 @@ interface GenerateParams {
 
 interface GenerateResult {
   buffer: Buffer;
-  provider: "fal" | "replicate";
+  provider: "fal" | "replicate" | "comfyui";
   latencyMs: number;
   meta: Record<string, unknown>;
 }
@@ -112,8 +113,270 @@ async function generateWithReplicate(p: GenerateParams): Promise<GenerateResult>
   };
 }
 
+// Self-hosted Juggernaut XL (photorealistic SDXL) via ComfyUI on the GPU box. Builds a minimal
+// SDXL txt2img graph, queues it on /prompt, polls /history until the image is
+// ready, then downloads it from /view. Base URL is resolved (and the box woken)
+// via the router. Reference images / LoRA are not wired into this basic graph
+// yet (would need IPAdapter / LoraLoader nodes); prompt + negative + size + seed.
+function buildComfyWorkflow(a: {
+  ckpt: string;
+  positive: string;
+  negative: string;
+  width: number;
+  height: number;
+  seed: number;
+}): Record<string, unknown> {
+  return {
+    "4": { class_type: "CheckpointLoaderSimple", inputs: { ckpt_name: a.ckpt } },
+    "5": { class_type: "EmptyLatentImage", inputs: { width: a.width, height: a.height, batch_size: 1 } },
+    "6": { class_type: "CLIPTextEncode", inputs: { text: a.positive, clip: ["4", 1] } },
+    "7": { class_type: "CLIPTextEncode", inputs: { text: a.negative, clip: ["4", 1] } },
+    "3": {
+      class_type: "KSampler",
+      inputs: {
+        seed: a.seed,
+        steps: COMFY.steps,
+        cfg: COMFY.cfg,
+        sampler_name: COMFY.samplerName,
+        scheduler: COMFY.scheduler,
+        denoise: 1,
+        model: ["4", 0],
+        positive: ["6", 0],
+        negative: ["7", 0],
+        latent_image: ["5", 0],
+      },
+    },
+    "8": { class_type: "VAEDecode", inputs: { samples: ["3", 0], vae: ["4", 2] } },
+    "9": { class_type: "SaveImage", inputs: { filename_prefix: "poppy", images: ["8", 0] } },
+  };
+}
+
+interface ComfyImageRef {
+  filename: string;
+  subfolder?: string;
+  type?: string;
+}
+
+async function generateWithComfyUI(p: GenerateParams): Promise<GenerateResult> {
+  const base = await resolvePoppyBaseUrl("juggernaut"); // http://<ip>:8188
+  const start = performance.now();
+  const size = IMAGE_SIZE[p.style];
+  const ckpt = process.env.POPPY_JUGGERNAUT_CHECKPOINT ?? COMFY.checkpoint;
+  const seed = p.seed ?? Math.floor(Math.random() * 1_000_000_000_000);
+  const workflow = buildComfyWorkflow({
+    ckpt,
+    positive: COMFY.qualityPrefix + p.prompt,
+    negative: p.negativePrompt,
+    width: size.width,
+    height: size.height,
+    seed,
+  });
+
+  const q = await fetch(`${base}/prompt`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ prompt: workflow, client_id: `poppy-${Date.now()}` }),
+  });
+  if (!q.ok) throw new Error(`comfyui_${q.status}`);
+  const { prompt_id: promptId } = (await q.json()) as { prompt_id?: string };
+  if (!promptId) throw new Error("comfyui_no_prompt_id");
+
+  let image: ComfyImageRef | undefined;
+  for (let i = 0; i < COMFY.maxPolls; i++) {
+    await new Promise((r) => setTimeout(r, COMFY.pollMs));
+    const h = await fetch(`${base}/history/${promptId}`);
+    if (!h.ok) continue;
+    const hist = (await h.json()) as Record<
+      string,
+      { outputs?: Record<string, { images?: ComfyImageRef[] }> }
+    >;
+    const outputs = hist[promptId]?.outputs;
+    if (outputs) {
+      for (const nodeId of Object.keys(outputs)) {
+        const imgs = outputs[nodeId].images;
+        if (imgs && imgs.length > 0) {
+          image = imgs[0];
+          break;
+        }
+      }
+    }
+    if (image) break;
+  }
+  if (!image) throw new Error("comfyui_timeout");
+
+  const view =
+    `${base}/view?filename=${encodeURIComponent(image.filename)}` +
+    `&subfolder=${encodeURIComponent(image.subfolder ?? "")}` +
+    `&type=${encodeURIComponent(image.type ?? "output")}`;
+  const buffer = await fetchImage(view);
+  return {
+    buffer,
+    provider: "comfyui",
+    latencyMs: Math.round(performance.now() - start),
+    meta: { seed, model: ckpt, promptId },
+  };
+}
+
+// ============================================================================
+// Consistent-face generation (InstantID + FaceSwap + GPEN).
+// Mirrors Plans/inference-aws/persona_pipeline.py so the chat pipeline produces
+// the SAME character-consistent output as the command pipeline. Takes a
+// reference face image (the character's primary image) and locks that exact
+// face onto a prompt-driven scene.
+//
+// Face pose strategy: cnStrength=0 disables the ControlNet keypoint branch
+// (which would lock the head direction to the reference). Identity is preserved
+// by ip_weight=1.05 (ArcFace embedding) and, after KSampler, by inswapper which
+// copies the exact reference face onto the generated head. Pose direction is
+// driven by a text descriptor that is prepended to every prompt.
+// ============================================================================
+const CONSISTENT = {
+  ipWeight: 1.05,
+  cnStrength: 0,   // 0 = no keypoint pose lock; pose is text-driven
+  endAt: 0.75,
+  steps: 30,
+  cfg: 4.5,
+  sampler: "dpmpp_2m",
+  scheduler: "karras",
+  width: 768,   // 9:16 vertical canvas, same as persona command pipeline
+  height: 1344, // taller canvas gives vertical space for full-body head-to-toe
+  instantidFile: "ip-adapter.bin",
+  controlnetFile: "instantid_control.safetensors",
+  // Full-body framing cluster first so CLIP weights it highest (same terms
+  // as the persona command pipeline that reliably shows the complete figure).
+  qualityPrefix: "full body from head to toe, entire figure visible including feet, full length wide shot, whole body inside the frame, subject centered with empty space and margin above the head and below the feet, standing far from camera, RAW photo, photorealistic, soft even lighting, bright natural light, well-lit, masterpiece, best quality, 8k uhd, dslr, sharp focus, high detail, ",
+} as const;
+
+// Pose descriptors cycled / randomly picked. Each encodes a head orientation so
+// the face turns naturally instead of always copying the reference angle.
+const POSE_DESCRIPTORS = [
+  "looking directly at camera",
+  "looking slightly to the left, relaxed",
+  "looking slightly to the right, candid",
+  "three-quarter view turning right",
+  "three-quarter view turning left",
+  "glancing over shoulder",
+] as const;
+
+function buildInstantIdWorkflow(a: {
+  ckpt: string;
+  positive: string;
+  negative: string;
+  refName: string;
+  seed: number;
+}): Record<string, unknown> {
+  return {
+    "4": { class_type: "CheckpointLoaderSimple", inputs: { ckpt_name: a.ckpt } },
+    "5": { class_type: "EmptyLatentImage", inputs: { width: CONSISTENT.width, height: CONSISTENT.height, batch_size: 1 } },
+    "6": { class_type: "CLIPTextEncode", inputs: { text: a.positive, clip: ["4", 1] } },
+    "7": { class_type: "CLIPTextEncode", inputs: { text: a.negative, clip: ["4", 1] } },
+    "10": { class_type: "LoadImage", inputs: { image: a.refName } },
+    "20": { class_type: "InstantIDModelLoader", inputs: { instantid_file: CONSISTENT.instantidFile } },
+    "21": { class_type: "InstantIDFaceAnalysis", inputs: { provider: "CPU" } },
+    "22": { class_type: "ControlNetLoader", inputs: { control_net_name: CONSISTENT.controlnetFile } },
+    "23": {
+      class_type: "ApplyInstantIDAdvanced",
+      inputs: {
+        instantid: ["20", 0], insightface: ["21", 0], control_net: ["22", 0],
+        image: ["10", 0], model: ["4", 0], positive: ["6", 0], negative: ["7", 0],
+        ip_weight: CONSISTENT.ipWeight, cn_strength: CONSISTENT.cnStrength,
+        start_at: 0.0, end_at: CONSISTENT.endAt, noise: 0.0, combine_embeds: "average",
+      },
+    },
+    "3": {
+      class_type: "KSampler",
+      inputs: {
+        seed: a.seed, steps: CONSISTENT.steps, cfg: CONSISTENT.cfg,
+        sampler_name: CONSISTENT.sampler, scheduler: CONSISTENT.scheduler, denoise: 1,
+        model: ["23", 0], positive: ["23", 1], negative: ["23", 2], latent_image: ["5", 0],
+      },
+    },
+    "8": { class_type: "VAEDecode", inputs: { samples: ["3", 0], vae: ["4", 2] } },
+    // Face swap + high-res restore: inswapper copies the EXACT reference face,
+    // then GPEN-BFR-512 (inside the node) restores it to a crisp 512px face so
+    // it matches the sharpness of the rest of the image.
+    "50": { class_type: "PoppyFaceSwap", inputs: { target_image: ["8", 0], source_image: ["10", 0] } },
+    "9": { class_type: "SaveImage", inputs: { filename_prefix: "poppy-chat", images: ["50", 0] } },
+  };
+}
+
+async function pollComfyImage(base: string, promptId: string): Promise<ComfyImageRef> {
+  for (let i = 0; i < COMFY.maxPolls; i++) {
+    await new Promise((r) => setTimeout(r, COMFY.pollMs));
+    const h = await fetch(`${base}/history/${promptId}`);
+    if (!h.ok) continue;
+    const hist = (await h.json()) as Record<string, { outputs?: Record<string, { images?: ComfyImageRef[] }> }>;
+    const outputs = hist[promptId]?.outputs;
+    if (outputs) {
+      for (const nodeId of Object.keys(outputs)) {
+        const imgs = outputs[nodeId].images;
+        if (imgs && imgs.length > 0) return imgs[0];
+      }
+    }
+  }
+  throw new Error("comfyui_timeout");
+}
+
+// Generate a character-consistent image: exact reference face on a prompt scene.
+// poseHint: explicit head direction parsed from the user's message. When absent,
+// a random POSE_DESCRIPTORS entry is used so each generation looks in a different
+// direction rather than always copying the reference angle.
+export async function generateWithComfyUIConsistent(p: {
+  prompt: string;
+  negativePrompt: string;
+  referenceBytes: Buffer;
+  seed?: number;
+  poseHint?: string;
+}): Promise<GenerateResult> {
+  const base = await resolvePoppyBaseUrl("juggernaut");
+  const start = performance.now();
+  const ckpt = process.env.POPPY_JUGGERNAUT_CHECKPOINT ?? COMFY.checkpoint;
+  const seed = p.seed ?? Math.floor(Math.random() * 1_000_000_000_000);
+  const pose = p.poseHint ?? POSE_DESCRIPTORS[Math.floor(Math.random() * POSE_DESCRIPTORS.length)];
+
+  // Upload the reference face into ComfyUI's input dir.
+  const fd = new FormData();
+  fd.append("image", new Blob([new Uint8Array(p.referenceBytes)], { type: "image/png" }), "chat-ref.png");
+  fd.append("overwrite", "true");
+  const up = await fetch(`${base}/upload/image`, { method: "POST", body: fd });
+  if (!up.ok) throw new Error(`comfyui_upload_${up.status}`);
+  const refName = ((await up.json()) as { name?: string }).name;
+  if (!refName) throw new Error("comfyui_upload_no_name");
+
+  const workflow = buildInstantIdWorkflow({
+    ckpt,
+    positive: `${pose}, ${CONSISTENT.qualityPrefix}${p.prompt}`,
+    negative: p.negativePrompt,
+    refName,
+    seed,
+  });
+  const q = await fetch(`${base}/prompt`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ prompt: workflow, client_id: `poppy-chat-${Date.now()}` }),
+  });
+  if (!q.ok) throw new Error(`comfyui_${q.status}`);
+  const { prompt_id: promptId } = (await q.json()) as { prompt_id?: string };
+  if (!promptId) throw new Error("comfyui_no_prompt_id");
+
+  const image = await pollComfyImage(base, promptId);
+  const view =
+    `${base}/view?filename=${encodeURIComponent(image.filename)}` +
+    `&subfolder=${encodeURIComponent(image.subfolder ?? "")}` +
+    `&type=${encodeURIComponent(image.type ?? "output")}`;
+  const buffer = await fetchImage(view);
+  return {
+    buffer,
+    provider: "comfyui",
+    latencyMs: Math.round(performance.now() - start),
+    meta: { seed, model: ckpt, promptId, method: "instantid+facedetailer+faceswap" },
+  };
+}
+
 export async function generateImage(p: GenerateParams): Promise<GenerateResult> {
   const attempts: Array<() => Promise<GenerateResult>> = [];
+  // Self-hosted Juggernaut/ComfyUI is primary when configured; cloud providers back it up.
+  if (poppyConfigured()) attempts.push(() => generateWithComfyUI(p));
   if (!disabled.fal) attempts.push(() => generateWithFal(p));
   if (!disabled.replicate) attempts.push(() => generateWithReplicate(p));
   let lastErr: unknown = new Error("no_image_providers");

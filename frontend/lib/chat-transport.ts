@@ -27,6 +27,7 @@ export type TransportEvent =
       plans: TransportPaywallPlan[];
       upgradeUrl: string;
     }
+  | { type: "image"; conversationId: string; url: string; mediaAssetId: string }
   | { type: "error"; message: string };
 
 export interface ChatTransport {
@@ -86,6 +87,7 @@ export function createChatTransport(options: ChatTransportOptions = {}): ChatTra
             plans: data.plans,
             upgradeUrl: data.upgradeUrl,
           });
+        else if (data.type === "media.ready") emit({ type: "image", conversationId: data.conversationId, url: data.url, mediaAssetId: data.mediaAssetId });
         else if (data.type === "error") emit({ type: "error", message: data.message });
       } catch {
         emit({ type: "error", message: "bad_frame" });
@@ -135,6 +137,7 @@ export function createChatTransport(options: ChatTransportOptions = {}): ChatTra
             plans: data.plans,
             upgradeUrl: data.upgradeUrl,
           });
+        else if (evt === "image") emit({ type: "image", conversationId, url: data.url, mediaAssetId: data.mediaAssetId });
         else if (evt === "error") emit({ type: "error", message: data.message });
       }
     }

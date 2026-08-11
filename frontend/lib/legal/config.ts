@@ -5,10 +5,10 @@
 // unresolved slot before launch.
 
 export const LEGAL = {
-  COMPANY: "{{COMPANY}}",
-  JURISDICTION: "{{JURISDICTION}}",
-  CONTACT_EMAIL: "{{CONTACT_EMAIL}}",
-  LAST_UPDATED: "{{LAST_UPDATED}}",
+  COMPANY: "ButterCupp",
+  JURISDICTION: "the United States",
+  CONTACT_EMAIL: "admin@buttercupp.fun",
+  LAST_UPDATED: "August 9, 2026",
 } as const;
 
 export type LegalGroup = "legal" | "company";

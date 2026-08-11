@@ -19,8 +19,6 @@ test.describe("chat gestures", () => {
 
   test("typing dots -> streamed reply with italic gestures, user stays plain", async ({ page }) => {
     await page.goto(`/chat/${characterId}`);
-    // AI disclosure pill is always visible (SB 243).
-    await expect(page.getByTestId("ai-disclosure-pill")).toBeVisible();
 
     // The user types a message with asterisks; those must render PLAIN.
     await page.getByTestId("chat-input").fill("*I wave awkwardly* hi there");

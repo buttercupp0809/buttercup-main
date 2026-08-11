@@ -9,52 +9,13 @@
 import * as React from "react";
 import { Star } from "lucide-react";
 
-interface LedgerRow {
-  id: string;
-  delta: number;
-  reason: string;
-  balanceAfter: number;
-  createdAt: string;
-}
-
 type Plan = "free" | "daily" | "weekly" | "monthly";
-
-interface PlanConfig {
-  plan: Plan;
-  label: string;
-  priceUsd: number;
-  durationDays: number;
-  chats: number;
-  images: number;
-  videos: number;
-}
-
-interface QuotaBucket {
-  limit: number;
-  used: number;
-  remaining: number;
-}
 
 interface Entitlements {
   plan: Plan;
   active: boolean;
   expiresAt: string | null;
-  chats: QuotaBucket;
-  images: QuotaBucket;
-  videos: QuotaBucket;
-  freeMessagesUsed: number;
 }
-
-interface Props {
-  tokenBalance: number;
-  ledger: LedgerRow[];
-}
-
-const PACKS = [
-  { id: "pack_100", label: "100 tokens", price: "$4.99" },
-  { id: "pack_500", label: "500 tokens", price: "$19.99" },
-  { id: "pack_2000", label: "2000 tokens", price: "$69.99" },
-];
 
 // Emoji-forward premium benefits, per the reference. Emoji are an explicit
 // design choice here (they match the Candy.ai look the product is after).
@@ -84,6 +45,19 @@ const REVIEWS = [
   },
 ];
 
+// Fixed subscription tiers shown exactly as designed (12 / 3 / 1 months, INR).
+// `plan` maps to the backend plan enum used by /billing/subscribe. Prices and
+// discounts are presentational; the checkout amount is set server-side.
+const SUB_PLANS = [
+  { plan: "monthly" as const, label: "12 Months", price: 300, original: 1180, discount: 70, best: true },
+  { plan: "weekly" as const, label: "3 Months", price: 815, original: 1180, discount: 30, best: false },
+  { plan: "daily" as const, label: "1 Month", price: 1180, original: null, discount: null, best: false },
+];
+
+function inr(n: number): string {
+  return `₹${n.toLocaleString("en-IN")}`;
+}
+
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:4000";
 
 async function post(url: string, body: unknown): Promise<{ checkoutUrl?: string; error?: string }> {
@@ -96,50 +70,21 @@ async function post(url: string, body: unknown): Promise<{ checkoutUrl?: string;
   return res.json();
 }
 
-function formatDuration(days: number): string {
-  if (days <= 0) return "lifetime";
-  if (days === 1) return "1 day";
-  if (days === 7) return "1 week";
-  if (days === 30) return "1 month";
-  return `${days} days`;
-}
-
-function formatQuota(bucket: QuotaBucket): string {
-  if (bucket.limit === -1) return "Unlimited";
-  return `${bucket.remaining} / ${bucket.limit}`;
-}
-
-export function BillingClient({ tokenBalance, ledger }: Props) {
-  const [plans, setPlans] = React.useState<PlanConfig[]>([]);
+export function BillingClient() {
   const [ent, setEnt] = React.useState<Entitlements | null>(null);
-  const [loading, setLoading] = React.useState(true);
   const [pending, setPending] = React.useState<string | null>(null);
   const [error, setError] = React.useState<string | null>(null);
 
-  const reload = React.useCallback(async () => {
-    setLoading(true);
-    try {
-      const [pRes, eRes] = await Promise.all([
-        fetch(`${BACKEND_URL}/billing/plans`, { credentials: "include" }),
-        fetch(`${BACKEND_URL}/billing/entitlements`, { credentials: "include" }),
-      ]);
-      if (pRes.ok) {
-        const pj = (await pRes.json()) as { plans: PlanConfig[] };
-        setPlans(pj.plans);
-      }
-      if (eRes.ok) {
-        setEnt((await eRes.json()) as Entitlements);
-      }
-    } catch (e) {
-      setError((e as Error).message);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
   React.useEffect(() => {
-    reload();
-  }, [reload]);
+    (async () => {
+      try {
+        const res = await fetch(`${BACKEND_URL}/billing/entitlements`, { credentials: "include" });
+        if (res.ok) setEnt((await res.json()) as Entitlements);
+      } catch {
+        // entitlements are only used to disable the current plan's button
+      }
+    })();
+  }, []);
 
   async function subscribe(plan: Plan) {
     setPending(plan);
@@ -151,24 +96,6 @@ export function BillingClient({ tokenBalance, ledger }: Props) {
       setPending(null);
     }
   }
-
-  async function buy(packId: string) {
-    setPending(packId);
-    try {
-      const r = await post(`${BACKEND_URL}/billing/tokens`, { packId });
-      if (r.checkoutUrl) window.location.href = r.checkoutUrl;
-      else setError(`Checkout unavailable: ${r.error ?? "unknown"}`);
-    } finally {
-      setPending(null);
-    }
-  }
-
-  const activePlan = ent?.plan ?? "free";
-
-  // Best value first (longest pass). Derive a discount % from per-day price so
-  // the badge is truthful and needs no hardcoded numbers.
-  const paid = plans.filter((p) => p.plan !== "free").slice().sort((a, b) => b.durationDays - a.durationDays);
-  const maxPerDay = paid.reduce((m, p) => Math.max(m, p.durationDays > 0 ? p.priceUsd / p.durationDays : 0), 0);
 
   return (
     <div className="flex flex-col gap-12" data-testid="billing-client">
@@ -205,103 +132,91 @@ export function BillingClient({ tokenBalance, ledger }: Props) {
         </div>
       </div>
 
-      {/* Plan tiles */}
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3" data-testid="plan-cards">
-        {paid.length === 0 && loading
-          ? [0, 1, 2].map((i) => <div key={i} className="h-72 rounded-2xl" style={{ backgroundColor: "hsl(var(--buttercupp-surface))" }} />)
-          : paid.map((p, i) => {
-              const isBest = i === 0;
-              const isCurrent = ent?.active && ent.plan === p.plan;
-              const perDay = p.durationDays > 0 ? p.priceUsd / p.durationDays : 0;
-              const discount = maxPerDay > 0 ? Math.round((1 - perDay / maxPerDay) * 100) : 0;
-              return (
+      {/* Plan tiles (fixed 12 / 3 / 1 month design) */}
+      <div className="mx-auto grid w-full max-w-4xl grid-cols-1 gap-5 md:grid-cols-3" data-testid="plan-cards">
+        {SUB_PLANS.map((p) => {
+          const isCurrent = ent?.active && ent.plan === p.plan;
+          return (
+            <div
+              key={p.plan}
+              data-testid={`plan-${p.plan}`}
+              className="relative flex min-h-[340px] flex-col overflow-hidden rounded-3xl border p-6"
+              style={{
+                borderColor: p.best ? "hsl(var(--buttercupp-accent-rose))" : "hsl(var(--buttercupp-border))",
+                backgroundColor: "hsl(var(--buttercupp-surface))",
+              }}
+            >
+              {p.best ? (
                 <div
-                  key={p.plan}
-                  data-testid={`plan-${p.plan}`}
-                  className="relative flex flex-col overflow-hidden rounded-2xl border p-5"
+                  aria-hidden
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2"
                   style={{
-                    borderColor: isBest
-                      ? "hsl(var(--buttercupp-accent-rose))"
-                      : "hsl(var(--buttercupp-border))",
-                    backgroundColor: "hsl(var(--buttercupp-surface))",
-                    boxShadow: isBest ? "0 0 0 1px hsl(var(--buttercupp-accent-rose) / 0.4)" : undefined,
+                    background: "linear-gradient(180deg, transparent, hsl(var(--buttercupp-accent-rose) / 0.28))",
                   }}
-                >
-                  {isBest ? (
-                    <div
-                      aria-hidden
-                      className="pointer-events-none absolute inset-x-0 bottom-0 h-40"
-                      style={{
-                        background:
-                          "linear-gradient(180deg, transparent, hsl(var(--buttercupp-accent-rose) / 0.18))",
-                      }}
-                    />
-                  ) : null}
-                  <div className="relative flex items-center justify-between">
-                    <span className="font-display text-lg font-semibold">{p.label}</span>
-                    {discount > 0 ? (
-                      <span
-                        className="rounded-md px-2 py-0.5 text-xs font-bold"
-                        style={{
-                          backgroundColor: "hsl(45 90% 55% / 0.2)",
-                          color: "hsl(45 90% 60%)",
-                        }}
-                      >
-                        {discount}% OFF
-                      </span>
-                    ) : null}
-                  </div>
-                  {isBest ? (
-                    <span
-                      className="relative mt-1 text-xs font-bold uppercase tracking-wide"
-                      style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
-                    >
-                      Best value
-                    </span>
-                  ) : (
-                    <span className="relative mt-1 text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
-                      {formatDuration(p.durationDays)} pass
-                    </span>
-                  )}
+                />
+              ) : null}
 
-                  <div className="relative mt-6 flex items-baseline gap-1">
-                    <span className="font-display text-4xl font-bold">${p.priceUsd}</span>
-                    <span className="text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
-                      / {formatDuration(p.durationDays)}
-                    </span>
-                  </div>
-
-                  <ul className="relative mt-4 space-y-1 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
-                    <li>{formatCount(p.chats)} chats</li>
-                    <li>{formatCount(p.images)} images</li>
-                    <li>{formatCount(p.videos)} videos</li>
-                  </ul>
-
-                  <button
-                    type="button"
-                    onClick={() => subscribe(p.plan)}
-                    disabled={pending === p.plan || isCurrent}
-                    data-testid={`buy-${p.plan}`}
-                    className="relative mt-6 w-full rounded-xl py-3 text-sm font-semibold transition disabled:opacity-60"
-                    style={
-                      isBest
-                        ? {
-                            background:
-                              "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
-                            color: "hsl(var(--buttercupp-primary-fg))",
-                          }
-                        : {
-                            backgroundColor: "hsl(var(--buttercupp-surface-2))",
-                            color: "hsl(var(--buttercupp-fg))",
-                            border: "1px solid hsl(var(--buttercupp-border))",
-                          }
-                    }
+              <div className="relative flex items-start justify-between gap-2">
+                <span className="font-display text-2xl font-bold">{p.label}</span>
+                {p.discount ? (
+                  <span
+                    className="rounded-lg px-2.5 py-1 text-xs font-extrabold text-black"
+                    style={{ background: "linear-gradient(180deg, hsl(48 96% 62%), hsl(40 92% 52%))" }}
                   >
-                    {pending === p.plan ? "Redirecting..." : isCurrent ? "Current plan" : "Get Started"}
-                  </button>
+                    {p.discount}% OFF
+                  </span>
+                ) : null}
+              </div>
+
+              {p.best ? (
+                <span
+                  className="relative mt-1 text-sm font-extrabold uppercase tracking-wide"
+                  style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
+                >
+                  Best value
+                </span>
+              ) : null}
+
+              <div className="relative mt-auto pt-8">
+                <div className="flex items-baseline gap-1">
+                  <span className="font-display text-5xl font-extrabold tracking-tight">{inr(p.price)}</span>
+                  <span className="text-base" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+                    /month
+                  </span>
                 </div>
-              );
-            })}
+                {p.original ? (
+                  <div className="mt-1 text-lg font-semibold line-through" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+                    {inr(p.original)}
+                  </div>
+                ) : (
+                  <div className="mt-1 h-7" />
+                )}
+              </div>
+
+              <button
+                type="button"
+                onClick={() => subscribe(p.plan)}
+                disabled={pending === p.plan || isCurrent}
+                data-testid={`buy-${p.plan}`}
+                className="relative mt-5 w-full rounded-2xl py-3.5 text-base font-bold transition disabled:opacity-60"
+                style={
+                  p.best
+                    ? {
+                        background: "linear-gradient(180deg, hsl(344 90% 72%), hsl(344 84% 60%))",
+                        color: "white",
+                      }
+                    : {
+                        backgroundColor: "hsl(var(--buttercupp-surface-2))",
+                        color: "hsl(var(--buttercupp-fg))",
+                        border: "1px solid hsl(var(--buttercupp-border))",
+                      }
+                }
+              >
+                {pending === p.plan ? "Redirecting..." : isCurrent ? "Current plan" : "Get Started"}
+              </button>
+            </div>
+          );
+        })}
       </div>
 
       {/* Premium benefits */}
@@ -354,136 +269,8 @@ export function BillingClient({ tokenBalance, ledger }: Props) {
         </div>
       </div>
 
-      {/* Account: current plan + quotas + tokens (functional section) */}
-      <div className="flex flex-col gap-4">
-        <h2 className="font-display text-xl font-semibold">Your account</h2>
-        <div
-          className="rounded-2xl border p-5"
-          style={{ borderColor: "hsl(var(--buttercupp-border))", backgroundColor: "hsl(var(--buttercupp-surface))" }}
-          data-testid="current-plan"
-        >
-          <div className="flex flex-wrap items-baseline justify-between gap-4">
-            <div>
-              <div className="text-xs uppercase tracking-wide" style={{ color: "hsl(var(--buttercupp-muted))" }}>
-                Current plan
-              </div>
-              <div className="font-display text-2xl font-semibold capitalize">
-                {ent ? planLabel(activePlan, plans) : "..."}
-              </div>
-              <div className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
-                {ent?.active && ent.expiresAt
-                  ? `Expires ${new Date(ent.expiresAt).toLocaleString()}`
-                  : ent
-                    ? activePlan === "free"
-                      ? "Lifetime free trial"
-                      : "Inactive"
-                    : ""}
-              </div>
-            </div>
-            <div className="text-right">
-              <div className="text-xs uppercase tracking-wide" style={{ color: "hsl(var(--buttercupp-muted))" }}>
-                Tokens
-              </div>
-              <div className="font-display text-2xl font-semibold">{tokenBalance}</div>
-            </div>
-          </div>
-
-          {ent ? (
-            <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3" data-testid="remaining-quotas">
-              <QuotaMeter label="Chats remaining" bucket={ent.chats} note={activePlan === "free" ? `${ent.freeMessagesUsed} used lifetime` : undefined} />
-              <QuotaMeter label="Images remaining" bucket={ent.images} note={activePlan === "free" ? "No media on Free" : undefined} />
-              <QuotaMeter label="Videos remaining" bucket={ent.videos} note={activePlan === "free" ? "No media on Free" : undefined} />
-            </div>
-          ) : loading ? (
-            <div className="mt-4 text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>Loading entitlements...</div>
-          ) : null}
-        </div>
-      </div>
-
-      {/* Token packs */}
-      <div>
-        <h2 className="font-display mb-3 text-xl font-semibold">Buy tokens</h2>
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
-          {PACKS.map((p) => (
-            <div
-              key={p.id}
-              className="rounded-2xl border p-4"
-              style={{ borderColor: "hsl(var(--buttercupp-border))", backgroundColor: "hsl(var(--buttercupp-surface))" }}
-            >
-              <div className="font-display text-base font-semibold">{p.label}</div>
-              <div className="text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>{p.price}</div>
-              <button
-                type="button"
-                onClick={() => buy(p.id)}
-                disabled={pending === p.id}
-                className="mt-3 w-full rounded-xl py-2 text-sm font-medium disabled:opacity-50"
-                style={{
-                  backgroundColor: "hsl(var(--buttercupp-surface-2))",
-                  color: "hsl(var(--buttercupp-fg))",
-                  border: "1px solid hsl(var(--buttercupp-border))",
-                }}
-              >
-                {pending === p.id ? "Redirecting..." : "Buy"}
-              </button>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Recent activity */}
-      <div>
-        <h2 className="font-display mb-3 text-xl font-semibold">Recent activity</h2>
-        <div
-          className="overflow-hidden rounded-2xl border"
-          style={{ borderColor: "hsl(var(--buttercupp-border))" }}
-        >
-          <table className="w-full text-sm">
-            <thead
-              className="text-xs uppercase"
-              style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))", color: "hsl(var(--buttercupp-muted))" }}
-            >
-              <tr>
-                <th className="px-3 py-2 text-left">Date</th>
-                <th className="px-3 py-2 text-left">Reason</th>
-                <th className="px-3 py-2 text-right">Delta</th>
-                <th className="px-3 py-2 text-right">Balance</th>
-              </tr>
-            </thead>
-            <tbody>
-              {ledger.length === 0 ? (
-                <tr>
-                  <td className="px-3 py-4 text-center" style={{ color: "hsl(var(--buttercupp-muted))" }} colSpan={4}>
-                    No activity yet.
-                  </td>
-                </tr>
-              ) : (
-                ledger.map((row) => (
-                  <tr key={row.id} style={{ borderTop: "1px solid hsl(var(--buttercupp-border))" }}>
-                    <td className="px-3 py-2">{new Date(row.createdAt).toLocaleString()}</td>
-                    <td className="px-3 py-2">{row.reason}</td>
-                    <td className={`px-3 py-2 text-right ${row.delta < 0 ? "text-rose-400" : "text-emerald-400"}`}>
-                      {row.delta > 0 ? "+" : ""}
-                      {row.delta}
-                    </td>
-                    <td className="px-3 py-2 text-right">{row.balanceAfter}</td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-        </div>
-      </div>
     </div>
   );
-}
-
-function planLabel(plan: Plan, plans: PlanConfig[]): string {
-  return plans.find((p) => p.plan === plan)?.label ?? plan;
-}
-
-function formatCount(n: number): string {
-  if (n === -1) return "Unlimited";
-  return String(n);
 }
 
 function Stars({ n, emerald }: { n: number; emerald?: boolean }) {
@@ -517,45 +304,3 @@ function Laurel({ flip }: { flip?: boolean }) {
   );
 }
 
-function QuotaMeter({
-  label,
-  bucket,
-  note,
-}: {
-  label: string;
-  bucket: QuotaBucket;
-  note?: string;
-}) {
-  const unlimited = bucket.limit === -1;
-  const pct = unlimited
-    ? 100
-    : bucket.limit === 0
-      ? 0
-      : Math.max(0, Math.min(100, ((bucket.limit - bucket.used) / bucket.limit) * 100));
-  return (
-    <div
-      className="rounded-xl border p-3"
-      style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))", borderColor: "hsl(var(--buttercupp-border))" }}
-    >
-      <div className="flex items-baseline justify-between">
-        <div className="text-xs uppercase tracking-wide" style={{ color: "hsl(var(--buttercupp-muted))" }}>{label}</div>
-        <div className="text-sm font-semibold">{formatQuota(bucket)}</div>
-      </div>
-      <div
-        aria-hidden
-        className="mt-2 h-1.5 w-full overflow-hidden rounded-full"
-        style={{ backgroundColor: "hsl(var(--buttercupp-border))" }}
-      >
-        <div
-          className="h-full"
-          style={{
-            width: `${pct}%`,
-            background:
-              "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
-          }}
-        />
-      </div>
-      {note ? <div className="mt-1 text-[11px]" style={{ color: "hsl(var(--buttercupp-muted))" }}>{note}</div> : null}
-    </div>
-  );
-}

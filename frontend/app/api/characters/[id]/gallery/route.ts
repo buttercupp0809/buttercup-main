@@ -5,9 +5,11 @@
 
 import { NextResponse } from "next/server";
 import { prisma } from "@buttercupp/database";
-import { requireAuth } from "@/lib/auth";
+import { requireAuth, verifyAuthToken } from "@/lib/auth";
 import { assertSafeId } from "@/lib/safe-types";
 import { jsonError } from "@/lib/api-helpers";
+import { signAssetUrl } from "@/lib/cdn";
+import { z } from "zod";
 
 export const runtime = "nodejs";
 
@@ -37,16 +39,72 @@ export async function GET(req: Request, ctx: { params: Promise<{ id: string }> }
     nextCursor = overflow?.id ?? null;
   }
 
-  // Sign URLs in the frontend runtime is fine (Node runtime); backend
-  // helper only exists there. For simplicity we return the S3 key and let
-  // the frontend hit the backend status route for a signed URL when the
-  // client asks for it. The status route is cheap.
   return NextResponse.json({
     items: rows.map((r) => ({
       id: r.id,
+      url: r.s3Key ? signAssetUrl(r.s3Key) : null,
       s3Key: r.s3Key,
       createdAt: r.createdAt.toISOString(),
     })),
     nextCursor,
   });
+}
+
+const postBodySchema = z.object({
+  url: z.string().min(1),
+  kind: z.enum(["image", "video"]),
+  isPrimary: z.boolean().optional().default(false),
+});
+
+export async function POST(req: Request, ctx: { params: Promise<{ id: string }> }) {
+  const authHeader = req.headers.get("authorization");
+  let userId: string | null = null;
+  if (authHeader?.startsWith("Bearer ")) {
+    userId = await verifyAuthToken(authHeader.slice(7));
+  }
+  const user = userId ? { id: userId } : await requireAuth();
+  const { id: rawId } = await ctx.params;
+  let characterId: string;
+  try {
+    characterId = assertSafeId(rawId, "characterId");
+  } catch {
+    return jsonError(400, "invalid_id");
+  }
+
+  // Verify character belongs to this user (ownerUserId, not creatorId)
+  const character = await prisma.character.findUnique({
+    where: { id: characterId },
+    select: { ownerUserId: true },
+  });
+  if (!character || character.ownerUserId !== user.id) {
+    return jsonError(403, "forbidden");
+  }
+
+  let body: z.infer<typeof postBodySchema>;
+  try {
+    body = postBodySchema.parse(await req.json());
+  } catch {
+    return jsonError(400, "invalid_body");
+  }
+
+  if (body.isPrimary) {
+    await prisma.characterMedia.updateMany({
+      where: { characterId, isPrimary: true },
+      data: { isPrimary: false },
+    });
+  }
+
+  const media = await prisma.characterMedia.create({
+    data: {
+      characterId,
+      kind: body.kind,
+      url: body.url,
+      isPrimary: body.isPrimary,
+      sort: 0,
+      likesBase: 0,
+    },
+    select: { id: true, url: true, isPrimary: true },
+  });
+
+  return NextResponse.json({ id: media.id, url: media.url, isPrimary: media.isPrimary }, { status: 201 });
 }

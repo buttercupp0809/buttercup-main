@@ -2,10 +2,12 @@
 
 import * as React from "react";
 import { createChatTransport, type TransportEvent, type TransportPaywallPlan } from "@/lib/chat-transport";
+import { Image as ImageIcon, Video, Send, Settings } from "lucide-react";
 import { AffectionMeter } from "@/components/relationship/AffectionMeter";
 import { GestureText } from "@/components/chat/GestureText";
 import { TypingDots } from "@/components/chat/TypingDots";
 import { PaywallModal } from "@/components/chat/PaywallModal";
+import { ImageMessage } from "@/components/chat/ImageMessage";
 
 interface PaywallState {
   scope: "free_trial" | "plan_quota";
@@ -26,6 +28,8 @@ interface HistoryMessage {
   role: "user" | "assistant" | "system";
   content: string;
   createdAt: string;
+  // When set, this message renders as a generated image instead of text.
+  imageUrl?: string;
 }
 
 export interface ChatWindowProps {
@@ -55,7 +59,7 @@ export function ChatWindow({
   const [firstTokenSeen, setFirstTokenSeen] = React.useState(false);
   const [paywall, setPaywall] = React.useState<PaywallState | null>(null);
   const [input, setInput] = React.useState("");
-  const bottomRef = React.useRef<HTMLDivElement | null>(null);
+  const scrollAreaRef = React.useRef<HTMLDivElement | null>(null);
   const transportRef = React.useRef<ReturnType<typeof createChatTransport> | null>(null);
   const streamedRef = React.useRef("");
 
@@ -100,6 +104,22 @@ export function ChatWindow({
         streamedRef.current = "";
         setStreaming("");
         setFirstTokenSeen(false);
+      } else if (evt.type === "image") {
+        // Generated image arrives as a data URL; render it as an assistant bubble.
+        setMessages((ms) =>
+          ms.some((m) => m.id === evt.mediaAssetId)
+            ? ms
+            : [
+                ...ms,
+                {
+                  id: evt.mediaAssetId,
+                  role: "assistant",
+                  content: "",
+                  imageUrl: evt.url,
+                  createdAt: new Date().toISOString(),
+                },
+              ],
+        );
       } else if (evt.type === "error") {
         setPending(false);
         streamedRef.current = "";
@@ -114,7 +134,8 @@ export function ChatWindow({
   }, [wsUrl]);
 
   React.useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    const el = scrollAreaRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
   }, [messages.length, streaming, pending]);
 
   function submit(e: React.FormEvent) {
@@ -133,7 +154,7 @@ export function ChatWindow({
   }
 
   return (
-    <div className="relative flex h-[calc(100vh-8rem)] flex-col gap-3">
+    <div className="relative flex h-full flex-col gap-3 p-4">
       {/*
         Immersive backdrop (PRD §1): a subtle blurred character image behind
         the message list. `pointer-events-none` so it never intercepts
@@ -192,12 +213,19 @@ export function ChatWindow({
       </div>
 
       <div
+        ref={scrollAreaRef}
         className="flex-1 space-y-3 overflow-y-auto rounded-md p-4"
         style={{ backgroundColor: "hsl(var(--buttercupp-surface) / 0.55)" }}
       >
-        {messages.map((m) => (
-          <MessageBubble key={m.id} role={m.role} content={m.content} />
-        ))}
+        {messages.map((m) =>
+          m.imageUrl ? (
+            <div key={m.id} className="flex justify-start" data-testid="bubble-image">
+              <ImageMessage mediaAssetId={m.id} url={m.imageUrl} />
+            </div>
+          ) : (
+            <MessageBubble key={m.id} role={m.role} content={m.content} />
+          ),
+        )}
         {streaming ? <MessageBubble role="assistant" content={streaming} streaming /> : null}
         {pending && !firstTokenSeen ? <TypingDots /> : null}
         {safety ? (
@@ -214,37 +242,67 @@ export function ChatWindow({
             </ul>
           </div>
         ) : null}
-        <div ref={bottomRef} />
+        <div />
       </div>
 
-      <form onSubmit={submit} className="flex gap-2">
+      <form
+        onSubmit={submit}
+        className="rounded-2xl border p-3"
+        style={{
+          backgroundColor: "hsl(var(--buttercupp-surface-2))",
+          borderColor: "hsl(var(--buttercupp-border))",
+        }}
+      >
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder={
-            paywall ? "Upgrade to keep chatting" : pending ? "Waiting..." : "Say something"
+            paywall ? "Upgrade to keep chatting" : pending ? "Waiting..." : "Write a message..."
           }
           disabled={pending || paywall !== null}
           data-testid="chat-input"
-          className="flex-1 rounded-md border px-3 py-2 text-sm"
-          style={{
-            backgroundColor: "hsl(var(--buttercupp-surface-2))",
-            borderColor: "hsl(var(--buttercupp-border))",
-            color: "hsl(var(--buttercupp-fg))",
-          }}
+          className="w-full bg-transparent px-1 py-1 text-sm focus:outline-none"
+          style={{ color: "hsl(var(--buttercupp-fg))" }}
         />
-        <button
-          type="submit"
-          disabled={pending || paywall !== null || !input.trim()}
-          data-testid="chat-send"
-          className="rounded-md px-4 py-2 text-sm font-medium text-white shadow-sm disabled:opacity-50"
-          style={{
-            background:
-              "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
-          }}
-        >
-          Send
-        </button>
+        <div className="mt-2 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <span className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+              Show me the scene:
+            </span>
+            <SceneButton
+              icon={<ImageIcon className="h-3.5 w-3.5" />}
+              label="Image"
+              onClick={() => setInput("Send me a photo of you right now")}
+              disabled={pending || paywall !== null}
+            />
+            <SceneButton
+              icon={<Video className="h-3.5 w-3.5" />}
+              label="Video"
+              onClick={() => setInput("Send me a short video of you right now")}
+              disabled={pending || paywall !== null}
+            />
+            <span
+              className="flex h-7 w-7 items-center justify-center rounded-full border"
+              style={{ borderColor: "hsl(var(--buttercupp-border))", color: "hsl(var(--buttercupp-muted))" }}
+              aria-hidden
+            >
+              <Settings className="h-3.5 w-3.5" />
+            </span>
+          </div>
+          <button
+            type="submit"
+            disabled={pending || paywall !== null || !input.trim()}
+            data-testid="chat-send"
+            aria-label="Send"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white shadow-sm disabled:opacity-50"
+            style={{
+              background:
+                "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
+            }}
+          >
+            <Send className="h-4 w-4" />
+          </button>
+        </div>
       </form>
 
       {paywall ? (
@@ -258,6 +316,31 @@ export function ChatWindow({
         />
       ) : null}
     </div>
+  );
+}
+
+function SceneButton({
+  icon,
+  label,
+  onClick,
+  disabled,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  onClick: () => void;
+  disabled?: boolean;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      className="flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium disabled:opacity-50"
+      style={{ borderColor: "hsl(var(--buttercupp-border))", color: "hsl(var(--buttercupp-fg))" }}
+    >
+      {icon}
+      {label}
+    </button>
   );
 }
 

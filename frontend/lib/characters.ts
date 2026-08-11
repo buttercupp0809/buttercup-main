@@ -12,6 +12,8 @@ import {
   type CharacterListResponse,
 } from "@buttercupp/shared";
 import { assertSafeId } from "@/lib/safe-types";
+import { pickPersonaImage } from "@/lib/persona-images";
+import { signAssetUrl } from "@/lib/cdn";
 
 // CloudFront URL is optional; when not set (local dev) we return the raw S3
 // key. The gallery card handles a null avatarUrl gracefully.
@@ -26,7 +28,14 @@ type CharacterWithCurrent = Character & {
   currentVersion:
     | (CharacterVersion & { appearanceSheet: AppearanceSheet | null })
     | null;
+  media?: { url: string; kind: string; isPrimary: boolean }[];
 };
+
+function primaryImageFrom(media: CharacterWithCurrent["media"]): string | null {
+  const img = media?.find((m) => m.kind === "image");
+  if (!img) return null;
+  return img.url.startsWith("http") ? img.url : signAssetUrl(img.url);
+}
 
 function toCard(row: CharacterWithCurrent): CharacterCardDTO {
   return {
@@ -36,7 +45,13 @@ function toCard(row: CharacterWithCurrent): CharacterCardDTO {
     tags: row.tags,
     style: row.style,
     contentRating: row.contentRating,
-    avatarUrl: avatarUrlFrom(row.currentVersion?.appearanceSheet?.referenceImageKeys),
+    // Avatar resolution order: CharacterMedia primary image (the new canonical
+    // store) -> legacy appearanceSheet.referenceImageKeys -> a deterministic
+    // local stock image so a card always shows a picture.
+    avatarUrl:
+      primaryImageFrom(row.media) ??
+      avatarUrlFrom(row.currentVersion?.appearanceSheet?.referenceImageKeys) ??
+      pickPersonaImage(row.id),
     popularityScore: row.popularityScore,
     createdAt: row.createdAt.toISOString(),
   };
@@ -60,6 +75,10 @@ export async function listCharacters(
     include: {
       currentVersion: {
         include: { appearanceSheet: true },
+      },
+      media: {
+        where: { kind: "image" },
+        orderBy: [{ isPrimary: "desc" }, { sort: "asc" }],
       },
     },
   };
@@ -87,6 +106,10 @@ export async function getCharacterDetail(
     where: { id },
     include: {
       currentVersion: { include: { appearanceSheet: true } },
+      media: {
+        where: { kind: "image" },
+        orderBy: [{ isPrimary: "desc" }, { sort: "asc" }],
+      },
     },
   });
   if (!row) return null;

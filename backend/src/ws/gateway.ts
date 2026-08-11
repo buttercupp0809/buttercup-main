@@ -11,6 +11,8 @@ import { WebSocketServer, type WebSocket } from "ws";
 import { jwtVerify } from "jose";
 import { wsClientEventSchema, type WSClientEvent, type WSServerEvent } from "@buttercupp/shared";
 import { runChatTurn } from "../chat/engine";
+import { generateChatImage } from "../chat/image-turn";
+import { isImageRequest } from "../media/image/decision";
 import { assertCanChat, recordChatConsumption, PaywallError, type PaywallInfo } from "../subscription/enforce";
 import { writeAuditLog } from "../utils/audit";
 import { createWorkerConnection } from "../queue/connection";
@@ -155,6 +157,37 @@ export function attachWsGateway(httpServer: HttpServer): WebSocketServer {
             });
             return;
           }
+
+          // Image request: take the user's text as the prompt and generate an
+          // image through Juggernaut (ComfyUI), delivered inline as a data URL.
+          // No text turn, no chat quota - it is its own kind of reply.
+          if (isImageRequest(parsed.text)) {
+            logInfo("ws", `image request conv=${parsed.conversationId}`, { userId: session.userId });
+            try {
+              const img = await generateChatImage(parsed.text, parsed.conversationId, session.userId);
+              const id = img.mediaAssetId ?? `img-${Date.now()}`;
+              send(ws, {
+                type: "media.ready",
+                conversationId: parsed.conversationId,
+                mediaAssetId: id,
+                url: img.url,
+                kind: "image",
+              });
+              send(ws, {
+                type: "chat.done",
+                conversationId: parsed.conversationId,
+                messageId: id,
+                provider: img.provider,
+                model: "juggernaut",
+              });
+            } catch (err) {
+              const msg = err instanceof Error ? err.message : "image_failed";
+              logError("ws", err, { conversationId: parsed.conversationId, userId: session.userId });
+              sendError(ws, "image_failed", msg);
+            }
+            return;
+          }
+
           // Phase 21 paywall gate. Runs BEFORE any engine work so a
           // blocked user never generates and never consumes anything.
           try {

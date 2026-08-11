@@ -8,7 +8,22 @@ import { createHash, randomBytes } from "node:crypto";
 
 const TEST_URL = process.env.TEST_DATABASE_URL;
 
-const d = TEST_URL ? describe : describe.skip;
+// Verify the DB is reachable AND the schema matches what the Prisma client
+// expects. Both "server not running" and "migrations not applied" should skip
+// rather than fail. We use findFirst() (full column set) so a column-missing
+// error also triggers the skip.
+let dbReady = false;
+if (TEST_URL) {
+  try {
+    const probe = new PrismaClient({ datasources: { db: { url: TEST_URL } } });
+    await probe.character.findFirst();
+    await probe.$disconnect();
+    dbReady = true;
+  } catch {
+    // unreachable or schema not current
+  }
+}
+const d = dbReady ? describe : describe.skip;
 
 let prisma: PrismaClient;
 

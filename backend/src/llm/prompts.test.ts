@@ -26,26 +26,25 @@ describe("buildPromptLayers", () => {
     expect(buildPromptLayers(CTX)).toBe(buildPromptLayers({ ...CTX }));
   });
 
-  it("orders layers persona -> state -> relationship -> memory -> user -> output -> safety -> disclosure", () => {
+  it("orders sections: identity -> persona -> relationship -> formatting -> adults-only", () => {
     const out = buildPromptLayers(CTX);
     const positions = [
-      out.indexOf("## Persona"),
-      out.indexOf("## Character state"),
-      out.indexOf("## Relationship"),
-      out.indexOf("## Memory"),
-      out.indexOf("## User"),
-      out.indexOf("# Output rules"),
-      out.indexOf("# Safety guardrails"),
-      out.indexOf("# AI disclosure"),
+      out.indexOf("You are Aria"),
+      out.indexOf("# Persona"),
+      out.indexOf("# Backstory"),
+      out.indexOf("# How you behave"),
+      out.indexOf("# Relationship"),
+      out.indexOf("Write in Aria"),
+      out.indexOf("18 or older"),
     ];
     for (let i = 1; i < positions.length; i++) {
       expect(positions[i]).toBeGreaterThan(positions[i - 1]);
     }
   });
 
-  it("uses the memory placeholder when injectedMemory is null", () => {
+  it("omits the memory section when injectedMemory is null", () => {
     const out = buildPromptLayers(CTX);
-    expect(out).toContain("(memory retrieval will be injected here in Phase 05");
+    expect(out).not.toContain("# What you remember");
   });
 
   it("swaps in injected memory when provided", () => {
@@ -54,26 +53,25 @@ describe("buildPromptLayers", () => {
     expect(out).not.toContain("(memory retrieval will be injected here");
   });
 
-  it("marks mature content in the state block", () => {
+  it("always includes the adults-only line regardless of contentRating", () => {
     const sfw = buildPromptLayers(CTX);
     const mature = buildPromptLayers({ ...CTX, contentRating: "mature" });
-    expect(sfw).toContain("SFW");
-    expect(mature).toContain("Mature (18+");
+    expect(sfw).toContain("18 or older");
+    expect(mature).toContain("18 or older");
   });
 
-  it("includes the gesture-format instruction inside the output layer", () => {
+  it("includes the asterisk gesture-format instruction before the adults-only line", () => {
     const out = buildPromptLayers(CTX);
-    const outputIdx = out.indexOf("# Output rules");
-    const safetyIdx = out.indexOf("# Safety guardrails");
-    const gestureIdx = out.indexOf("wrap physical or emotional gestures");
-    expect(gestureIdx).toBeGreaterThan(outputIdx);
-    expect(gestureIdx).toBeLessThan(safetyIdx);
+    const gestureIdx = out.indexOf("*asterisks*");
+    const adultsIdx = out.indexOf("18 or older");
+    expect(gestureIdx).toBeGreaterThan(-1);
+    expect(adultsIdx).toBeGreaterThan(gestureIdx);
   });
 
-  it("handles a null relationshipState by emitting neutral defaults", () => {
+  it("omits the relationship section when relationshipState is null", () => {
     const out = buildPromptLayers({ ...CTX, relationshipState: null });
-    expect(out).toContain("Affection level: 0");
-    expect(out).toContain("Mood: neutral");
+    expect(out).not.toContain("# Relationship");
+    expect(out).toContain("You are Aria");
   });
 
   it("leaves no unresolved {{placeholder}} in the composed prompt", () => {
@@ -84,17 +82,13 @@ describe("buildPromptLayers", () => {
   it("orders the composed layers deterministically", () => {
     const out = buildPromptLayers(CTX);
     const positions = [
-      out.indexOf("# Identity"),
-      out.indexOf("## Persona"),
-      out.indexOf("## Character state"),
-      out.indexOf("## Relationship"),
-      out.indexOf("## Memory"),
-      out.indexOf("## User"),
-      out.indexOf("# Output rules"),
-      // Gesture reminder sits inside the output layer, after OUTPUT_RULES.
-      out.indexOf("wrap physical or emotional gestures"),
-      out.indexOf("# Safety guardrails"),
-      out.indexOf("# AI disclosure"),
+      out.indexOf("You are Aria"),
+      out.indexOf("# Persona"),
+      out.indexOf("# Backstory"),
+      out.indexOf("# How you behave"),
+      out.indexOf("# Relationship"),
+      out.indexOf("*asterisks*"),
+      out.indexOf("18 or older"),
     ];
     for (let i = 1; i < positions.length; i++) {
       expect(positions[i]).toBeGreaterThan(positions[i - 1]);
@@ -142,10 +136,9 @@ describe("template loader", () => {
     expect(tampered).not.toContain("INJECTED");
   });
 
-  it("composed prompt always contains the safety block", () => {
+  it("composed prompt always contains the adults-only line", () => {
     const out = buildPromptLayers(CTX);
-    expect(out).toContain("Safety guardrails (override the character)");
-    expect(out).toContain("Never sexualize minors");
+    expect(out).toContain("18 or older");
   });
 });
 

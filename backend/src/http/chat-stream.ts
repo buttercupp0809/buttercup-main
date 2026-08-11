@@ -15,6 +15,8 @@ import type { IncomingMessage, ServerResponse } from "node:http";
 import { jwtVerify } from "jose";
 import { z } from "zod";
 import { runChatTurn } from "../chat/engine";
+import { generateChatImage } from "../chat/image-turn";
+import { isImageRequest } from "../media/image/decision";
 import { assertCanChat, recordChatConsumption, PaywallError, type PaywallInfo } from "../subscription/enforce";
 import { writeAuditLog } from "../utils/audit";
 import { logInfo, logWarn, logError } from "../utils/log";
@@ -99,6 +101,22 @@ export async function handleChatStream(req: IncomingMessage, res: ServerResponse
   });
 
   logInfo("sse", `chat.stream conv=${body.conversationId}`, { userId });
+
+  // Image request: generate straight from the user's text (Juggernaut) and
+  // emit it as an inline `image` SSE event. No text turn, no chat quota.
+  if (isImageRequest(body.text)) {
+    try {
+      const img = await generateChatImage(body.text, body.conversationId, userId);
+      const id = img.mediaAssetId ?? `img-${Date.now()}`;
+      sseWrite(res, "image", { url: img.url, mediaAssetId: id, provider: img.provider });
+      sseWrite(res, "done", { messageId: id, provider: img.provider, model: "juggernaut" });
+    } catch (err) {
+      logError("sse", err, { conversationId: body.conversationId });
+      sseWrite(res, "error", { message: err instanceof Error ? err.message : "image_failed" });
+    }
+    res.end();
+    return true;
+  }
 
   // Phase 21 paywall gate. Runs BEFORE runChatTurn so blocked users never
   // generate. Sending the 200 head first is deliberate: EventSource clients
