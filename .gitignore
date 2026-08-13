@@ -71,3 +71,4 @@ Thumbs.db
 # ---------------------------------------------------------------------------
 Plans/s3-cdn/.keys/
 Plans/s3-cdn/.state
+Plans/inference-aws/persona-output/**/*.png
