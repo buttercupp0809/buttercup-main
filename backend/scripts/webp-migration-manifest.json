@@ -1,0 +1,5750 @@
+{
+  "mode": "convert",
+  "at": "2026-08-13T21:48:02.619Z",
+  "results": [
+    {
+      "key": "images/2b38db89-26ad-4b3b-a5b9-640db1c6fb05.png",
+      "webpKey": "images/2b38db89-26ad-4b3b-a5b9-640db1c6fb05.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1355317,
+      "webpBytes": 89870,
+      "status": "converted"
+    },
+    {
+      "key": "images/e1b2f7a2-7504-4109-bddc-d053309d3d78.png",
+      "webpKey": "images/e1b2f7a2-7504-4109-bddc-d053309d3d78.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1165313,
+      "webpBytes": 69670,
+      "status": "converted"
+    },
+    {
+      "key": "images/719e40c0-3fb1-4409-8448-9480b778874a.png",
+      "webpKey": "images/719e40c0-3fb1-4409-8448-9480b778874a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1497242,
+      "webpBytes": 121750,
+      "status": "converted"
+    },
+    {
+      "key": "images/e04370f4-a43b-43b3-a64c-ffd48ef0a88e.png",
+      "webpKey": "images/e04370f4-a43b-43b3-a64c-ffd48ef0a88e.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1441759,
+      "webpBytes": 106390,
+      "status": "converted"
+    },
+    {
+      "key": "images/ea6fc6d8-76c7-471b-8148-969eba71b78a.png",
+      "webpKey": "images/ea6fc6d8-76c7-471b-8148-969eba71b78a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1456070,
+      "webpBytes": 141368,
+      "status": "converted"
+    },
+    {
+      "key": "images/494159c8-2b79-427c-b2f0-7fb3d04d98f3.png",
+      "webpKey": "images/494159c8-2b79-427c-b2f0-7fb3d04d98f3.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1622737,
+      "webpBytes": 150864,
+      "status": "converted"
+    },
+    {
+      "key": "images/1df72353-7081-48e3-9803-5d00ead52bf9.png",
+      "webpKey": "images/1df72353-7081-48e3-9803-5d00ead52bf9.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1434045,
+      "webpBytes": 116124,
+      "status": "converted"
+    },
+    {
+      "key": "images/c2a9cbca-8879-46b9-a0e0-c3288c1c4666.png",
+      "webpKey": "images/c2a9cbca-8879-46b9-a0e0-c3288c1c4666.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1332726,
+      "webpBytes": 88836,
+      "status": "converted"
+    },
+    {
+      "key": "images/cd75674f-4d18-4cdf-8b79-5472a536a4ee.png",
+      "webpKey": "images/cd75674f-4d18-4cdf-8b79-5472a536a4ee.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1283471,
+      "webpBytes": 90080,
+      "status": "converted"
+    },
+    {
+      "key": "images/62d2f58e-59e5-4db5-82a0-c5663b3a0b53.png",
+      "webpKey": "images/62d2f58e-59e5-4db5-82a0-c5663b3a0b53.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1625032,
+      "webpBytes": 151658,
+      "status": "converted"
+    },
+    {
+      "key": "images/7b4ec24c-2cae-47be-a3be-a99c935a9c38.png",
+      "webpKey": "images/7b4ec24c-2cae-47be-a3be-a99c935a9c38.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1533624,
+      "webpBytes": 130148,
+      "status": "converted"
+    },
+    {
+      "key": "images/c117e55c-464f-4ea0-9b90-826547a90cc3.png",
+      "webpKey": "images/c117e55c-464f-4ea0-9b90-826547a90cc3.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1104690,
+      "webpBytes": 62514,
+      "status": "converted"
+    },
+    {
+      "key": "images/688a1fa4-5660-4958-a0f9-51227ccc69dd.png",
+      "webpKey": "images/688a1fa4-5660-4958-a0f9-51227ccc69dd.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1198692,
+      "webpBytes": 80090,
+      "status": "converted"
+    },
+    {
+      "key": "images/5a3e1106-1bcd-4c1d-b3ab-963d2ff91674.png",
+      "webpKey": "images/5a3e1106-1bcd-4c1d-b3ab-963d2ff91674.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1412331,
+      "webpBytes": 116740,
+      "status": "converted"
+    },
+    {
+      "key": "images/bc1255b4-1eb0-44d4-a33e-5319783b18cb.png",
+      "webpKey": "images/bc1255b4-1eb0-44d4-a33e-5319783b18cb.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1242558,
+      "webpBytes": 93120,
+      "status": "converted"
+    },
+    {
+      "key": "images/1275585c-70aa-42fb-a56a-e332f39694e6.png",
+      "webpKey": "images/1275585c-70aa-42fb-a56a-e332f39694e6.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1339939,
+      "webpBytes": 108570,
+      "status": "converted"
+    },
+    {
+      "key": "images/bdbcfe81-caf1-41de-a32f-f5eb71527129.png",
+      "webpKey": "images/bdbcfe81-caf1-41de-a32f-f5eb71527129.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1868261,
+      "webpBytes": 209614,
+      "status": "converted"
+    },
+    {
+      "key": "images/96e6f9f0-c1f7-4ada-8536-f37c768c10d6.png",
+      "webpKey": "images/96e6f9f0-c1f7-4ada-8536-f37c768c10d6.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1506689,
+      "webpBytes": 123248,
+      "status": "converted"
+    },
+    {
+      "key": "images/459ddac2-e83b-4cb8-8abc-8b182948c1cc.png",
+      "webpKey": "images/459ddac2-e83b-4cb8-8abc-8b182948c1cc.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1203914,
+      "webpBytes": 76946,
+      "status": "converted"
+    },
+    {
+      "key": "images/bec72cb8-f081-4d64-b8a0-798ca9dd26a3.png",
+      "webpKey": "images/bec72cb8-f081-4d64-b8a0-798ca9dd26a3.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1069067,
+      "webpBytes": 61220,
+      "status": "converted"
+    },
+    {
+      "key": "images/e532c1e8-acd7-4084-bc18-087c17643376.png",
+      "webpKey": "images/e532c1e8-acd7-4084-bc18-087c17643376.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1333658,
+      "webpBytes": 105056,
+      "status": "converted"
+    },
+    {
+      "key": "images/d9aec26e-478a-4437-8627-d4335e8283bd.png",
+      "webpKey": "images/d9aec26e-478a-4437-8627-d4335e8283bd.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1549763,
+      "webpBytes": 136018,
+      "status": "converted"
+    },
+    {
+      "key": "images/9bd5ee1f-0bfd-45d9-986b-69fe03475be5.png",
+      "webpKey": "images/9bd5ee1f-0bfd-45d9-986b-69fe03475be5.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1428043,
+      "webpBytes": 119278,
+      "status": "converted"
+    },
+    {
+      "key": "images/825e4b67-6583-4f78-b912-32bf3220f571.png",
+      "webpKey": "images/825e4b67-6583-4f78-b912-32bf3220f571.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1181829,
+      "webpBytes": 76568,
+      "status": "converted"
+    },
+    {
+      "key": "images/542090c2-9a4c-477f-b759-785e6367d6de.png",
+      "webpKey": "images/542090c2-9a4c-477f-b759-785e6367d6de.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1339767,
+      "webpBytes": 93046,
+      "status": "converted"
+    },
+    {
+      "key": "images/bd689e7c-388a-4d1e-814d-5c111b9c2827.png",
+      "webpKey": "images/bd689e7c-388a-4d1e-814d-5c111b9c2827.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 2020887,
+      "webpBytes": 279954,
+      "status": "converted"
+    },
+    {
+      "key": "images/00c56ec8-d444-42e8-858c-d7f09bd7a2bb.png",
+      "webpKey": "images/00c56ec8-d444-42e8-858c-d7f09bd7a2bb.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1371381,
+      "webpBytes": 97828,
+      "status": "converted"
+    },
+    {
+      "key": "images/93177884-ac34-4589-95bf-769de500d343.png",
+      "webpKey": "images/93177884-ac34-4589-95bf-769de500d343.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1146214,
+      "webpBytes": 63750,
+      "status": "converted"
+    },
+    {
+      "key": "images/92922034-f41b-42a0-9eea-3f7e477387ec.png",
+      "webpKey": "images/92922034-f41b-42a0-9eea-3f7e477387ec.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1268663,
+      "webpBytes": 72278,
+      "status": "converted"
+    },
+    {
+      "key": "images/a7491789-39d5-4630-8be1-d7982b50eca3.png",
+      "webpKey": "images/a7491789-39d5-4630-8be1-d7982b50eca3.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1311265,
+      "webpBytes": 88486,
+      "status": "converted"
+    },
+    {
+      "key": "images/4c595965-4f73-43c0-81e2-926ad45765da.png",
+      "webpKey": "images/4c595965-4f73-43c0-81e2-926ad45765da.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1531948,
+      "webpBytes": 145382,
+      "status": "converted"
+    },
+    {
+      "key": "images/cb12b15f-fddd-4382-8859-b73d34d4c74f.png",
+      "webpKey": "images/cb12b15f-fddd-4382-8859-b73d34d4c74f.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 935893,
+      "webpBytes": 36282,
+      "status": "converted"
+    },
+    {
+      "key": "images/0aa834da-a148-4a7a-b73f-1ff2bca9b061.png",
+      "webpKey": "images/0aa834da-a148-4a7a-b73f-1ff2bca9b061.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1111165,
+      "webpBytes": 59000,
+      "status": "converted"
+    },
+    {
+      "key": "images/b2854dff-9e08-46af-a9c7-f99b7c374eae.png",
+      "webpKey": "images/b2854dff-9e08-46af-a9c7-f99b7c374eae.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1214881,
+      "webpBytes": 76940,
+      "status": "converted"
+    },
+    {
+      "key": "images/b5e8741b-f11a-4929-a759-48151de91f77.png",
+      "webpKey": "images/b5e8741b-f11a-4929-a759-48151de91f77.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1246280,
+      "webpBytes": 83516,
+      "status": "converted"
+    },
+    {
+      "key": "images/e90f9514-376d-44f2-90c5-398e2e5f393a.png",
+      "webpKey": "images/e90f9514-376d-44f2-90c5-398e2e5f393a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1344098,
+      "webpBytes": 109986,
+      "status": "converted"
+    },
+    {
+      "key": "images/6d8d8900-6007-40b4-a6e0-a8157f0b02ed.png",
+      "webpKey": "images/6d8d8900-6007-40b4-a6e0-a8157f0b02ed.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1404965,
+      "webpBytes": 99678,
+      "status": "converted"
+    },
+    {
+      "key": "images/6b0e821c-f113-44ee-a0ee-9af8ffded70a.png",
+      "webpKey": "images/6b0e821c-f113-44ee-a0ee-9af8ffded70a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1564105,
+      "webpBytes": 131278,
+      "status": "converted"
+    },
+    {
+      "key": "images/a6ac1e4a-db11-4036-80c7-713962448b69.png",
+      "webpKey": "images/a6ac1e4a-db11-4036-80c7-713962448b69.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1279510,
+      "webpBytes": 91386,
+      "status": "converted"
+    },
+    {
+      "key": "images/6a22ee6d-c315-4b7c-99ab-2939ee2d9dda.png",
+      "webpKey": "images/6a22ee6d-c315-4b7c-99ab-2939ee2d9dda.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1492028,
+      "webpBytes": 119654,
+      "status": "converted"
+    },
+    {
+      "key": "images/aefa1cc8-9e3b-449f-b1c4-bb7e8a8d0ef6.png",
+      "webpKey": "images/aefa1cc8-9e3b-449f-b1c4-bb7e8a8d0ef6.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1574980,
+      "webpBytes": 164236,
+      "status": "converted"
+    },
+    {
+      "key": "images/c05a89aa-3a6c-4c47-954c-ea2d5d661884.png",
+      "webpKey": "images/c05a89aa-3a6c-4c47-954c-ea2d5d661884.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1277851,
+      "webpBytes": 84984,
+      "status": "converted"
+    },
+    {
+      "key": "images/e90ce63d-e5dc-4e33-a0bb-8935c5e8688b.png",
+      "webpKey": "images/e90ce63d-e5dc-4e33-a0bb-8935c5e8688b.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1140714,
+      "webpBytes": 63080,
+      "status": "converted"
+    },
+    {
+      "key": "images/63396334-2982-4baf-b4af-ffe19c52d889.png",
+      "webpKey": "images/63396334-2982-4baf-b4af-ffe19c52d889.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1581145,
+      "webpBytes": 144010,
+      "status": "converted"
+    },
+    {
+      "key": "images/876c3f98-c8c3-44e4-ba23-3a47832bb995.png",
+      "webpKey": "images/876c3f98-c8c3-44e4-ba23-3a47832bb995.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1090611,
+      "webpBytes": 70360,
+      "status": "converted"
+    },
+    {
+      "key": "images/23deb7a7-c2d0-4ea7-ac0d-8e033294ee30.png",
+      "webpKey": "images/23deb7a7-c2d0-4ea7-ac0d-8e033294ee30.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1382185,
+      "webpBytes": 118400,
+      "status": "converted"
+    },
+    {
+      "key": "images/c0b16597-b1f7-4ac8-bc6b-642023490e08.png",
+      "webpKey": "images/c0b16597-b1f7-4ac8-bc6b-642023490e08.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1461963,
+      "webpBytes": 114524,
+      "status": "converted"
+    },
+    {
+      "key": "images/14e9e16b-2725-4c4d-9036-4b2bea2145e8.png",
+      "webpKey": "images/14e9e16b-2725-4c4d-9036-4b2bea2145e8.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1883249,
+      "webpBytes": 214846,
+      "status": "converted"
+    },
+    {
+      "key": "images/090ce1ae-9436-4e5f-ae6e-814e105b65c7.png",
+      "webpKey": "images/090ce1ae-9436-4e5f-ae6e-814e105b65c7.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1401473,
+      "webpBytes": 102348,
+      "status": "converted"
+    },
+    {
+      "key": "images/ea5f4916-5c33-4df5-8149-0d2a0de8fd53.png",
+      "webpKey": "images/ea5f4916-5c33-4df5-8149-0d2a0de8fd53.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1746382,
+      "webpBytes": 170498,
+      "status": "converted"
+    },
+    {
+      "key": "images/e241f819-c271-4a68-beb8-58d9ee58f98d.png",
+      "webpKey": "images/e241f819-c271-4a68-beb8-58d9ee58f98d.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1572174,
+      "webpBytes": 163510,
+      "status": "converted"
+    },
+    {
+      "key": "images/bab343c5-dc67-42cb-b338-6ed6b044fd36.png",
+      "webpKey": "images/bab343c5-dc67-42cb-b338-6ed6b044fd36.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1135321,
+      "webpBytes": 71312,
+      "status": "converted"
+    },
+    {
+      "key": "images/f3d030ed-2803-4532-afb9-5cb8eb555171.png",
+      "webpKey": "images/f3d030ed-2803-4532-afb9-5cb8eb555171.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1635355,
+      "webpBytes": 151910,
+      "status": "converted"
+    },
+    {
+      "key": "images/5541252c-7962-4f60-959a-46e150cf9592.png",
+      "webpKey": "images/5541252c-7962-4f60-959a-46e150cf9592.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1425096,
+      "webpBytes": 110670,
+      "status": "converted"
+    },
+    {
+      "key": "images/612b1efa-3d83-47c4-ab6b-aef7968e42ee.png",
+      "webpKey": "images/612b1efa-3d83-47c4-ab6b-aef7968e42ee.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1400460,
+      "webpBytes": 108218,
+      "status": "converted"
+    },
+    {
+      "key": "images/49dfb6c9-a5b9-47e5-b437-960dd9ce2f82.png",
+      "webpKey": "images/49dfb6c9-a5b9-47e5-b437-960dd9ce2f82.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1501258,
+      "webpBytes": 140310,
+      "status": "converted"
+    },
+    {
+      "key": "images/38615fb0-41ea-43f4-8171-f3571fe8dbe6.png",
+      "webpKey": "images/38615fb0-41ea-43f4-8171-f3571fe8dbe6.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 2291676,
+      "webpBytes": 322136,
+      "status": "converted"
+    },
+    {
+      "key": "images/dc6514a5-6cee-4c11-b787-de48e4a0a98e.png",
+      "webpKey": "images/dc6514a5-6cee-4c11-b787-de48e4a0a98e.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1360890,
+      "webpBytes": 97034,
+      "status": "converted"
+    },
+    {
+      "key": "images/c025c151-a99f-477e-9c86-737220761a1c.png",
+      "webpKey": "images/c025c151-a99f-477e-9c86-737220761a1c.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1425349,
+      "webpBytes": 114088,
+      "status": "converted"
+    },
+    {
+      "key": "images/4ac14cb0-cd83-48ab-b00a-08895933923c.png",
+      "webpKey": "images/4ac14cb0-cd83-48ab-b00a-08895933923c.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1082302,
+      "webpBytes": 58410,
+      "status": "converted"
+    },
+    {
+      "key": "images/95874661-43d8-46bf-b6ca-7580943a228e.png",
+      "webpKey": "images/95874661-43d8-46bf-b6ca-7580943a228e.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1663132,
+      "webpBytes": 201834,
+      "status": "converted"
+    },
+    {
+      "key": "images/88706bf3-bdbc-497c-b1d6-23f0f70263b7.png",
+      "webpKey": "images/88706bf3-bdbc-497c-b1d6-23f0f70263b7.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1731510,
+      "webpBytes": 175850,
+      "status": "converted"
+    },
+    {
+      "key": "images/085d3221-8ee6-470b-910f-d2a93182846f.png",
+      "webpKey": "images/085d3221-8ee6-470b-910f-d2a93182846f.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1450393,
+      "webpBytes": 110334,
+      "status": "converted"
+    },
+    {
+      "key": "images/3729a033-1ef9-4cc3-a1c0-579eacba3112.png",
+      "webpKey": "images/3729a033-1ef9-4cc3-a1c0-579eacba3112.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1398458,
+      "webpBytes": 105344,
+      "status": "converted"
+    },
+    {
+      "key": "images/eb8afe4e-9b44-4db6-b9d7-7200af7057e2.png",
+      "webpKey": "images/eb8afe4e-9b44-4db6-b9d7-7200af7057e2.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1595032,
+      "webpBytes": 139564,
+      "status": "converted"
+    },
+    {
+      "key": "images/4283eff0-1131-428f-92ba-4b2a3f542199.png",
+      "webpKey": "images/4283eff0-1131-428f-92ba-4b2a3f542199.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1327920,
+      "webpBytes": 98494,
+      "status": "converted"
+    },
+    {
+      "key": "images/9244af2e-feaf-4f0c-a9c8-3e1d8f6d8a65.png",
+      "webpKey": "images/9244af2e-feaf-4f0c-a9c8-3e1d8f6d8a65.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1358070,
+      "webpBytes": 95418,
+      "status": "converted"
+    },
+    {
+      "key": "images/2acfda15-83f9-4bea-922c-2a4cdc58689f.png",
+      "webpKey": "images/2acfda15-83f9-4bea-922c-2a4cdc58689f.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1436639,
+      "webpBytes": 114802,
+      "status": "converted"
+    },
+    {
+      "key": "images/40d44224-f88d-4526-bd54-1d03ee81637f.png",
+      "webpKey": "images/40d44224-f88d-4526-bd54-1d03ee81637f.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1426431,
+      "webpBytes": 109256,
+      "status": "converted"
+    },
+    {
+      "key": "images/d9308467-7e71-4da4-859b-6c9e040c51b0.png",
+      "webpKey": "images/d9308467-7e71-4da4-859b-6c9e040c51b0.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1192203,
+      "webpBytes": 80380,
+      "status": "converted"
+    },
+    {
+      "key": "images/b1c05a19-b1d6-4cd9-8052-e2854930a620.png",
+      "webpKey": "images/b1c05a19-b1d6-4cd9-8052-e2854930a620.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1351178,
+      "webpBytes": 99686,
+      "status": "converted"
+    },
+    {
+      "key": "images/2284c152-ed03-4d32-aa01-a4eee17997f6.png",
+      "webpKey": "images/2284c152-ed03-4d32-aa01-a4eee17997f6.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1190330,
+      "webpBytes": 64920,
+      "status": "converted"
+    },
+    {
+      "key": "images/bb61a0ae-d90b-41f1-9038-555163bd54fd.png",
+      "webpKey": "images/bb61a0ae-d90b-41f1-9038-555163bd54fd.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1586027,
+      "webpBytes": 136384,
+      "status": "converted"
+    },
+    {
+      "key": "images/524006e4-37b6-4dbb-b367-8e33d1bc287b.png",
+      "webpKey": "images/524006e4-37b6-4dbb-b367-8e33d1bc287b.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1941172,
+      "webpBytes": 231136,
+      "status": "converted"
+    },
+    {
+      "key": "images/4a206964-90d1-41ae-b0cf-6363a07828c2.png",
+      "webpKey": "images/4a206964-90d1-41ae-b0cf-6363a07828c2.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1303588,
+      "webpBytes": 84704,
+      "status": "converted"
+    },
+    {
+      "key": "images/0a6e68e2-68ad-43d5-aa2c-29efb46647a3.png",
+      "webpKey": "images/0a6e68e2-68ad-43d5-aa2c-29efb46647a3.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1305025,
+      "webpBytes": 100652,
+      "status": "converted"
+    },
+    {
+      "key": "images/cde535dc-eb46-47ad-b0a9-68a3588b32a4.png",
+      "webpKey": "images/cde535dc-eb46-47ad-b0a9-68a3588b32a4.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1369488,
+      "webpBytes": 93652,
+      "status": "converted"
+    },
+    {
+      "key": "images/d5822deb-629d-4f8f-91c8-2a90f7d1e68a.png",
+      "webpKey": "images/d5822deb-629d-4f8f-91c8-2a90f7d1e68a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1495111,
+      "webpBytes": 138206,
+      "status": "converted"
+    },
+    {
+      "key": "images/6874fdbd-6574-4c70-bb29-12819b9d3eac.png",
+      "webpKey": "images/6874fdbd-6574-4c70-bb29-12819b9d3eac.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1467423,
+      "webpBytes": 124904,
+      "status": "converted"
+    },
+    {
+      "key": "images/f5390ca2-394e-4d18-a6fb-e623a126eaa8.png",
+      "webpKey": "images/f5390ca2-394e-4d18-a6fb-e623a126eaa8.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1217659,
+      "webpBytes": 77388,
+      "status": "converted"
+    },
+    {
+      "key": "images/fbcc121d-01e8-4e12-bd88-0e2588de1b8c.png",
+      "webpKey": "images/fbcc121d-01e8-4e12-bd88-0e2588de1b8c.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1438612,
+      "webpBytes": 120104,
+      "status": "converted"
+    },
+    {
+      "key": "images/eb3190c1-a338-4433-b006-3ca9f4bd614c.png",
+      "webpKey": "images/eb3190c1-a338-4433-b006-3ca9f4bd614c.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1241178,
+      "webpBytes": 76430,
+      "status": "converted"
+    },
+    {
+      "key": "images/a60a1827-635e-417c-a441-b46e62231d87.png",
+      "webpKey": "images/a60a1827-635e-417c-a441-b46e62231d87.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1340397,
+      "webpBytes": 96538,
+      "status": "converted"
+    },
+    {
+      "key": "images/9d65503c-6ed9-4d64-9773-e99fbb75ef91.png",
+      "webpKey": "images/9d65503c-6ed9-4d64-9773-e99fbb75ef91.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1164571,
+      "webpBytes": 66858,
+      "status": "converted"
+    },
+    {
+      "key": "images/fb71487c-41f6-4a90-82c1-257268660aa3.png",
+      "webpKey": "images/fb71487c-41f6-4a90-82c1-257268660aa3.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1368348,
+      "webpBytes": 96648,
+      "status": "converted"
+    },
+    {
+      "key": "images/0c53b1a8-76b9-483e-b171-472e4e3b2d38.png",
+      "webpKey": "images/0c53b1a8-76b9-483e-b171-472e4e3b2d38.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1326833,
+      "webpBytes": 102370,
+      "status": "converted"
+    },
+    {
+      "key": "images/b4d93afd-1999-4b1f-bb31-3febf50981c0.png",
+      "webpKey": "images/b4d93afd-1999-4b1f-bb31-3febf50981c0.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1237755,
+      "webpBytes": 71982,
+      "status": "converted"
+    },
+    {
+      "key": "images/49c73087-53b5-4e1e-8bb0-d7cb806aac2b.png",
+      "webpKey": "images/49c73087-53b5-4e1e-8bb0-d7cb806aac2b.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1386675,
+      "webpBytes": 92982,
+      "status": "converted"
+    },
+    {
+      "key": "images/b516caff-2deb-4964-bb95-6faacf261511.png",
+      "webpKey": "images/b516caff-2deb-4964-bb95-6faacf261511.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1248196,
+      "webpBytes": 100864,
+      "status": "converted"
+    },
+    {
+      "key": "images/781f176f-86fa-446a-9c6e-5aca7ff1c081.png",
+      "webpKey": "images/781f176f-86fa-446a-9c6e-5aca7ff1c081.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1153671,
+      "webpBytes": 67296,
+      "status": "converted"
+    },
+    {
+      "key": "images/8e8a6255-02d0-4906-8a58-b5f6c29d2e28.png",
+      "webpKey": "images/8e8a6255-02d0-4906-8a58-b5f6c29d2e28.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1662353,
+      "webpBytes": 174278,
+      "status": "converted"
+    },
+    {
+      "key": "images/274063a3-f567-4b1d-a8d4-d65905ee9dd2.png",
+      "webpKey": "images/274063a3-f567-4b1d-a8d4-d65905ee9dd2.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1537081,
+      "webpBytes": 125320,
+      "status": "converted"
+    },
+    {
+      "key": "images/8fe63d65-de5e-48f0-bc47-e0fd2f130c33.png",
+      "webpKey": "images/8fe63d65-de5e-48f0-bc47-e0fd2f130c33.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1602998,
+      "webpBytes": 143512,
+      "status": "converted"
+    },
+    {
+      "key": "images/b7c17220-2883-4e19-989f-2d01be671be5.png",
+      "webpKey": "images/b7c17220-2883-4e19-989f-2d01be671be5.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1218399,
+      "webpBytes": 77016,
+      "status": "converted"
+    },
+    {
+      "key": "images/d8991aee-6a4a-4072-aec7-02a443c5d534.png",
+      "webpKey": "images/d8991aee-6a4a-4072-aec7-02a443c5d534.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1182779,
+      "webpBytes": 82730,
+      "status": "converted"
+    },
+    {
+      "key": "images/1a1dd1c1-bfed-439d-9db1-f5e3a7e9b4a8.png",
+      "webpKey": "images/1a1dd1c1-bfed-439d-9db1-f5e3a7e9b4a8.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1024927,
+      "webpBytes": 52778,
+      "status": "converted"
+    },
+    {
+      "key": "images/6294b292-aaa7-4132-857e-b96f4569c938.png",
+      "webpKey": "images/6294b292-aaa7-4132-857e-b96f4569c938.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1709005,
+      "webpBytes": 171066,
+      "status": "converted"
+    },
+    {
+      "key": "images/a09e291a-e9f3-4c62-9daa-e0dbedeef812.png",
+      "webpKey": "images/a09e291a-e9f3-4c62-9daa-e0dbedeef812.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1542969,
+      "webpBytes": 128840,
+      "status": "converted"
+    },
+    {
+      "key": "images/5a792440-2261-4616-8144-d4338a4ef84e.png",
+      "webpKey": "images/5a792440-2261-4616-8144-d4338a4ef84e.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1234262,
+      "webpBytes": 78758,
+      "status": "converted"
+    },
+    {
+      "key": "images/c7b18248-64dd-4f06-a13e-52be17a54d3a.png",
+      "webpKey": "images/c7b18248-64dd-4f06-a13e-52be17a54d3a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1328992,
+      "webpBytes": 108428,
+      "status": "converted"
+    },
+    {
+      "key": "images/3ab57131-39ab-418e-b356-5e39128915cd.png",
+      "webpKey": "images/3ab57131-39ab-418e-b356-5e39128915cd.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1497160,
+      "webpBytes": 139792,
+      "status": "converted"
+    },
+    {
+      "key": "images/4bca4ad8-4395-41b7-92a6-525d614eb63d.png",
+      "webpKey": "images/4bca4ad8-4395-41b7-92a6-525d614eb63d.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1507701,
+      "webpBytes": 132060,
+      "status": "converted"
+    },
+    {
+      "key": "images/aeac4bbd-d134-4709-b056-fda66b2ee7e0.png",
+      "webpKey": "images/aeac4bbd-d134-4709-b056-fda66b2ee7e0.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1571383,
+      "webpBytes": 139622,
+      "status": "converted"
+    },
+    {
+      "key": "images/d80e3df6-01bb-433e-b75a-2917b77a8bdb.png",
+      "webpKey": "images/d80e3df6-01bb-433e-b75a-2917b77a8bdb.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1172680,
+      "webpBytes": 63234,
+      "status": "converted"
+    },
+    {
+      "key": "images/ddb8c173-62d0-494e-b557-d687350b89dd.png",
+      "webpKey": "images/ddb8c173-62d0-494e-b557-d687350b89dd.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 2103895,
+      "webpBytes": 258290,
+      "status": "converted"
+    },
+    {
+      "key": "images/db45f6ec-16da-4b91-8660-e4f7de1bafaf.png",
+      "webpKey": "images/db45f6ec-16da-4b91-8660-e4f7de1bafaf.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1505350,
+      "webpBytes": 135032,
+      "status": "converted"
+    },
+    {
+      "key": "images/450a0da7-d8b9-431d-93fc-c7b9af777c40.png",
+      "webpKey": "images/450a0da7-d8b9-431d-93fc-c7b9af777c40.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1152007,
+      "webpBytes": 58780,
+      "status": "converted"
+    },
+    {
+      "key": "images/1ed907f7-8185-4ddd-98f5-ab501e434eb8.png",
+      "webpKey": "images/1ed907f7-8185-4ddd-98f5-ab501e434eb8.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1805879,
+      "webpBytes": 194076,
+      "status": "converted"
+    },
+    {
+      "key": "images/9b30e5a4-b732-44b1-8427-da8beb4218ef.png",
+      "webpKey": "images/9b30e5a4-b732-44b1-8427-da8beb4218ef.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1313998,
+      "webpBytes": 90058,
+      "status": "converted"
+    },
+    {
+      "key": "images/76b1e3b0-6d73-49e6-a174-5dd4fc3949e2.png",
+      "webpKey": "images/76b1e3b0-6d73-49e6-a174-5dd4fc3949e2.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1416881,
+      "webpBytes": 100950,
+      "status": "converted"
+    },
+    {
+      "key": "images/91167638-e31c-423a-9198-88e55441bf04.png",
+      "webpKey": "images/91167638-e31c-423a-9198-88e55441bf04.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1569900,
+      "webpBytes": 152568,
+      "status": "converted"
+    },
+    {
+      "key": "images/60927f20-bbd4-45dd-a8ea-6b6bc6fe5abb.png",
+      "webpKey": "images/60927f20-bbd4-45dd-a8ea-6b6bc6fe5abb.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1869538,
+      "webpBytes": 221002,
+      "status": "converted"
+    },
+    {
+      "key": "images/900bf360-50e5-41ad-9b5c-c8bea20886d6.png",
+      "webpKey": "images/900bf360-50e5-41ad-9b5c-c8bea20886d6.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1625595,
+      "webpBytes": 152708,
+      "status": "converted"
+    },
+    {
+      "key": "images/e3b4b6f7-dcf5-4766-9a2d-4f581dfb72b7.png",
+      "webpKey": "images/e3b4b6f7-dcf5-4766-9a2d-4f581dfb72b7.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1498364,
+      "webpBytes": 121866,
+      "status": "converted"
+    },
+    {
+      "key": "images/6e278937-7593-4cd0-a92a-579a54faf078.png",
+      "webpKey": "images/6e278937-7593-4cd0-a92a-579a54faf078.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1088566,
+      "webpBytes": 63174,
+      "status": "converted"
+    },
+    {
+      "key": "images/0223c399-7121-4e52-9ce2-ba4fc55936c5.png",
+      "webpKey": "images/0223c399-7121-4e52-9ce2-ba4fc55936c5.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1376081,
+      "webpBytes": 100388,
+      "status": "converted"
+    },
+    {
+      "key": "images/0fb73742-c2ea-478d-81c7-fbaa3b2063fa.png",
+      "webpKey": "images/0fb73742-c2ea-478d-81c7-fbaa3b2063fa.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1382277,
+      "webpBytes": 103414,
+      "status": "converted"
+    },
+    {
+      "key": "images/b43d0629-f4c2-4fc7-8817-2a5c9fbc9207.png",
+      "webpKey": "images/b43d0629-f4c2-4fc7-8817-2a5c9fbc9207.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1209664,
+      "webpBytes": 67604,
+      "status": "converted"
+    },
+    {
+      "key": "images/80419ef2-a938-4a16-b597-98b7cd9d509d.png",
+      "webpKey": "images/80419ef2-a938-4a16-b597-98b7cd9d509d.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1267665,
+      "webpBytes": 91244,
+      "status": "converted"
+    },
+    {
+      "key": "images/b560e280-d07d-4f6a-8c91-aeda83861946.png",
+      "webpKey": "images/b560e280-d07d-4f6a-8c91-aeda83861946.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1098163,
+      "webpBytes": 58278,
+      "status": "converted"
+    },
+    {
+      "key": "images/0d5f7498-5f77-4ba6-8b39-b0e354894f15.png",
+      "webpKey": "images/0d5f7498-5f77-4ba6-8b39-b0e354894f15.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1618274,
+      "webpBytes": 156864,
+      "status": "converted"
+    },
+    {
+      "key": "images/230beca1-559a-4c1c-be94-ac5502f60825.png",
+      "webpKey": "images/230beca1-559a-4c1c-be94-ac5502f60825.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1471851,
+      "webpBytes": 120998,
+      "status": "converted"
+    },
+    {
+      "key": "images/16ff6911-efa4-4dc1-a671-61cf03a21ce0.png",
+      "webpKey": "images/16ff6911-efa4-4dc1-a671-61cf03a21ce0.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1342969,
+      "webpBytes": 91974,
+      "status": "converted"
+    },
+    {
+      "key": "images/f3221f01-4166-4220-86b3-6422cde78b2f.png",
+      "webpKey": "images/f3221f01-4166-4220-86b3-6422cde78b2f.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1607838,
+      "webpBytes": 149282,
+      "status": "converted"
+    },
+    {
+      "key": "images/6997f300-0deb-4654-b99d-a46327825b6d.png",
+      "webpKey": "images/6997f300-0deb-4654-b99d-a46327825b6d.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1828264,
+      "webpBytes": 197538,
+      "status": "converted"
+    },
+    {
+      "key": "images/d43116c0-e083-4d28-bd37-14817b756127.png",
+      "webpKey": "images/d43116c0-e083-4d28-bd37-14817b756127.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1562233,
+      "webpBytes": 160622,
+      "status": "converted"
+    },
+    {
+      "key": "images/a66e388a-8b03-417b-86f1-a30085bb67e4.png",
+      "webpKey": "images/a66e388a-8b03-417b-86f1-a30085bb67e4.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1583706,
+      "webpBytes": 144522,
+      "status": "converted"
+    },
+    {
+      "key": "images/a03b582b-905f-4760-9b15-337aa7513bf9.png",
+      "webpKey": "images/a03b582b-905f-4760-9b15-337aa7513bf9.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1642599,
+      "webpBytes": 157930,
+      "status": "converted"
+    },
+    {
+      "key": "images/99c85d30-2bc0-4447-bc06-fde2c29ae951.png",
+      "webpKey": "images/99c85d30-2bc0-4447-bc06-fde2c29ae951.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1222195,
+      "webpBytes": 72600,
+      "status": "converted"
+    },
+    {
+      "key": "images/3a67aa9a-2624-4078-b56b-c8878963ede5.png",
+      "webpKey": "images/3a67aa9a-2624-4078-b56b-c8878963ede5.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1372705,
+      "webpBytes": 102826,
+      "status": "converted"
+    },
+    {
+      "key": "images/c451b757-e9b5-4928-af7c-7ff4bb179821.png",
+      "webpKey": "images/c451b757-e9b5-4928-af7c-7ff4bb179821.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1671630,
+      "webpBytes": 170836,
+      "status": "converted"
+    },
+    {
+      "key": "images/f9306ac4-0f7c-4dfb-a2fe-31eef991988a.png",
+      "webpKey": "images/f9306ac4-0f7c-4dfb-a2fe-31eef991988a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1359357,
+      "webpBytes": 90484,
+      "status": "converted"
+    },
+    {
+      "key": "images/ca76028b-3135-472f-b726-16a59157fca2.png",
+      "webpKey": "images/ca76028b-3135-472f-b726-16a59157fca2.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1469551,
+      "webpBytes": 112158,
+      "status": "converted"
+    },
+    {
+      "key": "images/3d873f58-b785-4b09-8128-442abe485257.png",
+      "webpKey": "images/3d873f58-b785-4b09-8128-442abe485257.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1469544,
+      "webpBytes": 122176,
+      "status": "converted"
+    },
+    {
+      "key": "images/9238743b-63b2-4da0-b2d2-f052da1481d6.png",
+      "webpKey": "images/9238743b-63b2-4da0-b2d2-f052da1481d6.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1504151,
+      "webpBytes": 125818,
+      "status": "converted"
+    },
+    {
+      "key": "images/d4c24e9b-4617-4a2d-a991-2ba5750cbca3.png",
+      "webpKey": "images/d4c24e9b-4617-4a2d-a991-2ba5750cbca3.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1441987,
+      "webpBytes": 124206,
+      "status": "converted"
+    },
+    {
+      "key": "images/55310063-aadf-4426-86bd-15373056f1ef.png",
+      "webpKey": "images/55310063-aadf-4426-86bd-15373056f1ef.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1438460,
+      "webpBytes": 122012,
+      "status": "converted"
+    },
+    {
+      "key": "images/42997d49-7561-48b3-9655-946010729068.png",
+      "webpKey": "images/42997d49-7561-48b3-9655-946010729068.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1358441,
+      "webpBytes": 104784,
+      "status": "converted"
+    },
+    {
+      "key": "images/1f854d28-f24a-4ec3-9c71-65523ca762b2.png",
+      "webpKey": "images/1f854d28-f24a-4ec3-9c71-65523ca762b2.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1314013,
+      "webpBytes": 91706,
+      "status": "converted"
+    },
+    {
+      "key": "images/dd639588-d59a-42b9-b870-220b3b03383b.png",
+      "webpKey": "images/dd639588-d59a-42b9-b870-220b3b03383b.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1252858,
+      "webpBytes": 91456,
+      "status": "converted"
+    },
+    {
+      "key": "images/de804907-bf1a-4d96-b2e0-c699f3f086c3.png",
+      "webpKey": "images/de804907-bf1a-4d96-b2e0-c699f3f086c3.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1554972,
+      "webpBytes": 152602,
+      "status": "converted"
+    },
+    {
+      "key": "images/ec24a984-01cc-4f8b-a5d9-bb2799f4505b.png",
+      "webpKey": "images/ec24a984-01cc-4f8b-a5d9-bb2799f4505b.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1335118,
+      "webpBytes": 101780,
+      "status": "converted"
+    },
+    {
+      "key": "images/f72e7bf7-5f78-473b-92bc-d527fb1afbeb.png",
+      "webpKey": "images/f72e7bf7-5f78-473b-92bc-d527fb1afbeb.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1746163,
+      "webpBytes": 185086,
+      "status": "converted"
+    },
+    {
+      "key": "images/f5f3327d-052c-44c0-9538-f2f6023fa619.png",
+      "webpKey": "images/f5f3327d-052c-44c0-9538-f2f6023fa619.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1664488,
+      "webpBytes": 162772,
+      "status": "converted"
+    },
+    {
+      "key": "images/ae4e45a9-a05c-4635-82ac-ff11fbfd7bcc.png",
+      "webpKey": "images/ae4e45a9-a05c-4635-82ac-ff11fbfd7bcc.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1408096,
+      "webpBytes": 106700,
+      "status": "converted"
+    },
+    {
+      "key": "images/107e9d3c-df0d-40a1-9003-593f8cd7066e.png",
+      "webpKey": "images/107e9d3c-df0d-40a1-9003-593f8cd7066e.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1680584,
+      "webpBytes": 174046,
+      "status": "converted"
+    },
+    {
+      "key": "images/6047ff1b-65b5-47e2-a603-312f77a3ebe0.png",
+      "webpKey": "images/6047ff1b-65b5-47e2-a603-312f77a3ebe0.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1375173,
+      "webpBytes": 106148,
+      "status": "converted"
+    },
+    {
+      "key": "images/728554f9-5adc-4c53-960f-f3039e61feed.png",
+      "webpKey": "images/728554f9-5adc-4c53-960f-f3039e61feed.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1615159,
+      "webpBytes": 152936,
+      "status": "converted"
+    },
+    {
+      "key": "images/0a6d1e3c-2856-402c-8515-a5213d2e8f31.png",
+      "webpKey": "images/0a6d1e3c-2856-402c-8515-a5213d2e8f31.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1531328,
+      "webpBytes": 129732,
+      "status": "converted"
+    },
+    {
+      "key": "images/ce030344-23c8-454d-b9f6-fa4430bc385f.png",
+      "webpKey": "images/ce030344-23c8-454d-b9f6-fa4430bc385f.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1650664,
+      "webpBytes": 149698,
+      "status": "converted"
+    },
+    {
+      "key": "images/b22bc3e7-7bf4-4add-99a6-bd927616923b.png",
+      "webpKey": "images/b22bc3e7-7bf4-4add-99a6-bd927616923b.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1263721,
+      "webpBytes": 90482,
+      "status": "converted"
+    },
+    {
+      "key": "images/5e498743-89be-493d-82f2-b954b3a35609.png",
+      "webpKey": "images/5e498743-89be-493d-82f2-b954b3a35609.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1309595,
+      "webpBytes": 87114,
+      "status": "converted"
+    },
+    {
+      "key": "images/a7d9e7fd-5e16-4724-85cc-f301caf8ee85.png",
+      "webpKey": "images/a7d9e7fd-5e16-4724-85cc-f301caf8ee85.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1187133,
+      "webpBytes": 65494,
+      "status": "converted"
+    },
+    {
+      "key": "images/d7b51bf1-a39a-4a02-9577-a46284ebf167.png",
+      "webpKey": "images/d7b51bf1-a39a-4a02-9577-a46284ebf167.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1365997,
+      "webpBytes": 99308,
+      "status": "converted"
+    },
+    {
+      "key": "images/c4ac4df2-0d5b-4d4b-9676-248ee6b526e0.png",
+      "webpKey": "images/c4ac4df2-0d5b-4d4b-9676-248ee6b526e0.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1419557,
+      "webpBytes": 99504,
+      "status": "converted"
+    },
+    {
+      "key": "images/f99870fc-ece5-47b4-8155-036b78f67891.png",
+      "webpKey": "images/f99870fc-ece5-47b4-8155-036b78f67891.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1624040,
+      "webpBytes": 164662,
+      "status": "converted"
+    },
+    {
+      "key": "images/6df78916-1956-4bb2-b31b-3fc7140e8c5a.png",
+      "webpKey": "images/6df78916-1956-4bb2-b31b-3fc7140e8c5a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1326101,
+      "webpBytes": 91748,
+      "status": "converted"
+    },
+    {
+      "key": "images/6262a8ba-c1fd-4337-b345-101749f23d6d.png",
+      "webpKey": "images/6262a8ba-c1fd-4337-b345-101749f23d6d.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1724868,
+      "webpBytes": 168592,
+      "status": "converted"
+    },
+    {
+      "key": "images/cbfd6c70-d21f-4359-be47-dbcc5f648430.png",
+      "webpKey": "images/cbfd6c70-d21f-4359-be47-dbcc5f648430.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1361895,
+      "webpBytes": 97398,
+      "status": "converted"
+    },
+    {
+      "key": "images/3837abdb-24f1-4125-9255-55e6b4f58b8c.png",
+      "webpKey": "images/3837abdb-24f1-4125-9255-55e6b4f58b8c.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1287372,
+      "webpBytes": 80888,
+      "status": "converted"
+    },
+    {
+      "key": "images/2c240a21-b353-4981-a934-2ac6bf8b3ff2.png",
+      "webpKey": "images/2c240a21-b353-4981-a934-2ac6bf8b3ff2.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1547396,
+      "webpBytes": 144610,
+      "status": "converted"
+    },
+    {
+      "key": "images/a699d6d6-328b-45e6-a047-60a95434aed4.png",
+      "webpKey": "images/a699d6d6-328b-45e6-a047-60a95434aed4.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1105735,
+      "webpBytes": 55510,
+      "status": "converted"
+    },
+    {
+      "key": "images/943615c9-6586-489b-82e6-6f3809d63366.png",
+      "webpKey": "images/943615c9-6586-489b-82e6-6f3809d63366.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1103609,
+      "webpBytes": 59292,
+      "status": "converted"
+    },
+    {
+      "key": "images/52b3f5dc-ce2c-4e93-abf4-cdcb0a6b9ab9.png",
+      "webpKey": "images/52b3f5dc-ce2c-4e93-abf4-cdcb0a6b9ab9.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1407871,
+      "webpBytes": 107008,
+      "status": "converted"
+    },
+    {
+      "key": "images/0a306ee2-3b30-4628-8ab1-4356c62cd4de.png",
+      "webpKey": "images/0a306ee2-3b30-4628-8ab1-4356c62cd4de.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1578637,
+      "webpBytes": 139236,
+      "status": "converted"
+    },
+    {
+      "key": "images/0a3f1568-e695-4333-94d5-59fb174c6507.png",
+      "webpKey": "images/0a3f1568-e695-4333-94d5-59fb174c6507.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1545719,
+      "webpBytes": 135374,
+      "status": "converted"
+    },
+    {
+      "key": "images/5d59270b-221d-4dd5-82ab-847c532fec73.png",
+      "webpKey": "images/5d59270b-221d-4dd5-82ab-847c532fec73.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1633722,
+      "webpBytes": 167066,
+      "status": "converted"
+    },
+    {
+      "key": "images/ec61127d-d794-47e1-b2d7-5b29f798eb29.png",
+      "webpKey": "images/ec61127d-d794-47e1-b2d7-5b29f798eb29.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1576451,
+      "webpBytes": 143982,
+      "status": "converted"
+    },
+    {
+      "key": "images/f327e51d-7214-4179-9508-5d2b55495869.png",
+      "webpKey": "images/f327e51d-7214-4179-9508-5d2b55495869.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1239835,
+      "webpBytes": 69302,
+      "status": "converted"
+    },
+    {
+      "key": "images/2ddaa5d6-3973-42ba-b371-74b04a449f4f.png",
+      "webpKey": "images/2ddaa5d6-3973-42ba-b371-74b04a449f4f.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1211367,
+      "webpBytes": 69272,
+      "status": "converted"
+    },
+    {
+      "key": "images/ae19cb43-156f-424d-9e99-5ce79e8c7eb1.png",
+      "webpKey": "images/ae19cb43-156f-424d-9e99-5ce79e8c7eb1.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1641016,
+      "webpBytes": 151882,
+      "status": "converted"
+    },
+    {
+      "key": "images/9c3ace75-df4e-49de-bcc4-6754c87008a4.png",
+      "webpKey": "images/9c3ace75-df4e-49de-bcc4-6754c87008a4.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1330765,
+      "webpBytes": 88576,
+      "status": "converted"
+    },
+    {
+      "key": "images/222dfdd4-658d-4884-9777-15132380c899.png",
+      "webpKey": "images/222dfdd4-658d-4884-9777-15132380c899.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1455185,
+      "webpBytes": 116698,
+      "status": "converted"
+    },
+    {
+      "key": "images/78e3d2bf-5bdd-4efb-b1ba-99e06e58daf2.png",
+      "webpKey": "images/78e3d2bf-5bdd-4efb-b1ba-99e06e58daf2.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1337635,
+      "webpBytes": 93540,
+      "status": "converted"
+    },
+    {
+      "key": "images/9a0909e8-836e-493c-afa9-e060eafd4458.png",
+      "webpKey": "images/9a0909e8-836e-493c-afa9-e060eafd4458.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1612129,
+      "webpBytes": 143410,
+      "status": "converted"
+    },
+    {
+      "key": "images/c3d91b67-e71a-4113-b544-820ad1889efd.png",
+      "webpKey": "images/c3d91b67-e71a-4113-b544-820ad1889efd.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1651201,
+      "webpBytes": 175426,
+      "status": "converted"
+    },
+    {
+      "key": "images/129cb71f-a9a2-4297-bc9a-fd9feae06e1f.png",
+      "webpKey": "images/129cb71f-a9a2-4297-bc9a-fd9feae06e1f.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1273410,
+      "webpBytes": 85544,
+      "status": "converted"
+    },
+    {
+      "key": "images/2affc265-acfd-408c-b064-a89496c674a1.png",
+      "webpKey": "images/2affc265-acfd-408c-b064-a89496c674a1.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1145597,
+      "webpBytes": 70102,
+      "status": "converted"
+    },
+    {
+      "key": "images/e0d6ff7b-9dce-4bda-8a20-67f1949c7afc.png",
+      "webpKey": "images/e0d6ff7b-9dce-4bda-8a20-67f1949c7afc.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1267200,
+      "webpBytes": 79520,
+      "status": "converted"
+    },
+    {
+      "key": "images/9d7be079-79a5-40c7-93a9-05307132a4ab.png",
+      "webpKey": "images/9d7be079-79a5-40c7-93a9-05307132a4ab.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1813363,
+      "webpBytes": 212414,
+      "status": "converted"
+    },
+    {
+      "key": "images/b2a3d501-c618-46a2-8218-cde7cc0f65db.png",
+      "webpKey": "images/b2a3d501-c618-46a2-8218-cde7cc0f65db.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1591545,
+      "webpBytes": 164050,
+      "status": "converted"
+    },
+    {
+      "key": "images/54f7ecbc-8ccb-438d-be3b-251b52d45d44.png",
+      "webpKey": "images/54f7ecbc-8ccb-438d-be3b-251b52d45d44.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1209973,
+      "webpBytes": 73692,
+      "status": "converted"
+    },
+    {
+      "key": "images/a7f32a0c-9a47-48db-afc7-b487545710c4.png",
+      "webpKey": "images/a7f32a0c-9a47-48db-afc7-b487545710c4.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1416898,
+      "webpBytes": 116460,
+      "status": "converted"
+    },
+    {
+      "key": "images/42a0aaf4-a9af-4f0b-a905-ed28506dfc4d.png",
+      "webpKey": "images/42a0aaf4-a9af-4f0b-a905-ed28506dfc4d.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1373262,
+      "webpBytes": 95222,
+      "status": "converted"
+    },
+    {
+      "key": "images/b7f06d03-e69c-443f-b5ac-9f96fabb2aa8.png",
+      "webpKey": "images/b7f06d03-e69c-443f-b5ac-9f96fabb2aa8.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1927406,
+      "webpBytes": 221050,
+      "status": "converted"
+    },
+    {
+      "key": "images/99331331-a03f-4ae6-8eae-22eb383332b7.png",
+      "webpKey": "images/99331331-a03f-4ae6-8eae-22eb383332b7.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1483969,
+      "webpBytes": 133392,
+      "status": "converted"
+    },
+    {
+      "key": "images/d1aff369-8f3a-4cce-a7cf-ad3086c65810.png",
+      "webpKey": "images/d1aff369-8f3a-4cce-a7cf-ad3086c65810.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1357418,
+      "webpBytes": 101488,
+      "status": "converted"
+    },
+    {
+      "key": "images/a7705a74-f582-424b-a822-25e8fd998ab7.png",
+      "webpKey": "images/a7705a74-f582-424b-a822-25e8fd998ab7.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1438396,
+      "webpBytes": 112188,
+      "status": "converted"
+    },
+    {
+      "key": "images/efa405fd-e644-4ad3-9f90-7be7c822be10.png",
+      "webpKey": "images/efa405fd-e644-4ad3-9f90-7be7c822be10.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1145269,
+      "webpBytes": 58854,
+      "status": "converted"
+    },
+    {
+      "key": "images/f46dc5a8-2d1b-4a46-95d2-6bdd8291fdb0.png",
+      "webpKey": "images/f46dc5a8-2d1b-4a46-95d2-6bdd8291fdb0.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1040292,
+      "webpBytes": 58560,
+      "status": "converted"
+    },
+    {
+      "key": "images/e3e74f46-cc31-4821-a30d-2cfd5b22b4cf.png",
+      "webpKey": "images/e3e74f46-cc31-4821-a30d-2cfd5b22b4cf.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1659615,
+      "webpBytes": 173992,
+      "status": "converted"
+    },
+    {
+      "key": "images/545d4ea5-56e3-45f9-b452-78e4e7e55612.png",
+      "webpKey": "images/545d4ea5-56e3-45f9-b452-78e4e7e55612.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1521838,
+      "webpBytes": 134488,
+      "status": "converted"
+    },
+    {
+      "key": "images/fbad8326-f7f5-41e2-b9a9-38e0c8377a62.png",
+      "webpKey": "images/fbad8326-f7f5-41e2-b9a9-38e0c8377a62.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1606819,
+      "webpBytes": 151144,
+      "status": "converted"
+    },
+    {
+      "key": "images/30615051-8795-4979-8761-f536fc8cd4a4.png",
+      "webpKey": "images/30615051-8795-4979-8761-f536fc8cd4a4.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1452082,
+      "webpBytes": 115822,
+      "status": "converted"
+    },
+    {
+      "key": "images/81dba077-3621-4cad-8d68-dfa726b72f54.png",
+      "webpKey": "images/81dba077-3621-4cad-8d68-dfa726b72f54.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1797441,
+      "webpBytes": 204192,
+      "status": "converted"
+    },
+    {
+      "key": "images/aa60c92f-cb10-458a-a076-38433922ac5b.png",
+      "webpKey": "images/aa60c92f-cb10-458a-a076-38433922ac5b.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1658555,
+      "webpBytes": 176180,
+      "status": "converted"
+    },
+    {
+      "key": "images/891cc1e9-4b03-4f1c-b4ae-6632bd835eb0.png",
+      "webpKey": "images/891cc1e9-4b03-4f1c-b4ae-6632bd835eb0.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1365491,
+      "webpBytes": 96416,
+      "status": "converted"
+    },
+    {
+      "key": "images/8beec360-fc07-4dba-a36f-e35ebf8f9c63.png",
+      "webpKey": "images/8beec360-fc07-4dba-a36f-e35ebf8f9c63.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1525700,
+      "webpBytes": 126098,
+      "status": "converted"
+    },
+    {
+      "key": "images/e6b51c41-2b3a-4526-955d-4de5120050e6.png",
+      "webpKey": "images/e6b51c41-2b3a-4526-955d-4de5120050e6.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1690018,
+      "webpBytes": 165354,
+      "status": "converted"
+    },
+    {
+      "key": "images/b609841a-7b83-4385-b152-6117d2c793c9.png",
+      "webpKey": "images/b609841a-7b83-4385-b152-6117d2c793c9.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1256859,
+      "webpBytes": 84228,
+      "status": "converted"
+    },
+    {
+      "key": "images/51c38f51-7a6b-49f3-a2f2-038fc4c120f7.png",
+      "webpKey": "images/51c38f51-7a6b-49f3-a2f2-038fc4c120f7.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1393053,
+      "webpBytes": 110736,
+      "status": "converted"
+    },
+    {
+      "key": "images/d69eb18f-ef09-4ddf-8030-7feeed52f96a.png",
+      "webpKey": "images/d69eb18f-ef09-4ddf-8030-7feeed52f96a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1435115,
+      "webpBytes": 118796,
+      "status": "converted"
+    },
+    {
+      "key": "images/bdbb0a22-6f5a-4e6f-96ea-1bdb0849ebb1.png",
+      "webpKey": "images/bdbb0a22-6f5a-4e6f-96ea-1bdb0849ebb1.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1630205,
+      "webpBytes": 155658,
+      "status": "converted"
+    },
+    {
+      "key": "images/31d8bf3e-6087-4e1a-8d8b-13742ecc4f8e.png",
+      "webpKey": "images/31d8bf3e-6087-4e1a-8d8b-13742ecc4f8e.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1273307,
+      "webpBytes": 82914,
+      "status": "converted"
+    },
+    {
+      "key": "images/5c8de114-d7a3-4dad-8998-98a04645f46a.png",
+      "webpKey": "images/5c8de114-d7a3-4dad-8998-98a04645f46a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1199523,
+      "webpBytes": 80162,
+      "status": "converted"
+    },
+    {
+      "key": "images/e9f27a9d-4534-4c2c-82d1-3135bd230851.png",
+      "webpKey": "images/e9f27a9d-4534-4c2c-82d1-3135bd230851.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1673858,
+      "webpBytes": 178176,
+      "status": "converted"
+    },
+    {
+      "key": "images/6e6a8037-6299-4ed1-a4b0-b1ae20140c07.png",
+      "webpKey": "images/6e6a8037-6299-4ed1-a4b0-b1ae20140c07.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1752640,
+      "webpBytes": 168496,
+      "status": "converted"
+    },
+    {
+      "key": "images/dd4c6ab7-9165-4467-b5c5-e4269046cc3a.png",
+      "webpKey": "images/dd4c6ab7-9165-4467-b5c5-e4269046cc3a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1701643,
+      "webpBytes": 157044,
+      "status": "converted"
+    },
+    {
+      "key": "images/0067d1fc-4f63-4835-805f-8a60ad23f309.png",
+      "webpKey": "images/0067d1fc-4f63-4835-805f-8a60ad23f309.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1059915,
+      "webpBytes": 49754,
+      "status": "converted"
+    },
+    {
+      "key": "images/5088a683-8400-471c-914e-28dd9271055a.png",
+      "webpKey": "images/5088a683-8400-471c-914e-28dd9271055a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1503048,
+      "webpBytes": 120902,
+      "status": "converted"
+    },
+    {
+      "key": "images/abec1b76-38e6-4989-9f2e-0185cb2233d9.png",
+      "webpKey": "images/abec1b76-38e6-4989-9f2e-0185cb2233d9.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1648166,
+      "webpBytes": 179314,
+      "status": "converted"
+    },
+    {
+      "key": "images/e599d8b5-4726-4307-b760-7ffc8b5387a1.png",
+      "webpKey": "images/e599d8b5-4726-4307-b760-7ffc8b5387a1.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1638628,
+      "webpBytes": 161242,
+      "status": "converted"
+    },
+    {
+      "key": "images/bf763cf0-0716-4b38-8912-4501f04616ae.png",
+      "webpKey": "images/bf763cf0-0716-4b38-8912-4501f04616ae.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1421148,
+      "webpBytes": 104792,
+      "status": "converted"
+    },
+    {
+      "key": "images/3b272a83-2723-47db-aa00-32810ee78903.png",
+      "webpKey": "images/3b272a83-2723-47db-aa00-32810ee78903.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1387898,
+      "webpBytes": 105286,
+      "status": "converted"
+    },
+    {
+      "key": "images/c3ad839b-18ac-4b46-b0fa-d095205f6fbe.png",
+      "webpKey": "images/c3ad839b-18ac-4b46-b0fa-d095205f6fbe.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1313563,
+      "webpBytes": 89168,
+      "status": "converted"
+    },
+    {
+      "key": "images/60323bd1-9e87-4224-82f6-c21f90a1034a.png",
+      "webpKey": "images/60323bd1-9e87-4224-82f6-c21f90a1034a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1661913,
+      "webpBytes": 179944,
+      "status": "converted"
+    },
+    {
+      "key": "images/befba963-6770-4313-8b48-52fb253ee634.png",
+      "webpKey": "images/befba963-6770-4313-8b48-52fb253ee634.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1230780,
+      "webpBytes": 77086,
+      "status": "converted"
+    },
+    {
+      "key": "images/cdad61a1-fc85-417c-bc2e-ae65d7f32e05.png",
+      "webpKey": "images/cdad61a1-fc85-417c-bc2e-ae65d7f32e05.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 2165202,
+      "webpBytes": 293512,
+      "status": "converted"
+    },
+    {
+      "key": "images/dd1447f7-9d05-42d8-81e1-71625a2bd570.png",
+      "webpKey": "images/dd1447f7-9d05-42d8-81e1-71625a2bd570.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1379073,
+      "webpBytes": 109912,
+      "status": "converted"
+    },
+    {
+      "key": "images/daafb9ac-6334-4caf-91f5-9b6bdfcc8c6e.png",
+      "webpKey": "images/daafb9ac-6334-4caf-91f5-9b6bdfcc8c6e.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 2042338,
+      "webpBytes": 266512,
+      "status": "converted"
+    },
+    {
+      "key": "images/a9204cd8-3881-4769-9f08-23ddc92034b2.png",
+      "webpKey": "images/a9204cd8-3881-4769-9f08-23ddc92034b2.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1364937,
+      "webpBytes": 117888,
+      "status": "converted"
+    },
+    {
+      "key": "images/ed4570d8-d10f-4137-b5ae-3af1a020ddd4.png",
+      "webpKey": "images/ed4570d8-d10f-4137-b5ae-3af1a020ddd4.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1267794,
+      "webpBytes": 99552,
+      "status": "converted"
+    },
+    {
+      "key": "images/79d5ffcc-645b-4470-bff8-82aa15afe566.png",
+      "webpKey": "images/79d5ffcc-645b-4470-bff8-82aa15afe566.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1075822,
+      "webpBytes": 43602,
+      "status": "converted"
+    },
+    {
+      "key": "images/c7ecde1c-2056-497f-854b-761a1303f2c4.png",
+      "webpKey": "images/c7ecde1c-2056-497f-854b-761a1303f2c4.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1552409,
+      "webpBytes": 131162,
+      "status": "converted"
+    },
+    {
+      "key": "images/37767174-5c46-4ba9-bca1-d1aa377b22bb.png",
+      "webpKey": "images/37767174-5c46-4ba9-bca1-d1aa377b22bb.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1578035,
+      "webpBytes": 143688,
+      "status": "converted"
+    },
+    {
+      "key": "images/73e5408d-96d7-4d66-a9ba-141b24195d3d.png",
+      "webpKey": "images/73e5408d-96d7-4d66-a9ba-141b24195d3d.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1368936,
+      "webpBytes": 119958,
+      "status": "converted"
+    },
+    {
+      "key": "images/e7368284-d279-49f4-9b58-7f711c0c2cf3.png",
+      "webpKey": "images/e7368284-d279-49f4-9b58-7f711c0c2cf3.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1399923,
+      "webpBytes": 101964,
+      "status": "converted"
+    },
+    {
+      "key": "images/fe20edef-d0b8-4561-a394-0a6c20a34444.png",
+      "webpKey": "images/fe20edef-d0b8-4561-a394-0a6c20a34444.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1823152,
+      "webpBytes": 207952,
+      "status": "converted"
+    },
+    {
+      "key": "images/f4ddc519-d57e-4411-adf7-13366aec2b7e.png",
+      "webpKey": "images/f4ddc519-d57e-4411-adf7-13366aec2b7e.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1077710,
+      "webpBytes": 52404,
+      "status": "converted"
+    },
+    {
+      "key": "images/c00d80fe-0563-41fa-8849-e3f8cb38e2ff.png",
+      "webpKey": "images/c00d80fe-0563-41fa-8849-e3f8cb38e2ff.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1495187,
+      "webpBytes": 122384,
+      "status": "converted"
+    },
+    {
+      "key": "images/336d5cce-67b5-40f7-933a-43e7322062ec.png",
+      "webpKey": "images/336d5cce-67b5-40f7-933a-43e7322062ec.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1508826,
+      "webpBytes": 140086,
+      "status": "converted"
+    },
+    {
+      "key": "images/eed8ec64-3ea2-43d9-8755-abc147866efe.png",
+      "webpKey": "images/eed8ec64-3ea2-43d9-8755-abc147866efe.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1367319,
+      "webpBytes": 102274,
+      "status": "converted"
+    },
+    {
+      "key": "images/dfd1c472-d1f5-4849-b645-f46e4d988cc3.png",
+      "webpKey": "images/dfd1c472-d1f5-4849-b645-f46e4d988cc3.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1413935,
+      "webpBytes": 110004,
+      "status": "converted"
+    },
+    {
+      "key": "images/bb791cfa-4c1b-45b8-bc33-88371076beaa.png",
+      "webpKey": "images/bb791cfa-4c1b-45b8-bc33-88371076beaa.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1072692,
+      "webpBytes": 56918,
+      "status": "converted"
+    },
+    {
+      "key": "images/4a072d94-495c-49ea-9961-9bddb538a5bf.png",
+      "webpKey": "images/4a072d94-495c-49ea-9961-9bddb538a5bf.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1275751,
+      "webpBytes": 92482,
+      "status": "converted"
+    },
+    {
+      "key": "images/fb37b65d-537c-45e4-993e-e3338107cbb7.png",
+      "webpKey": "images/fb37b65d-537c-45e4-993e-e3338107cbb7.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1299584,
+      "webpBytes": 94436,
+      "status": "converted"
+    },
+    {
+      "key": "images/7c05fce6-9b21-415c-babe-d212db0b4c77.png",
+      "webpKey": "images/7c05fce6-9b21-415c-babe-d212db0b4c77.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1459188,
+      "webpBytes": 120630,
+      "status": "converted"
+    },
+    {
+      "key": "images/f1eb5d6a-1f3a-4649-8d23-493a03fb31c4.png",
+      "webpKey": "images/f1eb5d6a-1f3a-4649-8d23-493a03fb31c4.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1940949,
+      "webpBytes": 229204,
+      "status": "converted"
+    },
+    {
+      "key": "images/d3c2f50c-1ce7-4bf0-ba16-2d3c3de278c7.png",
+      "webpKey": "images/d3c2f50c-1ce7-4bf0-ba16-2d3c3de278c7.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1412853,
+      "webpBytes": 109510,
+      "status": "converted"
+    },
+    {
+      "key": "images/fb99589b-b8a0-4726-9a66-3cc2b4fa93f2.png",
+      "webpKey": "images/fb99589b-b8a0-4726-9a66-3cc2b4fa93f2.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1099824,
+      "webpBytes": 67886,
+      "status": "converted"
+    },
+    {
+      "key": "images/e3704d73-23da-45bd-9f67-62eca3e4ad0a.png",
+      "webpKey": "images/e3704d73-23da-45bd-9f67-62eca3e4ad0a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1831854,
+      "webpBytes": 219150,
+      "status": "converted"
+    },
+    {
+      "key": "images/ae5aeb60-372d-4342-a08e-c951a5f15113.png",
+      "webpKey": "images/ae5aeb60-372d-4342-a08e-c951a5f15113.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1408345,
+      "webpBytes": 116346,
+      "status": "converted"
+    },
+    {
+      "key": "images/3b9588f4-a7df-446a-ab64-20ca7b9fb016.png",
+      "webpKey": "images/3b9588f4-a7df-446a-ab64-20ca7b9fb016.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1435778,
+      "webpBytes": 123354,
+      "status": "converted"
+    },
+    {
+      "key": "images/3dea7a1f-4392-447d-9dfd-992737cf8403.png",
+      "webpKey": "images/3dea7a1f-4392-447d-9dfd-992737cf8403.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1417250,
+      "webpBytes": 108640,
+      "status": "converted"
+    },
+    {
+      "key": "images/512e5074-3e0e-49bc-80aa-6ae9b585e22c.png",
+      "webpKey": "images/512e5074-3e0e-49bc-80aa-6ae9b585e22c.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1259672,
+      "webpBytes": 82428,
+      "status": "converted"
+    },
+    {
+      "key": "images/3cc5da51-b6b5-4ccb-972c-c3bd18aa62cf.png",
+      "webpKey": "images/3cc5da51-b6b5-4ccb-972c-c3bd18aa62cf.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1494185,
+      "webpBytes": 139054,
+      "status": "converted"
+    },
+    {
+      "key": "images/35e4d4e5-e0ed-4665-a849-6d06b5487542.png",
+      "webpKey": "images/35e4d4e5-e0ed-4665-a849-6d06b5487542.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1744619,
+      "webpBytes": 180864,
+      "status": "converted"
+    },
+    {
+      "key": "images/59971937-c227-4904-82a0-41256d1c6901.png",
+      "webpKey": "images/59971937-c227-4904-82a0-41256d1c6901.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1608462,
+      "webpBytes": 141758,
+      "status": "converted"
+    },
+    {
+      "key": "images/d1e4147b-d68f-4ea3-b22e-b64e56e30803.png",
+      "webpKey": "images/d1e4147b-d68f-4ea3-b22e-b64e56e30803.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1172993,
+      "webpBytes": 67246,
+      "status": "converted"
+    },
+    {
+      "key": "images/53fef376-c9f0-4b58-87af-fa12c24c5dd2.png",
+      "webpKey": "images/53fef376-c9f0-4b58-87af-fa12c24c5dd2.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1181623,
+      "webpBytes": 66386,
+      "status": "converted"
+    },
+    {
+      "key": "images/00a3bad1-3f19-4967-8e67-89dd79f7ec02.png",
+      "webpKey": "images/00a3bad1-3f19-4967-8e67-89dd79f7ec02.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1821039,
+      "webpBytes": 219158,
+      "status": "converted"
+    },
+    {
+      "key": "images/8e8f7baa-8321-4157-857b-3eb19b929610.png",
+      "webpKey": "images/8e8f7baa-8321-4157-857b-3eb19b929610.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1272203,
+      "webpBytes": 74504,
+      "status": "converted"
+    },
+    {
+      "key": "images/084a568b-c37b-4964-a848-230f6180e081.png",
+      "webpKey": "images/084a568b-c37b-4964-a848-230f6180e081.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1334224,
+      "webpBytes": 94122,
+      "status": "converted"
+    },
+    {
+      "key": "images/26ceed70-a4d2-4b5d-a443-16083f4c1607.png",
+      "webpKey": "images/26ceed70-a4d2-4b5d-a443-16083f4c1607.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1328809,
+      "webpBytes": 89190,
+      "status": "converted"
+    },
+    {
+      "key": "images/2770d2a6-8b2c-4db6-aca3-90f6ac19703a.png",
+      "webpKey": "images/2770d2a6-8b2c-4db6-aca3-90f6ac19703a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1274793,
+      "webpBytes": 68856,
+      "status": "converted"
+    },
+    {
+      "key": "images/f72e423f-7a94-46f1-8338-db93fbd85d60.png",
+      "webpKey": "images/f72e423f-7a94-46f1-8338-db93fbd85d60.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1588409,
+      "webpBytes": 161418,
+      "status": "converted"
+    },
+    {
+      "key": "images/df9c7590-f132-4741-bb22-aba3f386023a.png",
+      "webpKey": "images/df9c7590-f132-4741-bb22-aba3f386023a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1538621,
+      "webpBytes": 126526,
+      "status": "converted"
+    },
+    {
+      "key": "images/577fe7f0-3993-4ef2-9cba-f67bc369b906.png",
+      "webpKey": "images/577fe7f0-3993-4ef2-9cba-f67bc369b906.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1215590,
+      "webpBytes": 93238,
+      "status": "converted"
+    },
+    {
+      "key": "images/229a3f8c-7924-4db6-a164-3878b9e7ca5b.png",
+      "webpKey": "images/229a3f8c-7924-4db6-a164-3878b9e7ca5b.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1426675,
+      "webpBytes": 109098,
+      "status": "converted"
+    },
+    {
+      "key": "images/95d6797b-09ad-4a84-9217-7510056df541.png",
+      "webpKey": "images/95d6797b-09ad-4a84-9217-7510056df541.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 2033242,
+      "webpBytes": 276192,
+      "status": "converted"
+    },
+    {
+      "key": "images/60eaec68-8327-4f98-857a-825c25a43d2c.png",
+      "webpKey": "images/60eaec68-8327-4f98-857a-825c25a43d2c.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1464131,
+      "webpBytes": 131200,
+      "status": "converted"
+    },
+    {
+      "key": "images/0e6d2812-2fc3-4ea1-af5d-bd2972da2bad.png",
+      "webpKey": "images/0e6d2812-2fc3-4ea1-af5d-bd2972da2bad.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1312503,
+      "webpBytes": 88972,
+      "status": "converted"
+    },
+    {
+      "key": "images/37b533f2-96b5-4b66-80d8-17cf6c2be50a.png",
+      "webpKey": "images/37b533f2-96b5-4b66-80d8-17cf6c2be50a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1272510,
+      "webpBytes": 81922,
+      "status": "converted"
+    },
+    {
+      "key": "images/c24afab6-262c-43f5-aa7e-2542ace25059.png",
+      "webpKey": "images/c24afab6-262c-43f5-aa7e-2542ace25059.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1406172,
+      "webpBytes": 115248,
+      "status": "converted"
+    },
+    {
+      "key": "images/fc9cae65-9095-42e4-b2ea-b1950c353ab3.png",
+      "webpKey": "images/fc9cae65-9095-42e4-b2ea-b1950c353ab3.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1618083,
+      "webpBytes": 164550,
+      "status": "converted"
+    },
+    {
+      "key": "images/b24363ef-a823-457a-96c5-97d75164fbe9.png",
+      "webpKey": "images/b24363ef-a823-457a-96c5-97d75164fbe9.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1190463,
+      "webpBytes": 68486,
+      "status": "converted"
+    },
+    {
+      "key": "images/5acc2c13-04bc-42e7-a766-f6f2ca019f0e.png",
+      "webpKey": "images/5acc2c13-04bc-42e7-a766-f6f2ca019f0e.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1480025,
+      "webpBytes": 113890,
+      "status": "converted"
+    },
+    {
+      "key": "images/26f4d91c-37c6-4fb0-883b-e7dac030ef50.png",
+      "webpKey": "images/26f4d91c-37c6-4fb0-883b-e7dac030ef50.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1557536,
+      "webpBytes": 147804,
+      "status": "converted"
+    },
+    {
+      "key": "images/d6dcd6f9-c82b-4564-ba3a-4ed41f715b3e.png",
+      "webpKey": "images/d6dcd6f9-c82b-4564-ba3a-4ed41f715b3e.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1032098,
+      "webpBytes": 49878,
+      "status": "converted"
+    },
+    {
+      "key": "images/fc96b89e-867f-4c96-9b86-b4a10e37cff6.png",
+      "webpKey": "images/fc96b89e-867f-4c96-9b86-b4a10e37cff6.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1395467,
+      "webpBytes": 108250,
+      "status": "converted"
+    },
+    {
+      "key": "images/e991b2b4-4927-47f0-beca-8d409fe166d9.png",
+      "webpKey": "images/e991b2b4-4927-47f0-beca-8d409fe166d9.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1500363,
+      "webpBytes": 134252,
+      "status": "converted"
+    },
+    {
+      "key": "images/a8ff7dd5-ae9e-4d5b-822e-e8e37a814c3e.png",
+      "webpKey": "images/a8ff7dd5-ae9e-4d5b-822e-e8e37a814c3e.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1791736,
+      "webpBytes": 198136,
+      "status": "converted"
+    },
+    {
+      "key": "images/917c00fb-1621-430e-84bf-0891e8598b0d.png",
+      "webpKey": "images/917c00fb-1621-430e-84bf-0891e8598b0d.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1326874,
+      "webpBytes": 109774,
+      "status": "converted"
+    },
+    {
+      "key": "images/e4f636ab-087d-4172-a9b5-dd223db5ace8.png",
+      "webpKey": "images/e4f636ab-087d-4172-a9b5-dd223db5ace8.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1540922,
+      "webpBytes": 138430,
+      "status": "converted"
+    },
+    {
+      "key": "images/9e6fc259-a20e-4e6d-9f8b-3eff18d66bf9.png",
+      "webpKey": "images/9e6fc259-a20e-4e6d-9f8b-3eff18d66bf9.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1144832,
+      "webpBytes": 72592,
+      "status": "converted"
+    },
+    {
+      "key": "images/4d12df35-449d-40b3-bab2-0abbae8be202.png",
+      "webpKey": "images/4d12df35-449d-40b3-bab2-0abbae8be202.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1705676,
+      "webpBytes": 179388,
+      "status": "converted"
+    },
+    {
+      "key": "images/7e07a338-b1da-43d1-8857-a42099134c6d.png",
+      "webpKey": "images/7e07a338-b1da-43d1-8857-a42099134c6d.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1154824,
+      "webpBytes": 61184,
+      "status": "converted"
+    },
+    {
+      "key": "images/8054422b-587a-4bf0-bc07-c3c961f95225.png",
+      "webpKey": "images/8054422b-587a-4bf0-bc07-c3c961f95225.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1751670,
+      "webpBytes": 203056,
+      "status": "converted"
+    },
+    {
+      "key": "images/ff2ce30d-daac-4425-851f-c56da5dded2f.png",
+      "webpKey": "images/ff2ce30d-daac-4425-851f-c56da5dded2f.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1464123,
+      "webpBytes": 117256,
+      "status": "converted"
+    },
+    {
+      "key": "images/768484ce-ac04-4d37-8d7d-ccac2b359cc8.png",
+      "webpKey": "images/768484ce-ac04-4d37-8d7d-ccac2b359cc8.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1872660,
+      "webpBytes": 210056,
+      "status": "converted"
+    },
+    {
+      "key": "images/c84ca86e-1806-4df2-88e0-3daba2abb3b6.png",
+      "webpKey": "images/c84ca86e-1806-4df2-88e0-3daba2abb3b6.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1402231,
+      "webpBytes": 108210,
+      "status": "converted"
+    },
+    {
+      "key": "images/f39f8f49-b02a-40cf-910c-4c5ad78e0d12.png",
+      "webpKey": "images/f39f8f49-b02a-40cf-910c-4c5ad78e0d12.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1120419,
+      "webpBytes": 62822,
+      "status": "converted"
+    },
+    {
+      "key": "images/1adf7df0-fb9d-4473-abc8-7c3dfd09b900.png",
+      "webpKey": "images/1adf7df0-fb9d-4473-abc8-7c3dfd09b900.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1619922,
+      "webpBytes": 151452,
+      "status": "converted"
+    },
+    {
+      "key": "images/462a5e08-5949-4b26-9ab3-14a16edca10d.png",
+      "webpKey": "images/462a5e08-5949-4b26-9ab3-14a16edca10d.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1087503,
+      "webpBytes": 46454,
+      "status": "converted"
+    },
+    {
+      "key": "images/8e90e350-0050-452a-b8f6-6efdd8b6ff28.png",
+      "webpKey": "images/8e90e350-0050-452a-b8f6-6efdd8b6ff28.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1361338,
+      "webpBytes": 116036,
+      "status": "converted"
+    },
+    {
+      "key": "images/c3a51d82-2661-4d74-89cc-dd65e119ae86.png",
+      "webpKey": "images/c3a51d82-2661-4d74-89cc-dd65e119ae86.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1137452,
+      "webpBytes": 62714,
+      "status": "converted"
+    },
+    {
+      "key": "images/3ebd3cae-feb2-48b0-be21-d5f968513430.png",
+      "webpKey": "images/3ebd3cae-feb2-48b0-be21-d5f968513430.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1298519,
+      "webpBytes": 79940,
+      "status": "converted"
+    },
+    {
+      "key": "images/9c06fc1e-9c01-4761-9874-8b34fd774826.png",
+      "webpKey": "images/9c06fc1e-9c01-4761-9874-8b34fd774826.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1749415,
+      "webpBytes": 192926,
+      "status": "converted"
+    },
+    {
+      "key": "images/fa9e9b57-48ee-443b-ac55-b6d0da9da160.png",
+      "webpKey": "images/fa9e9b57-48ee-443b-ac55-b6d0da9da160.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1404460,
+      "webpBytes": 108364,
+      "status": "converted"
+    },
+    {
+      "key": "images/b81f626a-a422-40ce-be02-63acfbfe6bc1.png",
+      "webpKey": "images/b81f626a-a422-40ce-be02-63acfbfe6bc1.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1243062,
+      "webpBytes": 88146,
+      "status": "converted"
+    },
+    {
+      "key": "images/1e63e239-746d-4e29-996a-be68947bd6c7.png",
+      "webpKey": "images/1e63e239-746d-4e29-996a-be68947bd6c7.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1594284,
+      "webpBytes": 138998,
+      "status": "converted"
+    },
+    {
+      "key": "images/c7e9a727-2468-4a30-99e6-d7460914793f.png",
+      "webpKey": "images/c7e9a727-2468-4a30-99e6-d7460914793f.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1337699,
+      "webpBytes": 96980,
+      "status": "converted"
+    },
+    {
+      "key": "images/decf18ad-2cb6-4cf0-91b4-d724cacbf1b5.png",
+      "webpKey": "images/decf18ad-2cb6-4cf0-91b4-d724cacbf1b5.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1750488,
+      "webpBytes": 201174,
+      "status": "converted"
+    },
+    {
+      "key": "images/2057dafe-e5d4-4d0c-96ea-d9931386ee42.png",
+      "webpKey": "images/2057dafe-e5d4-4d0c-96ea-d9931386ee42.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 2079176,
+      "webpBytes": 265834,
+      "status": "converted"
+    },
+    {
+      "key": "images/3b516e89-11c8-4a35-9494-7d99ab3d7c0e.png",
+      "webpKey": "images/3b516e89-11c8-4a35-9494-7d99ab3d7c0e.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1518901,
+      "webpBytes": 126526,
+      "status": "converted"
+    },
+    {
+      "key": "images/73b092d7-333f-40d7-acba-a64d876028b2.png",
+      "webpKey": "images/73b092d7-333f-40d7-acba-a64d876028b2.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1432504,
+      "webpBytes": 112302,
+      "status": "converted"
+    },
+    {
+      "key": "images/2c215c70-a428-4cf8-b70b-742331c59ab0.png",
+      "webpKey": "images/2c215c70-a428-4cf8-b70b-742331c59ab0.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1056558,
+      "webpBytes": 62060,
+      "status": "converted"
+    },
+    {
+      "key": "images/c73cf3b9-eaba-46ed-9320-507ab0692951.png",
+      "webpKey": "images/c73cf3b9-eaba-46ed-9320-507ab0692951.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1527328,
+      "webpBytes": 146676,
+      "status": "converted"
+    },
+    {
+      "key": "images/f6ab1742-1ddf-4880-b887-17588be2aca2.png",
+      "webpKey": "images/f6ab1742-1ddf-4880-b887-17588be2aca2.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1242960,
+      "webpBytes": 81226,
+      "status": "converted"
+    },
+    {
+      "key": "images/42793e8e-48a3-4da7-8ff7-958cea49adb4.png",
+      "webpKey": "images/42793e8e-48a3-4da7-8ff7-958cea49adb4.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1390488,
+      "webpBytes": 96754,
+      "status": "converted"
+    },
+    {
+      "key": "images/1a9aaa13-7206-46a3-b2da-6ce09856862a.png",
+      "webpKey": "images/1a9aaa13-7206-46a3-b2da-6ce09856862a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1255186,
+      "webpBytes": 80330,
+      "status": "converted"
+    },
+    {
+      "key": "images/b2416a0f-a793-4418-ad1e-e4be666ab1ab.png",
+      "webpKey": "images/b2416a0f-a793-4418-ad1e-e4be666ab1ab.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1750192,
+      "webpBytes": 178146,
+      "status": "converted"
+    },
+    {
+      "key": "images/f1cad3c6-d850-4f2f-ab99-e09a8f2d1dca.png",
+      "webpKey": "images/f1cad3c6-d850-4f2f-ab99-e09a8f2d1dca.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1539986,
+      "webpBytes": 146516,
+      "status": "converted"
+    },
+    {
+      "key": "images/ef5dec57-23ae-4146-911f-2b54642a1c4e.png",
+      "webpKey": "images/ef5dec57-23ae-4146-911f-2b54642a1c4e.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1359677,
+      "webpBytes": 102400,
+      "status": "converted"
+    },
+    {
+      "key": "images/e85dc934-ee41-499e-8454-3935bc118080.png",
+      "webpKey": "images/e85dc934-ee41-499e-8454-3935bc118080.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1320780,
+      "webpBytes": 85714,
+      "status": "converted"
+    },
+    {
+      "key": "images/0401eaa4-900d-4eb4-a352-f21703a12b20.png",
+      "webpKey": "images/0401eaa4-900d-4eb4-a352-f21703a12b20.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1470372,
+      "webpBytes": 119330,
+      "status": "converted"
+    },
+    {
+      "key": "images/dc068434-bd8e-4208-b063-e6651adcde4f.png",
+      "webpKey": "images/dc068434-bd8e-4208-b063-e6651adcde4f.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1288892,
+      "webpBytes": 83648,
+      "status": "converted"
+    },
+    {
+      "key": "images/1e0b0164-1cd4-4383-b1a8-8153179efd57.png",
+      "webpKey": "images/1e0b0164-1cd4-4383-b1a8-8153179efd57.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1757653,
+      "webpBytes": 196650,
+      "status": "converted"
+    },
+    {
+      "key": "images/53a135b8-c089-4002-b9ec-c8d5ad18c4b5.png",
+      "webpKey": "images/53a135b8-c089-4002-b9ec-c8d5ad18c4b5.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1335076,
+      "webpBytes": 98608,
+      "status": "converted"
+    },
+    {
+      "key": "images/310c34c4-0bdb-4d17-b96b-222c3a295bfb.png",
+      "webpKey": "images/310c34c4-0bdb-4d17-b96b-222c3a295bfb.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1764120,
+      "webpBytes": 190070,
+      "status": "converted"
+    },
+    {
+      "key": "images/30220cb1-a189-425e-b06d-84def032d159.png",
+      "webpKey": "images/30220cb1-a189-425e-b06d-84def032d159.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1466669,
+      "webpBytes": 120738,
+      "status": "converted"
+    },
+    {
+      "key": "images/b6a87298-8f32-4f6d-829b-b0c256b385ec.png",
+      "webpKey": "images/b6a87298-8f32-4f6d-829b-b0c256b385ec.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1224601,
+      "webpBytes": 72722,
+      "status": "converted"
+    },
+    {
+      "key": "images/9ed14bf4-8fa9-4393-a6de-f4d54a73d3ce.png",
+      "webpKey": "images/9ed14bf4-8fa9-4393-a6de-f4d54a73d3ce.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1279288,
+      "webpBytes": 86182,
+      "status": "converted"
+    },
+    {
+      "key": "images/dd6ff791-1b69-4daf-8d2c-ac155cfce522.png",
+      "webpKey": "images/dd6ff791-1b69-4daf-8d2c-ac155cfce522.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1280106,
+      "webpBytes": 85384,
+      "status": "converted"
+    },
+    {
+      "key": "images/53a5b02e-9b0c-4937-90e0-de67b0575cf2.png",
+      "webpKey": "images/53a5b02e-9b0c-4937-90e0-de67b0575cf2.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1307204,
+      "webpBytes": 96822,
+      "status": "converted"
+    },
+    {
+      "key": "images/9099c5ae-ebee-48d4-8e4f-fdeb8811bd8b.png",
+      "webpKey": "images/9099c5ae-ebee-48d4-8e4f-fdeb8811bd8b.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1064365,
+      "webpBytes": 50084,
+      "status": "converted"
+    },
+    {
+      "key": "images/443fc60a-aedd-465f-a2c7-0a811139a581.png",
+      "webpKey": "images/443fc60a-aedd-465f-a2c7-0a811139a581.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1222443,
+      "webpBytes": 85730,
+      "status": "converted"
+    },
+    {
+      "key": "images/682b7ac1-5a97-4c2a-8c45-f7d48acd754f.png",
+      "webpKey": "images/682b7ac1-5a97-4c2a-8c45-f7d48acd754f.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1480871,
+      "webpBytes": 131618,
+      "status": "converted"
+    },
+    {
+      "key": "images/e6ca12ff-cd3f-49bb-9739-238c97c57ff0.png",
+      "webpKey": "images/e6ca12ff-cd3f-49bb-9739-238c97c57ff0.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1232411,
+      "webpBytes": 76266,
+      "status": "converted"
+    },
+    {
+      "key": "images/be1ef812-0c28-4d3c-92a9-09ed99d488e3.png",
+      "webpKey": "images/be1ef812-0c28-4d3c-92a9-09ed99d488e3.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1367276,
+      "webpBytes": 102698,
+      "status": "converted"
+    },
+    {
+      "key": "images/767e25d0-d3d6-4e6e-8747-7178c5f8a06d.png",
+      "webpKey": "images/767e25d0-d3d6-4e6e-8747-7178c5f8a06d.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1378227,
+      "webpBytes": 104480,
+      "status": "converted"
+    },
+    {
+      "key": "images/91e63023-476f-418c-95e9-eaa2dc4571a4.png",
+      "webpKey": "images/91e63023-476f-418c-95e9-eaa2dc4571a4.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1436645,
+      "webpBytes": 117750,
+      "status": "converted"
+    },
+    {
+      "key": "images/25c867b2-f352-46f4-9cb3-bf73d744948f.png",
+      "webpKey": "images/25c867b2-f352-46f4-9cb3-bf73d744948f.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1692014,
+      "webpBytes": 192392,
+      "status": "converted"
+    },
+    {
+      "key": "images/90a02036-7858-4ef2-b3ed-d545b28060df.png",
+      "webpKey": "images/90a02036-7858-4ef2-b3ed-d545b28060df.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1238843,
+      "webpBytes": 60186,
+      "status": "converted"
+    },
+    {
+      "key": "images/7c97aa71-49bf-4fd8-9ff3-a5bdc692328a.png",
+      "webpKey": "images/7c97aa71-49bf-4fd8-9ff3-a5bdc692328a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1420276,
+      "webpBytes": 105240,
+      "status": "converted"
+    },
+    {
+      "key": "images/f808e20a-6680-4c02-aaba-5a8993996932.png",
+      "webpKey": "images/f808e20a-6680-4c02-aaba-5a8993996932.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1542162,
+      "webpBytes": 144938,
+      "status": "converted"
+    },
+    {
+      "key": "images/e15514d1-3d57-4070-b324-81525fd2a3a6.png",
+      "webpKey": "images/e15514d1-3d57-4070-b324-81525fd2a3a6.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1863429,
+      "webpBytes": 227128,
+      "status": "converted"
+    },
+    {
+      "key": "images/e733412c-7277-4dfe-8fea-39985acdccae.png",
+      "webpKey": "images/e733412c-7277-4dfe-8fea-39985acdccae.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1607274,
+      "webpBytes": 164180,
+      "status": "converted"
+    },
+    {
+      "key": "images/02b7b749-59ac-4fb4-8699-81fb4ec232df.png",
+      "webpKey": "images/02b7b749-59ac-4fb4-8699-81fb4ec232df.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1168118,
+      "webpBytes": 63416,
+      "status": "converted"
+    },
+    {
+      "key": "images/9fc595de-3500-4805-b6c2-5cc18710b585.png",
+      "webpKey": "images/9fc595de-3500-4805-b6c2-5cc18710b585.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1745217,
+      "webpBytes": 183002,
+      "status": "converted"
+    },
+    {
+      "key": "images/0e68e808-8574-43c7-b829-7844048830a2.png",
+      "webpKey": "images/0e68e808-8574-43c7-b829-7844048830a2.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1403664,
+      "webpBytes": 98392,
+      "status": "converted"
+    },
+    {
+      "key": "images/2ffe10dd-c5a5-4c3a-91d9-20165c4f41c1.png",
+      "webpKey": "images/2ffe10dd-c5a5-4c3a-91d9-20165c4f41c1.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1582054,
+      "webpBytes": 134544,
+      "status": "converted"
+    },
+    {
+      "key": "images/7354f0cc-705d-40e1-a4ba-e926444c3231.png",
+      "webpKey": "images/7354f0cc-705d-40e1-a4ba-e926444c3231.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1247673,
+      "webpBytes": 69528,
+      "status": "converted"
+    },
+    {
+      "key": "images/4112cf2d-f526-4981-9b6e-f8a0b1ed30b9.png",
+      "webpKey": "images/4112cf2d-f526-4981-9b6e-f8a0b1ed30b9.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1159382,
+      "webpBytes": 66670,
+      "status": "converted"
+    },
+    {
+      "key": "images/98fe4790-fde6-449b-b40a-62ea93a26059.png",
+      "webpKey": "images/98fe4790-fde6-449b-b40a-62ea93a26059.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1316967,
+      "webpBytes": 88178,
+      "status": "converted"
+    },
+    {
+      "key": "images/dd297334-5aa5-4fc2-9e1e-04072f910816.png",
+      "webpKey": "images/dd297334-5aa5-4fc2-9e1e-04072f910816.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1502962,
+      "webpBytes": 128506,
+      "status": "converted"
+    },
+    {
+      "key": "images/5cf968af-9b61-4205-8d35-02f7ccc2ca2a.png",
+      "webpKey": "images/5cf968af-9b61-4205-8d35-02f7ccc2ca2a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1481338,
+      "webpBytes": 119958,
+      "status": "converted"
+    },
+    {
+      "key": "images/c6f5ad16-55e7-4b9a-acf7-4f5272975540.png",
+      "webpKey": "images/c6f5ad16-55e7-4b9a-acf7-4f5272975540.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1558099,
+      "webpBytes": 163926,
+      "status": "converted"
+    },
+    {
+      "key": "images/ed628987-645e-4bb5-9068-12b61e6774d0.png",
+      "webpKey": "images/ed628987-645e-4bb5-9068-12b61e6774d0.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 950667,
+      "webpBytes": 42436,
+      "status": "converted"
+    },
+    {
+      "key": "images/14a3e700-9fb9-4b5c-94fc-24c1f1a9aa54.png",
+      "webpKey": "images/14a3e700-9fb9-4b5c-94fc-24c1f1a9aa54.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1461654,
+      "webpBytes": 125992,
+      "status": "converted"
+    },
+    {
+      "key": "images/b8e6e17e-6e9d-4100-9e58-f347b135e323.png",
+      "webpKey": "images/b8e6e17e-6e9d-4100-9e58-f347b135e323.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1353503,
+      "webpBytes": 100012,
+      "status": "converted"
+    },
+    {
+      "key": "images/0d820c1e-31c8-4f75-a73a-df1c4fd9834b.png",
+      "webpKey": "images/0d820c1e-31c8-4f75-a73a-df1c4fd9834b.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1329626,
+      "webpBytes": 90526,
+      "status": "converted"
+    },
+    {
+      "key": "images/4557ec64-d7e0-4b93-82d8-d4c127c5cd82.png",
+      "webpKey": "images/4557ec64-d7e0-4b93-82d8-d4c127c5cd82.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1393798,
+      "webpBytes": 107420,
+      "status": "converted"
+    },
+    {
+      "key": "images/1b805f9c-f866-4a70-9ac0-933b7a214d22.png",
+      "webpKey": "images/1b805f9c-f866-4a70-9ac0-933b7a214d22.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1381427,
+      "webpBytes": 90784,
+      "status": "converted"
+    },
+    {
+      "key": "images/15cd23a6-3f9d-4f6a-a25e-5870a467c154.png",
+      "webpKey": "images/15cd23a6-3f9d-4f6a-a25e-5870a467c154.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1563806,
+      "webpBytes": 141366,
+      "status": "converted"
+    },
+    {
+      "key": "images/f63a0b90-a310-407b-b60e-9e601c975fe6.png",
+      "webpKey": "images/f63a0b90-a310-407b-b60e-9e601c975fe6.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1233558,
+      "webpBytes": 73866,
+      "status": "converted"
+    },
+    {
+      "key": "images/b73b0be1-164d-4b00-ab97-8c528b98a97d.png",
+      "webpKey": "images/b73b0be1-164d-4b00-ab97-8c528b98a97d.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1246800,
+      "webpBytes": 89986,
+      "status": "converted"
+    },
+    {
+      "key": "images/ddfb7a1b-4d64-4a6b-a616-1484882d0638.png",
+      "webpKey": "images/ddfb7a1b-4d64-4a6b-a616-1484882d0638.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1273438,
+      "webpBytes": 96446,
+      "status": "converted"
+    },
+    {
+      "key": "images/88470883-7b31-49c1-b394-d2355e16c570.png",
+      "webpKey": "images/88470883-7b31-49c1-b394-d2355e16c570.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1217663,
+      "webpBytes": 75226,
+      "status": "converted"
+    },
+    {
+      "key": "images/3297b1bd-5d20-4ba0-9e69-2692a22b30bb.png",
+      "webpKey": "images/3297b1bd-5d20-4ba0-9e69-2692a22b30bb.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1396781,
+      "webpBytes": 104884,
+      "status": "converted"
+    },
+    {
+      "key": "images/35c17263-23fc-4a5e-ad5b-4fcca1bbf223.png",
+      "webpKey": "images/35c17263-23fc-4a5e-ad5b-4fcca1bbf223.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1148619,
+      "webpBytes": 59698,
+      "status": "converted"
+    },
+    {
+      "key": "images/a607c5f4-0c45-413c-a99b-0e3781e7c08f.png",
+      "webpKey": "images/a607c5f4-0c45-413c-a99b-0e3781e7c08f.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1109728,
+      "webpBytes": 51646,
+      "status": "converted"
+    },
+    {
+      "key": "images/7ba0901d-28a1-468f-bf81-aeeb7d27a4ae.png",
+      "webpKey": "images/7ba0901d-28a1-468f-bf81-aeeb7d27a4ae.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1539553,
+      "webpBytes": 150926,
+      "status": "converted"
+    },
+    {
+      "key": "images/f691b9d4-a409-4f19-958f-fb9cbf80ac91.png",
+      "webpKey": "images/f691b9d4-a409-4f19-958f-fb9cbf80ac91.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1223113,
+      "webpBytes": 72822,
+      "status": "converted"
+    },
+    {
+      "key": "images/915e6466-b649-4e8d-9438-82a2488c685b.png",
+      "webpKey": "images/915e6466-b649-4e8d-9438-82a2488c685b.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1429975,
+      "webpBytes": 112494,
+      "status": "converted"
+    },
+    {
+      "key": "images/612f243e-ed14-41bc-8102-ff5ecbc23635.png",
+      "webpKey": "images/612f243e-ed14-41bc-8102-ff5ecbc23635.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1158534,
+      "webpBytes": 62834,
+      "status": "converted"
+    },
+    {
+      "key": "images/cd39c30d-4736-4cee-bbae-ed70acf342d4.png",
+      "webpKey": "images/cd39c30d-4736-4cee-bbae-ed70acf342d4.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1202035,
+      "webpBytes": 78388,
+      "status": "converted"
+    },
+    {
+      "key": "images/295f6c49-fa2d-4f3c-8ecd-b53669b09fba.png",
+      "webpKey": "images/295f6c49-fa2d-4f3c-8ecd-b53669b09fba.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1829877,
+      "webpBytes": 216052,
+      "status": "converted"
+    },
+    {
+      "key": "images/8dbaab9a-2c20-4404-86ef-6f793a6041d0.png",
+      "webpKey": "images/8dbaab9a-2c20-4404-86ef-6f793a6041d0.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1093957,
+      "webpBytes": 59108,
+      "status": "converted"
+    },
+    {
+      "key": "images/94a1e7b3-6633-458a-b219-8294a4463f07.png",
+      "webpKey": "images/94a1e7b3-6633-458a-b219-8294a4463f07.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1138091,
+      "webpBytes": 64914,
+      "status": "converted"
+    },
+    {
+      "key": "images/aa786114-c478-4cf6-8b85-f717a9ed3d97.png",
+      "webpKey": "images/aa786114-c478-4cf6-8b85-f717a9ed3d97.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1459602,
+      "webpBytes": 125734,
+      "status": "converted"
+    },
+    {
+      "key": "images/59f67323-bf9c-47e1-bad5-b454a684182c.png",
+      "webpKey": "images/59f67323-bf9c-47e1-bad5-b454a684182c.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1645301,
+      "webpBytes": 161840,
+      "status": "converted"
+    },
+    {
+      "key": "images/663118ba-b1e6-4058-b295-4dacd6c85a64.png",
+      "webpKey": "images/663118ba-b1e6-4058-b295-4dacd6c85a64.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1398255,
+      "webpBytes": 125050,
+      "status": "converted"
+    },
+    {
+      "key": "images/19ae0340-689c-45c5-a26d-2a95914c35bc.png",
+      "webpKey": "images/19ae0340-689c-45c5-a26d-2a95914c35bc.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1318213,
+      "webpBytes": 90586,
+      "status": "converted"
+    },
+    {
+      "key": "images/8c922e73-0680-4c49-8755-c114c3bcb525.png",
+      "webpKey": "images/8c922e73-0680-4c49-8755-c114c3bcb525.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1533626,
+      "webpBytes": 134830,
+      "status": "converted"
+    },
+    {
+      "key": "images/a8491322-0646-4793-8c9d-8bb09741c4de.png",
+      "webpKey": "images/a8491322-0646-4793-8c9d-8bb09741c4de.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1221751,
+      "webpBytes": 68546,
+      "status": "converted"
+    },
+    {
+      "key": "images/f0a337ed-1377-4263-9ea8-9d90ee1ca3ce.png",
+      "webpKey": "images/f0a337ed-1377-4263-9ea8-9d90ee1ca3ce.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1111759,
+      "webpBytes": 75506,
+      "status": "converted"
+    },
+    {
+      "key": "images/eef5e76d-8628-4e6f-89ae-ae3ee8e847fb.png",
+      "webpKey": "images/eef5e76d-8628-4e6f-89ae-ae3ee8e847fb.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1466479,
+      "webpBytes": 136660,
+      "status": "converted"
+    },
+    {
+      "key": "images/b17fc3f0-701c-4072-ba22-7212fe8d0b36.png",
+      "webpKey": "images/b17fc3f0-701c-4072-ba22-7212fe8d0b36.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1770961,
+      "webpBytes": 188462,
+      "status": "converted"
+    },
+    {
+      "key": "images/ba03a606-9459-4a47-b7f4-011a2f2c8e7e.png",
+      "webpKey": "images/ba03a606-9459-4a47-b7f4-011a2f2c8e7e.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1982565,
+      "webpBytes": 253206,
+      "status": "converted"
+    },
+    {
+      "key": "images/2aefffb1-aa75-4826-8a6d-743ac3a0b00c.png",
+      "webpKey": "images/2aefffb1-aa75-4826-8a6d-743ac3a0b00c.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1140259,
+      "webpBytes": 56782,
+      "status": "converted"
+    },
+    {
+      "key": "images/4410ccb3-5541-4be6-bbec-ccf3b94ff2d0.png",
+      "webpKey": "images/4410ccb3-5541-4be6-bbec-ccf3b94ff2d0.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1323709,
+      "webpBytes": 90418,
+      "status": "converted"
+    },
+    {
+      "key": "images/992cf253-213f-4202-9b80-30b611f36b38.png",
+      "webpKey": "images/992cf253-213f-4202-9b80-30b611f36b38.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1542959,
+      "webpBytes": 141416,
+      "status": "converted"
+    },
+    {
+      "key": "images/4b41b0dc-56b7-4cbf-9144-33ee01c81528.png",
+      "webpKey": "images/4b41b0dc-56b7-4cbf-9144-33ee01c81528.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1350177,
+      "webpBytes": 100380,
+      "status": "converted"
+    },
+    {
+      "key": "images/cf0f3f06-7b74-4d02-ad09-026b82c3fc30.png",
+      "webpKey": "images/cf0f3f06-7b74-4d02-ad09-026b82c3fc30.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1334762,
+      "webpBytes": 94856,
+      "status": "converted"
+    },
+    {
+      "key": "images/0ae7f977-4317-4067-8442-6f45d7ebbcdd.png",
+      "webpKey": "images/0ae7f977-4317-4067-8442-6f45d7ebbcdd.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1402306,
+      "webpBytes": 95888,
+      "status": "converted"
+    },
+    {
+      "key": "images/1371cac2-7854-44f0-b84b-629c0d7c2a66.png",
+      "webpKey": "images/1371cac2-7854-44f0-b84b-629c0d7c2a66.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1367431,
+      "webpBytes": 91404,
+      "status": "converted"
+    },
+    {
+      "key": "images/8bb34715-2f4f-4b83-a390-0a39f6b28527.png",
+      "webpKey": "images/8bb34715-2f4f-4b83-a390-0a39f6b28527.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1462301,
+      "webpBytes": 126222,
+      "status": "converted"
+    },
+    {
+      "key": "images/9d44e49b-a700-4f4d-86d8-617a5bc5941a.png",
+      "webpKey": "images/9d44e49b-a700-4f4d-86d8-617a5bc5941a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1239412,
+      "webpBytes": 72752,
+      "status": "converted"
+    },
+    {
+      "key": "images/6e2ba86c-f6bd-4d63-8e59-caec4e2e659d.png",
+      "webpKey": "images/6e2ba86c-f6bd-4d63-8e59-caec4e2e659d.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1423177,
+      "webpBytes": 121764,
+      "status": "converted"
+    },
+    {
+      "key": "images/2b606dbf-5881-4f26-8888-5662b9606719.png",
+      "webpKey": "images/2b606dbf-5881-4f26-8888-5662b9606719.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1394996,
+      "webpBytes": 107542,
+      "status": "converted"
+    },
+    {
+      "key": "images/d0330c78-c6f8-4a49-aa51-eb0a4e3cfaf4.png",
+      "webpKey": "images/d0330c78-c6f8-4a49-aa51-eb0a4e3cfaf4.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1410429,
+      "webpBytes": 109984,
+      "status": "converted"
+    },
+    {
+      "key": "images/55cbabbb-ca00-459f-8641-27ae939e3162.png",
+      "webpKey": "images/55cbabbb-ca00-459f-8641-27ae939e3162.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1811568,
+      "webpBytes": 212838,
+      "status": "converted"
+    },
+    {
+      "key": "images/f150e338-523d-4b67-98ac-71beb51fee92.png",
+      "webpKey": "images/f150e338-523d-4b67-98ac-71beb51fee92.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1526979,
+      "webpBytes": 130882,
+      "status": "converted"
+    },
+    {
+      "key": "images/ca6b8849-fb5c-46ff-94e5-7ecc2415e2ba.png",
+      "webpKey": "images/ca6b8849-fb5c-46ff-94e5-7ecc2415e2ba.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1646577,
+      "webpBytes": 155872,
+      "status": "converted"
+    },
+    {
+      "key": "images/da231791-e054-4462-9d61-b3149a822b53.png",
+      "webpKey": "images/da231791-e054-4462-9d61-b3149a822b53.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1533916,
+      "webpBytes": 132552,
+      "status": "converted"
+    },
+    {
+      "key": "images/059aa262-025c-40c3-a2f9-ed757e8a573e.png",
+      "webpKey": "images/059aa262-025c-40c3-a2f9-ed757e8a573e.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1232956,
+      "webpBytes": 92406,
+      "status": "converted"
+    },
+    {
+      "key": "images/80914267-e417-466b-9324-596ce1a87709.png",
+      "webpKey": "images/80914267-e417-466b-9324-596ce1a87709.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1515406,
+      "webpBytes": 138000,
+      "status": "converted"
+    },
+    {
+      "key": "images/01a7e0f4-758b-4843-8bd7-0757bc4b46ab.png",
+      "webpKey": "images/01a7e0f4-758b-4843-8bd7-0757bc4b46ab.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1623157,
+      "webpBytes": 144944,
+      "status": "converted"
+    },
+    {
+      "key": "images/fa68a09c-20b2-4c5e-8e9a-4ef5d008ef8a.png",
+      "webpKey": "images/fa68a09c-20b2-4c5e-8e9a-4ef5d008ef8a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1049231,
+      "webpBytes": 55516,
+      "status": "converted"
+    },
+    {
+      "key": "images/0e516917-dd68-401c-96cf-6a6f86051386.png",
+      "webpKey": "images/0e516917-dd68-401c-96cf-6a6f86051386.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1197875,
+      "webpBytes": 72164,
+      "status": "converted"
+    },
+    {
+      "key": "images/3ca9bca5-3156-489e-a8a4-72ab4a6c8a00.png",
+      "webpKey": "images/3ca9bca5-3156-489e-a8a4-72ab4a6c8a00.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1179336,
+      "webpBytes": 82840,
+      "status": "converted"
+    },
+    {
+      "key": "images/556f2062-b00d-45f5-824a-4db694de9195.png",
+      "webpKey": "images/556f2062-b00d-45f5-824a-4db694de9195.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1486841,
+      "webpBytes": 131036,
+      "status": "converted"
+    },
+    {
+      "key": "images/bf5a5388-acbf-4bf3-b771-be34ac123c38.png",
+      "webpKey": "images/bf5a5388-acbf-4bf3-b771-be34ac123c38.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1306658,
+      "webpBytes": 89562,
+      "status": "converted"
+    },
+    {
+      "key": "images/564129d8-1b4c-447d-b8d4-55cafc46701c.png",
+      "webpKey": "images/564129d8-1b4c-447d-b8d4-55cafc46701c.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1265560,
+      "webpBytes": 80662,
+      "status": "converted"
+    },
+    {
+      "key": "images/2260f4f4-5883-4de7-8cec-222c405ec819.png",
+      "webpKey": "images/2260f4f4-5883-4de7-8cec-222c405ec819.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1339533,
+      "webpBytes": 96344,
+      "status": "converted"
+    },
+    {
+      "key": "images/3685f35b-28f6-4e0e-b676-7b9c80d6443a.png",
+      "webpKey": "images/3685f35b-28f6-4e0e-b676-7b9c80d6443a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1892236,
+      "webpBytes": 221764,
+      "status": "converted"
+    },
+    {
+      "key": "images/64079a1e-7a99-4880-9c0e-d75fa3774bb9.png",
+      "webpKey": "images/64079a1e-7a99-4880-9c0e-d75fa3774bb9.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1579587,
+      "webpBytes": 157870,
+      "status": "converted"
+    },
+    {
+      "key": "images/44d67156-b1a3-4f44-b6b8-2cf21aa3c8d8.png",
+      "webpKey": "images/44d67156-b1a3-4f44-b6b8-2cf21aa3c8d8.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1362438,
+      "webpBytes": 94632,
+      "status": "converted"
+    },
+    {
+      "key": "images/8922a44d-e60b-4463-8f0e-91b75b2285bb.png",
+      "webpKey": "images/8922a44d-e60b-4463-8f0e-91b75b2285bb.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1404723,
+      "webpBytes": 108096,
+      "status": "converted"
+    },
+    {
+      "key": "images/7d293db4-29bd-482a-8ba9-09dc0636f838.png",
+      "webpKey": "images/7d293db4-29bd-482a-8ba9-09dc0636f838.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1422348,
+      "webpBytes": 118426,
+      "status": "converted"
+    },
+    {
+      "key": "images/a7d6b799-5247-438e-99a4-a12a00aa065a.png",
+      "webpKey": "images/a7d6b799-5247-438e-99a4-a12a00aa065a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1571120,
+      "webpBytes": 145320,
+      "status": "converted"
+    },
+    {
+      "key": "images/6dfc68fd-89d6-4761-852c-4199020043da.png",
+      "webpKey": "images/6dfc68fd-89d6-4761-852c-4199020043da.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1771272,
+      "webpBytes": 196968,
+      "status": "converted"
+    },
+    {
+      "key": "images/786539e4-cb0b-4065-860e-bccdf7b5bba4.png",
+      "webpKey": "images/786539e4-cb0b-4065-860e-bccdf7b5bba4.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1163038,
+      "webpBytes": 74012,
+      "status": "converted"
+    },
+    {
+      "key": "images/811c9c35-28a4-4be7-9962-c6469a62da13.png",
+      "webpKey": "images/811c9c35-28a4-4be7-9962-c6469a62da13.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1247750,
+      "webpBytes": 81800,
+      "status": "converted"
+    },
+    {
+      "key": "images/a5093aa8-c34e-4438-bdc6-ad3bf75b199c.png",
+      "webpKey": "images/a5093aa8-c34e-4438-bdc6-ad3bf75b199c.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1324247,
+      "webpBytes": 97320,
+      "status": "converted"
+    },
+    {
+      "key": "images/79917fc1-aa4a-434a-9194-6ac6283fe098.png",
+      "webpKey": "images/79917fc1-aa4a-434a-9194-6ac6283fe098.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1342419,
+      "webpBytes": 98554,
+      "status": "converted"
+    },
+    {
+      "key": "images/40be9bb3-adbe-4b2f-924a-05e2175632ae.png",
+      "webpKey": "images/40be9bb3-adbe-4b2f-924a-05e2175632ae.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1391250,
+      "webpBytes": 114768,
+      "status": "converted"
+    },
+    {
+      "key": "images/9a345e5e-7105-4f12-85ad-3c112477f385.png",
+      "webpKey": "images/9a345e5e-7105-4f12-85ad-3c112477f385.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1476845,
+      "webpBytes": 123174,
+      "status": "converted"
+    },
+    {
+      "key": "images/5c056a3b-f349-4c41-82eb-78d61a81c892.png",
+      "webpKey": "images/5c056a3b-f349-4c41-82eb-78d61a81c892.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1519980,
+      "webpBytes": 124432,
+      "status": "converted"
+    },
+    {
+      "key": "images/a2d310a5-079f-43fb-a8e4-5b50f7b7bf7b.png",
+      "webpKey": "images/a2d310a5-079f-43fb-a8e4-5b50f7b7bf7b.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1394077,
+      "webpBytes": 106364,
+      "status": "converted"
+    },
+    {
+      "key": "images/d02b9bac-c9ed-4431-8cc0-6072036271a9.png",
+      "webpKey": "images/d02b9bac-c9ed-4431-8cc0-6072036271a9.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1056422,
+      "webpBytes": 54500,
+      "status": "converted"
+    },
+    {
+      "key": "images/6e9c7570-1d6c-4508-8687-77397425de55.png",
+      "webpKey": "images/6e9c7570-1d6c-4508-8687-77397425de55.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1405697,
+      "webpBytes": 112244,
+      "status": "converted"
+    },
+    {
+      "key": "images/45ff85a8-80e2-4140-8248-da21e0b155ee.png",
+      "webpKey": "images/45ff85a8-80e2-4140-8248-da21e0b155ee.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1562230,
+      "webpBytes": 141170,
+      "status": "converted"
+    },
+    {
+      "key": "images/d4417f43-fc23-4b15-9ca6-da54bab5da66.png",
+      "webpKey": "images/d4417f43-fc23-4b15-9ca6-da54bab5da66.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1200610,
+      "webpBytes": 83182,
+      "status": "converted"
+    },
+    {
+      "key": "images/cdadf874-92b4-46d1-8a4f-20b3ea0747ff.png",
+      "webpKey": "images/cdadf874-92b4-46d1-8a4f-20b3ea0747ff.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1252560,
+      "webpBytes": 81826,
+      "status": "converted"
+    },
+    {
+      "key": "images/4e7517ff-9e74-484d-b428-669f22b6fbac.png",
+      "webpKey": "images/4e7517ff-9e74-484d-b428-669f22b6fbac.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1183988,
+      "webpBytes": 73920,
+      "status": "converted"
+    },
+    {
+      "key": "images/97c347bc-10e7-47ec-b438-430680d0d8f9.png",
+      "webpKey": "images/97c347bc-10e7-47ec-b438-430680d0d8f9.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1374582,
+      "webpBytes": 115668,
+      "status": "converted"
+    },
+    {
+      "key": "images/60af938c-0125-4e0d-a513-1270b0fe3108.png",
+      "webpKey": "images/60af938c-0125-4e0d-a513-1270b0fe3108.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1270167,
+      "webpBytes": 92886,
+      "status": "converted"
+    },
+    {
+      "key": "images/448b9303-1f8b-4348-b090-e7b605e77c99.png",
+      "webpKey": "images/448b9303-1f8b-4348-b090-e7b605e77c99.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1474432,
+      "webpBytes": 117580,
+      "status": "converted"
+    },
+    {
+      "key": "images/5a239090-5227-491e-9077-11faa323864a.png",
+      "webpKey": "images/5a239090-5227-491e-9077-11faa323864a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1324403,
+      "webpBytes": 104480,
+      "status": "converted"
+    },
+    {
+      "key": "images/5c6e0b16-c05c-45bf-ae38-f54c3d056048.png",
+      "webpKey": "images/5c6e0b16-c05c-45bf-ae38-f54c3d056048.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1191273,
+      "webpBytes": 86990,
+      "status": "converted"
+    },
+    {
+      "key": "images/4d7663c9-5353-4305-aa78-aa43159358c5.png",
+      "webpKey": "images/4d7663c9-5353-4305-aa78-aa43159358c5.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1317163,
+      "webpBytes": 96034,
+      "status": "converted"
+    },
+    {
+      "key": "images/213221d9-e934-455e-8497-0249d3bd42de.png",
+      "webpKey": "images/213221d9-e934-455e-8497-0249d3bd42de.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1296128,
+      "webpBytes": 90482,
+      "status": "converted"
+    },
+    {
+      "key": "images/00419ec2-020c-482b-bc07-496b77d85217.png",
+      "webpKey": "images/00419ec2-020c-482b-bc07-496b77d85217.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1255366,
+      "webpBytes": 74588,
+      "status": "converted"
+    },
+    {
+      "key": "images/b74c71e0-862e-45a7-8541-04e71e50753c.png",
+      "webpKey": "images/b74c71e0-862e-45a7-8541-04e71e50753c.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1428613,
+      "webpBytes": 111246,
+      "status": "converted"
+    },
+    {
+      "key": "images/e9811b32-245c-4a1b-b2bf-6b2cafda0837.png",
+      "webpKey": "images/e9811b32-245c-4a1b-b2bf-6b2cafda0837.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1241298,
+      "webpBytes": 83666,
+      "status": "converted"
+    },
+    {
+      "key": "images/5d0fc507-76a1-4a3c-91e0-78bce7e49b98.png",
+      "webpKey": "images/5d0fc507-76a1-4a3c-91e0-78bce7e49b98.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1572809,
+      "webpBytes": 142846,
+      "status": "converted"
+    },
+    {
+      "key": "images/21e3f83a-032c-44e6-9272-52ec1d9c3663.png",
+      "webpKey": "images/21e3f83a-032c-44e6-9272-52ec1d9c3663.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1483464,
+      "webpBytes": 130972,
+      "status": "converted"
+    },
+    {
+      "key": "images/7a48c940-aa0f-4679-9665-539060bd93e1.png",
+      "webpKey": "images/7a48c940-aa0f-4679-9665-539060bd93e1.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1548532,
+      "webpBytes": 159144,
+      "status": "converted"
+    },
+    {
+      "key": "images/c410db0b-451d-4586-8e3d-95ac4e2e9ea9.png",
+      "webpKey": "images/c410db0b-451d-4586-8e3d-95ac4e2e9ea9.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1335135,
+      "webpBytes": 107486,
+      "status": "converted"
+    },
+    {
+      "key": "images/d0e53080-79cd-48f8-8e18-44198ab648a7.png",
+      "webpKey": "images/d0e53080-79cd-48f8-8e18-44198ab648a7.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1247615,
+      "webpBytes": 70200,
+      "status": "converted"
+    },
+    {
+      "key": "images/b3171ff9-9035-40b4-965c-409f05500cb1.png",
+      "webpKey": "images/b3171ff9-9035-40b4-965c-409f05500cb1.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1499765,
+      "webpBytes": 145012,
+      "status": "converted"
+    },
+    {
+      "key": "images/41c8e711-687e-4409-a634-0c51c8ecdb06.png",
+      "webpKey": "images/41c8e711-687e-4409-a634-0c51c8ecdb06.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1656556,
+      "webpBytes": 161460,
+      "status": "converted"
+    },
+    {
+      "key": "images/2f345428-3890-477b-8d02-6c77d274e401.png",
+      "webpKey": "images/2f345428-3890-477b-8d02-6c77d274e401.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1343077,
+      "webpBytes": 101818,
+      "status": "converted"
+    },
+    {
+      "key": "images/bc482ab9-81c1-4370-b5d8-6ec4cfa24c5f.png",
+      "webpKey": "images/bc482ab9-81c1-4370-b5d8-6ec4cfa24c5f.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1369328,
+      "webpBytes": 100458,
+      "status": "converted"
+    },
+    {
+      "key": "images/0fa988cc-2c86-4747-994c-ac758353c389.png",
+      "webpKey": "images/0fa988cc-2c86-4747-994c-ac758353c389.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1539282,
+      "webpBytes": 129968,
+      "status": "converted"
+    },
+    {
+      "key": "images/00611f8c-46a3-4a5a-8441-8626cee91556.png",
+      "webpKey": "images/00611f8c-46a3-4a5a-8441-8626cee91556.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1421800,
+      "webpBytes": 123108,
+      "status": "converted"
+    },
+    {
+      "key": "images/0a79e1d4-a733-4fb4-a313-0721e400d15f.png",
+      "webpKey": "images/0a79e1d4-a733-4fb4-a313-0721e400d15f.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1142654,
+      "webpBytes": 60186,
+      "status": "converted"
+    },
+    {
+      "key": "images/dc7a2f7a-8e62-4190-bac3-c22d62efc82d.png",
+      "webpKey": "images/dc7a2f7a-8e62-4190-bac3-c22d62efc82d.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1475300,
+      "webpBytes": 125644,
+      "status": "converted"
+    },
+    {
+      "key": "images/501bd290-403d-4a05-91a6-28c4abf3b370.png",
+      "webpKey": "images/501bd290-403d-4a05-91a6-28c4abf3b370.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1280755,
+      "webpBytes": 88986,
+      "status": "converted"
+    },
+    {
+      "key": "images/8c9f26a3-ff7e-458f-be4e-aad8eb9135ac.png",
+      "webpKey": "images/8c9f26a3-ff7e-458f-be4e-aad8eb9135ac.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1518410,
+      "webpBytes": 130022,
+      "status": "converted"
+    },
+    {
+      "key": "images/b95cf94f-8dbe-4df6-b8cd-aa36596447e3.png",
+      "webpKey": "images/b95cf94f-8dbe-4df6-b8cd-aa36596447e3.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1484060,
+      "webpBytes": 122198,
+      "status": "converted"
+    },
+    {
+      "key": "images/544ff6ea-fa42-49ef-99da-b26512028de1.png",
+      "webpKey": "images/544ff6ea-fa42-49ef-99da-b26512028de1.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1356843,
+      "webpBytes": 97360,
+      "status": "converted"
+    },
+    {
+      "key": "images/368baacf-7236-4340-8923-e6a90c5ba15b.png",
+      "webpKey": "images/368baacf-7236-4340-8923-e6a90c5ba15b.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1063699,
+      "webpBytes": 53844,
+      "status": "converted"
+    },
+    {
+      "key": "images/304f5a0c-1892-4a4f-aa6e-cdfd4a60a01b.png",
+      "webpKey": "images/304f5a0c-1892-4a4f-aa6e-cdfd4a60a01b.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1315673,
+      "webpBytes": 83000,
+      "status": "converted"
+    },
+    {
+      "key": "images/4bdf97aa-3413-4f41-9894-90fbc38c3936.png",
+      "webpKey": "images/4bdf97aa-3413-4f41-9894-90fbc38c3936.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1267460,
+      "webpBytes": 94372,
+      "status": "converted"
+    },
+    {
+      "key": "images/e596cb2d-f723-4712-b2ed-9920d34c7eec.png",
+      "webpKey": "images/e596cb2d-f723-4712-b2ed-9920d34c7eec.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1419104,
+      "webpBytes": 113552,
+      "status": "converted"
+    },
+    {
+      "key": "images/b780d1cc-d261-4791-9c96-bdfa81f3531d.png",
+      "webpKey": "images/b780d1cc-d261-4791-9c96-bdfa81f3531d.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1374019,
+      "webpBytes": 101690,
+      "status": "converted"
+    },
+    {
+      "key": "images/4edc1933-151c-4886-9974-f1e05074ac5b.png",
+      "webpKey": "images/4edc1933-151c-4886-9974-f1e05074ac5b.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1494556,
+      "webpBytes": 117756,
+      "status": "converted"
+    },
+    {
+      "key": "images/be92c9b7-0f92-4daa-a57b-e613a9812f1b.png",
+      "webpKey": "images/be92c9b7-0f92-4daa-a57b-e613a9812f1b.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1529476,
+      "webpBytes": 138458,
+      "status": "converted"
+    },
+    {
+      "key": "images/52447e89-8dcd-4f8e-ada9-0827c3d4d123.png",
+      "webpKey": "images/52447e89-8dcd-4f8e-ada9-0827c3d4d123.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1189356,
+      "webpBytes": 78794,
+      "status": "converted"
+    },
+    {
+      "key": "images/7703ad81-f07e-4521-b0f3-cbe7e32947be.png",
+      "webpKey": "images/7703ad81-f07e-4521-b0f3-cbe7e32947be.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1527482,
+      "webpBytes": 149694,
+      "status": "converted"
+    },
+    {
+      "key": "images/2daacd8d-3bc9-48e8-b7c9-12ee019ee0df.png",
+      "webpKey": "images/2daacd8d-3bc9-48e8-b7c9-12ee019ee0df.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1425012,
+      "webpBytes": 117022,
+      "status": "converted"
+    },
+    {
+      "key": "images/2e1461ad-f146-4c9a-a0c3-5aa2477b7fbe.png",
+      "webpKey": "images/2e1461ad-f146-4c9a-a0c3-5aa2477b7fbe.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1326664,
+      "webpBytes": 86022,
+      "status": "converted"
+    },
+    {
+      "key": "images/2958ad3a-e2ff-4d9c-8cc1-74149e0ddd71.png",
+      "webpKey": "images/2958ad3a-e2ff-4d9c-8cc1-74149e0ddd71.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1048369,
+      "webpBytes": 51528,
+      "status": "converted"
+    },
+    {
+      "key": "images/f1d7e09c-a0bf-4b97-a5dc-3a8a57e266b4.png",
+      "webpKey": "images/f1d7e09c-a0bf-4b97-a5dc-3a8a57e266b4.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1451696,
+      "webpBytes": 124354,
+      "status": "converted"
+    },
+    {
+      "key": "images/8887b531-bc30-414b-a0e5-fc3f5603b046.png",
+      "webpKey": "images/8887b531-bc30-414b-a0e5-fc3f5603b046.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1536269,
+      "webpBytes": 149432,
+      "status": "converted"
+    },
+    {
+      "key": "images/d2e915b9-5a96-46f3-ba9e-86f6c2c50d0d.png",
+      "webpKey": "images/d2e915b9-5a96-46f3-ba9e-86f6c2c50d0d.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1626029,
+      "webpBytes": 147330,
+      "status": "converted"
+    },
+    {
+      "key": "images/05e9400e-802e-4427-a136-c028cd28f53a.png",
+      "webpKey": "images/05e9400e-802e-4427-a136-c028cd28f53a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1598102,
+      "webpBytes": 141690,
+      "status": "converted"
+    },
+    {
+      "key": "images/631866be-1b16-46df-966a-2659dc4894ef.png",
+      "webpKey": "images/631866be-1b16-46df-966a-2659dc4894ef.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1274123,
+      "webpBytes": 83310,
+      "status": "converted"
+    },
+    {
+      "key": "images/d78f2afe-1263-4d70-9be0-fb68deae9882.png",
+      "webpKey": "images/d78f2afe-1263-4d70-9be0-fb68deae9882.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1169755,
+      "webpBytes": 76284,
+      "status": "converted"
+    },
+    {
+      "key": "images/efcdf47b-acf6-4af7-86ff-1852fac25010.png",
+      "webpKey": "images/efcdf47b-acf6-4af7-86ff-1852fac25010.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1534686,
+      "webpBytes": 128956,
+      "status": "converted"
+    },
+    {
+      "key": "images/4466f561-6dfe-45da-96f6-4b9c805f8dd2.png",
+      "webpKey": "images/4466f561-6dfe-45da-96f6-4b9c805f8dd2.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1248530,
+      "webpBytes": 71810,
+      "status": "converted"
+    },
+    {
+      "key": "images/21366744-b2ce-49fb-8a24-31c01134b809.png",
+      "webpKey": "images/21366744-b2ce-49fb-8a24-31c01134b809.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1511078,
+      "webpBytes": 126004,
+      "status": "converted"
+    },
+    {
+      "key": "images/8ea49d23-1487-46fa-a6dd-54ebf61562b9.png",
+      "webpKey": "images/8ea49d23-1487-46fa-a6dd-54ebf61562b9.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1390942,
+      "webpBytes": 100230,
+      "status": "converted"
+    },
+    {
+      "key": "images/47003a47-5cc3-4444-b59f-c7bb80a78c58.png",
+      "webpKey": "images/47003a47-5cc3-4444-b59f-c7bb80a78c58.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1423309,
+      "webpBytes": 101120,
+      "status": "converted"
+    },
+    {
+      "key": "images/46f39b19-2d65-4467-aa7f-9a17ff3b477f.png",
+      "webpKey": "images/46f39b19-2d65-4467-aa7f-9a17ff3b477f.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1398178,
+      "webpBytes": 118718,
+      "status": "converted"
+    },
+    {
+      "key": "images/7a06f57b-17a6-4576-b01f-8d6332643a79.png",
+      "webpKey": "images/7a06f57b-17a6-4576-b01f-8d6332643a79.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1109656,
+      "webpBytes": 58102,
+      "status": "converted"
+    },
+    {
+      "key": "images/1bd7c850-c721-449a-9006-8037b24e001c.png",
+      "webpKey": "images/1bd7c850-c721-449a-9006-8037b24e001c.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1145973,
+      "webpBytes": 61022,
+      "status": "converted"
+    },
+    {
+      "key": "images/13b0b5fc-d242-4043-8345-4429f7950d59.png",
+      "webpKey": "images/13b0b5fc-d242-4043-8345-4429f7950d59.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1674709,
+      "webpBytes": 160348,
+      "status": "converted"
+    },
+    {
+      "key": "images/560ee8f4-c936-499f-9d6d-b06602bc99ff.png",
+      "webpKey": "images/560ee8f4-c936-499f-9d6d-b06602bc99ff.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1359339,
+      "webpBytes": 98446,
+      "status": "converted"
+    },
+    {
+      "key": "images/5abeaff5-6091-4188-a121-459a278840d8.png",
+      "webpKey": "images/5abeaff5-6091-4188-a121-459a278840d8.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1395594,
+      "webpBytes": 128198,
+      "status": "converted"
+    },
+    {
+      "key": "images/e8f0eba0-b5e7-4b7c-9aef-3fa6f1fff05a.png",
+      "webpKey": "images/e8f0eba0-b5e7-4b7c-9aef-3fa6f1fff05a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1478080,
+      "webpBytes": 113160,
+      "status": "converted"
+    },
+    {
+      "key": "images/7bbd1e26-9f2f-4e76-b360-d4d595fe92aa.png",
+      "webpKey": "images/7bbd1e26-9f2f-4e76-b360-d4d595fe92aa.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1417898,
+      "webpBytes": 103072,
+      "status": "converted"
+    },
+    {
+      "key": "images/6075c252-9262-435e-b484-d74afffdb475.png",
+      "webpKey": "images/6075c252-9262-435e-b484-d74afffdb475.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1305385,
+      "webpBytes": 87682,
+      "status": "converted"
+    },
+    {
+      "key": "images/2fd9afb1-9ad4-4a18-9d2b-ad959a97ee7b.png",
+      "webpKey": "images/2fd9afb1-9ad4-4a18-9d2b-ad959a97ee7b.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1062367,
+      "webpBytes": 51824,
+      "status": "converted"
+    },
+    {
+      "key": "images/149b330b-bf72-4f05-82af-b4b90c9a5e42.png",
+      "webpKey": "images/149b330b-bf72-4f05-82af-b4b90c9a5e42.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1390656,
+      "webpBytes": 119684,
+      "status": "converted"
+    },
+    {
+      "key": "images/f4340c82-b35f-4279-854c-a0d6cf5f3c55.png",
+      "webpKey": "images/f4340c82-b35f-4279-854c-a0d6cf5f3c55.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1424936,
+      "webpBytes": 107414,
+      "status": "converted"
+    },
+    {
+      "key": "images/ea114270-aa8a-4104-aa03-706c46d674d6.png",
+      "webpKey": "images/ea114270-aa8a-4104-aa03-706c46d674d6.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1539872,
+      "webpBytes": 139374,
+      "status": "converted"
+    },
+    {
+      "key": "images/b11ff4e7-9ae5-4eb4-9a17-b5a4841fc013.png",
+      "webpKey": "images/b11ff4e7-9ae5-4eb4-9a17-b5a4841fc013.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1201835,
+      "webpBytes": 74178,
+      "status": "converted"
+    },
+    {
+      "key": "images/450dbbdd-145b-4f4e-8542-073bd33a28e0.png",
+      "webpKey": "images/450dbbdd-145b-4f4e-8542-073bd33a28e0.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1199288,
+      "webpBytes": 66206,
+      "status": "converted"
+    },
+    {
+      "key": "images/18ecb3ab-4f37-47e4-8602-88949b1ed944.png",
+      "webpKey": "images/18ecb3ab-4f37-47e4-8602-88949b1ed944.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1572563,
+      "webpBytes": 152952,
+      "status": "converted"
+    },
+    {
+      "key": "images/e68d0199-179f-42aa-affb-ee3083864144.png",
+      "webpKey": "images/e68d0199-179f-42aa-affb-ee3083864144.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1200809,
+      "webpBytes": 67978,
+      "status": "converted"
+    },
+    {
+      "key": "images/84ba1061-9635-457a-86d8-5441ca76ad96.png",
+      "webpKey": "images/84ba1061-9635-457a-86d8-5441ca76ad96.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1225863,
+      "webpBytes": 83794,
+      "status": "converted"
+    },
+    {
+      "key": "images/6ad602dd-3ed8-4a2e-8d28-4290fd4c2722.png",
+      "webpKey": "images/6ad602dd-3ed8-4a2e-8d28-4290fd4c2722.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1376595,
+      "webpBytes": 108416,
+      "status": "converted"
+    },
+    {
+      "key": "images/d883e0ec-8980-4c1a-a882-04243151e6cd.png",
+      "webpKey": "images/d883e0ec-8980-4c1a-a882-04243151e6cd.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1624211,
+      "webpBytes": 155646,
+      "status": "converted"
+    },
+    {
+      "key": "images/177c4f9e-2362-4b68-9caf-f4af787a6c53.png",
+      "webpKey": "images/177c4f9e-2362-4b68-9caf-f4af787a6c53.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1434520,
+      "webpBytes": 127274,
+      "status": "converted"
+    },
+    {
+      "key": "images/0a9aaf3c-39ff-481d-a212-a3efc504fb19.png",
+      "webpKey": "images/0a9aaf3c-39ff-481d-a212-a3efc504fb19.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1340760,
+      "webpBytes": 91102,
+      "status": "converted"
+    },
+    {
+      "key": "images/00ff0776-ddc9-4c8c-90b5-5e81916c5957.png",
+      "webpKey": "images/00ff0776-ddc9-4c8c-90b5-5e81916c5957.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1229377,
+      "webpBytes": 80878,
+      "status": "converted"
+    },
+    {
+      "key": "images/6e1adcf2-cd9a-4330-b9e5-b0892f8856ea.png",
+      "webpKey": "images/6e1adcf2-cd9a-4330-b9e5-b0892f8856ea.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1910528,
+      "webpBytes": 234562,
+      "status": "converted"
+    },
+    {
+      "key": "images/d691381d-7139-411b-aef8-33c2cc82a2ab.png",
+      "webpKey": "images/d691381d-7139-411b-aef8-33c2cc82a2ab.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1863006,
+      "webpBytes": 219380,
+      "status": "converted"
+    },
+    {
+      "key": "images/cc50f255-10b9-4b09-a23e-405026bb7d20.png",
+      "webpKey": "images/cc50f255-10b9-4b09-a23e-405026bb7d20.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1619537,
+      "webpBytes": 167950,
+      "status": "converted"
+    },
+    {
+      "key": "images/a7962eb7-4f7f-471a-96e5-85b9bf790fc0.png",
+      "webpKey": "images/a7962eb7-4f7f-471a-96e5-85b9bf790fc0.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1938752,
+      "webpBytes": 231582,
+      "status": "converted"
+    },
+    {
+      "key": "images/035568ea-d36c-4859-99a0-74756e8d0361.png",
+      "webpKey": "images/035568ea-d36c-4859-99a0-74756e8d0361.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1301746,
+      "webpBytes": 80342,
+      "status": "converted"
+    },
+    {
+      "key": "images/929e4655-0bdd-4439-b6f6-a0fbb54c7dce.png",
+      "webpKey": "images/929e4655-0bdd-4439-b6f6-a0fbb54c7dce.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1367701,
+      "webpBytes": 110086,
+      "status": "converted"
+    },
+    {
+      "key": "images/88176221-614e-451d-b6ae-77b3e69b21b7.png",
+      "webpKey": "images/88176221-614e-451d-b6ae-77b3e69b21b7.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1132878,
+      "webpBytes": 62504,
+      "status": "converted"
+    },
+    {
+      "key": "images/406e2b5b-5d06-4921-beb8-455f0d7cff2e.png",
+      "webpKey": "images/406e2b5b-5d06-4921-beb8-455f0d7cff2e.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 2225074,
+      "webpBytes": 362562,
+      "status": "converted"
+    },
+    {
+      "key": "images/45fd8f2a-d8fc-4e0b-8599-a74e5c917f2c.png",
+      "webpKey": "images/45fd8f2a-d8fc-4e0b-8599-a74e5c917f2c.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1407019,
+      "webpBytes": 103074,
+      "status": "converted"
+    },
+    {
+      "key": "images/197c745a-2b63-48c5-a7e5-e9586d051bc2.png",
+      "webpKey": "images/197c745a-2b63-48c5-a7e5-e9586d051bc2.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1176899,
+      "webpBytes": 65724,
+      "status": "converted"
+    },
+    {
+      "key": "images/8a3928cd-c2c5-4c96-af82-5fbb53e91953.png",
+      "webpKey": "images/8a3928cd-c2c5-4c96-af82-5fbb53e91953.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1206617,
+      "webpBytes": 77650,
+      "status": "converted"
+    },
+    {
+      "key": "images/8101de8f-aece-4554-82ba-0e6953549469.png",
+      "webpKey": "images/8101de8f-aece-4554-82ba-0e6953549469.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1004855,
+      "webpBytes": 41384,
+      "status": "converted"
+    },
+    {
+      "key": "images/34589415-7361-4535-b487-fb17aa10b534.png",
+      "webpKey": "images/34589415-7361-4535-b487-fb17aa10b534.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1445863,
+      "webpBytes": 151828,
+      "status": "converted"
+    },
+    {
+      "key": "images/e00c8ba9-5fd2-48df-8798-63d3e8b1d8f0.png",
+      "webpKey": "images/e00c8ba9-5fd2-48df-8798-63d3e8b1d8f0.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1386972,
+      "webpBytes": 111612,
+      "status": "converted"
+    },
+    {
+      "key": "images/903e93c6-992c-494a-8fac-6def48ab5ac5.png",
+      "webpKey": "images/903e93c6-992c-494a-8fac-6def48ab5ac5.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1413061,
+      "webpBytes": 105970,
+      "status": "converted"
+    },
+    {
+      "key": "images/22d7546e-9375-43be-9388-bbd6bc41ad95.png",
+      "webpKey": "images/22d7546e-9375-43be-9388-bbd6bc41ad95.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1422817,
+      "webpBytes": 108374,
+      "status": "converted"
+    },
+    {
+      "key": "images/d377312a-5d1d-42a9-8be1-3458bab05616.png",
+      "webpKey": "images/d377312a-5d1d-42a9-8be1-3458bab05616.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1022681,
+      "webpBytes": 49944,
+      "status": "converted"
+    },
+    {
+      "key": "images/03f2354c-44f7-4de0-ba38-66f14cb1e6d6.png",
+      "webpKey": "images/03f2354c-44f7-4de0-ba38-66f14cb1e6d6.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1369214,
+      "webpBytes": 110200,
+      "status": "converted"
+    },
+    {
+      "key": "images/1dac4d89-779b-4d56-83e5-8574d38704d1.png",
+      "webpKey": "images/1dac4d89-779b-4d56-83e5-8574d38704d1.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1350630,
+      "webpBytes": 92214,
+      "status": "converted"
+    },
+    {
+      "key": "images/7567c3e4-e849-4090-9b24-3dfb6bcf1606.png",
+      "webpKey": "images/7567c3e4-e849-4090-9b24-3dfb6bcf1606.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1846640,
+      "webpBytes": 215318,
+      "status": "converted"
+    },
+    {
+      "key": "images/f04ae180-ad52-4687-b9dc-bc40e6cc1095.png",
+      "webpKey": "images/f04ae180-ad52-4687-b9dc-bc40e6cc1095.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1630756,
+      "webpBytes": 145828,
+      "status": "converted"
+    },
+    {
+      "key": "images/92bf7c50-80bb-411a-9b5e-2d71f0bd0e89.png",
+      "webpKey": "images/92bf7c50-80bb-411a-9b5e-2d71f0bd0e89.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1328291,
+      "webpBytes": 93556,
+      "status": "converted"
+    },
+    {
+      "key": "images/5e9b02fd-9ad9-4c6c-ac78-bdeea8d0fede.png",
+      "webpKey": "images/5e9b02fd-9ad9-4c6c-ac78-bdeea8d0fede.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1592365,
+      "webpBytes": 161032,
+      "status": "converted"
+    },
+    {
+      "key": "images/a5a61191-5aaf-48b4-8549-25887f9d7511.png",
+      "webpKey": "images/a5a61191-5aaf-48b4-8549-25887f9d7511.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1588004,
+      "webpBytes": 147432,
+      "status": "converted"
+    },
+    {
+      "key": "images/9e219782-91fe-4a4d-b0b7-15fb8024ed52.png",
+      "webpKey": "images/9e219782-91fe-4a4d-b0b7-15fb8024ed52.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1223811,
+      "webpBytes": 78054,
+      "status": "converted"
+    },
+    {
+      "key": "images/7f1166ae-0311-4a48-a4be-9d41a4bff4e7.png",
+      "webpKey": "images/7f1166ae-0311-4a48-a4be-9d41a4bff4e7.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1717568,
+      "webpBytes": 201428,
+      "status": "converted"
+    },
+    {
+      "key": "images/03138882-6c88-4e49-81b5-93938aeb3653.png",
+      "webpKey": "images/03138882-6c88-4e49-81b5-93938aeb3653.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1417047,
+      "webpBytes": 105338,
+      "status": "converted"
+    },
+    {
+      "key": "images/64144778-6981-4a4e-862b-ac9cca2f1871.png",
+      "webpKey": "images/64144778-6981-4a4e-862b-ac9cca2f1871.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1575161,
+      "webpBytes": 152360,
+      "status": "converted"
+    },
+    {
+      "key": "images/c5895365-4dea-4c40-ad77-33cb7e8cb135.png",
+      "webpKey": "images/c5895365-4dea-4c40-ad77-33cb7e8cb135.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1567036,
+      "webpBytes": 148562,
+      "status": "converted"
+    },
+    {
+      "key": "images/12d899ca-43a6-4446-8171-c57a091887d2.png",
+      "webpKey": "images/12d899ca-43a6-4446-8171-c57a091887d2.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1235388,
+      "webpBytes": 74282,
+      "status": "converted"
+    },
+    {
+      "key": "images/33f38f61-8da4-4127-9277-4ecc22ea21f1.png",
+      "webpKey": "images/33f38f61-8da4-4127-9277-4ecc22ea21f1.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1178879,
+      "webpBytes": 79006,
+      "status": "converted"
+    },
+    {
+      "key": "images/c989afff-109e-4ff1-abb1-c26b61cab1b3.png",
+      "webpKey": "images/c989afff-109e-4ff1-abb1-c26b61cab1b3.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1478283,
+      "webpBytes": 118452,
+      "status": "converted"
+    },
+    {
+      "key": "images/e5b7e808-2ede-4c60-9eba-39e6ef477dee.png",
+      "webpKey": "images/e5b7e808-2ede-4c60-9eba-39e6ef477dee.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1845445,
+      "webpBytes": 215252,
+      "status": "converted"
+    },
+    {
+      "key": "images/b336459c-7c8b-4ed8-90a1-3137f76315ab.png",
+      "webpKey": "images/b336459c-7c8b-4ed8-90a1-3137f76315ab.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1503378,
+      "webpBytes": 116304,
+      "status": "converted"
+    },
+    {
+      "key": "images/36ebdfc3-620d-4bec-a6ff-c8c46cdf5fb2.png",
+      "webpKey": "images/36ebdfc3-620d-4bec-a6ff-c8c46cdf5fb2.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1722984,
+      "webpBytes": 176032,
+      "status": "converted"
+    },
+    {
+      "key": "images/ee13018f-ff02-4db2-84ef-b66d7e9dc83b.png",
+      "webpKey": "images/ee13018f-ff02-4db2-84ef-b66d7e9dc83b.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1444576,
+      "webpBytes": 108706,
+      "status": "converted"
+    },
+    {
+      "key": "images/ae9a29a5-c9b5-4956-8f9b-12a3b993cde8.png",
+      "webpKey": "images/ae9a29a5-c9b5-4956-8f9b-12a3b993cde8.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1197709,
+      "webpBytes": 75094,
+      "status": "converted"
+    },
+    {
+      "key": "images/30b25774-3e39-44c2-925a-07fa4070b00e.png",
+      "webpKey": "images/30b25774-3e39-44c2-925a-07fa4070b00e.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1538321,
+      "webpBytes": 143334,
+      "status": "converted"
+    },
+    {
+      "key": "images/81d5eebd-bd93-4419-8ae2-f86552042fea.png",
+      "webpKey": "images/81d5eebd-bd93-4419-8ae2-f86552042fea.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 2122485,
+      "webpBytes": 281472,
+      "status": "converted"
+    },
+    {
+      "key": "images/b0c53034-e099-44c6-b796-b300034b9722.png",
+      "webpKey": "images/b0c53034-e099-44c6-b796-b300034b9722.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1286894,
+      "webpBytes": 84762,
+      "status": "converted"
+    },
+    {
+      "key": "images/fe42603f-ff53-4120-8fed-8c4fd0804746.png",
+      "webpKey": "images/fe42603f-ff53-4120-8fed-8c4fd0804746.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1317561,
+      "webpBytes": 102090,
+      "status": "converted"
+    },
+    {
+      "key": "images/abcf3ead-3398-4c1c-9fef-bc7f351d4a24.png",
+      "webpKey": "images/abcf3ead-3398-4c1c-9fef-bc7f351d4a24.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1208446,
+      "webpBytes": 81408,
+      "status": "converted"
+    },
+    {
+      "key": "images/937d4a1a-cd6e-46e2-9093-1c765500808d.png",
+      "webpKey": "images/937d4a1a-cd6e-46e2-9093-1c765500808d.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1583360,
+      "webpBytes": 156802,
+      "status": "converted"
+    },
+    {
+      "key": "images/5a6fac9e-fdb0-4530-bf77-e6a5ef67b254.png",
+      "webpKey": "images/5a6fac9e-fdb0-4530-bf77-e6a5ef67b254.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1511460,
+      "webpBytes": 123864,
+      "status": "converted"
+    },
+    {
+      "key": "images/a21100bb-5a8d-450a-839d-38f8b3c1727d.png",
+      "webpKey": "images/a21100bb-5a8d-450a-839d-38f8b3c1727d.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1565681,
+      "webpBytes": 143786,
+      "status": "converted"
+    },
+    {
+      "key": "images/189094aa-61da-406e-b14c-96d71803e61e.png",
+      "webpKey": "images/189094aa-61da-406e-b14c-96d71803e61e.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1186410,
+      "webpBytes": 83668,
+      "status": "converted"
+    },
+    {
+      "key": "images/2449eac1-33bb-4645-9cb6-622c3fa0eeb5.png",
+      "webpKey": "images/2449eac1-33bb-4645-9cb6-622c3fa0eeb5.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1413799,
+      "webpBytes": 107436,
+      "status": "converted"
+    },
+    {
+      "key": "images/f49e1de4-866d-442b-bea0-95243d99a5c5.png",
+      "webpKey": "images/f49e1de4-866d-442b-bea0-95243d99a5c5.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1613734,
+      "webpBytes": 158010,
+      "status": "converted"
+    },
+    {
+      "key": "images/e22cae73-a5de-4a9a-90e1-a6a0ead9dea9.png",
+      "webpKey": "images/e22cae73-a5de-4a9a-90e1-a6a0ead9dea9.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1160697,
+      "webpBytes": 64406,
+      "status": "converted"
+    },
+    {
+      "key": "images/1a3d95c9-53d2-4b3b-a8ba-38d0164b0860.png",
+      "webpKey": "images/1a3d95c9-53d2-4b3b-a8ba-38d0164b0860.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1491460,
+      "webpBytes": 121916,
+      "status": "converted"
+    },
+    {
+      "key": "images/cc3d0904-3f12-458e-8e25-45aa34db186c.png",
+      "webpKey": "images/cc3d0904-3f12-458e-8e25-45aa34db186c.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1658017,
+      "webpBytes": 166032,
+      "status": "converted"
+    },
+    {
+      "key": "images/43a84d4b-0535-4b0e-b53f-3f70d4c47e49.png",
+      "webpKey": "images/43a84d4b-0535-4b0e-b53f-3f70d4c47e49.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1439742,
+      "webpBytes": 115244,
+      "status": "converted"
+    },
+    {
+      "key": "images/05655c13-4669-49d6-bc69-e86057d3ce9a.png",
+      "webpKey": "images/05655c13-4669-49d6-bc69-e86057d3ce9a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1593727,
+      "webpBytes": 154708,
+      "status": "converted"
+    },
+    {
+      "key": "images/c8309248-78e2-43d2-85fa-0e8ade6fca47.png",
+      "webpKey": "images/c8309248-78e2-43d2-85fa-0e8ade6fca47.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1522958,
+      "webpBytes": 134366,
+      "status": "converted"
+    },
+    {
+      "key": "images/9d7d3476-e09b-4cbe-88c2-d55830e38a54.png",
+      "webpKey": "images/9d7d3476-e09b-4cbe-88c2-d55830e38a54.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1556662,
+      "webpBytes": 138134,
+      "status": "converted"
+    },
+    {
+      "key": "images/923df0ec-0208-4232-8578-ae41fd333079.png",
+      "webpKey": "images/923df0ec-0208-4232-8578-ae41fd333079.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1646073,
+      "webpBytes": 155032,
+      "status": "converted"
+    },
+    {
+      "key": "images/4a4196e6-6dff-483c-8dc0-b4bd0d8517e9.png",
+      "webpKey": "images/4a4196e6-6dff-483c-8dc0-b4bd0d8517e9.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1153625,
+      "webpBytes": 65704,
+      "status": "converted"
+    },
+    {
+      "key": "images/e5fc5935-99f0-49f2-9dbf-0a87c8f2c570.png",
+      "webpKey": "images/e5fc5935-99f0-49f2-9dbf-0a87c8f2c570.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1561261,
+      "webpBytes": 140718,
+      "status": "converted"
+    },
+    {
+      "key": "images/7a6a008d-0327-4a23-b1f8-6219868bf81a.png",
+      "webpKey": "images/7a6a008d-0327-4a23-b1f8-6219868bf81a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1447607,
+      "webpBytes": 122164,
+      "status": "converted"
+    },
+    {
+      "key": "images/df1e04a2-0c9a-46f8-8bf0-bc591504e726.png",
+      "webpKey": "images/df1e04a2-0c9a-46f8-8bf0-bc591504e726.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1157587,
+      "webpBytes": 60370,
+      "status": "converted"
+    },
+    {
+      "key": "images/379edb35-10c8-4ea3-b4ae-b966e4ddffc1.png",
+      "webpKey": "images/379edb35-10c8-4ea3-b4ae-b966e4ddffc1.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1947944,
+      "webpBytes": 235092,
+      "status": "converted"
+    },
+    {
+      "key": "images/a834e50f-20cd-4125-b0c1-2f4dafa2900b.png",
+      "webpKey": "images/a834e50f-20cd-4125-b0c1-2f4dafa2900b.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1108717,
+      "webpBytes": 59930,
+      "status": "converted"
+    },
+    {
+      "key": "images/cc1bcae1-b19b-49b8-9635-d18778bf0372.png",
+      "webpKey": "images/cc1bcae1-b19b-49b8-9635-d18778bf0372.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1478422,
+      "webpBytes": 119538,
+      "status": "converted"
+    },
+    {
+      "key": "images/72087b5e-c2ba-45b3-bace-fe0e0179d427.png",
+      "webpKey": "images/72087b5e-c2ba-45b3-bace-fe0e0179d427.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1269810,
+      "webpBytes": 80750,
+      "status": "converted"
+    },
+    {
+      "key": "images/98df7529-35a0-460c-9c36-3a5a93051a99.png",
+      "webpKey": "images/98df7529-35a0-460c-9c36-3a5a93051a99.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1651799,
+      "webpBytes": 166310,
+      "status": "converted"
+    },
+    {
+      "key": "images/5fc234c6-c78b-41a6-922e-b2355198f7a1.png",
+      "webpKey": "images/5fc234c6-c78b-41a6-922e-b2355198f7a1.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1786470,
+      "webpBytes": 187112,
+      "status": "converted"
+    },
+    {
+      "key": "images/75727a76-4ca3-4a89-97e1-8a76fc031094.png",
+      "webpKey": "images/75727a76-4ca3-4a89-97e1-8a76fc031094.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1133248,
+      "webpBytes": 66652,
+      "status": "converted"
+    },
+    {
+      "key": "images/04b37823-8df4-408b-bfc6-651b86c1629a.png",
+      "webpKey": "images/04b37823-8df4-408b-bfc6-651b86c1629a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1549440,
+      "webpBytes": 164264,
+      "status": "converted"
+    },
+    {
+      "key": "images/b863540e-16aa-4ceb-bb99-37b153f97807.png",
+      "webpKey": "images/b863540e-16aa-4ceb-bb99-37b153f97807.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1653966,
+      "webpBytes": 158282,
+      "status": "converted"
+    },
+    {
+      "key": "images/e4fc0c90-e86a-49d8-b8d9-5473cf272641.png",
+      "webpKey": "images/e4fc0c90-e86a-49d8-b8d9-5473cf272641.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1760415,
+      "webpBytes": 181338,
+      "status": "converted"
+    },
+    {
+      "key": "images/4ca76315-7314-47e7-8fc7-328438449c9d.png",
+      "webpKey": "images/4ca76315-7314-47e7-8fc7-328438449c9d.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1218007,
+      "webpBytes": 75608,
+      "status": "converted"
+    },
+    {
+      "key": "images/82077236-a0bd-4048-b380-842177734bba.png",
+      "webpKey": "images/82077236-a0bd-4048-b380-842177734bba.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1691835,
+      "webpBytes": 161522,
+      "status": "converted"
+    },
+    {
+      "key": "images/6502e127-2e3f-412c-86d0-78eea4096c08.png",
+      "webpKey": "images/6502e127-2e3f-412c-86d0-78eea4096c08.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1388058,
+      "webpBytes": 106892,
+      "status": "converted"
+    },
+    {
+      "key": "images/6cd6c4bb-e4c4-45c4-8de0-de40dfa727af.png",
+      "webpKey": "images/6cd6c4bb-e4c4-45c4-8de0-de40dfa727af.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1367661,
+      "webpBytes": 101146,
+      "status": "converted"
+    },
+    {
+      "key": "images/7ea7fc48-4755-4f0c-81ae-71dab3afee54.png",
+      "webpKey": "images/7ea7fc48-4755-4f0c-81ae-71dab3afee54.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 2090086,
+      "webpBytes": 276376,
+      "status": "converted"
+    },
+    {
+      "key": "images/e9e34acb-2ef3-434a-9e7b-0371a7875a4a.png",
+      "webpKey": "images/e9e34acb-2ef3-434a-9e7b-0371a7875a4a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1288904,
+      "webpBytes": 80420,
+      "status": "converted"
+    },
+    {
+      "key": "images/6db3aab3-0d31-48af-bd15-65205e7f43e3.png",
+      "webpKey": "images/6db3aab3-0d31-48af-bd15-65205e7f43e3.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1195884,
+      "webpBytes": 76658,
+      "status": "converted"
+    },
+    {
+      "key": "images/c8be8c5a-002e-4152-bc03-d8af86974f4f.png",
+      "webpKey": "images/c8be8c5a-002e-4152-bc03-d8af86974f4f.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1526333,
+      "webpBytes": 146048,
+      "status": "converted"
+    },
+    {
+      "key": "images/e33025e1-f1a3-47c8-8a99-c55c564bceb4.png",
+      "webpKey": "images/e33025e1-f1a3-47c8-8a99-c55c564bceb4.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1661814,
+      "webpBytes": 176502,
+      "status": "converted"
+    },
+    {
+      "key": "images/3149e000-9a9f-41b1-a4d5-2894964c2f9a.png",
+      "webpKey": "images/3149e000-9a9f-41b1-a4d5-2894964c2f9a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1322959,
+      "webpBytes": 91522,
+      "status": "converted"
+    },
+    {
+      "key": "images/5a53aeee-aa4c-450c-8b4b-606cffbf26cd.png",
+      "webpKey": "images/5a53aeee-aa4c-450c-8b4b-606cffbf26cd.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1325819,
+      "webpBytes": 92766,
+      "status": "converted"
+    },
+    {
+      "key": "images/529e11d2-29b4-4ab3-bb0d-aff1b5c7b2fa.png",
+      "webpKey": "images/529e11d2-29b4-4ab3-bb0d-aff1b5c7b2fa.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1238591,
+      "webpBytes": 86146,
+      "status": "converted"
+    },
+    {
+      "key": "images/40c85aa6-9716-46c3-bfd4-0191f3c97947.png",
+      "webpKey": "images/40c85aa6-9716-46c3-bfd4-0191f3c97947.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1541568,
+      "webpBytes": 160358,
+      "status": "converted"
+    },
+    {
+      "key": "images/936b200d-96d7-4103-8a7c-b8843150721d.png",
+      "webpKey": "images/936b200d-96d7-4103-8a7c-b8843150721d.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1109335,
+      "webpBytes": 56662,
+      "status": "converted"
+    },
+    {
+      "key": "images/ce88f3e5-c682-4ba4-ba50-d5c7b5babb91.png",
+      "webpKey": "images/ce88f3e5-c682-4ba4-ba50-d5c7b5babb91.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1583467,
+      "webpBytes": 146696,
+      "status": "converted"
+    },
+    {
+      "key": "images/77fcf77f-1871-436a-a257-4cf82373f495.png",
+      "webpKey": "images/77fcf77f-1871-436a-a257-4cf82373f495.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1857362,
+      "webpBytes": 220854,
+      "status": "converted"
+    },
+    {
+      "key": "images/c1948adf-f4fb-4b22-b439-18034df3b06d.png",
+      "webpKey": "images/c1948adf-f4fb-4b22-b439-18034df3b06d.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1826773,
+      "webpBytes": 210968,
+      "status": "converted"
+    },
+    {
+      "key": "images/dd4e1e4e-78dd-4130-a295-b089f142d231.png",
+      "webpKey": "images/dd4e1e4e-78dd-4130-a295-b089f142d231.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1506209,
+      "webpBytes": 131172,
+      "status": "converted"
+    },
+    {
+      "key": "images/eebfd603-ffdd-4d02-b939-6de41a88552b.png",
+      "webpKey": "images/eebfd603-ffdd-4d02-b939-6de41a88552b.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1585856,
+      "webpBytes": 155434,
+      "status": "converted"
+    },
+    {
+      "key": "images/e59202b3-1666-4056-bfe1-6457c4af72e0.png",
+      "webpKey": "images/e59202b3-1666-4056-bfe1-6457c4af72e0.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1175433,
+      "webpBytes": 65296,
+      "status": "converted"
+    },
+    {
+      "key": "images/d09b632e-67a0-4d2a-8dd5-c8a1c96da401.png",
+      "webpKey": "images/d09b632e-67a0-4d2a-8dd5-c8a1c96da401.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 2002424,
+      "webpBytes": 253338,
+      "status": "converted"
+    },
+    {
+      "key": "images/8496b4ea-3a23-4fd8-ad07-20798fe9cc8d.png",
+      "webpKey": "images/8496b4ea-3a23-4fd8-ad07-20798fe9cc8d.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1287241,
+      "webpBytes": 73832,
+      "status": "converted"
+    },
+    {
+      "key": "images/fc37c236-42ea-4a59-acc6-00b4315322cf.png",
+      "webpKey": "images/fc37c236-42ea-4a59-acc6-00b4315322cf.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1497928,
+      "webpBytes": 129526,
+      "status": "converted"
+    },
+    {
+      "key": "images/596964fa-2089-48b7-b56a-608fe7b903d8.png",
+      "webpKey": "images/596964fa-2089-48b7-b56a-608fe7b903d8.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1011424,
+      "webpBytes": 42018,
+      "status": "converted"
+    },
+    {
+      "key": "images/809ae644-4d83-47fc-89d0-0ec2bf3ab377.png",
+      "webpKey": "images/809ae644-4d83-47fc-89d0-0ec2bf3ab377.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1549269,
+      "webpBytes": 128504,
+      "status": "converted"
+    },
+    {
+      "key": "images/b06da7f8-15b6-4aa9-9eed-b1c0e747cad6.png",
+      "webpKey": "images/b06da7f8-15b6-4aa9-9eed-b1c0e747cad6.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1288093,
+      "webpBytes": 81818,
+      "status": "converted"
+    },
+    {
+      "key": "images/7ebd6c62-54bf-4900-ba73-19fb2c1c4e88.png",
+      "webpKey": "images/7ebd6c62-54bf-4900-ba73-19fb2c1c4e88.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1319264,
+      "webpBytes": 90376,
+      "status": "converted"
+    },
+    {
+      "key": "images/04876e47-fe6d-4fa9-904d-2cb991d362d5.png",
+      "webpKey": "images/04876e47-fe6d-4fa9-904d-2cb991d362d5.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1522292,
+      "webpBytes": 139364,
+      "status": "converted"
+    },
+    {
+      "key": "images/f792f858-004d-40bd-bba4-7f368315fcbb.png",
+      "webpKey": "images/f792f858-004d-40bd-bba4-7f368315fcbb.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1499925,
+      "webpBytes": 131334,
+      "status": "converted"
+    },
+    {
+      "key": "images/1929c219-46b3-49df-9131-9ec46962868e.png",
+      "webpKey": "images/1929c219-46b3-49df-9131-9ec46962868e.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1303939,
+      "webpBytes": 84034,
+      "status": "converted"
+    },
+    {
+      "key": "images/4271ebba-fff7-4d1c-b0ce-509ab0454f8b.png",
+      "webpKey": "images/4271ebba-fff7-4d1c-b0ce-509ab0454f8b.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1944505,
+      "webpBytes": 255588,
+      "status": "converted"
+    },
+    {
+      "key": "images/2dc0b259-26ff-41c6-b83a-64a48959a409.png",
+      "webpKey": "images/2dc0b259-26ff-41c6-b83a-64a48959a409.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1142717,
+      "webpBytes": 74894,
+      "status": "converted"
+    },
+    {
+      "key": "images/87e0403c-faee-49d2-9639-7244fe29b950.png",
+      "webpKey": "images/87e0403c-faee-49d2-9639-7244fe29b950.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1612947,
+      "webpBytes": 148602,
+      "status": "converted"
+    },
+    {
+      "key": "images/afa0c807-43d9-4d52-97df-502761698b5e.png",
+      "webpKey": "images/afa0c807-43d9-4d52-97df-502761698b5e.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1618732,
+      "webpBytes": 140810,
+      "status": "converted"
+    },
+    {
+      "key": "images/4abc813b-47c4-430f-be03-4ab624dac8bc.png",
+      "webpKey": "images/4abc813b-47c4-430f-be03-4ab624dac8bc.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1184568,
+      "webpBytes": 81600,
+      "status": "converted"
+    },
+    {
+      "key": "images/bb071c5a-9236-4337-b1c9-07d7abf9eb7c.png",
+      "webpKey": "images/bb071c5a-9236-4337-b1c9-07d7abf9eb7c.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1277785,
+      "webpBytes": 84034,
+      "status": "converted"
+    },
+    {
+      "key": "images/6fd54339-28c6-4e46-b04f-2fa00420d009.png",
+      "webpKey": "images/6fd54339-28c6-4e46-b04f-2fa00420d009.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1560011,
+      "webpBytes": 144264,
+      "status": "converted"
+    },
+    {
+      "key": "images/c37e10a9-f808-4ba6-bfed-2996b9791c64.png",
+      "webpKey": "images/c37e10a9-f808-4ba6-bfed-2996b9791c64.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1443013,
+      "webpBytes": 117592,
+      "status": "converted"
+    },
+    {
+      "key": "images/da064d37-e344-4899-b110-0992a7918297.png",
+      "webpKey": "images/da064d37-e344-4899-b110-0992a7918297.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1139370,
+      "webpBytes": 58546,
+      "status": "converted"
+    },
+    {
+      "key": "images/c58f4b45-a39c-4391-9ba4-ab8508ff4a58.png",
+      "webpKey": "images/c58f4b45-a39c-4391-9ba4-ab8508ff4a58.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1240814,
+      "webpBytes": 71752,
+      "status": "converted"
+    },
+    {
+      "key": "images/c8165ca6-67e7-4302-8989-f89000e6faf3.png",
+      "webpKey": "images/c8165ca6-67e7-4302-8989-f89000e6faf3.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1173540,
+      "webpBytes": 62340,
+      "status": "converted"
+    },
+    {
+      "key": "images/9a79b296-ae50-451b-9057-0a7a9b3af3f3.png",
+      "webpKey": "images/9a79b296-ae50-451b-9057-0a7a9b3af3f3.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1862646,
+      "webpBytes": 203374,
+      "status": "converted"
+    },
+    {
+      "key": "images/00c82e81-3b7a-452c-b811-6142f13e02ec.png",
+      "webpKey": "images/00c82e81-3b7a-452c-b811-6142f13e02ec.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1681797,
+      "webpBytes": 180424,
+      "status": "converted"
+    },
+    {
+      "key": "images/cf91211b-ea6e-4b3e-a6b3-21fe23fddfb8.png",
+      "webpKey": "images/cf91211b-ea6e-4b3e-a6b3-21fe23fddfb8.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1318345,
+      "webpBytes": 95438,
+      "status": "converted"
+    },
+    {
+      "key": "images/d05a2183-a70c-460d-9c70-b4f6ab52d741.png",
+      "webpKey": "images/d05a2183-a70c-460d-9c70-b4f6ab52d741.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1611870,
+      "webpBytes": 146920,
+      "status": "converted"
+    },
+    {
+      "key": "images/bde11b7f-ac49-4314-b41e-3af6e3bfdce0.png",
+      "webpKey": "images/bde11b7f-ac49-4314-b41e-3af6e3bfdce0.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1364486,
+      "webpBytes": 101138,
+      "status": "converted"
+    },
+    {
+      "key": "images/c08af686-f8ee-4d34-905f-303069ca38f5.png",
+      "webpKey": "images/c08af686-f8ee-4d34-905f-303069ca38f5.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1503220,
+      "webpBytes": 121106,
+      "status": "converted"
+    },
+    {
+      "key": "images/3745203e-5566-4b62-aae2-154950c2a568.png",
+      "webpKey": "images/3745203e-5566-4b62-aae2-154950c2a568.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1135968,
+      "webpBytes": 67090,
+      "status": "converted"
+    },
+    {
+      "key": "images/ec4ad162-dc47-4e3f-8b98-11986e81ad4d.png",
+      "webpKey": "images/ec4ad162-dc47-4e3f-8b98-11986e81ad4d.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1565668,
+      "webpBytes": 137350,
+      "status": "converted"
+    },
+    {
+      "key": "images/c298e53a-e33e-4d30-85e3-246a56413f0d.png",
+      "webpKey": "images/c298e53a-e33e-4d30-85e3-246a56413f0d.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1359908,
+      "webpBytes": 114994,
+      "status": "converted"
+    },
+    {
+      "key": "images/bbe6587c-ba2b-426d-8917-7d432b2840d0.png",
+      "webpKey": "images/bbe6587c-ba2b-426d-8917-7d432b2840d0.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1702060,
+      "webpBytes": 189808,
+      "status": "converted"
+    },
+    {
+      "key": "images/2a937313-d30f-4050-ad13-d0e00b01aad3.png",
+      "webpKey": "images/2a937313-d30f-4050-ad13-d0e00b01aad3.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1507488,
+      "webpBytes": 132332,
+      "status": "converted"
+    },
+    {
+      "key": "images/a68b4ba7-e4b9-4303-b277-c43a9f757a2b.png",
+      "webpKey": "images/a68b4ba7-e4b9-4303-b277-c43a9f757a2b.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1474844,
+      "webpBytes": 137118,
+      "status": "converted"
+    },
+    {
+      "key": "images/8c9955df-aad3-4a3a-95e8-01b04b9dd156.png",
+      "webpKey": "images/8c9955df-aad3-4a3a-95e8-01b04b9dd156.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1278963,
+      "webpBytes": 84566,
+      "status": "converted"
+    },
+    {
+      "key": "images/af69d680-4114-4e78-af5a-d33032797a3f.png",
+      "webpKey": "images/af69d680-4114-4e78-af5a-d33032797a3f.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1347578,
+      "webpBytes": 105034,
+      "status": "converted"
+    },
+    {
+      "key": "images/8a77c712-ede4-4c88-b5cf-9cca2c065b9d.png",
+      "webpKey": "images/8a77c712-ede4-4c88-b5cf-9cca2c065b9d.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1380006,
+      "webpBytes": 105668,
+      "status": "converted"
+    },
+    {
+      "key": "images/f13a2aa0-aaee-4ca5-8e50-b70404fde476.png",
+      "webpKey": "images/f13a2aa0-aaee-4ca5-8e50-b70404fde476.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1317244,
+      "webpBytes": 90170,
+      "status": "converted"
+    },
+    {
+      "key": "images/1b0b0af9-cd6b-49d7-81df-2e68593f2d54.png",
+      "webpKey": "images/1b0b0af9-cd6b-49d7-81df-2e68593f2d54.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1563629,
+      "webpBytes": 132578,
+      "status": "converted"
+    },
+    {
+      "key": "images/b7b26c81-1874-4ca4-b744-a4bafdcd22f5.png",
+      "webpKey": "images/b7b26c81-1874-4ca4-b744-a4bafdcd22f5.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1515734,
+      "webpBytes": 105056,
+      "status": "converted"
+    },
+    {
+      "key": "images/61573642-02fc-4e89-b7c5-69f41f65d3f5.png",
+      "webpKey": "images/61573642-02fc-4e89-b7c5-69f41f65d3f5.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1608477,
+      "webpBytes": 148404,
+      "status": "converted"
+    },
+    {
+      "key": "images/83d13d05-4193-4715-b9d7-5f2fba5b5ba1.png",
+      "webpKey": "images/83d13d05-4193-4715-b9d7-5f2fba5b5ba1.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1529208,
+      "webpBytes": 122928,
+      "status": "converted"
+    },
+    {
+      "key": "images/c643edea-171b-4b39-b4d5-0b70b9a5cb07.png",
+      "webpKey": "images/c643edea-171b-4b39-b4d5-0b70b9a5cb07.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1581037,
+      "webpBytes": 141168,
+      "status": "converted"
+    },
+    {
+      "key": "images/f10c60b4-477d-4118-882b-4a69d3278f67.png",
+      "webpKey": "images/f10c60b4-477d-4118-882b-4a69d3278f67.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1643576,
+      "webpBytes": 170348,
+      "status": "converted"
+    },
+    {
+      "key": "images/63a7e09c-eb4c-4d4d-bfbd-271ced50b56e.png",
+      "webpKey": "images/63a7e09c-eb4c-4d4d-bfbd-271ced50b56e.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1271921,
+      "webpBytes": 80284,
+      "status": "converted"
+    },
+    {
+      "key": "images/e63fe1bb-1849-4e1d-8549-c490c4557217.png",
+      "webpKey": "images/e63fe1bb-1849-4e1d-8549-c490c4557217.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1330413,
+      "webpBytes": 81122,
+      "status": "converted"
+    },
+    {
+      "key": "images/2e0804a6-97cc-4205-bd93-dc9a5f3326ce.png",
+      "webpKey": "images/2e0804a6-97cc-4205-bd93-dc9a5f3326ce.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1386991,
+      "webpBytes": 102222,
+      "status": "converted"
+    },
+    {
+      "key": "images/73e73e3c-1db7-4862-a89c-604e5a1188d1.png",
+      "webpKey": "images/73e73e3c-1db7-4862-a89c-604e5a1188d1.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1453383,
+      "webpBytes": 112326,
+      "status": "converted"
+    },
+    {
+      "key": "images/cbf8b97e-09fd-44ce-871e-c80b7efe0433.png",
+      "webpKey": "images/cbf8b97e-09fd-44ce-871e-c80b7efe0433.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1432584,
+      "webpBytes": 134954,
+      "status": "converted"
+    },
+    {
+      "key": "images/4bb0dde7-1fe4-4615-80f3-ae6a916ab8e4.png",
+      "webpKey": "images/4bb0dde7-1fe4-4615-80f3-ae6a916ab8e4.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1242766,
+      "webpBytes": 85694,
+      "status": "converted"
+    },
+    {
+      "key": "images/7ef6bd65-2d32-49d2-ab89-613bdda47be9.png",
+      "webpKey": "images/7ef6bd65-2d32-49d2-ab89-613bdda47be9.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1231514,
+      "webpBytes": 88994,
+      "status": "converted"
+    },
+    {
+      "key": "images/d9afda2d-3358-4865-93fb-4653a8cd0f48.png",
+      "webpKey": "images/d9afda2d-3358-4865-93fb-4653a8cd0f48.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1856386,
+      "webpBytes": 209736,
+      "status": "converted"
+    },
+    {
+      "key": "images/9102d6c5-48f0-4817-84ae-e50020f9243e.png",
+      "webpKey": "images/9102d6c5-48f0-4817-84ae-e50020f9243e.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1175420,
+      "webpBytes": 86160,
+      "status": "converted"
+    },
+    {
+      "key": "images/0f8b3132-9d57-47c7-8be3-a9f6ea85aac5.png",
+      "webpKey": "images/0f8b3132-9d57-47c7-8be3-a9f6ea85aac5.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1831154,
+      "webpBytes": 224564,
+      "status": "converted"
+    },
+    {
+      "key": "images/4e9dfcf3-c554-4806-95f5-f2e93e809282.png",
+      "webpKey": "images/4e9dfcf3-c554-4806-95f5-f2e93e809282.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1431221,
+      "webpBytes": 111526,
+      "status": "converted"
+    },
+    {
+      "key": "images/b86fd2ac-54d4-486e-9224-e92ea6e88bb3.png",
+      "webpKey": "images/b86fd2ac-54d4-486e-9224-e92ea6e88bb3.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1714528,
+      "webpBytes": 177494,
+      "status": "converted"
+    },
+    {
+      "key": "images/257d071c-37fb-4f80-9b9e-0e59d5049f01.png",
+      "webpKey": "images/257d071c-37fb-4f80-9b9e-0e59d5049f01.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1535108,
+      "webpBytes": 130612,
+      "status": "converted"
+    },
+    {
+      "key": "images/03e5a1ce-f6f0-4184-b3ac-47c5688c3266.png",
+      "webpKey": "images/03e5a1ce-f6f0-4184-b3ac-47c5688c3266.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 2164545,
+      "webpBytes": 299846,
+      "status": "converted"
+    },
+    {
+      "key": "images/7cbeb5cb-55aa-4f22-b80c-7511d1d64b00.png",
+      "webpKey": "images/7cbeb5cb-55aa-4f22-b80c-7511d1d64b00.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1582386,
+      "webpBytes": 172484,
+      "status": "converted"
+    },
+    {
+      "key": "images/d60efc3d-46e6-413e-9a1b-3165d6de4bc3.png",
+      "webpKey": "images/d60efc3d-46e6-413e-9a1b-3165d6de4bc3.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1077562,
+      "webpBytes": 48540,
+      "status": "converted"
+    },
+    {
+      "key": "images/2781aeee-7430-41f4-a702-747ba9271501.png",
+      "webpKey": "images/2781aeee-7430-41f4-a702-747ba9271501.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1088795,
+      "webpBytes": 54778,
+      "status": "converted"
+    },
+    {
+      "key": "images/d3d02d72-f353-44b4-912b-8fd3231d1a1b.png",
+      "webpKey": "images/d3d02d72-f353-44b4-912b-8fd3231d1a1b.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1583227,
+      "webpBytes": 149162,
+      "status": "converted"
+    },
+    {
+      "key": "images/a9512ccf-1770-4257-9bfc-3eecc2c0a8eb.png",
+      "webpKey": "images/a9512ccf-1770-4257-9bfc-3eecc2c0a8eb.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1079398,
+      "webpBytes": 51516,
+      "status": "converted"
+    },
+    {
+      "key": "images/09fe25e8-f430-4770-8bad-4ce5f0d6f57f.png",
+      "webpKey": "images/09fe25e8-f430-4770-8bad-4ce5f0d6f57f.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1313751,
+      "webpBytes": 83706,
+      "status": "converted"
+    },
+    {
+      "key": "images/0a75addc-5a6d-4677-8079-78daf9d2669a.png",
+      "webpKey": "images/0a75addc-5a6d-4677-8079-78daf9d2669a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1841085,
+      "webpBytes": 205138,
+      "status": "converted"
+    },
+    {
+      "key": "images/2f3a4f52-25c2-4745-ba14-37a2fa199a4a.png",
+      "webpKey": "images/2f3a4f52-25c2-4745-ba14-37a2fa199a4a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1425038,
+      "webpBytes": 126228,
+      "status": "converted"
+    },
+    {
+      "key": "images/71b87127-86f2-4f85-a9f7-74d82d801ac2.png",
+      "webpKey": "images/71b87127-86f2-4f85-a9f7-74d82d801ac2.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1462434,
+      "webpBytes": 112866,
+      "status": "converted"
+    },
+    {
+      "key": "images/6e6f78c8-cae7-41cf-924f-cfd0e9972fe4.png",
+      "webpKey": "images/6e6f78c8-cae7-41cf-924f-cfd0e9972fe4.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1119616,
+      "webpBytes": 56368,
+      "status": "converted"
+    },
+    {
+      "key": "images/46b40751-aee1-4cd9-bde4-712c0c24d861.png",
+      "webpKey": "images/46b40751-aee1-4cd9-bde4-712c0c24d861.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1577912,
+      "webpBytes": 150616,
+      "status": "converted"
+    },
+    {
+      "key": "images/77c3c987-c523-46c5-a1e0-c11f6d23d0b2.png",
+      "webpKey": "images/77c3c987-c523-46c5-a1e0-c11f6d23d0b2.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1425917,
+      "webpBytes": 105406,
+      "status": "converted"
+    },
+    {
+      "key": "images/694d16fd-f38b-418d-88bc-48a0fa587157.png",
+      "webpKey": "images/694d16fd-f38b-418d-88bc-48a0fa587157.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1410089,
+      "webpBytes": 113426,
+      "status": "converted"
+    },
+    {
+      "key": "images/c5277aa1-a407-4584-a5f9-afe738f2416a.png",
+      "webpKey": "images/c5277aa1-a407-4584-a5f9-afe738f2416a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1302673,
+      "webpBytes": 88636,
+      "status": "converted"
+    },
+    {
+      "key": "images/c240222c-4f51-4d05-84ed-1e6ee1f7c597.png",
+      "webpKey": "images/c240222c-4f51-4d05-84ed-1e6ee1f7c597.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1633205,
+      "webpBytes": 158324,
+      "status": "converted"
+    },
+    {
+      "key": "images/40c1a3a4-a084-4e22-8c14-c440a1b3a040.png",
+      "webpKey": "images/40c1a3a4-a084-4e22-8c14-c440a1b3a040.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1395329,
+      "webpBytes": 114368,
+      "status": "converted"
+    },
+    {
+      "key": "images/f5f8f309-7f57-419c-a34a-d48d28cd6b88.png",
+      "webpKey": "images/f5f8f309-7f57-419c-a34a-d48d28cd6b88.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1067996,
+      "webpBytes": 43252,
+      "status": "converted"
+    },
+    {
+      "key": "images/63ba7232-6c88-485e-a697-d778add94483.png",
+      "webpKey": "images/63ba7232-6c88-485e-a697-d778add94483.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1988263,
+      "webpBytes": 250750,
+      "status": "converted"
+    },
+    {
+      "key": "images/49c52ca5-d729-4e59-870a-b5f8fbae6883.png",
+      "webpKey": "images/49c52ca5-d729-4e59-870a-b5f8fbae6883.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1269596,
+      "webpBytes": 81830,
+      "status": "converted"
+    },
+    {
+      "key": "images/aac281b3-5192-4a2d-8352-ced5b16527d2.png",
+      "webpKey": "images/aac281b3-5192-4a2d-8352-ced5b16527d2.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1682185,
+      "webpBytes": 161068,
+      "status": "converted"
+    },
+    {
+      "key": "images/e5280c2b-44cf-490e-a2c2-9a3461fcf0c4.png",
+      "webpKey": "images/e5280c2b-44cf-490e-a2c2-9a3461fcf0c4.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1216315,
+      "webpBytes": 81534,
+      "status": "converted"
+    },
+    {
+      "key": "images/6f4cf3f8-b9e8-4813-8f6a-9f8df79b5a17.png",
+      "webpKey": "images/6f4cf3f8-b9e8-4813-8f6a-9f8df79b5a17.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1214678,
+      "webpBytes": 71494,
+      "status": "converted"
+    },
+    {
+      "key": "images/a6b723ee-65cf-4a84-b533-d7b279d80f85.png",
+      "webpKey": "images/a6b723ee-65cf-4a84-b533-d7b279d80f85.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1454738,
+      "webpBytes": 122014,
+      "status": "converted"
+    },
+    {
+      "key": "images/d2874874-96c0-4bf5-b4e3-531124a6ab8e.png",
+      "webpKey": "images/d2874874-96c0-4bf5-b4e3-531124a6ab8e.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1067052,
+      "webpBytes": 66146,
+      "status": "converted"
+    },
+    {
+      "key": "images/5e01e096-8b18-401c-a69a-a242e01a7d09.png",
+      "webpKey": "images/5e01e096-8b18-401c-a69a-a242e01a7d09.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1633357,
+      "webpBytes": 144840,
+      "status": "converted"
+    },
+    {
+      "key": "images/de9f010d-cdea-447d-9556-0f5a7f98629a.png",
+      "webpKey": "images/de9f010d-cdea-447d-9556-0f5a7f98629a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1905114,
+      "webpBytes": 242666,
+      "status": "converted"
+    },
+    {
+      "key": "images/90c36bc8-6609-45cb-a45d-537ddbbcc892.png",
+      "webpKey": "images/90c36bc8-6609-45cb-a45d-537ddbbcc892.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1899802,
+      "webpBytes": 219100,
+      "status": "converted"
+    },
+    {
+      "key": "images/1aa189a0-2aaa-4ffa-b637-171409b26b0f.png",
+      "webpKey": "images/1aa189a0-2aaa-4ffa-b637-171409b26b0f.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1494188,
+      "webpBytes": 122952,
+      "status": "converted"
+    },
+    {
+      "key": "images/b369cda7-df63-4832-8574-bd48ec712486.png",
+      "webpKey": "images/b369cda7-df63-4832-8574-bd48ec712486.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1332622,
+      "webpBytes": 97760,
+      "status": "converted"
+    },
+    {
+      "key": "images/8abcb315-f71f-42f1-af2c-a64d1c50ed55.png",
+      "webpKey": "images/8abcb315-f71f-42f1-af2c-a64d1c50ed55.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1396590,
+      "webpBytes": 113666,
+      "status": "converted"
+    },
+    {
+      "key": "images/b04c63fc-fd9b-4590-a036-1a242220653b.png",
+      "webpKey": "images/b04c63fc-fd9b-4590-a036-1a242220653b.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1367396,
+      "webpBytes": 103690,
+      "status": "converted"
+    },
+    {
+      "key": "images/b5b3e784-e0c2-4fd4-b267-6be507f106ca.png",
+      "webpKey": "images/b5b3e784-e0c2-4fd4-b267-6be507f106ca.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1233815,
+      "webpBytes": 80598,
+      "status": "converted"
+    },
+    {
+      "key": "images/81a4dc6f-715d-4f38-aedb-b3f650ba8025.png",
+      "webpKey": "images/81a4dc6f-715d-4f38-aedb-b3f650ba8025.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1492610,
+      "webpBytes": 126640,
+      "status": "converted"
+    },
+    {
+      "key": "images/0f928a9b-aed8-422b-b708-a0201cae8174.png",
+      "webpKey": "images/0f928a9b-aed8-422b-b708-a0201cae8174.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1348442,
+      "webpBytes": 94192,
+      "status": "converted"
+    },
+    {
+      "key": "images/9fc8b19a-d189-4bb3-b575-1137f30e8152.png",
+      "webpKey": "images/9fc8b19a-d189-4bb3-b575-1137f30e8152.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1412863,
+      "webpBytes": 106698,
+      "status": "converted"
+    },
+    {
+      "key": "images/b94e5191-6dcf-43ed-9fd0-4f1449547650.png",
+      "webpKey": "images/b94e5191-6dcf-43ed-9fd0-4f1449547650.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1528289,
+      "webpBytes": 137246,
+      "status": "converted"
+    },
+    {
+      "key": "images/7240d0f9-b5f6-4591-851a-dac73b534dc8.png",
+      "webpKey": "images/7240d0f9-b5f6-4591-851a-dac73b534dc8.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1498311,
+      "webpBytes": 113418,
+      "status": "converted"
+    },
+    {
+      "key": "images/9f3da863-997c-449d-ae1c-820fe8adbce2.png",
+      "webpKey": "images/9f3da863-997c-449d-ae1c-820fe8adbce2.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1513642,
+      "webpBytes": 123368,
+      "status": "converted"
+    },
+    {
+      "key": "images/04e73a72-184c-4a91-bb90-3f814f44835c.png",
+      "webpKey": "images/04e73a72-184c-4a91-bb90-3f814f44835c.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1188725,
+      "webpBytes": 72730,
+      "status": "converted"
+    },
+    {
+      "key": "images/9cff2ba5-8eee-4cbc-8bd8-530032a74e79.png",
+      "webpKey": "images/9cff2ba5-8eee-4cbc-8bd8-530032a74e79.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1263407,
+      "webpBytes": 88072,
+      "status": "converted"
+    },
+    {
+      "key": "images/379a86f4-9ffa-45b0-b609-b2196a1f1d30.png",
+      "webpKey": "images/379a86f4-9ffa-45b0-b609-b2196a1f1d30.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1611744,
+      "webpBytes": 156256,
+      "status": "converted"
+    },
+    {
+      "key": "images/e7203c2f-83dc-4f78-aeca-61a02b2235fa.png",
+      "webpKey": "images/e7203c2f-83dc-4f78-aeca-61a02b2235fa.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1311999,
+      "webpBytes": 95680,
+      "status": "converted"
+    },
+    {
+      "key": "images/e9850530-921a-4611-abaa-cee371b6f0f4.png",
+      "webpKey": "images/e9850530-921a-4611-abaa-cee371b6f0f4.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1802525,
+      "webpBytes": 198422,
+      "status": "converted"
+    },
+    {
+      "key": "images/c0d4bcaa-c011-46c5-9a91-4dc79949c1ce.png",
+      "webpKey": "images/c0d4bcaa-c011-46c5-9a91-4dc79949c1ce.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1503685,
+      "webpBytes": 118804,
+      "status": "converted"
+    },
+    {
+      "key": "images/eeb9074f-8d7d-4bd4-acbc-1faa6b6da231.png",
+      "webpKey": "images/eeb9074f-8d7d-4bd4-acbc-1faa6b6da231.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1238302,
+      "webpBytes": 77660,
+      "status": "converted"
+    },
+    {
+      "key": "images/e9912dca-3b34-4e4b-94c6-99d047a8e8d5.png",
+      "webpKey": "images/e9912dca-3b34-4e4b-94c6-99d047a8e8d5.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1498452,
+      "webpBytes": 125276,
+      "status": "converted"
+    },
+    {
+      "key": "images/8c3b411d-b59d-44b3-8db8-0c19b5a24569.png",
+      "webpKey": "images/8c3b411d-b59d-44b3-8db8-0c19b5a24569.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1062434,
+      "webpBytes": 44934,
+      "status": "converted"
+    },
+    {
+      "key": "images/ac6c271a-6566-40b7-8b07-8182a0dd5316.png",
+      "webpKey": "images/ac6c271a-6566-40b7-8b07-8182a0dd5316.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1592911,
+      "webpBytes": 149086,
+      "status": "converted"
+    },
+    {
+      "key": "images/227d02cd-fd43-48c4-9af4-559f2658627a.png",
+      "webpKey": "images/227d02cd-fd43-48c4-9af4-559f2658627a.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1264279,
+      "webpBytes": 89218,
+      "status": "converted"
+    },
+    {
+      "key": "images/793c0ae3-f1f2-4d65-ace3-11e8648bfb18.png",
+      "webpKey": "images/793c0ae3-f1f2-4d65-ace3-11e8648bfb18.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1232479,
+      "webpBytes": 65726,
+      "status": "converted"
+    },
+    {
+      "key": "images/92f1fb91-c2dc-4f5a-acbb-921fea2c1936.png",
+      "webpKey": "images/92f1fb91-c2dc-4f5a-acbb-921fea2c1936.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1638444,
+      "webpBytes": 169774,
+      "status": "converted"
+    },
+    {
+      "key": "images/6a2158c8-c87d-4324-9718-3a02d00f0be8.png",
+      "webpKey": "images/6a2158c8-c87d-4324-9718-3a02d00f0be8.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1046956,
+      "webpBytes": 47160,
+      "status": "converted"
+    },
+    {
+      "key": "images/1feea655-21f8-42cf-bcab-822baf84c130.png",
+      "webpKey": "images/1feea655-21f8-42cf-bcab-822baf84c130.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1423369,
+      "webpBytes": 101922,
+      "status": "converted"
+    },
+    {
+      "key": "images/5c628893-3448-4793-a483-470231803139.png",
+      "webpKey": "images/5c628893-3448-4793-a483-470231803139.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1222762,
+      "webpBytes": 78834,
+      "status": "converted"
+    },
+    {
+      "key": "images/addd13bb-dccd-4d08-a57a-d6db69fc4dc2.png",
+      "webpKey": "images/addd13bb-dccd-4d08-a57a-d6db69fc4dc2.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1295031,
+      "webpBytes": 87846,
+      "status": "converted"
+    },
+    {
+      "key": "images/ba388a62-482a-490b-824c-0e6c2e53cd46.png",
+      "webpKey": "images/ba388a62-482a-490b-824c-0e6c2e53cd46.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1426042,
+      "webpBytes": 123122,
+      "status": "converted"
+    },
+    {
+      "key": "images/c6786d1a-af52-4035-966c-c15fd7372343.png",
+      "webpKey": "images/c6786d1a-af52-4035-966c-c15fd7372343.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1483267,
+      "webpBytes": 117866,
+      "status": "converted"
+    },
+    {
+      "key": "images/b8b8d257-1f83-447c-9bb0-7cb7cc34b427.png",
+      "webpKey": "images/b8b8d257-1f83-447c-9bb0-7cb7cc34b427.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1495175,
+      "webpBytes": 136256,
+      "status": "converted"
+    },
+    {
+      "key": "images/83b03176-633c-4932-ae7d-ade4f0c67f5f.png",
+      "webpKey": "images/83b03176-633c-4932-ae7d-ade4f0c67f5f.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1524432,
+      "webpBytes": 141402,
+      "status": "converted"
+    },
+    {
+      "key": "images/7bf462be-7168-4f45-bb97-3afd7bb082c0.png",
+      "webpKey": "images/7bf462be-7168-4f45-bb97-3afd7bb082c0.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1458231,
+      "webpBytes": 115086,
+      "status": "converted"
+    },
+    {
+      "key": "images/b1b72a13-2d70-44c7-a418-ea4558290cc3.png",
+      "webpKey": "images/b1b72a13-2d70-44c7-a418-ea4558290cc3.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1737815,
+      "webpBytes": 200676,
+      "status": "converted"
+    },
+    {
+      "key": "images/568fc92e-33e5-471f-ba23-076c320e64de.png",
+      "webpKey": "images/568fc92e-33e5-471f-ba23-076c320e64de.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1408934,
+      "webpBytes": 102274,
+      "status": "converted"
+    },
+    {
+      "key": "images/24c83de6-63a3-423c-b015-0b1ce7f2ae4c.png",
+      "webpKey": "images/24c83de6-63a3-423c-b015-0b1ce7f2ae4c.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1739174,
+      "webpBytes": 181292,
+      "status": "converted"
+    },
+    {
+      "key": "images/6cf248c1-6d63-411d-9692-ca64af2145eb.png",
+      "webpKey": "images/6cf248c1-6d63-411d-9692-ca64af2145eb.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1360116,
+      "webpBytes": 94574,
+      "status": "converted"
+    },
+    {
+      "key": "images/51da8e3a-bb71-4b5f-bc30-fe09dcf84e21.png",
+      "webpKey": "images/51da8e3a-bb71-4b5f-bc30-fe09dcf84e21.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1383271,
+      "webpBytes": 112956,
+      "status": "converted"
+    },
+    {
+      "key": "images/267c51ce-fa46-4667-996e-053578115ffb.png",
+      "webpKey": "images/267c51ce-fa46-4667-996e-053578115ffb.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1389431,
+      "webpBytes": 120964,
+      "status": "converted"
+    },
+    {
+      "key": "images/e83798ed-1e19-48ab-a033-86b37db9e3af.png",
+      "webpKey": "images/e83798ed-1e19-48ab-a033-86b37db9e3af.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1439852,
+      "webpBytes": 107494,
+      "status": "converted"
+    },
+    {
+      "key": "images/72e4fbe8-1356-4c0a-b86d-19b9a17aeee8.png",
+      "webpKey": "images/72e4fbe8-1356-4c0a-b86d-19b9a17aeee8.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1315073,
+      "webpBytes": 88312,
+      "status": "converted"
+    },
+    {
+      "key": "images/e1c44946-b522-41e9-97e0-f164c2e27fee.png",
+      "webpKey": "images/e1c44946-b522-41e9-97e0-f164c2e27fee.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1491420,
+      "webpBytes": 134168,
+      "status": "converted"
+    },
+    {
+      "key": "images/8d7d1e28-f517-49c5-9f2a-7578225b03d2.png",
+      "webpKey": "images/8d7d1e28-f517-49c5-9f2a-7578225b03d2.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1854881,
+      "webpBytes": 221384,
+      "status": "converted"
+    },
+    {
+      "key": "images/9201dacc-7453-4386-82af-d7527cdef77f.png",
+      "webpKey": "images/9201dacc-7453-4386-82af-d7527cdef77f.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 2088261,
+      "webpBytes": 281536,
+      "status": "converted"
+    },
+    {
+      "key": "images/a6afcdbd-047d-4711-b763-2192ee8c24aa.png",
+      "webpKey": "images/a6afcdbd-047d-4711-b763-2192ee8c24aa.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1624932,
+      "webpBytes": 162314,
+      "status": "converted"
+    },
+    {
+      "key": "images/02c336de-9485-4428-a852-1b7d83526885.png",
+      "webpKey": "images/02c336de-9485-4428-a852-1b7d83526885.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1464613,
+      "webpBytes": 123794,
+      "status": "converted"
+    },
+    {
+      "key": "images/cd98bf9c-227e-4b0c-ae0c-17c432eac08e.png",
+      "webpKey": "images/cd98bf9c-227e-4b0c-ae0c-17c432eac08e.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1500975,
+      "webpBytes": 141728,
+      "status": "converted"
+    },
+    {
+      "key": "images/d262d44e-5ae6-4b7b-9137-46935ce8d2b9.png",
+      "webpKey": "images/d262d44e-5ae6-4b7b-9137-46935ce8d2b9.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1527390,
+      "webpBytes": 149324,
+      "status": "converted"
+    },
+    {
+      "key": "images/b0926f59-f5d1-4280-b462-944425549aea/747fee87-7674-41c0-9d10-b5ebbff0d608.png",
+      "webpKey": "images/b0926f59-f5d1-4280-b462-944425549aea/747fee87-7674-41c0-9d10-b5ebbff0d608.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1106735,
+      "webpBytes": 34576,
+      "status": "converted"
+    },
+    {
+      "key": "images/b0926f59-f5d1-4280-b462-944425549aea/5c531fd1-9ab2-4493-b639-d11802f792ea.png",
+      "webpKey": "images/b0926f59-f5d1-4280-b462-944425549aea/5c531fd1-9ab2-4493-b639-d11802f792ea.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1077233,
+      "webpBytes": 38216,
+      "status": "converted"
+    },
+    {
+      "key": "images/b0926f59-f5d1-4280-b462-944425549aea/076f5b0f-242e-4daa-a3e8-241fc8a7ac02.png",
+      "webpKey": "images/b0926f59-f5d1-4280-b462-944425549aea/076f5b0f-242e-4daa-a3e8-241fc8a7ac02.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 979254,
+      "webpBytes": 27226,
+      "status": "converted"
+    },
+    {
+      "key": "images/b0926f59-f5d1-4280-b462-944425549aea/53facfb2-f0ae-473e-a06b-92a87ac73afd.png",
+      "webpKey": "images/b0926f59-f5d1-4280-b462-944425549aea/53facfb2-f0ae-473e-a06b-92a87ac73afd.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 936170,
+      "webpBytes": 27350,
+      "status": "converted"
+    },
+    {
+      "key": "images/b0926f59-f5d1-4280-b462-944425549aea/b0d5d822-bfae-447d-8083-76479058b3a3.png",
+      "webpKey": "images/b0926f59-f5d1-4280-b462-944425549aea/b0d5d822-bfae-447d-8083-76479058b3a3.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1000929,
+      "webpBytes": 24498,
+      "status": "converted"
+    },
+    {
+      "key": "images/b0926f59-f5d1-4280-b462-944425549aea/d3ba6bf2-6491-447a-846d-5052bf61aa3c.png",
+      "webpKey": "images/b0926f59-f5d1-4280-b462-944425549aea/d3ba6bf2-6491-447a-846d-5052bf61aa3c.webp",
+      "bucket": "poppy-generated",
+      "originalBytes": 1245905,
+      "webpBytes": 53804,
+      "status": "converted"
+    }
+  ]
+}

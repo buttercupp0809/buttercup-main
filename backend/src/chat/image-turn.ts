@@ -114,7 +114,10 @@ async function enrichImagePrompt(rawPrompt: string): Promise<string> {
         model: "stheno",
         messages: [
           { role: "system", content: systemPrompt },
-          { role: "user", content: rawPrompt },
+          {
+            role: "user",
+            content: `User's image request (preserve every detail, then elaborate): ${rawPrompt}`,
+          },
         ],
         max_tokens: 250,
         temperature: 0.7,
