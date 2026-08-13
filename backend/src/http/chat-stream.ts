@@ -14,8 +14,9 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { jwtVerify } from "jose";
 import { z } from "zod";
+import { prisma } from "@buttercupp/database";
 import { runChatTurn } from "../chat/engine";
-import { generateChatImage } from "../chat/image-turn";
+import { generateChatImage, generateImageTeaser } from "../chat/image-turn";
 import { isImageRequest } from "../media/image/decision";
 import { assertCanChat, recordChatConsumption, PaywallError, type PaywallInfo } from "../subscription/enforce";
 import { writeAuditLog } from "../utils/audit";
@@ -102,14 +103,63 @@ export async function handleChatStream(req: IncomingMessage, res: ServerResponse
 
   logInfo("sse", `chat.stream conv=${body.conversationId}`, { userId });
 
-  // Image request: generate straight from the user's text (Juggernaut) and
-  // emit it as an inline `image` SSE event. No text turn, no chat quota.
+  // Image request. Full flow, identical to the WS gateway so the experience
+  // is transport-independent and everything persists across refreshes:
+  //   1. Save the user message
+  //   2. Stream an in-character teaser from Stheno + save it
+  //   3. Emit `done` with model=image-pending so the client shows the skeleton
+  //   4. Generate the image (Stheno-enriched prompt + character reference)
+  //   5. Save the assistant image message (linked to its MediaAsset)
+  //   6. Emit the `image` event
   if (isImageRequest(body.text)) {
     try {
+      // 1. Persist the user message.
+      await prisma.message.create({
+        data: { conversationId: body.conversationId, role: "user", content: body.text },
+      });
+
+      // 2. In-character teaser, streamed then persisted.
+      const convRow = await prisma.conversation.findUnique({
+        where: { id: body.conversationId },
+        select: { character: { select: { name: true } } },
+      });
+      const characterName = convRow?.character?.name ?? "companion";
+      const teaser = await generateImageTeaser(characterName, body.text);
+      sseWrite(res, "token", { delta: teaser });
+      const teaserMsg = await prisma.message.create({
+        data: { conversationId: body.conversationId, role: "assistant", content: teaser },
+      });
+
+      // 3. Skeleton signal (client maps image-pending -> loading state).
+      sseWrite(res, "done", { messageId: teaserMsg.id, provider: "stheno", model: "image-pending" });
+
+      // 4. Generate.
       const img = await generateChatImage(body.text, body.conversationId, userId);
+
+      // 5. Persist the image message so it survives a refresh.
       const id = img.mediaAssetId ?? `img-${Date.now()}`;
+      if (img.mediaAssetId) {
+        await prisma.message.create({
+          data: {
+            id: img.mediaAssetId,
+            conversationId: body.conversationId,
+            role: "assistant",
+            content: "",
+            mediaAssetId: img.mediaAssetId,
+          },
+        });
+      } else {
+        await prisma.message.create({
+          data: { id, conversationId: body.conversationId, role: "assistant", content: img.url },
+        });
+      }
+      await prisma.conversation.update({
+        where: { id: body.conversationId },
+        data: { lastMessageAt: new Date() },
+      });
+
+      // 6. Deliver the image.
       sseWrite(res, "image", { url: img.url, mediaAssetId: id, provider: img.provider });
-      sseWrite(res, "done", { messageId: id, provider: img.provider, model: "juggernaut" });
     } catch (err) {
       logError("sse", err, { conversationId: body.conversationId });
       sseWrite(res, "error", { message: err instanceof Error ? err.message : "image_failed" });

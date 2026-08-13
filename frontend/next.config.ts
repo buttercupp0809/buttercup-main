@@ -52,6 +52,10 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   transpilePackages: ["@buttercupp/database", "@buttercupp/shared"],
+  // sharp is a native module (used by lib/media-blur.ts for server-side
+  // paywall blurring). Keep it external so Next never tries to bundle the
+  // platform-specific binary.
+  serverExternalPackages: ["sharp"],
   // Monorepo: the build runs from frontend/ but @buttercupp/* and the Prisma
   // engine live one level up. Tracing from the repo root ensures those files
   // are bundled into the serverless output on Vercel (and silences Next's

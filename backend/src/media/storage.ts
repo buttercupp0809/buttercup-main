@@ -100,6 +100,40 @@ export function isStorageConfigured(): boolean {
   );
 }
 
+// Lighter guard: true when S3 can accept uploads, even without CloudFront.
+// Use this to decide whether to persist generated images. URL signing falls
+// back to S3 presigned URLs when CloudFront is absent.
+export function canUploadToS3(): boolean {
+  return Boolean(process.env.POPPY_S3_BUCKET_GENERATED ?? process.env.S3_BUCKET);
+}
+
+// Like getSignedUrl but uses POPPY_S3_BUCKET_GENERATED as the S3 fallback
+// bucket, so generated images are read from the right bucket even without
+// CloudFront configured.
+export async function getGeneratedSignedUrl(s3Key: string, ttlSeconds = 15 * 60): Promise<string> {
+  const deps = loadS3();
+  if (!deps) throw new Error("aws sdk not installed");
+
+  const cfBase = process.env.CLOUDFRONT_URL;
+  const cfKeyId = process.env.CLOUDFRONT_KEY_PAIR_ID;
+  const cfKey = process.env.CLOUDFRONT_PRIVATE_KEY;
+  if (cfBase && cfKeyId && cfKey && deps.getCloudFrontSignedUrl) {
+    const url = `${cfBase.replace(/\/$/, "")}/${s3Key}`;
+    return deps.getCloudFrontSignedUrl({
+      url,
+      keyPairId: cfKeyId,
+      privateKey: cfKey.replace(/\\n/g, "\n"),
+      dateLessThan: new Date(Date.now() + ttlSeconds * 1000).toISOString(),
+    });
+  }
+
+  const bucket = process.env.POPPY_S3_BUCKET_GENERATED ?? process.env.S3_BUCKET;
+  if (!bucket) throw new Error("POPPY_S3_BUCKET_GENERATED not configured");
+  const GetCtor = deps.GetObjectCommand as new (args: Record<string, unknown>) => unknown;
+  const cmd = new GetCtor({ Bucket: bucket, Key: s3Key });
+  return deps.getSignedUrl(deps.client, cmd, { expiresIn: ttlSeconds });
+}
+
 // Uploads to the generated-assets bucket (POPPY_S3_BUCKET_GENERATED or S3_BUCKET fallback).
 // Returns the s3Key. Throws if neither bucket env var is set.
 export async function uploadGenerated(buffer: Buffer, ctx: UploadContext): Promise<string> {

@@ -11,8 +11,9 @@ import { WebSocketServer, type WebSocket } from "ws";
 import { jwtVerify } from "jose";
 import { wsClientEventSchema, type WSClientEvent, type WSServerEvent } from "@buttercupp/shared";
 import { runChatTurn } from "../chat/engine";
-import { generateChatImage } from "../chat/image-turn";
+import { generateChatImage, generateImageTeaser } from "../chat/image-turn";
 import { isImageRequest } from "../media/image/decision";
+import { prisma } from "@buttercupp/database";
 import { assertCanChat, recordChatConsumption, PaywallError, type PaywallInfo } from "../subscription/enforce";
 import { writeAuditLog } from "../utils/audit";
 import { createWorkerConnection } from "../queue/connection";
@@ -159,26 +160,98 @@ export function attachWsGateway(httpServer: HttpServer): WebSocketServer {
           }
 
           // Image request: take the user's text as the prompt and generate an
-          // image through Juggernaut (ComfyUI), delivered inline as a data URL.
-          // No text turn, no chat quota - it is its own kind of reply.
+          // image through Juggernaut (ComfyUI). Flow:
+          //   1. Save user message to DB
+          //   2. Get in-character teaser from Steno (streamed as tokens)
+          //   3. Send chat.done with model="image-pending" to signal loading state
+          //   4. Generate the image
+          //   5. Save assistant image message to DB
+          //   6. Send media.ready with the result
           if (isImageRequest(parsed.text)) {
             logInfo("ws", `image request conv=${parsed.conversationId}`, { userId: session.userId });
             try {
-              const img = await generateChatImage(parsed.text, parsed.conversationId, session.userId);
-              const id = img.mediaAssetId ?? `img-${Date.now()}`;
-              send(ws, {
-                type: "media.ready",
-                conversationId: parsed.conversationId,
-                mediaAssetId: id,
-                url: img.url,
-                kind: "image",
+              // 1. Save user message
+              await prisma.message.create({
+                data: {
+                  conversationId: parsed.conversationId,
+                  role: "user",
+                  content: parsed.text,
+                },
               });
+
+              // 2. Look up character name for teaser
+              const convRow = await prisma.conversation.findUnique({
+                where: { id: parsed.conversationId },
+                select: { character: { select: { name: true } } },
+              });
+              const characterName = convRow?.character?.name ?? "companion";
+
+              // 3. Get in-character teaser from Steno and stream it as tokens
+              const teaser = await generateImageTeaser(characterName, parsed.text);
+              send(ws, { type: "chat.token", conversationId: parsed.conversationId, delta: teaser });
+
+              // 4. Save teaser as assistant message
+              const teaserMsg = await prisma.message.create({
+                data: {
+                  conversationId: parsed.conversationId,
+                  role: "assistant",
+                  content: teaser,
+                },
+              });
+
+              // 5. Signal that an image is being generated (frontend shows skeleton)
               send(ws, {
                 type: "chat.done",
                 conversationId: parsed.conversationId,
-                messageId: id,
-                provider: img.provider,
-                model: "juggernaut",
+                messageId: teaserMsg.id,
+                provider: "stheno",
+                model: "image-pending",
+              });
+
+              // 6. Generate the image
+              const img = await generateChatImage(parsed.text, parsed.conversationId, session.userId);
+
+              // 7. Save assistant image message so it persists across page reloads.
+              //    Production: use MediaAsset ID as the message PK and link via
+              //    mediaAssetId so the page can sign the S3 URL on reload.
+              //    Local dev (no S3): store the data URL in content directly so
+              //    the message still persists (it won't look great in DB but it
+              //    works until S3 is wired up).
+              const imgMsgId = img.mediaAssetId ?? `img-${Date.now()}`;
+              if (img.mediaAssetId) {
+                await prisma.message.create({
+                  data: {
+                    id: img.mediaAssetId,
+                    conversationId: parsed.conversationId,
+                    role: "assistant",
+                    content: "",
+                    mediaAssetId: img.mediaAssetId,
+                  },
+                });
+              } else {
+                await prisma.message.create({
+                  data: {
+                    id: imgMsgId,
+                    conversationId: parsed.conversationId,
+                    role: "assistant",
+                    content: img.url,
+                  },
+                });
+              }
+
+              // 8. Update conversation timestamp
+              await prisma.conversation.update({
+                where: { id: parsed.conversationId },
+                data: { lastMessageAt: new Date() },
+              });
+
+              // 9. Deliver image to the client
+              send(ws, {
+                type: "media.ready",
+                conversationId: parsed.conversationId,
+                mediaAssetId: imgMsgId,
+                url: img.url,
+                kind: "image",
               });
             } catch (err) {
               const msg = err instanceof Error ? err.message : "image_failed";

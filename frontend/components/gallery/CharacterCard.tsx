@@ -88,13 +88,6 @@ export function CharacterCard({
         title={dotLabel}
         className={cn("absolute left-3 top-3 h-2.5 w-2.5 rounded-full shadow ring-2 ring-black/40", dotClass)}
       />
-      <span
-        aria-label={`Rating: ${character.contentRating}`}
-        className="absolute right-3 top-3 rounded-full bg-black/55 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white/95 backdrop-blur"
-      >
-        {character.contentRating}
-      </span>
-
       {gated ? (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-slate-900/55 text-center text-white">
           <span className="rounded-full bg-black/60 px-3 py-1 text-xs font-medium">

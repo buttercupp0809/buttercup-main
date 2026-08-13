@@ -3,6 +3,7 @@
 // Never throws: returns [] on an empty/unreachable DB so the section hides.
 
 import { prisma } from "@buttercupp/database";
+import { signAssetUrl } from "@/lib/cdn";
 import { pickPersonaImage } from "@/lib/persona-images";
 
 export interface PublicReel {
@@ -10,7 +11,7 @@ export interface PublicReel {
   src: string;
   name: string;
   location: string;
-  avatar: string;
+  avatar: string; // signed URL or "" when unavailable
   characterId: string;
 }
 
@@ -37,7 +38,12 @@ export async function getPublicReels(limit = 12): Promise<PublicReel[]> {
       src: v.url,
       name: v.character.name,
       location: v.character.location ?? "",
-      avatar: v.character.media[0]?.url ?? pickPersonaImage(v.characterId),
+      avatar: (() => {
+        const u = v.character.media[0]?.url ?? pickPersonaImage(v.characterId);
+        if (!u) return "";
+        if (u.startsWith("/") || u.startsWith("http")) return u;
+        return signAssetUrl(u);
+      })(),
       characterId: v.characterId,
     }));
   } catch {

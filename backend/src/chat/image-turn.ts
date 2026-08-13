@@ -15,8 +15,8 @@ import { generateImage, generateWithComfyUIConsistent } from "../media/image/pro
 import { SAFETY_NEGATIVE } from "../media/image/constants";
 import { IMAGE_ENRICHMENT_FILLS } from "../media/image/enrichment-fills";
 import { toWebP } from "../media/image/convert";
-import { logWarn } from "../utils/log";
-import { uploadGenerated, isStorageConfigured, getSignedUrl } from "../media/storage";
+import { logInfo, logWarn } from "../utils/log";
+import { uploadGenerated, canUploadToS3, getGeneratedSignedUrl, getSignedUrl } from "../media/storage";
 import { createReadyAsset } from "../media/asset";
 import { resolvePoppyBaseUrl } from "../inference/poppyEndpoint";
 
@@ -82,7 +82,17 @@ async function resolveCharacterReferenceBytes(characterId: string): Promise<Buff
       const publicDir = process.env.POPPY_PUBLIC_DIR ?? path.resolve(process.cwd(), "../frontend/public");
       return await readFile(path.join(publicDir, url));
     }
-    return null;
+    // Bare S3 key. Route to the correct bucket by prefix, matching the frontend
+    // /api/media proxy: "images/" keys live in the generated bucket
+    // (POPPY_S3_BUCKET_GENERATED, where the persona pipeline wrote them), all
+    // other keys live in the character-media bucket (S3_BUCKET). Signing against
+    // the wrong bucket 404s, which used to silently drop face consistency.
+    const signed = url.startsWith("images/")
+      ? await getGeneratedSignedUrl(url, 60)
+      : await getSignedUrl(url, 60);
+    const r = await fetch(signed);
+    if (!r.ok) return null;
+    return Buffer.from(await r.arrayBuffer());
   } catch (err) {
     logWarn("chat-image", `reference resolve failed: ${err instanceof Error ? err.message : String(err)}`);
     return null;
@@ -121,6 +131,41 @@ async function enrichImagePrompt(rawPrompt: string): Promise<string> {
   }
 }
 
+// Ask Steno for a short in-character message the character sends while the image
+// is being generated. Returns a safe fallback on any failure so the caller
+// never has to handle errors.
+export async function generateImageTeaser(
+  characterName: string,
+  userPrompt: string,
+): Promise<string> {
+  try {
+    const base = await resolvePoppyBaseUrl("stheno");
+    const res = await fetch(`${base}/v1/chat/completions`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        model: "stheno",
+        messages: [
+          {
+            role: "system",
+            content: `You are ${characterName}. The user has requested a photo of you. Write a short, playful, in-character response (1-2 sentences) to let them know their photo is on its way. Be flirtatious and stay fully in character. No hashtags, no emojis, no stage directions.`,
+          },
+          { role: "user", content: userPrompt },
+        ],
+        max_tokens: 70,
+        temperature: 0.9,
+        stream: false,
+      }),
+      signal: AbortSignal.timeout(10_000),
+    });
+    if (!res.ok) return `Give me just a moment to get that perfect shot ready for you...`;
+    const data = (await res.json()) as { choices?: { message?: { content?: string } }[] };
+    return data.choices?.[0]?.message?.content?.trim() || `Give me just a moment to get that perfect shot ready for you...`;
+  } catch {
+    return `Give me just a moment to get that perfect shot ready for you...`;
+  }
+}
+
 // Generate an image from the user's chat text. When conversationId maps to a
 // character with a reference image, the exact face is locked in (consistent);
 // otherwise a plain scene is generated.
@@ -142,6 +187,11 @@ export async function generateChatImage(
     if (conv?.characterId) {
       characterId = conv.characterId;
       referenceBytes = await resolveCharacterReferenceBytes(conv.characterId);
+      if (referenceBytes) {
+        logInfo("chat-image", `reference resolved (${referenceBytes.length} bytes) char=${characterId}: consistent face path`);
+      } else {
+        logWarn("chat-image", `no reference bytes for char=${characterId}: falling back to faceless txt2img (no character consistency)`);
+      }
     }
   }
 
@@ -152,7 +202,7 @@ export async function generateChatImage(
     seed?: number,
   ): Promise<ChatImageResult> {
     const { buffer, contentType } = await toWebP(rawBuffer);
-    if (userId && isStorageConfigured()) {
+    if (userId && canUploadToS3()) {
       const s3Key = await uploadGenerated(buffer, {
         userId,
         kind: "image",
@@ -173,11 +223,13 @@ export async function generateChatImage(
             kind: "image",
             url: s3Key,
             isPrimary: false,
-            sort: Date.now(),
+            // Seconds (not ms) so the value fits INT4; still monotonically
+            // increasing, so generated images sort to the end of the gallery.
+            sort: Math.floor(Date.now() / 1000),
           },
         });
       }
-      const signedUrl = await getSignedUrl(s3Key, 48 * 3600);
+      const signedUrl = await getGeneratedSignedUrl(s3Key, 48 * 3600);
       return { url: signedUrl, mediaAssetId: asset.id, provider, consistent, seed };
     }
     // Local dev fallback: return base64 data URL, nothing persisted.

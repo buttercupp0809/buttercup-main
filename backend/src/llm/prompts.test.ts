@@ -62,7 +62,7 @@ describe("buildPromptLayers", () => {
 
   it("includes the asterisk gesture-format instruction before the adults-only line", () => {
     const out = buildPromptLayers(CTX);
-    const gestureIdx = out.indexOf("*asterisks*");
+    const gestureIdx = out.indexOf("single asterisks");
     const adultsIdx = out.indexOf("18 or older");
     expect(gestureIdx).toBeGreaterThan(-1);
     expect(adultsIdx).toBeGreaterThan(gestureIdx);
@@ -87,7 +87,7 @@ describe("buildPromptLayers", () => {
       out.indexOf("# Backstory"),
       out.indexOf("# How you behave"),
       out.indexOf("# Relationship"),
-      out.indexOf("*asterisks*"),
+      out.indexOf("single asterisks"),
       out.indexOf("18 or older"),
     ];
     for (let i = 1; i < positions.length; i++) {

@@ -58,6 +58,7 @@ export function ChatWindow({
   // terminal transport event so a subsequent turn re-shows dots.
   const [firstTokenSeen, setFirstTokenSeen] = React.useState(false);
   const [paywall, setPaywall] = React.useState<PaywallState | null>(null);
+  const [imageGenerating, setImageGenerating] = React.useState(false);
   const [input, setInput] = React.useState("");
   const scrollAreaRef = React.useRef<HTMLDivElement | null>(null);
   const transportRef = React.useRef<ReturnType<typeof createChatTransport> | null>(null);
@@ -104,8 +105,26 @@ export function ChatWindow({
         streamedRef.current = "";
         setStreaming("");
         setFirstTokenSeen(false);
+      } else if (evt.type === "image_generating") {
+        // Teaser is complete. Finalize it as a real message, clear streaming
+        // state, then show the loading skeleton while the image generates.
+        const text = streamedRef.current;
+        streamedRef.current = "";
+        setStreaming("");
+        setFirstTokenSeen(false);
+        if (text.length > 0) {
+          setMessages((ms) =>
+            ms.some((m) => m.id === evt.messageId)
+              ? ms
+              : [...ms, { id: evt.messageId, role: "assistant", content: text, createdAt: new Date().toISOString() }],
+          );
+        }
+        // Keep pending=true: block input while image is in flight.
+        setImageGenerating(true);
       } else if (evt.type === "image") {
-        // Generated image arrives as a data URL; render it as an assistant bubble.
+        setImageGenerating(false);
+        setPending(false);
+        setFirstTokenSeen(false);
         setMessages((ms) =>
           ms.some((m) => m.id === evt.mediaAssetId)
             ? ms
@@ -122,6 +141,7 @@ export function ChatWindow({
         );
       } else if (evt.type === "error") {
         setPending(false);
+        setImageGenerating(false);
         streamedRef.current = "";
         setStreaming("");
         setFirstTokenSeen(false);
@@ -227,7 +247,10 @@ export function ChatWindow({
           ),
         )}
         {streaming ? <MessageBubble role="assistant" content={streaming} streaming /> : null}
-        {pending && !firstTokenSeen ? <TypingDots /> : null}
+        {/* Hide the typing dots while the image skeleton is up: the skeleton is
+            the loading indicator in that phase, so the pill would be redundant. */}
+        {pending && !firstTokenSeen && !imageGenerating ? <TypingDots /> : null}
+        {imageGenerating ? <GeneratingImageSkeleton /> : null}
         {safety ? (
           <div className="rounded-md border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-200">
             <p className="mb-2">{safety.message}</p>
@@ -387,6 +410,65 @@ function MessageBubble({
           <GestureText content={content} />
         )}
         {streaming ? <span className="ml-1 inline-block animate-pulse">|</span> : null}
+      </div>
+    </div>
+  );
+}
+
+function GeneratingImageSkeleton() {
+  return (
+    <div className="flex justify-start" data-testid="image-generating-skeleton">
+      <div
+        className="flex flex-col gap-2 overflow-hidden rounded-2xl"
+        style={{
+          width: "200px",
+          aspectRatio: "9 / 16",
+          background: "linear-gradient(135deg, hsl(var(--buttercupp-surface-2)), hsl(var(--buttercupp-surface)))",
+          border: "1px solid hsl(var(--buttercupp-border))",
+        }}
+      >
+        {/* Shimmer overlay */}
+        <div
+          className="absolute inset-0 animate-pulse"
+          style={{
+            background: "linear-gradient(90deg, transparent 0%, hsl(var(--buttercupp-accent-rose) / 0.08) 50%, transparent 100%)",
+          }}
+        />
+        <div className="relative flex h-full flex-col items-center justify-center gap-3 p-4 text-center">
+          {/* Pulsing camera icon */}
+          <div
+            className="flex h-12 w-12 animate-pulse items-center justify-center rounded-2xl"
+            style={{
+              background: "linear-gradient(135deg, hsl(var(--buttercupp-accent-rose) / 0.25), hsl(var(--buttercupp-accent-violet) / 0.25))",
+            }}
+          >
+            <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--buttercupp-accent-rose))" strokeWidth="1.8">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+              <circle cx="12" cy="13" r="4" />
+            </svg>
+          </div>
+          <div>
+            <p className="text-xs font-medium" style={{ color: "hsl(var(--buttercupp-fg))" }}>
+              Generating your photo
+            </p>
+            <p className="mt-1 text-[10px]" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+              This may take a moment...
+            </p>
+          </div>
+          {/* Animated progress dots */}
+          <div className="flex gap-1.5">
+            {[0, 1, 2].map((i) => (
+              <div
+                key={i}
+                className="h-1.5 w-1.5 animate-bounce rounded-full"
+                style={{
+                  backgroundColor: "hsl(var(--buttercupp-accent-rose))",
+                  animationDelay: `${i * 0.2}s`,
+                }}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

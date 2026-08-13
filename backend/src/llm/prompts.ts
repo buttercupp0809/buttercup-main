@@ -74,8 +74,17 @@ export function buildPromptLayers(ctx: PromptContext): string {
   }
 
   // Formatting so the UI gesture parser keeps rendering *actions* in italics.
+  // The instruction is deliberately explicit and example-driven: weaker
+  // phrasing made the model emit plain prose with no asterisks, so the UI had
+  // nothing to style.
   parts.push(
-    `Write in ${cv.name}'s own voice. Put physical actions and expressions in *asterisks*.`,
+    `# Formatting (required)\n` +
+      `Write in ${cv.name}'s own voice, blending spoken words with physical action beats.\n` +
+      `Wrap every physical action, movement, gesture, and facial expression in single asterisks, ` +
+      `for example: *leans in closer*, *tucks a strand of hair behind her ear*, *smiles softly*, *bites her lip*.\n` +
+      `Keep spoken dialogue as plain text (no asterisks around speech).\n` +
+      `Weave two or three of these action beats naturally through each reply, not just one at the end. ` +
+      `Do not use markdown bold, headings, or bullet points.`,
   );
 
   parts.push(`(${ADULTS_ONLY})`);

@@ -7,6 +7,7 @@ import { PersonaPanel, type PanelMedia } from "@/components/chat/PersonaPanel";
 import { getRelationship } from "@/lib/relationship";
 import { listConversations } from "@/lib/chats";
 import { signAssetUrl } from "@/lib/cdn";
+import { blurMany } from "@/lib/media-blur";
 
 export const dynamic = "force-dynamic";
 
@@ -50,12 +51,20 @@ export default async function ChatPage({
     where: { conversationId: conv.id },
     orderBy: { createdAt: "desc" },
     take: 50,
+    include: { mediaAsset: { select: { s3Key: true } } },
   });
   const initialMessages = historyRows.reverse().map((m) => ({
     id: m.id,
     role: m.role,
     content: m.content,
     createdAt: m.createdAt.toISOString(),
+    // Production: sign the S3 key from the linked MediaAsset.
+    // Local dev fallback: if content is a data URL (no S3), use it directly.
+    imageUrl: m.mediaAsset?.s3Key
+      ? signAssetUrl(m.mediaAsset.s3Key)
+      : m.content.startsWith("data:")
+        ? m.content
+        : undefined,
   }));
 
   const [relationship, conversations] = await Promise.all([
@@ -77,6 +86,10 @@ export default async function ChatPage({
     .map((m) => ({ kind: "video" as const, url: m.url }));
   const avatarUrl = carouselImages[0] ?? null;
 
+  // Pre-blur gallery images server-side so locked persona-panel tiles never
+  // expose a real URL. Index 0 (primary) is free; the rest render blurred.
+  const imageBlurs = carouselImages.length > 1 ? await blurMany(carouselImages) : [];
+
   return (
     <div className="flex h-full overflow-hidden">
       <ChatList conversations={conversations} activeCharacterId={characterId} />
@@ -97,6 +110,7 @@ export default async function ChatPage({
         description={character.bio}
         location={character.location}
         images={carouselImages}
+        imageBlurs={imageBlurs}
         assets={assets}
       />
     </div>

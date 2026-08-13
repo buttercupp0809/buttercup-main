@@ -5,8 +5,8 @@ import { getRelationship } from "@/lib/relationship";
 import { ChatCTA, type ChatCTAState } from "@/components/gallery/ChatCTA";
 import { AffectionMeter } from "@/components/relationship/AffectionMeter";
 import { GalleryPaywall } from "@/components/gallery/GalleryPaywall";
+import { blurMany } from "@/lib/media-blur";
 import { taglineFrom } from "@/lib/marketing";
-import { cn } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -34,6 +34,11 @@ export default async function CharacterDetailPage({
     viewer.id && !gated ? await getRelationship(viewer.id, detail.id) : null;
 
   const tagline = taglineFrom(detail.bio, 140);
+
+  // Pre-blur every gallery image server-side. Locked tiles (index >= 1) render
+  // these worthless thumbnails so the real S3 URL never reaches the browser.
+  const galleryBlurs =
+    detail.galleryImages.length > 0 && !gated ? await blurMany(detail.galleryImages) : [];
 
   return (
     <section
@@ -77,14 +82,19 @@ export default async function CharacterDetailPage({
                   backgroundColor: "hsl(var(--buttercupp-surface-2))",
                 }}
               >
-                {detail.avatarUrl ? (
+                {gated ? (
+                  /* Gated: NO img element, real URL never hits the DOM */
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background: "linear-gradient(160deg, hsl(var(--buttercupp-surface-2)) 0%, hsl(var(--buttercupp-surface)) 60%, hsl(var(--buttercupp-bg)) 100%)",
+                    }}
+                  />
+                ) : detail.avatarUrl ? (
                   <img
                     src={detail.avatarUrl}
                     alt={detail.name}
-                    className={cn(
-                      "absolute inset-0 h-full w-full object-cover object-top",
-                      gated && "scale-110 blur-lg",
-                    )}
+                    className="absolute inset-0 h-full w-full object-cover object-top"
                   />
                 ) : (
                   <div
@@ -97,14 +107,6 @@ export default async function CharacterDetailPage({
 
                 {/* Bottom scrim */}
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-
-                {/* Rating badge */}
-                <span
-                  aria-label={`Rating: ${detail.contentRating}`}
-                  className="absolute right-3 top-3 rounded-full bg-black/60 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest text-white/90 backdrop-blur-sm"
-                >
-                  {detail.contentRating}
-                </span>
 
                 {/* Name + tagline overlay */}
                 <div className="absolute inset-x-4 bottom-5 flex flex-col gap-1.5 text-white">
@@ -148,7 +150,7 @@ export default async function CharacterDetailPage({
 
             {/* Meta pills */}
             <div className="flex flex-wrap items-center gap-2">
-              {[detail.creatorLabel, detail.contentRating, detail.style].map((v, i) => (
+              {[detail.creatorLabel, detail.style].map((v, i) => (
                 <span
                   key={i}
                   className="rounded-full px-3 py-1 text-[11px] font-medium uppercase tracking-widest"
@@ -209,7 +211,7 @@ export default async function CharacterDetailPage({
               <div>
                 <SectionLabel>Photos</SectionLabel>
                 <div className="mt-3">
-                  <GalleryPaywall images={detail.galleryImages} characterName={detail.name} />
+                  <GalleryPaywall images={detail.galleryImages} blurs={galleryBlurs} characterName={detail.name} />
                 </div>
               </div>
             )}

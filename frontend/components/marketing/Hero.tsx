@@ -49,16 +49,6 @@ export function Hero({ items, viewerAllowsMature }: HeroProps) {
   return (
     <section className="relative overflow-hidden pb-20 pt-16">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-6 text-center">
-        <span
-          className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium text-white backdrop-blur"
-          style={{
-            background: "hsl(240 12% 13% / 0.8)",
-            border: "1px solid hsl(344 84% 71% / 0.4)",
-          }}
-        >
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-          Unfiltered companions. 18+ only.
-        </span>
         <h1 className="max-w-3xl text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-6xl">
           Meet the{" "}
           <span
@@ -147,12 +137,12 @@ export function Hero({ items, viewerAllowsMature }: HeroProps) {
                     style={
                       i === active
                         ? {
-                            background: "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
-                          }
+                          background: "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+                        }
                         : {
-                            background: "transparent",
-                            border: "1px solid hsl(240 10% 18%)",
-                          }
+                          background: "transparent",
+                          border: "1px solid hsl(240 10% 18%)",
+                        }
                     }
                     className={i === active ? "h-2 w-6 rounded-full" : "h-2 w-2 rounded-full"}
                     aria-label={`Go to slide ${i + 1}`}

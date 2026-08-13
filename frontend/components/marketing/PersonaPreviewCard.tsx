@@ -44,9 +44,6 @@ export function PersonaPreviewCard({ character, viewerAllowsMature, priority }: 
         aria-hidden
         className="absolute right-3 top-3 h-2.5 w-2.5 rounded-full bg-emerald-400 shadow ring-2 ring-black/30"
       />
-      <div className="absolute left-3 top-3 rounded-full bg-black/50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white/90 backdrop-blur">
-        {character.contentRating}
-      </div>
       {gated ? (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-slate-900/60 text-center text-white">
           <span className="rounded-full bg-black/60 px-3 py-1 text-xs font-medium">

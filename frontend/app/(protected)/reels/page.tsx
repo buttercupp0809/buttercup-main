@@ -2,6 +2,7 @@ import { prisma } from "@buttercupp/database";
 import { requireAuth, getCurrentUser } from "@/lib/auth";
 import { REELS } from "@/lib/reels/manifest";
 import { ReelScroller, type ReelItem } from "@/components/reels/ReelScroller";
+import { signAssetUrl } from "@/lib/cdn";
 
 export const dynamic = "force-dynamic";
 
@@ -33,7 +34,12 @@ async function dbReels(userId: string | null): Promise<ReelItem[]> {
     src: v.url,
     name: v.character.name,
     location: v.character.location ?? "",
-    avatar: (() => { const u = v.character.media[0]?.url; return (u && u.startsWith("http")) ? u : null; })(),
+    avatar: (() => {
+      const u = v.character.media[0]?.url;
+      if (!u) return null;
+      if (u.startsWith("/") || u.startsWith("http")) return u; // public path or absolute URL
+      return signAssetUrl(u); // bare S3 key: signAssetUrl proxies via /api/media when CDN not set
+    })(),
     chatHref: `/chat/${v.characterId}`,
     likes: v.likesBase + (countMap.get(v.id) ?? 0),
     liked: likedSet.has(v.id),
@@ -63,7 +69,7 @@ async function manifestReels(userId: string | null): Promise<ReelItem[]> {
     src: r.src,
     name: r.name,
     location: r.location,
-    avatar: r.avatar.startsWith("http") ? r.avatar : null,
+    avatar: r.avatar || null,
     chatHref: nameToId.get(r.characterName) ? `/chat/${nameToId.get(r.characterName)}` : "/discover",
     likes: r.baseLikes + (countMap.get(r.id) ?? 0),
     liked: likedSet.has(r.id),

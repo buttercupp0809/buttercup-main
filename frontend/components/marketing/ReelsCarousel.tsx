@@ -95,7 +95,13 @@ function ReelCard({ reel }: { reel: PublicReel }) {
       />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 flex items-center gap-2 p-3 text-white">
-        <img src={reel.avatar} alt={reel.name} className="h-8 w-8 shrink-0 rounded-full object-cover ring-2 ring-white/70" />
+        {reel.avatar ? (
+          <img src={reel.avatar} alt={reel.name} className="h-8 w-8 shrink-0 rounded-full object-cover ring-2 ring-white/70" />
+        ) : (
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/20 ring-2 ring-white/70 text-xs font-bold text-white">
+            {reel.name[0]?.toUpperCase()}
+          </div>
+        )}
         <div className="min-w-0">
           <div className="truncate text-sm font-semibold drop-shadow">{reel.name}</div>
           {reel.location ? (
