@@ -1,0 +1,33 @@
+{
+  "persona_id": "107_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/107.webp",
+  "main_image_sha256": "1f3508fc57734a60afd63487e6fb70162f8f210ab57d0ee58047babec64a099d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:23:45Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A dimly lit back alley in Dublin's Temple Bar district; Lyra leans against a brick wall, her leather corset and fishnet stockings a provocative contrast to the rough, urban setting. The moon casts long shadows across her face as she smirks, one hand resting on her hip, the other trailing down to the edge of her thong. The camera lingers on the curves of her body, the play of light and shadow accentuating her sensual pose in this seedy, forbidden corner of the city.",
+      "seed": 1724819841,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/81d5eebd-bd93-4419-8ae2-f86552042fea.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/107.webp",
+      "status": "ok",
+      "bytes": 2122485
+    }
+  ]
+}

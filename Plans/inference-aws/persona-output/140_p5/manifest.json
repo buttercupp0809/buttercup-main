@@ -1,0 +1,33 @@
+{
+  "persona_id": "140_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/140.webp",
+  "main_image_sha256": "50df5b28b5fcfc2f321ca7d34ad87582ec3a630635073a81a731861fc90368ec",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:36:16Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a steamed-up bathroom, Clara stands under the showerhead, water cascading over her body as she looks directly at the camera, a strand of suds clinging to her pert nipple, the soft focus and deep shadows emphasizing the curves of her body and the intimate setting.",
+      "seed": 805085109,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/7bf462be-7168-4f45-bb97-3afd7bb082c0.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/140.webp",
+      "status": "ok",
+      "bytes": 1458231
+    }
+  ]
+}

@@ -10,6 +10,7 @@ import {
   Compass,
   Clapperboard,
   Sparkles,
+  Gem,
   User as UserIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -22,6 +23,7 @@ const ICONS: Record<NavIcon, React.ComponentType<{ className?: string }>> = {
   discover: Compass,
   reels: Clapperboard,
   create: Sparkles,
+  billing: Gem,
   settings: UserIcon,
 };
 
@@ -134,7 +136,7 @@ export function MobileNav({ user, recents }: DrawerProps) {
                           style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))" }}
                         >
                           {r.avatarUrl ? (
-                            <img src={r.avatarUrl} alt={r.characterName} className="h-full w-full object-cover" />
+                            <img src={r.avatarUrl} alt={r.characterName} className="h-full w-full object-cover object-top" />
                           ) : (
                             <div className="flex h-full w-full items-center justify-center text-[10px] font-semibold">
                               {r.characterName[0]?.toUpperCase()}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "129_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/129.webp",
+  "main_image_sha256": "498bb52979abeaedc729ed1d9dcf261e725a63de790e5e77ed81abafc6a166fa",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:12:01Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Early morning in Hazel's studio apartment, natural light filters through the curtains, illuminating her nude form as she stands by the window, lost in thought. Her back is arched, her hands resting on her hips, drawing attention to her toned stomach and the gentle swell of her breasts. A single ray of light dances across her skin, accentuating the subtle freckles and curves of her body.",
+      "seed": 721766511,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/2781aeee-7430-41f4-a702-747ba9271501.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/129.webp",
+      "status": "ok",
+      "bytes": 1088795
+    }
+  ]
+}

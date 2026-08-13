@@ -1,0 +1,33 @@
+{
+  "persona_id": "141_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/141.webp",
+  "main_image_sha256": "18d6967196fbc42b30af5754fbb089823f431539cfc9a5a7f889531df52945b2",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:38:25Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On a deserted beach at dawn, Ruby kneels in the sand, looking back over her shoulder at the rising sun. Wearing a tiny string bikini and a sheer cover-up, her wind-blown, tousled hair frames her face as she smirks at the camera. The warm, golden light of the early morning and the expansive, empty beachscape emphasize her striking figure and the sense of freedom and adventure in her expression.",
+      "seed": 1666988442,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/51da8e3a-bb71-4b5f-bc30-fe09dcf84e21.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/141.webp",
+      "status": "ok",
+      "bytes": 1383271
+    }
+  ]
+}

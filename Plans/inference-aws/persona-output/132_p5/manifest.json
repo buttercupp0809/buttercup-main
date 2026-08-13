@@ -1,0 +1,33 @@
+{
+  "persona_id": "132_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/132.webp",
+  "main_image_sha256": "b461cd614a12b35a1a5b00c951deeb8364b6ae2bede5675e395d98181dbc7bde",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:19:10Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit alleyway, Marlowe leans against a brick wall, her long coat open to reveal a lacy red bralette and a thong, the city lights casting shadows on her pale skin as she looks back over her shoulder with a coy, inviting smile, her gaze challenging the camera.",
+      "seed": 1742852614,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/aac281b3-5192-4a2d-8352-ced5b16527d2.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/132.webp",
+      "status": "ok",
+      "bytes": 1682185
+    }
+  ]
+}

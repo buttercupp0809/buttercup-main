@@ -1,0 +1,33 @@
+{
+  "persona_id": "77_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/77.webp",
+  "main_image_sha256": "bfb2229d6e9bf93caadee15b4fddbf0b3a695c5e70ba0587d39cad8a0b977b33",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:18:52Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Clio playfully explores an ancient Greek amphitheater at sunset, her sundress fluttering in the breeze as she leaps with joy, the warm light casting long shadows behind her.",
+      "seed": 966550160,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/8bb34715-2f4f-4b83-a390-0a39f6b28527.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/77.webp",
+      "status": "ok",
+      "bytes": 1462301
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "24_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/24.webp",
+  "main_image_sha256": "d0cf23a4a23b09c7b69117b3813796218f9b250b850f180aa7f727880f24c39c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T23:24:21Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Remi stands under a steaming showerhead, water cascading over her voluptuous body in a luxurious, intimate scene. Suds cling to her curves, highlighting the contours of her breasts and hips. The camera's shallow focus centers on Remi's face, her eyes closed in bliss as rivulets of water trickle down her neck and between her breasts. A hint of her nipples peeks through the soapy film, adding a touch of provocative allure.",
+      "seed": 261412614,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/b43d0629-f4c2-4fc7-8817-2a5c9fbc9207.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/24.webp",
+      "status": "ok",
+      "bytes": 1209664
+    }
+  ]
+}

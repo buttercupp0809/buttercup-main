@@ -1,0 +1,33 @@
+{
+  "persona_id": "44_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/44.webp",
+  "main_image_sha256": "d5ed4c1d12260111758c16863aeb70c80e8ce088438b91f00b031198cbc10fea",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:10:12Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Leaning against a weathered brick wall in a shadowy alley, Hazel wears a skimpy leather corset and fishnet stockings, her thong-clad derri\u00e8re on full display as she looks back over her shoulder, her full lips parted in a coy smile, the neon signs of a seedy bar flickering in the background, a sense of danger and allure emanating from her provocative pose.",
+      "seed": 214882361,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/daafb9ac-6334-4caf-91f5-9b6bdfcc8c6e.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/44.webp",
+      "status": "ok",
+      "bytes": 2042338
+    }
+  ]
+}

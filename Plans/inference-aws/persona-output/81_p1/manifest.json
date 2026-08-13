@@ -1,0 +1,33 @@
+{
+  "persona_id": "81_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/81.webp",
+  "main_image_sha256": "93d713739c2f6c231a3e909db4649fd04c8c3cc22894453c04f71297457b8c62",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:27:18Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A DSLR camera captures Magnolia in the warm glow of golden hour, walking hand-in-hand with a loved one through the picturesque gardens of a historic Charleston estate, her elegant tea dress fluttering in the breeze as she beams with joy.",
+      "seed": 1447219285,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/64079a1e-7a99-4880-9c0e-d75fa3774bb9.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/81.webp",
+      "status": "ok",
+      "bytes": 1579587
+    }
+  ]
+}

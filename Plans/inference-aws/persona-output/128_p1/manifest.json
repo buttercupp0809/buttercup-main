@@ -1,0 +1,33 @@
+{
+  "persona_id": "128_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/128.webp",
+  "main_image_sha256": "e23a0194378c1f2f5f365a63538d2b3a335160b24f21c9c030db05206d865401",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:09:04Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Phoebe stands in a vibrant New Orleans courtyard, bathed in warm golden hour light, her face beaming with joy as she twirls a colorful parasol. A flowy sundress in shades of turquoise and yellow sways around her hips, cinched at the waist with a wide leather belt. The DSLR captures her carefree spirit against a backdrop of lush greenery and weathered brick.",
+      "seed": 47792290,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/0f8b3132-9d57-47c7-8be3-a9f6ea85aac5.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/128.webp",
+      "status": "ok",
+      "bytes": 1831154
+    }
+  ]
+}

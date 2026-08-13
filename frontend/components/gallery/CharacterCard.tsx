@@ -44,7 +44,7 @@ export function CharacterCard({
       href={`/characters/${character.id}`}
       data-testid="character-card"
       className={cn(
-        "group relative flex aspect-[4/5] flex-col overflow-hidden rounded-2xl shadow-md ring-1",
+        "group relative flex aspect-[9/16] flex-col overflow-hidden rounded-2xl shadow-md ring-1",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400",
         "motion-safe:transition motion-safe:duration-300 motion-safe:animate-[buttercupp-card-in_400ms_ease-out_both]",
         "motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-xl",
@@ -61,7 +61,7 @@ export function CharacterCard({
           alt={character.name}
           loading={index < 4 ? "eager" : "lazy"}
           className={cn(
-            "absolute inset-0 h-full w-full object-cover",
+            "absolute inset-0 h-full w-full object-cover object-top",
             "motion-safe:transition-transform motion-safe:duration-500",
             "motion-safe:group-hover:scale-105",
             gated && "scale-110 blur-lg",

@@ -1,0 +1,33 @@
+{
+  "persona_id": "111_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/111.webp",
+  "main_image_sha256": "7c01d8d466cf2a072b8c84bc90ab4db52aaa22b2abd469684cd8d512b6e6b485",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:32:47Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Wearing only a sheer, ivory negligee that clings to every curve, Astrid lounges against plush velvet pillows in a dimly lit boudoir, her legs crossed, one high heel dangling from her foot as she gazes at the viewer with a coy, inviting smile, her tousled locks framing her face, the soft focus and warm tones evoking intimacy and desire.",
+      "seed": 1158271151,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/df1e04a2-0c9a-46f8-8bf0-bc591504e726.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/111.webp",
+      "status": "ok",
+      "bytes": 1157587
+    }
+  ]
+}

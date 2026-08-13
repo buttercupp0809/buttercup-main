@@ -1,0 +1,33 @@
+{
+  "persona_id": "143_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/143.webp",
+  "main_image_sha256": "0abaecdd89142775886be22b7f595e49bf756bb94ebf1973d4536c7ce468cc77",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:41:27Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A cozy Dublin pub at dusk, with Hazel leaning against the rustic wooden bar, sipping a whiskey as the soft glow of the setting sun filters through the stained glass windows, casting a warm, inviting light on her profile and the gentle curves of her figure in a fitted dress.",
+      "seed": 1828490654,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/a6afcdbd-047d-4711-b763-2192ee8c24aa.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/143.webp",
+      "status": "ok",
+      "bytes": 1624932
+    }
+  ]
+}

@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { CharacterCardDTO } from "@buttercupp/shared";
-import { Button } from "@/components/ui/button";
 import { PersonaPreviewCard } from "@/components/marketing/PersonaPreviewCard";
 
 const AUTO_ADVANCE_MS = 4500;
@@ -48,26 +47,60 @@ export function Hero({ items, viewerAllowsMature }: HeroProps) {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-white via-sky-50 to-white pb-20 pt-16 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+    <section className="relative overflow-hidden pb-20 pt-16">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-6 text-center">
-        <span className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white/70 px-3 py-1 text-xs font-medium text-slate-700 backdrop-blur dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-200">
+        <span
+          className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium text-white backdrop-blur"
+          style={{
+            background: "hsl(240 12% 13% / 0.8)",
+            border: "1px solid hsl(344 84% 71% / 0.4)",
+          }}
+        >
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-          Unfiltered AI companions. 18+ only.
+          Unfiltered companions. 18+ only.
         </span>
-        <h1 className="max-w-3xl text-balance text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl md:text-6xl dark:text-white">
-          Meet the companion you always wanted to talk to.
+        <h1 className="max-w-3xl text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-6xl">
+          Meet the{" "}
+          <span
+            style={{
+              background: "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
+          >
+            companion
+          </span>{" "}
+          you always wanted to talk to.
         </h1>
-        <p className="max-w-2xl text-pretty text-base text-slate-600 sm:text-lg dark:text-slate-300">
+        <p
+          className="max-w-2xl text-pretty text-base sm:text-lg"
+          style={{ color: "hsl(240 6% 65%)" }}
+        >
           Chat, voice, images, and long-term memory. Pick a persona from our roster or create your own in under a minute.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <Link href="/signup">
-            <Button className="px-6 py-6 text-base">Create your companion</Button>
+            <button
+              className="rounded-lg px-6 py-3 text-base font-semibold text-white transition hover:opacity-90"
+              style={{
+                background: "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+              }}
+            >
+              Create your companion
+            </button>
           </Link>
           <Link href="/gallery">
-            <Button variant="outline" className="px-6 py-6 text-base">
+            <button
+              className="rounded-lg px-6 py-3 text-base font-semibold transition hover:opacity-80"
+              style={{
+                border: "1px solid hsl(344 84% 71% / 0.5)",
+                color: "hsl(344 84% 71%)",
+                background: "transparent",
+              }}
+            >
               Browse
-            </Button>
+            </button>
           </Link>
         </div>
       </div>
@@ -111,11 +144,17 @@ export function Hero({ items, viewerAllowsMature }: HeroProps) {
                     key={i}
                     type="button"
                     onClick={() => clampSet(i)}
-                    className={
+                    style={
                       i === active
-                        ? "h-2 w-6 rounded-full bg-slate-900 dark:bg-white"
-                        : "h-2 w-2 rounded-full bg-slate-300 dark:bg-slate-700"
+                        ? {
+                            background: "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+                          }
+                        : {
+                            background: "transparent",
+                            border: "1px solid hsl(240 10% 18%)",
+                          }
                     }
+                    className={i === active ? "h-2 w-6 rounded-full" : "h-2 w-2 rounded-full"}
                     aria-label={`Go to slide ${i + 1}`}
                   />
                 ))}
@@ -143,7 +182,8 @@ function SkeletonStrip() {
       {[0, 1, 2].map((i) => (
         <div
           key={i}
-          className="aspect-[3/4] w-full animate-pulse rounded-2xl bg-slate-200 dark:bg-slate-800"
+          className="aspect-[3/4] w-full animate-pulse rounded-2xl"
+          style={{ backgroundColor: "hsl(240 12% 13%)" }}
         />
       ))}
     </div>

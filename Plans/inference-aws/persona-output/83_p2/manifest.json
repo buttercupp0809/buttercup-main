@@ -1,0 +1,33 @@
+{
+  "persona_id": "83_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/83.webp",
+  "main_image_sha256": "6dbd9245f2f77173d831c7f948e9dfac07e14b4073cdba352b8272593bf1d047",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:32:04Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit, intimate nightclub, Astrid reclines on a plush velvet sofa, her legs crossed seductively as she sips a cocktail. The soft glow of a nearby candle dances across her curves, highlighting the deep V of her low-cut, black lace bodice and the delicate chain of her choker. Her eyes, heavy-lidded with desire, meet the viewer's gaze as she leans back, the shadows of the room emphasizing her sultry allure.",
+      "seed": 259909794,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/9a345e5e-7105-4f12-85ad-3c112477f385.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/83.webp",
+      "status": "ok",
+      "bytes": 1476845
+    }
+  ]
+}

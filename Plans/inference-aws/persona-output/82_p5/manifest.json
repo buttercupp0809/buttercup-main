@@ -1,0 +1,33 @@
+{
+  "persona_id": "82_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/82.webp",
+  "main_image_sha256": "5391339d07eb1bd57c868cd7f04bd7857d5eb6265ad1e220f971d719db9feb7e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:31:08Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Indoors at a private, members-only club, Indigo perches on the edge of a plush, black leather sofa, her legs parted to reveal the lacy tops of sheer thigh-high stockings and the garter belt holding them in place, a sheer, emerald green robe draped loosely around her shoulders, its edges barely covering her pert nipples and the swell of her hips, her gaze direct and sultry as she looks at the camera, her raven hair styled in loose, tousled waves framing her face.",
+      "seed": 1185795640,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/79917fc1-aa4a-434a-9194-6ac6283fe098.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/82.webp",
+      "status": "ok",
+      "bytes": 1342419
+    }
+  ]
+}

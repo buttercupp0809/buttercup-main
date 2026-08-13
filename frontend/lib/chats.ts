@@ -4,8 +4,10 @@
 
 import { prisma } from "@buttercupp/database";
 import { pickPersonaImage } from "@/lib/persona-images";
+import { signAssetUrl } from "@/lib/cdn";
 
 export interface ConversationRow {
+  conversationId: string;
   characterId: string;
   characterName: string;
   avatarUrl: string | null;
@@ -20,6 +22,12 @@ function avatarUrlFrom(refs: string[] | undefined): string | null {
   const key = refs[0];
   const base = process.env.CLOUDFRONT_URL;
   return base ? `${base.replace(/\/$/, "")}/${key}` : key;
+}
+
+function signMediaUrl(url: string | undefined | null): string | null {
+  if (!url) return null;
+  if (url.startsWith("http") || url.startsWith("/")) return url;
+  return signAssetUrl(url);
 }
 
 export async function listConversations(userId: string, take = 50): Promise<ConversationRow[]> {
@@ -53,10 +61,11 @@ export async function listConversations(userId: string, take = 50): Promise<Conv
   return rows.map((c) => {
     const rel = relByChar.get(c.characterId);
     return {
+      conversationId: c.id,
       characterId: c.characterId,
       characterName: c.character.name,
       avatarUrl:
-        c.character.media[0]?.url ??
+        signMediaUrl(c.character.media[0]?.url) ??
         avatarUrlFrom(c.character.currentVersion?.appearanceSheet?.referenceImageKeys) ??
         pickPersonaImage(c.characterId),
       lastMessage: c.messages[0]?.content ?? null,

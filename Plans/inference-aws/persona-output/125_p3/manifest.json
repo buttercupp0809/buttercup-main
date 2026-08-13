@@ -1,0 +1,33 @@
+{
+  "persona_id": "125_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/125.webp",
+  "main_image_sha256": "b2e4cf4d08e55953dd8b2e4282493ea58803bcd40ff9e4a7fe99b7fcf30c9ffe",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:02:46Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A solitary figure in a deserted Berlin alleyway at midnight, Astrid's edgy style is on full display. Dressed in a black leather corset and fishnet stockings, she crouches down, hands on knees, exposing the lacy thong barely covering her rear. The neon signs of the city's underbelly flicker in the shadows, casting an eerie glow on her porcelain skin. A DSLR camera captures her in a tight, shallow focus, emphasizing the curves of her body and the tension in her pose.",
+      "seed": 1121538520,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/61573642-02fc-4e89-b7c5-69f41f65d3f5.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/125.webp",
+      "status": "ok",
+      "bytes": 1608477
+    }
+  ]
+}

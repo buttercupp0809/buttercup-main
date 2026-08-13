@@ -1,0 +1,33 @@
+{
+  "persona_id": "115_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/115.webp",
+  "main_image_sha256": "b8f4fe5bcc6a18cb1324b2260ef158898c274292af8c8429f027d2f7575f2c6d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:41:35Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit Dublin pub, Hazel leans against the bar, her eyes half-lidded as she sips a whiskey, the amber liquid reflecting in her gaze, the dim lighting accentuating her full lips and the gentle curve of her cheekbone.",
+      "seed": 1473930352,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/5a53aeee-aa4c-450c-8b4b-606cffbf26cd.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/115.webp",
+      "status": "ok",
+      "bytes": 1325819
+    }
+  ]
+}

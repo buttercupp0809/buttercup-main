@@ -1,0 +1,33 @@
+{
+  "persona_id": "38_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/38.webp",
+  "main_image_sha256": "d188bc743c728e90672fc51763546355d0c410e2913b0109a57e5a896fe6c925",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T23:56:27Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A provocative Lykke straddling the back of a leather motorcycle, parked in a seedy back alley at night, her black leather corset and fishnet stockings clinging to her body as she looks over her shoulder with a seductive smirk, her thong-clad derri\u00e8re on full display.",
+      "seed": 1784289124,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/a7705a74-f582-424b-a822-25e8fd998ab7.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/38.webp",
+      "status": "ok",
+      "bytes": 1438396
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "94_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/94.webp",
+  "main_image_sha256": "aabfca569500e35a278a5e9bdbb55b9ec2c331a54be80d176b2eceeac1fc812a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:54:47Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Ophelia stands in the grand courtyard of a Viennese palace, bathed in the warm glow of golden hour. She's dressed in a flowing lavender gown with intricate lace details, her hair styled in loose waves. With a soft smile and sparkling eyes, she gazes upwards at the ornate architecture, her hands clasped behind her back as if in appreciation. The scene is captured with a DSLR camera, using a shallow depth of field to blur the background and emphasize her ethereal beauty.",
+      "seed": 1450370928,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/efcdf47b-acf6-4af7-86ff-1852fac25010.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/94.webp",
+      "status": "ok",
+      "bytes": 1534686
+    }
+  ]
+}

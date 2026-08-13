@@ -1,0 +1,33 @@
+{
+  "persona_id": "25_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/25.webp",
+  "main_image_sha256": "e9017f0533920451bc064679f2e0b79fe697b3481b0c73eed02b5d6af501e217",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T23:27:17Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Magnolia's statuesque form is set against the abstract texture of a stone wall, her black lace bra and matching panties leaving little to the imagination as she leans back, her hands bracing above her head, the low light accentuating the curves of her breasts and the definition of her toned stomach, her eyes gleaming with a predatory intensity.",
+      "seed": 1546047461,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/6997f300-0deb-4654-b99d-a46327825b6d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/25.webp",
+      "status": "ok",
+      "bytes": 1828264
+    }
+  ]
+}

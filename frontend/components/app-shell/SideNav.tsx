@@ -8,6 +8,7 @@ import {
   Compass,
   Clapperboard,
   Sparkles,
+  Gem,
   Settings as SettingsIcon,
   ChevronLeft,
   ChevronRight,
@@ -21,6 +22,7 @@ const ICONS: Record<NavIcon, React.ComponentType<{ className?: string }>> = {
   discover: Compass,
   reels: Clapperboard,
   create: Sparkles,
+  billing: Gem,
   settings: SettingsIcon,
 };
 
@@ -197,7 +199,7 @@ function Avatar({ src, name }: { src: string | null; name: string }) {
       style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))" }}
     >
       {src ? (
-        <img src={src} alt={name} className="h-full w-full object-cover" />
+        <img src={src} alt={name} className="h-full w-full object-cover object-top" />
       ) : (
         <span>{name[0]?.toUpperCase() ?? "?"}</span>
       )}

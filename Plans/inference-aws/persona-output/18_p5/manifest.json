@@ -1,0 +1,33 @@
+{
+  "persona_id": "18_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/18.webp",
+  "main_image_sha256": "6c574572ff43fd95ebfcb5a9940acb2b14f6cbda129f4faaefd4853a24d99685",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T23:12:33Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the midst of a crowded Stockholm nightclub, Ava's sultry figure is barely contained by a daring, black leather corset and fishnet stockings that leave her toned thighs and shapely bottom on full display. Her long, dark hair is styled in loose, cascading waves as she leans against a dimly lit wall, her legs bent at the knees and feet crossed at the ankles. With a sultry, half-closed gaze, she seems to invite the viewer into her private world of pulsating rhythms and carnal desires.",
+      "seed": 578340336,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/781f176f-86fa-446a-9c6e-5aca7ff1c081.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/18.webp",
+      "status": "ok",
+      "bytes": 1153671
+    }
+  ]
+}

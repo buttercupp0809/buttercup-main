@@ -1,0 +1,33 @@
+{
+  "persona_id": "121_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/121.webp",
+  "main_image_sha256": "b473cc9d09d9820d0f32da5d7cf7517f3dac3ddbba3c2e8dbbd4ecb45067dc1a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:54:49Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Under the cover of night in Dublin's winding Temple Bar district, a stunning vixen with raven tresses and striking amber eyes, clad in a black leather corset, fishnet stockings, and a tiny garter belt, bends over a stone wall, her backside on prominent display as she pulls up her thong and adjusts it, the neon lights of nearby pubs casting a kaleidoscope of colors on her skin, her gaze intense and alluring as she looks back over her shoulder at the viewer with a seductive smirk.",
+      "seed": 502521468,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/9a79b296-ae50-451b-9057-0a7a9b3af3f3.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/121.webp",
+      "status": "ok",
+      "bytes": 1862646
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "18_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/18.webp",
+  "main_image_sha256": "6c574572ff43fd95ebfcb5a9940acb2b14f6cbda129f4faaefd4853a24d99685",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T23:10:27Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the dimly lit foyer of a chic Stockholm nightclub, Ava's icy demeanor melts as she gazes out at the pulsating crowd from behind a velvet rope. A sleek, form-fitting black dress hugs her curvaceous figure, the plunging neckline and high slit revealing tantalizing glimpses of her skin. Her eyes, smoky with seduction, meet the viewer's with a sultry invitation, as if beckoning them into her private world of forbidden pleasure.",
+      "seed": 129874239,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/b4d93afd-1999-4b1f-bb31-3febf50981c0.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/18.webp",
+      "status": "ok",
+      "bytes": 1237755
+    }
+  ]
+}

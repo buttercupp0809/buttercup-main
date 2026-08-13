@@ -1,0 +1,33 @@
+{
+  "persona_id": "114_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/114.webp",
+  "main_image_sha256": "1da0113dfae4dae21dd113ac5475e5e07fcae343667ce4d79670b96fc76c741a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:39:06Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Against the backdrop of a seedy, rain-soaked alley, Phoebe's leather corset and fishnet stockings cling to her body as she leans against a graffiti-covered wall, water droplets glistening on her bare skin, her eyes half-lidded with a coy invitation.",
+      "seed": 717307669,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/7ea7fc48-4755-4f0c-81ae-71dab3afee54.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/114.webp",
+      "status": "ok",
+      "bytes": 2090086
+    }
+  ]
+}

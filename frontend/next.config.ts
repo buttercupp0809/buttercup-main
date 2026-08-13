@@ -13,8 +13,8 @@ const isDev = process.env.NODE_ENV !== "production";
 
 const CSP_DIRECTIVES = [
   "default-src 'self'",
-  "img-src 'self' data: blob: https://*.cloudfront.net https://*.s3.amazonaws.com https://*.fal.media",
-  "media-src 'self' blob: https://*.cloudfront.net https://*.s3.amazonaws.com",
+  "img-src 'self' data: blob: https://*.cloudfront.net https://*.s3.amazonaws.com https://*.s3.eu-north-1.amazonaws.com https://*.fal.media",
+  "media-src 'self' blob: https://*.cloudfront.net https://*.s3.amazonaws.com https://*.s3.eu-north-1.amazonaws.com",
   `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
   [

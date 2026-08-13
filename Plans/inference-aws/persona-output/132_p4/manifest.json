@@ -1,0 +1,33 @@
+{
+  "persona_id": "132_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/132.webp",
+  "main_image_sha256": "b461cd614a12b35a1a5b00c951deeb8364b6ae2bede5675e395d98181dbc7bde",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:18:45Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the warm haze of a studio lit by golden afternoon light, Marlowe lounges on a worn leather sofa, a thin white tank top leaving little to the imagination as it hugs her full breasts and the defined curves of her stomach, her slender legs stretched out as she idly plays with a strand of her hair.",
+      "seed": 1855571695,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/49c52ca5-d729-4e59-870a-b5f8fbae6883.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/132.webp",
+      "status": "ok",
+      "bytes": 1269596
+    }
+  ]
+}

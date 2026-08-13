@@ -1,0 +1,33 @@
+{
+  "persona_id": "76_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/76.webp",
+  "main_image_sha256": "c422ac5665d370afbf23de583d84cdf39d55b11ec7df480ccd6aea9fc50b48d9",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:17:35Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Straddling a weathered wooden fence post in a secluded, moonlit forest glade, Marlowe's shapely thighs are exposed as she leans back against the rough wood, her lacy, black thong barely containing her rounded buttocks, which are slightly raised, emphasizing their enticing shape, her tousled, auburn hair cascading over one shoulder as she looks up at the starry sky with a coy, inviting expression.",
+      "seed": 348190369,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/cf0f3f06-7b74-4d02-ad09-026b82c3fc30.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/76.webp",
+      "status": "ok",
+      "bytes": 1334762
+    }
+  ]
+}

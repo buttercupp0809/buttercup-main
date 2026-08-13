@@ -1,0 +1,33 @@
+{
+  "persona_id": "41_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/41.webp",
+  "main_image_sha256": "5341872a2fe6ea5056e2b86a456e952692f7694c274479f13548e9c302a8654e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:03:45Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Piper kneels on the sand, her tiny string bikini and sheer cover-up fluttering in the ocean breeze as the first light of dawn breaks over the deserted beach. Her tousled hair and sultry gaze capture the viewer's attention as she turns to look back at the rising sun, her toned legs and hips on full display, inviting the world to bask in her beauty.",
+      "seed": 436522926,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/5c8de114-d7a3-4dad-8998-98a04645f46a.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/41.webp",
+      "status": "ok",
+      "bytes": 1199523
+    }
+  ]
+}

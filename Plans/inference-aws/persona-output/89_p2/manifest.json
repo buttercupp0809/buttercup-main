@@ -1,0 +1,33 @@
+{
+  "persona_id": "89_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/89.webp",
+  "main_image_sha256": "1f5bd54d9cb3234e5ecf809fafa3032c55a47de111c1e8e76374e7bfda2d1595",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:44:34Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a smoky underground club, Vesper leans against a worn leather couch, her sheer black blouse partially unbuttoned to reveal a lacy red bra. Dangling silver earrings and a choker add to her sultry allure. The dim red lighting creates deep shadows, highlighting her full lips as she smirks at the camera with a come-hither gaze.",
+      "seed": 1083185564,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/0a79e1d4-a733-4fb4-a313-0721e400d15f.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/89.webp",
+      "status": "ok",
+      "bytes": 1142654
+    }
+  ]
+}

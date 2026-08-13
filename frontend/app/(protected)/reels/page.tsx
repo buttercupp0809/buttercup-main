@@ -1,7 +1,6 @@
 import { prisma } from "@buttercupp/database";
-import { requireAgeVerified, getCurrentUser } from "@/lib/auth";
+import { requireAuth, getCurrentUser } from "@/lib/auth";
 import { REELS } from "@/lib/reels/manifest";
-import { pickPersonaImage } from "@/lib/persona-images";
 import { ReelScroller, type ReelItem } from "@/components/reels/ReelScroller";
 
 export const dynamic = "force-dynamic";
@@ -34,7 +33,7 @@ async function dbReels(userId: string | null): Promise<ReelItem[]> {
     src: v.url,
     name: v.character.name,
     location: v.character.location ?? "",
-    avatar: v.character.media[0]?.url ?? pickPersonaImage(v.characterId),
+    avatar: (() => { const u = v.character.media[0]?.url; return (u && u.startsWith("http")) ? u : null; })(),
     chatHref: `/chat/${v.characterId}`,
     likes: v.likesBase + (countMap.get(v.id) ?? 0),
     liked: likedSet.has(v.id),
@@ -64,7 +63,7 @@ async function manifestReels(userId: string | null): Promise<ReelItem[]> {
     src: r.src,
     name: r.name,
     location: r.location,
-    avatar: r.avatar,
+    avatar: r.avatar.startsWith("http") ? r.avatar : null,
     chatHref: nameToId.get(r.characterName) ? `/chat/${nameToId.get(r.characterName)}` : "/discover",
     likes: r.baseLikes + (countMap.get(r.id) ?? 0),
     liked: likedSet.has(r.id),
@@ -95,7 +94,7 @@ async function likeState(userId: string | null, reelIds: string[]) {
 }
 
 export default async function ReelsPage() {
-  await requireAgeVerified();
+  await requireAuth();
   const user = await getCurrentUser().catch(() => null);
 
   let items: ReelItem[] = [];

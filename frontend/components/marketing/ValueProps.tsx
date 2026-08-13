@@ -64,8 +64,23 @@ export function ValueProps() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-20">
       <div className="mb-10 text-center">
-        <h2 className="text-3xl font-semibold tracking-tight">Everything you need for real connection</h2>
-        <p className="mx-auto mt-2 max-w-2xl text-slate-600 dark:text-slate-400">
+        <h2 className="text-3xl font-semibold tracking-tight text-white">
+          Everything you need for{" "}
+          <span
+            style={{
+              background: "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
+          >
+            real connection
+          </span>
+        </h2>
+        <p
+          className="mx-auto mt-2 max-w-2xl"
+          style={{ color: "hsl(240 6% 65%)" }}
+        >
           Five things that make ButterCupp feel less like a chatbot and more like a person you know.
         </p>
       </div>
@@ -73,13 +88,19 @@ export function ValueProps() {
         {PROPS.map((p) => (
           <div
             key={p.title}
-            className="flex flex-col items-start gap-3 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
+            className="buttercupp-glass flex flex-col items-start gap-3 rounded-2xl p-5 transition hover:-translate-y-0.5"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-sky-700 dark:bg-sky-900/40 dark:text-sky-300">
+            <div
+              className="flex h-10 w-10 items-center justify-center rounded-xl"
+              style={{
+                background: "hsl(344 84% 71% / 0.12)",
+                color: "hsl(344 84% 71%)",
+              }}
+            >
               {p.icon}
             </div>
-            <h3 className="text-base font-semibold">{p.title}</h3>
-            <p className="text-sm text-slate-600 dark:text-slate-400">{p.body}</p>
+            <h3 className="text-base font-semibold text-white">{p.title}</h3>
+            <p className="text-sm" style={{ color: "hsl(240 6% 65%)" }}>{p.body}</p>
           </div>
         ))}
       </div>

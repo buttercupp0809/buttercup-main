@@ -16,7 +16,7 @@ const geist = Geist({
 
 export const metadata: Metadata = {
   title: "ButterCupp",
-  description: "AI companions built for adults.",
+  description: "companions built for adults.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

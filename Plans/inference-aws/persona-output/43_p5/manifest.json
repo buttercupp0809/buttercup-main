@@ -1,0 +1,33 @@
+{
+  "persona_id": "43_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/43.webp",
+  "main_image_sha256": "9fe647b99de1c5807c6190cb75fb1b282f83892ff83b027d2b0668dc79f91565",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:08:02Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a steaming bathroom, Magnolia stands under the showerhead, water droplets glistening on her naked body, her curves accentuated by the rivulets running down her skin, her nipples hardened, her hands braced on the marble countertop, her gaze straight at the camera, a coy smile playing on her lips as the steam swirls around her.",
+      "seed": 1150584413,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/c3ad839b-18ac-4b46-b0fa-d095205f6fbe.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/43.webp",
+      "status": "ok",
+      "bytes": 1313563
+    }
+  ]
+}

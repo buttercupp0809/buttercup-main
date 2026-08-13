@@ -1,0 +1,33 @@
+{
+  "persona_id": "69_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/69.webp",
+  "main_image_sha256": "ec189202c44c4a5d9bd1cd6e4c9d8ad7b20615ee3375fd3319146f369ec240cc",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:03:02Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Speakeasy entrance: Phoebe leans against the doorframe, a short, skintight red dress leaving little to the imagination, as she looks directly at the viewer with a coy smile, the warm light from inside casting a golden glow on her skin and the dim alleyway receding into shadows.",
+      "seed": 1643563680,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/b8e6e17e-6e9d-4100-9e58-f347b135e323.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/69.webp",
+      "status": "ok",
+      "bytes": 1353503
+    }
+  ]
+}

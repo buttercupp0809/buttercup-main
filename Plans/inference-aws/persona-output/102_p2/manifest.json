@@ -1,0 +1,33 @@
+{
+  "persona_id": "102_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/102.webp",
+  "main_image_sha256": "164ea8e04692e99abb5a2ff30121094c67340b24dc8cb4b8029b3f53c5fe08de",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:13:11Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Against the backdrop of Federation Square's majestic architecture, Piper saunters down the steps, a sheer black negligee clinging to her curves, its gauzy fabric billowing around her thighs as she looks back over her shoulder, her sultry gaze and coy smile beckoning the viewer into the shadows, the city lights casting a golden glow on her skin.",
+      "seed": 33349151,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/e00c8ba9-5fd2-48df-8798-63d3e8b1d8f0.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/102.webp",
+      "status": "ok",
+      "bytes": 1386972
+    }
+  ]
+}

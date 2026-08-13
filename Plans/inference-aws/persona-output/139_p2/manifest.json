@@ -1,0 +1,33 @@
+{
+  "persona_id": "139_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/139.webp",
+  "main_image_sha256": "14d859a7ad2c8fcc80003cd2fe4e5845ef2a7af6238dd6a59832257d2eebc2f1",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:32:57Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit nightclub, Astrid's bold style shines as she leans back against the wall, her black leather jacket slithering off one shoulder to reveal a lacy red bralette, the neon lights casting an ethereal glow on her porcelain skin and dark, tousled hair as she gazes sultrily at the pulsating dance floor.",
+      "seed": 421877767,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/6a2158c8-c87d-4324-9718-3a02d00f0be8.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/139.webp",
+      "status": "ok",
+      "bytes": 1046956
+    }
+  ]
+}

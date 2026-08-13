@@ -65,6 +65,7 @@ export interface CharacterDetailDTO extends CharacterCardDTO {
     createdAt: string;
   };
   requiresAgeVerification?: boolean;
+  galleryImages: string[];
 }
 
 export interface CharacterListResponse {

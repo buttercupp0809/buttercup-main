@@ -1,0 +1,33 @@
+{
+  "persona_id": "21_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/21.webp",
+  "main_image_sha256": "ddfd4ac0a2c34ea5ad064323b000f0a564110260807e74585431cd57d4002e1e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T23:17:41Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the dimly lit recesses of a hidden underground pub, Matilda leans back against a worn wooden wall, a sultry smile playing on her lips as she sips a rich, dark whiskey, the soft light casting shadows across her curves, her eyes half-lidded and inviting as she looks directly at the viewer.",
+      "seed": 241154174,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/4bca4ad8-4395-41b7-92a6-525d614eb63d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/21.webp",
+      "status": "ok",
+      "bytes": 1507701
+    }
+  ]
+}

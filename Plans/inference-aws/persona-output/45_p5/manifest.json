@@ -1,0 +1,33 @@
+{
+  "persona_id": "45_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/45.png",
+  "main_image_sha256": "d52897e8c43d8412e4495d208daf5fd76bea64f184509a23f2b8be5fad018b7e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:12:22Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Amidst the lush foliage of a tropical garden, Ruby's naked form is bathed in the warm, golden light of dusk. She reclines on a stone bench, one leg bent, the other extended, as the camera captures the play of shadows on her skin. A diaphanous gauze drapes over her shoulders, barely covering her pert nipples, while her tousled hair cascades down her back, emphasizing her sensual, relaxed pose.",
+      "seed": 250175057,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/37767174-5c46-4ba9-bca1-d1aa377b22bb.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/45.png",
+      "status": "ok",
+      "bytes": 1578035
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "98_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/98.webp",
+  "main_image_sha256": "69a8a0156e6fce31bc4e0b691b8af46fe031767798ddacb775b1d61669193331",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:05:53Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Clara poses on a stone fountain edge in a secluded garden, her body arched back as she reaches for a low-hanging branch, her white lace bra and matching thong clinging to her wet skin after a dip in the water. A shaft of late afternoon sunlight illuminates her glistening form, casting a warm glow on the lush foliage surrounding her as she looks back at the camera with a sultry, inviting gaze.",
+      "seed": 606321422,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/d883e0ec-8980-4c1a-a882-04243151e6cd.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/98.webp",
+      "status": "ok",
+      "bytes": 1624211
+    }
+  ]
+}

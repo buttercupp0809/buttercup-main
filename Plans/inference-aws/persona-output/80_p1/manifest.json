@@ -1,0 +1,33 @@
+{
+  "persona_id": "80_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/80.webp",
+  "main_image_sha256": "154961ea3e25385ac6f9be8687827802f7759b00e974bce3f99ca3c3b3500a0e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:25:12Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A bright, sunlit cobblestone square in Prague, Ophelia laughing with abandon as she tosses a bouquet of wildflowers, her sundress fluttering in the warm breeze, a DSLR camera capturing her joyful, carefree spirit in a shallow depth of field, with the ancient Gothic spires of the city's cathedral rising softly in the golden hour background.",
+      "seed": 123835009,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/556f2062-b00d-45f5-824a-4db694de9195.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/80.webp",
+      "status": "ok",
+      "bytes": 1486841
+    }
+  ]
+}

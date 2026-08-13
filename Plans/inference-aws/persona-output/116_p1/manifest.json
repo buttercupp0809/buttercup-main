@@ -1,0 +1,33 @@
+{
+  "persona_id": "116_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/116.webp",
+  "main_image_sha256": "7dbf935b67ad05531247498f222f9e929978b241d0a5e58d6f7da1bdb11b863c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:42:31Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Piper stands on a verdant hillside at golden hour, laughing joyfully as she tosses a frisbee to her friend in the distance, her sun-kissed hair blowing in the breeze and her smile radiant against the warm, golden light of the setting sun, captured in a shallow focus DSLR portrait that highlights her carefree spirit.",
+      "seed": 1933980408,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/40c85aa6-9716-46c3-bfd4-0191f3c97947.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/116.webp",
+      "status": "ok",
+      "bytes": 1541568
+    }
+  ]
+}

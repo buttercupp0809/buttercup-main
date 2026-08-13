@@ -1,0 +1,33 @@
+{
+  "persona_id": "74_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/74.webp",
+  "main_image_sha256": "a8d30a0d4f3b018e74982207b65f89100139f82158eecfafc39760a011d74c0b",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:14:07Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "As the first light of dawn creeps over a deserted beach, Piper kneels on the sand, her tiny string bikini and sheer cover-up hugging her figure as she looks back over her shoulder at the rising sun, her wind-blown hair and tousled waves framing a sultry expression, the warm light casting long shadows behind her in a cinematic, shallow focus composition.",
+      "seed": 190948350,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/f0a337ed-1377-4263-9ea8-9d90ee1ca3ce.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/74.webp",
+      "status": "ok",
+      "bytes": 1111759
+    }
+  ]
+}

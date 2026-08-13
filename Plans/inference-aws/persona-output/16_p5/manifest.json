@@ -1,0 +1,33 @@
+{
+  "persona_id": "16_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/16.webp",
+  "main_image_sha256": "06a120920f7765815317cf81d86ab21cec9567e403567cf15026a99336254a3c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T23:07:24Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Perched on the edge of a marble fountain in a tranquil courtyard, Zoe's fur-trimmed coat falls open to reveal her lacy bralette and high-waisted panties, her bare feet dangling above the water as she looks up at the starry Athenian sky, a hint of mischief dancing in her eyes.",
+      "seed": 1831895631,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/f5390ca2-394e-4d18-a6fb-e623a126eaa8.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/16.webp",
+      "status": "ok",
+      "bytes": 1217659
+    }
+  ]
+}

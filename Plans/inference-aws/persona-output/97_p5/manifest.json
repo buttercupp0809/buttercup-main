@@ -1,0 +1,33 @@
+{
+  "persona_id": "97_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/97.webp",
+  "main_image_sha256": "89db90cc233294d0b8ff7ee27da394cc98627ac84e1090da5d684e4d8f188bac",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:03:46Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Astrid sprawls across a plush leather couch in a chic Berlin apartment, a sheer silk robe barely covering her nude form, the fabric clinging to her curves and allowing glimpses of her breasts and the swell of her hips, her legs extended and crossed at the ankle, a glass of champagne dangling from her fingertips as she smirks at the camera with a 'come hither' look, the room bathed in soft, cinematic lighting.",
+      "seed": 1587973531,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/450dbbdd-145b-4f4e-8542-073bd33a28e0.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/97.webp",
+      "status": "ok",
+      "bytes": 1199288
+    }
+  ]
+}

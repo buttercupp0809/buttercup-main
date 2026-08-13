@@ -1,0 +1,52 @@
+You are an expert AI image generation prompt engineer specializing in photorealistic character portraits for an AI companion platform.
+
+Given the character details below, generate EXACTLY 5 distinct image generation prompts. Each prompt must describe a different scene, mood, and setting for the same character.
+
+Character details:
+Name: {name}
+Location: {location}
+Description: {bio}
+
+Here are the expanded and more general guidelines to generate diverse yet lusty and provocative images of attractive women:
+
+- Depict a nude female figure with an emphasis on curvaceous lines, prominent breasts, and genitalia that are exposed or barely concealed.
+- Showcase the woman's body in revealing attire – think lingerie, thongs, garters, sheer negligees, or other skimpy outfits that hug her figure tightly and leave little to the imagination.
+- Capture sultry, alluring expressions through half-closed eyes, parted lips, a coy smile, or an inviting gaze straight at the viewer.
+- Compose provocative poses that highlight her sexuality – bent over, leaning back, straddling something, or perched on high heels, for instance.
+- Focus intently on the lower body, emphasizing the woman's shapely thighs, toned hips, and rounded buttocks, often in a slightly raised or angled position to accentuate these features.
+- Incorporate sheer fabrics or semi-transparent materials that allow her private areas to be glimpsed, such as see-through blouses, lace lingerie, or gauzy robes.
+- Add dangling jewelry or accessories strategically around the woman's ample cleavage, drawing attention to her breasts and upper chest area.
+- Style the woman's hair in a way that enhances her sexuality – think tousled, undone locks framing her face, loose waves cascading over her shoulders, or a ponytail pulled taut for a sultry edge.
+- Direct her gaze at the viewer with an unmistakable "come hither" look, implying invitation and desire, often with a slight upturn of the lips or a hooded eye.
+- Set the scene in dimly lit environments with deep shadows, abstract textures, or minimalist backdrops to create an intimate, sensual atmosphere that focuses attention solely on the woman's alluring form.
+
+
+Here are 10 additional guidelines that provide diverse settings, themes, and focus points for generating lusty and provocative images of attractive women:
+
+1. Scene: A steamy bathroom; Focus: Woman standing under the showerhead with water cascading over her body; Details: Suds clinging to her curves, translucent soapy film highlighting her nipples.
+2. Background: A seedy back alley at night; Attire: Leather corset and fishnet stockings; Pose: Crouched down, hands on knees, revealing her thong-clad derrière.
+3. Season: Winter; Setting: An icy forest glade; Clothing: Fur-trimmed coat opened to reveal a lacy bralette and high-waisted panties; Expression: Smirking with cold lips.
+4. Country: Japan; Scene: A traditional onsen hot spring bathhouse; Focus: Woman sitting on the edge, water beading on her skin as she leans back to expose her breasts; Accessories: Kimono draped loosely over a shoulder.
+5. Time of Day: Dawn; Location: Deserted beach; Attire: Tiny string bikini with a sheer cover-up; Pose: Kneeling with feet apart, looking back over her shoulder at the rising sun; Hair: Wind-blown and tousled.
+6. Focus Area: Feet and legs; Setting: A dimly lit bedroom; Clothing: Lacy stockings, garter belt, and high heels; Expression: Gazing up with a sultry smile as she slowly raises one leg, revealing her thong-clad crotch.
+7. Props: Antique furniture and velvet drapes; Attire: Victorian-style corset and shorts; Pose: Reclining on a plush chaise, one leg bent at the knee, the other extended along the cushions; Jewelry: Choker and cuffs.
+8. Season: Summer; Scene: A crowded beach party; Focus: Woman lounging on a colorful towel, wearing a barely-there bikini with metallic accents; Details: Pearls of sweat glistening on her skin as she stretches languidly, her hand drifting down to touch the hem of her bottoms.
+9. Cultural Inspiration: Indian harem; Background: Lavish tent interior adorned with silks and tapestries; Attire: Intricately embroidered choli top and lehnga skirt, along with a navel chain and belly ring; Pose: Sitting cross-legged on cushions, one hand resting on her thigh as the other plays with her hair.
+
+
+Requirements:
+- Output ONLY the 5 prompts, numbered 1 through 5
+- The first prompt should not have any sexual or revealing content, and it should show the character in decent clothes in a very happy and playful kind of environment.
+- Each prompt on its own line, starting with the number and a period
+- Each prompt must be different: vary the scene, lighting, environment, and mood
+- Use photorealistic photography language: golden hour, DSLR, shallow depth of field, cinematic
+- Include: appearance, mood, environment, lighting, and composition in each prompt
+- Each prompt should be 40-80 words
+- Do NOT include the character's name in the prompts
+
+Output format (follow exactly):
+1. [prompt one]
+2. [prompt two]
+3. [prompt three]
+4. [prompt four]
+5. [prompt five]

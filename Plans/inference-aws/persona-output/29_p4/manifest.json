@@ -1,0 +1,33 @@
+{
+  "persona_id": "29_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/29.webp",
+  "main_image_sha256": "d275fbe74b90aba4b4034ed4feb8a3a4ae273cb70bdb4e6add51417e99a2eae6",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T23:37:53Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Framed by the icy vastness of a frozen tundra, a statuesque blonde straddles a weathered driftwood log, her leather corset and fishnet stockings leaving little to the imagination as she looks over her shoulder with a hooded, inviting gaze, her breath visible in the frigid air.",
+      "seed": 1609553529,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/f5f3327d-052c-44c0-9538-f2f6023fa619.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/29.webp",
+      "status": "ok",
+      "bytes": 1664488
+    }
+  ]
+}

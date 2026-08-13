@@ -1,0 +1,33 @@
+{
+  "persona_id": "103_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/103.webp",
+  "main_image_sha256": "b35356f32924b027e140281f3b208ac0a5c583daf01cfebc30fae4566ed11cb4",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:16:04Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Straddling a worn stone sarcophagus in a dimly lit Byzantine crypt, Vesper's voluptuous figure is barely concealed by a flowing, sheer black dress that clings to her every curve, her sultry eyes locked on the camera as she slowly runs a hand down her thigh, emphasizing her seductive intentions.",
+      "seed": 1648368743,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/f04ae180-ad52-4687-b9dc-bc40e6cc1095.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/103.webp",
+      "status": "ok",
+      "bytes": 1630756
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "27_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/27.webp",
+  "main_image_sha256": "fe02de3bc6a7abcb0775f83cadc9507d65b76de3cfab2bf42714ba1e0fe38f42",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T23:30:47Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Against the backdrop of Prague's ancient Charles Bridge at dusk, Ophelia stands with one hand on the worn stone railing, her body angled in a seductive pose that showcases her shapely thighs, the hem of her short, black leather skirt barely covering her ass. A sheer, gauzy blouse in a deep crimson hue clings to her curves, the material translucent enough to reveal the lace of her bra and the hint of her nipples. Her long, dark hair is swept up in a loose ponytail, and she looks back over her shoulder with a sultry, hooded gaze.",
+      "seed": 929342405,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/ca76028b-3135-472f-b726-16a59157fca2.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/27.webp",
+      "status": "ok",
+      "bytes": 1469551
+    }
+  ]
+}

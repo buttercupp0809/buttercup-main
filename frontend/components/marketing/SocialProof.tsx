@@ -39,15 +39,24 @@ const TESTIMONIALS: Testimonial[] = [
 
 export function SocialProof() {
   return (
-    <section className="border-y border-slate-200 bg-white/60 py-16 dark:border-slate-800 dark:bg-slate-900/40">
+    <section
+      className="border-y py-16 backdrop-blur"
+      style={{
+        borderColor: "hsl(240 10% 18%)",
+        background: "hsl(240 14% 9% / 0.6)",
+      }}
+    >
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid grid-cols-3 gap-6 text-center">
           {STATS.map((s) => (
             <div key={s.label} className="flex flex-col items-center gap-1">
-              <div className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-white">
+              <div className="text-3xl font-semibold tracking-tight text-white">
                 {s.value}
               </div>
-              <div className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">
+              <div
+                className="text-xs uppercase tracking-wide"
+                style={{ color: "hsl(240 6% 65%)" }}
+              >
                 {s.label}
               </div>
             </div>
@@ -57,12 +66,15 @@ export function SocialProof() {
           {TESTIMONIALS.map((t) => (
             <figure
               key={t.handle}
-              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+              className="buttercupp-glass rounded-2xl p-6"
             >
-              <blockquote className="text-base text-slate-800 dark:text-slate-200">
+              <blockquote className="text-base text-white">
                 &ldquo;{t.quote}&rdquo;
               </blockquote>
-              <figcaption className="mt-4 text-sm text-slate-500 dark:text-slate-400">
+              <figcaption
+                className="mt-4 text-sm"
+                style={{ color: "hsl(240 6% 65%)" }}
+              >
                 {t.name} <span className="opacity-60">{t.handle}</span>
               </figcaption>
             </figure>

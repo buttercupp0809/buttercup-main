@@ -1,0 +1,33 @@
+{
+  "persona_id": "139_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/139.webp",
+  "main_image_sha256": "14d859a7ad2c8fcc80003cd2fe4e5845ef2a7af6238dd6a59832257d2eebc2f1",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:34:09Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Astrid reclines on a marble bench in a steamy, dimly lit sauna, her skin glistening with sweat as she wears only a gauzy white robe that clings to her every curve, her hair pulled back in a loose ponytail, her half-closed eyes fixed on the viewer with an unmistakable \"come hither\" look, the air heavy with steam and the scent of her arousal.",
+      "seed": 219274904,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/addd13bb-dccd-4d08-a57a-d6db69fc4dc2.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/139.webp",
+      "status": "ok",
+      "bytes": 1295031
+    }
+  ]
+}

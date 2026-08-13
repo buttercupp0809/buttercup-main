@@ -1,0 +1,33 @@
+{
+  "persona_id": "117_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/117.webp",
+  "main_image_sha256": "ead3969c8bdcf5dfaabcdf5f60169dcb2517317226d47e2efa36ea684c197aeb",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:45:27Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Intimate, candlelit boudoir. Vesper reclines on a plush, four-poster bed, wearing only a sheer, crimson robe that leaves little to the imagination. She runs a hand through her tousled, chestnut hair as she looks directly at the viewer with a sultry, hooded gaze, her full lips parted slightly.",
+      "seed": 1066249792,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/e59202b3-1666-4056-bfe1-6457c4af72e0.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/117.webp",
+      "status": "ok",
+      "bytes": 1175433
+    }
+  ]
+}

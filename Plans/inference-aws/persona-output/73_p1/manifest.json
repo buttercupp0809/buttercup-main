@@ -1,0 +1,33 @@
+{
+  "persona_id": "73_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/73.webp",
+  "main_image_sha256": "44d58b3ea9ab33d8acf14ba00c975e97191381c731d0f1c10f49b6f033bbb498",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:10:24Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Freya walks hand in hand with a friend through a sun-dappled Oslo park during the golden hour, her warm smile and playful laugh capturing the joy of the moment as the camera focuses on their joyful interaction against a backdrop of lush greenery and vibrant flowers.",
+      "seed": 1950592038,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/295f6c49-fa2d-4f3c-8ecd-b53669b09fba.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/73.webp",
+      "status": "ok",
+      "bytes": 1829877
+    }
+  ]
+}

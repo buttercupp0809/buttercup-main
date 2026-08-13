@@ -1,0 +1,33 @@
+{
+  "persona_id": "85_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/85.webp",
+  "main_image_sha256": "2a9dfe1a270857e158d517b9b2f4c27941018a200451d35cba1dc2c3c32a952c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:36:38Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Wearing a fur-trimmed coat opened to reveal a lacy bralette and high-waisted panties, the woman sits on a tree stump in a winter forest glade, her smirking face illuminated by the soft glow of a nearby bonfire. Snowflakes dance around her as the camera captures a cinematic, intimate shot.",
+      "seed": 837346297,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/448b9303-1f8b-4348-b090-e7b605e77c99.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/85.webp",
+      "status": "ok",
+      "bytes": 1474432
+    }
+  ]
+}

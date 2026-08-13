@@ -1,0 +1,33 @@
+{
+  "persona_id": "95_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/95.webp",
+  "main_image_sha256": "86074b247319067d173f505289506e0b124d8bfce2cbe1f39e165c197c9c9d0f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:59:32Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Perched on the edge of a plush ottoman in a dimly lit boudoir, Magnolia's lacy stockings and high heels frame her shapely legs as she looks back over her shoulder, a \"come hither\" gaze directed straight at the viewer, her sheer robe gaping open to reveal the tantalizing swell of her breasts, the soft focus of the camera blurring the background to emphasize her alluring form.",
+      "seed": 1299838096,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/560ee8f4-c936-499f-9d6d-b06602bc99ff.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/95.webp",
+      "status": "ok",
+      "bytes": 1359339
+    }
+  ]
+}

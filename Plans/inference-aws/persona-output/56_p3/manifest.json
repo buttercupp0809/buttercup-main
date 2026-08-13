@@ -1,0 +1,33 @@
+{
+  "persona_id": "56_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/56.webp",
+  "main_image_sha256": "a44413dcb11cba341462e5a7abc192276cefb5d65205881fc59dcd92e91b2072",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:35:12Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Piper straddles the edge of a weathered wooden dock jutting out over a tranquil, moonlit lake. The night air is cool against her bare skin, which glistens with dew as a light breeze rustles her tousled hair. She wears only a tiny black bikini, the metallic accents catching the starlight. Her gaze is direct and inviting as she looks straight at the camera, one hand trailing down her side.",
+      "seed": 1912377295,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/9e6fc259-a20e-4e6d-9f8b-3eff18d66bf9.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/56.webp",
+      "status": "ok",
+      "bytes": 1144832
+    }
+  ]
+}

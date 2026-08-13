@@ -1,0 +1,33 @@
+{
+  "persona_id": "40_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/40.webp",
+  "main_image_sha256": "41fa15425f5714142413ac499c782a0e76f2c7fc76f6cf025afd9fe0bf1d45d3",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:01:34Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Freya kneels on a stone floor in a dimly lit, Japanese-style tea room, wearing only a delicate, intricately patterned kimono that has slipped off one shoulder, revealing her full, pert breasts and the shadowed curves of her hips, a sultry, half-lidded gaze directed at the viewer as she leans back, water beading on her skin from a hidden water feature, the shot taken with a cinematic lens to emphasize the exotic, sensual mood and the play of light on her bare skin.",
+      "seed": 176536687,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/b609841a-7b83-4385-b152-6117d2c793c9.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/40.webp",
+      "status": "ok",
+      "bytes": 1256859
+    }
+  ]
+}

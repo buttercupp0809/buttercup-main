@@ -1,0 +1,33 @@
+{
+  "persona_id": "114_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/114.webp",
+  "main_image_sha256": "1da0113dfae4dae21dd113ac5475e5e07fcae343667ce4d79670b96fc76c741a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:38:41Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit, upscale nightclub, Phoebe reclines on a plush leather booth, her black lace teddy and thigh-high stockings casting shadows that accentuate her curvaceous figure, her sultry gaze meeting the viewer's as she takes a slow sip of her cocktail.",
+      "seed": 448524500,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/6cd6c4bb-e4c4-45c4-8de0-de40dfa727af.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/114.webp",
+      "status": "ok",
+      "bytes": 1367661
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "118_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/118.webp",
+  "main_image_sha256": "b78f22f8908abdc25cc92ea5299424bec33fbf92f2c16f9e67ef025b1e4f6ff5",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:47:34Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Marlowe's provocative pose on a plush bedroom sofa is bathed in warm candlelight, shadows dancing across her bare skin as she lounges in a lacy black negligee that clings to every curve. Her heavy-lidded eyes meet the viewer's with a come-hither look, a strand of pearls glistening around her throat as she absently runs a hand down the side of her thigh.",
+      "seed": 441745330,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/809ae644-4d83-47fc-89d0-0ec2bf3ab377.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/118.webp",
+      "status": "ok",
+      "bytes": 1549269
+    }
+  ]
+}

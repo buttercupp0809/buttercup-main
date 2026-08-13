@@ -1,0 +1,33 @@
+{
+  "persona_id": "121_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/121.webp",
+  "main_image_sha256": "b473cc9d09d9820d0f32da5d7cf7517f3dac3ddbba3c2e8dbbd4ecb45067dc1a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:53:13Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "During a vibrant Dublin pub crawl on a warm summer evening, a stunning young woman with fiery red locks and piercing green eyes, clad in a tight white blouse and high-waisted denim shorts, tosses her head back in laughter as she clinks pints with friends on a busy patio, the golden hour sun casting a warm glow on her flushed cheeks and beaming smile.",
+      "seed": 1488604251,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/c37e10a9-f808-4ba6-bfed-2996b9791c64.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/121.webp",
+      "status": "ok",
+      "bytes": 1443013
+    }
+  ]
+}

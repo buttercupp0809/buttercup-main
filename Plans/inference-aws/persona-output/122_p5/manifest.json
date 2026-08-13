@@ -1,0 +1,33 @@
+{
+  "persona_id": "122_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/122.webp",
+  "main_image_sha256": "7298a46c79e9ce4bacc88d8377abefb5ed4164c3b76c9b07a8bbefe92c9a1784",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:56:56Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a secluded, overgrown garden, Ophelia kneels amidst the tall grass, her bare back arched as she reaches for a ripe berry on a nearby bush. The soft focus and shallow depth of field blur the environment, drawing attention to her nude form and the way the dappled sunlight highlights her curves and the subtle sheen of sweat on her skin.",
+      "seed": 378592214,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/c08af686-f8ee-4d34-905f-303069ca38f5.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/122.webp",
+      "status": "ok",
+      "bytes": 1503220
+    }
+  ]
+}

@@ -18,11 +18,11 @@ export const GestureText = React.memo(function GestureText({ content }: GestureT
         seg.kind === "gesture" ? (
           <span
             key={i}
-            className="italic"
+            className="italic text-rose-400"
             data-testid="gesture"
-            style={{ color: "hsl(var(--buttercupp-accent-rose) / 0.85)" }}
+            style={{ fontWeight: 400 }}
           >
-            {seg.value}
+            &ldquo;{seg.value}&rdquo;
           </span>
         ) : (
           <span key={i}>{seg.value}</span>

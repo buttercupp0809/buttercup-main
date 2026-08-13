@@ -1,0 +1,33 @@
+{
+  "persona_id": "83_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/83.webp",
+  "main_image_sha256": "6dbd9245f2f77173d831c7f948e9dfac07e14b4073cdba352b8272593bf1d047",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:31:40Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Astrid stands on a sun-drenched hillside, surrounded by vibrant wildflowers, her long blonde hair blowing gently in the warm breeze. A bright smile illuminates her face as she gazes out at the stunning vista, arms outstretched in carefree joy, clad in a flowy white sundress that catches the golden light of late afternoon, a DSLR camera hanging casually from her neck.",
+      "seed": 1625956744,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/40be9bb3-adbe-4b2f-924a-05e2175632ae.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/83.webp",
+      "status": "ok",
+      "bytes": 1391250
+    }
+  ]
+}

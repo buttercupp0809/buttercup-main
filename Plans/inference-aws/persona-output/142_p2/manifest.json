@@ -1,0 +1,33 @@
+{
+  "persona_id": "142_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/142.webp",
+  "main_image_sha256": "845beefaff88c48fe773524e08b51674a3484ca7b31d4d1bb44d10c9b2272b9f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:39:19Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Phoebe reclines on a plush velvet chaise in a dimly lit boudoir, wearing a sheer black negligee that clings to her curves, her bare legs crossed seductively, a coy smile playing on her lips as she gazes up through half-lidded eyes, the camera focused intently on her shapely thighs and the lacy tops of her stockings.",
+      "seed": 1893619206,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/e83798ed-1e19-48ab-a033-86b37db9e3af.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/142.webp",
+      "status": "ok",
+      "bytes": 1439852
+    }
+  ]
+}

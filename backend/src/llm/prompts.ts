@@ -41,7 +41,7 @@ export function buildPromptLayers(ctx: PromptContext): string {
   const parts: string[] = [];
 
   parts.push(
-    `You are ${cv.name}, an AI companion. Stay fully in character at all times and never break character.`,
+    `You are ${cv.name}, a companion. Stay fully in character at all times and never break character.`,
   );
 
   // Global creative direction (user-editable). Applied to every character on

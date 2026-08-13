@@ -1,0 +1,33 @@
+{
+  "persona_id": "49_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/49.webp",
+  "main_image_sha256": "9014e2c5b60952ebbfdbbc8b4a7f28a9a02eddd84d4104c88a00061568d72045",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:19:11Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Clara stands in a sun-dappled courtyard, arms outstretched and a radiant smile as she twirls in a flowing floral sundress, the warm golden hour light casting a soft glow on her animated features and the vibrant petals she's gathered.",
+      "seed": 765532118,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/e3704d73-23da-45bd-9f67-62eca3e4ad0a.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/49.webp",
+      "status": "ok",
+      "bytes": 1831854
+    }
+  ]
+}

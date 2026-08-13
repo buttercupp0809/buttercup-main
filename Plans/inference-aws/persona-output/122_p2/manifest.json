@@ -1,0 +1,33 @@
+{
+  "persona_id": "122_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/122.webp",
+  "main_image_sha256": "7298a46c79e9ce4bacc88d8377abefb5ed4164c3b76c9b07a8bbefe92c9a1784",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:55:44Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the dimly lit foyer of a grand palace, Ophelia stands with her back against a ornate column, clad in a sheer black negligee that leaves little to the imagination. A single spotlight illuminates her from above, casting long shadows across her curves as she looks over her shoulder with a sultry, inviting gaze.",
+      "seed": 1818970561,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/cf91211b-ea6e-4b3e-a6b3-21fe23fddfb8.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/122.webp",
+      "status": "ok",
+      "bytes": 1318345
+    }
+  ]
+}

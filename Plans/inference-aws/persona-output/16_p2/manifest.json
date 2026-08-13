@@ -1,0 +1,33 @@
+{
+  "persona_id": "16_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/16.webp",
+  "main_image_sha256": "06a120920f7765815317cf81d86ab21cec9567e403567cf15026a99336254a3c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T23:06:12Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the dimly lit, intimate space of a traditional taverna, Zoe reclines against plush crimson cushions, her sheer silk blouse clinging to her ample curves, a sultry half-smile playing on her lips as she raises a glass of ouzo in a toast.",
+      "seed": 1661851624,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/cde535dc-eb46-47ad-b0a9-68a3588b32a4.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/16.webp",
+      "status": "ok",
+      "bytes": 1369488
+    }
+  ]
+}

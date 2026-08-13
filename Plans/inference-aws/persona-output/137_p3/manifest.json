@@ -1,0 +1,33 @@
+{
+  "persona_id": "137_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/137.webp",
+  "main_image_sha256": "f02becb7fc496e1798918543cdb7e3170be358a0fdf09bcbe5c26869a4f8c009",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:29:06Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Under a canopy of twisted live oaks, Magnolia leans against a moss-covered trunk, her slender legs crossed, a diaphanous white dress clinging to her curves, the moonlight casting a sensual glow on her upturned face and the full swell of her breasts, a solitary magnolia flower resting between her breasts.",
+      "seed": 181586712,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/e9850530-921a-4611-abaa-cee371b6f0f4.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/137.webp",
+      "status": "ok",
+      "bytes": 1802525
+    }
+  ]
+}

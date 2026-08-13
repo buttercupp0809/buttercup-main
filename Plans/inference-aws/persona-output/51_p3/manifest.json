@@ -1,0 +1,33 @@
+{
+  "persona_id": "51_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/51.webp",
+  "main_image_sha256": "4befbba8f3e060f4700e6bbf31e1a908fd3f0f0b25b72706c6c374e2e41b8abf",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:24:10Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Astrid reclines on a worn, fur-covered couch in her cozy Oslo apartment, the soft light of a single lamp casting a warm glow across her face as she reaches up to slowly unclasp her black lace bra, revealing her pert, rosy nipples, her eyes locked on the camera with a sultry, bedroom gaze, the shadows of the room framing her sensual pose.",
+      "seed": 828700527,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/084a568b-c37b-4964-a848-230f6180e081.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/51.webp",
+      "status": "ok",
+      "bytes": 1334224
+    }
+  ]
+}

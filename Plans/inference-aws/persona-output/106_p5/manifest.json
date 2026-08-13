@@ -1,0 +1,33 @@
+{
+  "persona_id": "106_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/106.webp",
+  "main_image_sha256": "fe716dbaa6cf2b809253a4927de57eba6b25e810f919cdfe6fa46f9cb6377069",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:22:48Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Deserted beach at dawn - Juniper kneels on the sand, her tiny string bikini glistening with dew as the sun rises over the ocean in the background. A sheer cover-up drapes loosely over one shoulder, allowing a glimpse of her toned stomach. Her tousled hair and windblown expression capture the freedom and sensuality of the early morning hours. She looks back over her shoulder at the camera, her half-closed eyes and parted lips conveying a languid, inviting attitude.",
+      "seed": 726311298,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/ae9a29a5-c9b5-4956-8f9b-12a3b993cde8.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/106.webp",
+      "status": "ok",
+      "bytes": 1197709
+    }
+  ]
+}

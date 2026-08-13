@@ -1,0 +1,33 @@
+{
+  "persona_id": "48_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/48.webp",
+  "main_image_sha256": "ebb76f622743df3aa9aa6a8fc619517211816e3a7f633581ce0fa35b70cf8d3f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:17:06Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Phoebe, her long blonde hair swept back in a playful updo, grins widely as she holds a vintage Polaroid camera in one hand and a colorful balloon bouquet in the other. She stands in a sun-drenched park at golden hour, the warm light casting a soft glow on her bright sundress and bare legs. The shallow depth of field blurs the background, focusing attention solely on her carefree expression and infectious joy.",
+      "seed": 1687006405,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/fb37b65d-537c-45e4-993e-e3338107cbb7.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/48.webp",
+      "status": "ok",
+      "bytes": 1299584
+    }
+  ]
+}

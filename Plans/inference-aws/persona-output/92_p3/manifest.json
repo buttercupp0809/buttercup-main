@@ -1,0 +1,33 @@
+{
+  "persona_id": "92_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/92.webp",
+  "main_image_sha256": "a3addfcc1edaeb9808fb910c420aa178cb6f7dc546c207c603086dd88c215249",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:51:18Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Juniper sits on the edge of a vintage chaise lounge, clad in a sheer, silk robe that clings to her curves, the soft fabric translucent against her bare skin, a single strand of pearls around her neck drawing attention to her ample cleavage as she gazes up at the viewer with a coy, inviting smile.",
+      "seed": 1534505754,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/2e1461ad-f146-4c9a-a0c3-5aa2477b7fbe.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/92.webp",
+      "status": "ok",
+      "bytes": 1326664
+    }
+  ]
+}

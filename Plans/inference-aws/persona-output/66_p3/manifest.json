@@ -1,0 +1,33 @@
+{
+  "persona_id": "66_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/66.webp",
+  "main_image_sha256": "eaedb03251c257d7cbe81934c3398d3876fd24c74bdc473c0e3dddc60e076ddc",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:56:20Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Astrid lounges seductively on a plush chaise in a dimly lit boudoir, draped in a silk robe that slips off one shoulder to reveal a lacy bralette. Her tousled hair and heavy-lidded eyes convey a sense of languid desire as she gazes up at the camera, her leg raised and foot dangling tantalizingly near her exposed hip, in a shot with a shallow depth of field and warm, intimate lighting.",
+      "seed": 1330931824,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/7c97aa71-49bf-4fd8-9ff3-a5bdc692328a.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/66.webp",
+      "status": "ok",
+      "bytes": 1420276
+    }
+  ]
+}

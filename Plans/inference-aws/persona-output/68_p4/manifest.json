@@ -1,0 +1,33 @@
+{
+  "persona_id": "68_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/68.webp",
+  "main_image_sha256": "8ad41283ff35da66a909076f42ead274eca27af869cd2337518d8637b037c0ce",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:00:58Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On a moonlit Sydney rooftop, Ruby stands at the edge, her back to the cityscape, clad in a gauzy robe that clings to her curves and parts to reveal her bare breasts. Her wild hair flows in the night breeze as she gazes up at the stars, an enigmatic smile playing on her lips. A DSLR captures the ethereal scene in a wide-angle shot, emphasizing the vastness of the urban landscape against her intimate pose.",
+      "seed": 1954638338,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/dd297334-5aa5-4fc2-9e1e-04072f910816.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/68.webp",
+      "status": "ok",
+      "bytes": 1502962
+    }
+  ]
+}

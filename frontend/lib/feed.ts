@@ -53,7 +53,9 @@ export async function getDashboardFeed(viewer: CharacterViewer): Promise<Dashboa
 
 function signMediaUrl(url: string | undefined | null): string | null {
   if (!url) return null;
-  return url.startsWith("http") ? url : signAssetUrl(url);
+  // Local public paths (/personas/...) pass through; S3 keys get signed.
+  if (url.startsWith("http") || url.startsWith("/")) return url;
+  return signAssetUrl(url);
 }
 
 async function loadRecents(userId: string): Promise<RecentChat[]> {

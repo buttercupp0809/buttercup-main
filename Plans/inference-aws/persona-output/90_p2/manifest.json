@@ -1,0 +1,33 @@
+{
+  "persona_id": "90_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/90.webp",
+  "main_image_sha256": "4230720e4f512208c1c91c5eb05c6425588dc655379de2c19dd9c5ce4b4b9a1c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:46:42Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit, upscale cocktail lounge, Marlowe reclines on a plush velvet sofa, sipping a crimson martini as the soft glow of candles and neon signs dance across her skin. A sheer, silk blouse clings to her curves, plunging low to reveal a lacy bralette. Her gaze is sultry, half-lidded, and directed at the viewer with a clear invitation.",
+      "seed": 925943307,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/544ff6ea-fa42-49ef-99da-b26512028de1.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/90.webp",
+      "status": "ok",
+      "bytes": 1356843
+    }
+  ]
+}

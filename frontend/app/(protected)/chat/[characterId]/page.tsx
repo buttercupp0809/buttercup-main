@@ -1,12 +1,12 @@
 import { notFound } from "next/navigation";
 import { prisma } from "@buttercupp/database";
-import { requireAgeVerified } from "@/lib/auth";
+import { requireAuth } from "@/lib/auth";
 import { ChatWindow } from "@/components/chat/ChatWindow";
 import { ChatList } from "@/components/chat/ChatList";
 import { PersonaPanel, type PanelMedia } from "@/components/chat/PersonaPanel";
 import { getRelationship } from "@/lib/relationship";
 import { listConversations } from "@/lib/chats";
-import { pickPersonaImage } from "@/lib/persona-images";
+import { signAssetUrl } from "@/lib/cdn";
 
 export const dynamic = "force-dynamic";
 
@@ -16,7 +16,7 @@ export default async function ChatPage({
   params: Promise<{ characterId: string }>;
 }) {
   const { characterId } = await params;
-  const user = await requireAgeVerified();
+  const user = await requireAuth();
 
   const character = await prisma.character.findUnique({
     where: { id: characterId },
@@ -64,12 +64,18 @@ export default async function ChatPage({
   ]);
 
   // Persona panel media: images -> carousel, videos -> assets strip.
-  const images = character.media.filter((m) => m.kind === "image").map((m) => m.url);
-  const carouselImages = images.length > 0 ? images : [pickPersonaImage(characterId)];
+  // Local paths (starting with /) are not served from S3; exclude them.
+  const images = character.media
+    .filter((m) => m.kind === "image" && !m.url.startsWith("/"))
+    .map((m) => {
+      if (m.url.startsWith("http")) return m.url;
+      return signAssetUrl(m.url);
+    });
+  const carouselImages = images;
   const assets: PanelMedia[] = character.media
     .filter((m) => m.kind === "video")
     .map((m) => ({ kind: "video" as const, url: m.url }));
-  const avatarUrl = carouselImages[0];
+  const avatarUrl = carouselImages[0] ?? null;
 
   return (
     <div className="flex h-full overflow-hidden">

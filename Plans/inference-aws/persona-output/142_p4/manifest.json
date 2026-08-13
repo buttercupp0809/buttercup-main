@@ -1,0 +1,33 @@
+{
+  "persona_id": "142_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/142.webp",
+  "main_image_sha256": "845beefaff88c48fe773524e08b51674a3484ca7b31d4d1bb44d10c9b2272b9f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:40:07Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Phoebe lounges on a colorful beach towel, wearing a tiny string bikini with metallic accents, her skin glistening with pearls of sweat in the hot summer sun, her hand drifting languidly down to touch the hem of her bottoms as she stretches out, her tousled hair framing her face, the camera focused on her toned physique and the way the light catches the curves of her breasts and hips.",
+      "seed": 1833272210,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/e1c44946-b522-41e9-97e0-f164c2e27fee.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/142.webp",
+      "status": "ok",
+      "bytes": 1491420
+    }
+  ]
+}

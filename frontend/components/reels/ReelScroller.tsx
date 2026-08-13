@@ -15,7 +15,7 @@ export interface ReelItem {
   src: string;
   name: string;
   location: string;
-  avatar: string;
+  avatar: string | null;
   chatHref: string;
   likes: number;
   liked: boolean;
@@ -172,11 +172,19 @@ function Reel({
             Wrapper is pointer-events-none so taps on empty space still
             play/pause the video; interactive children re-enable pointer events. */}
         <div className="pointer-events-none absolute inset-x-4 bottom-5 flex items-center gap-3 text-white">
-          <img
-            src={item.avatar}
-            alt={item.name}
-            className="h-11 w-11 shrink-0 rounded-full object-cover ring-2 ring-white/70"
-          />
+          <div className="h-11 w-11 shrink-0 overflow-hidden rounded-full ring-2 ring-white/70 bg-black/50">
+            {item.avatar ? (
+              <img
+                src={item.avatar}
+                alt={item.name}
+                className="h-full w-full object-cover object-top"
+              />
+            ) : (
+              <div className="flex h-full w-full items-center justify-center text-sm font-bold text-white">
+                {item.name[0]?.toUpperCase()}
+              </div>
+            )}
+          </div>
           <div className="min-w-0 flex flex-col">
             <span className="truncate font-display text-lg font-semibold leading-tight drop-shadow">
               {item.name}

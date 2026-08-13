@@ -1,0 +1,33 @@
+{
+  "persona_id": "7_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/7.webp",
+  "main_image_sha256": "9731b30e32c78a2daa3b5cfaea8fb0eb54d1f3eda7bf464be0d1d90c42c912a1",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T22:47:59Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "As dawn breaks over a deserted beach, Lily kneels on the sand, her tiny string bikini leaving little to the imagination. A sheer cover-up flows around her like a misty veil, and her wind-blown hair adds to the sense of wild abandon. The rising sun casts long shadows behind her, and the camera's low angle emphasizes the stretch of her toned legs and the subtle flare of her hips. Her gaze is fixed on the horizon, an enigmatic smile playing on her lips as if she's lost in thoughts of the adventures to come.",
+      "seed": 963987079,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/b5e8741b-f11a-4929-a759-48151de91f77.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/7.webp",
+      "status": "ok",
+      "bytes": 1246280
+    }
+  ]
+}

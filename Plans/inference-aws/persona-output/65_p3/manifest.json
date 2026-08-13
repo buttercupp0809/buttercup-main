@@ -1,0 +1,33 @@
+{
+  "persona_id": "65_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/65.webp",
+  "main_image_sha256": "b30a4466841630931fa12e0ff174b0be016110bda61fa1c70215df04bbabbe6a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:54:14Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Propped against the railing of a rooftop overlooking the Mediterranean, Indigo wears a tiny string bikini and gauzy cover-up, her bronzed skin glistening with dew under the moonlight. She languidly raises a glass of wine, her tousled hair catching the breeze as she gazes out at the glittering cityscape.",
+      "seed": 606141975,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/be1ef812-0c28-4d3c-92a9-09ed99d488e3.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/65.webp",
+      "status": "ok",
+      "bytes": 1367276
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "46_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/46.webp",
+  "main_image_sha256": "96f1e3285ccd2717679fa84dd5f587fddfc2a32d830bd2a261c7e848915154ad",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:12:52Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Isla plays with a vintage typewriter in a charming Edinburgh bookshop, her auburn hair spilling over the desk as she ponders a new story. Warm golden light filters through the tall windows, casting a cozy glow on her smiling face and the stacks of novels surrounding her.",
+      "seed": 1605439714,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/73e5408d-96d7-4d66-a9ba-141b24195d3d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/46.webp",
+      "status": "ok",
+      "bytes": 1368936
+    }
+  ]
+}

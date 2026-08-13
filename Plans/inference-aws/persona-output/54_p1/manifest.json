@@ -1,0 +1,33 @@
+{
+  "persona_id": "54_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/54.webp",
+  "main_image_sha256": "5828def077cfc31b82cfad8e12398892cdcefffb53862a64a86ff4e594e24a61",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:30:05Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A playful Odessa laughing with joy, her bright smile lighting up a sun-drenched park on a warm afternoon, golden hour casting a soft glow as she playfully tosses a frisbee in the air with her slender arms, wearing a casual white sundress that flutters in the breeze, her long hair tied back in a ponytail, the DSLR camera capturing her carefree spirit with a shallow depth of field emphasizing her radiant face.",
+      "seed": 1215425352,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/37b533f2-96b5-4b66-80d8-17cf6c2be50a.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/54.webp",
+      "status": "ok",
+      "bytes": 1272510
+    }
+  ]
+}

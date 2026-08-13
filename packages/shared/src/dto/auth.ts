@@ -24,7 +24,7 @@ const emailField = z.string().trim().toLowerCase().email().max(320);
 // and the server route validators MUST use this list; do not duplicate the
 // regexes in the UI. The frontend imports PASSWORD_RULES / passwordChecklist
 // directly, so any change here is reflected in the checklist automatically.
-export const PASSWORD_MIN = 12;
+export const PASSWORD_MIN = 8;
 
 export interface PasswordRule {
   id: "min" | "upper" | "lower" | "digit" | "symbol";

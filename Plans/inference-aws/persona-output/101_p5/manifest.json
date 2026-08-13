@@ -1,0 +1,33 @@
+{
+  "persona_id": "101_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/101.webp",
+  "main_image_sha256": "61c3f77ce9659974a8b2b3dc3e9e94d8164ae8bcec32bca0683d0ecd48cbb8a2",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:12:17Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Against the backdrop of a dimly lit, minimalist studio, Hazel stands with one leg bent behind her, her hand resting on her hip as she looks directly at the camera with an unmistakable \"come hither\" gaze, her body clad in a skintight black leather corset and matching thigh-high boots that accentuate her toned legs and rounded derri\u00e8re, the low-key lighting creating deep shadows that only add to her raw, lusty appeal.",
+      "seed": 1750279979,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/8101de8f-aece-4554-82ba-0e6953549469.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/101.webp",
+      "status": "ok",
+      "bytes": 1004855
+    }
+  ]
+}

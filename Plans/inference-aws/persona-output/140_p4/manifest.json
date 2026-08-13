@@ -1,0 +1,33 @@
+{
+  "persona_id": "140_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/140.webp",
+  "main_image_sha256": "50df5b28b5fcfc2f321ca7d34ad87582ec3a630635073a81a731861fc90368ec",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:35:52Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On a deserted beach at dawn, Clara's fur-trimmed coat is thrown open, revealing a lacy bralette and high-waisted panties, her tousled hair and cold-pink lips at odds with the warmth of the rising sun, the focus on her toned thighs and the sand beneath her creating a striking contrast.",
+      "seed": 1445120997,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/83b03176-633c-4932-ae7d-ade4f0c67f5f.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/140.webp",
+      "status": "ok",
+      "bytes": 1524432
+    }
+  ]
+}

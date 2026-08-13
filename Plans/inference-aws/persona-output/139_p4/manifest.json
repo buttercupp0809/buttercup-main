@@ -1,0 +1,33 @@
+{
+  "persona_id": "139_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/139.webp",
+  "main_image_sha256": "14d859a7ad2c8fcc80003cd2fe4e5845ef2a7af6238dd6a59832257d2eebc2f1",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:33:44Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Astrid's sculpted form is illuminated by the soft, moody lighting of a deserted alleyway, clad in a tight, high-necked bodysuit that showcases her toned physique, her hands on her hips as she looks over her shoulder with a sultry, mischievous gaze, the city lights casting long shadows across her bare legs.",
+      "seed": 1448891811,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/5c628893-3448-4793-a483-470231803139.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/139.webp",
+      "status": "ok",
+      "bytes": 1222762
+    }
+  ]
+}

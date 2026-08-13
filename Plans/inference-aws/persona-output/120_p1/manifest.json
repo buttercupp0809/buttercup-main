@@ -1,0 +1,33 @@
+{
+  "persona_id": "120_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/120.webp",
+  "main_image_sha256": "2a57afea865bc3fd53ea30194cca7d2cd4fdb014d6d2f06f0b3715b192fb8844",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:51:04Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Juniper strums her guitar on a sunny Seattle afternoon, bathed in warm golden hour light as she performs on a outdoor stage for a crowd of enthusiastic fans, her joyful expression and flowing hair capturing the carefree spirit of the Pacific Northwest grunge scene.",
+      "seed": 1229302875,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/87e0403c-faee-49d2-9639-7244fe29b950.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/120.webp",
+      "status": "ok",
+      "bytes": 1612947
+    }
+  ]
+}

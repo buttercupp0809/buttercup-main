@@ -1,0 +1,33 @@
+{
+  "persona_id": "64_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/64.webp",
+  "main_image_sha256": "9abbcfe6c678912c57c35abf49e116564974d5d9cd48e31e2a80546a01bef16d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:52:32Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the midst of a lavish, candlelit ballroom, Magnolia glides across the polished marble floor, her red satin gown shimmering under the chandeliers. Her dark hair is swept up in an elegant updo, and a string of pearls graces her neck. With a coy, sidelong glance, she extends a gloved hand to a waiting partner, her full lips curved in a playful, inviting smile.",
+      "seed": 1588524616,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/9099c5ae-ebee-48d4-8e4f-fdeb8811bd8b.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/64.webp",
+      "status": "ok",
+      "bytes": 1064365
+    }
+  ]
+}

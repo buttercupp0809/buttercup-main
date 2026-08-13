@@ -1,0 +1,33 @@
+{
+  "persona_id": "107_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/107.webp",
+  "main_image_sha256": "1f3508fc57734a60afd63487e6fb70162f8f210ab57d0ee58047babec64a099d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:24:10Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A secluded winter glade in Dublin's Phoenix Park; Lyra stands amidst a grove of bare-branched trees, her fur-trimmed coat open to reveal a lacy bralette and high-waisted panties. Frost glistens on her skin as she looks back over her shoulder at the camera, a smirk playing on her cold lips. The cold winter air sets her nipples hard, the delicate fabric of her lingerie barely containing them. The DSLR captures the intimate scene in a shallow depth of field, Lyra's figure the sole focus against the icy, barren backdrop.",
+      "seed": 1297479402,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/b0c53034-e099-44c6-b796-b300034b9722.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/107.webp",
+      "status": "ok",
+      "bytes": 1286894
+    }
+  ]
+}

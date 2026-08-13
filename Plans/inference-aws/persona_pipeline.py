@@ -82,7 +82,7 @@ POSE_PREFIXES = [
     "glancing over shoulder",
 ]
 
-VARIANTS_PER_PROMPT = 4
+VARIANTS_PER_PROMPT = int(os.environ.get("VARIANTS_PER_PROMPT", "4"))
 
 S3_BUCKET = os.environ.get("POPPY_S3_BUCKET_GENERATED", "")
 AWS_REGION_PIPELINE = os.environ.get("AWS_REGION", "eu-north-1")

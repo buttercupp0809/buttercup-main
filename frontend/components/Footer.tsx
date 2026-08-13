@@ -38,7 +38,7 @@ export function Footer() {
             ButterCupp
           </Link>
           <p className="max-w-xs text-xs">
-            Unfiltered AI companions built for grown-ups.
+            Unfiltered companions built for grown-ups.
           </p>
           <span className="inline-flex w-fit items-center gap-1 rounded-full border border-slate-300 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-slate-700 dark:border-slate-700 dark:text-slate-300">
             18+

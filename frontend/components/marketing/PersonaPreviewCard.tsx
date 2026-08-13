@@ -30,7 +30,7 @@ export function PersonaPreviewCard({ character, viewerAllowsMature, priority }: 
           alt={character.name}
           loading={priority ? "eager" : "lazy"}
           className={cn(
-            "absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105",
+            "absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105",
             gated && "blur-2xl scale-110",
           )}
         />

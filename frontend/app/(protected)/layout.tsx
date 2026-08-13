@@ -1,17 +1,23 @@
-import { requireAgeVerified } from "@/lib/auth";
+import { requireAuth } from "@/lib/auth";
 import { listConversations } from "@/lib/chats";
 import { SideNav } from "@/components/app-shell/SideNav";
 import { MobileNav, MobileBottomBar } from "@/components/app-shell/MobileNav";
 import { ProfileMenu } from "@/components/app-shell/ProfileMenu";
 import { PremiumPill } from "@/components/app-shell/PremiumPill";
+import { ConsentGate } from "@/components/app-shell/ConsentGate";
 
 // Dark cinematic in-app shell (PRD §2.3 + §1). The `.buttercupp-app` wrapper
 // scopes the dark theme + rose/violet accents to authenticated surfaces so
-// the marketing shell stays light. requireAgeVerified() still runs first so
-// the age gate cannot regress; middleware has already checked the auth
-// cookie. The header carries the Premium upsell pill + the profile menu.
+// the marketing shell stays light. ConsentGate blocks access until the user
+// has agreed to age + ToS + Privacy on first login; middleware has already
+// checked the auth cookie.
 export default async function ProtectedLayout({ children }: { children: React.ReactNode }) {
-  const user = await requireAgeVerified();
+  const user = await requireAuth();
+  const needsConsent =
+    user.ageVerifiedAt === null ||
+    user.ageVerificationLevel === "none" ||
+    user.tosAcceptedAt === null ||
+    user.privacyAcceptedAt === null;
   const recents = await listConversations(user.id, 6).catch(() => []);
 
   const profileUser = {
@@ -21,7 +27,7 @@ export default async function ProtectedLayout({ children }: { children: React.Re
     tier: user.subscriptionTier,
   };
 
-  return (
+  const shell = (
     // h-screen + overflow-hidden pins the whole app to the viewport so the
     // body never scrolls; scrolling is contained to <main> (long pages) or to
     // the internal panes of full-height pages like chat and reels.
@@ -43,4 +49,6 @@ export default async function ProtectedLayout({ children }: { children: React.Re
       </div>
     </div>
   );
+
+  return <ConsentGate needsConsent={needsConsent}>{shell}</ConsentGate>;
 }

@@ -1,0 +1,33 @@
+{
+  "persona_id": "126_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/126.webp",
+  "main_image_sha256": "12f6e6695b7a4187def0b85e35f1c1efe2303aec5e1c7b54990b22b6801105d3",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:04:49Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Clara steps out of a charming Parisian caf\u00e9 into the soft glow of a golden hour, her elegant dress and wide-brimmed hat catching the warm light as she smiles at a street performer juggling fire, her eyes sparkling with joy and wonder at the lively scene before her.",
+      "seed": 441156131,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/f10c60b4-477d-4118-882b-4a69d3278f67.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/126.webp",
+      "status": "ok",
+      "bytes": 1643576
+    }
+  ]
+}

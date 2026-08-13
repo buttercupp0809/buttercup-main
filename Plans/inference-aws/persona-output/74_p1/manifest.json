@@ -1,0 +1,33 @@
+{
+  "persona_id": "74_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/74.webp",
+  "main_image_sha256": "a8d30a0d4f3b018e74982207b65f89100139f82158eecfafc39760a011d74c0b",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:12:31Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Piper strides confidently through the vibrant streets of Melbourne during golden hour, her bright smile and lively energy radiating as she prepares for a night of theatrical performances in the city's iconic Federation Square, with the warm glow of streetlamps and the sounds of bustling crowds subtly capturing her carefree spirit in a DSLR photograph with a shallow depth of field, emphasizing her joyous expression and the urban backdrop.",
+      "seed": 1967482636,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/663118ba-b1e6-4058-b295-4dacd6c85a64.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/74.webp",
+      "status": "ok",
+      "bytes": 1398255
+    }
+  ]
+}

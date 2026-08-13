@@ -1,0 +1,33 @@
+{
+  "persona_id": "34_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/34.webp",
+  "main_image_sha256": "965804d20e9f8fbcc572fa45ed9bacbad85d7ceffcbf58a2499cd5ee7b0cc19d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T23:48:24Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Basking in the steamy warmth of an onsen, Astrid reclines on a natural stone ledge, her porcelain skin glistening with water droplets as she languidly raises a hand to her cheek, a kimono draped loosely over one shoulder, the soft focus and shallow depth of field emphasizing her sensual, relaxed pose.",
+      "seed": 1600237116,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/f327e51d-7214-4179-9508-5d2b55495869.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/34.webp",
+      "status": "ok",
+      "bytes": 1239835
+    }
+  ]
+}

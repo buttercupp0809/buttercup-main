@@ -1,0 +1,33 @@
+{
+  "persona_id": "118_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/118.webp",
+  "main_image_sha256": "b78f22f8908abdc25cc92ea5299424bec33fbf92f2c16f9e67ef025b1e4f6ff5",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:48:28Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the midst of a seedy back alley, Marlowe crouches low, hands braced on her knees as her leather corset and fishnet stockings reveal every tantalizing curve of her body. The dim streetlights cast long shadows, highlighting the provocative curve of her thong-clad rear as she looks back over her shoulder with a smoldering gaze, inviting the viewer to step into her secret world.",
+      "seed": 827388614,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/7ebd6c62-54bf-4900-ba73-19fb2c1c4e88.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/118.webp",
+      "status": "ok",
+      "bytes": 1319264
+    }
+  ]
+}

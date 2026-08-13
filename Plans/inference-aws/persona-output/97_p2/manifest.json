@@ -1,0 +1,33 @@
+{
+  "persona_id": "97_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/97.webp",
+  "main_image_sha256": "89db90cc233294d0b8ff7ee27da394cc98627ac84e1090da5d684e4d8f188bac",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:02:33Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit Berlin nightclub, Astrid reclines on a plush velvet sofa, her slender legs crossed, a sultry gaze fixed on the viewer through heavy-lidded eyes, the low lighting casting shadows on her face and highlighting the curves of her body barely contained by a tight, beaded cocktail dress that clings to every inch of her form.",
+      "seed": 1868357314,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/f4340c82-b35f-4279-854c-a0d6cf5f3c55.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/97.webp",
+      "status": "ok",
+      "bytes": 1424936
+    }
+  ]
+}

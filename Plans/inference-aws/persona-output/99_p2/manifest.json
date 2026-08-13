@@ -1,0 +1,33 @@
+{
+  "persona_id": "99_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/99.webp",
+  "main_image_sha256": "6550d02011c0fe04d297d65d98cd12d3141018ff1f3a349816fe87d9009343cd",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:06:48Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit Sydney nightclub, Ruby's eyes gleam with excitement as she leans back against the wall, one stiletto-clad foot propped on a bar stool, the neckline of her sheer black blouse plunging to reveal the tantalizing curve of her cleavage, a single strand of her tousled hair hanging seductively across her flushed cheek.",
+      "seed": 1077533352,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/0a9aaf3c-39ff-481d-a212-a3efc504fb19.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/99.webp",
+      "status": "ok",
+      "bytes": 1340760
+    }
+  ]
+}

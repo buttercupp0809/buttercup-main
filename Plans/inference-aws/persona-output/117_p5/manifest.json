@@ -1,0 +1,33 @@
+{
+  "persona_id": "117_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/117.webp",
+  "main_image_sha256": "ead3969c8bdcf5dfaabcdf5f60169dcb2517317226d47e2efa36ea684c197aeb",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:46:15Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Moonlit, abandoned courtyard. Vesper's nude form is illuminated by the pale glow of the full moon, casting an ethereal light on her skin. She sits on a stone bench, one leg bent under her, the other extended, her hand resting on her knee as she gazes up at the night sky, her expression dreamy and alluring.",
+      "seed": 373283030,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/8496b4ea-3a23-4fd8-ad07-20798fe9cc8d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/117.webp",
+      "status": "ok",
+      "bytes": 1287241
+    }
+  ]
+}

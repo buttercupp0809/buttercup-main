@@ -1,0 +1,33 @@
+{
+  "persona_id": "131_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/131.webp",
+  "main_image_sha256": "a9b2de553438516c97973a18c15ab8899543b4fcba227fea7bd7d7fb9bc44699",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:16:12Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Against the backdrop of a snow-dusted Ottoman palace, Vesper stands with her back to a massive archway, her fur-trimmed coat slung open to reveal a sheer black bra and high-waisted red panties, the cold air causing her nipples to pebble against the fabric as she gazes over her shoulder with a smoldering intensity, her long hair billowing in the wind.",
+      "seed": 1462915946,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/694d16fd-f38b-418d-88bc-48a0fa587157.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/131.webp",
+      "status": "ok",
+      "bytes": 1410089
+    }
+  ]
+}

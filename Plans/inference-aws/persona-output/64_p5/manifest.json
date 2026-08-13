@@ -1,0 +1,33 @@
+{
+  "persona_id": "64_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/64.webp",
+  "main_image_sha256": "9abbcfe6c678912c57c35abf49e116564974d5d9cd48e31e2a80546a01bef16d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:52:56Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On a sultry summer evening, Magnolia perches on the edge of a weathered wooden dock, her bare feet dangling above the water. She wears a tiny, string bikini top and a pair of high-waisted, denim cutoff shorts that leave little to the imagination. Her long, honey-blonde hair flows over her shoulders, and she looks out at the rippling lake with a faraway, contemplative expression. The golden hour casts a warm glow on her sun-kissed skin, accentuating the curves of her body as she leans forward, her elbows on her knees.",
+      "seed": 1944650487,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/443fc60a-aedd-465f-a2c7-0a811139a581.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/64.webp",
+      "status": "ok",
+      "bytes": 1222443
+    }
+  ]
+}

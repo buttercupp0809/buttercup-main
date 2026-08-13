@@ -1,0 +1,33 @@
+{
+  "persona_id": "118_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/118.webp",
+  "main_image_sha256": "b78f22f8908abdc25cc92ea5299424bec33fbf92f2c16f9e67ef025b1e4f6ff5",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:46:46Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Marlowe strides through a vibrant London market on a golden afternoon, her laughter echoing off the stalls as she samples artisanal cheeses and sips wine from a vendor's cup. DSLR captures the scene's warmth and playfulness with a shallow depth of field emphasizing her joyous expression.",
+      "seed": 1014497176,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/fc37c236-42ea-4a59-acc6-00b4315322cf.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/118.webp",
+      "status": "ok",
+      "bytes": 1497928
+    }
+  ]
+}

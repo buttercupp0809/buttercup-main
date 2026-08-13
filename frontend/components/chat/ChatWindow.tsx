@@ -191,7 +191,7 @@ export function ChatWindow({
             style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))" }}
           >
             {avatarUrl ? (
-              <img src={avatarUrl} alt={characterName} className="h-full w-full object-cover" />
+              <img src={avatarUrl} alt={characterName} className="h-full w-full object-cover object-top" />
             ) : (
               <div className="flex h-full w-full items-center justify-center text-sm font-semibold">
                 {characterName[0]?.toUpperCase()}
@@ -357,19 +357,22 @@ function MessageBubble({
   return (
     <div className={`flex ${mine ? "justify-end" : "justify-start"}`} data-testid={`bubble-${role}`}>
       <div
-        className={`max-w-[75%] rounded-2xl px-4 py-2 text-sm shadow-sm ${
-          mine ? "text-white" : "ring-1"
-        }`}
+        className="max-w-[75%] rounded-2xl px-4 py-3 shadow-sm"
         style={
           mine
             ? {
                 background:
                   "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
+                color: "#ffffff",
+                fontSize: "15px",
+                fontWeight: 500,
               }
             : {
-                backgroundColor: "hsl(var(--buttercupp-surface))",
-                color: "hsl(var(--buttercupp-fg))",
-                borderColor: "hsl(var(--buttercupp-border))",
+                backgroundColor: "#ffffff",
+                color: "#111111",
+                fontSize: "15px",
+                fontWeight: 400,
+                lineHeight: "1.75",
               }
         }
       >

@@ -1,0 +1,33 @@
+{
+  "persona_id": "99_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/99.webp",
+  "main_image_sha256": "6550d02011c0fe04d297d65d98cd12d3141018ff1f3a349816fe87d9009343cd",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:08:01Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Ruby's luscious figure is bathed in the warm glow of a Sydney laneway at night, her slender arms and legs wrapped around a graffiti-covered brick wall, a sheer, emerald green negligee clinging to her every contour. She tilts her head back, eyes hooded and lips parted invitingly, as if beckoning the viewer into her intimate world, the neon signs and city lights casting a mesmerizing kaleidoscope of colors across her skin.",
+      "seed": 541314474,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/d691381d-7139-411b-aef8-33c2cc82a2ab.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/99.webp",
+      "status": "ok",
+      "bytes": 1863006
+    }
+  ]
+}

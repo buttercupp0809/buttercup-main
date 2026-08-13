@@ -1,0 +1,33 @@
+{
+  "persona_id": "70_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/70.webp",
+  "main_image_sha256": "b84de962eb2833a8963fcc8fc6fe5b00d254f183f6dcbcbc91b48416cc69bb27",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:04:23Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit, abstractly textured backstage area of an avant-garde theater, a scantily clad Hazel leans seductively against a worn velvet curtain, her barely-there lingerie \u2013 a sheer black bra and lace panties \u2013 clinging to her voluptuous figure as she gazes directly at the camera with a sultry, half-lidded gaze, one hand trailing down her ample cleavage, her tousled hair framing her face in shadows, the shallow depth of field and cinematic lighting drawing attention to her alluring form.",
+      "seed": 656687428,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/1b805f9c-f866-4a70-9ac0-933b7a214d22.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/70.webp",
+      "status": "ok",
+      "bytes": 1381427
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "75_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/75.webp",
+  "main_image_sha256": "1185cbb0f6f4359402c71f7a21415bc0a3618e2b1a55886792f1d074e46fc63e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:15:01Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit, ornate harem room, Vesper reclines languidly on plush silk cushions, her embroidered choli top and lehnga skirt artfully draped to reveal hints of skin. She gazes out with half-lidded eyes, a coy smile playing on her lips as a servant adjusts a diamond navel chain.",
+      "seed": 1055702027,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/b17fc3f0-701c-4072-ba22-7212fe8d0b36.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/75.webp",
+      "status": "ok",
+      "bytes": 1770961
+    }
+  ]
+}

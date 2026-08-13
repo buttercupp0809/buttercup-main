@@ -1,0 +1,33 @@
+{
+  "persona_id": "82_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/82.webp",
+  "main_image_sha256": "5391339d07eb1bd57c868cd7f04bd7857d5eb6265ad1e220f971d719db9feb7e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:29:49Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the dimly lit back room of an avant-garde bookstore in the Jordaan district, Indigo reclines on a worn leather couch, her long legs crossed and a vintage novel spread across her lap, a crimson lace camisole revealing the curves of her breasts as she gazes at the camera with an alluring, half-lidded expression, the ambient light casting deep shadows on her face and the book's pages.",
+      "seed": 927101700,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/786539e4-cb0b-4065-860e-bccdf7b5bba4.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/82.webp",
+      "status": "ok",
+      "bytes": 1163038
+    }
+  ]
+}

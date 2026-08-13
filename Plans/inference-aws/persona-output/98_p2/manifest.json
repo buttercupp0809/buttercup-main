@@ -1,0 +1,33 @@
+{
+  "persona_id": "98_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/98.webp",
+  "main_image_sha256": "69a8a0156e6fce31bc4e0b691b8af46fe031767798ddacb775b1d61669193331",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:04:40Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit bedroom, Clara reclines on plush velvet pillows, her lacy black bra and thong set off by the soft sheen of moonlight filtering through heavy drapes. She gazes directly at the viewer with half-lidded eyes, her lips parted in a sultry invitation as she reaches up to caress the swell of her breast.",
+      "seed": 132691551,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/e68d0199-179f-42aa-affb-ee3083864144.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/98.webp",
+      "status": "ok",
+      "bytes": 1200809
+    }
+  ]
+}

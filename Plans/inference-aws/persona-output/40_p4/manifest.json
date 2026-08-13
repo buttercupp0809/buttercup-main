@@ -1,0 +1,33 @@
+{
+  "persona_id": "40_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/40.webp",
+  "main_image_sha256": "41fa15425f5714142413ac499c782a0e76f2c7fc76f6cf025afd9fe0bf1d45d3",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:01:09Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On a moonlit night, Freya straddles an antique, ornate bench in a secluded, overgrown garden, the silvery light casting long shadows across her bare skin as she wears a sheer, lace negligee that clings to her every curve, her back arched and head thrown back in a pose of sensuality, the focus tight on her exposed breasts and the hint of her thong, the shot capturing a moody, intimate atmosphere with a shallow depth of field.",
+      "seed": 800593251,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/e6b51c41-2b3a-4526-955d-4de5120050e6.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/40.webp",
+      "status": "ok",
+      "bytes": 1690018
+    }
+  ]
+}

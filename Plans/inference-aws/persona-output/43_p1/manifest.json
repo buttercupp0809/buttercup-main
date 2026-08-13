@@ -1,0 +1,33 @@
+{
+  "persona_id": "43_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/43.webp",
+  "main_image_sha256": "9fe647b99de1c5807c6190cb75fb1b282f83892ff83b027d2b0668dc79f91565",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:06:23Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A sunny afternoon in a Charleston park as Magnolia playfully tosses a frisbee, her bright yellow sundress fluttering in the warm breeze, her long dark hair streaming behind her, and a radiant smile on her face, captured in a shallow depth of field with the vibrant flowers and lush greenery blurred in the background.",
+      "seed": 1388153708,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/abec1b76-38e6-4989-9f2e-0185cb2233d9.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/43.webp",
+      "status": "ok",
+      "bytes": 1648166
+    }
+  ]
+}

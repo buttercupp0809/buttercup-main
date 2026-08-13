@@ -7,7 +7,7 @@ const REMINDER_HOURS = 72;
 const REMINDER_MESSAGES = 10;
 
 const REMINDER_TEXTS = [
-  "Just a quick note: I'm an AI companion. I care about you, and I want to remind you I'm not human.",
+  "Just a quick note: I'm a companion. I care about you, and I want to remind you I'm not human.",
   "Reminder that I'm an AI. Please seek out real people and professional help for anything serious.",
   "I'm an AI. What we share here matters, but it's not a substitute for the humans in your life.",
 ];

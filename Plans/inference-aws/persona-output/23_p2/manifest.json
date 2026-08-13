@@ -1,0 +1,33 @@
+{
+  "persona_id": "23_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/23.webp",
+  "main_image_sha256": "7febe5b6d9717e82eac13d532a9a2991b8cd76f025575fb224523b8ebf506526",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T23:21:50Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit, steamy bathroom, Piper's nude form is silhouetted against the glass shower door as warm water cascades over her, the translucent soapy film accentuating her curves, her gaze inviting as she reaches for a towel, the ambient light casting a flattering glow on her skin.",
+      "seed": 990915444,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/60927f20-bbd4-45dd-a8ea-6b6bc6fe5abb.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/23.webp",
+      "status": "ok",
+      "bytes": 1869538
+    }
+  ]
+}

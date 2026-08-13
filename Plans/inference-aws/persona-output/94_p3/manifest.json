@@ -1,0 +1,33 @@
+{
+  "persona_id": "94_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/94.webp",
+  "main_image_sha256": "aabfca569500e35a278a5e9bdbb55b9ec2c331a54be80d176b2eceeac1fc812a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:55:35Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Ophelia poses in a lush garden, wearing a revealing red lace bra and matching thong, her skin glistening with dew in the morning mist. She leans back against a stone wall, one leg bent at the knee, the other extended along the mossy ground. Her tousled hair frames her face, and her lips are parted in a coy smile as she meets the camera's gaze. The shallow depth of field and soft focus on her skin create an intimate, dreamlike atmosphere, with the abstract garden textures and dim light serving to heighten the mood's sensuality.",
+      "seed": 252753177,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/21366744-b2ce-49fb-8a24-31c01134b809.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/94.webp",
+      "status": "ok",
+      "bytes": 1511078
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "76_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/76.webp",
+  "main_image_sha256": "c422ac5665d370afbf23de583d84cdf39d55b11ec7df480ccd6aea9fc50b48d9",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:17:59Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Marlowe stands in the steamy, dimly lit bathroom, water droplets beading on her naked skin as she reaches for a towel, her full, perky breasts glistening with moisture, her nipples visibly hard, her slender waist and flared hips leading down to the juncture of her thighs, which are slightly parted, hinting at her intimate region, as the camera captures a sensual, close-up view through the misty glass door.",
+      "seed": 1405541539,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/0ae7f977-4317-4067-8442-6f45d7ebbcdd.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/76.webp",
+      "status": "ok",
+      "bytes": 1402306
+    }
+  ]
+}

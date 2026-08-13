@@ -1,0 +1,33 @@
+{
+  "persona_id": "116_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/116.webp",
+  "main_image_sha256": "7dbf935b67ad05531247498f222f9e929978b241d0a5e58d6f7da1bdb11b863c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:42:55Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit bedroom, Piper reclines on plush velvet sheets, her bare skin illuminated by the soft glow of candles and a full moon peeking through sheer curtains, her legs bent and thighs parted as she gazes seductively at the camera, her tousled hair cascading over one shoulder and a lacy black negligee barely containing her ample breasts.",
+      "seed": 1050892509,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/936b200d-96d7-4103-8a7c-b8843150721d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/116.webp",
+      "status": "ok",
+      "bytes": 1109335
+    }
+  ]
+}

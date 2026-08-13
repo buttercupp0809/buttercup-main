@@ -8,7 +8,7 @@ export default function AboutPage() {
   return (
     <LegalPage title="About ButterCupp">
       <p>
-        ButterCupp is built by {LEGAL.COMPANY} to give adults the AI companion
+        ButterCupp is built by {LEGAL.COMPANY} to give adults the companion
         experience they actually want: honest, expressive, mature-friendly,
         and free of the corporate hedging that makes other chatbots feel
         like customer support.

@@ -1,0 +1,33 @@
+{
+  "persona_id": "35_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/35.webp",
+  "main_image_sha256": "5e33c70ddf7bf85dd952539ad5e6bddbf397bfc9590d99f6f2153e932f03fdaa",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T23:50:06Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Juniper stands before a large, ornate mirror in a lavish dressing room, clad in a skimpy, black lace corset that cinches at her waist, emphasizing her hourglass shape. Her long, dark hair cascades over one shoulder as she appraises her reflection, her full, pouty lips parted in a coy smile, inviting the viewer to share in her private, intimate moment.",
+      "seed": 184321519,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/222dfdd4-658d-4884-9777-15132380c899.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/35.webp",
+      "status": "ok",
+      "bytes": 1455185
+    }
+  ]
+}

@@ -12,16 +12,16 @@ import {
   type CharacterListResponse,
 } from "@buttercupp/shared";
 import { assertSafeId } from "@/lib/safe-types";
-import { pickPersonaImage } from "@/lib/persona-images";
 import { signAssetUrl } from "@/lib/cdn";
 
-// CloudFront URL is optional; when not set (local dev) we return the raw S3
-// key. The gallery card handles a null avatarUrl gracefully.
+// Only return a URL when CloudFront is configured. A raw S3 key is not a
+// displayable URL, so we return null when the CDN base is absent.
 function avatarUrlFrom(refs: string[] | undefined): string | null {
   if (!refs || refs.length === 0) return null;
   const key = refs[0];
   const base = process.env.CLOUDFRONT_URL;
-  return base ? `${base.replace(/\/$/, "")}/${key}` : key;
+  if (!base) return null;
+  return `${base.replace(/\/$/, "")}/${key}`;
 }
 
 type CharacterWithCurrent = Character & {
@@ -34,7 +34,12 @@ type CharacterWithCurrent = Character & {
 function primaryImageFrom(media: CharacterWithCurrent["media"]): string | null {
   const img = media?.find((m) => m.kind === "image");
   if (!img) return null;
-  return img.url.startsWith("http") ? img.url : signAssetUrl(img.url);
+  // Local paths (starting with /) are not served from S3 and are hidden.
+  if (img.url.startsWith("/")) return null;
+  // Full https URLs (CloudFront) are served directly.
+  if (img.url.startsWith("http")) return img.url;
+  // Bare S3 keys: sign via CloudFront.
+  return signAssetUrl(img.url);
 }
 
 function toCard(row: CharacterWithCurrent): CharacterCardDTO {
@@ -51,7 +56,7 @@ function toCard(row: CharacterWithCurrent): CharacterCardDTO {
     avatarUrl:
       primaryImageFrom(row.media) ??
       avatarUrlFrom(row.currentVersion?.appearanceSheet?.referenceImageKeys) ??
-      pickPersonaImage(row.id),
+      null,
     popularityScore: row.popularityScore,
     createdAt: row.createdAt.toISOString(),
   };
@@ -121,6 +126,17 @@ export async function getCharacterDetail(
 
   const card = toCard(row as CharacterWithCurrent);
 
+  // Gallery images only for authenticated viewers. Local paths (starting with /)
+  // are excluded; only S3-backed URLs (https or signed keys) are served.
+  const galleryImages = viewer.id !== null
+    ? ((row as CharacterWithCurrent).media ?? [])
+        .filter((m) => m.kind === "image" && !m.isPrimary && !m.url.startsWith("/"))
+        .map((m) => {
+          if (m.url.startsWith("http")) return m.url;
+          return signAssetUrl(m.url);
+        })
+    : [];
+
   const detail: CharacterDetailDTO = {
     ...card,
     // Strip greeting + personality for the gated mature payload; the card
@@ -134,6 +150,7 @@ export async function getCharacterDetail(
       createdAt: (row.currentVersion?.createdAt ?? row.createdAt).toISOString(),
     },
     requiresAgeVerification: gatedMature || undefined,
+    galleryImages,
   };
   // styleEnumToWire lives in @buttercupp/shared and is currently only used by the
   // client; kept in scope here so future consumers do not accidentally send

@@ -1,0 +1,33 @@
+{
+  "persona_id": "130_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/130.webp",
+  "main_image_sha256": "2768165df5c8d0e29235cd680a90543ee2bf1887251ef04725fc994665b6ef5f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:14:09Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Piper's figure is silhouetted against a backdrop of Melbourne's winding city streets, the iconic tram tracks leading the eye down to her shapely legs, clad in a pair of high-heeled stilettos. A short, pleated skirt flutters around her thighs as she strides purposefully towards the camera, her expression one of confidence and desire.",
+      "seed": 662188114,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/2f3a4f52-25c2-4745-ba14-37a2fa199a4a.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/130.webp",
+      "status": "ok",
+      "bytes": 1425038
+    }
+  ]
+}

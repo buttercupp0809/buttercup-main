@@ -1,0 +1,33 @@
+{
+  "persona_id": "98_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/98.webp",
+  "main_image_sha256": "69a8a0156e6fce31bc4e0b691b8af46fe031767798ddacb775b1d61669193331",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:04:16Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Clara steps out of a charming Parisian caf\u00e9 onto a cobblestone street bathed in the warm glow of golden hour, a vibrant scarf draped over her shoulders as she grins at the camera, her eyes sparkling with joy beneath a stylish hat and sunglasses, the Eiffel Tower looming in the distance.",
+      "seed": 1588154469,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/18ecb3ab-4f37-47e4-8602-88949b1ed944.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/98.webp",
+      "status": "ok",
+      "bytes": 1572563
+    }
+  ]
+}

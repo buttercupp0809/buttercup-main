@@ -1,0 +1,33 @@
+{
+  "persona_id": "102_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/102.webp",
+  "main_image_sha256": "164ea8e04692e99abb5a2ff30121094c67340b24dc8cb4b8029b3f53c5fe08de",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:13:35Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit backstage area, Piper leans against a worn brick wall, a corset and fishnets accentuating her toned physique as she fixes her makeup in a handheld mirror, her tousled hair cascading down her back, the soft focus of the camera emphasizing her eyes' smoky intensity and inviting lips, a single spotlight casting long shadows across the concrete floor.",
+      "seed": 1595325048,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/903e93c6-992c-494a-8fac-6def48ab5ac5.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/102.webp",
+      "status": "ok",
+      "bytes": 1413061
+    }
+  ]
+}

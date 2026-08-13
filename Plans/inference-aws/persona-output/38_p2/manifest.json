@@ -1,0 +1,33 @@
+{
+  "persona_id": "38_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/38.webp",
+  "main_image_sha256": "d188bc743c728e90672fc51763546355d0c410e2913b0109a57e5a896fe6c925",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T23:56:03Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A sultry Lykke reclining on a plush chaise in a dimly lit bedroom, wearing a sheer black negligee that clings to her curves, her tousled hair cascading over one shoulder as she gazes directly at the camera with a coy, inviting smile, one hand trailing down her chest to her cleavage.",
+      "seed": 1871635170,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/d1aff369-8f3a-4cce-a7cf-ad3086c65810.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/38.webp",
+      "status": "ok",
+      "bytes": 1357418
+    }
+  ]
+}

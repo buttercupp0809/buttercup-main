@@ -1,0 +1,33 @@
+{
+  "persona_id": "80_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/80.webp",
+  "main_image_sha256": "154961ea3e25385ac6f9be8687827802f7759b00e974bce3f99ca3c3b3500a0e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:26:49Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Amid the ornate, jewel-toned opulence of a lavish harem tent, Ophelia reclines on plush cushions, her intricately embroidered choli top and lehnga skirt a testament to ancient Indian craftsmanship, her hands playing with the delicate curls of her hair as her half-lidded, inviting eyes seem to beckon the viewer closer, the soft, diffused light casting a warm, sensuous glow over her seductive form.",
+      "seed": 85283364,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/3685f35b-28f6-4e0e-b676-7b9c80d6443a.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/80.webp",
+      "status": "ok",
+      "bytes": 1892236
+    }
+  ]
+}

@@ -11,7 +11,7 @@ export function isCdnConfigured(): boolean {
 }
 
 export function signAssetUrl(s3Key: string, ttlSeconds = 48 * 3600): string {
-  if (!isCdnConfigured()) return s3Key; // local dev: return bare key
+  if (!isCdnConfigured()) return `/api/media?k=${encodeURIComponent(s3Key)}`; // proxy route until CloudFront is wired up
   const url = `${CF_URL.replace(/\/$/, "")}/${s3Key}`;
   return getSignedUrl({
     url,

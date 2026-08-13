@@ -1,0 +1,33 @@
+{
+  "persona_id": "107_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/107.webp",
+  "main_image_sha256": "1f3508fc57734a60afd63487e6fb70162f8f210ab57d0ee58047babec64a099d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:24:34Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "An ancient onsen bathhouse in rural Japan; Lyra sits on the edge of a steaming hot spring, water beading on her skin as she leans back to expose her breasts to the camera. A traditional kimono is draped loosely over one shoulder, the soft folds of silk contrasting with the sleek, wet curves of her body. The warm, golden light of the lanterns casts a sensual glow over the scene, the camera capturing every detail of Lyra's relaxed, inviting pose as she gazes out at the viewer with a sultry, half-closed gaze.",
+      "seed": 1748525446,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/fe42603f-ff53-4120-8fed-8c4fd0804746.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/107.webp",
+      "status": "ok",
+      "bytes": 1317561
+    }
+  ]
+}

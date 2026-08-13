@@ -1,0 +1,33 @@
+{
+  "persona_id": "73_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/73.webp",
+  "main_image_sha256": "44d58b3ea9ab33d8acf14ba00c975e97191381c731d0f1c10f49b6f033bbb498",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:10:48Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit, intimate boudoir, Freya reclines on satin sheets, her sheer negligee clinging to her curves as she gazes directly at the camera with a sultry, half-lidded expression, a delicate silver necklace drawing the eye to her ample cleavage as the soft focus and shallow depth of field emphasize her sensuality.",
+      "seed": 1232400329,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/8dbaab9a-2c20-4404-86ef-6f793a6041d0.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/73.webp",
+      "status": "ok",
+      "bytes": 1093957
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "130_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/130.webp",
+  "main_image_sha256": "2768165df5c8d0e29235cd680a90543ee2bf1887251ef04725fc994665b6ef5f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:14:33Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a steamy bathroom, Piper stands under the showerhead, rivulets of water cascading over her naked form. The camera focuses on the delicate curve of her breast, a bead of water tracing a path down her abdomen to disappear between her thighs. A DSLR lens captures every droplet, detail and shadow in high definition.",
+      "seed": 847591567,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/71b87127-86f2-4f85-a9f7-74d82d801ac2.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/130.webp",
+      "status": "ok",
+      "bytes": 1462434
+    }
+  ]
+}

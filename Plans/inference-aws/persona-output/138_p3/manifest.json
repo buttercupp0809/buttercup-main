@@ -1,0 +1,33 @@
+{
+  "persona_id": "138_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/138.webp",
+  "main_image_sha256": "061a38f8f863ad8a46d067fca49c7d8fc567016b74c4c2fde1a467495de2b260",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:31:13Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Perched on the edge of a stone fountain in a secluded Amsterdam garden, Indigo dangles her feet in the cool water, her slender legs crossed and garter belt and high heels on prominent display, the late afternoon sun casting dappled shadows across her face and upper torso as she bites her lower lip, a coy smile playing on her lips.",
+      "seed": 901144648,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/ac6c271a-6566-40b7-8b07-8182a0dd5316.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/138.webp",
+      "status": "ok",
+      "bytes": 1592911
+    }
+  ]
+}

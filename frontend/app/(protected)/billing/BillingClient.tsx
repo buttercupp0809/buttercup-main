@@ -20,7 +20,7 @@ interface Entitlements {
 // Emoji-forward premium benefits, per the reference. Emoji are an explicit
 // design choice here (they match the Candy.ai look the product is after).
 const BENEFITS = [
-  { emoji: "✨", label: "Create your own AI companions" },
+  { emoji: "✨", label: "Create your own companions" },
   { emoji: "🔥", label: "Generate 18+ videos" },
   { emoji: "🎬", label: "Full live-action experience" },
   { emoji: "💬", label: "Unlimited text messages" },

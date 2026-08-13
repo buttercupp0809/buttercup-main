@@ -1,0 +1,33 @@
+{
+  "persona_id": "72_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/72.webp",
+  "main_image_sha256": "878a58d1a8186daedd6747786c63854c86e2c09084ba0ad97fcd2cf98783ec95",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:09:06Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A secluded, moonlit garden; the woman reclines on a stone bench, her fur-trimmed coat draped open, revealing a lacy bralette and high-waisted panties that leave little to the imagination; she smirks with cold, inviting lips, her breath misting in the chilly night air, as a DSLR camera captures the intimate moment in cinematic detail.",
+      "seed": 1871009625,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/915e6466-b649-4e8d-9438-82a2488c685b.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/72.webp",
+      "status": "ok",
+      "bytes": 1429975
+    }
+  ]
+}

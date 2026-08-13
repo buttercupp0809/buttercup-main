@@ -1,0 +1,33 @@
+{
+  "persona_id": "48_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/48.webp",
+  "main_image_sha256": "ebb76f622743df3aa9aa6a8fc619517211816e3a7f633581ce0fa35b70cf8d3f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:18:18Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Winter's icy chill is palpable in the frozen glade, where Phoebe stands with her fur-trimmed coat open, revealing a lacy bralette and high-waisted panties beneath. Her breath mists in the frigid air, and her lips are a faint blue, but her smirk remains defiantly warm. The camera captures her from a low angle, emphasizing her statuesque form and the way the snowflakes dance around her, as if she's a goddess of winter's domain.",
+      "seed": 1674019252,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/d3c2f50c-1ce7-4bf0-ba16-2d3c3de278c7.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/48.webp",
+      "status": "ok",
+      "bytes": 1412853
+    }
+  ]
+}

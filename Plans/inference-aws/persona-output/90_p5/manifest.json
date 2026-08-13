@@ -1,0 +1,33 @@
+{
+  "persona_id": "90_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/90.webp",
+  "main_image_sha256": "4230720e4f512208c1c91c5eb05c6425588dc655379de2c19dd9c5ce4b4b9a1c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:47:54Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Marlowe straddles a worn, leather armchair, her slender legs crossed as she leans back, her tousled auburn hair spilling over one shoulder. A vintage, red satin robe drapes loosely around her curves, the fabric parted to reveal the soft swell of her breasts and a hint of her toned midriff. The camera captures her in a soft, diffused light, with a shallow depth of field that isolates her figure against a blurred, dark background, evoking a sense of mystery and allure.",
+      "seed": 958835681,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/4bdf97aa-3413-4f41-9894-90fbc38c3936.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/90.webp",
+      "status": "ok",
+      "bytes": 1267460
+    }
+  ]
+}

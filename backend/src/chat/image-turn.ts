@@ -13,9 +13,12 @@ import { readFile } from "node:fs/promises";
 import { prisma } from "@buttercupp/database";
 import { generateImage, generateWithComfyUIConsistent } from "../media/image/providers";
 import { SAFETY_NEGATIVE } from "../media/image/constants";
+import { IMAGE_ENRICHMENT_FILLS } from "../media/image/enrichment-fills";
+import { toWebP } from "../media/image/convert";
 import { logWarn } from "../utils/log";
 import { uploadGenerated, isStorageConfigured, getSignedUrl } from "../media/storage";
 import { createReadyAsset } from "../media/asset";
+import { resolvePoppyBaseUrl } from "../inference/poppyEndpoint";
 
 // Negative prompt: minors block (legal) + framing guards (prevent cropped
 // partial-body shots) + quality cleanup.
@@ -86,6 +89,38 @@ async function resolveCharacterReferenceBytes(characterId: string): Promise<Buff
   }
 }
 
+// Call Stheno to transform a raw cleaned prompt into a rich Juggernaut XL prompt.
+// Returns the enriched prompt on success; falls back to rawPrompt silently on
+// any network error, non-OK response, or empty content.
+async function enrichImagePrompt(rawPrompt: string): Promise<string> {
+  const systemPrompt = IMAGE_ENRICHMENT_FILLS.imageEnrichmentPrompt.trim();
+  if (!systemPrompt) return rawPrompt;
+  try {
+    const base = await resolvePoppyBaseUrl("stheno");
+    const res = await fetch(`${base}/v1/chat/completions`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        model: "stheno",
+        messages: [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: rawPrompt },
+        ],
+        max_tokens: 250,
+        temperature: 0.7,
+        stream: false,
+      }),
+      signal: AbortSignal.timeout(15_000),
+    });
+    if (!res.ok) return rawPrompt;
+    const data = await res.json() as { choices?: { message?: { content?: string } }[] };
+    const enriched = data.choices?.[0]?.message?.content?.trim();
+    return enriched || rawPrompt;
+  } catch {
+    return rawPrompt;
+  }
+}
+
 // Generate an image from the user's chat text. When conversationId maps to a
 // character with a reference image, the exact face is locked in (consistent);
 // otherwise a plain scene is generated.
@@ -95,6 +130,7 @@ export async function generateChatImage(
   userId?: string,
 ): Promise<ChatImageResult> {
   const prompt = cleanImagePrompt(userText);
+  const enrichedPrompt = await enrichImagePrompt(prompt);
 
   let referenceBytes: Buffer | null = null;
   let characterId: string | null = null;
@@ -110,16 +146,17 @@ export async function generateChatImage(
   }
 
   async function persistAndSign(
-    buffer: Buffer,
+    rawBuffer: Buffer,
     provider: string,
     consistent: boolean,
     seed?: number,
   ): Promise<ChatImageResult> {
+    const { buffer, contentType } = await toWebP(rawBuffer);
     if (userId && isStorageConfigured()) {
       const s3Key = await uploadGenerated(buffer, {
         userId,
         kind: "image",
-        contentType: "image/png",
+        contentType,
       });
       const asset = await createReadyAsset({
         userId,
@@ -127,18 +164,31 @@ export async function generateChatImage(
         kind: "image",
         s3Key,
       });
+      // Link the generated image into CharacterMedia so it appears in the
+      // character's gallery and can be reused in future persona pipelines.
+      if (characterId) {
+        await prisma.characterMedia.create({
+          data: {
+            characterId,
+            kind: "image",
+            url: s3Key,
+            isPrimary: false,
+            sort: Date.now(),
+          },
+        });
+      }
       const signedUrl = await getSignedUrl(s3Key, 48 * 3600);
       return { url: signedUrl, mediaAssetId: asset.id, provider, consistent, seed };
     }
     // Local dev fallback: return base64 data URL, nothing persisted.
-    const dataUrl = `data:image/png;base64,${buffer.toString("base64")}`;
+    const dataUrl = `data:${contentType};base64,${buffer.toString("base64")}`;
     return { url: dataUrl, provider, consistent, seed };
   }
 
   if (referenceBytes) {
     const poseHint = extractPoseHint(userText);
     const res = await generateWithComfyUIConsistent({
-      prompt,
+      prompt: enrichedPrompt,
       negativePrompt: NEGATIVE,
       referenceBytes,
       poseHint: poseHint ?? undefined,
@@ -148,7 +198,7 @@ export async function generateChatImage(
 
   // No reference: plain photoreal scene (Juggernaut txt2img via provider chain).
   const res = await generateImage({
-    prompt,
+    prompt: enrichedPrompt,
     negativePrompt: NEGATIVE,
     style: "realistic",
     referenceImageUrls: [],

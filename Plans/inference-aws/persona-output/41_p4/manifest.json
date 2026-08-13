@@ -1,0 +1,33 @@
+{
+  "persona_id": "41_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/41.webp",
+  "main_image_sha256": "5341872a2fe6ea5056e2b86a456e952692f7694c274479f13548e9c302a8654e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:03:21Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Piper sits on the edge of a traditional Japanese onsen hot spring, water beading on her skin as she leans back to expose her breasts. A sheer kimono is draped loosely over one shoulder, and she gazes down at the steamy water with a contemplative expression, the ambient light of the bathhouse casting a warm glow on her skin.",
+      "seed": 1146010705,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/31d8bf3e-6087-4e1a-8d8b-13742ecc4f8e.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/41.webp",
+      "status": "ok",
+      "bytes": 1273307
+    }
+  ]
+}

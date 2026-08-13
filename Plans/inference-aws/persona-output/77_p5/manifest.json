@@ -1,0 +1,33 @@
+{
+  "persona_id": "77_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/77.webp",
+  "main_image_sha256": "bfb2229d6e9bf93caadee15b4fddbf0b3a695c5e70ba0587d39cad8a0b977b33",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:20:29Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the warm glow of a dimly lit, ornate bedroom, Clio sits on the edge of a plush four-poster bed, her legs crossed, a sheer, lace-trimmed nightgown clinging to her curves, her dark hair cascading over one bare shoulder as she looks over her shoulder at the camera with a mysterious, bedroom eyes expression, a faint, inviting smile playing on her lips.",
+      "seed": 601800767,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/d0330c78-c6f8-4a49-aa51-eb0a4e3cfaf4.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/77.webp",
+      "status": "ok",
+      "bytes": 1410429
+    }
+  ]
+}

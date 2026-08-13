@@ -1,0 +1,33 @@
+{
+  "persona_id": "82_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/82.webp",
+  "main_image_sha256": "5391339d07eb1bd57c868cd7f04bd7857d5eb6265ad1e220f971d719db9feb7e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:30:43Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the heart of the Red Light District, Indigo lounges against the ornate marble column of a historic brothel, her curvy figure barely contained by a skintight red bodysuit adorned with delicate gold accents, her eyes gleaming with mischief as she crosses one stiletto-clad leg over the other, the soft focus of the camera capturing the sensual play of light on her skin and the subtle sheen of her glossy lips.",
+      "seed": 358086817,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/a5093aa8-c34e-4438-bdc6-ad3bf75b199c.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/82.webp",
+      "status": "ok",
+      "bytes": 1324247
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "62_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/62.webp",
+  "main_image_sha256": "b6c2048152a1bda5d4fb4c0ab1c6a85b053974790eb8c69ad49fab5ab75ed99c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:47:07Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A sunlit Dublin park on a crisp spring morning; Lyra laughing heartily as she chases a playful terrier puppy, her long auburn hair streaming behind her in a DSLR-captured, shallow focus shot, with the vibrant green grass and blooming daffodils forming a picturesque background.",
+      "seed": 1162020858,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/f1cad3c6-d850-4f2f-ab99-e09a8f2d1dca.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/62.webp",
+      "status": "ok",
+      "bytes": 1539986
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "26_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/26.webp",
+  "main_image_sha256": "4fa58b95a837525213d2cd0a073cd993315403bd76f30908e3a788053cc5e868",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T23:28:15Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit, intimate Oslo nightclub, Freya straddles a velvet stool, her sheer, lace-trimmed negligee clinging to her curves as she sips a martini. The sultry atmosphere is illuminated by soft, crimson lighting that casts a flattering glow on her porcelain skin and fiery locks. Her smoky eyes gaze directly at the viewer with a seductive, almost mischievous glint, as if daring them to approach. A strategically placed shawl falls off one shoulder, revealing a tantalizing glimpse of her cleavage, while her legs are crossed, showing off her toned thighs and the subtle outline of her thong.",
+      "seed": 108643590,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/a66e388a-8b03-417b-86f1-a30085bb67e4.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/26.webp",
+      "status": "ok",
+      "bytes": 1583706
+    }
+  ]
+}

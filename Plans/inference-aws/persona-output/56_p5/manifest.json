@@ -1,0 +1,33 @@
+{
+  "persona_id": "56_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/56.webp",
+  "main_image_sha256": "a44413dcb11cba341462e5a7abc192276cefb5d65205881fc59dcd92e91b2072",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:36:01Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Piper's nude form is silhouetted against the city skyline, her back arched as she leans against a high-rise window. The room behind her is dark, but the city lights paint her alabaster skin in an abstract, neon glow. Her long hair cascades down her back, and her breasts and hips are highlighted by the cityscape's reflections in the glass. Her expression is enigmatic, with half-closed eyes and parted lips, as if lost in thought or beckoning the viewer closer.",
+      "seed": 1278063109,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/7e07a338-b1da-43d1-8857-a42099134c6d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/56.webp",
+      "status": "ok",
+      "bytes": 1154824
+    }
+  ]
+}
