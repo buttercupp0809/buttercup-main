@@ -1,0 +1,33 @@
+{
+  "persona_id": "131_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/131.webp",
+  "main_image_sha256": "a9b2de553438516c97973a18c15ab8899543b4fcba227fea7bd7d7fb9bc44699",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:17:03Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On a deserted stretch of moonlit beach, Vesper straddles a weathered wooden log, her tiny string bikini leaving little to the imagination, the gossamer fabric of her sheer cover-up fluttering in the ocean breeze as she looks back over her shoulder at the camera, her wind-tousled hair a wild halo around her face, her expression a sultry mix of playfulness and desire.",
+      "seed": 135843731,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/c240222c-4f51-4d05-84ed-1e6ee1f7c597.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/131.webp",
+      "status": "ok",
+      "bytes": 1633205
+    }
+  ]
+}

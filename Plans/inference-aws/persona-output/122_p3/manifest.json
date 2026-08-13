@@ -1,0 +1,33 @@
+{
+  "persona_id": "122_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/122.webp",
+  "main_image_sha256": "7298a46c79e9ce4bacc88d8377abefb5ed4164c3b76c9b07a8bbefe92c9a1784",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:56:08Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Ophelia reclines languidly on a plush chaise in a luxurious boudoir, her figure barely concealed by a scandalously short lace negligee. The soft, warm light of candles and a fireplace casts a sensual glow across her skin as she stares into the distance with a dreamy, slightly hooded expression.",
+      "seed": 376704299,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/d05a2183-a70c-460d-9c70-b4f6ab52d741.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/122.webp",
+      "status": "ok",
+      "bytes": 1611870
+    }
+  ]
+}

@@ -1,8 +1,13 @@
 import { notFound } from "next/navigation";
 import { prisma } from "@buttercupp/database";
-import { requireAgeVerified } from "@/lib/auth";
+import { requireAuth } from "@/lib/auth";
 import { ChatWindow } from "@/components/chat/ChatWindow";
+import { ChatList } from "@/components/chat/ChatList";
+import { PersonaPanel, type PanelMedia } from "@/components/chat/PersonaPanel";
 import { getRelationship } from "@/lib/relationship";
+import { listConversations } from "@/lib/chats";
+import { signAssetUrl } from "@/lib/cdn";
+import { blurMany } from "@/lib/media-blur";
 
 export const dynamic = "force-dynamic";
 
@@ -12,12 +17,13 @@ export default async function ChatPage({
   params: Promise<{ characterId: string }>;
 }) {
   const { characterId } = await params;
-  const user = await requireAgeVerified();
+  const user = await requireAuth();
 
   const character = await prisma.character.findUnique({
     where: { id: characterId },
     include: {
       currentVersion: { include: { appearanceSheet: true } },
+      media: { orderBy: [{ isPrimary: "desc" }, { sort: "asc" }] },
     },
   });
   if (!character || !character.currentVersionId) notFound();
@@ -45,33 +51,68 @@ export default async function ChatPage({
     where: { conversationId: conv.id },
     orderBy: { createdAt: "desc" },
     take: 50,
+    include: { mediaAsset: { select: { s3Key: true } } },
   });
   const initialMessages = historyRows.reverse().map((m) => ({
     id: m.id,
     role: m.role,
     content: m.content,
     createdAt: m.createdAt.toISOString(),
+    // Production: sign the S3 key from the linked MediaAsset.
+    // Local dev fallback: if content is a data URL (no S3), use it directly.
+    imageUrl: m.mediaAsset?.s3Key
+      ? signAssetUrl(m.mediaAsset.s3Key)
+      : m.content.startsWith("data:")
+        ? m.content
+        : undefined,
   }));
 
-  const relationship = await getRelationship(user.id, characterId);
-  const avatarKeys = character.currentVersion?.appearanceSheet?.referenceImageKeys ?? [];
-  const cf = process.env.CLOUDFRONT_URL;
-  const avatarUrl = avatarKeys[0]
-    ? cf
-      ? `${cf.replace(/\/$/, "")}/${avatarKeys[0]}`
-      : avatarKeys[0]
-    : null;
+  const [relationship, conversations] = await Promise.all([
+    getRelationship(user.id, characterId),
+    listConversations(user.id, 50),
+  ]);
+
+  // Persona panel media: images -> carousel, videos -> assets strip.
+  // Local paths (starting with /) are not served from S3; exclude them.
+  const images = character.media
+    .filter((m) => m.kind === "image" && !m.url.startsWith("/"))
+    .map((m) => {
+      if (m.url.startsWith("http")) return m.url;
+      return signAssetUrl(m.url);
+    });
+  const carouselImages = images;
+  const assets: PanelMedia[] = character.media
+    .filter((m) => m.kind === "video")
+    .map((m) => ({ kind: "video" as const, url: m.url }));
+  const avatarUrl = carouselImages[0] ?? null;
+
+  // Pre-blur gallery images server-side so locked persona-panel tiles never
+  // expose a real URL. Index 0 (primary) is free; the rest render blurred.
+  const imageBlurs = carouselImages.length > 1 ? await blurMany(carouselImages) : [];
 
   return (
-    <section className="mx-auto max-w-3xl px-4 py-6">
-      <ChatWindow
-        conversationId={conv.id}
-        initialMessages={initialMessages}
-        characterName={character.name}
-        wsUrl={process.env.NEXT_PUBLIC_WS_URL}
-        avatarUrl={avatarUrl}
-        relationship={relationship}
+    <div className="flex h-full overflow-hidden">
+      <ChatList conversations={conversations} activeCharacterId={characterId} />
+
+      <div className="min-w-0 flex-1">
+        <ChatWindow
+          conversationId={conv.id}
+          initialMessages={initialMessages}
+          characterName={character.name}
+          wsUrl={process.env.NEXT_PUBLIC_WS_URL}
+          avatarUrl={avatarUrl}
+          relationship={relationship}
+        />
+      </div>
+
+      <PersonaPanel
+        name={character.name}
+        description={character.bio}
+        location={character.location}
+        images={carouselImages}
+        imageBlurs={imageBlurs}
+        assets={assets}
       />
-    </section>
+    </div>
   );
 }

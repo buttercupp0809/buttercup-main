@@ -1,0 +1,33 @@
+{
+  "persona_id": "102_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/102.webp",
+  "main_image_sha256": "164ea8e04692e99abb5a2ff30121094c67340b24dc8cb4b8029b3f53c5fe08de",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:14:23Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the hazy light of a desert dawn, Piper emerges from the shadows of a beachfront building, a tiny string bikini hugging her curves as she pads across the sand in high heels, the wind whipping her hair into a frenzy and the first rays of sun casting a golden glow on her skin, the camera capturing her in a shallow focus, the ocean stretching out to infinity behind her as she pauses to look back over her shoulder, a coy smile playing on her lips.",
+      "seed": 927390028,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/d377312a-5d1d-42a9-8be1-3458bab05616.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/102.webp",
+      "status": "ok",
+      "bytes": 1022681
+    }
+  ]
+}

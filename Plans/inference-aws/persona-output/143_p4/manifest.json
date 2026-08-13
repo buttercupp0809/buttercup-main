@@ -1,0 +1,33 @@
+{
+  "persona_id": "143_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/143.webp",
+  "main_image_sha256": "0abaecdd89142775886be22b7f595e49bf756bb94ebf1973d4536c7ce468cc77",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:42:15Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A dimly lit Dublin bookstore at night, with Hazel perched on a high stool, surrounded by towering shelves of literary treasures, her face illuminated by the soft glow of a desk lamp as she writes in a leather-bound journal, the city's bustle muffled outside the store's worn glass doors.",
+      "seed": 581258628,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/cd98bf9c-227e-4b0c-ae0c-17c432eac08e.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/143.webp",
+      "status": "ok",
+      "bytes": 1500975
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "89_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/89.webp",
+  "main_image_sha256": "1f5bd54d9cb3234e5ecf809fafa3032c55a47de111c1e8e76374e7bfda2d1595",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:45:47Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a steamy bathroom, Vesper stands under the showerhead, water cascading over her voluptuous curves. Suds cling to her breasts and thighs, a translucent soapy film highlighting her erect nipples. Her tousled hair frames her face, and her half-lidded eyes hold a seductive intensity as she looks straight at the camera, her full lips parted in a subtle invitation.",
+      "seed": 257039110,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/8c9f26a3-ff7e-458f-be4e-aad8eb9135ac.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/89.webp",
+      "status": "ok",
+      "bytes": 1518410
+    }
+  ]
+}

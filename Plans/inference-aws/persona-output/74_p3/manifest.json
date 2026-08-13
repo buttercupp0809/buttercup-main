@@ -1,0 +1,33 @@
+{
+  "persona_id": "74_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/74.webp",
+  "main_image_sha256": "a8d30a0d4f3b018e74982207b65f89100139f82158eecfafc39760a011d74c0b",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:13:19Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Amid the frozen grandeur of a winter forest glade, Piper lounges seductively on a fallen log, her fur-trimmed coat open to reveal a lacy bralette and high-waisted panties, the icy air casting a spell of sensuality as she smirks with cold, rosy lips, her tousled hair contrasting with the snow-dusted landscape in a dramatic, shallow focus.",
+      "seed": 609748190,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/8c922e73-0680-4c49-8755-c114c3bcb525.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/74.webp",
+      "status": "ok",
+      "bytes": 1533626
+    }
+  ]
+}

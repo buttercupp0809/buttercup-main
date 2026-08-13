@@ -1,0 +1,33 @@
+{
+  "persona_id": "107_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/107.webp",
+  "main_image_sha256": "1f3508fc57734a60afd63487e6fb70162f8f210ab57d0ee58047babec64a099d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:23:21Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A lively Dublin pub on a warm summer evening; Lyra stands by the bar, laughing heartily with friends as the warm glow of golden hour spills through the windows, casting a soft, cinematic light on her vibrant features and the ale-fueled merriment in her eyes. Her auburn curls bounce with each giggle as she clinks a pint glass with her companions, the DSLR camera capturing the joyful scene in a shallow depth of field, Lyra's lively spirit the main focus.",
+      "seed": 1619632114,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/30b25774-3e39-44c2-925a-07fa4070b00e.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/107.webp",
+      "status": "ok",
+      "bytes": 1538321
+    }
+  ]
+}

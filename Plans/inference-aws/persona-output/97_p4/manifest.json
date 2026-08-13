@@ -1,0 +1,33 @@
+{
+  "persona_id": "97_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/97.webp",
+  "main_image_sha256": "89db90cc233294d0b8ff7ee27da394cc98627ac84e1090da5d684e4d8f188bac",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:03:22Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a steamy Berlin sauna, Astrid sits on a wooden bench, her skin glistening with sweat, a towel draped loosely around her shoulders, revealing the soft curves of her breasts and the delicate trail of hair leading down to her parted thighs, her eyes heavy-lidded with pleasure as she leans back against the wall, the warm air and dim lighting creating a sensual atmosphere.",
+      "seed": 960515715,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/b11ff4e7-9ae5-4eb4-9a17-b5a4841fc013.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/97.webp",
+      "status": "ok",
+      "bytes": 1201835
+    }
+  ]
+}

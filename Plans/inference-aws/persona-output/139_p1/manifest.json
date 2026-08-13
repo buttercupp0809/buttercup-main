@@ -1,0 +1,33 @@
+{
+  "persona_id": "139_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/139.webp",
+  "main_image_sha256": "14d859a7ad2c8fcc80003cd2fe4e5845ef2a7af6238dd6a59832257d2eebc2f1",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:32:33Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Astrid strides into a vibrant summer market in Stockholm, her bright smile and laughter infectious as she mingles with colorful stalls selling handmade crafts and delectable street food under the warm golden hour light, a DSLR camera capturing her joyful essence in a shallow depth of field against a bustling, lively backdrop.",
+      "seed": 1567928827,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/92f1fb91-c2dc-4f5a-acbb-921fea2c1936.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/139.webp",
+      "status": "ok",
+      "bytes": 1638444
+    }
+  ]
+}

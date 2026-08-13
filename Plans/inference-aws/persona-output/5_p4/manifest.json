@@ -1,0 +1,33 @@
+{
+  "persona_id": "5_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/5.webp",
+  "main_image_sha256": "b4cc22ba2439c30dd4a065ac5978200afa53e8c55c1d734d85f4fbdcc226a7bb",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T22:43:19Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A woman lounges on a plush, red velvet chaise in a lavish boudoir, wearing a lacy, black corset and matching garters, her long, dark hair cascading over one shoulder as she smokes a cigarette, her gaze hooded and inviting as she blows a plume of smoke towards the camera.",
+      "seed": 807399715,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/825e4b67-6583-4f78-b912-32bf3220f571.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/5.webp",
+      "status": "ok",
+      "bytes": 1181829
+    }
+  ]
+}

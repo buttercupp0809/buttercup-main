@@ -1,0 +1,33 @@
+{
+  "persona_id": "39_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/39.webp",
+  "main_image_sha256": "f2216050dba2a87c9ec662a88cc6dc7343c587459d5d96a5efd33011b0954394",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T23:59:01Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Perched on a stool in a steamy onsen bathhouse, Marlowe's kimono drapes loosely over a bare shoulder, beads of water glistening on her skin as she leans back, exposing her breasts to the warm air. Her gaze is direct and inviting, her parted lips subtly upturned in a coy smile. The DSLR's shallow focus captures the soft, luminous quality of the steam, enveloping Marlowe in an intimate, sensual atmosphere.",
+      "seed": 59500038,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/30615051-8795-4979-8761-f536fc8cd4a4.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/39.webp",
+      "status": "ok",
+      "bytes": 1452082
+    }
+  ]
+}

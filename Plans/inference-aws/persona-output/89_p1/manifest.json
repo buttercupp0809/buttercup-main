@@ -1,0 +1,33 @@
+{
+  "persona_id": "89_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/89.webp",
+  "main_image_sha256": "1f5bd54d9cb3234e5ecf809fafa3032c55a47de111c1e8e76374e7bfda2d1595",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:44:10Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A carefree Vesper strolls along the Seine at sunset, her laughter echoing as she tosses a flower into the water. She wears a flowy sundress in shades of lavender and cream, her auburn hair catching the warm golden hour light. A DSLR camera captures her joyful expression and the romantic Parisian scenery in a shallow focus frame.",
+      "seed": 1800939533,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/00611f8c-46a3-4a5a-8441-8626cee91556.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/89.webp",
+      "status": "ok",
+      "bytes": 1421800
+    }
+  ]
+}

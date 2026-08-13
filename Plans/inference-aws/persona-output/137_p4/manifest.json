@@ -1,0 +1,33 @@
+{
+  "persona_id": "137_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/137.webp",
+  "main_image_sha256": "f02becb7fc496e1798918543cdb7e3170be358a0fdf09bcbe5c26869a4f8c009",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:29:30Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the quiet, hushed intimacy of a candlelit boudoir, Magnolia reclines on a plush velvet bed, her torso draped in a sheer lace negligee, the delicate fabric barely concealing her rosy nipples, her tousled hair fanned out around her as she looks directly at the viewer with a sultry, half-lidded gaze.",
+      "seed": 1304756794,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/c0d4bcaa-c011-46c5-9a91-4dc79949c1ce.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/137.webp",
+      "status": "ok",
+      "bytes": 1503685
+    }
+  ]
+}

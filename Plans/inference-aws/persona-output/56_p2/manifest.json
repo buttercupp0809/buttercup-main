@@ -1,0 +1,33 @@
+{
+  "persona_id": "56_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/56.webp",
+  "main_image_sha256": "a44413dcb11cba341462e5a7abc192276cefb5d65205881fc59dcd92e91b2072",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:34:48Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Indoors, Piper reclines on a plush couch in a dimly lit living room, the soft glow of a table lamp highlighting her sultry features. She wears a sheer black negligee that clings to her curves, the delicate lace barely concealing her nipples. Her leg is thrown over the armrest, revealing a tantalizing glimpse of her toned thigh and the edge of her thong.",
+      "seed": 840217552,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/e4f636ab-087d-4172-a9b5-dd223db5ace8.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/56.webp",
+      "status": "ok",
+      "bytes": 1540922
+    }
+  ]
+}

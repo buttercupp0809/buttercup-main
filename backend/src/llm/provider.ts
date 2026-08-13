@@ -10,6 +10,7 @@
 // packages. Real chat needs the SDKs installed and env keys set.
 
 import { MODELS, HARDCODED_FALLBACK_TEXT } from "./constants";
+import { resolvePoppyBaseUrl } from "../inference/poppyEndpoint";
 import { logInfo, logWarn } from "../utils/log";
 import { recordProviderOutcome, incrementCounter, recordLatency } from "../metrics";
 
@@ -155,6 +156,8 @@ function tryLoadAnthropic(): AnthropicCtor | null {
 let _openrouter: OpenAILike | null = null;
 let _openai: OpenAILike | null = null;
 let _anthropic: AnthropicLike | null = null;
+let _poppy: OpenAILike | null = null;
+let _poppyBase: string | null = null;
 
 function getOpenRouterClient(): OpenAILike | null {
   if (!process.env.OPENROUTER_API_KEY) return null;
@@ -186,9 +189,35 @@ function getAnthropicClient(): AnthropicLike | null {
   return _anthropic;
 }
 
+// Self-hosted Stheno via llama.cpp (OpenAI-compatible). The GPU box is
+// scale-to-zero so its base URL is dynamic: resolvePoppyBaseUrl() wakes it via
+// the router and returns the current IP. Reconstruct the client when the
+// resolved base changes; return null (skip provider) when it is unconfigured
+// or cannot be woken, so the chain falls through to the cloud providers.
+async function resolvePoppyChatClient(): Promise<OpenAILike | null> {
+  if ("poppy" in _testOverrides) return _testOverrides.poppy ?? null;
+  const Ctor = tryLoadOpenAI();
+  if (!Ctor) return null;
+  try {
+    const base = await resolvePoppyBaseUrl("stheno");
+    if (!_poppy || _poppyBase !== base) {
+      _poppy = new Ctor({
+        apiKey: process.env.POPPY_API_KEY ?? "sk-none",
+        baseURL: `${base}/v1`,
+      });
+      _poppyBase = base;
+    }
+    return _poppy;
+  } catch (err) {
+    logWarn("LLM", `poppy resolve failed: ${err instanceof Error ? err.message : String(err)}`);
+    return null;
+  }
+}
+
 // Test-only. Lets a suite inject fake clients so provider fallback can be
 // asserted without any real SDK installed.
 export interface TestClientOverrides {
+  poppy?: OpenAILike | null;
   openrouter?: OpenAILike | null;
   openai?: OpenAILike | null;
   anthropic?: AnthropicLike | null;
@@ -217,7 +246,7 @@ function resolveAnthropic(): AnthropicLike | null {
 // Model routing
 // ============================================================================
 
-export type ChatProvider = "openrouter" | "anthropic" | "openai" | "hardcoded";
+export type ChatProvider = "poppy" | "openrouter" | "anthropic" | "openai" | "hardcoded";
 
 export interface RoutingDecision {
   order: ChatProvider[];
@@ -240,23 +269,26 @@ export function resolveModelRouting(params: {
 
   if (params.contentRating === "mature") {
     return {
-      order: ["openrouter", "anthropic", "openai", "hardcoded"],
-      primaryReason: "mature-content-routes-uncensored",
+      order: ["poppy", "openrouter", "anthropic", "openai", "hardcoded"],
+      primaryReason: "mature-content-routes-self-hosted-stheno",
     };
   }
   if (params.tier === "premium" || params.tier === "pro") {
     return {
-      order: ["anthropic", "openai", "openrouter", "hardcoded"],
+      order: ["anthropic", "openai", "poppy", "openrouter", "hardcoded"],
       primaryReason: "premium-tier-quality-primary",
     };
   }
   return {
-    order: ["openrouter", "anthropic", "openai", "hardcoded"],
-    primaryReason: "default-openrouter-primary",
+    order: ["poppy", "openrouter", "anthropic", "openai", "hardcoded"],
+    primaryReason: "default-self-hosted-primary",
   };
 }
 
 function modelFor(provider: ChatProvider, purpose: LLMPurpose): string {
+  if (provider === "poppy") {
+    return process.env.POPPY_CHAT_MODEL ?? MODELS.POPPY_STHENO_CHAT;
+  }
   if (provider === "openrouter") {
     return purpose === "chat" ? MODELS.OPENROUTER_UNCENSORED_CHAT : MODELS.OPENROUTER_EXTRACT;
   }
@@ -363,7 +395,8 @@ export async function streamLLM(
     }
 
     const client =
-      provider === "openrouter" ? resolveOpenRouter()
+      provider === "poppy" ? await resolvePoppyChatClient()
+      : provider === "openrouter" ? resolveOpenRouter()
       : provider === "openai" ? resolveOpenAI()
       : provider === "anthropic" ? resolveAnthropic()
       : null;

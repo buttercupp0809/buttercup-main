@@ -27,6 +27,8 @@ export type TransportEvent =
       plans: TransportPaywallPlan[];
       upgradeUrl: string;
     }
+  | { type: "image"; conversationId: string; url: string; mediaAssetId: string }
+  | { type: "image_generating"; conversationId: string; messageId: string }
   | { type: "error"; message: string };
 
 export interface ChatTransport {
@@ -42,6 +44,20 @@ export interface ChatTransportOptions {
   onClose?: () => void;
 }
 
+// The WS gateway only accepts upgrades whose path starts with `/ws`. Env values
+// are often just host:port (e.g. ws://localhost:4000), which the gateway
+// rejects, silently forcing the SSE fallback forever. Normalize so the path is
+// always /ws unless one was explicitly provided.
+function normalizeWsUrl(raw: string): string {
+  try {
+    const u = new URL(raw);
+    if (u.pathname === "" || u.pathname === "/") u.pathname = "/ws";
+    return u.toString();
+  } catch {
+    return raw.replace(/\/+$/, "") + "/ws";
+  }
+}
+
 export function createChatTransport(options: ChatTransportOptions = {}): ChatTransport {
   const listeners = new Set<(evt: TransportEvent) => void>();
   const emit = (evt: TransportEvent) => {
@@ -55,7 +71,7 @@ export function createChatTransport(options: ChatTransportOptions = {}): ChatTra
   function connectWs(): void {
     if (!options.wsUrl || wsBroken || closed) return;
     try {
-      ws = new WebSocket(options.wsUrl);
+      ws = new WebSocket(normalizeWsUrl(options.wsUrl));
     } catch {
       wsBroken = true;
       return;
@@ -72,7 +88,13 @@ export function createChatTransport(options: ChatTransportOptions = {}): ChatTra
       try {
         const data = JSON.parse(String(m.data));
         if (data.type === "chat.token") emit({ type: "token", conversationId: data.conversationId, delta: data.delta });
-        else if (data.type === "chat.done") emit({ type: "done", conversationId: data.conversationId, messageId: data.messageId, provider: data.provider, model: data.model });
+        else if (data.type === "chat.done") {
+          if (data.model === "image-pending") {
+            emit({ type: "image_generating", conversationId: data.conversationId, messageId: data.messageId });
+          } else {
+            emit({ type: "done", conversationId: data.conversationId, messageId: data.messageId, provider: data.provider, model: data.model });
+          }
+        }
         else if (data.type === "safety.intervention") emit({ type: "safety", conversationId: data.conversationId, message: data.message, resources: data.resources });
         else if (data.type === "paywall")
           emit({
@@ -86,6 +108,7 @@ export function createChatTransport(options: ChatTransportOptions = {}): ChatTra
             plans: data.plans,
             upgradeUrl: data.upgradeUrl,
           });
+        else if (data.type === "media.ready") emit({ type: "image", conversationId: data.conversationId, url: data.url, mediaAssetId: data.mediaAssetId });
         else if (data.type === "error") emit({ type: "error", message: data.message });
       } catch {
         emit({ type: "error", message: "bad_frame" });
@@ -121,7 +144,13 @@ export function createChatTransport(options: ChatTransportOptions = {}): ChatTra
         const evt = eventLine.slice(7).trim();
         const data = JSON.parse(dataLine.slice(6));
         if (evt === "token") emit({ type: "token", conversationId, delta: data.delta });
-        else if (evt === "done") emit({ type: "done", conversationId, messageId: data.messageId, provider: data.provider, model: data.model });
+        else if (evt === "done") {
+          if (data.model === "image-pending") {
+            emit({ type: "image_generating", conversationId, messageId: data.messageId });
+          } else {
+            emit({ type: "done", conversationId, messageId: data.messageId, provider: data.provider, model: data.model });
+          }
+        }
         else if (evt === "safety") emit({ type: "safety", conversationId, message: data.message, resources: data.resources });
         else if (evt === "paywall")
           emit({
@@ -135,6 +164,7 @@ export function createChatTransport(options: ChatTransportOptions = {}): ChatTra
             plans: data.plans,
             upgradeUrl: data.upgradeUrl,
           });
+        else if (evt === "image") emit({ type: "image", conversationId, url: data.url, mediaAssetId: data.mediaAssetId });
         else if (evt === "error") emit({ type: "error", message: data.message });
       }
     }

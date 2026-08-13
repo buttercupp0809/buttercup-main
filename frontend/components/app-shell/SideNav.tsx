@@ -6,7 +6,9 @@ import { usePathname } from "next/navigation";
 import {
   MessageCircle,
   Compass,
+  Clapperboard,
   Sparkles,
+  Gem,
   Settings as SettingsIcon,
   ChevronLeft,
   ChevronRight,
@@ -18,7 +20,9 @@ import { ProfileMenu, type ProfileUser } from "@/components/app-shell/ProfileMen
 const ICONS: Record<NavIcon, React.ComponentType<{ className?: string }>> = {
   chats: MessageCircle,
   discover: Compass,
+  reels: Clapperboard,
   create: Sparkles,
+  billing: Gem,
   settings: SettingsIcon,
 };
 
@@ -195,7 +199,7 @@ function Avatar({ src, name }: { src: string | null; name: string }) {
       style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))" }}
     >
       {src ? (
-        <img src={src} alt={name} className="h-full w-full object-cover" />
+        <img src={src} alt={name} className="h-full w-full object-cover object-top" />
       ) : (
         <span>{name[0]?.toUpperCase() ?? "?"}</span>
       )}

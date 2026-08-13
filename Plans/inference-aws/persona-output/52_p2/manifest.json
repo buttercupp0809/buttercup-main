@@ -1,0 +1,33 @@
+{
+  "persona_id": "52_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/52.webp",
+  "main_image_sha256": "aef8853bbdfaa42f44c40401a776d5dd9c41d305305e913ad8f68e1293828b0e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:25:52Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Lila lounges seductively on plush velvet cushions in a dimly lit, ornate boudoir, wearing a lacy, sheer negligee that clings to her curves, her gaze directly at the viewer with parted lips and half-lidded eyes, the cinematic lighting highlighting her smooth skin and emphasizing the intimate atmosphere.",
+      "seed": 1925020829,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/df9c7590-f132-4741-bb22-aba3f386023a.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/52.webp",
+      "status": "ok",
+      "bytes": 1538621
+    }
+  ]
+}

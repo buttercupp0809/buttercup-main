@@ -1,0 +1,33 @@
+{
+  "persona_id": "70_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/70.webp",
+  "main_image_sha256": "b84de962eb2833a8963fcc8fc6fe5b00d254f183f6dcbcbc91b48416cc69bb27",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:05:36Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On a deserted, sandy beach at dawn, a string bikini-clad Hazel kneels in the shallow surf, her hair and skin wind-swept and glistening with saltwater droplets as she gazes back at the rising sun, her hands clasped behind her head, her toned legs and thong-clad crotch visible from behind, the camera's wide-angle lens capturing the vast expanse of the beach and the dramatic sky, while the soft focus on Hazel's figure and the warm, golden light emphasize her allure and the moment's intimate, sensual atmosphere.",
+      "seed": 1999488521,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/b73b0be1-164d-4b00-ab97-8c528b98a97d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/70.webp",
+      "status": "ok",
+      "bytes": 1246800
+    }
+  ]
+}

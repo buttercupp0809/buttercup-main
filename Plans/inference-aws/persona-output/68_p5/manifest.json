@@ -1,0 +1,33 @@
+{
+  "persona_id": "68_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/68.webp",
+  "main_image_sha256": "8ad41283ff35da66a909076f42ead274eca27af869cd2337518d8637b037c0ce",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:01:22Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a steamy bathroom, Ruby stands under a cascading showerhead, water sluicing over her voluptuous body in rivulets that cling to her skin and highlight the tantalizing peaks of her nipples. A handheld camera, positioned at a low angle, frames her from the waist down, showcasing the seductive curve of her rear and the glisten of droplets on her thighs. Her expression is one of relaxed pleasure, lost in the heat of the moment.",
+      "seed": 727560112,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/5cf968af-9b61-4205-8d35-02f7ccc2ca2a.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/68.webp",
+      "status": "ok",
+      "bytes": 1481338
+    }
+  ]
+}

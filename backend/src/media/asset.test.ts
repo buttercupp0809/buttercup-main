@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { _internal } from "./asset";
+import { createReadyAsset } from "./asset";
 
 const { assertTransition, ALLOWED } = _internal;
 
@@ -30,5 +31,11 @@ describe("MediaAsset state machine", () => {
 
   it("ALLOWED is exhaustive for the four statuses", () => {
     expect(Object.keys(ALLOWED).sort()).toEqual(["cold", "failed", "processing", "queued", "ready"].filter((k) => k !== "cold").sort());
+  });
+});
+
+describe("createReadyAsset", () => {
+  it("exported function exists", () => {
+    expect(typeof createReadyAsset).toBe("function");
   });
 });

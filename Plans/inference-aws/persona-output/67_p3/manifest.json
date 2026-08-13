@@ -1,0 +1,33 @@
+{
+  "persona_id": "67_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/67.webp",
+  "main_image_sha256": "2e821dcdea49a575db3bb044fc6481cf4315c90f88a729bfeed7c190a487013c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:58:27Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On a moonlit balcony overlooking the Eiffel Tower, Clara leans against the ornate railing, her body barely concealed by a diaphanous robe that clings to her shapely form, the city lights reflecting in her half-closed eyes, a cinematic wide-angle lens captures the sweeping vista behind her as she turns to face the camera with a coy, inviting smile.",
+      "seed": 1776366491,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/9fc595de-3500-4805-b6c2-5cc18710b585.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/67.webp",
+      "status": "ok",
+      "bytes": 1745217
+    }
+  ]
+}

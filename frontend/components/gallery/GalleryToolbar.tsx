@@ -12,15 +12,12 @@ export interface GalleryToolbarProps {
 const SORTS = ["popular", "new", "trending"] as const;
 type Sort = (typeof SORTS)[number];
 const STYLES = ["realistic", "3d", "anime"] as const;
-const RATINGS = ["sfw", "mature"] as const;
-
 // Toolbar contract (do not regress):
 //   - All state lives in the URL so the server component drives results.
 //   - Any filter/sort/search change drops `cursor` so we do not paginate a
 //     stale query.
 //   - Search input is debounced 300ms.
-//   - Mature rating select stays hidden when the viewer cannot see mature.
-export function GalleryToolbar({ viewerAllowsMature, availableTags }: GalleryToolbarProps) {
+export function GalleryToolbar({ viewerAllowsMature: _viewerAllowsMature, availableTags }: GalleryToolbarProps) {
   const router = useRouter();
   const params = useSearchParams();
   const pathname = usePathname();
@@ -50,7 +47,6 @@ export function GalleryToolbar({ viewerAllowsMature, availableTags }: GalleryToo
 
   const sort = (params.get("sort") ?? "popular") as Sort;
   const style = params.get("style") ?? "";
-  const rating = params.get("contentRating") ?? "";
   const activeTags = React.useMemo(() => {
     const raw = params.get("tags") ?? "";
     return new Set(
@@ -130,24 +126,6 @@ export function GalleryToolbar({ viewerAllowsMature, availableTags }: GalleryToo
           </option>
         ))}
       </select>
-
-      {viewerAllowsMature ? (
-        <select
-          aria-label="Content rating"
-          data-testid="filter-rating"
-          value={rating}
-          onChange={(e) => push({ contentRating: e.target.value || null })}
-          className={controlBase}
-          style={controlStyle}
-        >
-          <option value="">All ratings</option>
-          {RATINGS.map((r) => (
-            <option key={r} value={r}>
-              {r}
-            </option>
-          ))}
-        </select>
-      ) : null}
 
       <input
         aria-label="Search characters"

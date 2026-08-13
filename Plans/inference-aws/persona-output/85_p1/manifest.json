@@ -1,0 +1,33 @@
+{
+  "persona_id": "85_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/85.webp",
+  "main_image_sha256": "2a9dfe1a270857e158d517b9b2f4c27941018a200451d35cba1dc2c3c32a952c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:35:53Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Ruby stands on a grassy hillside at sunset, her wind-swept hair and smile glowing with golden light from a DSLR camera's flash. She's wearing a vibrant tank top and shorts, her toned legs stretching down the slope as she looks out at the Rocky Mountains in the distance, lost in a moment of serene joy.",
+      "seed": 508303000,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/97c347bc-10e7-47ec-b438-430680d0d8f9.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/85.webp",
+      "status": "ok",
+      "bytes": 1374582
+    }
+  ]
+}

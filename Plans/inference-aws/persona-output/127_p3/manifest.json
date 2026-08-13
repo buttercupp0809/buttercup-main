@@ -1,0 +1,33 @@
+{
+  "persona_id": "127_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/127.webp",
+  "main_image_sha256": "ff81ba32e3fde629a5dde01c4b3f5590d375140d703ef5a9e7116ce8c443ea7c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:07:45Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On a moonlit Sydney harbor pier, Ruby sits on a railing, her sheer black negligee fluttering in the breeze. The city skyline twinkles behind her as she gazes out at the water, a coy smile playing on her lips.",
+      "seed": 12887228,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/7ef6bd65-2d32-49d2-ab89-613bdda47be9.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/127.webp",
+      "status": "ok",
+      "bytes": 1231514
+    }
+  ]
+}

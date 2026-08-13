@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { getLandingCharacters } from "@/lib/marketing";
+import { getPublicReels } from "@/lib/reels/data";
 import { Hero } from "@/components/marketing/Hero";
+import { ReelsCarousel } from "@/components/marketing/ReelsCarousel";
 import { ValueProps } from "@/components/marketing/ValueProps";
 import { SocialProof } from "@/components/marketing/SocialProof";
 import { Button } from "@/components/ui/button";
@@ -12,10 +14,14 @@ import { Button } from "@/components/ui/button";
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const { items, viewerAllowsMature } = await getLandingCharacters();
+  const [{ items, viewerAllowsMature }, reels] = await Promise.all([
+    getLandingCharacters(),
+    getPublicReels(14),
+  ]);
   return (
     <>
       <Hero items={items} viewerAllowsMature={viewerAllowsMature} />
+      <ReelsCarousel reels={reels} />
       <ValueProps />
       <SocialProof />
       <section className="mx-auto max-w-4xl px-6 py-20 text-center">

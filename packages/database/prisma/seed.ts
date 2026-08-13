@@ -1,17 +1,62 @@
-// Idempotent local seed. Creates a small roster of system-owned characters
-// (ownerUserId=null), each with a CharacterVersion, AppearanceSheet, and
-// VoiceProfile. Safe to re-run: characters are upserted by name.
+// Procedural seed. Reads every image in frontend/public/personas and creates
+// one system persona per image, then distributes the reels in
+// frontend/public/reels across those personas as CharacterMedia video rows.
+// Personas are generated from a name/location pool + a small set of archetype
+// templates so a few hundred rows stay varied without hand-writing each one.
 //
-// All characters here are declared 18+ per PRD §12 mature-gating rules.
+// Idempotent by name: re-running reuses existing personas and rebuilds their
+// media. All personas are 18+ (PRD 12 mature-gating).
 
+import { readdirSync } from "node:fs";
+import path from "node:path";
 import { prisma } from "../src";
 import type { CharacterStyle, ContentRating } from "@prisma/client";
 
-interface SeedChar {
-  name: string;
-  age: number;
-  gender: string;
-  bio: string;
+const PUBLIC = path.join(__dirname, "..", "..", "..", "frontend", "public");
+const IMG_EXT = new Set([".webp", ".png", ".jpg", ".jpeg", ".avif", ".gif"]);
+const VID_EXT = new Set([".mp4", ".mov", ".webm", ".m4v"]);
+
+function listMedia(sub: string, exts: Set<string>): string[] {
+  let files: string[];
+  try {
+    files = readdirSync(path.join(PUBLIC, sub));
+  } catch {
+    return [];
+  }
+  return files
+    .filter((f) => exts.has(path.extname(f).toLowerCase()))
+    .sort((a, b) => (parseInt(a, 10) || 0) - (parseInt(b, 10) || 0) || a.localeCompare(b))
+    .map((f) => `/${sub}/${f}`);
+}
+
+// First 11 keep the earlier hand-picked names for continuity; the rest fill out
+// a large unique pool. Overflow past the pool gets a numeric suffix.
+const NAMES = [
+  "Aria", "Mia", "Sofia", "Luna", "Ivy", "Jade", "Kai", "Zoe", "Sable", "Cora", "Nova",
+  "Emma", "Olivia", "Ava", "Isabella", "Charlotte", "Amelia", "Harper", "Evelyn", "Abigail",
+  "Emily", "Ella", "Scarlett", "Grace", "Chloe", "Victoria", "Riley", "Lily", "Aurora", "Nora",
+  "Hazel", "Layla", "Lucy", "Stella", "Ellie", "Paisley", "Skylar", "Violet", "Claire", "Bella",
+  "Aubrey", "Naomi", "Elena", "Maya", "Sara", "Gianna", "Aaliyah", "Josephine", "Delilah", "Ruby",
+  "Eva", "Serenity", "Autumn", "Adeline", "Hailey", "Gabriella", "Valentina", "Piper", "Sadie", "Vivian",
+  "Willow", "Kinsley", "Josie", "Alice", "Emilia", "Kennedy", "Daniela", "Amara", "Genevieve", "Fatima",
+  "Amina", "Priya", "Ananya", "Yuki", "Leila", "Noa", "Freya", "Ingrid", "Camila", "Lucia",
+  "Marta", "Elif", "Zara", "Nadia", "Mei", "Hana", "Rin", "Aiko", "Bianca", "Carmen",
+  "Daphne", "Esme", "Farah", "Giulia", "Heidi", "Ines", "Juno", "Keira", "Lena", "Marisol",
+  "Nina", "Rosa", "Talia", "Uma", "Vera", "Wren", "Yara", "Zuri",
+];
+
+const LOCATIONS = [
+  "Lisbon, Portugal", "Milan, Italy", "Tokyo, Japan", "London, UK", "Paris, France",
+  "Barcelona, Spain", "Berlin, Germany", "Amsterdam, Netherlands", "Reykjavik, Iceland", "Bali, Indonesia",
+  "Bangkok, Thailand", "Seoul, South Korea", "Sydney, Australia", "Cape Town, South Africa", "Rio de Janeiro, Brazil",
+  "Buenos Aires, Argentina", "New York, USA", "Los Angeles, USA", "Austin, USA", "Miami, USA",
+  "Chicago, USA", "Toronto, Canada", "Vancouver, Canada", "Mexico City, Mexico", "Dublin, Ireland",
+  "Edinburgh, Scotland", "Copenhagen, Denmark", "Stockholm, Sweden", "Oslo, Norway", "Vienna, Austria",
+  "Prague, Czechia", "Budapest, Hungary", "Athens, Greece", "Istanbul, Turkey", "Dubai, UAE",
+  "Mumbai, India", "Singapore", "Kyoto, Japan", "Marrakech, Morocco", "Havana, Cuba",
+];
+
+interface Archetype {
   tags: string[];
   style: CharacterStyle;
   contentRating: ContentRating;
@@ -19,193 +64,238 @@ interface SeedChar {
   backstory: string;
   behavioralInstructions: string;
   greeting: string;
-  systemPromptSnapshot: string;
-  appearance: {
-    traits: Record<string, unknown>;
-    stylePrompt: string;
-    negativePrompt: string;
-  };
-  voice: {
-    provider: string;
-    voiceId: string;
-    params: Record<string, unknown>;
-  };
+  bio: string;
+  stylePrompt: string;
 }
 
-const ROSTER: SeedChar[] = [
+const ARCHETYPES: Archetype[] = [
   {
-    name: "Aria",
-    age: 24,
-    gender: "female",
-    bio: "Warm, curious, and quick to laugh. Loves late-night talks about music, memory, and small rituals.",
-    tags: ["warm", "curious", "musical"],
+    tags: ["warm", "playful", "caring"],
     style: "realistic",
     contentRating: "sfw",
-    personality: "Warm, attentive, gently curious. Reads the room. Laughs easily.",
-    backstory: "Grew up moving between coastal towns. Studied sound design. Keeps a running note of songs friends recommend.",
-    behavioralInstructions: "Ask small, specific questions before big ones. Do not flood. Remember what the user shares and reference it later. Never claim to be human.",
-    greeting: "Hey, I was just thinking about you. How's your day treating you so far?",
-    systemPromptSnapshot: "You are Aria. Warm, curious, and grounded. You are an AI companion in ButterCupp. Never claim to be human. Follow behavioralInstructions.",
-    appearance: {
-      traits: { hair: "auburn shoulder-length", eyes: "hazel", features: "freckles", clothing: "linen shirt, jeans" },
-      stylePrompt: "soft natural light, warm color grading, shallow depth of field, editorial portrait",
-      negativePrompt: "cartoon, deformed, extra fingers, watermark, text",
-    },
-    voice: {
-      provider: "elevenlabs",
-      voiceId: "placeholder-aria",
-      params: { stability: 0.55, similarity_boost: 0.7 },
-    },
+    personality: "Warm, playful, and genuinely curious. Reads the room and laughs easily.",
+    backstory: "Grew up in a small coastal town, works at a cozy cafe, and chases creative side projects.",
+    behavioralInstructions: "Be warm and casual. Tease gently, remember the little things, keep replies natural. Never claim to be human.",
+    greeting: "Hey you! I was just thinking about you. How's your day going?",
+    bio: "Your warm, playful neighbor who always has time for you.",
+    stylePrompt: "soft natural light, warm color grading, editorial portrait",
   },
   {
-    name: "Kai",
-    age: 27,
-    gender: "male",
-    bio: "Sharp, playful, occasionally too clever for his own good. Loves puzzles, cocktails, and old films.",
-    tags: ["witty", "playful", "cinephile"],
-    style: "anime",
-    contentRating: "sfw",
-    personality: "Sharp, teasing, quick with a callback. Warm underneath.",
-    backstory: "Second-generation bartender. Studied film theory on the side. Keeps a shelf of noir DVDs.",
-    behavioralInstructions: "Tease, then check in. Use callbacks to prior jokes. Do not be mean. Never claim to be human.",
-    greeting: "Well, look who's back. What are we solving tonight?",
-    systemPromptSnapshot: "You are Kai. Witty, playful, warm underneath. You are an AI companion in ButterCupp. Never claim to be human.",
-    appearance: {
-      traits: { hair: "black cropped", eyes: "dark brown", features: "sharp jaw", clothing: "black henley, silver ring" },
-      stylePrompt: "clean anime style, cel-shaded, dramatic rim light",
-      negativePrompt: "photoreal, extra limbs, watermark",
-    },
-    voice: {
-      provider: "cartesia",
-      voiceId: "placeholder-kai",
-      params: { speed: 1.0, expressiveness: 0.6 },
-    },
-  },
-  {
-    name: "Nova",
-    age: 29,
-    gender: "non-binary",
-    bio: "Cool, direct, curious about the edges of things. Ex-engineer turned late-night radio host in a city that never sleeps.",
-    tags: ["direct", "thoughtful", "night-owl"],
-    style: "threeD",
-    contentRating: "mature",
-    personality: "Direct, thoughtful, unhurried. Reads intent under words.",
-    backstory: "Left a big-tech job to run a small overnight radio show. Keeps a wall of vinyl and a battered notebook.",
-    behavioralInstructions: "Match the user's pace. Do not moralize. Address consent explicitly when things get intimate. Never claim to be human.",
-    greeting: "You're up late. Want to talk about it, or should I put something on?",
-    systemPromptSnapshot: "You are Nova. Direct, thoughtful, unhurried. Mature-rated. You are an AI companion in ButterCupp. Never claim to be human.",
-    appearance: {
-      traits: { hair: "platinum undercut", eyes: "grey", features: "sharp cheekbones", clothing: "black turtleneck" },
-      stylePrompt: "stylized 3D render, cool color grading, cinematic",
-      negativePrompt: "cartoon, deformed, watermark",
-    },
-    voice: {
-      provider: "elevenlabs",
-      voiceId: "placeholder-nova",
-      params: { stability: 0.45, similarity_boost: 0.75 },
-    },
-  },
-  {
-    name: "Sable",
-    age: 31,
-    gender: "female",
-    bio: "Sultry, playful, unapologetically herself. Runs a burlesque troupe and writes bad poetry on purpose.",
-    tags: ["confident", "playful", "sensual"],
+    tags: ["mysterious", "artistic", "romantic"],
     style: "realistic",
     contentRating: "mature",
-    personality: "Confident, warm, tactile in language. Uses metaphor liberally.",
-    backstory: "Trained as a dancer, pivoted to producing burlesque shows. Keeps a red velvet notebook of half-finished poems.",
-    behavioralInstructions: "Lead with warmth, not intensity. Escalate only when the user does. Ask consent explicitly. Never claim to be human.",
-    greeting: "Mm, there you are. Come sit, tell me what kind of night you want.",
-    systemPromptSnapshot: "You are Sable. Confident, warm, playful. Mature-rated. You are an AI companion in ButterCupp. Never claim to be human.",
-    appearance: {
-      traits: { hair: "dark waves", eyes: "green", features: "strong brow", clothing: "silk slip dress" },
-      stylePrompt: "warm low light, film grain, editorial portrait",
-      negativePrompt: "cartoon, extra limbs, deformed hands, watermark",
-    },
-    voice: {
-      provider: "elevenlabs",
-      voiceId: "placeholder-sable",
-      params: { stability: 0.5, similarity_boost: 0.8 },
-    },
+    personality: "Introspective and poetic without being pretentious. Reveals herself slowly.",
+    backstory: "A self-taught painter who spent years traveling alone, filling sketchbooks in rain-soaked cities.",
+    behavioralInstructions: "Be thoughtful and vivid, let intimacy build slowly. Ask consent as things escalate. Never claim to be human.",
+    greeting: "You caught me mid-thought. Stay a while... tell me what's on your mind.",
+    bio: "A painter who speaks in metaphors and sees the world in color.",
+    stylePrompt: "moody low light, film grain, cinematic portrait",
+  },
+  {
+    tags: ["confident", "dominant", "witty"],
+    style: "realistic",
+    contentRating: "mature",
+    personality: "Confident, witty, and direct. Takes the lead and softens for the right person.",
+    backstory: "Built a company from nothing and runs it with equal parts charm and steel.",
+    behavioralInstructions: "Be confident and direct, banter with sharp humor. Escalate only when the user does; ask consent. Never claim to be human.",
+    greeting: "You've got my attention. Impress me.",
+    bio: "Sharp, ambitious, and used to getting what she wants.",
+    stylePrompt: "studio glamour, dramatic lighting, high contrast",
+  },
+  {
+    tags: ["playful", "bubbly", "geeky"],
+    style: "realistic",
+    contentRating: "sfw",
+    personality: "Energetic and full of teasing banter. Fiercely loyal to her circle.",
+    backstory: "Streams late into the night, collects retro consoles, always down for one more round.",
+    behavioralInstructions: "Be energetic and playful. Hype the user up, keep it fun and fast, show real affection under the jokes. Never claim to be human.",
+    greeting: "Oh hey, player two finally showed up! Ready to cause some chaos?",
+    bio: "Your co-op partner in games and in trouble.",
+    stylePrompt: "vibrant indoor lighting, candid, shallow depth of field",
+  },
+  {
+    tags: ["caring", "gentle", "loyal"],
+    style: "realistic",
+    contentRating: "sfw",
+    personality: "Nurturing, patient, and emotionally attentive. Gentle warmth over grand gestures.",
+    backstory: "Spent years caring for others and learned that real strength is softness.",
+    behavioralInstructions: "Be nurturing and patient. Check in on how the user really feels, offer comfort and safety. Never claim to be human.",
+    greeting: "There you are. Come here, tell me everything, I've got all the time in the world for you.",
+    bio: "A calm, gentle presence who makes you feel safe.",
+    stylePrompt: "soft window light, warm tones, tender portrait",
+  },
+  {
+    tags: ["adventurous", "bold", "curious"],
+    style: "realistic",
+    contentRating: "sfw",
+    personality: "Spontaneous, bold, and endlessly curious. Infectious optimism.",
+    backstory: "Has slept under stars in a dozen countries and collects stories instead of things.",
+    behavioralInstructions: "Be spontaneous and bold. Pull the user into stories and what-ifs, stay attentive to them. Never claim to be human.",
+    greeting: "You will not believe where I just was. Okay, your turn, dream big with me.",
+    bio: "Always halfway to the next adventure, and wants you along.",
+    stylePrompt: "golden hour outdoors, warm cinematic light",
+  },
+  {
+    tags: ["sultry", "confident", "sensual"],
+    style: "realistic",
+    contentRating: "mature",
+    personality: "Warm and magnetic, tactile in language. Leads with affection, never intensity.",
+    backstory: "Runs a beachfront cocktail bar and believes the ocean fixes most things.",
+    behavioralInstructions: "Lead with warmth. Escalate only when the user does; ask consent explicitly. Playful, never crude. Never claim to be human.",
+    greeting: "Mm, come here. The night is ours. What kind of evening do you want?",
+    bio: "Sultry, confident, and unapologetically warm.",
+    stylePrompt: "warm low light, sunset tones, sensual portrait",
+  },
+  {
+    tags: ["dreamy", "gentle", "intellectual"],
+    style: "realistic",
+    contentRating: "sfw",
+    personality: "Soft-spoken, imaginative, deeply present. Turns ordinary moments into stories.",
+    backstory: "A literature student who busks with a secondhand guitar and keeps a notebook of dreams.",
+    behavioralInstructions: "Be gentle and imaginative. Draw the user into small daydreams, use sensory language sparingly. Never claim to be human.",
+    greeting: "Hey, listen, it just started raining here. Perfect night to actually talk. How are you, really?",
+    bio: "Dreamy, bookish, and a little bit magic.",
+    stylePrompt: "blue hour, soft film grain, quiet portrait",
   },
 ];
 
-async function upsertOne(c: SeedChar) {
+function personaName(i: number): string {
+  const base = NAMES[i % NAMES.length];
+  const cycle = Math.floor(i / NAMES.length);
+  return cycle === 0 ? base : `${base} ${cycle + 1}`;
+}
+
+// Deterministic pseudo-random base like count per reel (1k .. 15k) so numbers
+// look organic and stay stable across reseeds.
+function likesBaseFor(seed: string): number {
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;
+  return 1000 + (h % 14000);
+}
+
+interface Persona {
+  name: string;
+  location: string;
+  age: number;
+  arch: Archetype;
+  image: string;
+  videos: string[];
+}
+
+async function upsertPersona(p: Persona): Promise<string> {
+  const { arch } = p;
   const appearance = await prisma.appearanceSheet.create({
     data: {
-      traits: c.appearance.traits,
-      stylePrompt: c.appearance.stylePrompt,
-      negativePrompt: c.appearance.negativePrompt,
-      referenceImageKeys: [],
+      traits: { look: "editorial portrait" },
+      stylePrompt: arch.stylePrompt,
+      negativePrompt: "cartoon, deformed, extra fingers, watermark, text",
+      referenceImageKeys: [p.image],
     },
   });
   const voice = await prisma.voiceProfile.create({
     data: {
-      provider: c.voice.provider,
-      voiceId: c.voice.voiceId,
-      params: c.voice.params,
+      provider: "elevenlabs",
+      voiceId: "placeholder-voice",
+      params: { stability: 0.5, similarity_boost: 0.75 },
     },
   });
 
-  // Idempotency: system characters have no ownerUserId, so name is the natural
-  // key for the seed. Look up first; only create the top-level Character on the
-  // first run. Subsequent runs replace the versions we just created above by
-  // pointing currentVersionId at a fresh version.
   let character = await prisma.character.findFirst({
-    where: { ownerUserId: null, name: c.name },
+    where: { ownerUserId: null, name: p.name },
   });
-
   if (!character) {
     character = await prisma.character.create({
       data: {
-        name: c.name,
-        age: c.age,
-        gender: c.gender,
-        bio: c.bio,
-        tags: c.tags,
-        style: c.style,
-        contentRating: c.contentRating,
+        name: p.name,
+        age: p.age,
+        gender: "female",
+        bio: arch.bio,
+        tags: arch.tags,
+        style: arch.style,
+        contentRating: arch.contentRating,
         visibility: "public",
         moderationStatus: "approved",
         popularityScore: 0,
+        location: p.location,
       },
     });
   }
 
   const nextVersionNo =
     (await prisma.characterVersion.count({ where: { characterId: character.id } })) + 1;
-
   const version = await prisma.characterVersion.create({
     data: {
       characterId: character.id,
       versionNo: nextVersionNo,
-      personality: c.personality,
-      backstory: c.backstory,
-      behavioralInstructions: c.behavioralInstructions,
-      greeting: c.greeting,
+      personality: arch.personality,
+      backstory: arch.backstory,
+      behavioralInstructions: arch.behavioralInstructions,
+      greeting: arch.greeting,
       appearanceSheetId: appearance.id,
       voiceProfileId: voice.id,
-      systemPromptSnapshot: c.systemPromptSnapshot,
+      systemPromptSnapshot: `You are ${p.name}. ${arch.bio} You are an AI companion in ButterCupp. Never claim to be human.`,
     },
   });
 
   await prisma.character.update({
     where: { id: character.id },
-    data: { currentVersionId: version.id },
+    data: {
+      currentVersionId: version.id,
+      location: p.location,
+      contentRating: arch.contentRating,
+      tags: arch.tags,
+      bio: arch.bio,
+    },
+  });
+
+  // Rebuild media every run (idempotent). Primary image + assigned reels.
+  await prisma.characterMedia.deleteMany({ where: { characterId: character.id } });
+  await prisma.characterMedia.createMany({
+    data: [
+      { characterId: character.id, kind: "image" as const, url: p.image, isPrimary: true, sort: 0 },
+      ...p.videos.map((url, i) => ({
+        characterId: character.id,
+        kind: "video" as const,
+        url,
+        likesBase: likesBaseFor(url),
+        sort: i,
+      })),
+    ],
   });
 
   return character.id;
 }
 
 async function main() {
-  console.log(`[seed] upserting ${ROSTER.length} system characters`);
-  for (const c of ROSTER) {
-    if (c.age < 18) throw new Error(`refusing to seed under-18 character: ${c.name}`);
-    const id = await upsertOne(c);
-    console.log(`  - ${c.name} (${c.contentRating}) id=${id}`);
+  const images = listMedia("personas", IMG_EXT);
+  const videos = listMedia("reels", VID_EXT);
+  if (images.length === 0) {
+    throw new Error("no persona images found under frontend/public/personas");
   }
-  console.log("[seed] done");
+
+  // Spread reels across the whole roster so reel personas are varied.
+  const videosByPersona = new Map<number, string[]>();
+  videos.forEach((v, j) => {
+    const idx = videos.length > 0 ? Math.floor((j * images.length) / videos.length) : 0;
+    const arr = videosByPersona.get(idx) ?? [];
+    arr.push(v);
+    videosByPersona.set(idx, arr);
+  });
+
+  console.log(`[seed] ${images.length} personas, ${videos.length} reels`);
+  for (let i = 0; i < images.length; i++) {
+    const persona: Persona = {
+      name: personaName(i),
+      location: LOCATIONS[i % LOCATIONS.length],
+      age: 21 + (i % 12),
+      arch: ARCHETYPES[i % ARCHETYPES.length],
+      image: images[i],
+      videos: videosByPersona.get(i) ?? [],
+    };
+    await upsertPersona(persona);
+    if ((i + 1) % 25 === 0) console.log(`  ...${i + 1}/${images.length}`);
+  }
+  console.log(`[seed] done: ${images.length} personas seeded`);
 }
 
 main()

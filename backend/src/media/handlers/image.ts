@@ -9,6 +9,7 @@ import type { MediaJobData } from "@buttercupp/shared";
 import type { HandlerOutput } from "./index";
 import { buildImagePrompt } from "../image/prompt";
 import { generateImage } from "../image/providers";
+import { toWebP } from "../image/convert";
 import {
   assertCharacterAdult,
   rejectMinorReference,
@@ -76,9 +77,11 @@ export const imageHandler = async (job: MediaJobData): Promise<HandlerOutput> =>
     seed,
   });
 
+  const { buffer, contentType } = await toWebP(out.buffer);
+
   return {
-    buffer: out.buffer,
-    contentType: "image/png",
+    buffer,
+    contentType,
     meta: {
       provider: out.provider,
       latencyMs: out.latencyMs,

@@ -1,0 +1,33 @@
+{
+  "persona_id": "123_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/123.webp",
+  "main_image_sha256": "abe3147999c21db6eaf65245ad9a5452c97e239ac6125e7c0b753c06a05cb77a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:58:21Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "The first blush of dawn paints the desert landscape in hues of pink and gold as a lithe, bikini-clad woman stretches out on a weathered beach towel, gazing back over her shoulder with a coy, half-lidded gaze as the rising sun casts long shadows behind her.",
+      "seed": 1671682406,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/c298e53a-e33e-4d30-85e3-246a56413f0d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/123.webp",
+      "status": "ok",
+      "bytes": 1359908
+    }
+  ]
+}

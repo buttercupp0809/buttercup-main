@@ -1,0 +1,33 @@
+{
+  "persona_id": "7_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/7.webp",
+  "main_image_sha256": "9731b30e32c78a2daa3b5cfaea8fb0eb54d1f3eda7bf464be0d1d90c42c912a1",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T22:47:35Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a traditional Japanese onsen bathhouse, Lily sits on the edge of a wooden tub, water droplets beading on her skin as she leans back to expose her breasts. A kimono is draped loosely over one shoulder, and the camera captures the play of light on her wet skin, highlighting the curves of her body. Her expression is one of serene contentment, yet her eyes hint at the thrill of discovery in this hidden world.",
+      "seed": 194282743,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/b2854dff-9e08-46af-a9c7-f99b7c374eae.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/7.webp",
+      "status": "ok",
+      "bytes": 1214881
+    }
+  ]
+}

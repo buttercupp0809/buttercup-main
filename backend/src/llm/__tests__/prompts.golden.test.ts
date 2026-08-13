@@ -1,16 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
 import { buildPromptLayers, type PromptContext } from "../prompts";
 
-// Golden test: proves the Phase 22 template refactor preserves the
-// composed system prompt byte-for-byte against the pre-refactor output
-// for two representative contexts (SFW+relationship+null-memory and
-// mature+no-relationship+injected-memory). If a template edit needs to
-// change model behavior, refresh the fixtures in the SAME commit and
-// justify the change in the PR description.
-
-const FIX = join(__dirname, "fixtures");
+// The prompt was intentionally simplified to a minimal, creativity-first
+// composition (the SFW/mature/output/disclosure/safety-lecture layers were
+// removed so Stheno is unconstrained). Creative direction now lives in
+// prompt-fills.ts (customSystemPrompt). These tests assert the structure
+// instead of a byte-golden fixture, which no longer makes sense now that the
+// prompt is user-editable.
 
 const CTX_SFW: PromptContext = {
   characterVersion: {
@@ -37,14 +33,32 @@ const CTX_MATURE: PromptContext = {
   userAge: null,
 };
 
-describe("golden prompt equivalence (Phase 22)", () => {
-  it("SFW context matches the pre-refactor fixture byte-for-byte", () => {
-    const golden = readFileSync(join(FIX, "golden-sfw.txt"), "utf8");
-    expect(buildPromptLayers(CTX_SFW)).toBe(golden);
+describe("minimal prompt", () => {
+  it("includes the character name and per-character persona fields", () => {
+    const p = buildPromptLayers(CTX_SFW);
+    expect(p).toContain("You are Aria");
+    expect(p).toContain("Warm and curious.");
+    expect(p).toContain("Grew up in coastal towns.");
+    expect(p).toContain("Ask small questions before big ones.");
   });
 
-  it("mature + injected-memory context matches the pre-refactor fixture", () => {
-    const golden = readFileSync(join(FIX, "golden-mature.txt"), "utf8");
-    expect(buildPromptLayers(CTX_MATURE)).toBe(golden);
+  it("keeps the adults-only line but drops the old safety/disclosure lectures", () => {
+    const p = buildPromptLayers(CTX_SFW);
+    expect(p).toContain("18 or older");
+    // Removed guardrail/disclosure wording must not reappear.
+    expect(p).not.toContain("Safety rules that override the character");
+    expect(p).not.toContain("crisis resources");
+    expect(p).not.toContain("You are chatting with an AI");
+  });
+
+  it("injects relationship + memory only when present", () => {
+    const sfw = buildPromptLayers(CTX_SFW);
+    expect(sfw).toContain("# Relationship");
+    expect(sfw).not.toContain("# What you remember");
+
+    const mature = buildPromptLayers(CTX_MATURE);
+    expect(mature).not.toContain("# Relationship");
+    expect(mature).toContain("# What you remember");
+    expect(mature).toContain("user loves rain");
   });
 });

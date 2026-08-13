@@ -1,0 +1,33 @@
+{
+  "persona_id": "100_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/100.webp",
+  "main_image_sha256": "d30569918af2d0e5111b5b8a5143725979a3394acade0569fcfb5bf5d430754f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:08:31Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Phoebe's laughter echoes through a vibrant French Quarter courtyard as she twirls in a flowing sundress under the warm glow of golden hour, DSLR camera capturing her joy and carefree spirit in a shallow depth of field against a cinematic backdrop of ancient brick walls and lush greenery.",
+      "seed": 516320203,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/cc50f255-10b9-4b09-a23e-405026bb7d20.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/100.webp",
+      "status": "ok",
+      "bytes": 1619537
+    }
+  ]
+}

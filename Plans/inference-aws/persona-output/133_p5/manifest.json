@@ -1,0 +1,33 @@
+{
+  "persona_id": "133_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/133.webp",
+  "main_image_sha256": "a36ec4ad5a8395282b09078bb4bdd1a269bb1cc27893f108a228431535263c0e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:21:17Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On the rooftop of a traditional Athenian house, Clio leans against a stone parapet, her legs crossed and her feet dangling above the cobblestone streets below, a sheer black negligee leaving little to the imagination as the city lights twinkle in the distance, the silhouette of the Acropolis a dark shadow against the night sky, the only light a single candle flickering at her feet.",
+      "seed": 288358777,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/5e01e096-8b18-401c-a69a-a242e01a7d09.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/133.webp",
+      "status": "ok",
+      "bytes": 1633357
+    }
+  ]
+}

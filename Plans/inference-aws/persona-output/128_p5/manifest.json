@@ -1,0 +1,33 @@
+{
+  "persona_id": "128_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/128.webp",
+  "main_image_sha256": "e23a0194378c1f2f5f365a63538d2b3a335160b24f21c9c030db05206d865401",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:10:41Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Phoebe lounges on a beach towel, sprawled out in a languid pose as the sun begins to set over the Gulf of Mexico. Her barely-there bikini top barely contains her generous breasts, the metallic accents glinting in the fading light. A few strands of hair are tousled by the ocean breeze as she stretches out, one hand tracing the curve of her hip, the other reaching for a cold beer nestled in the sand beside her.",
+      "seed": 393532455,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/03e5a1ce-f6f0-4184-b3ac-47c5688c3266.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/128.webp",
+      "status": "ok",
+      "bytes": 2164545
+    }
+  ]
+}

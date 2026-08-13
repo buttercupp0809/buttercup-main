@@ -1,0 +1,33 @@
+{
+  "persona_id": "67_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/67.webp",
+  "main_image_sha256": "2e821dcdea49a575db3bb044fc6481cf4315c90f88a729bfeed7c190a487013c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:59:15Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On a plush, velvet chaise in a dimly lit, antique-filled boudoir, Clara reclines, one leg bent at the knee, the other extended along the cushions, her Victorian-style corset and shorts leaving little to the imagination, a macro lens zooms in on the intricate lace trim of her corset as she looks up at the camera with a sultry, half-lidded gaze, the soft light and shadows accentuating the curves of her body.",
+      "seed": 1565272299,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/2ffe10dd-c5a5-4c3a-91d9-20165c4f41c1.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/67.webp",
+      "status": "ok",
+      "bytes": 1582054
+    }
+  ]
+}

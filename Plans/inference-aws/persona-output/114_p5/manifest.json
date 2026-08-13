@@ -1,0 +1,33 @@
+{
+  "persona_id": "114_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/114.webp",
+  "main_image_sha256": "1da0113dfae4dae21dd113ac5475e5e07fcae343667ce4d79670b96fc76c741a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:39:54Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On a deserted beach at dawn, the first light of day casts long shadows across the sand as Phoebe kneels, her tiny string bikini barely containing her ample assets, her wind-tousled hair framing her face as she looks back over her shoulder, a sultry smile playing on her lips.",
+      "seed": 814207732,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/6db3aab3-0d31-48af-bd15-65205e7f43e3.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/114.webp",
+      "status": "ok",
+      "bytes": 1195884
+    }
+  ]
+}

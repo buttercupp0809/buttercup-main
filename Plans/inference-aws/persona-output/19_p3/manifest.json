@@ -1,0 +1,33 @@
+{
+  "persona_id": "19_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/19.webp",
+  "main_image_sha256": "be8498c7b4b5225c9cc9a9e43e625e930094240aba0f10453a64d057577b6ca9",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T23:13:52Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Wearing a fur-trimmed coat opened to reveal a lacy bralette and high-waisted panties, Hazel's smirking lips and piercing eyes seem to beckon as she leans against a snow-dusted tree in a secluded winter forest glade, the icy air adding a seductive chill to her provocative pose.",
+      "seed": 1328217552,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/8fe63d65-de5e-48f0-bc47-e0fd2f130c33.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/19.webp",
+      "status": "ok",
+      "bytes": 1602998
+    }
+  ]
+}

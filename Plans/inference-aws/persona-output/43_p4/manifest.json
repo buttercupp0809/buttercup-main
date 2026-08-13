@@ -1,0 +1,33 @@
+{
+  "persona_id": "43_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/43.webp",
+  "main_image_sha256": "9fe647b99de1c5807c6190cb75fb1b282f83892ff83b027d2b0668dc79f91565",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:07:38Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Late evening in a dimly lit parlor as Magnolia sits on a plush couch, her skin-tight, black lace gown hugging her form, the fabric barely concealing her full breasts and the hint of her thong-clad derri\u00e8re, as she leans back, one high heel hooked on the couch, her leg raised, her eyes fixed on the viewer with a come-hither look.",
+      "seed": 1474249688,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/3b272a83-2723-47db-aa00-32810ee78903.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/43.webp",
+      "status": "ok",
+      "bytes": 1387898
+    }
+  ]
+}

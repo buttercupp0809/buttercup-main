@@ -1,0 +1,33 @@
+{
+  "persona_id": "28_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/28.webp",
+  "main_image_sha256": "36fbe64c9de033078e6b893ae68e434aace9a3b2718e4b11bf13a88546f966e5",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T23:32:06Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Golden hour on a Dublin street; Lyra laughs with friends in a cozy pub, her bright red curls and green eyes sparkling in the warm light as she raises a pint to toast another night of lively tales and camaraderie, her simple white blouse and fitted jeans capturing her carefree spirit.",
+      "seed": 1467322751,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/d4c24e9b-4617-4a2d-a991-2ba5750cbca3.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/28.webp",
+      "status": "ok",
+      "bytes": 1441987
+    }
+  ]
+}

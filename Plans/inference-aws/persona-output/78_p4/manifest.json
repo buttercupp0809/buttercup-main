@@ -1,0 +1,33 @@
+{
+  "persona_id": "78_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/78.webp",
+  "main_image_sha256": "8e6f18d4db8b6a630b5b643841e6ef254e2ae5eed255662942a37df3322ef355",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:22:11Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a steaming bathroom, Juniper stands under a cascading showerhead, rivulets of water streaming down her curves, soapy suds clinging to her breasts and thighs, her gaze half-lidded and inviting as the camera focuses on the translucent film of moisture highlighting her erect nipples, the water droplets glistening on her skin like diamonds.",
+      "seed": 1872202745,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/da231791-e054-4462-9d61-b3149a822b53.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/78.webp",
+      "status": "ok",
+      "bytes": 1533916
+    }
+  ]
+}

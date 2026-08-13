@@ -111,6 +111,9 @@ export function CharacterWizardProvider({ children }: { children: React.ReactNod
       if (draft.visibility === "public") {
         await fetch(`/api/characters/${body.id}/publish`, { method: "POST" }).catch(() => null);
       }
+      // Fire image generation in the background. Non-blocking: the GPU may be
+      // offline and the pipeline fails gracefully in that case.
+      fetch(`/api/characters/${body.id}/generate-images`, { method: "POST" }).catch(() => null);
       try {
         window.localStorage.removeItem(CHARACTER_DRAFT_STORAGE_KEY);
       } catch {

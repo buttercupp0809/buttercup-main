@@ -1,0 +1,33 @@
+{
+  "persona_id": "82_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/82.webp",
+  "main_image_sha256": "5391339d07eb1bd57c868cd7f04bd7857d5eb6265ad1e220f971d719db9feb7e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:30:19Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Late at night, Indigo stands at the edge of a secluded Amsterdam canal, the misty air glowing with the soft light of a full moon, her slender form clad in a sheer, midnight blue negligee that clings to every curve, her raven hair cascading down her back as she looks over her shoulder at the viewer with a coy, inviting smile, the city's distant sounds muffled by the still water.",
+      "seed": 37260197,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/811c9c35-28a4-4be7-9962-c6469a62da13.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/82.webp",
+      "status": "ok",
+      "bytes": 1247750
+    }
+  ]
+}

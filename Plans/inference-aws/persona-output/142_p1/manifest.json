@@ -1,0 +1,33 @@
+{
+  "persona_id": "142_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/142.webp",
+  "main_image_sha256": "845beefaff88c48fe773524e08b51674a3484ca7b31d4d1bb44d10c9b2272b9f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:38:56Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Phoebe stands in a sunlit park, laughing as she tosses a frisbee in the air, her auburn hair fluttering and her bright eyes sparkling with joy, wearing a fitted white tank top and denim shorts, the warm glow of golden hour casting long shadows across the lush green grass.",
+      "seed": 988687958,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/267c51ce-fa46-4667-996e-053578115ffb.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/142.webp",
+      "status": "ok",
+      "bytes": 1389431
+    }
+  ]
+}

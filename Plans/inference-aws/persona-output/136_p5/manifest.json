@@ -1,0 +1,33 @@
+{
+  "persona_id": "136_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/136.webp",
+  "main_image_sha256": "7afb17748b1d285d57214ebce1e3fee84817bd5d80231a2fb12bb525e5e27f67",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:27:45Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Kneeling on the deserted beach at dawn, Ophelia's tiny string bikini gleams in the early morning light as she looks back over her shoulder at the rising sun. The wind tousles her golden hair and lifts the fabric of her sheer cover-up, offering tantalizing glimpses of her toned body. Her expression is one of sultry contentment as she stretches languidly, one hand drifting down to touch the hem of her bottoms. The camera captures her from a low angle, emphasizing her athletic physique and the dramatic contrast of her heated gaze against the cool, dewy sand. The shallow depth of field and soft, golden lighting create a sense of serenity and desire, isolating Ophelia in her private beach moment.",
+      "seed": 1954399801,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/9cff2ba5-8eee-4cbc-8bd8-530032a74e79.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/136.webp",
+      "status": "ok",
+      "bytes": 1263407
+    }
+  ]
+}

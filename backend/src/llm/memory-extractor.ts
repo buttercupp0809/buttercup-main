@@ -48,7 +48,7 @@ export interface ExtractionInput {
 }
 
 const SYSTEM_PROMPT = [
-  "You are a memory extraction service for an AI companion product.",
+  "You are a memory extraction service for a companion product.",
   "Read the user's most recent message and the assistant's reply.",
   "Extract 0 to 5 durable facts about the USER that are worth remembering long-term.",
   "Skip pleasantries, filler, and anything the assistant might already know from the persona.",

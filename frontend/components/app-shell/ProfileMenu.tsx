@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { LogOut, User as UserIcon, CreditCard } from "lucide-react";
+import { LogOut, Settings as SettingsIcon, Gem } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export interface ProfileUser {
@@ -114,11 +114,11 @@ export function ProfileMenu({
           <div className="border-b px-3 py-2 text-xs text-slate-400" style={{ borderColor: "hsl(var(--buttercupp-border))" }}>
             {user.email}
           </div>
-          <MenuLink href="/settings" icon={<UserIcon className="h-4 w-4" />} onClick={() => setOpen(false)}>
-            Profile
+          <MenuLink href="/billing" icon={<Gem className="h-4 w-4" />} onClick={() => setOpen(false)}>
+            Subscription
           </MenuLink>
-          <MenuLink href="/billing" icon={<CreditCard className="h-4 w-4" />} onClick={() => setOpen(false)}>
-            Billing
+          <MenuLink href="/settings" icon={<SettingsIcon className="h-4 w-4" />} onClick={() => setOpen(false)}>
+            Settings
           </MenuLink>
           <button
             type="button"
@@ -129,7 +129,7 @@ export function ProfileMenu({
             className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-rose-300 hover:bg-white/5 disabled:opacity-50"
           >
             <LogOut className="h-4 w-4" />
-            {busy ? "Signing out..." : "Log out"}
+            {busy ? "Signing out..." : "Logout"}
           </button>
           {error ? <p className="px-3 pb-2 text-xs text-red-400">{error}</p> : null}
         </div>

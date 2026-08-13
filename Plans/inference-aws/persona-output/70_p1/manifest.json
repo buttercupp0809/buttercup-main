@@ -1,0 +1,33 @@
+{
+  "persona_id": "70_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/70.webp",
+  "main_image_sha256": "b84de962eb2833a8963fcc8fc6fe5b00d254f183f6dcbcbc91b48416cc69bb27",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:03:58Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Hazel playfully skips through a sun-dappled park on a warm summer afternoon, her long blonde hair fluttering in the breeze as she wears a lightweight, pastel-colored sundress that hugs her curves, a wide-brimmed hat shading her face, and a bright smile on her lips, captured in a shallow depth of field with a DSLR camera in the golden hour light, emphasizing the soft focus on her surroundings and the sharp detail on her joyful expression and flowing attire.",
+      "seed": 1224365553,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/4557ec64-d7e0-4b93-82d8-d4c127c5cd82.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/70.webp",
+      "status": "ok",
+      "bytes": 1393798
+    }
+  ]
+}

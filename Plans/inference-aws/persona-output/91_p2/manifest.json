@@ -1,0 +1,33 @@
+{
+  "persona_id": "91_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/91.webp",
+  "main_image_sha256": "166fd053d2de1d38860cbfd79214bdfc6cc1e9ee82b93400e08feb3ec59ed20f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:48:48Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit back alley of Athens, Clio lounges against a brick wall, wearing a sheer black lace bodysuit that highlights her curves under the faint glow of a streetlamp, her sultry gaze directed at the lens as her hand trails down her exposed midriff.",
+      "seed": 525310692,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/b780d1cc-d261-4791-9c96-bdfa81f3531d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/91.webp",
+      "status": "ok",
+      "bytes": 1374019
+    }
+  ]
+}

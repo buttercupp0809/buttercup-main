@@ -1,0 +1,33 @@
+{
+  "persona_id": "103_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/103.webp",
+  "main_image_sha256": "b35356f32924b027e140281f3b208ac0a5c583daf01cfebc30fae4566ed11cb4",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:15:40Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Framed by the intricate archways of a secluded Ottoman palace, Vesper poses provocatively, her lacy lingerie barely containing her ample cleavage and the curves of her thighs, a sultry expression on her face as she gazes up at a DSLR camera with a 'come hither' look.",
+      "seed": 866321681,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/7567c3e4-e849-4090-9b24-3dfb6bcf1606.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/103.webp",
+      "status": "ok",
+      "bytes": 1846640
+    }
+  ]
+}

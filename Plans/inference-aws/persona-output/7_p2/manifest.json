@@ -1,0 +1,33 @@
+{
+  "persona_id": "7_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/7.webp",
+  "main_image_sha256": "9731b30e32c78a2daa3b5cfaea8fb0eb54d1f3eda7bf464be0d1d90c42c912a1",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T22:46:47Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit Tokyo nightclub, Lily's figure is silhouetted against the pulsating neon lights. She wears a sheer, black negligee that clings to her curves, a garter belt and stiletto heels adding to her alluring presence. Her tousled hair frames her sultry expression as she leans against the wall, one high heel resting on the edge of a stool, inviting the viewer's gaze to follow the line of her shapely thigh.",
+      "seed": 109211737,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/cb12b15f-fddd-4382-8859-b73d34d4c74f.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/7.webp",
+      "status": "ok",
+      "bytes": 935893
+    }
+  ]
+}

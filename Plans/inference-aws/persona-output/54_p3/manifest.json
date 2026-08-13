@@ -1,0 +1,33 @@
+{
+  "persona_id": "54_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/54.webp",
+  "main_image_sha256": "5828def077cfc31b82cfad8e12398892cdcefffb53862a64a86ff4e594e24a61",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:30:53Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Odessa reclining on a worn, plush chaise lounge in a lavish, opulent harem, her curvaceous form draped in a diaphanous, gold-embroidered choli top and lehnga skirt, her dark hair cascading down her back in loose waves, her full, pouting lips parted slightly as she gazes up at the ornate, gilded canopy above, the camera positioned low to capture her regal, seductive pose amidst the tapestries and silks that adorn the tent.",
+      "seed": 1548908451,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/fc9cae65-9095-42e4-b2ea-b1950c353ab3.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/54.webp",
+      "status": "ok",
+      "bytes": 1618083
+    }
+  ]
+}

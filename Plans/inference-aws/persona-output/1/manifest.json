@@ -1,0 +1,33 @@
+{
+  "persona_id": "1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/1.webp",
+  "main_image_sha256": "bb5ec4af28f30d018b7da1953cc0aaddac98bbd24ac930deba0cfcf0fef1a8d9",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T21:01:34Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a steamy, dimly lit bathroom, water droplets glisten on Ariana's bare skin as she stands beneath the showerhead, her soapy body on full display, a towel loosely draped over one arm, her fingers absently playing with a droplet that clings to her pert nipple, her gaze direct and provocative.",
+      "seed": 263934494,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/e04370f4-a43b-43b3-a64c-ffd48ef0a88e.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/1.webp",
+      "status": "ok",
+      "bytes": 1441759
+    }
+  ]
+}

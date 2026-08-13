@@ -1,0 +1,33 @@
+{
+  "persona_id": "114_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/114.webp",
+  "main_image_sha256": "1da0113dfae4dae21dd113ac5475e5e07fcae343667ce4d79670b96fc76c741a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:38:17Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A warm, golden hour glow illuminates Phoebe as she playfully twirls in a sun-dappled park, her long, curly hair and flowy sundress dancing in the breeze, capturing her carefree and joyful spirit with a DSLR's shallow depth of field.",
+      "seed": 1429761232,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/6502e127-2e3f-412c-86d0-78eea4096c08.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/114.webp",
+      "status": "ok",
+      "bytes": 1388058
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "64_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/64.webp",
+  "main_image_sha256": "9abbcfe6c678912c57c35abf49e116564974d5d9cd48e31e2a80546a01bef16d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:51:43Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Against the backdrop of a dimly lit, ornate bedroom, Magnolia stands by the bed, her back to the camera. She's clad in a sheer, lace negligee that clings to her curves, the fabric barely concealing her breasts and the tops of her thighs. Her long hair cascades down her back in loose waves, and she looks over her shoulder with a sultry, half-lidded gaze.",
+      "seed": 1680975292,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/dd6ff791-1b69-4daf-8d2c-ac155cfce522.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/64.webp",
+      "status": "ok",
+      "bytes": 1280106
+    }
+  ]
+}

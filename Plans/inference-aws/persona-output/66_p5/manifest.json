@@ -1,0 +1,33 @@
+{
+  "persona_id": "66_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/66.webp",
+  "main_image_sha256": "eaedb03251c257d7cbe81934c3398d3876fd24c74bdc473c0e3dddc60e076ddc",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:57:08Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Astrid reclines on a fur-lined throne in a lavish tent, her intricately embroidered choli top and lehnga skirt a sensual nod to Indian harem inspiration. She props one hand behind her head, her other hand resting on her thigh as she gazes at the camera with a sultry, inviting expression. The soft, warm lighting and the plush textures of the surroundings create an intimate, sensual atmosphere, while the shallow depth of field draws attention to her alluring figure.",
+      "seed": 1038224604,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/e15514d1-3d57-4070-b324-81525fd2a3a6.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/66.webp",
+      "status": "ok",
+      "bytes": 1863429
+    }
+  ]
+}

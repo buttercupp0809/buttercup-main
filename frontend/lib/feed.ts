@@ -6,6 +6,8 @@ import { prisma } from "@buttercupp/database";
 import type { CharacterViewer } from "@buttercupp/database";
 import type { CharacterCardDTO } from "@buttercupp/shared";
 import { listCharacters } from "@/lib/characters";
+import { pickPersonaImage } from "@/lib/persona-images";
+import { signAssetUrl } from "@/lib/cdn";
 
 export interface RecentChat {
   characterId: string;
@@ -49,6 +51,13 @@ export async function getDashboardFeed(viewer: CharacterViewer): Promise<Dashboa
   };
 }
 
+function signMediaUrl(url: string | undefined | null): string | null {
+  if (!url) return null;
+  // Local public paths (/personas/...) pass through; S3 keys get signed.
+  if (url.startsWith("http") || url.startsWith("/")) return url;
+  return signAssetUrl(url);
+}
+
 async function loadRecents(userId: string): Promise<RecentChat[]> {
   const rows = await prisma.conversation.findMany({
     where: { userId },
@@ -58,6 +67,11 @@ async function loadRecents(userId: string): Promise<RecentChat[]> {
       character: {
         include: {
           currentVersion: { include: { appearanceSheet: true } },
+          media: {
+            where: { kind: "image" as const },
+            orderBy: [{ isPrimary: "desc" as const }, { sort: "asc" as const }],
+            take: 1,
+          },
         },
       },
     },
@@ -65,7 +79,10 @@ async function loadRecents(userId: string): Promise<RecentChat[]> {
   return rows.map((c) => ({
     characterId: c.characterId,
     characterName: c.character.name,
-    avatarUrl: avatarUrlFrom(c.character.currentVersion?.appearanceSheet?.referenceImageKeys),
+    avatarUrl:
+      signMediaUrl(c.character.media[0]?.url) ??
+      avatarUrlFrom(c.character.currentVersion?.appearanceSheet?.referenceImageKeys) ??
+      pickPersonaImage(c.characterId),
     lastMessageAt: c.lastMessageAt?.toISOString() ?? null,
     messageCount: c.messageCount,
   }));

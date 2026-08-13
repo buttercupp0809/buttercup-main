@@ -1,0 +1,33 @@
+{
+  "persona_id": "47_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/47.webp",
+  "main_image_sha256": "9d75aba913304ecd16ce3a6fe597eadcd47d91848f1953ca8d707f7c2acefb8d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:16:10Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a luxurious penthouse suite, Vesper lounges on a satin-draped chaise, her body barely concealed by a sheer, gauzy robe that clings to her every curve, her long, tousled hair spilling across the cushions as she raises a glass of champagne to her lips with a sultry invitation.",
+      "seed": 1036820780,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/bb791cfa-4c1b-45b8-bc33-88371076beaa.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/47.webp",
+      "status": "ok",
+      "bytes": 1072692
+    }
+  ]
+}

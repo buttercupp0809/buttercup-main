@@ -1,0 +1,33 @@
+{
+  "persona_id": "52_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/52.webp",
+  "main_image_sha256": "aef8853bbdfaa42f44c40401a776d5dd9c41d305305e913ad8f68e1293828b0e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:26:40Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a secluded glade of a misty winter forest, Lila stands with her back arched, her fur-trimmed coat open to reveal a lacy bralette and high-waisted panties, gazing over her shoulder with a smirk as the cool air sends a shiver down her spine, captured in a dramatic, cinematic shot with a shallow depth of field and soft, ethereal lighting.",
+      "seed": 582740585,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/229a3f8c-7924-4db6-a164-3878b9e7ca5b.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/52.webp",
+      "status": "ok",
+      "bytes": 1426675
+    }
+  ]
+}

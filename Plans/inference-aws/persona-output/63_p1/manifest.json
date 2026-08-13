@@ -1,0 +1,33 @@
+{
+  "persona_id": "63_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/63.webp",
+  "main_image_sha256": "22ac32a05ad541bcc770fba5ddd13ac0492bd88f352e793b3aeba732f03c1d24",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:49:12Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a lush garden, Ophelia sits on a stone bench, her sundress fluttering in a gentle breeze as warm golden hour light bathes her radiant face and tousled hair, a DSLR camera poised to capture her carefree, playful expression amidst the vibrant blooms.",
+      "seed": 49433239,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/1e0b0164-1cd4-4383-b1a8-8153179efd57.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/63.webp",
+      "status": "ok",
+      "bytes": 1757653
+    }
+  ]
+}

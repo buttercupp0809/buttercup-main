@@ -1,0 +1,33 @@
+{
+  "persona_id": "60_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/60.webp",
+  "main_image_sha256": "abf1394ff8964b61689336ff0d852ae36111c8f37795945e1db1a80dcea0ba1c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:42:55Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Juniper's face lights up in a joyful smile as she leaps in the air, arms outstretched, in a sun-drenched park during the golden hour. Captured by a DSLR camera, the shallow depth of field blurs the lush greenery while emphasizing her carefree spirit. She wears a casual, pastel-hued sundress that flows behind her, emphasizing her youthful energy and playful demeanor as she appears to defy gravity for a fleeting moment.",
+      "seed": 447929311,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/decf18ad-2cb6-4cf0-91b4-d724cacbf1b5.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/60.webp",
+      "status": "ok",
+      "bytes": 1750488
+    }
+  ]
+}

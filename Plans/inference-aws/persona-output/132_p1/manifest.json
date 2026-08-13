@@ -1,0 +1,33 @@
+{
+  "persona_id": "132_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/132.webp",
+  "main_image_sha256": "b461cd614a12b35a1a5b00c951deeb8364b6ae2bede5675e395d98181dbc7bde",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:17:34Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Marlowe frolics playfully in the sunlit meadow of Golden Gate Park, her long blonde hair fluttering in the breeze as she tosses a frisbee, wearing a yellow sundress that hugs her curves, her bright smile and sparkling eyes radiating joy.",
+      "seed": 1358206102,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/40c1a3a4-a084-4e22-8c14-c440a1b3a040.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/132.webp",
+      "status": "ok",
+      "bytes": 1395329
+    }
+  ]
+}

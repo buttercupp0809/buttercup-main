@@ -124,6 +124,7 @@ model User {
   mediaAssets            MediaAsset[]
   crisisEvents           CrisisEvent[]
   magicLinks             MagicLink[]
+  reelLikes              ReelLike[]
 }
 
 model AgeVerification {
@@ -174,6 +175,8 @@ model Character {
   moderationStatus  ModerationStatus  @default(pending)
   currentVersionId  String?
   popularityScore   Float             @default(0)
+  // Free-text home/city shown on cards and reels (e.g. "Lisbon, Portugal").
+  location          String?
   createdAt         DateTime          @default(now())
   updatedAt         DateTime          @updatedAt
 
@@ -181,6 +184,7 @@ model Character {
   versions          CharacterVersion[] @relation("CharacterVersions")
   currentVersion    CharacterVersion?  @relation("CharacterCurrentVersion", fields: [currentVersionId], references: [id], onDelete: SetNull)
   conversations     Conversation[]
+  media             CharacterMedia[]
 
   @@index([visibility, moderationStatus])
   @@index([contentRating])
@@ -441,6 +445,8 @@ model MediaAsset {
   @@index([userId, createdAt])
   @@index([status])
   @@index([jobId])
+  @@index([characterId, kind])
+  @@index([userId, kind])
 }
 
 // =============================================================================
@@ -498,4 +504,49 @@ model FeatureFlag {
   metadata  Json?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+// A user's like on a reel. reelId is a CharacterMedia id when the reel is
+// DB-backed, or a manifest id ("1".."8") when it falls back to the static
+// manifest. Either way it is a plain string, not a foreign key. The
+// unique(userId, reelId) makes a like idempotent so the displayed count =
+// base likes + COUNT(rows) cannot be inflated by one user.
+model ReelLike {
+  id        String   @id @default(uuid())
+  userId    String
+  reelId    String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, reelId])
+  @@index([reelId])
+}
+
+enum CharacterMediaKind {
+  image
+  video
+}
+
+// Canonical media store for a persona: every image and reel/video a character
+// owns lives here as a row. `url` is the stored link (an S3/CloudFront URL in
+// production, a /public path in local dev). One persona has many media; this
+// is the table that lets a character carry multiple images AND multiple reels.
+model CharacterMedia {
+  id          String             @id @default(uuid())
+  characterId String
+  kind        CharacterMediaKind
+  url         String
+  // Primary image = the avatar shown on cards. Exactly one per character is
+  // expected to be true, enforced by the seed/writer, not the DB.
+  isPrimary   Boolean            @default(false)
+  // Optional caption/title for videos (and future images).
+  title       String?
+  // Seed like count for video reels; per-user ReelLike rows are added on top.
+  likesBase   Int                @default(0)
+  sort        Int                @default(0)
+  createdAt   DateTime           @default(now())
+  character   Character          @relation(fields: [characterId], references: [id], onDelete: Cascade)
+
+  @@index([characterId, kind])
+  @@index([kind])
 }

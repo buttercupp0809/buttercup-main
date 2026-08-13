@@ -1,0 +1,33 @@
+{
+  "persona_id": "105_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/105.webp",
+  "main_image_sha256": "83424a35021866d96d683f705a55ebf0a5239adb7001b8a5156a817e35601dbc",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:19:29Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Bathed in the warm glow of a sunset, Clio reclines on a worn stone bench in the ancient Agora, her sheer, silver-embroidered blouse clinging to her curves, exposing the delicate lace of her bra, as she gazes pensively into the distance, her long, dark hair cascading down her back.",
+      "seed": 852587012,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/c5895365-4dea-4c40-ad77-33cb7e8cb135.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/105.webp",
+      "status": "ok",
+      "bytes": 1567036
+    }
+  ]
+}

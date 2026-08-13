@@ -1,0 +1,33 @@
+{
+  "persona_id": "68_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/68.webp",
+  "main_image_sha256": "8ad41283ff35da66a909076f42ead274eca27af869cd2337518d8637b037c0ce",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:59:46Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Ruby poses playfully on a sun-kissed beach at golden hour, gazing out at the horizon with a bright smile. She wears a vibrant, ruffled sundress that flows in the gentle breeze, her long hair tousled by the sea air. A DSLR camera captures her joy in a shallow depth of field, the soft focus emphasizing the dreamy atmosphere.",
+      "seed": 499100053,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/7354f0cc-705d-40e1-a4ba-e926444c3231.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/68.webp",
+      "status": "ok",
+      "bytes": 1247673
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "138_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/138.webp",
+  "main_image_sha256": "061a38f8f863ad8a46d067fca49c7d8fc567016b74c4c2fde1a467495de2b260",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:30:49Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit, upscale lingerie boutique, Indigo reclines on plush velvet cushions, trying on a sheer black babydoll nightie that clings to her curvy figure, her gaze direct and inviting as she stands to model the revealing garment before a full-length mirror, the soft focus and cinematic lighting emphasizing her sensual appeal.",
+      "seed": 1629166369,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/8c3b411d-b59d-44b3-8db8-0c19b5a24569.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/138.webp",
+      "status": "ok",
+      "bytes": 1062434
+    }
+  ]
+}

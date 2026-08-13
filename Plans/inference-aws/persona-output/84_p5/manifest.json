@@ -1,0 +1,33 @@
+{
+  "persona_id": "84_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/84.webp",
+  "main_image_sha256": "d3dddfd230e9db11bbdff722921e50e07d36e382de8fc020b7cb29fc27cd6a31",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:35:23Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Perched on the edge of a marble-topped vanity, Clara's back is arched, her legs crossed and one foot dangling as she applies a ruby-red lipstick, a sheer black robe clinging to her curves, the soft light of a bedside lamp casting a warm glow on her profile and the delicate jewelry adorning her neck.",
+      "seed": 1501965097,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/4e7517ff-9e74-484d-b428-669f22b6fbac.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/84.webp",
+      "status": "ok",
+      "bytes": 1183988
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "62_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/62.webp",
+  "main_image_sha256": "b6c2048152a1bda5d4fb4c0ab1c6a85b053974790eb8c69ad49fab5ab75ed99c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:48:42Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A lavish, dimly lit boudoir; Lyra reclining on a plush, velvet chaise, her voluptuous figure barely contained by a sheer, black lace teddy, her raven tresses cascading over one creamy shoulder as she regards the viewer with a sultry, come-hither gaze, the room's ornate furnishings and rich textures creating an opulent, intimate atmosphere.",
+      "seed": 1284980637,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/dc068434-bd8e-4208-b063-e6651adcde4f.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/62.webp",
+      "status": "ok",
+      "bytes": 1288892
+    }
+  ]
+}

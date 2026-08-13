@@ -1,0 +1,33 @@
+{
+  "persona_id": "100_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/100.webp",
+  "main_image_sha256": "d30569918af2d0e5111b5b8a5143725979a3394acade0569fcfb5bf5d430754f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:10:08Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Basking in the steamy heat of a dimly lit onsen, Phoebe sits on the edge of a wooden tub, her glistening skin and the beads of water on her curves contrasting against the rustic, textured surroundings, a kimono draped loosely over one shoulder as she gazes at the viewer with a coy, half-lidded expression, the camera's narrow depth of field drawing attention to her sensual, relaxed pose.",
+      "seed": 1772400561,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/88176221-614e-451d-b6ae-77b3e69b21b7.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/100.webp",
+      "status": "ok",
+      "bytes": 1132878
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "79_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/79.webp",
+  "main_image_sha256": "8de79f5879ad5cffcd3469fb2c3508ef1d0805c37de90f4e3eceab14133a37e2",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:23:53Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A solitary Lykke stands on the edge of a frozen lake at dusk, the icy landscape stretching to the horizon, her fur-trimmed coat open to reveal a lacy bralette and high-waisted panties, the chill in the air causing her nipples to pebble as she looks back over her shoulder with a smirk.",
+      "seed": 1635289827,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/fa68a09c-20b2-4c5e-8e9a-4ef5d008ef8a.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/79.webp",
+      "status": "ok",
+      "bytes": 1049231
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "120_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/120.webp",
+  "main_image_sha256": "2a57afea865bc3fd53ea30194cca7d2cd4fdb014d6d2f06f0b3715b192fb8844",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:52:17Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Juniper reclines on a plush, velvet chaise in a dimly lit, opulent boudoir, her corset-clad torso and exposed thighs on full display as she runs a hand languidly through her undone hair, the soft focus and shallow depth of field emphasizing her alluring, sensual presence.",
+      "seed": 1958057675,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/bb071c5a-9236-4337-b1c9-07d7abf9eb7c.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/120.webp",
+      "status": "ok",
+      "bytes": 1277785
+    }
+  ]
+}

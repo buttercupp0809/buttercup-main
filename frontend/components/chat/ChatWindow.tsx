@@ -2,10 +2,12 @@
 
 import * as React from "react";
 import { createChatTransport, type TransportEvent, type TransportPaywallPlan } from "@/lib/chat-transport";
+import { Image as ImageIcon, Video, Send, Settings } from "lucide-react";
 import { AffectionMeter } from "@/components/relationship/AffectionMeter";
 import { GestureText } from "@/components/chat/GestureText";
 import { TypingDots } from "@/components/chat/TypingDots";
 import { PaywallModal } from "@/components/chat/PaywallModal";
+import { ImageMessage } from "@/components/chat/ImageMessage";
 
 interface PaywallState {
   scope: "free_trial" | "plan_quota";
@@ -26,6 +28,8 @@ interface HistoryMessage {
   role: "user" | "assistant" | "system";
   content: string;
   createdAt: string;
+  // When set, this message renders as a generated image instead of text.
+  imageUrl?: string;
 }
 
 export interface ChatWindowProps {
@@ -54,8 +58,9 @@ export function ChatWindow({
   // terminal transport event so a subsequent turn re-shows dots.
   const [firstTokenSeen, setFirstTokenSeen] = React.useState(false);
   const [paywall, setPaywall] = React.useState<PaywallState | null>(null);
+  const [imageGenerating, setImageGenerating] = React.useState(false);
   const [input, setInput] = React.useState("");
-  const bottomRef = React.useRef<HTMLDivElement | null>(null);
+  const scrollAreaRef = React.useRef<HTMLDivElement | null>(null);
   const transportRef = React.useRef<ReturnType<typeof createChatTransport> | null>(null);
   const streamedRef = React.useRef("");
 
@@ -100,8 +105,43 @@ export function ChatWindow({
         streamedRef.current = "";
         setStreaming("");
         setFirstTokenSeen(false);
+      } else if (evt.type === "image_generating") {
+        // Teaser is complete. Finalize it as a real message, clear streaming
+        // state, then show the loading skeleton while the image generates.
+        const text = streamedRef.current;
+        streamedRef.current = "";
+        setStreaming("");
+        setFirstTokenSeen(false);
+        if (text.length > 0) {
+          setMessages((ms) =>
+            ms.some((m) => m.id === evt.messageId)
+              ? ms
+              : [...ms, { id: evt.messageId, role: "assistant", content: text, createdAt: new Date().toISOString() }],
+          );
+        }
+        // Keep pending=true: block input while image is in flight.
+        setImageGenerating(true);
+      } else if (evt.type === "image") {
+        setImageGenerating(false);
+        setPending(false);
+        setFirstTokenSeen(false);
+        setMessages((ms) =>
+          ms.some((m) => m.id === evt.mediaAssetId)
+            ? ms
+            : [
+                ...ms,
+                {
+                  id: evt.mediaAssetId,
+                  role: "assistant",
+                  content: "",
+                  imageUrl: evt.url,
+                  createdAt: new Date().toISOString(),
+                },
+              ],
+        );
       } else if (evt.type === "error") {
         setPending(false);
+        setImageGenerating(false);
         streamedRef.current = "";
         setStreaming("");
         setFirstTokenSeen(false);
@@ -114,7 +154,8 @@ export function ChatWindow({
   }, [wsUrl]);
 
   React.useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    const el = scrollAreaRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
   }, [messages.length, streaming, pending]);
 
   function submit(e: React.FormEvent) {
@@ -133,7 +174,7 @@ export function ChatWindow({
   }
 
   return (
-    <div className="relative flex h-[calc(100vh-8rem)] flex-col gap-3">
+    <div className="relative flex h-full flex-col gap-3 p-4">
       {/*
         Immersive backdrop (PRD §1): a subtle blurred character image behind
         the message list. `pointer-events-none` so it never intercepts
@@ -170,7 +211,7 @@ export function ChatWindow({
             style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))" }}
           >
             {avatarUrl ? (
-              <img src={avatarUrl} alt={characterName} className="h-full w-full object-cover" />
+              <img src={avatarUrl} alt={characterName} className="h-full w-full object-cover object-top" />
             ) : (
               <div className="flex h-full w-full items-center justify-center text-sm font-semibold">
                 {characterName[0]?.toUpperCase()}
@@ -192,14 +233,24 @@ export function ChatWindow({
       </div>
 
       <div
+        ref={scrollAreaRef}
         className="flex-1 space-y-3 overflow-y-auto rounded-md p-4"
         style={{ backgroundColor: "hsl(var(--buttercupp-surface) / 0.55)" }}
       >
-        {messages.map((m) => (
-          <MessageBubble key={m.id} role={m.role} content={m.content} />
-        ))}
+        {messages.map((m) =>
+          m.imageUrl ? (
+            <div key={m.id} className="flex justify-start" data-testid="bubble-image">
+              <ImageMessage mediaAssetId={m.id} url={m.imageUrl} />
+            </div>
+          ) : (
+            <MessageBubble key={m.id} role={m.role} content={m.content} />
+          ),
+        )}
         {streaming ? <MessageBubble role="assistant" content={streaming} streaming /> : null}
-        {pending && !firstTokenSeen ? <TypingDots /> : null}
+        {/* Hide the typing dots while the image skeleton is up: the skeleton is
+            the loading indicator in that phase, so the pill would be redundant. */}
+        {pending && !firstTokenSeen && !imageGenerating ? <TypingDots /> : null}
+        {imageGenerating ? <GeneratingImageSkeleton /> : null}
         {safety ? (
           <div className="rounded-md border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-200">
             <p className="mb-2">{safety.message}</p>
@@ -214,37 +265,67 @@ export function ChatWindow({
             </ul>
           </div>
         ) : null}
-        <div ref={bottomRef} />
+        <div />
       </div>
 
-      <form onSubmit={submit} className="flex gap-2">
+      <form
+        onSubmit={submit}
+        className="rounded-2xl border p-3"
+        style={{
+          backgroundColor: "hsl(var(--buttercupp-surface-2))",
+          borderColor: "hsl(var(--buttercupp-border))",
+        }}
+      >
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder={
-            paywall ? "Upgrade to keep chatting" : pending ? "Waiting..." : "Say something"
+            paywall ? "Upgrade to keep chatting" : pending ? "Waiting..." : "Write a message..."
           }
           disabled={pending || paywall !== null}
           data-testid="chat-input"
-          className="flex-1 rounded-md border px-3 py-2 text-sm"
-          style={{
-            backgroundColor: "hsl(var(--buttercupp-surface-2))",
-            borderColor: "hsl(var(--buttercupp-border))",
-            color: "hsl(var(--buttercupp-fg))",
-          }}
+          className="w-full bg-transparent px-1 py-1 text-sm focus:outline-none"
+          style={{ color: "hsl(var(--buttercupp-fg))" }}
         />
-        <button
-          type="submit"
-          disabled={pending || paywall !== null || !input.trim()}
-          data-testid="chat-send"
-          className="rounded-md px-4 py-2 text-sm font-medium text-white shadow-sm disabled:opacity-50"
-          style={{
-            background:
-              "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
-          }}
-        >
-          Send
-        </button>
+        <div className="mt-2 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <span className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+              Show me the scene:
+            </span>
+            <SceneButton
+              icon={<ImageIcon className="h-3.5 w-3.5" />}
+              label="Image"
+              onClick={() => setInput("Send me a photo of you right now")}
+              disabled={pending || paywall !== null}
+            />
+            <SceneButton
+              icon={<Video className="h-3.5 w-3.5" />}
+              label="Video"
+              onClick={() => setInput("Send me a short video of you right now")}
+              disabled={pending || paywall !== null}
+            />
+            <span
+              className="flex h-7 w-7 items-center justify-center rounded-full border"
+              style={{ borderColor: "hsl(var(--buttercupp-border))", color: "hsl(var(--buttercupp-muted))" }}
+              aria-hidden
+            >
+              <Settings className="h-3.5 w-3.5" />
+            </span>
+          </div>
+          <button
+            type="submit"
+            disabled={pending || paywall !== null || !input.trim()}
+            data-testid="chat-send"
+            aria-label="Send"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white shadow-sm disabled:opacity-50"
+            style={{
+              background:
+                "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
+            }}
+          >
+            <Send className="h-4 w-4" />
+          </button>
+        </div>
       </form>
 
       {paywall ? (
@@ -261,6 +342,31 @@ export function ChatWindow({
   );
 }
 
+function SceneButton({
+  icon,
+  label,
+  onClick,
+  disabled,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  onClick: () => void;
+  disabled?: boolean;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      className="flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium disabled:opacity-50"
+      style={{ borderColor: "hsl(var(--buttercupp-border))", color: "hsl(var(--buttercupp-fg))" }}
+    >
+      {icon}
+      {label}
+    </button>
+  );
+}
+
 function MessageBubble({
   role,
   content,
@@ -274,19 +380,22 @@ function MessageBubble({
   return (
     <div className={`flex ${mine ? "justify-end" : "justify-start"}`} data-testid={`bubble-${role}`}>
       <div
-        className={`max-w-[75%] rounded-2xl px-4 py-2 text-sm shadow-sm ${
-          mine ? "text-white" : "ring-1"
-        }`}
+        className="max-w-[75%] rounded-2xl px-4 py-3 shadow-sm"
         style={
           mine
             ? {
                 background:
                   "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
+                color: "#ffffff",
+                fontSize: "15px",
+                fontWeight: 500,
               }
             : {
-                backgroundColor: "hsl(var(--buttercupp-surface))",
-                color: "hsl(var(--buttercupp-fg))",
-                borderColor: "hsl(var(--buttercupp-border))",
+                backgroundColor: "#ffffff",
+                color: "#111111",
+                fontSize: "15px",
+                fontWeight: 400,
+                lineHeight: "1.75",
               }
         }
       >
@@ -301,6 +410,65 @@ function MessageBubble({
           <GestureText content={content} />
         )}
         {streaming ? <span className="ml-1 inline-block animate-pulse">|</span> : null}
+      </div>
+    </div>
+  );
+}
+
+function GeneratingImageSkeleton() {
+  return (
+    <div className="flex justify-start" data-testid="image-generating-skeleton">
+      <div
+        className="flex flex-col gap-2 overflow-hidden rounded-2xl"
+        style={{
+          width: "200px",
+          aspectRatio: "9 / 16",
+          background: "linear-gradient(135deg, hsl(var(--buttercupp-surface-2)), hsl(var(--buttercupp-surface)))",
+          border: "1px solid hsl(var(--buttercupp-border))",
+        }}
+      >
+        {/* Shimmer overlay */}
+        <div
+          className="absolute inset-0 animate-pulse"
+          style={{
+            background: "linear-gradient(90deg, transparent 0%, hsl(var(--buttercupp-accent-rose) / 0.08) 50%, transparent 100%)",
+          }}
+        />
+        <div className="relative flex h-full flex-col items-center justify-center gap-3 p-4 text-center">
+          {/* Pulsing camera icon */}
+          <div
+            className="flex h-12 w-12 animate-pulse items-center justify-center rounded-2xl"
+            style={{
+              background: "linear-gradient(135deg, hsl(var(--buttercupp-accent-rose) / 0.25), hsl(var(--buttercupp-accent-violet) / 0.25))",
+            }}
+          >
+            <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--buttercupp-accent-rose))" strokeWidth="1.8">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+              <circle cx="12" cy="13" r="4" />
+            </svg>
+          </div>
+          <div>
+            <p className="text-xs font-medium" style={{ color: "hsl(var(--buttercupp-fg))" }}>
+              Generating your photo
+            </p>
+            <p className="mt-1 text-[10px]" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+              This may take a moment...
+            </p>
+          </div>
+          {/* Animated progress dots */}
+          <div className="flex gap-1.5">
+            {[0, 1, 2].map((i) => (
+              <div
+                key={i}
+                className="h-1.5 w-1.5 animate-bounce rounded-full"
+                style={{
+                  backgroundColor: "hsl(var(--buttercupp-accent-rose))",
+                  animationDelay: `${i * 0.2}s`,
+                }}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

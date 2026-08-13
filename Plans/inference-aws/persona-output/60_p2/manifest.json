@@ -1,0 +1,33 @@
+{
+  "persona_id": "60_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/60.webp",
+  "main_image_sha256": "abf1394ff8964b61689336ff0d852ae36111c8f37795945e1db1a80dcea0ba1c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:43:19Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Against the gritty backdrop of a Seattle alley, Juniper leans back against a weathered brick wall, her legs bent at the knees and feet propped up. She sports a black leather corset that cinches her waist, paired with fishnet stockings and a provocative thong. A sultry gaze meets the camera's lens as she runs a hand through her tousled hair, the dim ambient light casting deep shadows across her curves.",
+      "seed": 1441655170,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/2057dafe-e5d4-4d0c-96ea-d9931386ee42.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/60.webp",
+      "status": "ok",
+      "bytes": 2079176
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "91_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/91.webp",
+  "main_image_sha256": "166fd053d2de1d38860cbfd79214bdfc6cc1e9ee82b93400e08feb3ec59ed20f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:48:24Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A playful Clio skips through the ancient Athenian Acropolis at sunset, her loose sundress fluttering in the gentle breeze, as she gazes up at the Parthenon with a joyful smile, DSLR camera in hand to capture the vibrant colors of the golden hour.",
+      "seed": 788815853,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/e596cb2d-f723-4712-b2ed-9920d34c7eec.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/91.webp",
+      "status": "ok",
+      "bytes": 1419104
+    }
+  ]
+}

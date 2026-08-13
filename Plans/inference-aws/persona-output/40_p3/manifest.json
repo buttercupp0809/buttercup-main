@@ -1,0 +1,33 @@
+{
+  "persona_id": "40_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/40.webp",
+  "main_image_sha256": "41fa15425f5714142413ac499c782a0e76f2c7fc76f6cf025afd9fe0bf1d45d3",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:00:45Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Freya lounges on a plush, velvet chaise in an opulent, dimly lit boudoir, the antique furniture and draping curtains creating an air of mystery and seduction as she reclines in a Victorian-style corset and shorts, one leg bent at the knee, the other extended along the cushions, her gaze upturned and lips slightly parted in a coy invitation, the shot rendered in deep shadows and highlights to draw the viewer's eye to her alluring form.",
+      "seed": 1178175943,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/8beec360-fc07-4dba-a36f-e35ebf8f9c63.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/40.webp",
+      "status": "ok",
+      "bytes": 1525700
+    }
+  ]
+}

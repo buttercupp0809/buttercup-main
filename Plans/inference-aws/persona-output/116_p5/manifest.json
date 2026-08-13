@@ -1,0 +1,33 @@
+{
+  "persona_id": "116_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/116.webp",
+  "main_image_sha256": "7dbf935b67ad05531247498f222f9e929978b241d0a5e58d6f7da1bdb11b863c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:44:08Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a lavish tent adorned with rich silks and tapestries, Piper reclines on plush cushions, her curvaceous form draped in an intricately embroidered Indian choli top and lehnga skirt, the fabrics shimmering in the warm glow of lanterns as she runs a hand through her loose, tousled hair and gazes directly at the camera with a sultry, come-hither look, the soft focus and warm lighting of the shot emphasizing her exotic beauty and allure.",
+      "seed": 1198526061,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/c1948adf-f4fb-4b22-b439-18034df3b06d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/116.webp",
+      "status": "ok",
+      "bytes": 1826773
+    }
+  ]
+}

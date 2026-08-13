@@ -1,0 +1,33 @@
+{
+  "persona_id": "96_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/96.webp",
+  "main_image_sha256": "b3e71d965a1a09369f7461b4488e255c9a65a48958ac7cc77aea3f3eed759b47",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:00:50Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Against the moody backdrop of a Barcelona alleyway at dusk, Indigo poses with her back to the camera, clad only in a black leather corset and fishnet stockings, her thong barely concealing the swell of her derri\u00e8re as she bends forward, hands grasping her knees, the dim streetlights casting long shadows across her toned, athletic physique.",
+      "seed": 1333444169,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/7bbd1e26-9f2f-4e76-b360-d4d595fe92aa.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/96.webp",
+      "status": "ok",
+      "bytes": 1417898
+    }
+  ]
+}

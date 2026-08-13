@@ -1,0 +1,33 @@
+{
+  "persona_id": "52_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/52.webp",
+  "main_image_sha256": "aef8853bbdfaa42f44c40401a776d5dd9c41d305305e913ad8f68e1293828b0e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:27:04Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A provocative Lila reclines on a chaise in a lavish harem tent, wearing an intricately embroidered choli top and lehnga skirt, her legs crossed and one hand playing with her long, dark hair as she gazes directly at the viewer with a sultry, come-hither look, the opulent textiles and tapestries of the tent setting forming a sumptuous, sensual backdrop.",
+      "seed": 110526202,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/95d6797b-09ad-4a84-9217-7510056df541.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/52.webp",
+      "status": "ok",
+      "bytes": 2033242
+    }
+  ]
+}

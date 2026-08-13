@@ -1,0 +1,33 @@
+{
+  "persona_id": "127_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/127.webp",
+  "main_image_sha256": "ff81ba32e3fde629a5dde01c4b3f5590d375140d703ef5a9e7116ce8c443ea7c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:08:33Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Perched high on a rocky outcropping overlooking the Sydney coastline, Ruby poses in a tiny, metallic bikini, her body silhouetted against the sunset's fiery hues. With her hands on her hips and a defiant glint in her eye, she appears unencumbered and untamed, the vast expanse of the ocean at her feet.",
+      "seed": 1865243979,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/9102d6c5-48f0-4817-84ae-e50020f9243e.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/127.webp",
+      "status": "ok",
+      "bytes": 1175420
+    }
+  ]
+}

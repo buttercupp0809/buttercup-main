@@ -1,0 +1,33 @@
+{
+  "persona_id": "124_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/124.webp",
+  "main_image_sha256": "58589571aff99d07635dffa5ec6569aa674ec3371c4de71570c3e017840b44d6",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:00:11Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Low-lit, intimate nightclub scene; Indigo sits on a stool, back arched, gazing sultrily at the camera, her sheer, sequined top leaving little to imagination, the spotlight casting shadows on her curves.",
+      "seed": 1656524142,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/8c9955df-aad3-4a3a-95e8-01b04b9dd156.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/124.webp",
+      "status": "ok",
+      "bytes": 1278963
+    }
+  ]
+}

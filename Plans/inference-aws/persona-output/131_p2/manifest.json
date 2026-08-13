@@ -1,0 +1,33 @@
+{
+  "persona_id": "131_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/131.webp",
+  "main_image_sha256": "a9b2de553438516c97973a18c15ab8899543b4fcba227fea7bd7d7fb9bc44699",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:15:48Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit, ornate boudoir, Vesper reclines on plush velvet cushions, her lacy negligee clinging to every curve, the candlelight casting shadows that dance across her breasts and the slope of her hips as she languidly trails a finger down her cleavage, her sultry gaze directed at the camera.",
+      "seed": 1871424043,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/77c3c987-c523-46c5-a1e0-c11f6d23d0b2.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/131.webp",
+      "status": "ok",
+      "bytes": 1425917
+    }
+  ]
+}

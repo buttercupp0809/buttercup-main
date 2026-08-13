@@ -1,0 +1,33 @@
+{
+  "persona_id": "86_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/86.webp",
+  "main_image_sha256": "21a2b5c4f9c9c6fb5530c00ebaa0f2084e982bb459b8f7566ce1b94948cc3dc3",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:38:45Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A close-up shot focuses on Phoebe's legs and feet as she perches on the edge of a plush bed, her long, toned thighs and ankles clad in sheer black stockings, the garter belt and high heels adding a touch of fetish wear, her gaze direct and inviting as she slowly raises one heel, the room's soft lighting casting a warm, intimate glow on her skin.",
+      "seed": 61225600,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/00419ec2-020c-482b-bc07-496b77d85217.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/86.webp",
+      "status": "ok",
+      "bytes": 1255366
+    }
+  ]
+}

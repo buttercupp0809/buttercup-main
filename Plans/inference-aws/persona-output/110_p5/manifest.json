@@ -1,0 +1,33 @@
+{
+  "persona_id": "110_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/110.webp",
+  "main_image_sha256": "cbf5b8330add23a88a6d3b1b760c3fbb352aeb4c53ee9257776346716c8b840a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:31:27Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A dimly lit, minimalist studio. Indigo, wearing a black, lace garter belt and matching thigh-high stockings, perches on the edge of a leather ottoman, one high heel dangling. Her gaze is direct, an unmistakable invitation in her eyes. The focus is on her shapely legs and the barely concealed mound of her sex.",
+      "seed": 1686861666,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/4a4196e6-6dff-483c-8dc0-b4bd0d8517e9.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/110.webp",
+      "status": "ok",
+      "bytes": 1153625
+    }
+  ]
+}

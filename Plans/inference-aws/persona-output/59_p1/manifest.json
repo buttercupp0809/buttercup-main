@@ -1,0 +1,33 @@
+{
+  "persona_id": "59_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/59.webp",
+  "main_image_sha256": "7d5d0c55b8c1ec4d14d56c8ec20a6601dd45bf1fbdc321a6fcbdbfc188e1e6f3",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:40:46Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Amidst the vibrant stalls of an Athens market during golden hour, a carefree young woman with long, sun-kissed hair and bright blue eyes laughs merrily as she haggles over a colorful tapestry, her flowing sundress catching the warm glow of the setting sun and accentuating her youthful curves.",
+      "seed": 1270880398,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/9c06fc1e-9c01-4761-9874-8b34fd774826.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/59.webp",
+      "status": "ok",
+      "bytes": 1749415
+    }
+  ]
+}

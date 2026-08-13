@@ -1,0 +1,33 @@
+{
+  "persona_id": "44_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/44.webp",
+  "main_image_sha256": "d5ed4c1d12260111758c16863aeb70c80e8ce088438b91f00b031198cbc10fea",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:09:48Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a steamed-up bathroom, Hazel stands under a pulsing showerhead, rivulets of water cascading over her skin, her translucent soapy film highlighting the delicate peaks of her nipples as she reaches out to turn off the water, steam swirling around her lithe form and the antique porcelain tub, captured in a cinematic, shallow focus.",
+      "seed": 820689084,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/dd1447f7-9d05-42d8-81e1-71625a2bd570.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/44.webp",
+      "status": "ok",
+      "bytes": 1379073
+    }
+  ]
+}

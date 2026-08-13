@@ -8,7 +8,9 @@ import {
   X,
   MessageCircle,
   Compass,
+  Clapperboard,
   Sparkles,
+  Gem,
   User as UserIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -19,7 +21,9 @@ import type { RecentEntry } from "@/components/app-shell/SideNav";
 const ICONS: Record<NavIcon, React.ComponentType<{ className?: string }>> = {
   chats: MessageCircle,
   discover: Compass,
+  reels: Clapperboard,
   create: Sparkles,
+  billing: Gem,
   settings: UserIcon,
 };
 
@@ -132,7 +136,7 @@ export function MobileNav({ user, recents }: DrawerProps) {
                           style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))" }}
                         >
                           {r.avatarUrl ? (
-                            <img src={r.avatarUrl} alt={r.characterName} className="h-full w-full object-cover" />
+                            <img src={r.avatarUrl} alt={r.characterName} className="h-full w-full object-cover object-top" />
                           ) : (
                             <div className="flex h-full w-full items-center justify-center text-[10px] font-semibold">
                               {r.characterName[0]?.toUpperCase()}
@@ -162,7 +166,8 @@ export function MobileBottomBar() {
   const pathname = usePathname() ?? "/";
   const items = [
     { href: "/chats", label: "Chats", icon: MessageCircle, testid: "bottom-chats" },
-    { href: "/gallery", label: "Discover", icon: Compass, testid: "bottom-discover" },
+    { href: "/discover", label: "Discover", icon: Compass, testid: "bottom-discover" },
+    { href: "/reels", label: "Reels", icon: Clapperboard, testid: "bottom-reels" },
     { href: "/create", label: "Create", icon: Sparkles, testid: "bottom-create" },
     { href: "/settings", label: "Profile", icon: UserIcon, testid: "bottom-profile" },
   ];

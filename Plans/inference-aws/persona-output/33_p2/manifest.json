@@ -1,0 +1,33 @@
+{
+  "persona_id": "33_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/33.webp",
+  "main_image_sha256": "1fa01099c006e593226150626fa3e5bb910d93d9aedf46f011baa343ced605bb",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T23:45:30Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Inside a dimly lit, smoky flamenco club, Indigo sits on a high barstool wearing a low-cut red dress that clings to her curves, her sultry gaze meeting the camera's as she slowly sips a cocktail, the stage lights reflecting off her glossy lips.",
+      "seed": 1381494709,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/a699d6d6-328b-45e6-a047-60a95434aed4.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/33.webp",
+      "status": "ok",
+      "bytes": 1105735
+    }
+  ]
+}

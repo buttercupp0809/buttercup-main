@@ -1,0 +1,33 @@
+{
+  "persona_id": "64_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/64.webp",
+  "main_image_sha256": "9abbcfe6c678912c57c35abf49e116564974d5d9cd48e31e2a80546a01bef16d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:52:08Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Set against the misty, ethereal backdrop of a moonlit garden, Magnolia reclines on a wrought-iron bench, her legs crossed and one arm draped along the backrest. She's wearing a sleek, black evening gown that hugs her figure, the fabric falling in soft folds around her. Her hair is styled in loose, flowing waves, and she gazes up at the stars with a dreamy, enigmatic expression.",
+      "seed": 1824761127,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/53a5b02e-9b0c-4937-90e0-de67b0575cf2.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/64.webp",
+      "status": "ok",
+      "bytes": 1307204
+    }
+  ]
+}

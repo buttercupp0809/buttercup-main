@@ -1,0 +1,33 @@
+{
+  "persona_id": "68_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/68.webp",
+  "main_image_sha256": "8ad41283ff35da66a909076f42ead274eca27af869cd2337518d8637b037c0ce",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:00:10Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit underground music venue, Ruby struts down a catwalk in stilettos and a tight leather mini-dress, her ample cleavage and toned hips on full display. Spotlights dance across her curves as she works the crowd, her sultry gaze meeting that of a mesmerized admirer. The low light and shallow DOF isolate her alluring form.",
+      "seed": 437372062,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/4112cf2d-f526-4981-9b6e-f8a0b1ed30b9.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/68.webp",
+      "status": "ok",
+      "bytes": 1159382
+    }
+  ]
+}

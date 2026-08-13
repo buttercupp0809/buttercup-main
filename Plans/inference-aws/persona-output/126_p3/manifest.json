@@ -1,0 +1,33 @@
+{
+  "persona_id": "126_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/126.webp",
+  "main_image_sha256": "12f6e6695b7a4187def0b85e35f1c1efe2303aec5e1c7b54990b22b6801105d3",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:05:38Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Captured in a cinematic close-up, Clara's face is illuminated by the soft, golden light of a DSLR lens, her full lips parted in a seductive smile as she runs a delicate finger along the curve of her breast, her eyes locked on the camera with a hypnotic, come-hither stare.",
+      "seed": 1151354600,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/e63fe1bb-1849-4e1d-8549-c490c4557217.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/126.webp",
+      "status": "ok",
+      "bytes": 1330413
+    }
+  ]
+}

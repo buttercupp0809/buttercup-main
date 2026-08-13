@@ -1,0 +1,33 @@
+{
+  "persona_id": "42_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/42.webp",
+  "main_image_sha256": "999ce0469e413c51be6c69debc9c24e77073bab7a8bdcc042be2b3f535582ed0",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:05:04Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit bedroom, Ophelia reclines on crimson silk sheets, her expression a coy mix of innocence and experience as she wears a lacy babydoll nightie that barely conceals her nipples and the shape of her womanhood, her long legs crossed and one hand toying with a strand of her tousled hair.",
+      "seed": 1168140906,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/dd4c6ab7-9165-4467-b5c5-e4269046cc3a.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/42.webp",
+      "status": "ok",
+      "bytes": 1701643
+    }
+  ]
+}

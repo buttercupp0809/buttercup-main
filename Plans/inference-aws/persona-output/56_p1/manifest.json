@@ -1,0 +1,33 @@
+{
+  "persona_id": "56_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/56.webp",
+  "main_image_sha256": "a44413dcb11cba341462e5a7abc192276cefb5d65205881fc59dcd92e91b2072",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:34:25Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Piper stands atop a rocky peak at golden hour, laughing joyfully as the sun dips behind the mountains, casting her in a warm, soft light from a DSLR camera. Her long blonde hair flows in the wind, and her bright smile illuminates her face. She wears a fitted tank top and hiking pants, the rugged terrain behind her contrasting with her carefree, adventurous spirit.",
+      "seed": 1063154592,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/917c00fb-1621-430e-84bf-0891e8598b0d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/56.webp",
+      "status": "ok",
+      "bytes": 1326874
+    }
+  ]
+}

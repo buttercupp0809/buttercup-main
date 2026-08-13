@@ -1,0 +1,33 @@
+{
+  "persona_id": "66_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/66.webp",
+  "main_image_sha256": "eaedb03251c257d7cbe81934c3398d3876fd24c74bdc473c0e3dddc60e076ddc",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:56:44Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Astrid straddles a vintage motorcycle in a gritty urban alley, her leather corset and fishnet stockings a bold contrast to the industrial surroundings. The low light and harsh shadows emphasize her daring attitude as she looks directly at the camera with a sly, come-hither smile, her thong-clad derri\u00e8re presented in a suggestive crouch, captured in a gritty, high-contrast image.",
+      "seed": 1645361593,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/f808e20a-6680-4c02-aaba-5a8993996932.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/66.webp",
+      "status": "ok",
+      "bytes": 1542162
+    }
+  ]
+}

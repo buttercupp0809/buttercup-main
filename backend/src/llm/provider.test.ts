@@ -69,17 +69,17 @@ afterEach(() => {
 });
 
 describe("resolveModelRouting", () => {
-  it("mature content -> openrouter first", () => {
+  it("mature content -> poppy first (self-hosted Stheno)", () => {
     const r = resolveModelRouting({ contentRating: "mature", tier: "free" });
-    expect(r.order[0]).toBe("openrouter");
+    expect(r.order[0]).toBe("poppy");
   });
   it("premium tier + sfw -> anthropic first", () => {
     const r = resolveModelRouting({ contentRating: "sfw", tier: "premium" });
     expect(r.order[0]).toBe("anthropic");
   });
-  it("default free sfw -> openrouter first", () => {
+  it("default free sfw -> poppy first (self-hosted Stheno)", () => {
     const r = resolveModelRouting({ contentRating: "sfw", tier: "free" });
-    expect(r.order[0]).toBe("openrouter");
+    expect(r.order[0]).toBe("poppy");
   });
   it("hardcoded is always last", () => {
     const r = resolveModelRouting({ contentRating: "mature" });
@@ -90,7 +90,7 @@ describe("resolveModelRouting", () => {
 describe("streamLLM", () => {
   it("uses the primary when healthy and streams tokens", async () => {
     _setTestClients({
-      openrouter: makeOpenAIStreaming(["Hi", " there"]),
+      poppy: makeOpenAIStreaming(["Hi", " there"]),
     });
     const tokens: string[] = [];
     const res = await streamLLM(
@@ -105,14 +105,14 @@ describe("streamLLM", () => {
       (t) => tokens.push(t),
     );
     expect(tokens.join("")).toBe("Hi there");
-    expect(res.provider).toBe("openrouter");
+    expect(res.provider).toBe("poppy");
     expect(res.fallback).toBe(false);
   });
 
   it("falls through to the next provider when the primary fails before emitting", async () => {
     _setTestClients({
-      openrouter: makeOpenAIFailing(),
-      anthropic: makeAnthropicStreaming(["OK"]),
+      poppy: makeOpenAIFailing(),
+      openrouter: makeOpenAIStreaming(["OK"]),
     });
     const tokens: string[] = [];
     const res = await streamLLM(
@@ -127,12 +127,13 @@ describe("streamLLM", () => {
       (t) => tokens.push(t),
     );
     expect(tokens.join("")).toBe("OK");
-    expect(res.provider).toBe("anthropic");
+    expect(res.provider).toBe("openrouter");
     expect(res.fallback).toBe(true);
   });
 
   it("emits the hardcoded fallback when every provider fails", async () => {
     _setTestClients({
+      poppy: makeOpenAIFailing(),
       openrouter: makeOpenAIFailing(),
       anthropic: {
         messages: {
@@ -162,6 +163,7 @@ describe("streamLLM", () => {
 
   it("skips a provider whose client is not configured", async () => {
     _setTestClients({
+      poppy: null,
       openrouter: null,
       anthropic: makeAnthropicStreaming(["Anthropic serves"]),
     });

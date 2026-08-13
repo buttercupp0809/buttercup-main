@@ -44,7 +44,7 @@ export function CharacterCard({
       href={`/characters/${character.id}`}
       data-testid="character-card"
       className={cn(
-        "group relative flex aspect-[4/5] flex-col overflow-hidden rounded-2xl shadow-md ring-1",
+        "group relative flex aspect-[9/16] flex-col overflow-hidden rounded-2xl shadow-md ring-1",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400",
         "motion-safe:transition motion-safe:duration-300 motion-safe:animate-[buttercupp-card-in_400ms_ease-out_both]",
         "motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-xl",
@@ -61,7 +61,7 @@ export function CharacterCard({
           alt={character.name}
           loading={index < 4 ? "eager" : "lazy"}
           className={cn(
-            "absolute inset-0 h-full w-full object-cover",
+            "absolute inset-0 h-full w-full object-cover object-top",
             "motion-safe:transition-transform motion-safe:duration-500",
             "motion-safe:group-hover:scale-105",
             gated && "scale-110 blur-lg",
@@ -88,13 +88,6 @@ export function CharacterCard({
         title={dotLabel}
         className={cn("absolute left-3 top-3 h-2.5 w-2.5 rounded-full shadow ring-2 ring-black/40", dotClass)}
       />
-      <span
-        aria-label={`Rating: ${character.contentRating}`}
-        className="absolute right-3 top-3 rounded-full bg-black/55 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white/95 backdrop-blur"
-      >
-        {character.contentRating}
-      </span>
-
       {gated ? (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-slate-900/55 text-center text-white">
           <span className="rounded-full bg-black/60 px-3 py-1 text-xs font-medium">

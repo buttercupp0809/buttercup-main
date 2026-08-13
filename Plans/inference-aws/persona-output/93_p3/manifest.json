@@ -1,0 +1,33 @@
+{
+  "persona_id": "93_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/93.webp",
+  "main_image_sha256": "947f13b1e36b2fddcfc57e8ec65da96b5392ddf791a0fdc379f1563ce85f123f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:53:25Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Amidst a winter forest glade, Lyra stands with her back to a towering evergreen, her fur-trimmed coat open to reveal a lacy bralette and high-waisted panties. Icy mist swirls around her as she looks over her shoulder, her cold lips curled into a mischievous grin, her chestnut hair tousled by the biting wind.",
+      "seed": 1381156666,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/05e9400e-802e-4427-a136-c028cd28f53a.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/93.webp",
+      "status": "ok",
+      "bytes": 1598102
+    }
+  ]
+}

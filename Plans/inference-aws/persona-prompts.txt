@@ -1,0 +1,14 @@
+# Persona variant prompts. One prompt per line = one generated image per persona.
+# Lines starting with # and blank lines are ignored.
+# BOTH commands (single + batch) read this file, so edit prompts here once.
+#
+# Using Juggernaut XL (photorealistic SDXL). Natural language works fine.
+# The quality prefix is prepended automatically by the pipeline.
+
+a beautiful woman in a skimpy string bikini on a tropical beach, glistening skin, golden sunset, ocean waves, professional photography, soft natural lighting
+
+a beautiful woman in black lace lingerie sitting on silk sheets in a luxury hotel room, city lights through the window, moody dim lighting, editorial photography
+
+a beautiful woman in a revealing red corset and fishnet stockings performing on a cabaret stage, dramatic spotlight, red velvet curtains, cinematic
+
+a beautiful woman in a white fluffy robe slightly open by a fireplace in a cozy cabin, warm golden firelight, winter evening, intimate atmosphere, soft shadows

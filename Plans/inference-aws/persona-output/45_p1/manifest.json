@@ -1,0 +1,33 @@
+{
+  "persona_id": "45_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/45.png",
+  "main_image_sha256": "d52897e8c43d8412e4495d208daf5fd76bea64f184509a23f2b8be5fad018b7e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:10:46Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Ruby plays with the golden sand between her toes as she gazes out at the sun-kissed Sydney coastline, her long blonde hair fluttering in the sea breeze. She's dressed in a flowy sundress that catches the light, her bright blue eyes sparkling with joy as she kicks up a spray of grains, carefree in the moment.",
+      "seed": 1751725244,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/a9204cd8-3881-4769-9f08-23ddc92034b2.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/45.png",
+      "status": "ok",
+      "bytes": 1364937
+    }
+  ]
+}

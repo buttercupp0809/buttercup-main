@@ -1,0 +1,33 @@
+{
+  "persona_id": "4_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/4.webp",
+  "main_image_sha256": "5a4ef9aeb25b8ac0c360694e3b3c4df1afe0a30587e09d1b1d6db32d6edce2b4",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T22:41:40Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "As the first light of dawn creeps over the deserted beach, Emily kneels on the sand, her tiny string bikini barely containing her voluptuous figure. The sheer cover-up flows behind her, catching the gentle breeze and casting a shadow over her pert breasts. She looks back over her shoulder, her tousled hair a golden halo in the rising sun's glow, as she presents her thong-clad rear to the camera. The soft focus and warm tones evoke a sense of sensuality and mystery in this early morning tableau.",
+      "seed": 149532107,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/bec72cb8-f081-4d64-b8a0-798ca9dd26a3.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/4.webp",
+      "status": "ok",
+      "bytes": 1069067
+    }
+  ]
+}

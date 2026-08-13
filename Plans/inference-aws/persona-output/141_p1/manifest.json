@@ -1,0 +1,33 @@
+{
+  "persona_id": "141_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/141.webp",
+  "main_image_sha256": "18d6967196fbc42b30af5754fbb089823f431539cfc9a5a7f889531df52945b2",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:36:48Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Ruby stands in a sunlit meadow on a warm summer day, surrounded by wildflowers that match the vibrant hues of her flowing sundress. With a carefree smile, she skips towards the camera, her long blonde hair bouncing behind her, as a DSLR captures the scene with a shallow depth of field to emphasize her joyful expression and the lush greenery.",
+      "seed": 1649708594,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/b1b72a13-2d70-44c7-a418-ea4558290cc3.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/141.webp",
+      "status": "ok",
+      "bytes": 1737815
+    }
+  ]
+}

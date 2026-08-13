@@ -1,0 +1,33 @@
+{
+  "persona_id": "80_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/80.webp",
+  "main_image_sha256": "154961ea3e25385ac6f9be8687827802f7759b00e974bce3f99ca3c3b3500a0e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:26:24Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the intimate, steamy atmosphere of a rustic bathhouse, Ophelia sits on the edge of a wooden tub, her back arched as she leans back to expose her breasts to the camera, rivulets of water cascading down her skin, a single, dripping strand clinging to her pert nipple, her sultry gaze locked with the viewer's as if inviting them into her private sanctuary.",
+      "seed": 43628020,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/2260f4f4-5883-4de7-8cec-222c405ec819.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/80.webp",
+      "status": "ok",
+      "bytes": 1339533
+    }
+  ]
+}

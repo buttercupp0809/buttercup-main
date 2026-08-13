@@ -1,0 +1,33 @@
+{
+  "persona_id": "87_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/87.webp",
+  "main_image_sha256": "6ed40b312ad249de9e01cd6cce4af96794afd706f94b903b376bef984a650336",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:41:33Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit, velvet-draped boudoir, Hazel reclines on satin sheets, her body a silhouette against the rich fabrics. A sheer, babydoll nightie barely covers her, the delicate lace outlining her breasts and the subtle curve of her hips. Her long legs are bent and crossed, one hand resting on her thigh as she smokes a cigarette, her face a sensual mix of languor and allure in the low light.",
+      "seed": 816471312,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/d0e53080-79cd-48f8-8e18-44198ab648a7.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/87.webp",
+      "status": "ok",
+      "bytes": 1247615
+    }
+  ]
+}

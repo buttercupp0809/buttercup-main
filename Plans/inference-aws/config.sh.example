@@ -1,0 +1,98 @@
+#!/usr/bin/env bash
+# ============================================================
+# poppy-inference - CONFIG
+#
+# Single source of truth for the isolated Stheno + Juggernaut GPU
+# stack on AWS. Completely separate from the existing backend
+# and frontend: its own VPC, its own security group, its own
+# tags. Nothing here touches other resources.
+#
+# Edit values here, never inside the numbered scripts.
+# ============================================================
+
+# ---- Identity / region -------------------------------------
+export AWS_REGION="eu-north-1"          # Stockholm. g6.xlarge available in 1a/1b.
+export PROJECT="poppy-inference"        # tag + name prefix on EVERY resource
+export MANAGED_BY="inference-aws-scripts"
+
+# ---- Compute ----------------------------------------------
+# g6.xlarge = 1x L4 24GB. Fits Stheno (~8GB) + Juggernaut peak (~12GB).
+# Alternatives (change and redeploy): g4dn.xlarge (T4 16GB, cheaper,
+# tight for both) / g5.xlarge (A10G 24GB, pricier).
+export INSTANCE_TYPE="g6.xlarge"
+
+# DLAMI base: NVIDIA driver + Docker + nvidia-container-toolkit preinstalled.
+# Resolved to a concrete ami-id at deploy time via SSM (never hardcoded).
+export AMI_SSM_PARAM="/aws/service/deeplearning/ami/x86_64/base-oss-nvidia-driver-gpu-ubuntu-22.04/latest/ami-id"
+
+# Root EBS: gp3 (cheaper than gp2), delete-on-terminate. Holds AMI +
+# Docker images + both models. ~$9/mo while STOPPED (only cost when off).
+export EBS_SIZE_GB="130"
+export EBS_TYPE="gp3"
+
+# Instance stops (not terminates) on OS-level `shutdown` -> lets the
+# box turn ITSELF off when idle without extra IAM.
+export SHUTDOWN_BEHAVIOR="stop"
+
+# ---- Network (dedicated, isolated) -------------------------
+export VPC_CIDR="10.42.0.0/16"
+export SUBNET_CIDR="10.42.1.0/24"
+# Inbound is locked to YOUR current public IP only (resolved at deploy/start).
+# Ports: 22 SSH, 8001 Stheno (llama.cpp OpenAI API), 8188 Juggernaut (ComfyUI).
+export OPEN_PORTS=(22 8001 8188)
+
+# ---- Cost guardrails (24/7 g5.xlarge target ~$790/mo; alert at $850) --
+export MONTHLY_BUDGET_USD="850"
+export BUDGET_ALERT_PCTS=(80 100)       # email alerts
+export BUDGET_ACTION_PCT="90"           # auto-stop the instance at this % (backstop)
+export ALERT_EMAIL=""
+# 24/7 (always-on) mode: keep the box up for reliability. Set to "true" to
+# bring back idle auto-stop. Manual ./30-stop.sh always halts billing.
+export ENABLE_IDLE_STOP="false"
+export IDLE_MINUTES="30"                 # only used when ENABLE_IDLE_STOP=true
+
+# ---- Models (VERIFY these URLs before deploy) --------------
+# Stheno 8B GGUF (Q5_K_M ~5.7GB). llama.cpp serves it on :8001.
+export STHENO_GGUF_URL="https://huggingface.co/mradermacher/L3-8B-Stheno-v3.2-GGUF/resolve/main/L3-8B-Stheno-v3.2.Q5_K_M.gguf"
+export STHENO_GGUF_NAME="L3-8B-Stheno-v3.2.Q5_K_M.gguf"
+
+# Image checkpoint for ComfyUI. Use a PHOTOREALISTIC SDXL model for realistic
+# personas (e.g. Juggernaut XL v9 on Hugging Face). The model is your choice.
+export JUGGERNAUT_MODEL_URL=""           # e.g. HF direct .safetensors resolve URL
+export JUGGERNAUT_MODEL_NAME="juggernautXL_v9.safetensors"
+
+# Optional download tokens (leave blank if not needed). NEVER commit real values.
+export HF_TOKEN=""
+export CIVITAI_TOKEN=""
+
+# ---- Serving container images ------------------------------
+# Stheno via llama.cpp (OpenAI-compatible server, CUDA build).
+export LLAMACPP_IMAGE="ghcr.io/ggml-org/llama.cpp:server-cuda"
+export STHENO_CTX="8192"                  # context window
+# Juggernaut via ComfyUI. Swap if you prefer another maintained image.
+export COMFYUI_IMAGE="aidockorg/comfyui-cuda:latest"
+
+# ---- Auto start/stop router (scale-to-zero) ----------------
+# Always-on Lambda + API Gateway. Callers hit /wake to start the
+# GPU on demand; the box idle-stops itself. No GPU = pennies/mo.
+export ROUTER_NAME="${PROJECT}-router"
+# Shared secret the router requires as ?token=... (or x-poppy-token header).
+# Set to a long random string before deploy. Blank = no auth (NOT advised).
+export ROUTER_AUTH_TOKEN=""
+export WARM_ETA_SECONDS="110"            # advertised cold-start estimate
+
+# ---- Scheduled pre-warm (EventBridge Scheduler) -----------
+# Pre-start the GPU before peak / ad-campaign hours so the first
+# real user hits a hot box (zero cold-start). Nightly stop is a
+# safety net on top of the on-box idle auto-stop.
+export ENABLE_SCHEDULES="false"
+export SCHEDULE_TZ="Europe/Stockholm"
+export PREWARM_CRON="cron(45 8 * * ? *)"     # 08:45 local - warm before peak
+export NIGHTLY_STOP_CRON="cron(0 3 * * ? *)"  # 03:00 local - force stop safety net
+
+# ---- Local state -------------------------------------------
+# Resource IDs created by 10-deploy land here so start/stop/status/
+# destroy know what to act on. Gitignored.
+export STATE_FILE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/.state"
+export KEY_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/keys"
+export KEY_NAME="${PROJECT}-key"

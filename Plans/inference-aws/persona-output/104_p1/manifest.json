@@ -1,0 +1,33 @@
+{
+  "persona_id": "104_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/104.webp",
+  "main_image_sha256": "712b362d9eb0cad1e5b9b4252c1af776ccfaa04d560f5abbbb8dd839df90bbad",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:16:58Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Marlowe skips through Golden Gate Park, laughing as sunbeams dance through the leaves, her long blonde hair fluttering behind her in a golden hour glow captured by a DSLR camera, with a shallow depth of field emphasizing her joyful expression and carefree spirit.",
+      "seed": 1432527290,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/5e9b02fd-9ad9-4c6c-ac78-bdeea8d0fede.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/104.webp",
+      "status": "ok",
+      "bytes": 1592365
+    }
+  ]
+}

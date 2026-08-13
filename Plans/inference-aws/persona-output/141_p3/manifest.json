@@ -1,0 +1,33 @@
+{
+  "persona_id": "141_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/141.webp",
+  "main_image_sha256": "18d6967196fbc42b30af5754fbb089823f431539cfc9a5a7f889531df52945b2",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:37:37Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Amidst a snow-dusted pine forest, Ruby's fur-trimmed coat is open, revealing a lacy bralette and high-waisted panties as she poses on a fallen log. The icy atmosphere and her smirking, cold lips convey a sense of rebellious sensuality. The shallow depth of field and warm lighting on her skin contrast with the crisp, wintry backdrop, creating a captivating visual tension.",
+      "seed": 1364615172,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/24c83de6-63a3-423c-b015-0b1ce7f2ae4c.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/141.webp",
+      "status": "ok",
+      "bytes": 1739174
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Sparkles } from "lucide-react";
-import { requireAgeVerified } from "@/lib/auth";
+import { requireAuth } from "@/lib/auth";
 import { getViewer } from "@/lib/viewer";
 import { getDashboardFeed } from "@/lib/feed";
 import { viewerAllowsMature } from "@buttercupp/database";
@@ -9,7 +9,7 @@ import { CharacterCard } from "@/components/gallery/CharacterCard";
 export const dynamic = "force-dynamic";
 
 export default async function DashboardPage() {
-  const user = await requireAgeVerified();
+  const user = await requireAuth();
   const viewer = await getViewer();
   const feed = await getDashboardFeed(viewer);
   const mature = viewerAllowsMature(viewer);
@@ -47,7 +47,7 @@ export default async function DashboardPage() {
                   style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))" }}
                 >
                   {r.avatarUrl ? (
-                    <img src={r.avatarUrl} alt={r.characterName} className="h-full w-full object-cover" />
+                    <img src={r.avatarUrl} alt={r.characterName} className="h-full w-full object-cover object-top" />
                   ) : (
                     <div
                       className="flex h-full w-full items-center justify-center text-lg font-semibold"

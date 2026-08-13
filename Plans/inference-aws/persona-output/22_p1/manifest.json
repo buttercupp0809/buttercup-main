@@ -1,0 +1,33 @@
+{
+  "persona_id": "22_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/22.webp",
+  "main_image_sha256": "efe6b56c3dcc4c0baf9380938b1a19c7e6cc3c0c63956ae77f6c5dd2ba4f5fc1",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T23:19:20Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Penelope stands on a sunlit rooftop in Istanbul, her golden hair blown back by a warm breeze. Clad in a flowy sundress, she gazes out at the Bosphorus Strait with a carefree smile, DSLR camera in hand, ready to capture the city's vibrant beauty.",
+      "seed": 199479292,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/db45f6ec-16da-4b91-8660-e4f7de1bafaf.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/22.webp",
+      "status": "ok",
+      "bytes": 1505350
+    }
+  ]
+}

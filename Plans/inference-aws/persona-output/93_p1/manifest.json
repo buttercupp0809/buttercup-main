@@ -1,0 +1,33 @@
+{
+  "persona_id": "93_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/93.webp",
+  "main_image_sha256": "947f13b1e36b2fddcfc57e8ec65da96b5392ddf791a0fdc379f1563ce85f123f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:52:37Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Lyra laughs heartily as she tosses back a pint of Guinness in a lively Dublin pub, her vibrant green eyes sparkling in the warm golden hour light as the sun sets through the stained glass windows. DSLR camera captures her joy in a shallow depth of field, focusing on her smiling face and outstretched arms as the bustling pub scene fades into the background.",
+      "seed": 20736496,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/8887b531-bc30-414b-a0e5-fc3f5603b046.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/93.webp",
+      "status": "ok",
+      "bytes": 1536269
+    }
+  ]
+}

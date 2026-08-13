@@ -1,0 +1,33 @@
+{
+  "persona_id": "117_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/117.webp",
+  "main_image_sha256": "ead3969c8bdcf5dfaabcdf5f60169dcb2517317226d47e2efa36ea684c197aeb",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:45:03Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A sultry, dimly lit nightclub. Vesper's curves are barely contained by a black lace bodysuit, the fabric clinging to her breasts and hips. She poses seductively against a crimson velvet curtain, gazing over her shoulder with a coy smile, her long hair cascading like a waterfall down her back.",
+      "seed": 705608352,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/eebfd603-ffdd-4d02-b939-6de41a88552b.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/117.webp",
+      "status": "ok",
+      "bytes": 1585856
+    }
+  ]
+}

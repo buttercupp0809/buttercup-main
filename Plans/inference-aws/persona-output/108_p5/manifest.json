@@ -1,0 +1,33 @@
+{
+  "persona_id": "108_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/108.webp",
+  "main_image_sha256": "9b7ffc00333362f092bd9b04e6fc9ab47494e2fd2ce5f34bba200838dce9cdda",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:27:04Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a steaming bathroom, Ophelia stands beneath a powerful showerhead, water cascading over her curvaceous form as soap suds cling to her skin, highlighting her nipples and emphasizing her feminine allure in the intimate, dimly lit setting.",
+      "seed": 519502313,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/2449eac1-33bb-4645-9cb6-622c3fa0eeb5.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/108.webp",
+      "status": "ok",
+      "bytes": 1413799
+    }
+  ]
+}

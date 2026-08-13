@@ -1,0 +1,33 @@
+{
+  "persona_id": "143_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/143.webp",
+  "main_image_sha256": "0abaecdd89142775886be22b7f595e49bf756bb94ebf1973d4536c7ce468cc77",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:41:02Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A bright summer afternoon in a Dublin park, with Hazel sitting on a blanket, surrounded by open books and colorful tea cups, lost in a world of words as sunlight filters through the leaves above, casting a warm glow on her joyful face and the pages in her hands.",
+      "seed": 555050253,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/9201dacc-7453-4386-82af-d7527cdef77f.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/143.webp",
+      "status": "ok",
+      "bytes": 2088261
+    }
+  ]
+}

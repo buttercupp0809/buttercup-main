@@ -1,0 +1,33 @@
+{
+  "persona_id": "59_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/59.webp",
+  "main_image_sha256": "7d5d0c55b8c1ec4d14d56c8ec20a6601dd45bf1fbdc321a6fcbdbfc188e1e6f3",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:41:58Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a shadowy alleyway, a seductive siren with fiery red hair piled high on her head and piercing blue eyes peeks out from behind a crumbling stone column, her revealing black corset and fishnet stockings barely concealing her womanly assets as she gazes at the viewer with a coy, inviting smile.",
+      "seed": 212063291,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/1e63e239-746d-4e29-996a-be68947bd6c7.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/59.webp",
+      "status": "ok",
+      "bytes": 1594284
+    }
+  ]
+}

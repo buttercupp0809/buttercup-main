@@ -1,0 +1,33 @@
+{
+  "persona_id": "77_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/77.webp",
+  "main_image_sha256": "bfb2229d6e9bf93caadee15b4fddbf0b3a695c5e70ba0587d39cad8a0b977b33",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:19:40Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Against the backdrop of the Parthenon's marble columns, Clio stands with her back to the camera, wearing a tiny, metallic bikini that accentuates her curves, her tousled hair blowing in the golden hour light, a sultry expression on her face as she looks out over the Acropolis.",
+      "seed": 1847185837,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/6e2ba86c-f6bd-4d63-8e59-caec4e2e659d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/77.webp",
+      "status": "ok",
+      "bytes": 1423177
+    }
+  ]
+}

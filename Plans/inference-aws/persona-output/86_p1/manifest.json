@@ -1,0 +1,33 @@
+{
+  "persona_id": "86_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/86.webp",
+  "main_image_sha256": "21a2b5c4f9c9c6fb5530c00ebaa0f2084e982bb459b8f7566ce1b94948cc3dc3",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:37:57Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Phoebe stands in a sunny park during golden hour, her laughter echoing as she playfully tosses a frisbee, her long blonde hair whipping in the gentle breeze, captured in a DSLR photo with a shallow depth of field that emphasizes her bright smile and joyful expression, set against the vibrant green grass and warm, golden light.",
+      "seed": 1743831208,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/4d7663c9-5353-4305-aa78-aa43159358c5.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/86.webp",
+      "status": "ok",
+      "bytes": 1317163
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "128_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/128.webp",
+  "main_image_sha256": "e23a0194378c1f2f5f365a63538d2b3a335160b24f21c9c030db05206d865401",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:10:18Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Phoebe straddles a weathered wooden fence in a secluded alleyway, her back arched and long legs splayed provocatively. A black leather corset and fishnet stockings leave little to the imagination, the thong strap of her skimpy bottoms peeking out from between her cheeks. The city lights cast a shadowy glow, while a nearby dumpster adds an edgy, seedy ambiance.",
+      "seed": 1058677132,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/257d071c-37fb-4f80-9b9e-0e59d5049f01.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/128.webp",
+      "status": "ok",
+      "bytes": 1535108
+    }
+  ]
+}

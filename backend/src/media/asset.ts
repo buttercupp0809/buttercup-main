@@ -65,5 +65,29 @@ export function markFailed(id: string, error: string): Promise<MediaAsset> {
   });
 }
 
+export interface CreateReadyAssetParams {
+  userId: string;
+  characterId: string | null;
+  kind: MediaKind;
+  s3Key: string;
+  meta?: Record<string, unknown>;
+}
+
+// Creates an asset directly in the "ready" state, bypassing the queued state
+// machine. Use this for synchronous generation that does not go through the
+// BullMQ worker queue.
+export async function createReadyAsset(params: CreateReadyAssetParams): Promise<MediaAsset> {
+  return prisma.mediaAsset.create({
+    data: {
+      userId: params.userId,
+      characterId: params.characterId ?? undefined,
+      kind: params.kind,
+      s3Key: params.s3Key,
+      status: "ready",
+      meta: (params.meta ?? {}) as Prisma.InputJsonValue,
+    },
+  });
+}
+
 // Test-only helpers.
 export const _internal = { assertTransition, ALLOWED };

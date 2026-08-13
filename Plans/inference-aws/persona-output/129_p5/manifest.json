@@ -1,0 +1,33 @@
+{
+  "persona_id": "129_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/129.webp",
+  "main_image_sha256": "498bb52979abeaedc729ed1d9dcf261e725a63de790e5e77ed81abafc6a166fa",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:12:49Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a luxurious Copenhagen hotel suite, Hazel reclines on plush silk sheets, her body draped in a flowing white robe that's slowly slipping off one shoulder. The soft focus of the camera draws attention to her ample cleavage and the delicate curves of her neck as she gazes directly at the viewer with a coy, inviting smile. The room is bathed in warm, cinematic lighting, the deep shadows creating an air of intimacy and mystery.",
+      "seed": 1044391975,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/a9512ccf-1770-4257-9bfc-3eecc2c0a8eb.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/129.webp",
+      "status": "ok",
+      "bytes": 1079398
+    }
+  ]
+}

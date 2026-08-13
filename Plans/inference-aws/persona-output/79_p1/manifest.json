@@ -1,0 +1,33 @@
+{
+  "persona_id": "79_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/79.webp",
+  "main_image_sha256": "8de79f5879ad5cffcd3469fb2c3508ef1d0805c37de90f4e3eceab14133a37e2",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:23:05Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Lykke poses playfully against a vibrant mural in a sunny alleyway, her bright smile and laughing eyes capturing the joy of a golden hour stroll through Copenhagen's artistic quarter, DSLR camera in hand to document the city's eccentric beauty.",
+      "seed": 659143816,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/80914267-e417-466b-9324-596ce1a87709.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/79.webp",
+      "status": "ok",
+      "bytes": 1515406
+    }
+  ]
+}

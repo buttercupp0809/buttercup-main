@@ -1,0 +1,33 @@
+{
+  "persona_id": "61_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/61.webp",
+  "main_image_sha256": "d2d49cf8efc07da7e7902c21e52e584935b7da753a351d44de36cb9833cce21e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:45:01Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Sage stands in a lush park at golden hour, the soft DSLR glow illuminating her sun-kissed skin and auburn hair as she laughs with friends, her eyes sparkling with joy and her yellow sundress fluttering in the breeze, a carefree spirit captured in the warm light.",
+      "seed": 884737646,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/c73cf3b9-eaba-46ed-9320-507ab0692951.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/61.webp",
+      "status": "ok",
+      "bytes": 1527328
+    }
+  ]
+}

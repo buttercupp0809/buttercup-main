@@ -1,0 +1,33 @@
+{
+  "persona_id": "101_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/101.webp",
+  "main_image_sha256": "61c3f77ce9659974a8b2b3dc3e9e94d8164ae8bcec32bca0683d0ecd48cbb8a2",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:11:29Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On a moonlit Copenhagen rooftop, Hazel poses seductively against a stone railing, her body barely concealed by a sheer white robe that billows in the night breeze, her tousled hair framing her face as she looks back over her shoulder with a coy, inviting smile, the city lights twinkling in the background and the DSLR camera capturing every sultry detail.",
+      "seed": 1269680251,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/197c745a-2b63-48c5-a7e5-e9586d051bc2.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/101.webp",
+      "status": "ok",
+      "bytes": 1176899
+    }
+  ]
+}

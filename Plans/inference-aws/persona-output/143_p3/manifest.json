@@ -1,0 +1,33 @@
+{
+  "persona_id": "143_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/143.webp",
+  "main_image_sha256": "0abaecdd89142775886be22b7f595e49bf756bb94ebf1973d4536c7ce468cc77",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:41:51Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A quiet, misty morning in a Dublin cemetery, with Hazel standing amidst ancient gravestones, her long coat billowing in the damp air, as she reads from a weathered book, the ethereal light casting long shadows across her face and the worn stone beneath her feet.",
+      "seed": 1716738276,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/02c336de-9485-4428-a852-1b7d83526885.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/143.webp",
+      "status": "ok",
+      "bytes": 1464613
+    }
+  ]
+}

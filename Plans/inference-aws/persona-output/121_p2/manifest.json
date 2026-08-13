@@ -1,0 +1,33 @@
+{
+  "persona_id": "121_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/121.webp",
+  "main_image_sha256": "b473cc9d09d9820d0f32da5d7cf7517f3dac3ddbba3c2e8dbbd4ecb45067dc1a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:53:37Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit, intimate Dublin nightclub, a sultry siren with porcelain skin and raven tresses, wearing a sheer black lace bralette and matching thong, straddles the edge of a velvet-covered stage, her back arched and head thrown back in ecstasy as she belts out a soulful ballad to an entranced audience, a single spotlight illuminating her curves and casting long shadows across the room.",
+      "seed": 1487860244,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/da064d37-e344-4899-b110-0992a7918297.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/121.webp",
+      "status": "ok",
+      "bytes": 1139370
+    }
+  ]
+}

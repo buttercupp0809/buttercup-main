@@ -1,0 +1,33 @@
+{
+  "persona_id": "65_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/65.webp",
+  "main_image_sha256": "b30a4466841630931fa12e0ff174b0be016110bda61fa1c70215df04bbabbe6a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:55:01Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a steamy onsen, Indigo sits on a stone bench, her soaked skin glistening as water cascades down her body. A kimono is draped loosely over her shoulders, the fabric translucent enough to reveal the outline of her nipples and the hint of her mons beneath. She gazes up at the camera with a sultry, hooded expression, her legs crossed to showcase her toned thighs and the garter belt securing her thigh-high stockings.",
+      "seed": 1320606387,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/91e63023-476f-418c-95e9-eaa2dc4571a4.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/65.webp",
+      "status": "ok",
+      "bytes": 1436645
+    }
+  ]
+}

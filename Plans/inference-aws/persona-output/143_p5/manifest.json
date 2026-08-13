@@ -1,0 +1,33 @@
+{
+  "persona_id": "143_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/143.webp",
+  "main_image_sha256": "0abaecdd89142775886be22b7f595e49bf756bb94ebf1973d4536c7ce468cc77",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:42:39Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A secluded Dublin rooftop at twilight, with Hazel sitting on the edge, her legs dangling over the edge as she gazes out at the city's skyline, the golden light of the setting sun casting long shadows across her face and the curves of her body in a loose sweater and jeans, the distant sounds of Dublin's nightlife beginning to rise from below.",
+      "seed": 1566742105,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/d262d44e-5ae6-4b7b-9137-46935ce8d2b9.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/143.webp",
+      "status": "ok",
+      "bytes": 1527390
+    }
+  ]
+}

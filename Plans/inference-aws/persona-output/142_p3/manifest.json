@@ -1,0 +1,33 @@
+{
+  "persona_id": "142_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/142.webp",
+  "main_image_sha256": "845beefaff88c48fe773524e08b51674a3484ca7b31d4d1bb44d10c9b2272b9f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:39:43Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a steamy bathroom, Phoebe stands under the showerhead, water cascading over her bare skin, suds clinging to her curves, her nipples visible through the translucent soap film, her hair slicked back, her expression one of sensual relaxation as she leans against the tiled wall, the camera capturing the play of light on her wet body.",
+      "seed": 790353633,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/72e4fbe8-1356-4c0a-b86d-19b9a17aeee8.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/142.webp",
+      "status": "ok",
+      "bytes": 1315073
+    }
+  ]
+}

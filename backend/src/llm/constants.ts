@@ -4,6 +4,10 @@
 // flows. Extract/summary use the cheap tier of whichever provider serves.
 
 export const MODELS = {
+  // Self-hosted Stheno on the GPU box (llama.cpp OpenAI-compatible). llama.cpp
+  // serves whatever GGUF is loaded regardless of this name, but keep it honest.
+  POPPY_STHENO_CHAT: "L3-8B-Stheno-v3.2",
+
   // OpenRouter uncensored model for mature chat. Model slug lives here so a
   // swap does not touch provider.ts. Choose a currently-available slug at run
   // time (routing table is centralized in provider.ts).

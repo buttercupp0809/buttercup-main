@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import { useRouter } from "next/navigation";
 import { useCharacterWizard } from "./context";
 import { CHARACTER_STEPS } from "./steps";
@@ -11,14 +12,31 @@ export function WizardShell({ children }: { children: React.ReactNode }) {
     useCharacterWizard();
   const currentIndex = CHARACTER_STEPS.findIndex((s) => s.key === currentStepKey);
   const isLast = currentIndex === CHARACTER_STEPS.length - 1;
+  const [genToast, setGenToast] = React.useState(false);
 
   async function handleFinish() {
     const result = await submit();
-    if (result.ok) router.push(`/chat/${result.id}`);
-    else alert(`Save failed: ${result.error}`);
+    if (result.ok) {
+      setGenToast(true);
+      setTimeout(() => router.push(`/chat/${result.id}`), 1800);
+    } else {
+      alert(`Save failed: ${result.error}`);
+    }
   }
 
   return (
+    <>
+    {genToast && (
+      <div
+        className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-xl px-5 py-3 text-sm font-medium shadow-lg"
+        style={{
+          backgroundColor: "hsl(var(--buttercupp-accent-rose))",
+          color: "hsl(var(--buttercupp-primary-fg))",
+        }}
+      >
+        Companion saved. Generating images in the background...
+      </div>
+    )}
     <section className="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-6 py-6 md:grid-cols-[1fr_320px]">
       <div>
         <ol className="mb-6 flex items-center gap-2 text-sm">
@@ -84,12 +102,16 @@ export function WizardShell({ children }: { children: React.ReactNode }) {
 
       <aside>
         <div className="sticky top-4">
-          <h2 className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+          <h2
+            className="mb-2 text-xs font-semibold uppercase tracking-wide"
+            style={{ color: "hsl(var(--buttercupp-muted))" }}
+          >
             Live preview
           </h2>
           <PreviewCard draft={draft} />
         </div>
       </aside>
     </section>
+    </>
   );
 }

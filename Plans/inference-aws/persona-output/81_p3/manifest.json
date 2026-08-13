@@ -1,0 +1,33 @@
+{
+  "persona_id": "81_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/81.webp",
+  "main_image_sha256": "93d713739c2f6c231a3e909db4649fd04c8c3cc22894453c04f71297457b8c62",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:28:05Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a private courtyard, illuminated by the soft candlelight of a lantern, Magnolia reclines languidly on a stone bench, her sheer lace negligee clinging to every contour as she looks up at the star-strewn night sky with an inviting smile.",
+      "seed": 1336168688,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/8922a44d-e60b-4463-8f0e-91b75b2285bb.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/81.webp",
+      "status": "ok",
+      "bytes": 1404723
+    }
+  ]
+}

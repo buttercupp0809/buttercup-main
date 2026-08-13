@@ -1,0 +1,33 @@
+{
+  "persona_id": "68_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/68.webp",
+  "main_image_sha256": "8ad41283ff35da66a909076f42ead274eca27af869cd2337518d8637b037c0ce",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:00:34Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Ruby lounges languidly on a plush chaise in a lavish boudoir, clad in sheer lace lingerie that leaves little to the imagination. Dangling jewelry catches the soft glow of candles scattered across the room, drawing attention to her heaving breasts and the tantalizing curve of her hip. Her gaze is hooded, inviting, as she reclines seductively, one leg bent at the knee.",
+      "seed": 1010969657,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/98fe4790-fde6-449b-b40a-62ea93a26059.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/68.webp",
+      "status": "ok",
+      "bytes": 1316967
+    }
+  ]
+}

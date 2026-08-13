@@ -1,0 +1,33 @@
+{
+  "persona_id": "71_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/71.webp",
+  "main_image_sha256": "8fa038a5428cdf35c75a7e2b82f2af7c77a45e09629b6adb50f4b96f09f48499",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:07:41Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Odessa stands in the doorway of a luxurious penthouse, the city lights of Rio twinkling behind her, a crimson silk robe loosely draped over her lithe form, her back arched as she looks over her shoulder at the camera, one hand splayed against the doorframe, her sultry expression and the way her robe falls open hinting at the sensual delights within.",
+      "seed": 1619332453,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/a607c5f4-0c45-413c-a99b-0e3781e7c08f.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/71.webp",
+      "status": "ok",
+      "bytes": 1109728
+    }
+  ]
+}

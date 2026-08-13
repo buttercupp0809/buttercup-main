@@ -1,0 +1,33 @@
+{
+  "persona_id": "110_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/110.webp",
+  "main_image_sha256": "cbf5b8330add23a88a6d3b1b760c3fbb352aeb4c53ee9257776346716c8b840a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:30:37Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A secret garden at night, moonlight filtering through the trellises. Indigo, clad in a sheer, lace-trimmed negligee, bends over a stone bench, her pert breasts and toned hips on full display. A \"come hither\" look in her eyes, she seems to beckon the viewer into her hidden world.",
+      "seed": 695167886,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/9d7d3476-e09b-4cbe-88c2-d55830e38a54.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/110.webp",
+      "status": "ok",
+      "bytes": 1556662
+    }
+  ]
+}

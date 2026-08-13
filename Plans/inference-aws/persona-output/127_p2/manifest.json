@@ -1,0 +1,33 @@
+{
+  "persona_id": "127_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/127.webp",
+  "main_image_sha256": "ff81ba32e3fde629a5dde01c4b3f5590d375140d703ef5a9e7116ce8c443ea7c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:07:21Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit, trendy nightclub, Ruby sips a cocktail and leans against the bar, her skin-tight dress showcasing her curves. Her sultry gaze meets the camera's as she bites her lower lip, the pulsing lights casting a hypnotic glow.",
+      "seed": 779943908,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/4bb0dde7-1fe4-4615-80f3-ae6a916ab8e4.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/127.webp",
+      "status": "ok",
+      "bytes": 1242766
+    }
+  ]
+}

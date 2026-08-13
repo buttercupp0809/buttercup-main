@@ -1,0 +1,33 @@
+{
+  "persona_id": "121_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/121.webp",
+  "main_image_sha256": "b473cc9d09d9820d0f32da5d7cf7517f3dac3ddbba3c2e8dbbd4ecb45067dc1a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:54:01Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On a misty Dublin morning, a buxom beauty with auburn hair and bright blue eyes, wrapped in a plush, crimson robe with only a hint of lacy bra peeking out, stands at the edge of her balcony, gazing out over the city's rooftops as a gentle fog swirls around her, her expression pensive yet alluring as she takes a long drag from a cigarette, the first hints of daylight casting a soft, ethereal glow on her features.",
+      "seed": 153149484,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/c58f4b45-a39c-4391-9ba4-ab8508ff4a58.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/121.webp",
+      "status": "ok",
+      "bytes": 1240814
+    }
+  ]
+}

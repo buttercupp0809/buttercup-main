@@ -1,0 +1,33 @@
+{
+  "persona_id": "135_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/135.webp",
+  "main_image_sha256": "97659b952a101d5e4f267cf140d71c45b8e511a676edfe7366159508dde650b2",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:25:08Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "The warm glow of candles illuminates Lyra's nude form as she reclines on a pile of furs in a lavish tent, her skin glowing in the soft light, her breasts and the curve of her hips subtly highlighted by the flickering flames.",
+      "seed": 56271508,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/0f928a9b-aed8-422b-b708-a0201cae8174.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/135.webp",
+      "status": "ok",
+      "bytes": 1348442
+    }
+  ]
+}

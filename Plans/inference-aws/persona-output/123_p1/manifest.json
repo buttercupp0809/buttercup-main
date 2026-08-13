@@ -1,0 +1,33 @@
+{
+  "persona_id": "123_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/123.webp",
+  "main_image_sha256": "abe3147999c21db6eaf65245ad9a5452c97e239ac6125e7c0b753c06a05cb77a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T02:57:26Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A young woman, surrounded by friends, throws her arms up in joyful abandon against a vibrant sunset sky as they celebrate the end of summer at a beach bonfire, the warm glow illuminating her face and the carefree laughter of the group.",
+      "seed": 84606561,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/3745203e-5566-4b62-aae2-154950c2a568.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/123.webp",
+      "status": "ok",
+      "bytes": 1135968
+    }
+  ]
+}

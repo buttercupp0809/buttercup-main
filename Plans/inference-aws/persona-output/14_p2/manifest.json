@@ -1,0 +1,33 @@
+{
+  "persona_id": "14_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/14.webp",
+  "main_image_sha256": "414fec5dd5760cc075b59648bb16384fb28a99cb48fddfe2d12deb77c6c98fc0",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T23:01:54Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit, upscale cocktail lounge, Ruby reclines seductively on a plush leather couch, her lacy black bra and matching thong visible beneath a sheer, sequined robe that hangs open to reveal her toned midriff. Her raven hair cascades down her back in loose waves as she tilts her head, gazing at the viewer with a sultry, half-lidded stare. The warm glow of candles and the minimalist background accentuate her alluring figure, while the cinematic shallow depth of field draws focus to her sensual, inviting expression.",
+      "seed": 322241242,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/9244af2e-feaf-4f0c-a9c8-3e1d8f6d8a65.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/14.webp",
+      "status": "ok",
+      "bytes": 1358070
+    }
+  ]
+}

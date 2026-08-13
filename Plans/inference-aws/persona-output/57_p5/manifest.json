@@ -1,0 +1,33 @@
+{
+  "persona_id": "57_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/57.webp",
+  "main_image_sha256": "e4cf8e105dd732f734ec1a5fcce8588042abac55cc5e05a186ed29441a8c12e4",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:38:07Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit Prague bathhouse, Vesper sits on the edge of a steaming tub, her skin glistening with moisture as she leans back, her lacy bralette and high-waisted panties barely concealing her curves, a kimono draped over one shoulder, her raven tresses tumbling down her back, her half-closed eyes fixed on the viewer with an unmistakable invitation.",
+      "seed": 1360693169,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/f39f8f49-b02a-40cf-910c-4c5ad78e0d12.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/57.webp",
+      "status": "ok",
+      "bytes": 1120419
+    }
+  ]
+}

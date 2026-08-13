@@ -1,0 +1,33 @@
+{
+  "persona_id": "61_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/61.webp",
+  "main_image_sha256": "d2d49cf8efc07da7e7902c21e52e584935b7da753a351d44de36cb9833cce21e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:46:37Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a deserted alley at night, Sage leans against a graffiti-covered wall, her long legs clad in high-heeled boots and a short, pleated skirt, as she looks back over her shoulder with a sultry smirk, the neon signs casting a lurid glow on her pale skin and the black lace of her bra peeking from beneath her jacket.",
+      "seed": 1354040530,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/b2416a0f-a793-4418-ad1e-e4be666ab1ab.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/61.webp",
+      "status": "ok",
+      "bytes": 1750192
+    }
+  ]
+}

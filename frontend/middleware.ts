@@ -31,6 +31,7 @@ const PROTECTED_PATH_PREFIXES = [
 const PUBLIC_API_PREFIXES = [
   "/api/auth/",
   "/api/health",
+  "/api/media",
 ];
 
 function getSecretEdge(): Uint8Array {

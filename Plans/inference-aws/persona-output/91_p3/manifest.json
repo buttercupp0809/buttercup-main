@@ -1,0 +1,33 @@
+{
+  "persona_id": "91_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/91.webp",
+  "main_image_sha256": "166fd053d2de1d38860cbfd79214bdfc6cc1e9ee82b93400e08feb3ec59ed20f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:49:12Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Winter's chill is forgotten as Clio sits in a secluded grove, her fur-trimmed coat opened to reveal a lacy bralette and high-waisted panties, her cheeks flushed from the cold as she looks back at the camera with a mischievous smirk, snowflakes gently falling around her.",
+      "seed": 1152472532,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/4edc1933-151c-4886-9974-f1e05074ac5b.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/91.webp",
+      "status": "ok",
+      "bytes": 1494556
+    }
+  ]
+}

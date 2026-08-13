@@ -1,0 +1,33 @@
+{
+  "persona_id": "71_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/71.webp",
+  "main_image_sha256": "8fa038a5428cdf35c75a7e2b82f2af7c77a45e09629b6adb50f4b96f09f48499",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T01:06:05Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Odessa dances in a Rio Carnival parade, her vibrant outfit gleaming under the golden hour sun as the crowd cheers, DSLR capturing a shallow depth of field to isolate her joyful expression and twirling motion amidst the festive scene.",
+      "seed": 1666528668,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/ddfb7a1b-4d64-4a6b-a616-1484882d0638.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/71.webp",
+      "status": "ok",
+      "bytes": 1273438
+    }
+  ]
+}

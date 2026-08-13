@@ -1,0 +1,33 @@
+{
+  "persona_id": "65_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/65.webp",
+  "main_image_sha256": "b30a4466841630931fa12e0ff174b0be016110bda61fa1c70215df04bbabbe6a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T00:53:50Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit flamenco club, Indigo's lithe form is barely concealed by a sheer lace skirt and high-heeled sandals. Her ample cleavage is on display in a low-cut top, glistening with sweat as she dances with fervor, her hips swiveling seductively under the pulsing strobe lights.",
+      "seed": 178590807,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/e6ca12ff-cd3f-49bb-9739-238c97c57ff0.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/65.webp",
+      "status": "ok",
+      "bytes": 1232411
+    }
+  ]
+}

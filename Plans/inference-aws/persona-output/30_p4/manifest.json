@@ -1,0 +1,33 @@
+{
+  "persona_id": "30_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/30.webp",
+  "main_image_sha256": "ffc70fff3e8998b1cb67443fc85264c89c983375eb174b587276e61cf8e222ab",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-11T23:40:00Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the quiet, frosty stillness of a snow-covered forest glade, Camilla emerges from the shadows, her luxurious fur-trimmed coat open to reveal a lacy, crimson bralette and matching high-waisted panties, her skin glistening with a light dusting of snowflakes as she smirks at the camera with cold, seductive lips.",
+      "seed": 1213319425,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/0a6d1e3c-2856-402c-8515-a5213d2e8f31.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/30.webp",
+      "status": "ok",
+      "bytes": 1531328
+    }
+  ]
+}

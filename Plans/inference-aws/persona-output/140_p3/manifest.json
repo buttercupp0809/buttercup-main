@@ -1,0 +1,33 @@
+{
+  "persona_id": "140_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/140.webp",
+  "main_image_sha256": "50df5b28b5fcfc2f321ca7d34ad87582ec3a630635073a81a731861fc90368ec",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:35:27Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Clara reclines on a plush, crimson chaise in an ornate boudoir, a silk kimono slipped off one shoulder to reveal her bralette, gazing up at the camera with a coy smile as her high heels dangle from one foot, the rich textures and shadows creating an intimate, sensual atmosphere.",
+      "seed": 1766158761,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/b8b8d257-1f83-447c-9bb0-7cb7cc34b427.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/140.webp",
+      "status": "ok",
+      "bytes": 1495175
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "136_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/136.webp",
+  "main_image_sha256": "7afb17748b1d285d57214ebce1e3fee84817bd5d80231a2fb12bb525e5e27f67",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-12T03:26:28Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit bedroom, Ophelia reclines on plush velvet cushions, the soft fabric accentuating her curvaceous form. She wears a sheer silk robe that falls open, revealing the creamy expanse of her skin and the tantalizing glimpse of a lacy bra. Her hair cascades in loose waves over one shoulder as she gazes at the camera with a sultry, half-lidded expression, her full lips parted in a coy smile. The composition focuses on her seductive pose and the intimate atmosphere, with a shallow depth of field blurring the background.",
+      "seed": 1457021943,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/7240d0f9-b5f6-4591-851a-dac73b534dc8.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/136.webp",
+      "status": "ok",
+      "bytes": 1498311
+    }
+  ]
+}

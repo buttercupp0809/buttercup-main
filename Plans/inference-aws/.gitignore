@@ -1,0 +1,10 @@
+# Never commit local state, SSH keys, or resolved secrets.
+.state
+.state.tmp
+keys/
+*.pem
+router/__pycache__/
+
+# config.sh holds live secrets (ROUTER_AUTH_TOKEN, HF/CIVITAI tokens).
+# Track config.sh.example instead; copy it to config.sh locally.
+config.sh
