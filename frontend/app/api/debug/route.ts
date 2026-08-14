@@ -46,9 +46,51 @@ export async function GET() {
     dbPing = `ERROR: ${String(e).slice(0, 300)}`;
   }
 
+  // Walk the filesystem to find where Prisma's generated client + native
+  // engine binaries actually landed in the Lambda, vs where the runtime looks.
+  const engineHits: string[] = [];
+  const clientIndexHits: string[] = [];
+  const roots = [cwd, "/var/task", path.dirname(cwd)];
+  const seen = new Set<string>();
+  function walk(dir: string, depth: number) {
+    if (depth > 8 || engineHits.length > 40) return;
+    let entries: fs.Dirent[];
+    try { entries = fs.readdirSync(dir, { withFileTypes: true }); } catch { return; }
+    for (const e of entries) {
+      const full = path.join(dir, e.name);
+      if (seen.has(full)) continue;
+      if (e.isDirectory()) {
+        // skip noise
+        if (e.name === ".git" || e.name === ".next" && depth > 1) continue;
+        walk(full, depth + 1);
+      } else {
+        if (/libquery_engine.*\.(so\.node|dylib\.node)$/.test(e.name) || e.name === "query_compiler_bg.wasm") {
+          engineHits.push(full);
+        }
+        if (full.endsWith("/.prisma/client/index.js")) {
+          clientIndexHits.push(full);
+        }
+      }
+    }
+  }
+  for (const r of roots) { seen.clear(); walk(r, 0); }
+
+  // Full untruncated Prisma error (this is what login/gallery hit).
+  let prismaError = "OK";
+  try {
+    const { prisma } = await import("@buttercupp/database");
+    const n = await prisma.user.count();
+    prismaError = `OK - prisma.user.count()=${n}`;
+  } catch (e) {
+    prismaError = String((e as Error)?.message ?? e);
+  }
+
   return NextResponse.json({
     cwd,
     cwdFiles,
+    engineHits,
+    clientIndexHits,
+    prismaError,
     candidateStatus,
     env: {
       DATABASE_URL: process.env.DATABASE_URL ? "SET" : "MISSING",
