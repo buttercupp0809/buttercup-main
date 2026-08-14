@@ -8,13 +8,13 @@
 // Every table has createdAt; mutable tables also have updatedAt.
 
 generator client {
-  provider        = "prisma-client-js"
-  // queryCompiler + driverAdapters => pure-WASM query engine (query_engine_bg.wasm),
-  // NO native .so.node binary. This is the serverless-safe path: the native engine
-  // never resolves reliably inside the Amplify SSR Lambda bundle, so we drop it.
-  // Requires the client to ALWAYS be constructed with a driver adapter (see
-  // packages/database/src/client.ts).
-  previewFeatures = ["driverAdapters", "queryCompiler"]
+  provider = "prisma-client-js"
+  // engineType = "client" switches Prisma to the WASM query compiler
+  // (query_engine_bg.wasm) and drops the native .so.node engine entirely. The
+  // native engine never resolves reliably inside the Amplify SSR Lambda bundle.
+  // This REQUIRES the client to always be constructed with a driver adapter
+  // (see packages/database/src/client.ts).
+  engineType = "client"
 }
 
 datasource db {
