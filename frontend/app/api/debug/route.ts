@@ -105,6 +105,8 @@ export async function GET() {
       CLOUDFRONT_URL: process.env.CLOUDFRONT_URL ? "SET" : "MISSING",
       CLOUDFRONT_KEY_PAIR_ID: process.env.CLOUDFRONT_KEY_PAIR_ID ? "SET" : "MISSING",
       CLOUDFRONT_PRIVATE_KEY: process.env.CLOUDFRONT_PRIVATE_KEY ? "SET" : "MISSING",
+      PRISMA_QUERY_ENGINE_LIBRARY: process.env.PRISMA_QUERY_ENGINE_LIBRARY ?? "(not set)",
+      dotNextEngineExists: fs.existsSync(path.join(cwd, ".next", "libquery_engine-rhel-openssl-3.0.x.so.node")),
     },
     dbPing,
   });

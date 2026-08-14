@@ -11,6 +11,8 @@
 import { PrismaClient } from "@prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import pg from "pg";
+import fs from "fs";
+import path from "path";
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
@@ -48,7 +50,39 @@ function getDbUrl(): string {
   return `${url}${sep}${params.join("&")}`;
 }
 
+// Amplify WEB_COMPUTE ships only `.next/**` plus its own compute output; it
+// discards raw node_modules copies and does NOT copy Next's traced native
+// Prisma engine (.so.node) into the Lambda. Confirmed via /api/debug on the
+// live Lambda: the engine binary was absent everywhere and Prisma searched
+// /var/task + /codebuild paths that do not exist at runtime (cwd=/tmp/app).
+// The build copies the engine INTO .next/ (the one dir guaranteed to ship);
+// here we point Prisma straight at that absolute path so it skips its broken
+// search entirely. No-op locally (native darwin engine resolves normally).
+function resolveEnginePathForLambda(): void {
+  if (!isServerless) return;
+  if (process.env.PRISMA_QUERY_ENGINE_LIBRARY) return;
+  const engineName = "libquery_engine-rhel-openssl-3.0.x.so.node";
+  const cwd = process.cwd();
+  const candidates = [
+    path.join(cwd, ".next", engineName),
+    path.join(cwd, engineName),
+    path.join(cwd, "node_modules", ".prisma", "client", engineName),
+    path.join(cwd, ".next", "server", engineName),
+  ];
+  for (const c of candidates) {
+    try {
+      if (fs.existsSync(c)) {
+        process.env.PRISMA_QUERY_ENGINE_LIBRARY = c;
+        return;
+      }
+    } catch {
+      /* ignore */
+    }
+  }
+}
+
 function createPrismaClient(): PrismaClient {
+  resolveEnginePathForLambda();
   const dbUrl = getDbUrl();
 
   // queryCompiler requires an adapter ALWAYS (no native engine fallback), so

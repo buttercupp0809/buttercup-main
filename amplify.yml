@@ -61,6 +61,15 @@ applications:
           commands:
             # Use webpack, not Turbopack. See top-of-file note.
             - npx next build --webpack
+            # CRITICAL: Amplify WEB_COMPUTE ships only `.next/**` (the artifact
+            # baseDirectory) to the Lambda. It discards frontend/node_modules
+            # copies and does NOT copy Next's traced native Prisma engine. So
+            # place the rhel engine INSIDE .next/ (guaranteed to ship); at
+            # runtime client.ts points PRISMA_QUERY_ENGINE_LIBRARY at it
+            # (cwd/.next/<engine>). Confirmed necessary via /api/debug: engine
+            # was absent from the Lambda and Prisma searched non-existent paths.
+            - cp node_modules/.prisma/client/libquery_engine-rhel-openssl-3.0.x.so.node .next/ 2>/dev/null || cp ../node_modules/.prisma/client/libquery_engine-rhel-openssl-3.0.x.so.node .next/ 2>/dev/null || echo "WARN engine not copied to .next"
+            - ls -la .next/libquery_engine-rhel-openssl-3.0.x.so.node || echo "WARN no rhel engine in .next"
             # Bake server env into the build so the SSR runtime reads it from
             # disk via frontend/instrumentation.ts (register()). Amplify does
             # not reliably forward console env vars to the Next.js compute
