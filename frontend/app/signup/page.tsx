@@ -1,4 +1,8 @@
 import { prisma } from "@buttercupp/database";
+
+// DB is unreachable from the Amplify build container; force SSR so the
+// prisma call only runs at request time when RDS is accessible.
+export const dynamic = "force-dynamic";
 import { signAssetUrl } from "@/lib/cdn";
 import { CharacterPreviewPanel, type PreviewChar } from "@/components/auth/CharacterPreviewPanel";
 import { SignupForm } from "./SignupForm";
