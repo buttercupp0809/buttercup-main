@@ -2,10 +2,15 @@
   "_comment": "ECS Fargate task for the API + WebSocket gateway (PROCESS_ROLE=api). Every value marked ACCOUNT/REGION/ACCT_ID is a placeholder; replace during human-approved provisioning. Secrets are pulled from SSM/Secrets Manager by ARN and MUST NEVER be inlined here.",
   "family": "buttercupp-api",
   "networkMode": "awsvpc",
-  "requiresCompatibilities": ["FARGATE"],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
   "cpu": "1024",
   "memory": "2048",
-  "runtimePlatform": { "operatingSystemFamily": "LINUX", "cpuArchitecture": "X86_64" },
+  "runtimePlatform": {
+    "operatingSystemFamily": "LINUX",
+    "cpuArchitecture": "X86_64"
+  },
   "executionRoleArn": "arn:aws:iam::ACCT_ID:role/buttercupp-ecs-execution",
   "taskRoleArn": "arn:aws:iam::ACCT_ID:role/buttercupp-api-task",
   "containerDefinitions": [
@@ -13,41 +18,101 @@
       "name": "api",
       "image": "ACCT_ID.dkr.ecr.REGION.amazonaws.com/buttercupp:latest",
       "essential": true,
-      "portMappings": [{ "containerPort": 4000, "protocol": "tcp" }],
+      "portMappings": [
+        {
+          "containerPort": 4000,
+          "protocol": "tcp"
+        }
+      ],
       "environment": [
-        { "name": "PROCESS_ROLE", "value": "api" },
-        { "name": "PORT", "value": "4000" },
-        { "name": "NODE_ENV", "value": "production" }
+        {
+          "name": "PROCESS_ROLE",
+          "value": "api"
+        },
+        {
+          "name": "PORT",
+          "value": "4000"
+        },
+        {
+          "name": "NODE_ENV",
+          "value": "production"
+        }
       ],
       "secrets": [
-        { "name": "DATABASE_URL", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/DATABASE_URL" },
-        { "name": "JWT_SECRET", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/JWT_SECRET" },
-        { "name": "REDIS_URL", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/REDIS_URL" },
-        { "name": "OPENROUTER_API_KEY", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/OPENROUTER_API_KEY" },
-        { "name": "ANTHROPIC_API_KEY", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/ANTHROPIC_API_KEY" },
-        { "name": "OPENAI_API_KEY", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/OPENAI_API_KEY" },
-        { "name": "ELEVENLABS_API_KEY", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/ELEVENLABS_API_KEY" },
-        { "name": "CARTESIA_API_KEY", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/CARTESIA_API_KEY" },
-        { "name": "GOOGLE_TTS_API_KEY", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/GOOGLE_TTS_API_KEY" },
-        { "name": "FAL_KEY", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/FAL_KEY" },
-        { "name": "REPLICATE_API_TOKEN", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/REPLICATE_API_TOKEN" },
-        { "name": "S3_BUCKET", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/S3_BUCKET" },
-        { "name": "AWS_REGION", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/AWS_REGION" },
-        { "name": "CLOUDFRONT_URL", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/CLOUDFRONT_URL" },
-        { "name": "CLOUDFRONT_KEY_PAIR_ID", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/CLOUDFRONT_KEY_PAIR_ID" },
-        { "name": "CLOUDFRONT_PRIVATE_KEY", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/CLOUDFRONT_PRIVATE_KEY" },
-        { "name": "CCBILL_ACCOUNT_NUMBER", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/CCBILL_ACCOUNT_NUMBER" },
-        { "name": "CCBILL_FLEXFORM_ID", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/CCBILL_FLEXFORM_ID" },
-        { "name": "CCBILL_DATALINK_SALT", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/CCBILL_DATALINK_SALT" },
-        { "name": "VEROTEL_SHOP_ID", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/VEROTEL_SHOP_ID" },
-        { "name": "VEROTEL_SIGNATURE_KEY", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/VEROTEL_SIGNATURE_KEY" },
-        { "name": "SEGPAY_PACKAGE_ID", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/SEGPAY_PACKAGE_ID" },
-        { "name": "SEGPAY_URL_ID", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/SEGPAY_URL_ID" },
-        { "name": "SEGPAY_HMAC_KEY", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/SEGPAY_HMAC_KEY" },
-        { "name": "SENTRY_DSN", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/SENTRY_DSN" }
+        {
+          "name": "DATABASE_URL",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/DATABASE_URL"
+        },
+        {
+          "name": "JWT_SECRET",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/JWT_SECRET"
+        },
+        {
+          "name": "REDIS_URL",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/REDIS_URL"
+        },
+        {
+          "name": "OPENROUTER_API_KEY",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/OPENROUTER_API_KEY"
+        },
+        {
+          "name": "S3_BUCKET",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/S3_BUCKET"
+        },
+        {
+          "name": "POPPY_S3_BUCKET_GENERATED",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/POPPY_S3_BUCKET_GENERATED"
+        },
+        {
+          "name": "POPPY_S3_BUCKET_REELS",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/POPPY_S3_BUCKET_REELS"
+        },
+        {
+          "name": "AWS_REGION",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/AWS_REGION"
+        },
+        {
+          "name": "CLOUDFRONT_URL",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/CLOUDFRONT_URL"
+        },
+        {
+          "name": "CLOUDFRONT_KEY_PAIR_ID",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/CLOUDFRONT_KEY_PAIR_ID"
+        },
+        {
+          "name": "CLOUDFRONT_PRIVATE_KEY",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/CLOUDFRONT_PRIVATE_KEY"
+        },
+        {
+          "name": "PAYMENT_PRIMARY_PROVIDER",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/PAYMENT_PRIMARY_PROVIDER"
+        },
+        {
+          "name": "MATURE_CONTENT_ENABLED",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/MATURE_CONTENT_ENABLED"
+        },
+        {
+          "name": "POPPY_ROUTER_URL",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/POPPY_ROUTER_URL"
+        },
+        {
+          "name": "POPPY_ROUTER_TOKEN",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/POPPY_ROUTER_TOKEN"
+        },
+        {
+          "name": "POPPY_STHENO_URL",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/POPPY_STHENO_URL"
+        },
+        {
+          "name": "POPPY_JUGGERNAUT_URL",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/POPPY_JUGGERNAUT_URL"
+        }
       ],
       "healthCheck": {
-        "command": ["CMD-SHELL", "node -e \"fetch('http://127.0.0.1:4000/healthz').then(r=>r.ok?process.exit(0):process.exit(1)).catch(()=>process.exit(1))\""],
+        "command": [
+          "CMD-SHELL",
+          "node -e \"fetch('http://127.0.0.1:4000/healthz').then(r=>r.ok?process.exit(0):process.exit(1)).catch(()=>process.exit(1))\""
+        ],
         "interval": 30,
         "timeout": 5,
         "retries": 3,

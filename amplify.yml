@@ -45,19 +45,40 @@ applications:
           commands:
             # Use webpack, not Turbopack. See top-of-file note.
             - npx next build --webpack
-            # Bake server env into the build so cold starts read from disk,
-            # not process.env. Amplify injects the values from the console.
+            # Bake server env into the build so the SSR runtime reads it from
+            # disk via frontend/instrumentation.ts (register()). Amplify does
+            # not reliably forward console env vars to the Next.js compute
+            # runtime, so this bridge guarantees server-only reads work:
+            #   - Prisma (DATABASE_URL), auth (JWT_SECRET)
+            #   - CloudFront signed image URLs (lib/cdn.ts): CLOUDFRONT_URL +
+            #     CLOUDFRONT_KEY_PAIR_ID + CLOUDFRONT_PRIVATE_KEY
+            #   - S3 fallback proxy + blur: AWS_REGION, S3_BUCKET, POPPY_S3_BUCKET_GENERATED
+            # Values come from the Amplify console env for this branch.
             - |
               node -e "
                 const fs = require('fs');
                 const keys = [
                   'DATABASE_URL',
                   'JWT_SECRET',
+                  'NEXT_PUBLIC_APP_URL',
                   'NEXT_PUBLIC_BACKEND_URL',
+                  'NEXT_PUBLIC_WS_URL',
+                  'BACKEND_URL',
+                  'CLOUDFRONT_URL',
+                  'CLOUDFRONT_KEY_PAIR_ID',
+                  'CLOUDFRONT_PRIVATE_KEY',
+                  'AWS_REGION',
+                  'S3_BUCKET',
+                  'POPPY_S3_BUCKET_GENERATED',
+                  'GOOGLE_CLIENT_ID',
+                  'NEXT_PUBLIC_GOOGLE_CLIENT_ID',
+                  'AGE_VERIFICATION_PROVIDER',
+                  'RESEND_API_KEY',
+                  'EMAIL_FROM',
                   'SENTRY_DSN',
+                  'NEXT_PUBLIC_SENTRY_DSN',
                 ];
                 const out = Object.fromEntries(keys.map(k => [k, process.env[k] ?? null]));
-                fs.mkdirSync('.next/server', { recursive: true });
                 fs.writeFileSync('.next/server-env.json', JSON.stringify(out, null, 2));
               "
       artifacts:

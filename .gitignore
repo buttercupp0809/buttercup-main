@@ -71,4 +71,14 @@ Thumbs.db
 # ---------------------------------------------------------------------------
 Plans/s3-cdn/.keys/
 Plans/s3-cdn/.state
+
+# ---------------------------------------------------------------------------
+# AWS automation secret inputs (NEVER commit). config.env + lib.sh + *.sh are
+# safe to commit; these hold real secrets / private keys and must not be.
+# ---------------------------------------------------------------------------
+Plans/aws-automation/secrets.env
+Plans/aws-automation/amplify-env.env
+Plans/aws-automation/*.pem
+Plans/aws-automation/*-new.json
+Plans/aws-automation/.state
 Plans/inference-aws/persona-output/**/*.png

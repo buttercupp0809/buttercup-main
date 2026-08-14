@@ -2,37 +2,93 @@
   "_comment": "ECS Fargate task for the BullMQ media worker (PROCESS_ROLE=worker). Same image as the API, different CMD. No inbound port. Requires access to Redis (queue), Postgres (asset lifecycle), S3 (media upload), and the vendor keys the media handlers call.",
   "family": "buttercupp-worker",
   "networkMode": "awsvpc",
-  "requiresCompatibilities": ["FARGATE"],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
   "cpu": "1024",
   "memory": "2048",
-  "runtimePlatform": { "operatingSystemFamily": "LINUX", "cpuArchitecture": "X86_64" },
+  "runtimePlatform": {
+    "operatingSystemFamily": "LINUX",
+    "cpuArchitecture": "X86_64"
+  },
   "executionRoleArn": "arn:aws:iam::ACCT_ID:role/buttercupp-ecs-execution",
   "taskRoleArn": "arn:aws:iam::ACCT_ID:role/buttercupp-worker-task",
   "containerDefinitions": [
     {
       "name": "worker",
       "image": "ACCT_ID.dkr.ecr.REGION.amazonaws.com/buttercupp:latest",
-      "command": ["node", "dist/worker.js"],
+      "command": [
+        "node",
+        "dist/worker.js"
+      ],
       "essential": true,
       "environment": [
-        { "name": "PROCESS_ROLE", "value": "worker" },
-        { "name": "NODE_ENV", "value": "production" },
-        { "name": "MEDIA_WORKER_CONCURRENCY", "value": "4" }
+        {
+          "name": "PROCESS_ROLE",
+          "value": "worker"
+        },
+        {
+          "name": "NODE_ENV",
+          "value": "production"
+        },
+        {
+          "name": "MEDIA_WORKER_CONCURRENCY",
+          "value": "4"
+        }
       ],
       "secrets": [
-        { "name": "DATABASE_URL", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/DATABASE_URL" },
-        { "name": "REDIS_URL", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/REDIS_URL" },
-        { "name": "S3_BUCKET", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/S3_BUCKET" },
-        { "name": "AWS_REGION", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/AWS_REGION" },
-        { "name": "CLOUDFRONT_URL", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/CLOUDFRONT_URL" },
-        { "name": "CLOUDFRONT_KEY_PAIR_ID", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/CLOUDFRONT_KEY_PAIR_ID" },
-        { "name": "CLOUDFRONT_PRIVATE_KEY", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/CLOUDFRONT_PRIVATE_KEY" },
-        { "name": "ELEVENLABS_API_KEY", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/ELEVENLABS_API_KEY" },
-        { "name": "CARTESIA_API_KEY", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/CARTESIA_API_KEY" },
-        { "name": "GOOGLE_TTS_API_KEY", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/GOOGLE_TTS_API_KEY" },
-        { "name": "FAL_KEY", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/FAL_KEY" },
-        { "name": "REPLICATE_API_TOKEN", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/REPLICATE_API_TOKEN" },
-        { "name": "SENTRY_DSN", "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/SENTRY_DSN" }
+        {
+          "name": "DATABASE_URL",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/DATABASE_URL"
+        },
+        {
+          "name": "REDIS_URL",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/REDIS_URL"
+        },
+        {
+          "name": "S3_BUCKET",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/S3_BUCKET"
+        },
+        {
+          "name": "POPPY_S3_BUCKET_GENERATED",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/POPPY_S3_BUCKET_GENERATED"
+        },
+        {
+          "name": "POPPY_S3_BUCKET_REELS",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/POPPY_S3_BUCKET_REELS"
+        },
+        {
+          "name": "AWS_REGION",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/AWS_REGION"
+        },
+        {
+          "name": "CLOUDFRONT_URL",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/CLOUDFRONT_URL"
+        },
+        {
+          "name": "CLOUDFRONT_KEY_PAIR_ID",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/CLOUDFRONT_KEY_PAIR_ID"
+        },
+        {
+          "name": "CLOUDFRONT_PRIVATE_KEY",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/CLOUDFRONT_PRIVATE_KEY"
+        },
+        {
+          "name": "POPPY_ROUTER_URL",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/POPPY_ROUTER_URL"
+        },
+        {
+          "name": "POPPY_ROUTER_TOKEN",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/POPPY_ROUTER_TOKEN"
+        },
+        {
+          "name": "POPPY_STHENO_URL",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/POPPY_STHENO_URL"
+        },
+        {
+          "name": "POPPY_JUGGERNAUT_URL",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/POPPY_JUGGERNAUT_URL"
+        }
       ],
       "logConfiguration": {
         "logDriver": "awslogs",
