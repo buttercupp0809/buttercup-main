@@ -1,5 +1,5 @@
 import type { NextConfig } from "next";
-import path from "node:path";
+import path from "path";
 
 // Env comes from frontend/.env.local, which Next auto-loads from this
 // directory. See frontend/.env.example for the required keys.
@@ -62,6 +62,23 @@ const nextConfig: NextConfig = {
   // multi-lockfile root inference warning). The build always runs with cwd =
   // frontend/ (Vercel Root Directory and Amplify appRoot both = frontend).
   outputFileTracingRoot: path.join(process.cwd(), ".."),
+  // instrumentation.ts (and a few API routes) import Node built-ins (fs, path,
+  // crypto, child_process). Next compiles instrumentation for BOTH nodejs and
+  // edge runtimes; webpack fails on the edge/client pass if it can't resolve
+  // these. Stub them out for non-Node bundles so webpack skips them. The
+  // nodejs server build picks them up natively at runtime.
+  webpack(config, { isServer }) {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...(config.resolve.fallback ?? {}),
+        fs: false,
+        path: false,
+        crypto: false,
+        child_process: false,
+      };
+    }
+    return config;
+  },
   async headers() {
     return [
       { source: "/(.*)", headers: securityHeaders },
