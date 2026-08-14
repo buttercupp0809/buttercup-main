@@ -14,17 +14,21 @@ export async function POST(req: Request) {
   if (!parsed.ok) return parsed.response;
   const { email, password } = parsed.data;
 
-  const user = await prisma.user.findUnique({ where: { email } });
-  if (!user || !user.passwordHash) {
-    // Same error whether the user doesn't exist or has no password (OAuth-only
-    // account). Prevents user enumeration.
-    return jsonError(401, GENERIC_ERROR);
-  }
-  const ok = await verifyPassword(password, user.passwordHash);
-  if (!ok) return jsonError(401, GENERIC_ERROR);
+  try {
+    const user = await prisma.user.findUnique({ where: { email } });
+    if (!user || !user.passwordHash) {
+      // Same error whether the user doesn't exist or has no password (OAuth-only
+      // account). Prevents user enumeration.
+      return jsonError(401, GENERIC_ERROR);
+    }
+    const ok = await verifyPassword(password, user.passwordHash);
+    if (!ok) return jsonError(401, GENERIC_ERROR);
 
-  const token = await signAuthToken(user.id);
-  const res = jsonOk({ userId: user.id });
-  setAuthCookie(res as unknown as { cookies: NextResponse["cookies"] }, token);
-  return res;
+    const token = await signAuthToken(user.id);
+    const res = jsonOk({ userId: user.id });
+    setAuthCookie(res as unknown as { cookies: NextResponse["cookies"] }, token);
+    return res;
+  } catch (err) {
+    return jsonError(500, "db_error", { detail: String(err).slice(0, 300) });
+  }
 }

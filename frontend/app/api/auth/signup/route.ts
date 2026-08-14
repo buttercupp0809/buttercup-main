@@ -23,52 +23,56 @@ export async function POST(req: Request) {
     return jsonError(400, "must_accept_tos_and_privacy");
   }
 
-  const existing = await prisma.user.findUnique({ where: { email } });
-  if (existing) {
-    // Generic failure to avoid user enumeration on the signup surface.
-    return jsonError(409, "signup_failed");
+  try {
+    const existing = await prisma.user.findUnique({ where: { email }, select: { id: true } });
+    if (existing) {
+      // Generic failure to avoid user enumeration on the signup surface.
+      return jsonError(409, "signup_failed");
+    }
+
+    const passwordHash = await hashPassword(password);
+    const now = new Date();
+
+    const user = await prisma.user.create({
+      data: {
+        email,
+        passwordHash,
+        dob,
+        jurisdiction,
+        tosAcceptedAt: now,
+        privacyAcceptedAt: now,
+        ageVerifiedAt: now,
+        ageVerificationLevel: "self_declared",
+      },
+    });
+
+    await prisma.ageVerification.create({
+      data: {
+        userId: user.id,
+        provider: "self_declared",
+        level: "self_declared",
+        status: "verified",
+        verifiedAt: now,
+      },
+    });
+
+    // Welcome email, best-effort: never block or fail signup on email issues.
+    void sendEmail({
+      to: email,
+      subject: "Welcome to ButterCupp",
+      html: emailShell(
+        "Welcome to ButterCupp",
+        `<p style="color:#c9c9d4;font-size:14px">Your account is ready. Pick a companion, start chatting, and make it yours.</p>
+         <p style="margin:20px 0"><a href="${new URL(req.url).origin}/dashboard" style="background:#f2668b;color:#0b0b0f;text-decoration:none;font-weight:600;padding:10px 18px;border-radius:8px;display:inline-block">Open ButterCupp</a></p>`,
+      ),
+      text: "Welcome to ButterCupp. Your account is ready.",
+    }).catch(() => null);
+
+    const token = await signAuthToken(user.id);
+    const res = jsonOk({ userId: user.id });
+    setAuthCookie(res as unknown as { cookies: NextResponse["cookies"] }, token);
+    return res;
+  } catch (err) {
+    return jsonError(500, "db_error", { detail: String(err).slice(0, 300) });
   }
-
-  const passwordHash = await hashPassword(password);
-  const now = new Date();
-
-  const user = await prisma.user.create({
-    data: {
-      email,
-      passwordHash,
-      dob,
-      jurisdiction,
-      tosAcceptedAt: now,
-      privacyAcceptedAt: now,
-      ageVerifiedAt: now,
-      ageVerificationLevel: "self_declared",
-    },
-  });
-
-  await prisma.ageVerification.create({
-    data: {
-      userId: user.id,
-      provider: "self_declared",
-      level: "self_declared",
-      status: "verified",
-      verifiedAt: now,
-    },
-  });
-
-  // Welcome email, best-effort: never block or fail signup on email issues.
-  void sendEmail({
-    to: email,
-    subject: "Welcome to ButterCupp",
-    html: emailShell(
-      "Welcome to ButterCupp",
-      `<p style="color:#c9c9d4;font-size:14px">Your account is ready. Pick a companion, start chatting, and make it yours.</p>
-       <p style="margin:20px 0"><a href="${new URL(req.url).origin}/dashboard" style="background:#f2668b;color:#0b0b0f;text-decoration:none;font-weight:600;padding:10px 18px;border-radius:8px;display:inline-block">Open ButterCupp</a></p>`,
-    ),
-    text: "Welcome to ButterCupp. Your account is ready.",
-  }).catch(() => null);
-
-  const token = await signAuthToken(user.id);
-  const res = jsonOk({ userId: user.id });
-  setAuthCookie(res as unknown as { cookies: NextResponse["cookies"] }, token);
-  return res;
 }
