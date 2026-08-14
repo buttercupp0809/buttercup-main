@@ -1,10 +1,12 @@
 // Public reel data for the marketing landing carousel. No per-user like state
 // (the landing is unauthenticated); just enough to render a preview + link.
-// Never throws: returns [] on an empty/unreachable DB so the section hides.
+// Falls back to the static REELS manifest when the DB has no video rows (e.g.
+// fresh deploy, not yet seeded).
 
 import { prisma } from "@buttercupp/database";
 import { signAssetUrl } from "@/lib/cdn";
 import { pickPersonaImage } from "@/lib/persona-images";
+import { REELS } from "@/lib/reels/manifest";
 
 export interface PublicReel {
   id: string;
@@ -33,6 +35,7 @@ export async function getPublicReels(limit = 12): Promise<PublicReel[]> {
         },
       },
     });
+    if (vids.length === 0) return manifestFallback(limit);
     return vids.map((v) => ({
       id: v.id,
       src: v.url,
@@ -47,6 +50,17 @@ export async function getPublicReels(limit = 12): Promise<PublicReel[]> {
       characterId: v.characterId,
     }));
   } catch {
-    return [];
+    return manifestFallback(limit);
   }
+}
+
+function manifestFallback(limit: number): PublicReel[] {
+  return REELS.slice(0, limit).map((r) => ({
+    id: r.id,
+    src: r.src,
+    name: r.name,
+    location: r.location,
+    avatar: r.avatar,
+    characterId: r.id,
+  }));
 }
