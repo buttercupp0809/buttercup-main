@@ -13,8 +13,10 @@
 export async function register(): Promise<void> {
   if (process.env.NEXT_RUNTIME !== "nodejs") return;
   try {
-    const { readFileSync } = await import("fs");
-    const { join } = await import("path");
+    // webpackIgnore: webpack skips these imports during bundling (they fail
+    // in the edge runtime pass). Node resolves them natively at runtime.
+    const { readFileSync } = await import(/* webpackIgnore: true */ "fs");
+    const { join } = await import(/* webpackIgnore: true */ "path");
     const file = join(process.cwd(), ".next", "server-env.json");
     const data = JSON.parse(readFileSync(file, "utf8")) as Record<string, string | null>;
     for (const [key, value] of Object.entries(data)) {
