@@ -82,7 +82,7 @@ applications:
                 fs.writeFileSync('.next/server-env.json', JSON.stringify(out, null, 2));
               "
       artifacts:
-        baseDirectory: frontend/.next
+        baseDirectory: .next
         files:
           - '**/*'
       cache:
