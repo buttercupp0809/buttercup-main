@@ -96,12 +96,18 @@ else
 fi
 
 # =============================================================================
-# Custom domain: www -> branch, apex -> redirect to www
+# Custom domain: www -> branch, apex -> redirect to www.
+# GATED behind AMPLIFY_ASSOCIATE_DOMAIN=true because associating the domain cuts
+# www over from the current host (Vercel) to Amplify. Verify the build on the
+# default *.amplifyapp.com domain FIRST, then re-run with the flag to cut over.
 # =============================================================================
-if aws amplify get-domain-association --app-id "$app_id" --domain-name "$ROOT_DOMAIN" >/dev/null 2>&1; then
+if [ "${AMPLIFY_ASSOCIATE_DOMAIN:-false}" != "true" ]; then
+  warn "Skipping custom-domain association. Test the build on the default amplifyapp.com domain,"
+  warn "  then re-run with AMPLIFY_ASSOCIATE_DOMAIN=true to cut $FRONTEND_HOST over from Vercel to Amplify."
+elif aws amplify get-domain-association --app-id "$app_id" --domain-name "$ROOT_DOMAIN" >/dev/null 2>&1; then
   ok "Domain association already exists: $ROOT_DOMAIN"
 else
-  confirm "Associate custom domain $ROOT_DOMAIN (www -> $AMPLIFY_BRANCH, apex redirects to www)"
+  confirm "CUT OVER: associate $ROOT_DOMAIN (www -> $AMPLIFY_BRANCH, apex redirect to www). This repoints www from Vercel to Amplify."
   aws amplify create-domain-association \
     --app-id "$app_id" \
     --domain-name "$ROOT_DOMAIN" \

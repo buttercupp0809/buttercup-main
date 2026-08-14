@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { sha256Hex } from "./magic-link";
-import { createHash } from "node:crypto";
+import { createHash } from "crypto";
 
 describe("sha256Hex", () => {
   it("matches node:crypto sha256", () => {

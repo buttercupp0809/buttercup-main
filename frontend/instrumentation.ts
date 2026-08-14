@@ -13,8 +13,8 @@
 export async function register(): Promise<void> {
   if (process.env.NEXT_RUNTIME !== "nodejs") return;
   try {
-    const { readFileSync } = await import("node:fs");
-    const { join } = await import("node:path");
+    const { readFileSync } = await import("fs");
+    const { join } = await import("path");
     const file = join(process.cwd(), ".next", "server-env.json");
     const data = JSON.parse(readFileSync(file, "utf8")) as Record<string, string | null>;
     for (const [key, value] of Object.entries(data)) {

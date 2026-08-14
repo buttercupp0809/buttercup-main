@@ -3,7 +3,7 @@
 // (MAGIC_LINK_TTL_S). The raw token is the ONLY thing we email; if the DB
 // leaks, an attacker cannot recover a usable link.
 
-import { randomBytes, createHash, timingSafeEqual } from "node:crypto";
+import { randomBytes, createHash, timingSafeEqual } from "crypto";
 import { prisma } from "@buttercupp/database";
 import { MAGIC_LINK_TTL_S } from "@/lib/constants";
 

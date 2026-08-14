@@ -11,7 +11,7 @@
 import { NextResponse } from "next/server";
 import { requireAuth } from "@/lib/auth";
 import { jsonError } from "@/lib/api-helpers";
-import crypto from "node:crypto";
+import crypto from "crypto";
 
 export const runtime = "nodejs";
 

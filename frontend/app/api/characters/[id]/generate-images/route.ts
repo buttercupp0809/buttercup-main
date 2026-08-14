@@ -1,5 +1,5 @@
-import { spawn } from "node:child_process";
-import { join } from "node:path";
+import { spawn } from "child_process";
+import { join } from "path";
 import { requireAuth, signAuthToken } from "@/lib/auth";
 import { prisma } from "@buttercupp/database";
 import { jsonError, jsonOk } from "@/lib/api-helpers";
