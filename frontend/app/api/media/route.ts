@@ -42,7 +42,7 @@ export async function GET(req: Request) {
     const command = new GetObjectCommand({ Bucket: bucket, Key: s3Key });
     const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
     return NextResponse.redirect(url, { status: 302 });
-  } catch {
-    return NextResponse.json({ error: "not_found" }, { status: 404 });
+  } catch (err) {
+    return NextResponse.json({ error: "not_found", bucket, region, detail: String(err).slice(0, 200) }, { status: 404 });
   }
 }

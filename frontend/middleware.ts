@@ -33,6 +33,7 @@ const PUBLIC_API_PREFIXES = [
   "/api/health",
   "/api/media",
   "/api/debug",
+  "/api/admin/seed-personas",
 ];
 
 function getSecretEdge(): Uint8Array {
