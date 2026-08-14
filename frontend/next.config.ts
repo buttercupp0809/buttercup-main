@@ -55,7 +55,11 @@ const nextConfig: NextConfig = {
   // sharp is a native module (used by lib/media-blur.ts for server-side
   // paywall blurring). Keep it external so Next never tries to bundle the
   // platform-specific binary.
-  serverExternalPackages: ["sharp"],
+  // Prisma client + engine and adapter must stay external. When webpack bundles
+  // @prisma/client, the generated engine path resolution breaks in the Lambda
+  // ("could not locate the Query Engine"). Keeping them external makes Next
+  // trace the real generated client + engine into the serverless output.
+  serverExternalPackages: ["sharp", "@prisma/client", ".prisma/client", "@prisma/adapter-pg", "pg"],
   // Monorepo: the build runs from frontend/ but @buttercupp/* and the Prisma
   // engine live one level up. Tracing from the repo root ensures those files
   // are bundled into the serverless output on Vercel (and silences Next's

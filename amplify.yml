@@ -40,6 +40,12 @@ applications:
             - cp -R node_modules/@prisma/client frontend/node_modules/@prisma/ || true
             - cp -R node_modules/@prisma/adapter-pg frontend/node_modules/@prisma/ || true
             - cp -R node_modules/pg frontend/node_modules/pg 2>/dev/null || true
+            # The GENERATED client + engine binary live in node_modules/.prisma/client
+            # (NOT @prisma/client, which is just the wrapper). Since next.config
+            # marks @prisma/client external, the runtime resolves .prisma/client
+            # from node_modules and needs the engine .so file present there.
+            - cp -R node_modules/.prisma frontend/node_modules/.prisma || true
+            - ls -la frontend/node_modules/.prisma/client/ | grep -E "engine|\.so|\.node" || echo "WARN no engine in .prisma/client"
             - cd frontend
         build:
           commands:
