@@ -51,22 +51,20 @@ function getDbUrl(): string {
 function createPrismaClient(): PrismaClient {
   const dbUrl = getDbUrl();
 
-  if (isServerless) {
-    const parsed = new URL(dbUrl || "postgresql://placeholder/placeholder");
-    parsed.searchParams.delete("sslmode");
-    const cleanUrl = parsed.toString();
-    const pool = new pg.Pool({
-      connectionString: cleanUrl,
-      max: 1,
-      ssl: { rejectUnauthorized: false },
-    });
-    const adapter = new PrismaPg(pool);
-    return new PrismaClient({ adapter } as unknown as ConstructorParameters<typeof PrismaClient>[0]);
-  }
-
-  return new PrismaClient({
-    datasources: { db: { url: dbUrl } },
+  // queryCompiler requires an adapter ALWAYS (no native engine fallback), so
+  // both local and serverless go through PrismaPg. Local Postgres has no TLS,
+  // so SSL is only forced for remote hosts.
+  const parsed = new URL(dbUrl || "postgresql://placeholder/placeholder");
+  parsed.searchParams.delete("sslmode");
+  const cleanUrl = parsed.toString();
+  const isLocal = parsed.hostname === "localhost" || parsed.hostname === "127.0.0.1";
+  const pool = new pg.Pool({
+    connectionString: cleanUrl,
+    max: isServerless ? 1 : 10,
+    ssl: isLocal ? false : { rejectUnauthorized: false },
   });
+  const adapter = new PrismaPg(pool);
+  return new PrismaClient({ adapter } as unknown as ConstructorParameters<typeof PrismaClient>[0]);
 }
 
 export const prisma: PrismaClient = globalForPrisma.prisma ?? createPrismaClient();

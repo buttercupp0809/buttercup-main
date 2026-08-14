@@ -9,8 +9,12 @@
 
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["driverAdapters"]
-  binaryTargets   = ["native", "rhel-openssl-3.0.x", "linux-arm64-openssl-3.0.x"]
+  // queryCompiler + driverAdapters => pure-WASM query engine (query_engine_bg.wasm),
+  // NO native .so.node binary. This is the serverless-safe path: the native engine
+  // never resolves reliably inside the Amplify SSR Lambda bundle, so we drop it.
+  // Requires the client to ALWAYS be constructed with a driver adapter (see
+  // packages/database/src/client.ts).
+  previewFeatures = ["driverAdapters", "queryCompiler"]
 }
 
 datasource db {
