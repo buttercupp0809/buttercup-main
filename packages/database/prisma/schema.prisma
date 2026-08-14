@@ -8,13 +8,17 @@
 // Every table has createdAt; mutable tables also have updatedAt.
 
 generator client {
-  provider = "prisma-client-js"
-  // engineType = "client" switches Prisma to the WASM query compiler
-  // (query_engine_bg.wasm) and drops the native .so.node engine entirely. The
-  // native engine never resolves reliably inside the Amplify SSR Lambda bundle.
-  // This REQUIRES the client to always be constructed with a driver adapter
-  // (see packages/database/src/client.ts).
-  engineType = "client"
+  provider        = "prisma-client-js"
+  // Match Pellow's proven Amplify setup EXACTLY: native library engine +
+  // driverAdapters preview (NOT engineType="client"/WASM). The WASM query
+  // compiler ships query_compiler_bg.wasm as a readFileSync'd data file that
+  // Amplify's WEB_COMPUTE bundler does not co-locate with the client, causing
+  // "ENOENT query_compiler_bg.wasm" at runtime. The native .so.node engine IS
+  // traced and bundled (with the binaryTargets below + the @prisma/engines
+  // copy in amplify.yml). The client is still constructed with a PrismaPg
+  // adapter (see packages/database/src/client.ts).
+  previewFeatures = ["driverAdapters"]
+  binaryTargets   = ["native", "rhel-openssl-3.0.x", "linux-arm64-openssl-3.0.x"]
 }
 
 datasource db {

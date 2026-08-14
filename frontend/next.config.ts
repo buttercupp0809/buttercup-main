@@ -59,27 +59,13 @@ const nextConfig: NextConfig = {
   // @prisma/client, the generated engine path resolution breaks in the Lambda
   // ("could not locate the Query Engine"). Keeping them external makes Next
   // trace the real generated client + engine into the serverless output.
-  serverExternalPackages: ["sharp", "@prisma/client", ".prisma/client", "@prisma/adapter-pg", "pg"],
+  serverExternalPackages: ["sharp", "@prisma/client", ".prisma/client", "@prisma/adapter-pg", "@prisma/driver-adapter-utils", "pg"],
   // Monorepo: the build runs from frontend/ but @buttercupp/* and the Prisma
   // engine live one level up. Tracing from the repo root ensures those files
   // are bundled into the serverless output on Vercel (and silences Next's
   // multi-lockfile root inference warning). The build always runs with cwd =
   // frontend/ (Vercel Root Directory and Amplify appRoot both = frontend).
   outputFileTracingRoot: path.join(process.cwd(), ".."),
-  // engineType="client" uses the WASM query compiler. The generated client
-  // loads query_compiler_bg.wasm and schema.prisma via fs.readFileSync at
-  // runtime, so Next's static file tracer does NOT detect them (no require).
-  // Without schema.prisma as a sibling of the client's index.js, the client's
-  // path-resolution falls back to cwd/../../node_modules/.prisma/client, which
-  // in the Lambda is "/node_modules/.prisma/client" (does not exist) -> ENOENT.
-  // Force both data files into every route trace so they land next to index.js.
-  outputFileTracingIncludes: {
-    "/**/*": [
-      "../node_modules/.prisma/client/query_compiler_bg.wasm",
-      "../node_modules/.prisma/client/query_compiler_bg.js",
-      "../node_modules/.prisma/client/schema.prisma",
-    ],
-  },
   // instrumentation.ts (and a few API routes) import Node built-ins (fs, path,
   // crypto, child_process). Next compiles instrumentation for BOTH nodejs and
   // edge runtimes; webpack fails on the edge/client pass if it can't resolve

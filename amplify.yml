@@ -36,15 +36,25 @@ applications:
             - ln -snf ../../../packages/shared frontend/node_modules/@buttercupp/shared
             # Copy the generated Prisma client + adapter-pg + pg driver so
             # the SSR bundle can require them without workspace resolution.
+            # Mirror Pellow's proven copy set. -L dereferences symlinks so the
+            # real files (not workspace links) land in the bundle. adapter-pg and
+            # its transitive deps may live in packages/database/node_modules when
+            # not hoisted, so fall back to that path.
             - mkdir -p frontend/node_modules/@prisma
-            - cp -R node_modules/@prisma/client frontend/node_modules/@prisma/ || true
-            - cp -R node_modules/@prisma/adapter-pg frontend/node_modules/@prisma/ || true
-            - cp -R node_modules/pg frontend/node_modules/pg 2>/dev/null || true
-            # The GENERATED client + engine binary live in node_modules/.prisma/client
+            - cp -RL node_modules/@prisma/client frontend/node_modules/@prisma/client || true
+            - cp -RL node_modules/@prisma/adapter-pg frontend/node_modules/@prisma/adapter-pg 2>/dev/null || cp -RL packages/database/node_modules/@prisma/adapter-pg frontend/node_modules/@prisma/adapter-pg 2>/dev/null || true
+            - cp -RL packages/database/node_modules/@prisma/driver-adapter-utils frontend/node_modules/@prisma/driver-adapter-utils 2>/dev/null || cp -RL node_modules/@prisma/driver-adapter-utils frontend/node_modules/@prisma/driver-adapter-utils 2>/dev/null || true
+            # @prisma/engines carries the native query-engine .so.node binaries
+            # (rhel-openssl-3.0.x / linux-arm64) that the library engine loads.
+            - cp -RL node_modules/@prisma/engines frontend/node_modules/@prisma/engines 2>/dev/null || true
+            - cp -RL node_modules/pg frontend/node_modules/pg 2>/dev/null || true
+            # adapter-pg transitive deps (may be under packages/database/node_modules)
+            - for pkg in postgres-array; do cp -RL packages/database/node_modules/$pkg frontend/node_modules/$pkg 2>/dev/null || cp -RL node_modules/$pkg frontend/node_modules/$pkg 2>/dev/null || true; done
+            # The GENERATED client + native engine binary live in node_modules/.prisma/client
             # (NOT @prisma/client, which is just the wrapper). Since next.config
             # marks @prisma/client external, the runtime resolves .prisma/client
-            # from node_modules and needs the engine .so file present there.
-            - cp -R node_modules/.prisma frontend/node_modules/.prisma || true
+            # from node_modules and needs the engine .so.node file present there.
+            - cp -RL node_modules/.prisma frontend/node_modules/.prisma || true
             - ls -la frontend/node_modules/.prisma/client/ | grep -E "engine|\.so|\.node" || echo "WARN no engine in .prisma/client"
             - cd frontend
         build:
