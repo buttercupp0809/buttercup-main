@@ -8,13 +8,19 @@ import { NextResponse } from "next/server";
 
 export const runtime = "nodejs";
 
-const s3 = new S3Client({ region: process.env.AWS_REGION ?? "eu-north-1" });
-const GENERATED_BUCKET = process.env.POPPY_S3_BUCKET_GENERATED ?? "";
-const MEDIA_BUCKET = process.env.S3_BUCKET ?? "";
+// Read env vars inside the handler (not at module level) so instrumentation.ts
+// has time to load them from server-env.json before they are captured.
+function getS3Config() {
+  return {
+    region: process.env.AWS_REGION ?? "eu-north-1",
+    generatedBucket: process.env.POPPY_S3_BUCKET_GENERATED ?? "",
+    mediaBucket: process.env.S3_BUCKET ?? "",
+  };
+}
 
-function bucketForKey(key: string): string {
-  if (key.startsWith("images/")) return GENERATED_BUCKET;
-  return MEDIA_BUCKET;
+function bucketForKey(key: string, generatedBucket: string, mediaBucket: string): string {
+  if (key.startsWith("images/")) return generatedBucket;
+  return mediaBucket;
 }
 
 export async function GET(req: Request) {
@@ -25,12 +31,14 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "missing_key" }, { status: 400 });
   }
 
-  const bucket = bucketForKey(s3Key);
+  const { region, generatedBucket, mediaBucket } = getS3Config();
+  const bucket = bucketForKey(s3Key, generatedBucket, mediaBucket);
   if (!bucket) {
     return NextResponse.json({ error: "storage_not_configured" }, { status: 503 });
   }
 
   try {
+    const s3 = new S3Client({ region });
     const command = new GetObjectCommand({ Bucket: bucket, Key: s3Key });
     const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
     return NextResponse.redirect(url, { status: 302 });

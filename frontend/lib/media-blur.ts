@@ -11,21 +11,19 @@ import "server-only";
 
 import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
 
-const s3 = new S3Client({ region: process.env.AWS_REGION ?? "eu-north-1" });
-const GENERATED_BUCKET = process.env.POPPY_S3_BUCKET_GENERATED ?? "";
-const MEDIA_BUCKET = process.env.S3_BUCKET ?? "";
-
-// Neutral placeholder used whenever we cannot produce a real blur (missing
-// bytes, sharp unavailable, S3 error). A flat gradient, never the real image.
 const FALLBACK =
   "data:image/svg+xml;base64," +
   Buffer.from(
     `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="48"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a2533"/><stop offset="1" stop-color="#1a1720"/></linearGradient></defs><rect width="32" height="48" fill="url(#g)"/></svg>`,
   ).toString("base64");
 
+function getS3Client() {
+  return new S3Client({ region: process.env.AWS_REGION ?? "eu-north-1" });
+}
+
 function bucketForKey(key: string): string {
-  if (key.startsWith("images/")) return GENERATED_BUCKET;
-  return MEDIA_BUCKET;
+  if (key.startsWith("images/")) return process.env.POPPY_S3_BUCKET_GENERATED ?? "";
+  return process.env.S3_BUCKET ?? "";
 }
 
 // Resolve the raw image bytes for a value that may be a full https URL, the
@@ -57,6 +55,7 @@ async function fetchBytes(src: string): Promise<Buffer | null> {
 async function fetchS3(key: string): Promise<Buffer | null> {
   const bucket = bucketForKey(key);
   if (!bucket) return null;
+  const s3 = getS3Client();
   const obj = await s3.send(new GetObjectCommand({ Bucket: bucket, Key: key }));
   const body = obj.Body as { transformToByteArray?: () => Promise<Uint8Array> } | undefined;
   if (!body?.transformToByteArray) return null;
