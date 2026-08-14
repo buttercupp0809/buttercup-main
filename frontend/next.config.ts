@@ -66,6 +66,20 @@ const nextConfig: NextConfig = {
   // multi-lockfile root inference warning). The build always runs with cwd =
   // frontend/ (Vercel Root Directory and Amplify appRoot both = frontend).
   outputFileTracingRoot: path.join(process.cwd(), ".."),
+  // engineType="client" uses the WASM query compiler. The generated client
+  // loads query_compiler_bg.wasm and schema.prisma via fs.readFileSync at
+  // runtime, so Next's static file tracer does NOT detect them (no require).
+  // Without schema.prisma as a sibling of the client's index.js, the client's
+  // path-resolution falls back to cwd/../../node_modules/.prisma/client, which
+  // in the Lambda is "/node_modules/.prisma/client" (does not exist) -> ENOENT.
+  // Force both data files into every route trace so they land next to index.js.
+  outputFileTracingIncludes: {
+    "/**/*": [
+      "../node_modules/.prisma/client/query_compiler_bg.wasm",
+      "../node_modules/.prisma/client/query_compiler_bg.js",
+      "../node_modules/.prisma/client/schema.prisma",
+    ],
+  },
   // instrumentation.ts (and a few API routes) import Node built-ins (fs, path,
   // crypto, child_process). Next compiles instrumentation for BOTH nodejs and
   // edge runtimes; webpack fails on the edge/client pass if it can't resolve
