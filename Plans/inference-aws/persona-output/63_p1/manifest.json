@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:49:12Z",
+  "generated_at": "2026-08-15T13:03:44Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a lush garden, Ophelia sits on a stone bench, her sundress fluttering in a gentle breeze as warm golden hour light bathes her radiant face and tousled hair, a DSLR camera poised to capture her carefree, playful expression amidst the vibrant blooms.",
-      "seed": 49433239,
+      "prompt": "In the warm glow of a sunset, a woman with alabaster skin and raven tresses lounges on a velvet chaise, her translucent white gown draping across her curves as she languidly toys with probes, her smoldering gaze beckoning an admirer to join her in the fading light of day.",
+      "seed": 1287120248,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/1e0b0164-1cd4-4383-b1a8-8153179efd57.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/63.webp",
       "status": "ok",
-      "bytes": 1757653
+      "bytes": 1252714
     }
   ]
 }

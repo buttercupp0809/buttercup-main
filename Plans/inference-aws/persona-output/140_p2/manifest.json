@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:35:03Z",
+  "generated_at": "2026-08-15T15:39:58Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit opera house, Clara's sheer black negligee clings to her curves as she sits on the edge of a velvet chaise, looking back over her shoulder with a sultry gaze, the cinematic lighting highlighting her prominent breasts and the delicate lace that barely covers her nipples.",
-      "seed": 615506877,
+      "prompt": "In the dimly lit recesses of an underground chamber, a dominatrix clad in leather and lace beckons an unseen admirer with a provocative pose and sultry whispers, the flickering candlelight casting hypnotic shadows on her sculpted features as she toys with probes, the cinematic composition drawing the viewer into her private world of desire and control.",
+      "seed": 1089681799,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/c6786d1a-af52-4035-966c-c15fd7372343.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/140.webp",
       "status": "ok",
-      "bytes": 1483267
+      "bytes": 1791940
     }
   ]
 }

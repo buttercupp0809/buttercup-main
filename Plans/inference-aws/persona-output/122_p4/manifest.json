@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:56:32Z",
+  "generated_at": "2026-08-15T15:04:06Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a moonlit balcony overlooking Vienna's skyline, Ophelia stands in the shadows, her body clad in a revealing leather corset and thigh-high stockings. The city lights twinkle below as she turns to face the camera, her eyes half-lidded and her lips parted in a coy smile, as if beckoning the viewer closer.",
-      "seed": 417134808,
+      "prompt": "In the midst of a decadent nightclub, a stunning dominatrix clad in leather and lace holds probes aloft, her regal presence commanding attention as she surveys the crowd with a fierce, dominant gaze, the pulsating rhythm of the music and the haze of strobe lights setting the stage for a night of unbridled desire and submission.",
+      "seed": 719930407,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/bde11b7f-ac49-4314-b41e-3af6e3bfdce0.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/122.webp",
       "status": "ok",
-      "bytes": 1364486
+      "bytes": 1175108
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:09:48Z",
+  "generated_at": "2026-08-15T12:26:18Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a steamed-up bathroom, Hazel stands under a pulsing showerhead, rivulets of water cascading over her skin, her translucent soapy film highlighting the delicate peaks of her nipples as she reaches out to turn off the water, steam swirling around her lithe form and the antique porcelain tub, captured in a cinematic, shallow focus.",
-      "seed": 820689084,
+      "prompt": "Amidst the shadows of a decrepit warehouse, a woman clad in fetish attire - a leather corset, thigh-high boots, and a studded collar - provocatively plays with probes in the flickering light of a single bare bulb, her heavy breathing and lustful gaze fixed on an unseen partner as she beckons them deeper into her den of debauchery.",
+      "seed": 1448775237,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/dd1447f7-9d05-42d8-81e1-71625a2bd570.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/44.webp",
       "status": "ok",
-      "bytes": 1379073
+      "bytes": 1434715
     }
   ]
 }

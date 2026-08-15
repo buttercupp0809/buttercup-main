@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:15:01Z",
+  "generated_at": "2026-08-15T13:28:06Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, ornate harem room, Vesper reclines languidly on plush silk cushions, her embroidered choli top and lehnga skirt artfully draped to reveal hints of skin. She gazes out with half-lidded eyes, a coy smile playing on her lips as a servant adjusts a diamond navel chain.",
-      "seed": 1055702027,
+      "prompt": "A sultry model lounges on a plush velvet couch, dressed in a revealing red bodysuit, her long legs crossed and probes resting on her thighs, as she gazes seductively into the camera, the soft light of a DSLR capturing every sensual curve.",
+      "seed": 869227573,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b17fc3f0-701c-4072-ba22-7212fe8d0b36.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/75.webp",
       "status": "ok",
-      "bytes": 1770961
+      "bytes": 1494164
     }
   ]
 }

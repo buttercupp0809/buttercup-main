@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:17:35Z",
+  "generated_at": "2026-08-15T13:30:27Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Straddling a weathered wooden fence post in a secluded, moonlit forest glade, Marlowe's shapely thighs are exposed as she leans back against the rough wood, her lacy, black thong barely containing her rounded buttocks, which are slightly raised, emphasizing their enticing shape, her tousled, auburn hair cascading over one shoulder as she looks up at the starry sky with a coy, inviting expression.",
-      "seed": 348190369,
+      "prompt": "A provocative model stands in a dimly lit, underground club, her body draped in a revealing, leather corset and matching thigh-high boots. She provocatively handles probes, her movements sensual and inviting as she locks eyes with a potential partner across the crowded room, the air thick with the scent of arousal and the pulsing beat of the music.",
+      "seed": 1639891189,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/cf0f3f06-7b74-4d02-ad09-026b82c3fc30.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/76.webp",
       "status": "ok",
-      "bytes": 1334762
+      "bytes": 1662980
     }
   ]
 }

@@ -2,8 +2,23 @@
 // SEGPAY_HMAC_KEY (SegPay's Postback Notification docs).
 
 import crypto from "node:crypto";
+import { z } from "zod";
 import type { NormalizedEvent } from "../types";
 import { normalizeTier } from "../../subscription/tier";
+
+// SegPay postback body shape, validated before verifySignature/normalize.
+export const segpayWebhookSchema = z.object({
+  eventType: z.string().optional(),
+  transactionID: z.string().optional(),
+  reference: z.string().optional(),
+  userId: z.string().optional(),
+  tier: z.string().optional(),
+  tokenPackId: z.string().optional(),
+  amount: z.string().optional(),
+  currency: z.string().optional(),
+  nextRebillDate: z.string().optional(),
+});
+export type SegPayWebhookPayload = z.infer<typeof segpayWebhookSchema>;
 
 export function verifySignature(rawBody: string, signature: string | undefined): boolean {
   const key = process.env.SEGPAY_HMAC_KEY;
@@ -24,19 +39,7 @@ const TYPE_MAP: Record<string, NormalizedEvent["eventType"]> = {
   refund: "payment_failed",
 };
 
-interface SegPayPayload {
-  eventType?: string;
-  transactionID?: string;
-  reference?: string;
-  userId?: string;
-  tier?: string;
-  tokenPackId?: string;
-  amount?: string;
-  currency?: string;
-  nextRebillDate?: string;
-}
-
-export function normalize(payload: SegPayPayload): NormalizedEvent | null {
+export function normalize(payload: SegPayWebhookPayload): NormalizedEvent | null {
   const eventType = payload.eventType ? TYPE_MAP[payload.eventType] : undefined;
   if (!eventType || !payload.userId) return null;
   return {

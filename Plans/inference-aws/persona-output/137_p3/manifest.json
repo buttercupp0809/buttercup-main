@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:29:06Z",
+  "generated_at": "2026-08-15T15:34:06Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Under a canopy of twisted live oaks, Magnolia leans against a moss-covered trunk, her slender legs crossed, a diaphanous white dress clinging to her curves, the moonlight casting a sensual glow on her upturned face and the full swell of her breasts, a solitary magnolia flower resting between her breasts.",
-      "seed": 181586712,
+      "prompt": "Against a backdrop of a city skyline at dusk, a couple in revealing attire hold futuristic sex toys, their lustful expressions and come-hither gestures drawing in an onlooker amidst a hazy, dreamlike atmosphere, the shallow depth of field and cinematic lighting heightening the sense of forbidden desire.",
+      "seed": 908446667,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e9850530-921a-4611-abaa-cee371b6f0f4.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/137.webp",
       "status": "ok",
-      "bytes": 1802525
+      "bytes": 1102930
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:09:30Z",
+  "generated_at": "2026-08-15T13:22:50Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Steam billows in a traditional Japanese onsen bathhouse; the woman sits on the edge of a wooden tub, water beading on her glistening skin as she leans back to expose her breasts to the warm air, a kimono draped loosely over one shoulder, her sultry gaze fixed on the camera through the steamy haze.",
-      "seed": 574367272,
+      "prompt": "Amidst the opulent furnishings of a penthouse suite, a couple engages in passionate lovemaking on a plush sectional sofa, the woman's legs wrapped around her lover's waist as they gaze into each other's eyes, a futuristic sex toy discreetly nestled between them, the city skyline ablaze with lights outside the floor-to-ceiling windows.",
+      "seed": 572123883,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/612f243e-ed14-41bc-8102-ff5ecbc23635.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/72.webp",
       "status": "ok",
-      "bytes": 1158534
+      "bytes": 1321033
     }
   ]
 }

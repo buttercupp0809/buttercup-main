@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:16:04Z",
+  "generated_at": "2026-08-15T14:25:11Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Straddling a worn stone sarcophagus in a dimly lit Byzantine crypt, Vesper's voluptuous figure is barely concealed by a flowing, sheer black dress that clings to her every curve, her sultry eyes locked on the camera as she slowly runs a hand down her thigh, emphasizing her seductive intentions.",
-      "seed": 1648368743,
+      "prompt": "In the midst of a luxurious penthouse suite, a dominatrix in a leather bodysuit and stiletto heels commands attention, probes in hand, as she stands over her kneeling submissive, her piercing gaze and commanding presence hinting at the depraved delights to come.",
+      "seed": 1532063668,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/f04ae180-ad52-4687-b9dc-bc40e6cc1095.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/103.webp",
       "status": "ok",
-      "bytes": 1630756
+      "bytes": 956411
     }
   ]
 }

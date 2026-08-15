@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:11:10Z",
+  "generated_at": "2026-08-15T12:27:42Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "The city lights of Sydney twinkle in the night sky as Ruby poses on a rooftop, her curvaceous figure barely contained in a sheer, black negligee that clings to every inch of her skin. The DSLR camera captures her sultry expression, lips parted, as she leans against the railing, one stiletto heel hooked on the metal edge.",
-      "seed": 1098991391,
+      "prompt": "Amidst the hazy glow of a neon-lit back alley, a couple in daring outfits hold futuristic sex toys, their expressions charged with lust as they beckon an onlooker closer, the city's pulsing rhythm echoing in the background. Golden hour, shallow depth of field, cinematic composition.",
+      "seed": 1541327571,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/ed4570d8-d10f-4137-b5ae-3af1a020ddd4.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/45.png",
       "status": "ok",
-      "bytes": 1267794
+      "bytes": 1174094
     }
   ]
 }

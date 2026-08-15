@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:44:08Z",
+  "generated_at": "2026-08-15T12:58:54Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a tranquil onsen bathhouse, Juniper sits on the edge of a steaming pool, water beading on her skin as she leans back, exposing her breasts to the warm air. She wears a kimono draped loosely over one shoulder, its silk fabric glistening in the soft glow of lanterns. Her gaze is introspective, yet inviting, as the camera focuses on the sensual play of light and shadow on her curves.",
-      "seed": 366956581,
+      "prompt": "In a secret underground lair, a woman dressed in fetish attire seductively plays with probes, her gaze locking onto an unseen admirer as she beckons them near, the dim red lighting casting long shadows across the room's opulent decor and emphasizing her every provocative movement.",
+      "seed": 1697947179,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/73b092d7-333f-40d7-acba-a64d876028b2.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/60.webp",
       "status": "ok",
-      "bytes": 1432504
+      "bytes": 1135958
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:58:37Z",
+  "generated_at": "2026-08-15T12:15:05Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Wandering through an icy forest glade, Marlowe's breath mists in the chill air as she wears a fur-trimmed coat slung open, revealing a lacy bralette and high-waisted panties. Her lips are painted a deep crimson, and her eyes sparkle with mischief as she leans against a gnarled tree, one hand toying with the coat's fur trim. The composition emphasizes her curves, with the stark contrast of winter's chill against her warm, inviting skin.",
-      "seed": 222153011,
+      "prompt": "In a luxurious penthouse suite, a model flaunts a revealing outfit while playfully manipulating probes, her sultry smile and come-hither gestures promising an unforgettable night of pleasure, the city skyline visible through floor-to-ceiling windows framing the erotic scene.",
+      "seed": 757084325,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/fbad8326-f7f5-41e2-b9a9-38e0c8377a62.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/39.webp",
       "status": "ok",
-      "bytes": 1606819
+      "bytes": 1066624
     }
   ]
 }

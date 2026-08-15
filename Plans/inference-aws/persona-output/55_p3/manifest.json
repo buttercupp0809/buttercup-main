@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:33:06Z",
+  "generated_at": "2026-08-15T12:48:12Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Hazel in a cozy Dublin library; stacks of books surround her, and a lamp casts a soft, warm light on her profile as she reads, her hair tousled, and a finger tracing along a page, lost in the world of words and imagination.",
-      "seed": 791126159,
+      "prompt": "Leaning against a plush velvet couch, a stunning model flaunts a daring ensemble - a cropped leather jacket, a lacy black bra, and a short plaid skirt - as she nonchalantly toys with probes, her provocative hand gestures and sultry eye contact making it clear she's inviting a partner to join in her playful seduction.",
+      "seed": 1146558222,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/fc96b89e-867f-4c96-9b86-b4a10e37cff6.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/55.webp",
       "status": "ok",
-      "bytes": 1395467
+      "bytes": 1489274
     }
   ]
 }

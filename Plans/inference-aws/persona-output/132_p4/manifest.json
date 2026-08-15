@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:18:45Z",
+  "generated_at": "2026-08-15T15:24:17Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the warm haze of a studio lit by golden afternoon light, Marlowe lounges on a worn leather sofa, a thin white tank top leaving little to the imagination as it hugs her full breasts and the defined curves of her stomach, her slender legs stretched out as she idly plays with a strand of her hair.",
-      "seed": 1855571695,
+      "prompt": "In a dimly lit boudoir, a woman dressed in fetish attire seductively plays with probes, her gaze locked onto an unseen partner as she beckons them near, the room's shadows illuminated only by the soft glow of candles and the subtle sheen of her latex skin.",
+      "seed": 1326597136,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/49c52ca5-d729-4e59-870a-b5f8fbae6883.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/132.webp",
       "status": "ok",
-      "bytes": 1269596
+      "bytes": 972271
     }
   ]
 }

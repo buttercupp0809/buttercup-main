@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:55:56Z",
+  "generated_at": "2026-08-15T13:10:04Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the dimly lit entrance of a Berlin nightclub, Astrid poses provocatively against the wall, wearing a sheer black negligee that clings to her curves. A sultry gaze and parted lips invite the viewer's attention, while the shadows play on her skin and the minimalist backdrop keep focus on her alluring form, captured in a high-contrast image.",
-      "seed": 858836982,
+      "prompt": "Amidst the soft focus of a dimly lit boudoir, a couple clad in lingerie playfully hold futuristic sex toys, their expressions charged with desire as they beckon others to join their intimate game, the shallow depth of field blurring the surroundings, focusing attention solely on their heated encounter.",
+      "seed": 67995294,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/90a02036-7858-4ef2-b3ed-d545b28060df.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/66.webp",
       "status": "ok",
-      "bytes": 1238843
+      "bytes": 909765
     }
   ]
 }

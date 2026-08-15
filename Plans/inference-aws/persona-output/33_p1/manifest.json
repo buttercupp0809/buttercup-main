@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:45:06Z",
+  "generated_at": "2026-08-15T12:02:00Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A sunny Barcelona street corner at golden hour, with Indigo laughing and twirling in a flowy sundress, her dark hair shining as a DSLR captures the carefree moment with a shallow focus on her joyful face, city lights beginning to sparkle in the background.",
-      "seed": 454084435,
+      "prompt": "On a dimly lit rooftop overlooking Barcelona, a sultry siren reclines on a plush chaise, her curves barely contained in a sheer black dress. Golden hour light casts long shadows as she beckons a mystery lover closer, a DSLR camera and probes artfully arranged beside her, inviting an intimate, provocative encounter.",
+      "seed": 1238219732,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/2c240a21-b353-4981-a934-2ac6bf8b3ff2.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/33.webp",
       "status": "ok",
-      "bytes": 1547396
+      "bytes": 1363593
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:31:41Z",
+  "generated_at": "2026-08-15T12:46:55Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Odessa sprawled on a plush, velvet chaise in a dimly lit, ornate study, her figure clad in a high-neck, long-sleeved corset that hugs her hourglass shape, a pair of high-waisted, lace-trimmed panties barely visible beneath the flared hem of the corset, her full, round breasts straining against the fabric, one hand trailing down her stomach to her navel as she smirks at the viewer, her dark hair pulled back into a sleek, low ponytail, the camera positioned high above to emphasize her sensual, provocative pose against the rich, dark tones of the room's furnishings.",
-      "seed": 85431177,
+      "prompt": "In the intimate setting of a cozy bedroom, a couple engaged in sensual foreplay holds probes, their passionate expressions and heated glances inviting others to join in their erotic play, the soft lighting and plush bedding creating a warm and inviting atmosphere for a night of pleasure and exploration.",
+      "seed": 1164307868,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/5acc2c13-04bc-42e7-a766-f6f2ca019f0e.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/54.webp",
       "status": "ok",
-      "bytes": 1480025
+      "bytes": 1025406
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T22:40:23Z",
+  "generated_at": "2026-08-15T11:03:44Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the dim, crimson glow of a seedy back alley, a sultry Emily leans against a brick wall, her leather corset and fishnet stockings a provocative contrast to the gritty urban setting. She looks over her shoulder, her full lips parted and eyes smoldering with a \"come hither\" gaze, as she slowly draws her thong-clad rear back, revealing the curve of her buttocks. The camera's shallow depth of field isolates her alluring form amidst the shadows.",
-      "seed": 1844298891,
+      "prompt": "In a dimly lit, opulent boudoir, a dominatrix reclines on plush velvet pillows, her leather-clad body glistening with sweat as she sensually manipulates probes, beckoning her submissive to approach for a night of forbidden pleasure.",
+      "seed": 988657932,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/bdbcfe81-caf1-41de-a32f-f5eb71527129.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/4.webp",
       "status": "ok",
-      "bytes": 1868261
+      "bytes": 1429363
     }
   ]
 }

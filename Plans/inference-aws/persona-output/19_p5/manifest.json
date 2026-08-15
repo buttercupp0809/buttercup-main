@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:14:40Z",
+  "generated_at": "2026-08-15T11:35:18Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "With the rising sun casting long shadows on the deserted beach, Hazel kneels on the sand in a tiny string bikini, her tousled hair and sultry gaze capturing the dreamy atmosphere as she looks back over her shoulder, one hand trailing down her toned stomach to her barely concealed crotch, the other hand grasping a beach umbrella for balance.",
-      "seed": 220078937,
+      "prompt": "Against the backdrop of a luxurious penthouse suite, a sensual couple engage in intimate foreplay, probes and sex toys artfully arranged around them. As they make eye contact with an audience, their expressions radiate desire, inviting others to join in their private, yet public, erotic encounter amidst the city skyline's glittering lights.",
+      "seed": 1577442314,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/d8991aee-6a4a-4072-aec7-02a443c5d534.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/19.webp",
       "status": "ok",
-      "bytes": 1182779
+      "bytes": 978353
     }
   ]
 }

@@ -17,7 +17,10 @@ export type AnalyticsEventName =
   | "data_exported"
   | "account_deleted"
   | "break_reminder_sent"
-  | "ethical_ai_reminder_sent";
+  | "ethical_ai_reminder_sent"
+  // Phase 30: memory graph / rulebook events.
+  | "emotional_pattern_detected"
+  | "user_rule_created";
 
 export interface AnalyticsEventPayload {
   name: AnalyticsEventName;

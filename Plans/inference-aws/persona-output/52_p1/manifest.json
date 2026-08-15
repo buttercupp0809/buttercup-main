@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:25:28Z",
+  "generated_at": "2026-08-15T12:41:33Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A joyful Lila skips playfully through a bustling street market in Mumbai during golden hour, her bright smile and sparkling eyes capturing the vibrant energy of the scene as a DSLR captures her in a shallow focus portrait, with the colorful stalls and busy shoppers blurred in the background.",
-      "seed": 841121539,
+      "prompt": "A seductive woman posing in a dimly lit boudoir, wearing only a sheer black negligee, reaches out to a viewer with an alluring smile and a single, provocative finger, while holding a sleek, metallic sex toy against her thigh, the camera capturing her curves in a shallow focus, hinting at the intimacy to come.",
+      "seed": 1567719994,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/f72e423f-7a94-46f1-8338-db93fbd85d60.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/52.webp",
       "status": "ok",
-      "bytes": 1588409
+      "bytes": 1176582
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:25:52Z",
+  "generated_at": "2026-08-15T12:41:55Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Lila lounges seductively on plush velvet cushions in a dimly lit, ornate boudoir, wearing a lacy, sheer negligee that clings to her curves, her gaze directly at the viewer with parted lips and half-lidded eyes, the cinematic lighting highlighting her smooth skin and emphasizing the intimate atmosphere.",
-      "seed": 1925020829,
+      "prompt": "In the golden hour, a couple lounges on a plush couch in an upscale living room, the woman in a revealing red dress and the man in a tailored suit, both holding futuristic sex toys and exchanging heated, lustful glances, the soft focus and warm light creating a dreamy, seductive atmosphere.",
+      "seed": 721209821,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/df9c7590-f132-4741-bb22-aba3f386023a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/52.webp",
       "status": "ok",
-      "bytes": 1538621
+      "bytes": 1247477
     }
   ]
 }

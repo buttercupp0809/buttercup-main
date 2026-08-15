@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:53:37Z",
+  "generated_at": "2026-08-15T15:01:22Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, intimate Dublin nightclub, a sultry siren with porcelain skin and raven tresses, wearing a sheer black lace bralette and matching thong, straddles the edge of a velvet-covered stage, her back arched and head thrown back in ecstasy as she belts out a soulful ballad to an entranced audience, a single spotlight illuminating her curves and casting long shadows across the room.",
-      "seed": 1487860244,
+      "prompt": "Amidst the opulent surroundings of a secret underground club, a stunning dominatrix holds court, her regal beauty and commanding presence drawing in a coterie of eager worshippers who crave to serve at her pleasure and receive her merciless punishment under the pulsating strobes and neon lights.",
+      "seed": 1257151250,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/da064d37-e344-4899-b110-0992a7918297.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/121.webp",
       "status": "ok",
-      "bytes": 1139370
+      "bytes": 1275455
     }
   ]
 }

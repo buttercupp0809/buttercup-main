@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:55:01Z",
+  "generated_at": "2026-08-15T13:09:12Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a steamy onsen, Indigo sits on a stone bench, her soaked skin glistening as water cascades down her body. A kimono is draped loosely over her shoulders, the fabric translucent enough to reveal the outline of her nipples and the hint of her mons beneath. She gazes up at the camera with a sultry, hooded expression, her legs crossed to showcase her toned thighs and the garter belt securing her thigh-high stockings.",
-      "seed": 1320606387,
+      "prompt": "In the throbbing heart of Barcelona's Gothic Quarter, a sultry temptress in a low-cut, crimson dress and stiletto heels sips a rich, dark liqueur in a dimly lit, velvet-draped tavern, a single, provocative probe glinting on the tabletop between her long, polished nails as she smiles at the viewer with the knowing allure of a seasoned seductress, the ancient, labyrinthine streets pulsing with the city's primal energy.",
+      "seed": 309848392,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/91e63023-476f-418c-95e9-eaa2dc4571a4.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/65.webp",
       "status": "ok",
-      "bytes": 1436645
+      "bytes": 1419876
     }
   ]
 }

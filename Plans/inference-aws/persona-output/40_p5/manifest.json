@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:01:34Z",
+  "generated_at": "2026-08-15T12:17:48Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Freya kneels on a stone floor in a dimly lit, Japanese-style tea room, wearing only a delicate, intricately patterned kimono that has slipped off one shoulder, revealing her full, pert breasts and the shadowed curves of her hips, a sultry, half-lidded gaze directed at the viewer as she leans back, water beading on her skin from a hidden water feature, the shot taken with a cinematic lens to emphasize the exotic, sensual mood and the play of light on her bare skin.",
-      "seed": 176536687,
+      "prompt": "Amidst the eerie, abandoned atmosphere of a decaying warehouse, a provocative couple engage in a forbidden tryst, their bodies entwined in the shadows as they play with probes, the only light coming from a distant, broken skylight, casting an ethereal glow on their heated expressions and entangled forms.",
+      "seed": 954236942,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b609841a-7b83-4385-b152-6117d2c793c9.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/40.webp",
       "status": "ok",
-      "bytes": 1256859
+      "bytes": 1460242
     }
   ]
 }

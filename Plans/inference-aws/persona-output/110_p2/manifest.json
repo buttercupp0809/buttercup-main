@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:30:13Z",
+  "generated_at": "2026-08-15T14:38:26Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A dimly lit, opulent bedroom. Indigo reclines on silken sheets, Victorian corset and shorts hugging her curves. Antique furniture and velvet drapes frame her sultry pose, gazing up with a coy smile. Soft, cinematic lighting highlights her cleavage and the sheen of her skin.",
-      "seed": 1372704317,
+      "prompt": "Golden hour glows through the windows of a luxurious penthouse as a couple in revealing lingerie holds futuristic sex toys, their charged expressions and come-hither gestures inviting others to join their intimate game, the city skyline visible through the DSLR lens.",
+      "seed": 268799467,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/c8309248-78e2-43d2-85fa-0e8ade6fca47.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/110.webp",
       "status": "ok",
-      "bytes": 1522958
+      "bytes": 989330
     }
   ]
 }

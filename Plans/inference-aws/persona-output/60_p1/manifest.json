@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:42:55Z",
+  "generated_at": "2026-08-15T12:57:41Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Juniper's face lights up in a joyful smile as she leaps in the air, arms outstretched, in a sun-drenched park during the golden hour. Captured by a DSLR camera, the shallow depth of field blurs the lush greenery while emphasizing her carefree spirit. She wears a casual, pastel-hued sundress that flows behind her, emphasizing her youthful energy and playful demeanor as she appears to defy gravity for a fleeting moment.",
-      "seed": 447929311,
+      "prompt": "Under a golden sunset sky, a woman clad in a revealing red dress provocatively poses, probes in hand, her inviting gaze and sultry smile beckoning an onlooker to join her on the beach, the warm light casting a flattering glow on her curves and the sand.",
+      "seed": 1207400838,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/decf18ad-2cb6-4cf0-91b4-d724cacbf1b5.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/60.webp",
       "status": "ok",
-      "bytes": 1750488
+      "bytes": 1226654
     }
   ]
 }

@@ -7,7 +7,22 @@
 
 import type Redis from "ioredis";
 
+import { logWarn } from "../utils/log";
+
 let sharedClient: Redis | null = null;
+
+// ioredis emits "error" for every transient network blip (idle disconnect,
+// Redis restart, etc). Node treats an unhandled "error" event as a fatal,
+// process-crashing exception, so every client we hand out MUST have a
+// listener attached or a single dropped connection takes the whole backend
+// process down (this is exactly what happened locally: a "Connection is
+// closed" error with no listener killed the process mid E2E-run).
+function withErrorHandler(client: Redis): Redis {
+  client.on("error", (err: Error) => {
+    logWarn("redis", "connection error (auto-reconnecting)", { err: err.message });
+  });
+  return client;
+}
 
 function loadIoRedis(): (typeof import("ioredis") extends { default: infer T } ? T : never) | null {
   try {
@@ -27,10 +42,12 @@ export function getRedisConnection(): Redis | null {
   const Ctor = loadIoRedis();
   if (!Ctor) return null;
   const Redis = Ctor as unknown as new (url: string, opts: Record<string, unknown>) => Redis;
-  sharedClient = new Redis(process.env.REDIS_URL, {
-    maxRetriesPerRequest: null,
-    enableReadyCheck: false,
-  });
+  sharedClient = withErrorHandler(
+    new Redis(process.env.REDIS_URL, {
+      maxRetriesPerRequest: null,
+      enableReadyCheck: false,
+    }),
+  );
   return sharedClient;
 }
 
@@ -42,10 +59,12 @@ export function createWorkerConnection(): Redis | null {
   const Ctor = loadIoRedis();
   if (!Ctor) return null;
   const Redis = Ctor as unknown as new (url: string, opts: Record<string, unknown>) => Redis;
-  return new Redis(process.env.REDIS_URL, {
-    maxRetriesPerRequest: null,
-    enableReadyCheck: false,
-  });
+  return withErrorHandler(
+    new Redis(process.env.REDIS_URL, {
+      maxRetriesPerRequest: null,
+      enableReadyCheck: false,
+    }),
+  );
 }
 
 export function isRedisConfigured(): boolean {

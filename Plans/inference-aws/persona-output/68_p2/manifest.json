@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:00:10Z",
+  "generated_at": "2026-08-15T13:14:05Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit underground music venue, Ruby struts down a catwalk in stilettos and a tight leather mini-dress, her ample cleavage and toned hips on full display. Spotlights dance across her curves as she works the crowd, her sultry gaze meeting that of a mesmerized admirer. The low light and shallow DOF isolate her alluring form.",
-      "seed": 437372062,
+      "prompt": "In a dimly lit underground club, a stunning dominatrix holds court, her regal beauty and commanding presence drawing in eager worshippers as she teases them with probes, her eyes smoldering with dominance and desire.",
+      "seed": 782609998,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/4112cf2d-f526-4981-9b6e-f8a0b1ed30b9.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/68.webp",
       "status": "ok",
-      "bytes": 1159382
+      "bytes": 1205694
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:50:48Z",
+  "generated_at": "2026-08-15T13:05:12Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit bedroom, Ophelia lounges on silk sheets, wearing only a lacy garter belt and sheer stockings that hug her thighs and leave her thong-clad bottom exposed. She props herself up on one elbow, her other hand trailing down her cleavage as she fixes the viewer with a coy, inviting stare.",
-      "seed": 796362302,
+      "prompt": "In a luxurious penthouse suite, a ravishing beauty in a scandalously revealing ensemble perches on the edge of a plush sofa, her golden hair cascading down her back as she teases an unseen suitor with a probe, the city skyline twinkling like diamonds outside the floor-to-ceiling windows, the air thick with anticipation of a night of uninhibited pleasure.",
+      "seed": 336501383,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b6a87298-8f32-4f6d-829b-b0c256b385ec.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/63.webp",
       "status": "ok",
-      "bytes": 1224601
+      "bytes": 1226632
     }
   ]
 }

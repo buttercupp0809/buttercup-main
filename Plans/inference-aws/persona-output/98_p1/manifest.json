@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:04:16Z",
+  "generated_at": "2026-08-15T14:13:49Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Clara steps out of a charming Parisian caf\u00e9 onto a cobblestone street bathed in the warm glow of golden hour, a vibrant scarf draped over her shoulders as she grins at the camera, her eyes sparkling with joy beneath a stylish hat and sunglasses, the Eiffel Tower looming in the distance.",
-      "seed": 1588154469,
+      "prompt": "In a dimly lit boudoir, the subject reclines on a velvet chaise, her lithe body barely concealed by sheer lingerie. Probes in hand, she invites the viewer with a sultry gaze and provocative pose, the soft glow of candlelight casting shadows across her curves.",
+      "seed": 1049476134,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/18ecb3ab-4f37-47e4-8602-88949b1ed944.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/98.webp",
       "status": "ok",
-      "bytes": 1572563
+      "bytes": 1478904
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:49:26Z",
+  "generated_at": "2026-08-15T14:57:08Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, velvet-draped boudoir, a sultry Clio reclines on a plush chaise, her lacy corset and shorts a stark contrast to the antique furniture, one leg bent seductively as she gazes up with a coy smile, a choker and cuffs adorning her creamy skin.",
-      "seed": 1646614334,
+      "prompt": "Under the hazy, dreamlike glow of neon lights in a seedy backroom club, a curvaceous stripper straddles her client's lap, her toned body glistening with sweat. She teases him with a futuristic sex toy, her eyes smoldering with desire as she grinds against him, the room's lurid atmosphere fueling their passionate encounter.",
+      "seed": 1840427422,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/f792f858-004d-40bd-bba4-7f368315fcbb.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/119.webp",
       "status": "ok",
-      "bytes": 1499925
+      "bytes": 1299268
     }
   ]
 }

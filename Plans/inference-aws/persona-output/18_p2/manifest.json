@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:10:27Z",
+  "generated_at": "2026-08-15T11:32:17Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the dimly lit foyer of a chic Stockholm nightclub, Ava's icy demeanor melts as she gazes out at the pulsating crowd from behind a velvet rope. A sleek, form-fitting black dress hugs her curvaceous figure, the plunging neckline and high slit revealing tantalizing glimpses of her skin. Her eyes, smoky with seduction, meet the viewer's with a sultry invitation, as if beckoning them into her private world of forbidden pleasure.",
-      "seed": 129874239,
+      "prompt": "Amidst the golden hour's warm, hazy glow, a couple in provocative attire stand in a lush, overgrown garden, their bodies entwined as they hold futuristic sex toys. The DSLR lens captures the woman's flushed cheeks and lustful expression, while the shallow depth of field blurs the surroundings, emphasizing the intimate moment.",
+      "seed": 870327250,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b4d93afd-1999-4b1f-bb31-3febf50981c0.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/18.webp",
       "status": "ok",
-      "bytes": 1237755
+      "bytes": 1492110
     }
   ]
 }

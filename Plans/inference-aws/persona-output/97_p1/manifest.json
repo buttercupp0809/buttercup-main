@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:02:09Z",
+  "generated_at": "2026-08-15T14:11:51Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Astrid stands atop a hill overlooking Berlin's rooftops, bathed in warm golden hour light, a joyful smile on her face as she twirls with arms outstretched, the wind tousling her hair, a DSLR camera in hand, capturing the vibrant cityscape below through a shallow depth of field, emphasizing her figure and the dramatic sky.",
-      "seed": 1950597911,
+      "prompt": "Amidst the warm glow of golden hour, a scantily-clad beauty lounges on a plush velvet couch, probes in hand, her sultry gaze beckoning an admirer closer in the intimate setting of a luxurious boudoir, captured in a DSLR's shallow focus.",
+      "seed": 531914715,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/149b330b-bf72-4f05-82af-b4b90c9a5e42.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/97.webp",
       "status": "ok",
-      "bytes": 1390656
+      "bytes": 1376240
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:06:23Z",
+  "generated_at": "2026-08-15T12:22:48Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A sunny afternoon in a Charleston park as Magnolia playfully tosses a frisbee, her bright yellow sundress fluttering in the warm breeze, her long dark hair streaming behind her, and a radiant smile on her face, captured in a shallow depth of field with the vibrant flowers and lush greenery blurred in the background.",
-      "seed": 1388153708,
+      "prompt": "A sultry woman wearing a low-cut red dress and thigh-high black stilettos reclines on a velvet couch, one leg draped over the armrest as she seductively teases a stranger with a silver probe, her piercing green eyes locking onto his in a carnal invitation under the soft glow of a table lamp in a dimly lit, opulent boudoir.",
+      "seed": 622538471,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/abec1b76-38e6-4989-9f2e-0185cb2233d9.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/43.webp",
       "status": "ok",
-      "bytes": 1648166
+      "bytes": 1269973
     }
   ]
 }

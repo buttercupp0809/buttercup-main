@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:50:00Z",
+  "generated_at": "2026-08-15T13:04:28Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the shadows of an ancient forest, Ophelia reclines against a gnarled tree trunk, clad in a diaphanous white gown that clings to her curves, her legs crossed to reveal a glimpse of black lace beneath. A single candle flickers nearby, casting an ethereal glow across her features.",
-      "seed": 209598087,
+      "prompt": "In a dimly lit boudoir, a stunning woman reclines on a plush bed, her porcelain skin illuminated by the soft radiance of candles, as she playfully manipulates probes amidst the tangled sheets, her luscious lips curled into a sultry smile inviting a lover to join the intimate game.",
+      "seed": 493859522,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/310c34c4-0bdb-4d17-b96b-222c3a295bfb.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/63.webp",
       "status": "ok",
-      "bytes": 1764120
+      "bytes": 1178642
     }
   ]
 }

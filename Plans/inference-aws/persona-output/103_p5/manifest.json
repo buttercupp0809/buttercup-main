@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:16:28Z",
+  "generated_at": "2026-08-15T14:25:35Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Perched on the edge of a luxurious, ornate four-poster bed, Vesper's curves are highlighted by the soft, warm glow of candlelight as she leans back, her barely-there lace teddy leaving little to the imagination, her gaze direct and inviting as she languidly stretches one long leg out towards the camera.",
-      "seed": 1566456311,
+      "prompt": "In the shadowy recesses of a secret underground club, a stunning stripper in a barely-there G-string and feather boa grinds against a client on a plush leather couch, her body glistening with sweat as neon lights cast a lurid glow, inviting all to surrender to their basest desires.",
+      "seed": 623588115,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/92bf7c50-80bb-411a-9b5e-2d71f0bd0e89.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/103.webp",
       "status": "ok",
-      "bytes": 1328291
+      "bytes": 1300409
     }
   ]
 }

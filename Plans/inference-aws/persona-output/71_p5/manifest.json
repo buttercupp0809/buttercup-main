@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:07:41Z",
+  "generated_at": "2026-08-15T13:21:15Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Odessa stands in the doorway of a luxurious penthouse, the city lights of Rio twinkling behind her, a crimson silk robe loosely draped over her lithe form, her back arched as she looks over her shoulder at the camera, one hand splayed against the doorframe, her sultry expression and the way her robe falls open hinting at the sensual delights within.",
-      "seed": 1619332453,
+      "prompt": "In the warm glow of a candlelit boudoir, a woman in lacy lingerie reclines on plush silk sheets, probes laid artfully across her curves as she gazes longingly at the door, her lips parted in a silent invitation for her next lover to enter and ignite the passion that simmers within.",
+      "seed": 634549211,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/a607c5f4-0c45-413c-a99b-0e3781e7c08f.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/71.webp",
       "status": "ok",
-      "bytes": 1109728
+      "bytes": 1160225
     }
   ]
 }

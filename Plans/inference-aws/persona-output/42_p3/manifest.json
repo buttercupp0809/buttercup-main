@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:05:04Z",
+  "generated_at": "2026-08-15T12:21:24Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit bedroom, Ophelia reclines on crimson silk sheets, her expression a coy mix of innocence and experience as she wears a lacy babydoll nightie that barely conceals her nipples and the shape of her womanhood, her long legs crossed and one hand toying with a strand of her tousled hair.",
-      "seed": 1168140906,
+      "prompt": "In a luxurious penthouse suite, a captivating model flaunts a daring ensemble while playfully manipulating probes, her sultry eye contact and suggestive hand gestures leaving no doubt about her intentions. The golden hour casts a warm glow through the floor-to-ceiling windows, highlighting her curves and setting the stage for a night of unbridled passion.",
+      "seed": 86431915,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/dd4c6ab7-9165-4467-b5c5-e4269046cc3a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/42.webp",
       "status": "ok",
-      "bytes": 1701643
+      "bytes": 1033407
     }
   ]
 }

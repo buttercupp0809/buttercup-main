@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:26:40Z",
+  "generated_at": "2026-08-15T12:42:39Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a secluded glade of a misty winter forest, Lila stands with her back arched, her fur-trimmed coat open to reveal a lacy bralette and high-waisted panties, gazing over her shoulder with a smirk as the cool air sends a shiver down her spine, captured in a dramatic, cinematic shot with a shallow depth of field and soft, ethereal lighting.",
-      "seed": 582740585,
+      "prompt": "In a dark, candlelit chamber, a mysterious figure in a revealing, lace-covered corset beckons to a viewer, her eyes smoldering with desire as she holds a metallic, heart-shaped sex toy, the low light and shadows adding an air of intrigue and forbidden pleasure.",
+      "seed": 1735475712,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/229a3f8c-7924-4db6-a164-3878b9e7ca5b.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/52.webp",
       "status": "ok",
-      "bytes": 1426675
+      "bytes": 1452112
     }
   ]
 }

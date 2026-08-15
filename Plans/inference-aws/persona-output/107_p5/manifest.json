@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:24:58Z",
+  "generated_at": "2026-08-15T14:33:42Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A deserted Dublin beach at dawn; Lyra kneels on the sand, her string bikini and sheer cover-up fluttering in the gentle morning breeze. The rising sun casts a warm, golden light on her skin, illuminating the subtle curves of her back and the swell of her breasts as she looks back over her shoulder at the camera. Her tousled hair frames her face, her parted lips glistening with a hint of morning dew. The DSLR captures the intimate, ethereal scene in a shallow depth of field, Lyra's figure the centerpiece against the vast, empty expanse of the beach at dawn.",
-      "seed": 986026004,
+      "prompt": "On a plush, velvet couch in a high-end, private lounge, a stunning model in daring lingerie holds probes as she seductively straddles her partner, her sultry expression and inviting gaze inviting others to join the intimate, adult playtime unfolding before them under the soft glow of discreet lighting.",
+      "seed": 1335949051,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/abcf3ead-3398-4c1c-9fef-bc7f351d4a24.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/107.webp",
       "status": "ok",
-      "bytes": 1208446
+      "bytes": 1134828
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:56:54Z",
+  "generated_at": "2026-08-15T14:07:54Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Magnolia stands on the sun-dappled porch of a historic Charleston townhouse, beaming in a pastel sundress as she tosses a bouquet of flowers over her shoulder, surrounded by lush greenery and warm afternoon light captured by a DSLR camera with a shallow depth of field.",
-      "seed": 1222695864,
+      "prompt": "Amidst the warm glow of a dimly lit boudoir, a sultry temptress reclines on plush silk sheets, her curves barely contained by a sheer, black lace negligee. Provocatively, she teases a sleek, metallic probe with her tongue, her smoldering gaze inviting an unseen admirer to join her in a night of forbidden pleasures.",
+      "seed": 161928461,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/46f39b19-2d65-4467-aa7f-9a17ff3b477f.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/95.webp",
       "status": "ok",
-      "bytes": 1398178
+      "bytes": 1538180
     }
   ]
 }

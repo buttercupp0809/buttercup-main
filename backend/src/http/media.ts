@@ -14,13 +14,16 @@ import {
   enqueueMediaRequestSchema,
   mediaKindSchema,
   MEDIA_TOKEN_COSTS,
+  CREATION_IMAGE_COUNT,
   type EnqueueMediaResponse,
   type MediaKind,
+  type CreationImageJobPayload,
 } from "@buttercupp/shared";
 import { prisma } from "@buttercupp/database";
 import { createQueuedAsset } from "../media/asset";
 import { enqueueMediaJob } from "../queue/media-queue";
 import { getSignedUrl } from "../media/storage";
+import { isRedisConfigured } from "../queue/connection";
 import { assertSafeId } from "../utils/safe-types";
 import { assertCanConsumeMedia, PaywallError } from "../subscription/enforce";
 import { writeAuditLog } from "../utils/audit";
@@ -137,6 +140,82 @@ async function handleEnqueue(req: IncomingMessage, res: ServerResponse, kind: Me
   return send(res, 202, resp);
 }
 
+// Phase 28: creation-time image enqueue. The frontend wizard's
+// generate-images route (frontend/app/api/characters/[id]/generate-images/
+// route.ts) calls this so the SAME BullMQ queue + Phase-09 imageHandler
+// chat selfies use also produces a character's initial (or post-edit)
+// portrait set, replacing the old detached persona_pipeline.py subprocess.
+// Auth mirrors the rest of this file: cookie JWT, verified independently of
+// whatever the frontend already checked (defense in depth), since this is a
+// service-to-service call authenticated with a freshly minted short-lived
+// token, not a browser session.
+async function handleCreationImagesEnqueue(
+  req: IncomingMessage,
+  res: ServerResponse,
+  rawCharacterId: string,
+) {
+  const userId = await authenticate(req);
+  if (!userId) return send(res, 401, { error: "unauthorized" });
+
+  let characterId: string;
+  try {
+    characterId = assertSafeId(rawCharacterId, "characterId");
+  } catch {
+    return send(res, 400, { error: "invalid_id" });
+  }
+
+  const character = await prisma.character.findUnique({
+    where: { id: characterId },
+    select: { id: true, ownerUserId: true, currentVersionId: true },
+  });
+  if (!character) return send(res, 404, { error: "character_not_found" });
+  if (character.ownerUserId !== userId) return send(res, 403, { error: "forbidden" });
+  if (!character.currentVersionId) return send(res, 409, { error: "no_current_version" });
+
+  // No worker can ever drain this queue without Redis. Rather than leave
+  // MediaAsset rows queued forever, skip creating them and tell the caller
+  // generation is unavailable in this environment; the wizard stays
+  // non-blocking either way (see generate-images/route.ts).
+  if (!isRedisConfigured()) {
+    return send(res, 200, {
+      status: "unavailable",
+      message: "REDIS_URL not configured; creation-time generation is skipped in this environment.",
+    });
+  }
+
+  const characterVersionId = character.currentVersionId;
+  const assetIds: string[] = [];
+  for (let variant = 0; variant < CREATION_IMAGE_COUNT; variant++) {
+    const asset = await createQueuedAsset({
+      userId,
+      characterId,
+      kind: "image",
+      meta: { source: "creation", variant, characterVersionId },
+    });
+    const payload: CreationImageJobPayload = {
+      source: "creation",
+      characterId,
+      characterVersionId,
+      variant,
+      userRequest: "",
+    };
+    // Creation images are free: tokenCost 0 (see token-ledger.ts's
+    // zero-delta short-circuit). Only chat selfies debit IMAGE_TOKEN_COST.
+    await enqueueMediaJob({
+      mediaAssetId: asset.id,
+      userId,
+      conversationId: null,
+      characterId,
+      kind: "image",
+      tokenCost: 0,
+      payload,
+    });
+    assetIds.push(asset.id);
+  }
+
+  return send(res, 202, { status: "queued", assetIds });
+}
+
 async function handleStatus(req: IncomingMessage, res: ServerResponse, id: string) {
   const userId = await authenticate(req);
   if (!userId) return send(res, 401, { error: "unauthorized" });
@@ -167,6 +246,11 @@ export async function handleMediaRoute(req: IncomingMessage, res: ServerResponse
   if (enqueueMatch && req.method === "POST") {
     const kind = mediaKindSchema.parse(enqueueMatch[1]);
     await handleEnqueue(req, res, kind);
+    return true;
+  }
+  const creationMatch = req.url.match(/^\/media\/character\/([A-Za-z0-9_-]{1,64})\/creation-images\/?$/);
+  if (creationMatch && req.method === "POST") {
+    await handleCreationImagesEnqueue(req, res, creationMatch[1]);
     return true;
   }
   const statusMatch = req.url.match(/^\/media\/([A-Za-z0-9_-]{1,64})\/?$/);

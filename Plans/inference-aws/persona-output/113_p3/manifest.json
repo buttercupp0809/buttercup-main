@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:36:59Z",
+  "generated_at": "2026-08-15T14:44:48Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Beneath a canopy of snow-laden pine branches, Ruby's fur-trimmed coat is open, revealing the curves of her lacy bralette and high-waisted panties as she kneels in the frosty forest glade, her icy breath misting the air before her.",
-      "seed": 195256102,
+      "prompt": "A couple, their bodies entwined, recline on a plush, velvet couch in a lavish boudoir. Soft, warm candlelight flickers, casting a sensual glow across their intimate embrace. The woman's skimpy lingerie and the man's bare chest are illuminated, while the rest of the room remains shrouded in darkness, adding an air of secrecy to their passionate encounter. A cinematic lens captures every detail, from the curve of her breast to the intensity in his eyes.",
+      "seed": 875844703,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e4fc0c90-e86a-49d8-b8d9-5473cf272641.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/113.webp",
       "status": "ok",
-      "bytes": 1760415
+      "bytes": 1182400
     }
   ]
 }

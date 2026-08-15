@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:20:17Z",
+  "generated_at": "2026-08-15T14:29:13Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Perched on a rocky outcropping overlooking the shimmering Aegean, Clio poses in a daring, strapless black bikini, her bronzed skin glistening in the golden light of dawn, her tousled hair whipping in the sea breeze as she stretches out her arms, the distant city of Athens a misty silhouette on the horizon.",
-      "seed": 700345320,
+      "prompt": "In a secluded, overgrown garden at dusk, a tempting woman in a sheer nightgown provocatively toys with probes, her longing gaze and suggestive movements promising an illicit encounter for the right partner hidden among the shadowy foliage.",
+      "seed": 527133993,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/33f38f61-8da4-4127-9277-4ecc22ea21f1.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/105.webp",
       "status": "ok",
-      "bytes": 1178879
+      "bytes": 1529140
     }
   ]
 }

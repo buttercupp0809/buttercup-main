@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:30:47Z",
+  "generated_at": "2026-08-15T11:50:37Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Against the backdrop of Prague's ancient Charles Bridge at dusk, Ophelia stands with one hand on the worn stone railing, her body angled in a seductive pose that showcases her shapely thighs, the hem of her short, black leather skirt barely covering her ass. A sheer, gauzy blouse in a deep crimson hue clings to her curves, the material translucent enough to reveal the lace of her bra and the hint of her nipples. Her long, dark hair is swept up in a loose ponytail, and she looks back over her shoulder with a sultry, hooded gaze.",
-      "seed": 929342405,
+      "prompt": "In a lavish, ornate study, a stunning woman in a low-cut, emerald green gown lounges across a plush, leather armchair. She grasps probes in each hand, her slender fingers wrapping around the smooth metal as she tosses her auburn locks over one shoulder. Her eyes, smoldering with desire, lock onto the viewer as she pats the seat beside her, the invitation clear in her sultry demeanor. The warm glow of a golden hour sunset filters through the floor-to-ceiling windows, casting a flattering, honeyed light across her features.",
+      "seed": 1561971162,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/ca76028b-3135-472f-b726-16a59157fca2.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/27.webp",
       "status": "ok",
-      "bytes": 1469551
+      "bytes": 1276781
     }
   ]
 }

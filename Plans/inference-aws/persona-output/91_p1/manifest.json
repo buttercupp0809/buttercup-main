@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:48:24Z",
+  "generated_at": "2026-08-15T13:59:44Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A playful Clio skips through the ancient Athenian Acropolis at sunset, her loose sundress fluttering in the gentle breeze, as she gazes up at the Parthenon with a joyful smile, DSLR camera in hand to capture the vibrant colors of the golden hour.",
-      "seed": 788815853,
+      "prompt": "Against a backdrop of ancient columns, bathed in the warm glow of a Greek sunset, a statuesque woman in a revealing white toga plays with probes, her eyes locked on a distant admirer as she slowly twirls, the camera capturing her from a low angle with a shallow depth of field, emphasizing her curves.",
+      "seed": 304038533,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e596cb2d-f723-4712-b2ed-9920d34c7eec.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/91.webp",
       "status": "ok",
-      "bytes": 1419104
+      "bytes": 1213980
     }
   ]
 }

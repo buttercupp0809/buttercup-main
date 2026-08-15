@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:35:53Z",
+  "generated_at": "2026-08-15T13:47:41Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Ruby stands on a grassy hillside at sunset, her wind-swept hair and smile glowing with golden light from a DSLR camera's flash. She's wearing a vibrant tank top and shorts, her toned legs stretching down the slope as she looks out at the Rocky Mountains in the distance, lost in a moment of serene joy.",
-      "seed": 508303000,
+      "prompt": "In the golden glow of late afternoon, a woman in a revealing black dress and thigh-high boots stands seductively against a graffiti-covered brick wall, a sleek probe in her hand as she gazes directly into the camera with a sultry, come-hither expression, the shallow depth of field emphasizing her curves and the urban decay behind her.",
+      "seed": 285990648,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/97c347bc-10e7-47ec-b438-430680d0d8f9.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/85.webp",
       "status": "ok",
-      "bytes": 1374582
+      "bytes": 1877904
     }
   ]
 }

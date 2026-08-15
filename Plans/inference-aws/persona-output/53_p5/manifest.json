@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:29:26Z",
+  "generated_at": "2026-08-15T12:44:57Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a steamed-up bathroom, the glow of candles and the soft focus of a DSLR lens create an intimate atmosphere as Freya stands under the showerhead, water droplets beading on her curves, a translucent film of soap highlighting the peaks of her nipples, her eyes hooded and her lips parted in a sultry invitation.",
-      "seed": 324405126,
+      "prompt": "A curvaceous beauty in a lacy bodysuit and thigh-high stockings reclines on a plush, red velvet couch, a strap-on dildo resting on her ample hips. The scene is lit with a soft, warm glow, the shallow depth of field drawing attention to her sensual expression and the inviting curves of her body.",
+      "seed": 1205385727,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
       "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/53.webp",
       "status": "ok",
-      "bytes": 1290098
+      "bytes": 1426951
     }
   ]
 }

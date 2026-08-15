@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:11:58Z",
+  "generated_at": "2026-08-15T12:28:26Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A single, flickering candle illuminates Ruby's provocative form, back arched, as she lounges on a plush velvet chaise in a lavish boudoir. Her sheer, baby blue robe is open, revealing the creamy expanse of her breasts and the delicate lace of her bra. A come-hither smile plays on her lips as she gazes into the camera with an unmistakable invitation.",
-      "seed": 679184126,
+      "prompt": "In a shadowy, underground dungeon, a dominatrix in leather attire seductively manipulates probes, her gaze locked onto an unseen admirer as she beckons them near, the dim red glow of lanterns casting an air of mystery and forbidden desire. Low-key lighting, cinematic framing.",
+      "seed": 1969372984,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/c7ecde1c-2056-497f-854b-761a1303f2c4.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/45.png",
       "status": "ok",
-      "bytes": 1552409
+      "bytes": 1294092
     }
   ]
 }

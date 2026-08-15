@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:23:53Z",
+  "generated_at": "2026-08-15T13:36:25Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A solitary Lykke stands on the edge of a frozen lake at dusk, the icy landscape stretching to the horizon, her fur-trimmed coat open to reveal a lacy bralette and high-waisted panties, the chill in the air causing her nipples to pebble as she looks back over her shoulder with a smirk.",
-      "seed": 1635289827,
+      "prompt": "In a seedy backroom club, a striking stripper straddles her client's lap, her barely-there G-string and glistening sweat accentuating her curves as she grinds provocatively, a sultry gaze locked onto an unseen admirer as she teases him with the probes in her hands.",
+      "seed": 25610884,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/fa68a09c-20b2-4c5e-8e9a-4ef5d008ef8a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/79.webp",
       "status": "ok",
-      "bytes": 1049231
+      "bytes": 1143154
     }
   ]
 }

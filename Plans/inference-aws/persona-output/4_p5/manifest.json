@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T22:41:40Z",
+  "generated_at": "2026-08-15T11:04:51Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "As the first light of dawn creeps over the deserted beach, Emily kneels on the sand, her tiny string bikini barely containing her voluptuous figure. The sheer cover-up flows behind her, catching the gentle breeze and casting a shadow over her pert breasts. She looks back over her shoulder, her tousled hair a golden halo in the rising sun's glow, as she presents her thong-clad rear to the camera. The soft focus and warm tones evoke a sense of sensuality and mystery in this early morning tableau.",
-      "seed": 149532107,
+      "prompt": "In the shadows of an abandoned warehouse, two lovers engage in a dangerous, forbidden liaison, the only light emanating from flickering candles as they passionately explore each other's bodies with probes, their heavy breathing mingling with the eerie silence of their secret hideaway.",
+      "seed": 64108224,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/bec72cb8-f081-4d64-b8a0-798ca9dd26a3.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/4.webp",
       "status": "ok",
-      "bytes": 1069067
+      "bytes": 1315226
     }
   ]
 }

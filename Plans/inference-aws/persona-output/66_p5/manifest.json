@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:57:08Z",
+  "generated_at": "2026-08-15T13:11:10Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Astrid reclines on a fur-lined throne in a lavish tent, her intricately embroidered choli top and lehnga skirt a sensual nod to Indian harem inspiration. She props one hand behind her head, her other hand resting on her thigh as she gazes at the camera with a sultry, inviting expression. The soft, warm lighting and the plush textures of the surroundings create an intimate, sensual atmosphere, while the shallow depth of field draws attention to her alluring figure.",
-      "seed": 1038224604,
+      "prompt": "On a yacht's deck at sunset, a couple engages in passionate lovemaking, the man's strong hands gripping his lover's curves as they kiss deeply, waves gently rocking the vessel, the sky ablaze with hues of orange and pink behind them, the camera capturing their intimate moment from a low angle, emphasizing the intensity of their connection.",
+      "seed": 1323659890,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e15514d1-3d57-4070-b324-81525fd2a3a6.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/66.webp",
       "status": "ok",
-      "bytes": 1863429
+      "bytes": 1327344
     }
   ]
 }

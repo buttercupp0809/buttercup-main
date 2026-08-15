@@ -17,6 +17,7 @@ import { cn } from "@/lib/utils";
 import { APP_NAV, type NavIcon } from "@/components/app-shell/nav-items";
 import { ProfileMenu, type ProfileUser } from "@/components/app-shell/ProfileMenu";
 import type { RecentEntry } from "@/components/app-shell/SideNav";
+import { NavGradientDefs, NavItemLink } from "@/components/app-shell/NavItemLink";
 
 const ICONS: Record<NavIcon, React.ComponentType<{ className?: string }>> = {
   chats: MessageCircle,
@@ -36,6 +37,7 @@ export function MobileNav({ user, recents }: DrawerProps) {
   const [open, setOpen] = React.useState(false);
   const pathname = usePathname() ?? "/";
   const firstLinkRef = React.useRef<HTMLAnchorElement>(null);
+  const drawerRef = React.useRef<HTMLElement>(null);
 
   React.useEffect(() => {
     setOpen(false);
@@ -44,7 +46,27 @@ export function MobileNav({ user, recents }: DrawerProps) {
   React.useEffect(() => {
     if (!open) return;
     function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") {
+        setOpen(false);
+        return;
+      }
+      // Focus trap: cycle Tab within the drawer so keyboard/AT users cannot
+      // tab out into the (visually hidden) page behind the scrim.
+      if (e.key === "Tab" && drawerRef.current) {
+        const focusable = drawerRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        );
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     }
     document.addEventListener("keydown", onKey);
     firstLinkRef.current?.focus();
@@ -63,7 +85,7 @@ export function MobileNav({ user, recents }: DrawerProps) {
         aria-label="Open navigation"
         aria-expanded={open}
         data-testid="mobile-nav-trigger"
-        className="rounded-md p-2 text-white md:hidden"
+        className="tap-target flex items-center justify-center rounded-md text-white md:hidden"
       >
         <Menu className="h-5 w-5" />
       </button>
@@ -76,8 +98,9 @@ export function MobileNav({ user, recents }: DrawerProps) {
             aria-hidden
           />
           <aside
+            ref={drawerRef}
             data-testid="mobile-nav-drawer"
-            className="absolute inset-y-0 left-0 flex w-72 max-w-[85vw] flex-col border-r"
+            className="absolute inset-y-0 left-0 flex w-72 max-w-[85vw] flex-col border-r pt-safe pb-safe"
             style={{
               backgroundColor: "hsl(var(--buttercupp-bg))",
               borderColor: "hsl(var(--buttercupp-border))",
@@ -89,33 +112,29 @@ export function MobileNav({ user, recents }: DrawerProps) {
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Close navigation"
-                className="rounded-md p-1 text-slate-400 hover:text-white"
+                className="tap-target flex items-center justify-center rounded-md text-slate-400 hover:text-white"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
-            <nav aria-label="Primary mobile" className="flex flex-col gap-0.5 px-2">
+            <NavGradientDefs id="buttercupp-nav-gradient-mobile" />
+            <nav aria-label="Primary mobile" className="flex flex-col gap-1 px-2">
               {APP_NAV.map((item, i) => {
                 const Icon = ICONS[item.icon];
                 const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
                 return (
-                  <Link
+                  <NavItemLink
                     key={item.href}
                     href={item.href}
-                    ref={i === 0 ? firstLinkRef : undefined}
-                    data-testid={`${item.testid}-mobile`}
-                    aria-current={active ? "page" : undefined}
-                    className={cn(
-                      "flex items-center gap-3 rounded-md px-3 py-2 text-sm",
-                      active ? "text-white" : "text-slate-300",
-                    )}
-                    style={{
-                      backgroundColor: active ? "hsl(var(--buttercupp-surface-2))" : "transparent",
-                    }}
-                  >
-                    <Icon className="h-5 w-5" />
-                    <span>{item.label}</span>
-                  </Link>
+                    label={item.label}
+                    testid={item.testid}
+                    testIdSuffix="-mobile"
+                    icon={Icon}
+                    active={active}
+                    collapsed={false}
+                    gradientId="buttercupp-nav-gradient-mobile"
+                    firstLinkRef={i === 0 ? firstLinkRef : undefined}
+                  />
                 );
               })}
             </nav>
@@ -174,7 +193,7 @@ export function MobileBottomBar() {
   return (
     <nav
       aria-label="Primary mobile bottom"
-      className="fixed inset-x-0 bottom-0 z-40 flex border-t md:hidden"
+      className="fixed inset-x-0 bottom-0 z-40 flex border-t pb-safe md:hidden"
       style={{
         backgroundColor: "hsl(var(--buttercupp-bg))",
         borderColor: "hsl(var(--buttercupp-border))",
@@ -190,7 +209,7 @@ export function MobileBottomBar() {
             data-testid={it.testid}
             aria-current={active ? "page" : undefined}
             className={cn(
-              "flex flex-1 flex-col items-center gap-1 px-2 py-2 text-[10px]",
+              "tap-target flex min-h-[44px] flex-1 flex-col items-center justify-center gap-1 px-2 py-2 text-[10px]",
               active ? "text-white" : "text-slate-500",
             )}
             style={active ? { color: "hsl(var(--buttercupp-accent-rose))" } : undefined}

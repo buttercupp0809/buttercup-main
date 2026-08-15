@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:30:37Z",
+  "generated_at": "2026-08-15T14:38:48Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A secret garden at night, moonlight filtering through the trellises. Indigo, clad in a sheer, lace-trimmed negligee, bends over a stone bench, her pert breasts and toned hips on full display. A \"come hither\" look in her eyes, she seems to beckon the viewer into her hidden world.",
-      "seed": 695167886,
+      "prompt": "In the shadowy recesses of an abandoned warehouse, a woman dressed in fetish attire provocatively toys with probes, her gaze locked onto an unseen onlooker as she beckons them near, the only sound the heavy panting of her lustful breaths echoing off the metal walls.",
+      "seed": 487860822,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/9d7d3476-e09b-4cbe-88c2-d55830e38a54.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/110.webp",
       "status": "ok",
-      "bytes": 1556662
+      "bytes": 1473169
     }
   ]
 }

@@ -78,3 +78,8 @@ export type PatchCharacterInput = z.infer<typeof patchCharacterInputSchema>;
 export type CharacterDraft = Partial<CreateCharacterInput>;
 
 export const CHARACTER_DRAFT_STORAGE_KEY = "buttercupp_character_draft";
+
+// Separate autosave key for the edit wizard so resuming an in-progress
+// create draft never gets clobbered by an in-progress edit draft (or vice
+// versa); the two modes can be open in different tabs simultaneously.
+export const CHARACTER_EDIT_DRAFT_STORAGE_KEY = "buttercupp_character_edit_draft";

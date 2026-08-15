@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:21:38Z",
+  "generated_at": "2026-08-15T12:37:51Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Indigo's sultry gaze meets the viewer's as she straddles a weathered wooden crate in a dimly lit alley, clad in a barely-there leather corset and fishnets, the city lights casting long shadows across her curves.",
-      "seed": 362278130,
+      "prompt": "In a dimly lit, opulent boudoir, a stunning dominatrix clad in leather and lace holds a set of probes, her commanding presence and seductive smile beckoning a submissive to enter her realm of pleasure and pain, the air thick with anticipation and unspoken desires.",
+      "seed": 1082118236,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/35e4d4e5-e0ed-4665-a849-6d06b5487542.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/50.webp",
       "status": "ok",
-      "bytes": 1744619
+      "bytes": 1444918
     }
   ]
 }

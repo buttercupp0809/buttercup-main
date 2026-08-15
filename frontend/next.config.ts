@@ -11,14 +11,48 @@ import path from "path";
 
 const isDev = process.env.NODE_ENV !== "production";
 
+// Dev-only: the /api/media proxy 302-redirects to a presigned URL. In
+// production that target is CloudFront (already covered by the
+// https://*.cloudfront.net allowlist below); in local dev it is the local
+// MinIO container the app talks to when S3_ENDPOINT is set (see
+// backend/.env, frontend/app/api/media/route.ts), which the browser then
+// follows directly. Without this, the browser's own CSP silently blocks
+// every locally-stored character image (no network/console error beyond a
+// CSP violation), even though the proxy and MinIO both answer fine. Omitted
+// entirely in production, where nothing serves media over plain localhost.
+const DEV_LOCAL_MEDIA_ORIGINS = isDev ? ["http://localhost:9000", "http://127.0.0.1:9000"] : [];
+
 const CSP_DIRECTIVES = [
   "default-src 'self'",
-  "img-src 'self' data: blob: https://*.cloudfront.net https://*.s3.amazonaws.com https://*.s3.eu-north-1.amazonaws.com https://*.fal.media",
-  "media-src 'self' blob: https://*.cloudfront.net https://*.s3.amazonaws.com https://*.s3.eu-north-1.amazonaws.com",
+  [
+    "img-src 'self' data: blob:",
+    "https://*.cloudfront.net",
+    "https://*.s3.amazonaws.com",
+    "https://*.s3.eu-north-1.amazonaws.com",
+    "https://*.fal.media",
+    ...DEV_LOCAL_MEDIA_ORIGINS,
+  ].join(" "),
+  [
+    "media-src 'self' blob:",
+    "https://*.cloudfront.net",
+    "https://*.s3.amazonaws.com",
+    "https://*.s3.eu-north-1.amazonaws.com",
+    ...DEV_LOCAL_MEDIA_ORIGINS,
+  ].join(" "),
   `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
   [
     "connect-src 'self' https: wss:",
+    // Dev-only: the browser calls the local backend (BillingClient, media,
+    // chat-stream) directly over plain http on a different port
+    // (NEXT_PUBLIC_BACKEND_URL/NEXT_PUBLIC_WS_URL, localhost:4000 by
+    // default), which the production-shaped "https: wss:" wildcards above
+    // never cover. Without this, every local /billing and /upgrade fetch is
+    // silently dropped by the browser's own CSP enforcement (not a network
+    // or CORS error), even though the backend itself answers fine. Omitted
+    // entirely in production, where the backend is HTTPS/WSS and already
+    // covered by the wildcards above.
+    ...(isDev ? ["http://localhost:4000", "ws://localhost:4000"] : []),
     "https://openrouter.ai",
     "https://api.anthropic.com",
     "https://api.openai.com",

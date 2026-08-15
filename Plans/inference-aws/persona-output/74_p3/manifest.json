@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:13:19Z",
+  "generated_at": "2026-08-15T13:26:29Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Amid the frozen grandeur of a winter forest glade, Piper lounges seductively on a fallen log, her fur-trimmed coat open to reveal a lacy bralette and high-waisted panties, the icy air casting a spell of sensuality as she smirks with cold, rosy lips, her tousled hair contrasting with the snow-dusted landscape in a dramatic, shallow focus.",
-      "seed": 609748190,
+      "prompt": "A group of friends engaged in a raunchy game night in a cozy apartment, the women dressed in provocative lingerie as they play seductive party games, bodies entwined on the couch, laughter and moans mingling with the clinking of glasses and the thump of bass from nearby speakers, a few probes strewn about the room.",
+      "seed": 1070728055,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/8c922e73-0680-4c49-8755-c114c3bcb525.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/74.webp",
       "status": "ok",
-      "bytes": 1533626
+      "bytes": 1069053
     }
   ]
 }

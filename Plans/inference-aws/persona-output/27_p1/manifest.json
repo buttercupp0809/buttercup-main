@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:29:59Z",
+  "generated_at": "2026-08-15T11:49:46Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Ophelia playfully skips along a cobblestone street in Prague's historic Old Town Square during golden hour, her long auburn hair fluttering in the evening breeze as she admires the vibrant street performers and colorful market stalls, her bright smile and sparkling eyes radiating joy in the warm, soft light of the setting sun captured by a DSLR camera with a shallow depth of field.",
-      "seed": 1166688973,
+      "prompt": "In a dimly lit, crimson-hued boudoir, a sultry beauty reclines on velvet cushions, her curvaceous form barely concealed by a sheer, black lace negligee. Probes rest invitingly at her side as she gazes at the viewer with hooded, seductive eyes, a come-hither smile playing on her lips. The soft glow of candles and a DSLR camera's flash illuminate her porcelain skin and tousled raven tresses, drawing the eye to the tantalizing swell of her breasts and the shadowed valley between.",
+      "seed": 1132291293,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/c451b757-e9b5-4928-af7c-7ff4bb179821.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/27.webp",
       "status": "ok",
-      "bytes": 1671630
+      "bytes": 1371725
     }
   ]
 }

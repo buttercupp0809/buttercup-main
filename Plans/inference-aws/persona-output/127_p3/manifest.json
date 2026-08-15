@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:07:45Z",
+  "generated_at": "2026-08-15T15:13:55Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a moonlit Sydney harbor pier, Ruby sits on a railing, her sheer black negligee fluttering in the breeze. The city skyline twinkles behind her as she gazes out at the water, a coy smile playing on her lips.",
-      "seed": 12887228,
+      "prompt": "Illuminated by the soft, cinematic lighting of a darkened boudoir, a model in a provocative lace outfit makes suggestive hand gestures and maintains sultry eye contact as she holds probes, her body language and inviting demeanor promising a tantalizing experience for the right partner.",
+      "seed": 1659722061,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/7ef6bd65-2d32-49d2-ab89-613bdda47be9.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/127.webp",
       "status": "ok",
-      "bytes": 1231514
+      "bytes": 1553029
     }
   ]
 }

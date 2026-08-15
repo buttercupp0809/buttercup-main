@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:48:24Z",
+  "generated_at": "2026-08-15T12:05:13Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Basking in the steamy warmth of an onsen, Astrid reclines on a natural stone ledge, her porcelain skin glistening with water droplets as she languidly raises a hand to her cheek, a kimono draped loosely over one shoulder, the soft focus and shallow depth of field emphasizing her sensual, relaxed pose.",
-      "seed": 1600237116,
+      "prompt": "Amidst the shadows of an abandoned warehouse, a sultry woman in a sheer, black bodysuit provocatively toys with probes, her sultry demeanor and come-hither gaze promising an illicit encounter for the right partner, the only illumination coming from the distant, pulsing red glow of a city skyline outside.",
+      "seed": 715683107,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/f327e51d-7214-4179-9508-5d2b55495869.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/34.webp",
       "status": "ok",
-      "bytes": 1239835
+      "bytes": 1138119
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:05:52Z",
+  "generated_at": "2026-08-15T12:22:09Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a steamy bathroom, Ophelia stands under a torrent of water, rivulets cascading over her curves as she reaches out to turn off the showerhead, her full breasts and hardened nipples on display through the translucent film of soap suds, her eyes smoldering with a sensual intensity as she steps out onto the plush mat, water droplets clinging to her skin like diamonds.",
-      "seed": 361705925,
+      "prompt": "On a moonlit yacht deck, a stunning couple engaged in intimate foreplay share probes, their expressions charged with desire as they gaze longingly into each other's eyes. The gentle rocking of the vessel and the soft whispers of the night breeze create a romantic atmosphere, inviting others to join in their sensual dance under the stars.",
+      "seed": 456392822,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/5088a683-8400-471c-914e-28dd9271055a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/42.webp",
       "status": "ok",
-      "bytes": 1503048
+      "bytes": 1085993
     }
   ]
 }

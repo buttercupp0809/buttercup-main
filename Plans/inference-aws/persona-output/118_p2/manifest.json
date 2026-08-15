@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:47:10Z",
+  "generated_at": "2026-08-15T14:54:49Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit underground art gallery, Marlowe reclines on a plush velvet chaise, her sheer black gown draped seductively across her curves. A single spotlight illuminates her sultry gaze as she reaches out to trace the metallic edge of a provocative sculpture, her posture an invitation to explore further.",
-      "seed": 1416993335,
+      "prompt": "Against the backdrop of a bustling London street at golden hour, a provocatively dressed woman leans in towards a passing stranger, probes held enticingly in her hands as her seductive gaze and come-hither smile invite an impromptu encounter, the cityscape blurred in the background, captured with a wide-angle lens.",
+      "seed": 887097191,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/596964fa-2089-48b7-b56a-608fe7b903d8.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/118.webp",
       "status": "ok",
-      "bytes": 1011424
+      "bytes": 1328185
     }
   ]
 }

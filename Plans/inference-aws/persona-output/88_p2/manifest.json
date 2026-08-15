@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:42:27Z",
+  "generated_at": "2026-08-15T13:54:03Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Set against a moody, backlit forest backdrop, Piper's curvaceous silhouette is barely visible through a sheer, gauzy negligee that clings to every swell and hollow, her tousled hair cascading over one shoulder as she leans back against a gnarled tree trunk, an enigmatic half-smile playing on her lips.",
-      "seed": 1192599817,
+      "prompt": "In a dimly lit, modern boudoir, a couple reclines on plush velvet cushions, her lithe body clad in lacy lingerie as she toys with probes, their expressions charged with lust as they beckon an onlooker closer, the soft glow of candlelight casting a warm, intimate ambiance.",
+      "seed": 177671099,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/41c8e711-687e-4409-a634-0c51c8ecdb06.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/88.webp",
       "status": "ok",
-      "bytes": 1656556
+      "bytes": 1074747
     }
   ]
 }

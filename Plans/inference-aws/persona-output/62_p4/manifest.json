@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:48:19Z",
+  "generated_at": "2026-08-15T13:02:51Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A seedy back alley at midnight; Lyra's barely clad form silhouetted against the grimy brick wall, a black leather corset accentuating her toned midriff and a pair of fishnet stockings hugging her long, shapely legs, a single flickering streetlamp casting an eerie, cinematic glow on her skin.",
-      "seed": 550678903,
+      "prompt": "Amidst the opulent furnishings of a lavish boudoir, a stunning dominatrix stands before a ornate mirror, her regal beauty on full display as she slowly unfastens her corset, revealing the smooth expanse of her alabaster skin and the tantalizing curves of her breasts, a probe held invitingly at her side.",
+      "seed": 1655162842,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/0401eaa4-900d-4eb4-a352-f21703a12b20.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/62.webp",
       "status": "ok",
-      "bytes": 1470372
+      "bytes": 1419617
     }
   ]
 }

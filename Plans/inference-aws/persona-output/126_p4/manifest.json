@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:06:02Z",
+  "generated_at": "2026-08-15T15:12:23Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Set against the backdrop of a luxurious, high-ceilinged ballroom, Clara stands poised in a daring, strapless gown that accentuates her ample cleavage and toned legs, her hair styled in loose, tousled waves as she gazes over her shoulder, one hand resting on the small of her back, her expression a perfect blend of confidence and allure.",
-      "seed": 747227218,
+      "prompt": "In a steamy, underground dungeon, a dominant goddess stands over her bound submissive, a heavy, leather-bound paddle in hand. Her skin is bronzed and glistening with sweat, her black leather corset hugging every inch of her toned physique. She raises an eyebrow at the viewer, her piercing blue gaze daring them to witness her mastery over pleasure and pain.",
+      "seed": 1930918627,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/2e0804a6-97cc-4205-bd93-dc9a5f3326ce.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/126.webp",
       "status": "ok",
-      "bytes": 1386991
+      "bytes": 1388325
     }
   ]
 }

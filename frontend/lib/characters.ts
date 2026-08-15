@@ -6,10 +6,12 @@ import { prisma, buildCharacterWhere, buildCharacterOrderBy, type CharacterViewe
 import type { Character, CharacterVersion, AppearanceSheet, Prisma } from "@buttercupp/database";
 import {
   styleEnumToWire,
+  createCharacterInputSchema,
   type CharacterCardDTO,
   type CharacterDetailDTO,
   type CharacterListQuery,
   type CharacterListResponse,
+  type CreateCharacterInput,
 } from "@buttercupp/shared";
 import { assertSafeId } from "@/lib/safe-types";
 import { signAssetUrl } from "@/lib/cdn";
@@ -24,25 +26,34 @@ function avatarUrlFrom(refs: string[] | undefined): string | null {
   return `${base.replace(/\/$/, "")}/${key}`;
 }
 
-type CharacterWithCurrent = Character & {
+export type CharacterWithCurrent = Character & {
   currentVersion:
     | (CharacterVersion & { appearanceSheet: AppearanceSheet | null })
     | null;
-  media?: { url: string; kind: string; isPrimary: boolean }[];
+  media?: { url: string; kind: string; isPrimary: boolean; isDisplay: boolean }[];
 };
 
-function primaryImageFrom(media: CharacterWithCurrent["media"]): string | null {
-  const img = media?.find((m) => m.kind === "image");
+// The free/public image is the DISPLAY image (isDisplay = true), not the
+// isPrimary hero (which stays behind the upgrade nag). Falls back to the old
+// "first image" behavior for pre-backfill / single-image rows where isDisplay
+// may not yet be set.
+export function primaryImageFrom(media: CharacterWithCurrent["media"]): string | null {
+  const img =
+    media?.find((m) => m.kind === "image" && m.isDisplay === true) ??
+    media?.find((m) => m.kind === "image");
   if (!img) return null;
-  // Local paths (starting with /) are not served from S3 and are hidden.
-  if (img.url.startsWith("/")) return null;
+  // Local paths (starting with /) are Next.js public/ static files (the seed's
+  // stock persona art, e.g. /personas/5.webp, same assets STATIC_PERSONAS in
+  // lib/marketing.ts serves directly) and are perfectly displayable as-is;
+  // they are not an S3 key so signAssetUrl must not touch them.
+  if (img.url.startsWith("/")) return img.url;
   // Full https URLs (CloudFront) are served directly.
   if (img.url.startsWith("http")) return img.url;
   // Bare S3 keys: sign via CloudFront.
   return signAssetUrl(img.url);
 }
 
-function toCard(row: CharacterWithCurrent): CharacterCardDTO {
+export function toCard(row: CharacterWithCurrent): CharacterCardDTO {
   return {
     id: row.id,
     name: row.name,
@@ -82,8 +93,11 @@ export async function listCharacters(
         include: { appearanceSheet: true },
       },
       media: {
-        where: { kind: "image" },
-        orderBy: [{ isPrimary: "desc" }, { sort: "asc" }],
+        // hidden: false is load-bearing: see the HIDDEN MEDIA CONVENTION in
+        // schema.prisma. A hidden row (e.g. a retired external reference
+        // image) must never be selected here.
+        where: { kind: "image", hidden: false },
+        orderBy: [{ isDisplay: "desc" }, { isPrimary: "desc" }, { sort: "asc" }],
       },
     },
   };
@@ -110,10 +124,12 @@ export async function getCharacterDetail(
   const row = await prisma.character.findUnique({
     where: { id },
     include: {
-      currentVersion: { include: { appearanceSheet: true } },
+      currentVersion: { include: { appearanceSheet: true, voiceProfile: true } },
       media: {
-        where: { kind: "image" },
-        orderBy: [{ isPrimary: "desc" }, { sort: "asc" }],
+        // hidden: false is load-bearing: see the HIDDEN MEDIA CONVENTION in
+        // schema.prisma.
+        where: { kind: "image", hidden: false },
+        orderBy: [{ isDisplay: "desc" }, { isPrimary: "desc" }, { sort: "asc" }],
       },
     },
   });
@@ -127,10 +143,13 @@ export async function getCharacterDetail(
   const card = toCard(row as CharacterWithCurrent);
 
   // Gallery images only for authenticated viewers. Local paths (starting with /)
-  // are excluded; only S3-backed URLs (https or signed keys) are served.
+  // are excluded; only S3-backed URLs (https or signed keys) are served. The
+  // locked gallery is every image that is NOT the display image (the
+  // hero/isPrimary asset and any other non-display rows), so the free/display
+  // image never doubles up as a "locked" tile.
   const galleryImages = viewer.id !== null
     ? ((row as CharacterWithCurrent).media ?? [])
-        .filter((m) => m.kind === "image" && !m.isPrimary && !m.url.startsWith("/"))
+        .filter((m) => m.kind === "image" && !m.isDisplay && !m.url.startsWith("/"))
         .map((m) => {
           if (m.url.startsWith("http")) return m.url;
           return signAssetUrl(m.url);
@@ -151,12 +170,80 @@ export async function getCharacterDetail(
     },
     requiresAgeVerification: gatedMature || undefined,
     galleryImages,
+    isOwner,
+    editDraft: isOwner ? buildEditDraft(row) : undefined,
   };
-  // styleEnumToWire lives in @buttercupp/shared and is currently only used by the
-  // client; kept in scope here so future consumers do not accidentally send
-  // "threeD" over the wire.
-  void styleEnumToWire;
   return detail;
+}
+
+// Phase 28: reconstructs the full CreateCharacterInput shape from a
+// Character + its current version, so the edit wizard (frontend/app/
+// (protected)/create/context.tsx) can seed a draft from GET
+// /api/characters/:id exactly like a fresh create draft. Owner-only (the
+// caller must gate on isOwner); best-effort, returns undefined rather than
+// throwing if the current version is missing an appearance sheet (a
+// pathological state that should never happen post-Phase-06, but a broken
+// edit entry point is better than a 500).
+function buildEditDraft(row: {
+  style: Character["style"];
+  name: string;
+  age: number;
+  gender: string;
+  bio: string;
+  tags: string[];
+  visibility: Character["visibility"];
+  contentRating: Character["contentRating"];
+  currentVersion:
+    | (CharacterVersion & {
+        appearanceSheet: AppearanceSheet | null;
+        voiceProfile: { provider: string; voiceId: string } | null;
+      })
+    | null;
+}): CreateCharacterInput | undefined {
+  const version = row.currentVersion;
+  const appearance = version?.appearanceSheet;
+  if (!version || !appearance) return undefined;
+
+  const candidate = {
+    style: styleEnumToWire(row.style),
+    name: row.name,
+    age: row.age,
+    gender: row.gender,
+    traits: (appearance.traits as CreateCharacterInput["traits"]) ?? {},
+    stylePrompt: appearance.stylePrompt,
+    negativePrompt: appearance.negativePrompt,
+    referenceImageKeys: appearance.referenceImageKeys,
+    backstory: version.backstory,
+    traitTags: row.tags,
+    behavioralInstructions: version.behavioralInstructions,
+    greeting: version.greeting,
+    voiceProfile: {
+      provider: version.voiceProfile?.provider ?? "system",
+      voiceId: version.voiceProfile?.voiceId ?? "default",
+    },
+    bio: row.bio,
+    visibility: row.visibility,
+    contentRating: row.contentRating,
+  };
+  const parsed = createCharacterInputSchema.safeParse(candidate);
+  return parsed.success ? parsed.data : undefined;
+}
+
+// Shared version-number source of truth (Build step 6). Returns 1 for a
+// brand-new character (no prior versions), max(versionNo) + 1 otherwise.
+// Callers pass the ACTIVE transaction client so the read and the
+// CharacterVersion insert that follows commit atomically together; calling
+// this outside a transaction (as the old PATCH route did) leaves a race
+// window between the aggregate read and the insert.
+export async function nextVersionNo(
+  tx: Pick<Prisma.TransactionClient, "characterVersion">,
+  characterId: string,
+): Promise<number> {
+  const agg = await tx.characterVersion.aggregate({
+    where: { characterId },
+    _max: { versionNo: true },
+  });
+  return (agg._max.versionNo ?? 0) + 1;
 }
 
 // Pure reducer for the facet-tags aggregator. Extracted so the counting

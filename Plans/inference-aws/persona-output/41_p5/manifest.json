@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:03:45Z",
+  "generated_at": "2026-08-15T12:20:00Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Piper kneels on the sand, her tiny string bikini and sheer cover-up fluttering in the ocean breeze as the first light of dawn breaks over the deserted beach. Her tousled hair and sultry gaze capture the viewer's attention as she turns to look back at the rising sun, her toned legs and hips on full display, inviting the world to bask in her beauty.",
-      "seed": 436522926,
+      "prompt": "Against the backdrop of a stormy, moonlit night, a scantily-clad seductress poses on a weathered wooden dock, her body illuminated by the soft glow of a lantern as she teases a long, black probe with her fingers, her haunting beauty and provocative movements beckoning a mysterious admirer to join her in the shadows.",
+      "seed": 86698470,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/5c8de114-d7a3-4dad-8998-98a04645f46a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/41.webp",
       "status": "ok",
-      "bytes": 1199523
+      "bytes": 1001748
     }
   ]
 }

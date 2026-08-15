@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:58:48Z",
+  "generated_at": "2026-08-15T15:06:15Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the opulent boudoir of a turn-of-the-century manor, a ravishing vixen lounges on a sumptuous four-poster bed, her Victorian corset and shorts a provocative contrast to the lush velvet drapes and ornate antique furnishings, a sultry smile playing on her lips as she runs a delicate hand along the supple leather of a nearby chair.",
-      "seed": 1213001727,
+      "prompt": "In the hazy, dreamlike atmosphere of a steamy nightclub, a sultry stripper straddles her client's lap on a plush leather couch. The neon lights of the city outside cast a lurid glow on her glistening, sweat-slicked skin as she grinds against him in a barely-there G-string, her sultry movements and come-hither gaze promising an unforgettable night of pleasure.",
+      "seed": 1500719096,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/bbe6587c-ba2b-426d-8917-7d432b2840d0.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/123.webp",
       "status": "ok",
-      "bytes": 1702060
+      "bytes": 1277191
     }
   ]
 }

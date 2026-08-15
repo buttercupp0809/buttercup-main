@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:16:39Z",
+  "generated_at": "2026-08-15T15:22:19Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the tranquil atmosphere of a secluded onsen, Vesper sits on the edge of a steaming pool, her kimono draped loosely around her shoulders, the heat causing beads of water to glisten on her skin as she leans back, offering a tantalizing view of her braless breasts, her half-lidded eyes fixed on the camera with an air of quiet invitation.",
-      "seed": 1315399874,
+      "prompt": "Amidst the shadowy recesses of an abandoned Ottoman palace, a breathtaking beauty in a sheer, diaphanous gown plays with probes, her gaze intense and longing as she beckons a daring explorer to follow her into the palace's dark, secret chambers, where ancient desires and forbidden pleasures await.",
+      "seed": 134707085,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/c5277aa1-a407-4584-a5f9-afe738f2416a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/131.webp",
       "status": "ok",
-      "bytes": 1302673
+      "bytes": 1714922
     }
   ]
 }

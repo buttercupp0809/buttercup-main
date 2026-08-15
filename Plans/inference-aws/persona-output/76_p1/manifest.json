@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:16:46Z",
+  "generated_at": "2026-08-15T13:29:43Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Marlowe skips through Golden Gate Park, her long auburn hair streaming behind her in the warm sunlight of golden hour, as she frolics among vibrant wildflowers with a carefree grin, captured in a DSLR snapshot with a shallow depth of field that blurs the lush greenery and focuses attention on her joyful, expressive face and playful movements.",
-      "seed": 274231414,
+      "prompt": "A sultry woman lounges in a plush, velvet armchair, her curves accentuated by a sheer, black negligee. The warm glow of a candlelit boudoir illuminates her face, eyes heavy with lust as she holds a sleek, metallic dildo, beckoning an unseen partner with a coy smile.",
+      "seed": 482516857,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/992cf253-213f-4202-9b80-30b611f36b38.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/76.webp",
       "status": "ok",
-      "bytes": 1542959
+      "bytes": 1394116
     }
   ]
 }

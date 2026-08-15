@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:02:05Z",
+  "generated_at": "2026-08-15T12:18:18Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Piper's eyes sparkle with mischief as she grins from ear to ear, playfully tossing a beach ball in the air at a sunny Melbourne park during golden hour. She wears a bright yellow sundress with white flowers, her long brown hair blowing in the warm breeze as she laughs with friends in the lush green surroundings, captured with a DSLR camera's shallow depth of field.",
-      "seed": 214677397,
+      "prompt": "In the soft glow of a late evening, a woman in a sheer black lace bra and thong lounges seductively on a plush velvet couch, her toned legs extended as she teases a sleek, silver probe with her toes, beckoning an admirer closer with a come-hither gaze from beneath long, lashes.",
+      "seed": 930198170,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/51c38f51-7a6b-49f3-a2f2-038fc4c120f7.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/41.webp",
       "status": "ok",
-      "bytes": 1393053
+      "bytes": 1217197
     }
   ]
 }

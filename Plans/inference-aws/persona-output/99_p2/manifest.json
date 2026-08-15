@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:06:48Z",
+  "generated_at": "2026-08-15T14:16:09Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit Sydney nightclub, Ruby's eyes gleam with excitement as she leans back against the wall, one stiletto-clad foot propped on a bar stool, the neckline of her sheer black blouse plunging to reveal the tantalizing curve of her cleavage, a single strand of her tousled hair hanging seductively across her flushed cheek.",
-      "seed": 1077533352,
+      "prompt": "Amidst the vibrant nightlife of Sydney, a stunning beauty struts her stuff on a crowded beach, her skimpy bikini leaving little to the imagination as she playfully waves a metallic toy in the air, her confident grin and sultry gaze beckoning an admirer to join her in the shallow waves.",
+      "seed": 812460794,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/0a9aaf3c-39ff-481d-a212-a3efc504fb19.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/99.webp",
       "status": "ok",
-      "bytes": 1340760
+      "bytes": 1307171
     }
   ]
 }

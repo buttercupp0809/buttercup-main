@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:35:36Z",
+  "generated_at": "2026-08-15T12:50:36Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Piper lounges on a worn velvet chaise in a dimly lit, ornate bedroom. The rich fabrics and antique furnishings provide a sensual backdrop for her provocative pose. She wears a Victorian-style corset that pushes up her ample breasts, and the flared shorts leave little to the imagination. Her legs are crossed, one foot in a stiletto heel, the other in a garter, drawing attention to her shapely thighs and the revealing edge of her thong.",
-      "seed": 12321511,
+      "prompt": "Against a backdrop of towering, snow-capped mountains, a stunning woman in a flannel shirt and tight jeans poses with probes near a rustic cabin, her tousled hair and rosy cheeks hinting at a recent outdoor adventure, as she invites a rugged outdoorsman to join her for a more intimate exploration.",
+      "seed": 10146829,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/4d12df35-449d-40b3-bab2-0abbae8be202.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/56.webp",
       "status": "ok",
-      "bytes": 1705676
+      "bytes": 1308478
     }
   ]
 }

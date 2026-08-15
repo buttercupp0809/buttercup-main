@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:52:06Z",
+  "generated_at": "2026-08-15T14:03:11Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Juniper reclines on a plush, velvet chaise, her legs bent and crossed, the delicate lace of her black lingerie visible beneath a sheer, gauzy cover-up that drapes loosely over her chest and thighs, a single, dangling earring catching the light as she looks straight at the camera with a seductive, \"come hither\" expression.",
-      "seed": 289875688,
+      "prompt": "In the hazy, dreamlike atmosphere of a private boudoir, a couple in provocative lingerie play with probes on a velvet-covered four-poster bed, the woman straddling her partner's lap as they gaze into each other's eyes with raw, unbridled passion, the soft focus of a DSLR lens emphasizing the intimate, cinematic nature of the scene.",
+      "seed": 427252811,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/f1d7e09c-a0bf-4b97-a5dc-3a8a57e266b4.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/92.webp",
       "status": "ok",
-      "bytes": 1451696
+      "bytes": 1143702
     }
   ]
 }

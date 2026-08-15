@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T22:51:58Z",
+  "generated_at": "2026-08-15T11:14:32Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a steamy, dimly lit bathroom, Amelia stands under the pulsing spray of a showerhead, rivulets of water cascading over her voluptuous figure, her hands splayed against the tiled wall as her nipples harden beneath the translucent film of soap, a DSLR camera capturing the intimate scene in crisp, cinematic detail.",
-      "seed": 1451111658,
+      "prompt": "In the sultry glow of a golden hour sunset, a couple engaged in intimate foreplay on a yacht's deck, the man's strong hands gripping his lover's curves as they kiss deeply. Probes rest nearby as the pair's expressions convey the charged desire between them, the scene captured in a warm, shallow focus portrait that emphasizes the romantic, erotic atmosphere.",
+      "seed": 614944362,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/63396334-2982-4baf-b4af-ffe19c52d889.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/9.webp",
       "status": "ok",
-      "bytes": 1581145
+      "bytes": 1169577
     }
   ]
 }

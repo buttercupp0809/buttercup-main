@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:53:57Z",
+  "generated_at": "2026-08-15T12:10:24Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Odessa saunters into a dimly lit speakeasy, her sheer black negligee leaving little to the imagination as she navigates the crowded room. A cinematic lens focuses on her hips swaying to the sultry jazz music, the deep shadows and abstract textures of the background emphasizing her curves. Her sultry gaze meets the viewer's as she leans against the bar, a hint of a coy smile playing on her lips.",
-      "seed": 1219920392,
+      "prompt": "A sensual model poses on a velvet couch, lit by the soft, ambient glow of a DSLR camera flash. She holds probes in each hand, her expressions ranging from coy to inviting as she looks directly at the viewer, inviting them to step into her world of erotic delights.",
+      "seed": 962420944,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/54f7ecbc-8ccb-438d-be3b-251b52d45d44.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/37.webp",
       "status": "ok",
-      "bytes": 1209973
+      "bytes": 1076077
     }
   ]
 }

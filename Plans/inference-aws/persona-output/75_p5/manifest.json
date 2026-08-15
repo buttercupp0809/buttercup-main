@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:16:15Z",
+  "generated_at": "2026-08-15T13:29:12Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Perched on the edge of a velvet chaise in a lavish, dimly lit boudoir, Vesper's corseted bust strains against the confines of her Victorian attire as she leans back, one stiletto heel tapping languidly against the plush carpet. A choker encircles her throat, drawing attention to the creamy expanse of her d\u00e9colletage as she gazes up with a sultry, inviting look.",
-      "seed": 1067956886,
+      "prompt": "A couple's forbidden tryst reaches a fever pitch in the shadowy recesses of an abandoned warehouse, the woman's short skirt hiked up around her waist as she rides the man's cock against a graffiti-covered wall, their heavy breathing and panting mingling with the distant wail of sirens outside, a single flickering streetlamp casting an eerie, cinematic glow on their twisted forms.",
+      "seed": 1517246892,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/4410ccb3-5541-4be6-bbec-ccf3b94ff2d0.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/75.webp",
       "status": "ok",
-      "bytes": 1323709
+      "bytes": 1811265
     }
   ]
 }

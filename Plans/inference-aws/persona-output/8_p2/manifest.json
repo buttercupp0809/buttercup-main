@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T22:48:55Z",
+  "generated_at": "2026-08-15T11:11:46Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, upscale Berlin nightclub, Charlotte sips a cocktail at the bar, her back to the camera. She wears a sleek black jumpsuit that clings to her curves, her bare shoulders and back on display under the flashing neon lights. Her raven hair is pulled back in a low ponytail, and her eyes gleam with mischief as she surveys the crowded room.",
-      "seed": 1052463500,
+      "prompt": "In a hazy, dreamlike setting, a sultry couple clad in futuristic lingerie hold high-tech sex toys, their expressions charged with lust as they beckon an onlooker to join their intimate game. Shallow depth of field blurs the background, focusing attention on their provocative poses and sultry eye contact, while the golden hour light casts a soft, flattering glow.",
+      "seed": 732281372,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/6d8d8900-6007-40b4-a6e0-a8157f0b02ed.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/8.webp",
       "status": "ok",
-      "bytes": 1404965
+      "bytes": 1061028
     }
   ]
 }

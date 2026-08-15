@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:23:45Z",
+  "generated_at": "2026-08-15T14:32:35Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A dimly lit back alley in Dublin's Temple Bar district; Lyra leans against a brick wall, her leather corset and fishnet stockings a provocative contrast to the rough, urban setting. The moon casts long shadows across her face as she smirks, one hand resting on her hip, the other trailing down to the edge of her thong. The camera lingers on the curves of her body, the play of light and shadow accentuating her sensual pose in this seedy, forbidden corner of the city.",
-      "seed": 1724819841,
+      "prompt": "Amidst the sultry, golden hour glow of a city rooftop, a couple clad in sheer, seductive attire engages in passionate foreplay, holding probes as they entwine their bodies, their expressions charged with desire and their heated glances inviting others to join their sensual encounter.",
+      "seed": 1797753881,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/81d5eebd-bd93-4419-8ae2-f86552042fea.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/107.webp",
       "status": "ok",
-      "bytes": 2122485
+      "bytes": 1086112
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:41:34Z",
+  "generated_at": "2026-08-15T12:56:27Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a moonlit hill overlooking the Parthenon, a statuesque goddess with raven tresses cascading down her back and piercing amber eyes stands poised, her slender fingers grasping a fragment of broken marble as a gentle breeze tousles her hair and caresses the sheer, gauzy fabric of her flowing white gown, which clings to her hourglass figure.",
-      "seed": 1100835817,
+      "prompt": "On a plush, velvet-covered bed, a provocative model in skimpy lingerie playfully engages with probes, her provocative pose, coy smile, and the soft focus of a DSLR lens capturing the intimate, sensual mood of a private encounter.",
+      "seed": 1582367659,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b81f626a-a422-40ce-be02-63acfbfe6bc1.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/59.webp",
       "status": "ok",
-      "bytes": 1243062
+      "bytes": 1033237
     }
   ]
 }

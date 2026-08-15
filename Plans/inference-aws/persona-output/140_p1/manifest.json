@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:34:39Z",
+  "generated_at": "2026-08-15T15:39:36Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Clara stands on a cobblestone street at golden hour, laughing with her arm around a friend, a DSLR capturing the warm, soft light as it bathes her in a shallow depth of field, her elegant dress and high heels a testament to her refined taste amidst the ornate Baroque architecture of Vienna.",
-      "seed": 127926658,
+      "prompt": "Amidst the golden hour glow of a Vienna opera house, a statuesque beauty in a form-fitting red gown stands at the edge of the stage, probes in hand, her sultry gaze inviting the audience to join her in a private serenade amidst the ornate backdrop of velvet curtains and gilded balconies, captured by a DSLR camera's shallow depth of field that emphasizes her alluring curves.",
+      "seed": 269320225,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/ba388a62-482a-490b-824c-0e6c2e53cd46.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/140.webp",
       "status": "ok",
-      "bytes": 1426042
+      "bytes": 1396573
     }
   ]
 }

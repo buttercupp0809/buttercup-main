@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:40:46Z",
+  "generated_at": "2026-08-15T12:55:42Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Amidst the vibrant stalls of an Athens market during golden hour, a carefree young woman with long, sun-kissed hair and bright blue eyes laughs merrily as she haggles over a colorful tapestry, her flowing sundress catching the warm glow of the setting sun and accentuating her youthful curves.",
-      "seed": 1270880398,
+      "prompt": "Amidst the golden hour glow of a secluded rooftop, a temptress clad in a sheer black lace bodysuit poses seductively, probes in hand, her piercing gaze and sultry smile beckoning an unsuspecting admirer into the shadows with her.",
+      "seed": 1280663191,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/9c06fc1e-9c01-4761-9874-8b34fd774826.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/59.webp",
       "status": "ok",
-      "bytes": 1749415
+      "bytes": 1553653
     }
   ]
 }

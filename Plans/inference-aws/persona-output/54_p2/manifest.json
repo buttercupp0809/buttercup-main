@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:30:29Z",
+  "generated_at": "2026-08-15T12:45:48Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Odessa standing in the shadows of a dimly lit, crimson-draped boudoir, her voluptuous figure barely concealed by a sheer, black lace negligee that clings to every curve, the faint glow of candles illuminating her alluring features, her sultry gaze directed at the viewer as she sensually runs a hand along the fabric of her gown, her other hand resting on a plush, velvet-covered armchair, the camera's low angle emphasizing her statuesque presence.",
-      "seed": 833613103,
+      "prompt": "Amidst the hazy, dreamlike atmosphere of a sensual night club, a couple dressed in futuristic outfits holds high-tech sex toys, their lustful expressions and come-hither gestures beckoning an onlooker to join their erotic games under the pulsing lights and throbbing bass of the music.",
+      "seed": 1777682326,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/c24afab6-262c-43f5-aa7e-2542ace25059.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/54.webp",
       "status": "ok",
-      "bytes": 1406172
+      "bytes": 1123058
     }
   ]
 }

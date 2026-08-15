@@ -52,7 +52,7 @@ export function ReelsCarousel({ reels }: { reels: PublicReel[] }) {
 
       <div
         ref={scrollerRef}
-        className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-safe pb-4 [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {reels.map((reel) => (
           <ReelCard key={reel.id} reel={reel} />

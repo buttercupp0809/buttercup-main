@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:02:12Z",
+  "generated_at": "2026-08-15T13:16:12Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Late-night jazz club: Phoebe's sultry gaze captures the camera's attention under dim stage lighting, her black lace gown clinging to her curves as she sways to the rhythm, a cinematic focus on her face and a blurred backdrop of instruments.",
-      "seed": 1640210641,
+      "prompt": "Captured in the golden hour, a couple stands on the bow of a yacht, the fading light casting a warm, cinematic glow. The woman's sleek black swimsuit leaves little to the imagination, while her partner's hands roam her body as they hold futuristic sex toys, their sultry gazes inviting an onlooker to join in the intimate game.",
+      "seed": 100508646,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/ed628987-645e-4bb5-9068-12b61e6774d0.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/69.webp",
       "status": "ok",
-      "bytes": 950667
+      "bytes": 1248339
     }
   ]
 }

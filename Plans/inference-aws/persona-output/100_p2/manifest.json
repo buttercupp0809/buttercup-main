@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:08:55Z",
+  "generated_at": "2026-08-15T14:18:07Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the dimly lit entrance of a secret speakeasy, Phoebe's sultry gaze lures patrons through a beaded curtain as she stands in a low-cut, form-fitting gown, her voluptuous figure accentuated by the soft focus of a 50mm lens in a deep, moody atmosphere.",
-      "seed": 804142720,
+      "prompt": "In a dimly lit boudoir, a dominatrix slowly unbuttons her leather corset, revealing her pert breasts bound in black lace, while her submissive kneels at her feet, awaiting his mistress's commands as a DSLR camera captures their intimate scene under golden hour light.",
+      "seed": 205017203,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/a7962eb7-4f7f-471a-96e5-85b9bf790fc0.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/100.webp",
       "status": "ok",
-      "bytes": 1938752
+      "bytes": 1169131
     }
   ]
 }

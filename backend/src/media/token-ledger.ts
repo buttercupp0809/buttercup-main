@@ -20,13 +20,29 @@ export class InsufficientTokensError extends Error {
 
 export interface DebitParams {
   userId: string;
-  delta: number; // POSITIVE amount to remove from the balance
+  delta: number; // amount to remove from the balance; 0 is allowed (free jobs)
   reason: TokenReason;
   refId?: string | null;
 }
 
-export async function debitTokens(params: DebitParams): Promise<{ balanceAfter: number; ledgerId: string }> {
-  if (params.delta <= 0) throw new Error("delta must be positive");
+// Phase 28: creation-time character images are free (tokenCost: 0), unlike
+// chat selfies which still debit IMAGE_TOKEN_COST. A zero delta is a no-op
+// success: no balance change, no TokenLedger row (a ledger row with
+// delta: 0 would be noise, not an audit trail entry). Only a NEGATIVE delta
+// is rejected as a caller bug; ledgerId is null in the no-op case since no
+// row was written.
+export async function debitTokens(
+  params: DebitParams,
+): Promise<{ balanceAfter: number; ledgerId: string | null }> {
+  if (params.delta < 0) throw new Error("delta must be non-negative");
+  if (params.delta === 0) {
+    const user = await prisma.user.findUnique({
+      where: { id: params.userId },
+      select: { tokenBalance: true },
+    });
+    if (!user) throw new Error("user_not_found");
+    return { balanceAfter: user.tokenBalance, ledgerId: null };
+  }
   return prisma.$transaction(async (tx) => {
     // Conditional update. When the balance is short, updateMany returns
     // count 0 and we throw without touching the ledger.
@@ -59,8 +75,18 @@ export async function debitTokens(params: DebitParams): Promise<{ balanceAfter: 
   });
 }
 
+// Mirrors debitTokens: a zero-cost job (creation image) has nothing to
+// refund on failure, so this is a no-op success rather than a thrown error.
 export async function refundTokens(params: DebitParams): Promise<{ balanceAfter: number }> {
-  if (params.delta <= 0) throw new Error("delta must be positive");
+  if (params.delta < 0) throw new Error("delta must be non-negative");
+  if (params.delta === 0) {
+    const user = await prisma.user.findUnique({
+      where: { id: params.userId },
+      select: { tokenBalance: true },
+    });
+    if (!user) throw new Error("user_not_found");
+    return { balanceAfter: user.tokenBalance };
+  }
   return prisma.$transaction(async (tx) => {
     const user = await tx.user.update({
       where: { id: params.userId },

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:09:04Z",
+  "generated_at": "2026-08-15T15:15:10Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Phoebe stands in a vibrant New Orleans courtyard, bathed in warm golden hour light, her face beaming with joy as she twirls a colorful parasol. A flowy sundress in shades of turquoise and yellow sways around her hips, cinched at the waist with a wide leather belt. The DSLR captures her carefree spirit against a backdrop of lush greenery and weathered brick.",
-      "seed": 47792290,
+      "prompt": "A sultry woman in a lacy red bra and matching thong leans against a graffiti-covered brick wall, gazing over her shoulder with a come-hither smile. Soft focus and warm lighting capture her curves as she teasingly plays with a vibrating probe, the city skyline blurred in the background.",
+      "seed": 848655986,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/0f8b3132-9d57-47c7-8be3-a9f6ea85aac5.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/128.webp",
       "status": "ok",
-      "bytes": 1831154
+      "bytes": 1370957
     }
   ]
 }

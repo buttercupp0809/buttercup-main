@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:14:09Z",
+  "generated_at": "2026-08-15T15:19:58Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Piper's figure is silhouetted against a backdrop of Melbourne's winding city streets, the iconic tram tracks leading the eye down to her shapely legs, clad in a pair of high-heeled stilettos. A short, pleated skirt flutters around her thighs as she strides purposefully towards the camera, her expression one of confidence and desire.",
-      "seed": 662188114,
+      "prompt": "In a steamy, underground dungeon, a sultry siren in fetish attire stands before a bound submissive, her hands trailing probes over their restrained body as she whispers sultry promises, the air heavy with anticipation and the only illumination provided by flickering red candles.",
+      "seed": 1047883713,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/2f3a4f52-25c2-4745-ba14-37a2fa199a4a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/130.webp",
       "status": "ok",
-      "bytes": 1425038
+      "bytes": 1546567
     }
   ]
 }

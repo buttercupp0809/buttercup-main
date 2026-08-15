@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:40:48Z",
+  "generated_at": "2026-08-15T13:52:27Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Set against the rugged cliffs of the Dublin coast, Hazel stands at the edge of a precipice, wind-blown hair framing her profile as she gazes out at the turbulent sea, a solitary figure in a long, flowing coat, the dramatic landscape contrasting with her vulnerable, introspective posture.",
-      "seed": 1400637633,
+      "prompt": "In a cozy, candlelit parlor, a couple in matching lingerie hold futuristic sex toys, their bodies entwined on a plush velvet sofa. The warm, golden light from the flickering candles casts a romantic, intimate ambiance, while the soft focus and shallow depth of field emphasize the tender, loving moments between the pair as they invite others to join their sensual game.",
+      "seed": 627397823,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/7a48c940-aa0f-4679-9665-539060bd93e1.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/87.webp",
       "status": "ok",
-      "bytes": 1548532
+      "bytes": 1208656
     }
   ]
 }

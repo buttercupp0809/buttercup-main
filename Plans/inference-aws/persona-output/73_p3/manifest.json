@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:11:12Z",
+  "generated_at": "2026-08-15T13:24:35Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Standing at the edge of a steaming geothermal hot spring under the starry Norwegian sky, Freya's lithe, athletic form is illuminated by the celestial glow, her translucent skin glistening with sweat as she looks over her shoulder with a coy, inviting smile, the steam swirling around her in a mystical aura.",
-      "seed": 1278569974,
+      "prompt": "In a lavish penthouse suite, a couple engages in intimate foreplay on a plush, velvet-covered chaise lounge, their expressions charged with desire as they hold probes. The room is bathed in a warm, ambient glow from a crystal chandelier, while the city skyline stretches out behind them, a glittering tapestry of lights against the dark night sky.",
+      "seed": 662777918,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/94a1e7b3-6633-458a-b219-8294a4463f07.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/73.webp",
       "status": "ok",
-      "bytes": 1138091
+      "bytes": 1570459
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:09:23Z",
+  "generated_at": "2026-08-15T12:25:52Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a moonlit beach, Hazel straddles a weathered driftwood log, her body illuminated by the soft glow of a lantern placed nearby, her black lace lingerie clinging to her curves as she gazes out at the vast ocean, her long dark hair cascading down her back in soft waves, the sand beneath her bare feet glistening in the light.",
-      "seed": 1636291566,
+      "prompt": "In the hushed tones of an upscale art gallery, a scantily-clad model lounges on a plush velvet chaise, her body a canvas of provocative curves, a single probe resting suggestively against her bare thigh as she makes sultry eye contact with an unseen admirer, her inviting smile and languid pose promising an evening of forbidden pleasures.",
+      "seed": 1532260851,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/cdad61a1-fc85-417c-bc2e-ae65d7f32e05.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/44.webp",
       "status": "ok",
-      "bytes": 2165202
+      "bytes": 1187527
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:37:26Z",
+  "generated_at": "2026-08-15T13:49:10Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Kneeling on a deserted beach at dawn, the woman looks back over her shoulder at the rising sun, her tiny string bikini and sheer cover-up glistening with dew. Wind-blown hair and a sultry gaze complete the image, captured by a DSLR camera's shallow depth of field to emphasize her alluring form against the soft, pastel hues of the morning sky.",
-      "seed": 436901125,
+      "prompt": "On the sun-drenched deck of a luxurious yacht, a couple in skimpy swimwear passionately embrace, holding probes as they gaze into each other's eyes, the warm, golden light of sunset casting long shadows behind them, the gently lapping waves creating a soothing background melody to their intimate, romantic scene.",
+      "seed": 1207792788,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/5c6e0b16-c05c-45bf-ae38-f54c3d056048.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/85.webp",
       "status": "ok",
-      "bytes": 1191273
+      "bytes": 1222016
     }
   ]
 }

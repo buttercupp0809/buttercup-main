@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:07:37Z",
+  "generated_at": "2026-08-15T14:16:54Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a secluded Outback oasis, Ruby reclines on a blanket of wildflowers, her body a sensual landscape of sun-kissed skin and flowing golden locks. A barely-there bandeau top and skimpy G-string leave little to the imagination, the harsh desert light highlighting every curve and crevice of her toned physique as she gazes up at the vast, cerulean sky, a look of primal contentment on her face.",
-      "seed": 368349141,
+      "prompt": "Deep in the heart of the Australian Outback, a daring adventurer takes a break from exploring to pose seductively amidst the rugged landscape, her tight tank top and shorts highlighting her toned physique as she brandishes a shiny gold toy, her fiery spirit and adventurous heart palpable in her bold, inviting smile.",
+      "seed": 1621830865,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/6e1adcf2-cd9a-4330-b9e5-b0892f8856ea.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/99.webp",
       "status": "ok",
-      "bytes": 1910528
+      "bytes": 1367160
     }
   ]
 }

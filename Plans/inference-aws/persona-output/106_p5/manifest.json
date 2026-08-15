@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:22:48Z",
+  "generated_at": "2026-08-15T14:31:44Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Deserted beach at dawn - Juniper kneels on the sand, her tiny string bikini glistening with dew as the sun rises over the ocean in the background. A sheer cover-up drapes loosely over one shoulder, allowing a glimpse of her toned stomach. Her tousled hair and windblown expression capture the freedom and sensuality of the early morning hours. She looks back over her shoulder at the camera, her half-closed eyes and parted lips conveying a languid, inviting attitude.",
-      "seed": 726311298,
+      "prompt": "On a moonlit beach, a scantily-clad woman in a metallic bikini stands at the water's edge, probes held high as she turns to face the camera, the ocean breeze tousling her hair and the soft focus of the DSLR capturing the dreamlike quality of the scene, inviting the viewer to join her in this intimate, nocturnal encounter.",
+      "seed": 1690616071,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/ae9a29a5-c9b5-4956-8f9b-12a3b993cde8.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/106.webp",
       "status": "ok",
-      "bytes": 1197709
+      "bytes": 1093089
     }
   ]
 }

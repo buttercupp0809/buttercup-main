@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:17:22Z",
+  "generated_at": "2026-08-15T14:26:27Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, velvet-draped boudoir, Marlowe reclines on a plush chaise, her corseted form and short Victorian shorts creating a striking contrast as she gazes up at the viewer with a sultry, half-lidded gaze, her hand drifting down to caress her thigh.",
-      "seed": 201580647,
+      "prompt": "In the hazy, dreamlike atmosphere of a dimly lit boudoir, a scantily-clad couple entwined on a plush bed hold futuristic sex toys, their lustful expressions and sultry body language beckoning a voyeur to join their intimate game, the soft focus and warm tones capturing the intimate, sensual mood.",
+      "seed": 1573009394,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/a5a61191-5aaf-48b4-8549-25887f9d7511.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/104.webp",
       "status": "ok",
-      "bytes": 1588004
+      "bytes": 951469
     }
   ]
 }

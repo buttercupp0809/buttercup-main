@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:38:17Z",
+  "generated_at": "2026-08-15T14:46:15Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A warm, golden hour glow illuminates Phoebe as she playfully twirls in a sun-dappled park, her long, curly hair and flowy sundress dancing in the breeze, capturing her carefree and joyful spirit with a DSLR's shallow depth of field.",
-      "seed": 1429761232,
+      "prompt": "Under the glow of a setting sun, a woman in a skimpy bikini lounges on a beach towel, her long legs stretched out as she teasingly plays with a sex toy, her sultry gaze inviting an admirer to join her on the warm sand.",
+      "seed": 1152244012,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/6502e127-2e3f-412c-86d0-78eea4096c08.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/114.webp",
       "status": "ok",
-      "bytes": 1388058
+      "bytes": 1133197
     }
   ]
 }

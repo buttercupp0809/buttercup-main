@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:24:34Z",
+  "generated_at": "2026-08-15T12:40:41Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Standing at the edge of a frozen lake in the heart of Norway's winter wonderland, Astrid shivers in the icy air, her breath visible as she turns to face the camera, her long, dark coat flapping open to reveal a lacy, black bra and matching thong, her skin glowing with a rosy flush beneath the pale moonlight, her full, pink lips parted in a inviting smile.",
-      "seed": 1688056222,
+      "prompt": "In a shadowy, abandoned warehouse, a couple's forbidden liaison reaches a fever pitch, their passion palpable as they explore every dark, depraved desire, the woman's provocative pose and come-hither gestures with probes inviting an unseen onlooker to join in their illicit, dangerous tryst.",
+      "seed": 1580239668,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/26ceed70-a4d2-4b5d-a443-16083f4c1607.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/51.webp",
       "status": "ok",
-      "bytes": 1328809
+      "bytes": 1230892
     }
   ]
 }

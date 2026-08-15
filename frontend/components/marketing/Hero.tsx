@@ -109,7 +109,7 @@ export function Hero({ items, viewerAllowsMature }: HeroProps) {
         className="relative mx-auto mt-14 max-w-6xl px-6 focus-visible:outline-none"
       >
         {slides.length > 0 ? (
-          <div className="overflow-hidden">
+          <div className="overflow-x-hidden">
             <div
               className="flex transition-transform duration-700 ease-out"
               style={{ transform: `translateX(-${active * 100}%)` }}

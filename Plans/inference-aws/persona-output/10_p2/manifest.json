@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T22:53:21Z",
+  "generated_at": "2026-08-15T11:15:53Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A sultry, cinematic still life set in a dimly lit, opulent boudoir at night, Harper reclining languidly on plush velvet sheets, her ample cleavage spilling out of a sheer, black lace negligee as she gazes directly at the camera with half-lidded, inviting eyes, a strand of pearls draped across her collarbone and a single candle casting a warm glow on her porcelain skin and the abstract textures of the room.",
-      "seed": 1444615779,
+      "prompt": "Amidst the hazy, dreamlike ambiance of a neon-lit bedroom, a couple clad in futuristic lingerie playfully brandish sex toys, their heated expressions and beckoning gestures inviting an onlooker to join their intimate fantasy, the blurred background and cinematic lighting enhancing the sense of forbidden desire.",
+      "seed": 1186798667,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/c0b16597-b1f7-4ac8-bc6b-642023490e08.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/10.webp",
       "status": "ok",
-      "bytes": 1461963
+      "bytes": 1124040
     }
   ]
 }

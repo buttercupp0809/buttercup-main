@@ -18,6 +18,8 @@ import type { Memory, MemorySummary } from "@buttercupp/database";
 import { embed } from "./embeddings";
 import { vectorSearchMemories, markMemoriesAccessed } from "../memory/store";
 import { assertSafeId } from "../utils/safe-types";
+import { memoryGraphEnabled } from "../config/flags";
+import { logWarn } from "../utils/log";
 
 // Weights (must sum to ~1.0). Kept in one const so tuning is trivial.
 export const W_VECTOR = 0.30;
@@ -53,6 +55,11 @@ export interface ScoredMemory {
     emotional: number;
     topicBonus: boolean;
     pinned: boolean;
+    // Phase 30: set only on synthetic entries appended by
+    // getRelevantMemoriesWithGraph. Absent (undefined) on every base
+    // getRelevantMemories result, so existing breakdown consumers/snapshots
+    // are byte-identical.
+    graphNeighbor?: boolean;
   };
 }
 
@@ -237,6 +244,143 @@ export function renderMemoryBlock(
       lines.push(`(${topic})`);
       for (const it of items) lines.push(it);
     }
+  }
+  return lines.join("\n");
+}
+
+// Phase 30: memory graph-aware retrieval. Design lineage: Supermemory
+// (typed-relation graph, entity nodes, one-hop traversal) and Mem0
+// (extract-then-consolidate memory layer with graph links). This wraps the
+// legacy getRelevantMemories pipeline UNCHANGED as the seed set, then when
+// memoryGraphEnabled(): adds a bounded number of graph neighbors and returns
+// the edges connecting the final set as a small, deterministic Connections
+// block. Every query is scoped by BOTH userId AND characterId, which is the
+// isolation boundary (unlike Pellow, which keys by userId alone).
+export interface MemoryConnection {
+  fromId: string;
+  toId: string;
+  relation: string;
+  label: string | null;
+}
+
+export const GRAPH_MAX_NEIGHBORS = 5;
+export const GRAPH_TOTAL_CAP = 20;
+export const GRAPH_CONNECTIONS_MAX = 6;
+
+export interface GraphRetrievalResult {
+  scored: ScoredMemory[];
+  connections: MemoryConnection[];
+}
+
+export async function getRelevantMemoriesWithGraph(input: RetrieveInput): Promise<GraphRetrievalResult> {
+  const scored = await getRelevantMemories(input);
+  if (!memoryGraphEnabled() || scored.length === 0) {
+    return { scored, connections: [] };
+  }
+
+  try {
+    const selectedIds = scored.map((s) => s.memory.id);
+    const selectedIdSet = new Set(selectedIds);
+
+    const edges = await prisma.memoryEdge.findMany({
+      where: {
+        userId: input.userId,
+        characterId: input.characterId,
+        OR: [{ sourceId: { in: selectedIds } }, { targetId: { in: selectedIds } }],
+      },
+      orderBy: { weight: "desc" },
+    });
+
+    const neighborIds: string[] = [];
+    for (const e of edges) {
+      if (!e.targetId) continue;
+      if (!selectedIdSet.has(e.sourceId) && !neighborIds.includes(e.sourceId)) {
+        neighborIds.push(e.sourceId);
+      }
+      if (!selectedIdSet.has(e.targetId) && !neighborIds.includes(e.targetId)) {
+        neighborIds.push(e.targetId);
+      }
+      if (neighborIds.length >= GRAPH_MAX_NEIGHBORS * 3) break;
+    }
+
+    let neighborScored: ScoredMemory[] = [];
+    if (neighborIds.length > 0) {
+      const capacity = Math.max(0, Math.min(GRAPH_MAX_NEIGHBORS, GRAPH_TOTAL_CAP - scored.length));
+      if (capacity > 0) {
+        const candidateIds = neighborIds.slice(0, capacity * 2);
+        const rows = await prisma.memory.findMany({
+          where: {
+            id: { in: candidateIds },
+            userId: input.userId,
+            characterId: input.characterId,
+            tier: { not: "cold" },
+          },
+        });
+        const orderIndex = new Map(candidateIds.map((id, i) => [id, i]));
+        neighborScored = rows
+          .sort((a, b) => (orderIndex.get(a.id) ?? 0) - (orderIndex.get(b.id) ?? 0))
+          .slice(0, capacity)
+          .map((memory) => ({
+            memory,
+            // Synthetic, deliberately below MIN_SCORE so a graph neighbor
+            // never outranks a real scored hit; the scorer is NOT re-run.
+            score: MIN_SCORE / 2,
+            breakdown: {
+              vector: 0,
+              bm25: 0,
+              recency: 0,
+              importance: memory.importance,
+              confidence: memory.confidence,
+              emotional: 0.5,
+              topicBonus: false,
+              pinned: memory.pinned,
+              graphNeighbor: true,
+            },
+          }));
+      }
+    }
+
+    const finalScored = [...scored, ...neighborScored];
+    const finalIdSet = new Set(finalScored.map((s) => s.memory.id));
+    const connections: MemoryConnection[] = edges
+      .filter((e) => e.targetId && finalIdSet.has(e.sourceId) && finalIdSet.has(e.targetId))
+      .slice(0, GRAPH_CONNECTIONS_MAX)
+      .map((e) => ({
+        fromId: e.sourceId,
+        toId: e.targetId as string,
+        relation: e.relation,
+        label: e.label ?? null,
+      }));
+
+    return { scored: finalScored, connections };
+  } catch (err) {
+    logWarn("memory-graph", "graph-aware retrieval failed", {
+      reason: err instanceof Error ? err.message : String(err),
+    });
+    return { scored, connections: [] };
+  }
+}
+
+// Deterministic Connections block appended after the recalled-facts block.
+// Renders `content -> content (relation)` lines so the model sees WHY two
+// recalled facts are related without re-deriving it. Looks up content by id
+// from the scored set that was passed to render (base + graph neighbors),
+// so it never issues an extra query.
+export function renderMemoryBlockWithConnections(
+  scored: ScoredMemory[],
+  summary: MemorySummary | null,
+  connections: MemoryConnection[],
+): string {
+  const base = renderMemoryBlock(scored, summary);
+  if (connections.length === 0) return base;
+
+  const contentById = new Map(scored.map((s) => [s.memory.id, s.memory.content]));
+  const lines = [base, "", "Connections:"];
+  for (const c of connections) {
+    const from = contentById.get(c.fromId);
+    const to = contentById.get(c.toId);
+    if (!from || !to) continue;
+    lines.push(`- "${from}" ${c.relation} "${to}"`);
   }
   return lines.join("\n");
 }

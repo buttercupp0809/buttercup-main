@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:20:44Z",
+  "generated_at": "2026-08-15T12:36:59Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Clara reclines on a plush, velvet chaise, her long, bare legs crossed, a sheer, white negligee barely covering her curves as she languidly flips through a book of classical sonatas, her expression dreamy and introspective under the soft, golden light of a bedside lamp.",
-      "seed": 388591086,
+      "prompt": "In the sultry atmosphere of a secret underground club, a dominatrix clad in leather and lace commands the attention of a coterie of admirers, her regal beauty and commanding presence illuminated by the pulsing strobe lights as she holds probes and makes suggestive gestures, her eyes smoldering with a clear invitation for those brave enough to submit to her sensual wrath.",
+      "seed": 1038115644,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/512e5074-3e0e-49bc-80aa-6ae9b585e22c.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/49.webp",
       "status": "ok",
-      "bytes": 1259672
+      "bytes": 1333478
     }
   ]
 }

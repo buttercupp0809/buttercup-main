@@ -21,6 +21,25 @@ const VISIBILITY_CARDS = [
   },
 ];
 
+const RATING_CARDS = [
+  {
+    value: "sfw" as const,
+    label: "Standard",
+    emoji: "☀️",
+    hint: "Safe for work, general audience",
+    gradient: "linear-gradient(135deg, #0a1a10 0%, #12261a 40%, #163422 100%)",
+    accentColor: "#90d8b0",
+  },
+  {
+    value: "mature" as const,
+    label: "Mature",
+    emoji: "🔥",
+    hint: "18+ content, hidden from general browsing",
+    gradient: "linear-gradient(135deg, #1a0a0a 0%, #2e1212 40%, #3a1414 100%)",
+    accentColor: "#e89090",
+  },
+];
+
 function RichCard<T extends string>({
   card,
   selected,
@@ -125,6 +144,30 @@ export default function PublishStep() {
               card={card}
               selected={draft.visibility === card.value}
               onClick={() => updateDraft({ visibility: card.value })}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Content rating */}
+      <div className="flex flex-col gap-3">
+        <span
+          className="text-sm font-medium"
+          style={{
+            color: "hsl(var(--buttercupp-fg))",
+            borderLeft: "3px solid hsl(var(--buttercupp-accent-rose))",
+            paddingLeft: "10px",
+          }}
+        >
+          Content rating
+        </span>
+        <div className="grid grid-cols-2 gap-3">
+          {RATING_CARDS.map((card) => (
+            <RichCard
+              key={card.value}
+              card={card}
+              selected={draft.contentRating === card.value}
+              onClick={() => updateDraft({ contentRating: card.value })}
             />
           ))}
         </div>

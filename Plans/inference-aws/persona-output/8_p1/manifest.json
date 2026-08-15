@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T22:48:30Z",
+  "generated_at": "2026-08-15T11:11:24Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Charlotte playfully skips through a sun-drenched Berlin park during the golden hour, her long brown hair fluttering in the breeze. She wears a fitted white blouse, high-waisted denim shorts, and brown leather sandals. A DSLR captures her carefree joy, the shallow depth of field blurring the background as she looks directly at the camera with a bright smile.",
-      "seed": 1875615111,
+      "prompt": "Amidst the warm glow of a dimly lit boudoir, a stunning dominatrix slowly unbuttons her white silk shirt, revealing her pert breasts encased in black leather corsets. Her submissive kneels at her feet, adorned only in a collar and handcuffs, as she beckons her latest conquest closer with a hypnotic gaze, the DSLR camera capturing her sensual movements in crisp, cinematic detail.",
+      "seed": 778381927,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e90f9514-376d-44f2-90c5-398e2e5f393a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/8.webp",
       "status": "ok",
-      "bytes": 1344098
+      "bytes": 1174381
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:15:17Z",
+  "generated_at": "2026-08-15T14:24:27Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, ornate boudoir, Vesper reclines on plush velvet cushions, her sheer silk robes parted to reveal the tantalizing curves of her bare breasts and the shadowed cleft of her hips, a sultry gaze meeting the camera's lens as she toys with a delicate gold necklace.",
-      "seed": 1359647234,
+      "prompt": "Amidst the dim, intimate lighting of a velvet-draped boudoir, a scantily-clad temptress lounges on a plush chaise, her pert breasts barely contained by a black leather corset as she teases a man with probes, her sultry gaze promising forbidden pleasures.",
+      "seed": 480849589,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/1dac4d89-779b-4d56-83e5-8574d38704d1.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/103.webp",
       "status": "ok",
-      "bytes": 1350630
+      "bytes": 1446272
     }
   ]
 }

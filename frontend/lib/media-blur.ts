@@ -17,8 +17,21 @@ const FALLBACK =
     `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="48"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a2533"/><stop offset="1" stop-color="#1a1720"/></linearGradient></defs><rect width="32" height="48" fill="url(#g)"/></svg>`,
   ).toString("base64");
 
+// Mirror the S3_ENDPOINT + forcePathStyle override the /api/media proxy and
+// backend/src/media/storage.ts use for local MinIO. Without it, blur fetches
+// for keys stored in local MinIO (every imported Juggernaut variant) resolve
+// to real AWS, 404 there, and blurredDataUri silently falls back to the
+// dark gradient FALLBACK. On the chat page's PersonaPanel that fallback
+// stacked with the tile's 35% black scrim renders as effectively-black
+// locked tiles, which is what "gallery-below-main-image is completely
+// black" was. The proxy renders fine because it already respects the
+// endpoint override; matching it here makes the blur path work identically.
 function getS3Client() {
-  return new S3Client({ region: process.env.AWS_REGION ?? "eu-north-1" });
+  const endpoint = process.env.S3_ENDPOINT || undefined;
+  return new S3Client({
+    region: process.env.AWS_REGION ?? "eu-north-1",
+    ...(endpoint ? { endpoint, forcePathStyle: true } : {}),
+  });
 }
 
 function bucketForKey(key: string): string {
@@ -41,12 +54,16 @@ async function fetchBytes(src: string): Promise<Buffer | null> {
     if (src.startsWith("/api/media")) {
       const key = new URL(src, "http://local").searchParams.get("k");
       if (!key) return null;
-      return fetchS3(key);
+      // Must await here: returning the bare promise would let a rejection
+      // (e.g. a stale key with no matching object, NoSuchKey) escape this
+      // try/catch uncaught, since an async function's `return <promise>`
+      // does not settle within the enclosing try's dynamic extent.
+      return await fetchS3(key);
     }
     // Public asset path (/personas/x.webp), not secret, no blur needed.
     if (src.startsWith("/")) return null;
     // Otherwise treat as a bare S3 key.
-    return fetchS3(src);
+    return await fetchS3(src);
   } catch {
     return null;
   }

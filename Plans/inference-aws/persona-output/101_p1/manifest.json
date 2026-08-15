@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:10:39Z",
+  "generated_at": "2026-08-15T14:19:55Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Amidst the vibrant colors and whimsical installations of Copenhagen's street art scene, Hazel playfully interacts with a giant mural, her laughter and joyful expression capturing the carefree spirit of the avant-garde community as she stands in front of the DSLR camera, the warm golden hour sun casting a shallow depth of field that highlights her bright smile and animated demeanor.",
-      "seed": 1024161046,
+      "prompt": "A woman posing in a dimly lit, industrial setting, clad in a black leather corset and thigh-high stockings, reaches out with probes in hand, her sultry gaze beckoning an unseen admirer closer amidst the shadows cast by exposed pipes and concrete walls.",
+      "seed": 694060569,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/406e2b5b-5d06-4921-beb8-455f0d7cff2e.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/101.webp",
       "status": "ok",
-      "bytes": 2225074
+      "bytes": 1393078
     }
   ]
 }

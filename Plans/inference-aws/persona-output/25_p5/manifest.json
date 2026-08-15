@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:27:17Z",
+  "generated_at": "2026-08-15T11:47:12Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Magnolia's statuesque form is set against the abstract texture of a stone wall, her black lace bra and matching panties leaving little to the imagination as she leans back, her hands bracing above her head, the low light accentuating the curves of her breasts and the definition of her toned stomach, her eyes gleaming with a predatory intensity.",
-      "seed": 1546047461,
+      "prompt": "Against the vibrant, neon-lit backdrop of a seedy backroom club, a sultry stripper straddles her client's lap, her body glistening with sweat as she grinds against him in a barely-there G-string. The probes she holds seem to pulse in time with her heavy, lustful breaths, her sultry gaze inviting him to lose himself in her provocative dance and unbridled desire.",
+      "seed": 320426259,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/6997f300-0deb-4654-b99d-a46327825b6d.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/25.webp",
       "status": "ok",
-      "bytes": 1828264
+      "bytes": 1216405
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:34:29Z",
+  "generated_at": "2026-08-15T14:42:25Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "The golden hour casts an ethereal light on a woman reclining on a plush velvet sofa, her curves barely contained by a lacy black bra and matching thong, one leg hooked over the armrest as she smirks up at the camera with sultry half-lidded eyes.",
-      "seed": 1625495473,
+      "prompt": "Against the backdrop of a futuristic cityscape, a couple in daringly revealing outfits stand in a deserted alley, futuristic sex toys in hand. They exude a sense of danger and excitement, beckoning an onlooker closer amidst the hazy, neon-drenched atmosphere. A DSLR camera captures their provocative poses and sultry expressions, with the city lights blurring into a vibrant, cinematic backdrop.",
+      "seed": 1366458164,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/72087b5e-c2ba-45b3-bace-fe0e0179d427.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/112.webp",
       "status": "ok",
-      "bytes": 1269810
+      "bytes": 1391413
     }
   ]
 }

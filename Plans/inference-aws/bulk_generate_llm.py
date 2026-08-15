@@ -26,6 +26,10 @@ Optional env vars:
   POPPY_API_BASE_URL          App API base for DB save (default http://localhost:4000)
   POPPY_API_TOKEN             JWT for DB save
   AWS_REGION                  (default eu-north-1)
+  PROD_DATABASE_URL           Production Postgres URL; when set, generated image
+                              S3 keys are written to BOTH the local database
+                              (DATABASE_URL) and the production database. Can
+                              also be set in backend/.env.
 
 Usage:
   export COMFYUI_IP=<ip>
@@ -68,15 +72,16 @@ API_BASE = os.environ.get("POPPY_API_BASE_URL", "http://localhost:4000")
 API_TOKEN = os.environ.get("POPPY_API_TOKEN", "")
 CKPT = os.environ.get("POPPY_JUGGERNAUT_CHECKPOINT", "juggernautXL_v9.safetensors")
 DATABASE_URL = os.environ.get("DATABASE_URL", "")
+PROD_DATABASE_URL = os.environ.get("PROD_DATABASE_URL", "")
 
-# Load DATABASE_URL from backend/.env if not already in environment
-if not DATABASE_URL:
-    env_path = Path(REPO_ROOT) / "backend" / ".env"
-    if env_path.exists():
-        for line in env_path.read_text().splitlines():
-            if line.startswith("DATABASE_URL="):
-                DATABASE_URL = line.split("=", 1)[1].strip().strip('"')
-                break
+# Load DATABASE_URL and PROD_DATABASE_URL from backend/.env if not already in environment
+_env_path = Path(REPO_ROOT) / "backend" / ".env"
+if _env_path.exists():
+    for _line in _env_path.read_text().splitlines():
+        if not DATABASE_URL and _line.startswith("DATABASE_URL="):
+            DATABASE_URL = _line.split("=", 1)[1].strip().strip('"')
+        elif not PROD_DATABASE_URL and _line.startswith("PROD_DATABASE_URL="):
+            PROD_DATABASE_URL = _line.split("=", 1)[1].strip().strip('"')
 
 QUALITY = (
     "full body from head to toe, entire figure visible including feet, full length wide shot, "
@@ -187,21 +192,23 @@ def get_five_prompts(name: str, location: str, bio: str, template: str) -> list:
 
 # ---- DB helpers ----
 
-def _db_conn():
+def _db_conn(db_url: str):
     import psycopg2
-    return psycopg2.connect(DATABASE_URL)
+    return psycopg2.connect(db_url)
 
 
-def lookup_character_id(idx: int) -> str:
+def lookup_character_id(idx: int, db_url: str = "") -> str:
     """
     Returns the Character.id for the persona at index idx by matching
-    CharacterMedia.url = '/personas/{idx}.webp' (isPrimary=true).
+    CharacterMedia.url = '/personas/{idx}.webp'.
+    db_url defaults to DATABASE_URL (local). Pass PROD_DATABASE_URL for prod.
     Returns empty string if not found or DB unavailable.
     """
-    if not DATABASE_URL:
+    url = db_url or DATABASE_URL
+    if not url:
         return ""
     try:
-        conn = _db_conn()
+        conn = _db_conn(url)
         cur = conn.cursor()
         for ext in (".webp", ".png", ".jpg", ".jpeg"):
             cur.execute(
@@ -222,19 +229,57 @@ def lookup_character_id(idx: int) -> str:
         conn.close()
         return ""
     except Exception as exc:
-        print(f"  [warn] DB lookup failed for persona {idx}: {exc}")
+        label = (url[:40] + "...") if len(url) > 40 else url
+        print(f"  [warn] DB lookup failed for persona {idx} ({label}): {exc}")
         return ""
 
 
-def save_generated_to_db(character_id: str, idx: int, num_prompts: int) -> int:
+def _write_media_rows(character_id: str, s3_keys: list, db_url: str) -> int:
+    """
+    Inserts CharacterMedia rows for the given s3_keys into db_url.
+    Demotes the existing primary first.
+    Returns the number of rows inserted.
+    """
+    try:
+        conn = _db_conn(db_url)
+        cur = conn.cursor()
+        cur.execute(
+            'UPDATE "CharacterMedia" SET "isPrimary" = false WHERE "characterId" = %s AND "isPrimary" = true',
+            (character_id,),
+        )
+        inserted = 0
+        for sort_idx, s3_key in enumerate(s3_keys):
+            is_primary = (sort_idx == 0)
+            cur.execute(
+                """
+                INSERT INTO "CharacterMedia" (id, "characterId", kind, url, "isPrimary", sort, "likesBase", "createdAt")
+                VALUES (gen_random_uuid(), %s, 'image', %s, %s, %s, 0, NOW())
+                """,
+                (character_id, s3_key, is_primary, sort_idx),
+            )
+            inserted += cur.rowcount
+        conn.commit()
+        cur.close()
+        conn.close()
+        return inserted
+    except Exception as exc:
+        label = (db_url[:40] + "...") if len(db_url) > 40 else db_url
+        print(f"  [warn] DB insert failed ({label}): {exc}")
+        return 0
+
+
+def save_generated_to_db(
+    character_id: str, idx: int, num_prompts: int, prod_character_id: str = ""
+) -> int:
     """
     Reads the per-prompt manifests (OUT_DIR/{idx}_p1/manifest.json through
     OUT_DIR/{idx}_p{num_prompts}/manifest.json) and saves all generated images
     to CharacterMedia:
       - first successful image -> isPrimary=true, replaces original
       - remaining images       -> isPrimary=false (gallery media)
-    Demotes any existing primary CharacterMedia row first.
-    Returns the number of rows inserted.
+    Writes to the local database (DATABASE_URL) and, if PROD_DATABASE_URL is
+    set, also to the production database.
+    Returns the number of rows inserted into the local database.
     """
     if not character_id or not DATABASE_URL:
         return 0
@@ -255,35 +300,15 @@ def save_generated_to_db(character_id: str, idx: int, num_prompts: int) -> int:
         print("  [warn] No successful variants found across prompt manifests")
         return 0
 
-    try:
-        conn = _db_conn()
-        cur = conn.cursor()
+    inserted = _write_media_rows(character_id, s3_keys, DATABASE_URL)
 
-        # Demote any existing primary so the first generated image takes over
-        cur.execute(
-            'UPDATE "CharacterMedia" SET "isPrimary" = false WHERE "characterId" = %s AND "isPrimary" = true',
-            (character_id,),
-        )
+    if PROD_DATABASE_URL and PROD_DATABASE_URL != DATABASE_URL and prod_character_id:
+        prod_inserted = _write_media_rows(prod_character_id, s3_keys, PROD_DATABASE_URL)
+        print(f"  prod-db: {prod_inserted} rows written (character {prod_character_id[:8]})")
+    elif PROD_DATABASE_URL and PROD_DATABASE_URL != DATABASE_URL and not prod_character_id:
+        print("  [warn] prod-db: skipped (character not found in production DB)")
 
-        inserted = 0
-        for sort_idx, s3_key in enumerate(s3_keys):
-            is_primary = (sort_idx == 0)
-            cur.execute(
-                """
-                INSERT INTO "CharacterMedia" (id, "characterId", kind, url, "isPrimary", sort, "likesBase", "createdAt")
-                VALUES (gen_random_uuid(), %s, 'image', %s, %s, %s, 0, NOW())
-                """,
-                (character_id, s3_key, is_primary, sort_idx),
-            )
-            inserted += cur.rowcount
-
-        conn.commit()
-        cur.close()
-        conn.close()
-        return inserted
-    except Exception as exc:
-        print(f"  [warn] DB insert failed: {exc}")
-        return 0
+    return inserted
 
 
 # ---- Image file finder ----
@@ -415,7 +440,11 @@ def main():
             continue
 
         character_id = lookup_character_id(idx)
-        print(f"[{idx}/{args.end}] {name} ({location}) db={'ok:'+character_id[:8] if character_id else 'not found'}")
+        prod_character_id = lookup_character_id(idx, PROD_DATABASE_URL) if PROD_DATABASE_URL else ""
+        db_status = f"local={'ok:'+character_id[:8] if character_id else 'not found'}"
+        if PROD_DATABASE_URL:
+            db_status += f" prod={'ok:'+prod_character_id[:8] if prod_character_id else 'not found'}"
+        print(f"[{idx}/{args.end}] {name} ({location}) {db_status}")
 
         try:
             prompts = get_five_prompts(name, location, bio, prompt_template)
@@ -426,8 +455,8 @@ def main():
         if generate_persona(idx, image_path, prompts, args.dry_run):
             done += 1
             if not args.dry_run and character_id:
-                saved = save_generated_to_db(character_id, idx, len(prompts))
-                print(f"  db: {saved} generated images saved (image 1 is new primary, 2-5 are gallery)")
+                saved = save_generated_to_db(character_id, idx, len(prompts), prod_character_id)
+                print(f"  local-db: {saved} generated images saved (image 1 is new primary, 2-5 are gallery)")
         print()
 
     print(f"[bulk] Complete: {done}/{total} personas processed ({done * 5} images total)")

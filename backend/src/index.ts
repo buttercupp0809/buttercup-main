@@ -5,6 +5,7 @@ import { attachWsGateway } from "./ws/gateway";
 import { handleChatStream } from "./http/chat-stream";
 import { handleMediaRoute } from "./http/media";
 import { handleBillingRoute } from "./http/billing";
+import { applyCors } from "./http/cors";
 import { getHealthSnapshot } from "./metrics";
 import { logInfo, logWarn, logError } from "./utils/log";
 
@@ -13,6 +14,11 @@ void prisma;
 const PORT = Number(process.env.PORT ?? 4000);
 
 const server = http.createServer(async (req, res) => {
+  // The frontend browser calls this server directly (billing, media,
+  // chat-stream), so every response needs CORS headers or the browser
+  // discards them before the app ever sees a body. See http/cors.ts.
+  if (applyCors(req, res)) return;
+
   if (req.method === "GET" && (req.url === "/health" || req.url === "/healthz")) {
     // Cheap liveness probe first; if DB is reachable we also emit metrics
     // so an ECS/ALB check can pick up degraded providers via /healthz.

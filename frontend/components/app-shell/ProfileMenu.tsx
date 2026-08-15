@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { LogOut, Settings as SettingsIcon, Gem } from "lucide-react";
+import { LogOut, Settings as SettingsIcon, Gem, ChevronsUpDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export interface ProfileUser {
@@ -19,6 +19,12 @@ export interface ProfileMenuProps {
   // (top header). "align" controls which edge the panel sticks to.
   placement?: "up" | "down";
   align?: "left" | "right";
+  // The same component renders at two independent sites (sidebar footer and
+  // the desktop top-right header icon), both mounted at once on desktop.
+  // Distinct testids keep Playwright's strict-mode locator resolution
+  // unambiguous; defaults preserve the original sidebar/mobile-drawer ids.
+  triggerTestId?: string;
+  menuTestId?: string;
 }
 
 export function ProfileMenu({
@@ -26,6 +32,8 @@ export function ProfileMenu({
   collapsed = false,
   placement = "up",
   align = "left",
+  triggerTestId = "profile-menu-trigger",
+  menuTestId = "profile-menu",
 }: ProfileMenuProps) {
   const [open, setOpen] = React.useState(false);
   const [busy, setBusy] = React.useState(false);
@@ -81,28 +89,35 @@ export function ProfileMenu({
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="menu"
         aria-expanded={open}
-        data-testid="profile-menu-trigger"
+        data-testid={triggerTestId}
         className={cn(
-          "flex w-full items-center gap-2 rounded-md p-2 text-left hover:bg-white/5 focus:outline-none focus-visible:ring-2",
+          "tap-target flex w-full items-center gap-2.5 rounded-xl border border-transparent p-2 text-left transition hover:border-[hsl(var(--buttercupp-border))] hover:bg-white/5 focus:outline-none focus-visible:ring-2",
+          open && "border-[hsl(var(--buttercupp-border))] bg-white/5",
           collapsed && "justify-center",
         )}
         style={{ outlineColor: "hsl(var(--buttercupp-accent-rose))" }}
       >
         <Avatar src={user.avatarUrl ?? null} name={name} />
         {!collapsed ? (
-          <div className="flex min-w-0 flex-1 flex-col">
-            <span className="truncate text-sm font-medium text-white">{name}</span>
-            <TierBadge tier={user.tier} />
-          </div>
+          <>
+            <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+              <span className="truncate text-sm font-semibold leading-tight text-white">{name}</span>
+              <TierBadge tier={user.tier} />
+            </div>
+            <ChevronsUpDown
+              aria-hidden
+              className="h-3.5 w-3.5 shrink-0 text-slate-500"
+            />
+          </>
         ) : null}
       </button>
 
       {open ? (
         <div
           role="menu"
-          data-testid="profile-menu"
+          data-testid={menuTestId}
           className={cn(
-            "absolute z-30 w-56 overflow-hidden rounded-lg border shadow-xl",
+            "buttercupp-glass absolute z-30 w-60 overflow-hidden rounded-xl shadow-xl",
             placement === "down" ? "top-full mt-2" : "bottom-full mb-2",
             align === "right" ? "right-0" : "left-0",
           )}
@@ -111,26 +126,38 @@ export function ProfileMenu({
             borderColor: "hsl(var(--buttercupp-border))",
           }}
         >
-          <div className="border-b px-3 py-2 text-xs text-slate-400" style={{ borderColor: "hsl(var(--buttercupp-border))" }}>
-            {user.email}
-          </div>
-          <MenuLink href="/billing" icon={<Gem className="h-4 w-4" />} onClick={() => setOpen(false)}>
-            Subscription
-          </MenuLink>
-          <MenuLink href="/settings" icon={<SettingsIcon className="h-4 w-4" />} onClick={() => setOpen(false)}>
-            Settings
-          </MenuLink>
-          <button
-            type="button"
-            onClick={logout}
-            disabled={busy}
-            data-testid="logout-button"
-            role="menuitem"
-            className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-rose-300 hover:bg-white/5 disabled:opacity-50"
+          <div
+            className="flex items-center gap-2.5 border-b px-3 py-3"
+            style={{ borderColor: "hsl(var(--buttercupp-border))" }}
           >
-            <LogOut className="h-4 w-4" />
-            {busy ? "Signing out..." : "Logout"}
-          </button>
+            <Avatar src={user.avatarUrl ?? null} name={name} />
+            <div className="flex min-w-0 flex-col gap-0.5">
+              <span className="truncate text-sm font-semibold text-white">{name}</span>
+              <span className="truncate text-xs text-slate-400">{user.email}</span>
+            </div>
+          </div>
+          <div className="p-1.5">
+            <MenuLink href="/billing" icon={<Gem className="h-4 w-4" />} onClick={() => setOpen(false)}>
+              Subscription
+            </MenuLink>
+            <MenuLink href="/settings" icon={<SettingsIcon className="h-4 w-4" />} onClick={() => setOpen(false)}>
+              Account &amp; email settings
+            </MenuLink>
+          </div>
+          <div className="border-t p-1.5" style={{ borderColor: "hsl(var(--buttercupp-border))" }}>
+            <button
+              type="button"
+              onClick={logout}
+              disabled={busy}
+              data-testid="logout-button"
+              role="menuitem"
+              className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm font-medium transition hover:bg-white/5 disabled:opacity-50"
+              style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
+            >
+              <LogOut className="h-4 w-4" />
+              {busy ? "Signing out..." : "Sign out"}
+            </button>
+          </div>
           {error ? <p className="px-3 pb-2 text-xs text-red-400">{error}</p> : null}
         </div>
       ) : null}
@@ -154,7 +181,7 @@ function MenuLink({
       href={href}
       onClick={onClick}
       role="menuitem"
-      className="flex items-center gap-2 px-3 py-2 text-sm text-slate-200 hover:bg-white/5"
+      className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-slate-200 transition hover:bg-white/5 hover:text-white"
     >
       {icon}
       {children}
@@ -162,17 +189,27 @@ function MenuLink({
   );
 }
 
+// Gradient ring (rose -> violet, matching PremiumPill) wraps a flat-filled
+// disc so the avatar reads as a deliberate brand mark rather than a plain
+// circle.
 function Avatar({ src, name }: { src: string | null; name: string }) {
   return (
     <div
-      className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full text-xs font-semibold text-white"
-      style={{ backgroundColor: "hsl(var(--buttercupp-accent-violet) / 0.4)" }}
+      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full p-[1.5px]"
+      style={{
+        background: "linear-gradient(135deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
+      }}
     >
-      {src ? (
-        <img src={src} alt={name} className="h-full w-full object-cover" />
-      ) : (
-        <span>{name[0]?.toUpperCase() ?? "?"}</span>
-      )}
+      <div
+        className="flex h-full w-full items-center justify-center overflow-hidden rounded-full text-sm font-semibold text-white"
+        style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))" }}
+      >
+        {src ? (
+          <img src={src} alt={name} className="h-full w-full object-cover" />
+        ) : (
+          <span>{name[0]?.toUpperCase() ?? "?"}</span>
+        )}
+      </div>
     </div>
   );
 }
@@ -182,19 +219,30 @@ function TierBadge({ tier }: { tier: string }) {
   const isPaid = key !== "free";
   return (
     <span
-      className="mt-0.5 inline-flex w-fit items-center rounded-full px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider"
+      className="inline-flex w-fit items-center gap-1 rounded-full px-1.5 py-[1px] text-[10px] font-bold uppercase tracking-wider"
       style={
         isPaid
           ? {
-              backgroundColor: "hsl(var(--buttercupp-accent-rose) / 0.18)",
+              backgroundColor: "hsl(var(--buttercupp-accent-rose) / 0.16)",
               color: "hsl(var(--buttercupp-accent-rose))",
+              border: "1px solid hsl(var(--buttercupp-accent-rose) / 0.35)",
             }
           : {
               backgroundColor: "hsl(var(--buttercupp-surface-2))",
               color: "hsl(var(--buttercupp-muted))",
+              border: "1px solid hsl(var(--buttercupp-border))",
             }
       }
     >
+      <span
+        aria-hidden
+        className="h-1 w-1 rounded-full"
+        style={{
+          backgroundColor: isPaid
+            ? "hsl(var(--buttercupp-accent-rose))"
+            : "hsl(var(--buttercupp-muted))",
+        }}
+      />
       {tier}
     </span>
   );

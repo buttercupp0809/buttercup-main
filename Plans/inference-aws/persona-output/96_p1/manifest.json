@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:00:02Z",
+  "generated_at": "2026-08-15T14:09:52Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Indigo stands on a sunlit Barcelona rooftop, wind-tousled hair whipping around her face as she gazes out at the sparkling Mediterranean Sea, a vibrant cityscape unfolding behind her in warm, golden-hour light, her casual sundress billowing playfully in the breeze.",
-      "seed": 1766538475,
+      "prompt": "Amidst the golden hour glow of a Barcelona rooftop, a lithe, exotic beauty in a revealing red dress strides confidently toward the viewer, one hand extended with a gleaming silver probe while her sultry gaze beckons an unsuspecting admirer to join her sensual revelry, the city skyline a romantic backdrop.",
+      "seed": 367706439,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/5abeaff5-6091-4188-a121-459a278840d8.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/96.webp",
       "status": "ok",
-      "bytes": 1395594
+      "bytes": 1187208
     }
   ]
 }

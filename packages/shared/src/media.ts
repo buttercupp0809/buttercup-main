@@ -57,3 +57,46 @@ export interface MediaReadyEventPayload {
   kind: MediaKind;
   conversationId: string | null;
 }
+
+// ============================================================================
+// Phase 28: creation-time image jobs. A brand-new (or freshly edited)
+// character enqueues CREATION_IMAGE_COUNT image jobs through the SAME
+// MediaJobData/enqueueMediaJob path chat selfies use; `payload` is opaque to
+// the queue itself, so this schema just documents/validates the shape that
+// the "creation" source puts in that slot. tokenCost is always 0 for these
+// jobs (see backend/src/media/token-ledger.ts short-circuit at delta === 0).
+// ============================================================================
+export const CREATION_IMAGE_COUNT = 4;
+
+export const creationImageJobPayloadSchema = z.object({
+  source: z.literal("creation"),
+  characterId: z.string().min(1).max(64),
+  characterVersionId: z.string().min(1).max(64),
+  variant: z.number().int().min(0),
+  userRequest: z.string().max(500).optional(),
+});
+export type CreationImageJobPayload = z.infer<typeof creationImageJobPayloadSchema>;
+
+// Narrows an opaque MediaJobData.payload down to the creation-image shape.
+// Returns null for any other job's payload (chat selfies, voice, video),
+// so callers can branch on "is this a creation-time image job" without a
+// separate boolean flag threaded through MediaJobData itself.
+export function parseCreationImagePayload(
+  payload: Record<string, unknown>,
+): CreationImageJobPayload | null {
+  const parsed = creationImageJobPayloadSchema.safeParse(payload);
+  return parsed.success ? parsed.data : null;
+}
+
+// Polled by the wizard finish screen (and available to any owner-only
+// status UI) while creation images are in flight. `primaryReady` reflects
+// the character's free-display asset (CharacterMedia.isDisplay when that
+// column exists, see Phase 26; the field is still named `primaryReady` on
+// the wire because that is what the finish-screen UI was specified against).
+export interface GenerationStatusResponse {
+  queued: number;
+  processing: number;
+  ready: number;
+  failed: number;
+  primaryReady: boolean;
+}

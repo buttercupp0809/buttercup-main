@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:12:01Z",
+  "generated_at": "2026-08-15T15:17:53Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Early morning in Hazel's studio apartment, natural light filters through the curtains, illuminating her nude form as she stands by the window, lost in thought. Her back is arched, her hands resting on her hips, drawing attention to her toned stomach and the gentle swell of her breasts. A single ray of light dances across her skin, accentuating the subtle freckles and curves of her body.",
-      "seed": 721766511,
+      "prompt": "In a dimly lit boudoir, a model flaunts a provocative outfit while manipulating probes, her suggestive hand gestures and smoldering gaze promising an illicit encounter as she invites an unseen partner to join her in the intimate, candlelit space.",
+      "seed": 1699908206,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/2781aeee-7430-41f4-a702-747ba9271501.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/129.webp",
       "status": "ok",
-      "bytes": 1088795
+      "bytes": 958363
     }
   ]
 }

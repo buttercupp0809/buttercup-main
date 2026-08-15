@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:30:53Z",
+  "generated_at": "2026-08-15T12:46:11Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Odessa reclining on a worn, plush chaise lounge in a lavish, opulent harem, her curvaceous form draped in a diaphanous, gold-embroidered choli top and lehnga skirt, her dark hair cascading down her back in loose waves, her full, pouting lips parted slightly as she gazes up at the ornate, gilded canopy above, the camera positioned low to capture her regal, seductive pose amidst the tapestries and silks that adorn the tent.",
-      "seed": 1548908451,
+      "prompt": "In a dimly lit room, a provocative model flaunts a revealing fetish outfit while expertly manipulating probes, her sultry eyes locking onto an unseen partner as she seductively teases and invites them to indulge in a night of dark, forbidden desires.",
+      "seed": 1568098956,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/fc9cae65-9095-42e4-b2ea-b1950c353ab3.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/54.webp",
       "status": "ok",
-      "bytes": 1618083
+      "bytes": 1053106
     }
   ]
 }

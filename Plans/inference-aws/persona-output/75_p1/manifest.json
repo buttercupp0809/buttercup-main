@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:14:37Z",
+  "generated_at": "2026-08-15T13:27:43Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Vesper strolls hand-in-hand with a friend through Istanbul's winding cobbled streets during golden hour, her bright smile illuminated by the warm glow of setting sun as she giggles at a joke in Turkish.",
-      "seed": 1562170643,
+      "prompt": "In the warm glow of a golden hour sunset, a woman in a sheer black teddy stands provocatively on a cliff's edge, probes in hand, her back arched and breasts thrust forward, beckoning a lone figure approaching in the distance.",
+      "seed": 1419041512,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/eef5e76d-8628-4e6f-89ae-ae3ee8e847fb.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/75.webp",
       "status": "ok",
-      "bytes": 1466479
+      "bytes": 1533726
     }
   ]
 }

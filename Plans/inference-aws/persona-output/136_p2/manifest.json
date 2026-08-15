@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:26:28Z",
+  "generated_at": "2026-08-15T15:31:46Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit bedroom, Ophelia reclines on plush velvet cushions, the soft fabric accentuating her curvaceous form. She wears a sheer silk robe that falls open, revealing the creamy expanse of her skin and the tantalizing glimpse of a lacy bra. Her hair cascades in loose waves over one shoulder as she gazes at the camera with a sultry, half-lidded expression, her full lips parted in a coy smile. The composition focuses on her seductive pose and the intimate atmosphere, with a shallow depth of field blurring the background.",
-      "seed": 1457021943,
+      "prompt": "Amidst the dimly lit, smoke-filled atmosphere of a seedy backroom club, a sultry stripper straddles her client's lap, her body glistening with sweat as she grinds against him in a scandalously revealing G-string, the neon lights of the city outside casting a lurid glow on their tangled limbs.",
+      "seed": 790257156,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/7240d0f9-b5f6-4591-851a-dac73b534dc8.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/136.webp",
       "status": "ok",
-      "bytes": 1498311
+      "bytes": 1234971
     }
   ]
 }

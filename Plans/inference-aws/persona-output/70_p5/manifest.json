@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:05:36Z",
+  "generated_at": "2026-08-15T13:19:17Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a deserted, sandy beach at dawn, a string bikini-clad Hazel kneels in the shallow surf, her hair and skin wind-swept and glistening with saltwater droplets as she gazes back at the rising sun, her hands clasped behind her head, her toned legs and thong-clad crotch visible from behind, the camera's wide-angle lens capturing the vast expanse of the beach and the dramatic sky, while the soft focus on Hazel's figure and the warm, golden light emphasize her allure and the moment's intimate, sensual atmosphere.",
-      "seed": 1999488521,
+      "prompt": "In the shadowy recesses of an abandoned warehouse, two lovers engage in a forbidden, dangerous liaison, their passion reaching fever pitch as they explore every dark, depraved desire, the only sound the heavy panting of their lustful breaths and the distant wail of sirens outside, the woman's provocative pose and sultry smile inviting an outsider to join in their illicit escapade.",
+      "seed": 212052742,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b73b0be1-164d-4b00-ab97-8c528b98a97d.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/70.webp",
       "status": "ok",
-      "bytes": 1246800
+      "bytes": 1333316
     }
   ]
 }

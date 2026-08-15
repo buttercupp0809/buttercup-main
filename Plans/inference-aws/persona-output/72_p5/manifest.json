@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:09:54Z",
+  "generated_at": "2026-08-15T13:23:19Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Dawn's soft light bathes a deserted beach; the woman kneels on the sand, her string bikini and sheer cover-up clinging to her curves as she looks back over her shoulder at the rising sun, her tousled hair blowing in the gentle breeze, her eyes half-closed in a sultry, come-hither expression, captured in a shallow depth of field that emphasizes her provocative pose.",
-      "seed": 417223880,
+      "prompt": "In the shadows of a decrepit warehouse, a mysterious figure in a sheer, crimson nightgown beckons a shadowy figure closer, a sex toy held coyly between her fingers as she sways her hips, the flickering light of a single candle casting a seductive glow on her curves and the worn, concrete floor.",
+      "seed": 1861596774,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/cd39c30d-4736-4cee-bbae-ed70acf342d4.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/72.webp",
       "status": "ok",
-      "bytes": 1202035
+      "bytes": 1295460
     }
   ]
 }

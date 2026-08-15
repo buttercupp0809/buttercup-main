@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:33:21Z",
+  "generated_at": "2026-08-15T15:38:18Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Astrid poses seductively on a plush chaise in a dimly lit boudoir, draped in a sheer silk negligee that clings to her curves, the delicate fabric barely concealing her pert nipples and the gentle swell of her hips, her long, curly hair cascading down her back as she looks straight at the camera with a coy, inviting smile.",
-      "seed": 1595574814,
+      "prompt": "In a cozy, candlelit apartment, a couple engaged in intimate foreplay on a plush sectional sofa, probes lying discarded between them, their passionate expressions and entwined bodies inviting others to join in the sensual play, the soft glow of the candles and the city's distant neon lights casting a warm, inviting ambiance.",
+      "seed": 1042682075,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/1feea655-21f8-42cf-bcab-822baf84c130.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/139.webp",
       "status": "ok",
-      "bytes": 1423369
+      "bytes": 1179842
     }
   ]
 }

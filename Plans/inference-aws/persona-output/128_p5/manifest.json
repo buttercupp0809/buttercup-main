@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:10:41Z",
+  "generated_at": "2026-08-15T15:16:39Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Phoebe lounges on a beach towel, sprawled out in a languid pose as the sun begins to set over the Gulf of Mexico. Her barely-there bikini top barely contains her generous breasts, the metallic accents glinting in the fading light. A few strands of hair are tousled by the ocean breeze as she stretches out, one hand tracing the curve of her hip, the other reaching for a cold beer nestled in the sand beside her.",
-      "seed": 393532455,
+      "prompt": "A group of friends engaged in a raunchy game night in a cozy apartment, the women dressed in provocative lingerie as they play seductive party games. The camera, positioned from above, captures the intimate scene with a shallow depth of field, focusing on the bodies entwined on the couch and the laughter and moans mingling with the clinking of glasses and the thump of bass from nearby speakers.",
+      "seed": 1387143764,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/03e5a1ce-f6f0-4184-b3ac-47c5688c3266.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/128.webp",
       "status": "ok",
-      "bytes": 2164545
+      "bytes": 1514963
     }
   ]
 }

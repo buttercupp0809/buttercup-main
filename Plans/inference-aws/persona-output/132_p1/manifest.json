@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:17:34Z",
+  "generated_at": "2026-08-15T15:23:11Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Marlowe frolics playfully in the sunlit meadow of Golden Gate Park, her long blonde hair fluttering in the breeze as she tosses a frisbee, wearing a yellow sundress that hugs her curves, her bright smile and sparkling eyes radiating joy.",
-      "seed": 1358206102,
+      "prompt": "In the golden glow of sunset, a woman lounges seductively on a weathered wooden pier, her curves accentuated by a barely-there bikini as she beckons an onlooker with probes in hand, the warm light casting long shadows across her provocative pose.",
+      "seed": 1153902960,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/40c1a3a4-a084-4e22-8c14-c440a1b3a040.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/132.webp",
       "status": "ok",
-      "bytes": 1395329
+      "bytes": 1617623
     }
   ]
 }

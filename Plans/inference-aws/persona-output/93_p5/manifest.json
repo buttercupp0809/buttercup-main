@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:54:14Z",
+  "generated_at": "2026-08-15T14:05:11Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a deserted beach at dawn, Lyra kneels with her feet apart, gazing back over her shoulder at the rising sun as it casts a warm, golden light on her body. She wears a tiny string bikini with a sheer cover-up, her wind-blown hair framing her face as she stretches languidly, one hand drifting down to touch the hem of her bottoms, the air thick with the promise of a new day's adventures.",
-      "seed": 1826652358,
+      "prompt": "On the sun-drenched deck of a luxurious yacht, a stunning blonde with sun-kissed skin and piercing blue eyes is caught in a passionate embrace with her lover, their bodies intertwined as they kiss deeply, the warm breeze ruffling her golden locks and the crystal blue waters lapping gently against the hull, the vibrant colors of the setting sun casting a romantic glow on their blissful, love-struck faces.",
+      "seed": 1432251454,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/d78f2afe-1263-4d70-9be0-fb68deae9882.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/93.webp",
       "status": "ok",
-      "bytes": 1169755
+      "bytes": 1288415
     }
   ]
 }

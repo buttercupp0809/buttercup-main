@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { getCharacterDetail, bumpCharacterView } from "@/lib/characters";
 import { getViewer } from "@/lib/viewer";
 import { getRelationship } from "@/lib/relationship";
@@ -133,6 +134,18 @@ export default async function CharacterDetailPage({
             {/* CTA - no wrapper box, clean and direct */}
             <div className="flex flex-col gap-3">
               <ChatCTA state={ctaState} />
+              {detail.isOwner && (
+                <Link
+                  href={`/create/style?editCharacterId=${detail.id}`}
+                  className="rounded-md border px-4 py-2 text-center text-sm font-medium transition hover:bg-white/5"
+                  style={{
+                    borderColor: "hsl(var(--buttercupp-border))",
+                    color: "hsl(var(--buttercupp-fg))",
+                  }}
+                >
+                  Edit companion
+                </Link>
+              )}
               {!gated && (
                 <p
                   className="text-center text-xs"

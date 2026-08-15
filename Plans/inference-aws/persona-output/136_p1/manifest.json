@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:26:05Z",
+  "generated_at": "2026-08-15T15:31:23Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Ophelia playfully skips down a cobblestone alley in Prague, her long golden hair fluttering in the golden hour light filtering through Gothic spires overhead. She wears a flowy sundress in soft pastels, the material catching the breeze as she giggles, her bright blue eyes sparkling with joy. A DSLR captures the scene at a shallow depth of field, emphasizing Ophelia's carefree spirit and the ancient architecture's textures.",
-      "seed": 1893758016,
+      "prompt": "In the golden light of sunset, a woman in a barely-there bikini stands provocatively on the deck of a yacht, probes in hand as she gazes out at the horizon, her inviting posture and sultry expression beckoning a partner to join her sensual game amidst the gentle lapping of waves.",
+      "seed": 274439422,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b94e5191-6dcf-43ed-9fd0-4f1449547650.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/136.webp",
       "status": "ok",
-      "bytes": 1528289
+      "bytes": 1237474
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:19:29Z",
+  "generated_at": "2026-08-15T14:28:28Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Bathed in the warm glow of a sunset, Clio reclines on a worn stone bench in the ancient Agora, her sheer, silver-embroidered blouse clinging to her curves, exposing the delicate lace of her bra, as she gazes pensively into the distance, her long, dark hair cascading down her back.",
-      "seed": 852587012,
+      "prompt": "In a dimly lit, candlelit chamber, a stunning dominatrix in leather attire beckons a submissive closer, her regal beauty and commanding presence illuminated by the flickering light as she teases them with probes and a riding crop.",
+      "seed": 232607585,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/c5895365-4dea-4c40-ad77-33cb7e8cb135.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/105.webp",
       "status": "ok",
-      "bytes": 1567036
+      "bytes": 1112821
     }
   ]
 }

@@ -40,10 +40,13 @@ function periodKey(d: Date | undefined): string {
 
 // Token pack catalog. In production this comes from a config table; for
 // now the map is co-located so a pack added here is billable end-to-end.
-export const TOKEN_PACKS: Record<string, { credits: number; label: string }> = {
-  pack_100: { credits: 100, label: "100 tokens" },
-  pack_500: { credits: 500, label: "500 tokens" },
-  pack_2000: { credits: 2000, label: "2000 tokens" },
+// SINGLE SOURCE OF TRUTH for pack credits/label/price: the token store UI
+// reads this via GET /billing/token-packs rather than hardcoding numbers.
+// priceUsd values are TUNE placeholders like PLANS in ../../subscription/plans.
+export const TOKEN_PACKS: Record<string, { credits: number; label: string; priceUsd: number }> = {
+  pack_100: { credits: 100, label: "100 tokens", priceUsd: 2 },
+  pack_500: { credits: 500, label: "500 tokens", priceUsd: 8 },
+  pack_2000: { credits: 2000, label: "2000 tokens", priceUsd: 25 },
 };
 
 export async function processSubscriptionEvent(ev: NormalizedEvent): Promise<{ applied: boolean; effect: string }> {

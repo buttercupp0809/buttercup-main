@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:48:48Z",
+  "generated_at": "2026-08-15T12:05:35Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Lying provocatively on a plush, crimson velvet chaise in a dimly lit boudoir, Astrid's ample breasts spill out of a scandalously low-cut corset, her long, toned legs stretched out in a tempting display, as she gazes up at the camera with a sultry, hooded expression, the soft candlelight casting shadows across her alluring form.",
-      "seed": 1259864163,
+      "prompt": "On the deck of a yacht at sunset, a stunning model in a skimpy, strapless bikini poses with probes, her expression smoldering with desire as she invites an onlooker to join her in the warm, golden light of the fading day, the waves gently lapping at the hull and the city skyline visible in the distance.",
+      "seed": 1154490308,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/2ddaa5d6-3973-42ba-b371-74b04a449f4f.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/34.webp",
       "status": "ok",
-      "bytes": 1211367
+      "bytes": 1210066
     }
   ]
 }

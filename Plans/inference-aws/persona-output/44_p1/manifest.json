@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:08:32Z",
+  "generated_at": "2026-08-15T12:25:01Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Hazel frolics in a lush meadow at golden hour, her laughter echoing as she tosses wildflowers in the air, sunlight dancing through her tousled auburn locks and casting a warm glow on her bright smile and casual sundress, captured by a DSLR in a shallow depth of field.",
-      "seed": 1935142672,
+      "prompt": "In a dimly lit, velvet-draped chamber, a sultry siren beckons her prey closer, her lithe form draped in a sheer black gown that clings to her curves, illuminated by the soft glow of candles as she holds a pair of gleaming probes invitingly, her eyes smoldering with lustful intent.",
+      "seed": 368405089,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/60323bd1-9e87-4224-82f6-c21f90a1034a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/44.webp",
       "status": "ok",
-      "bytes": 1661913
+      "bytes": 1007740
     }
   ]
 }

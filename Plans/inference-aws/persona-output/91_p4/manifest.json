@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:49:36Z",
+  "generated_at": "2026-08-15T14:00:50Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Stepping out of a traditional onsen hot spring in Japan, Clio's skin glistens with water droplets as she reclines on a wooden platform, her breasts exposed to the cool air, a kimono draped loosely over one shoulder as she meets the viewer's gaze with a contented expression.",
-      "seed": 1460880348,
+      "prompt": "In a shadowy, abandoned warehouse, a mysterious woman clad in leather and lace fetish attire stands atop a pile of crates, probes in hand as she beckons a hidden onlooker, her body illuminated only by the faint red glow of candles, the atmosphere thick with forbidden desire.",
+      "seed": 1003231083,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/be92c9b7-0f92-4daa-a57b-e613a9812f1b.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/91.webp",
       "status": "ok",
-      "bytes": 1529476
+      "bytes": 1497934
     }
   ]
 }

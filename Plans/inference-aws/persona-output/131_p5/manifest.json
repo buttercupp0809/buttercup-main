@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:17:03Z",
+  "generated_at": "2026-08-15T15:22:41Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a deserted stretch of moonlit beach, Vesper straddles a weathered wooden log, her tiny string bikini leaving little to the imagination, the gossamer fabric of her sheer cover-up fluttering in the ocean breeze as she looks back over her shoulder at the camera, her wind-tousled hair a wild halo around her face, her expression a sultry mix of playfulness and desire.",
-      "seed": 135843731,
+      "prompt": "On the sun-drenched deck of a luxurious yacht, a stunning woman in a tiny bikini provocatively handles probes as she languidly stretches out in a beach chair, her sultry demeanor and inviting gaze promising a day of sensual indulgence for any lucky soul who dares to join her in the warm, Mediterranean waters.",
+      "seed": 402413128,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/c240222c-4f51-4d05-84ed-1e6ee1f7c597.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/131.webp",
       "status": "ok",
-      "bytes": 1633205
+      "bytes": 1534289
     }
   ]
 }

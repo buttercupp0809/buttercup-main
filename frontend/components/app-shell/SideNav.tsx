@@ -14,10 +14,11 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { APP_NAV, type NavIcon } from "@/components/app-shell/nav-items";
+import { APP_NAV, type NavIcon, type NavItem } from "@/components/app-shell/nav-items";
 import { ProfileMenu, type ProfileUser } from "@/components/app-shell/ProfileMenu";
+import { NavGradientDefs, NavItemLink } from "@/components/app-shell/NavItemLink";
 
-const ICONS: Record<NavIcon, React.ComponentType<{ className?: string }>> = {
+const ICONS: Record<NavIcon, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = {
   chats: MessageCircle,
   discover: Compass,
   reels: Clapperboard,
@@ -73,6 +74,7 @@ export function SideNav({ user, recents }: SideNavProps) {
       )}
       style={{ borderColor: "hsl(var(--buttercupp-border))" }}
     >
+      <NavGradientDefs />
       <div className={cn("flex items-center px-4 py-5", collapsed ? "justify-center" : "justify-between")}>
         {!collapsed ? (
           <Link
@@ -88,7 +90,7 @@ export function SideNav({ user, recents }: SideNavProps) {
           onClick={toggle}
           aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
           aria-pressed={collapsed}
-          className="rounded-md p-1 text-slate-400 hover:text-white focus:outline-none focus-visible:ring-2"
+          className="tap-target flex items-center justify-center rounded-md text-slate-400 hover:text-white focus:outline-none focus-visible:ring-2"
           style={{ outlineColor: "hsl(var(--buttercupp-accent-rose))" }}
         >
           {collapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
@@ -97,53 +99,21 @@ export function SideNav({ user, recents }: SideNavProps) {
 
       <nav
         aria-label="Primary"
-        className={cn("flex flex-col gap-1.5", collapsed ? "items-center px-0" : "px-2")}
+        className={cn("flex flex-col gap-1", collapsed ? "items-center px-2" : "px-2")}
       >
-        {APP_NAV.map((item) => {
+        {APP_NAV.map((item: NavItem) => {
           const Icon = ICONS[item.icon];
           const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
           return (
-            <Link
+            <NavItemLink
               key={item.href}
               href={item.href}
-              data-testid={item.testid}
-              aria-current={active ? "page" : undefined}
-              title={collapsed ? item.label : undefined}
-              className={cn(
-                "relative flex items-center text-sm transition focus:outline-none focus-visible:ring-2",
-                collapsed
-                  ? // Collapsed: each icon lives in its own boxed square so the
-                    // rail stays legible and tappable when narrow.
-                    "h-10 w-10 justify-center rounded-xl border"
-                  : "gap-3 rounded-md border border-transparent px-3 py-2",
-                active ? "text-white" : "text-slate-300 hover:text-white",
-              )}
-              style={{
-                backgroundColor: active
-                  ? collapsed
-                    ? "hsl(var(--buttercupp-accent-rose) / 0.15)"
-                    : "hsl(var(--buttercupp-surface-2))"
-                  : collapsed
-                    ? "hsl(var(--buttercupp-surface-2))"
-                    : "transparent",
-                borderColor: active
-                  ? "hsl(var(--buttercupp-accent-rose))"
-                  : collapsed
-                    ? "hsl(var(--buttercupp-border))"
-                    : "transparent",
-                outlineColor: "hsl(var(--buttercupp-accent-rose))",
-              }}
-            >
-              {active && !collapsed ? (
-                <span
-                  aria-hidden
-                  className="absolute inset-y-1 left-0 w-0.5 rounded-full"
-                  style={{ backgroundColor: "hsl(var(--buttercupp-accent-rose))" }}
-                />
-              ) : null}
-              <Icon className="h-5 w-5 shrink-0" />
-              {!collapsed ? <span>{item.label}</span> : null}
-            </Link>
+              label={item.label}
+              testid={item.testid}
+              icon={Icon}
+              active={active}
+              collapsed={collapsed}
+            />
           );
         })}
       </nav>
@@ -185,8 +155,8 @@ export function SideNav({ user, recents }: SideNavProps) {
         <div className="flex-1" />
       )}
 
-      <div className="border-t p-2" style={{ borderColor: "hsl(var(--buttercupp-border))" }}>
-        <ProfileMenu user={user} collapsed={collapsed} />
+      <div className="border-t p-2.5" style={{ borderColor: "hsl(var(--buttercupp-border))" }}>
+        <ProfileMenu user={user} collapsed={collapsed} placement="up" align="left" />
       </div>
     </aside>
   );

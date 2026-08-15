@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:11:36Z",
+  "generated_at": "2026-08-15T13:24:57Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Freya straddles the back of a weathered wooden bench in a secluded Oslo courtyard, her short skirt hiked up to reveal a lacy thong as she leans back, her hands resting on the bench behind her, her tousled hair and languid posture conveying a sense of casual, playful seduction against the rustic, aged backdrop.",
-      "seed": 261136077,
+      "prompt": "In the shadowy recesses of an abandoned warehouse, a provocative model stands in the midst of a cluttered, graffiti-covered space, her body barely concealed by a sheer, transparent dress. She holds probes in her hands, her movements sensual and inviting as she gestures to an unseen partner, the only sound the distant hum of city nightlife filtering in through the broken windows.",
+      "seed": 1129462089,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/aa786114-c478-4cf6-8b85-f717a9ed3d97.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/73.webp",
       "status": "ok",
-      "bytes": 1459602
+      "bytes": 1607207
     }
   ]
 }

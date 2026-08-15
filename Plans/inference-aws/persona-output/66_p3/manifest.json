@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:56:20Z",
+  "generated_at": "2026-08-15T13:10:26Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Astrid lounges seductively on a plush chaise in a dimly lit boudoir, draped in a silk robe that slips off one shoulder to reveal a lacy bralette. Her tousled hair and heavy-lidded eyes convey a sense of languid desire as she gazes up at the camera, her leg raised and foot dangling tantalizingly near her exposed hip, in a shot with a shallow depth of field and warm, intimate lighting.",
-      "seed": 1330931824,
+      "prompt": "In a seedy backroom club, a scantily-clad stripper straddles a client's lap on a plush leather couch, her glistening body barely concealed by a tiny G-string as she grinds against him, the neon lights outside casting a lurid glow, the camera angling up to emphasize her allure.",
+      "seed": 321690906,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/7c97aa71-49bf-4fd8-9ff3-a5bdc692328a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/66.webp",
       "status": "ok",
-      "bytes": 1420276
+      "bytes": 1172783
     }
   ]
 }

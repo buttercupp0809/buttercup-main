@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:40:07Z",
+  "generated_at": "2026-08-15T15:44:43Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Phoebe lounges on a colorful beach towel, wearing a tiny string bikini with metallic accents, her skin glistening with pearls of sweat in the hot summer sun, her hand drifting languidly down to touch the hem of her bottoms as she stretches out, her tousled hair framing her face, the camera focused on her toned physique and the way the light catches the curves of her breasts and hips.",
-      "seed": 1833272210,
+      "prompt": "In the hushed, reverent atmosphere of a secret occult chamber, a mysterious figure draped in shimmering black silk beckons a brave initiate closer with hypnotic, sinuous movements, probes at the ready as she leads him to a velvet-draped altar, the air heavy with the scent of incense and the promise of dark, carnal rituals yet to come, the only sound the soft whisper of the velvet and the heavy beating of his heart.",
+      "seed": 466934536,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e1c44946-b522-41e9-97e0-f164c2e27fee.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/142.webp",
       "status": "ok",
-      "bytes": 1491420
+      "bytes": 1491933
     }
   ]
 }

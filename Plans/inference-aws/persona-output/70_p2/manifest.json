@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:04:23Z",
+  "generated_at": "2026-08-15T13:18:10Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, abstractly textured backstage area of an avant-garde theater, a scantily clad Hazel leans seductively against a worn velvet curtain, her barely-there lingerie \u2013 a sheer black bra and lace panties \u2013 clinging to her voluptuous figure as she gazes directly at the camera with a sultry, half-lidded gaze, one hand trailing down her ample cleavage, her tousled hair framing her face in shadows, the shallow depth of field and cinematic lighting drawing attention to her alluring form.",
-      "seed": 656687428,
+      "prompt": "In a dimly lit, intimate setting, a couple in revealing attire share a passionate, intimate moment, their bodies entwined as they hold futuristic sex toys and gaze longingly at an outsider, their expressions charged with lust and desire, inviting them to join in their sensual game.",
+      "seed": 1318390530,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/1b805f9c-f866-4a70-9ac0-933b7a214d22.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/70.webp",
       "status": "ok",
-      "bytes": 1381427
+      "bytes": 861997
     }
   ]
 }

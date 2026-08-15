@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:07:17Z",
+  "generated_at": "2026-08-15T13:20:52Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Odessa perches on the edge of a marble bathtub, water droplets glistening on her skin as she reclines back, her breasts and toned stomach exposed, a sensual expression on her face as she gazes at her reflection in the mirror, the steamy atmosphere and soft focus creating an intimate, voyeuristic scene.",
-      "seed": 1953666132,
+      "prompt": "Amidst the vibrant colors and pulsating rhythms of a Rio Carnival parade, a woman in a dazzling sequined costume holds probes high as she dances seductively, her movements enticing the crowd to follow her lead into the night's revelry.",
+      "seed": 413054342,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/35c17263-23fc-4a5e-ad5b-4fcca1bbf223.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/71.webp",
       "status": "ok",
-      "bytes": 1148619
+      "bytes": 1732551
     }
   ]
 }

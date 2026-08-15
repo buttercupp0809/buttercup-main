@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:47:07Z",
+  "generated_at": "2026-08-15T13:01:45Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A sunlit Dublin park on a crisp spring morning; Lyra laughing heartily as she chases a playful terrier puppy, her long auburn hair streaming behind her in a DSLR-captured, shallow focus shot, with the vibrant green grass and blooming daffodils forming a picturesque background.",
-      "seed": 1162020858,
+      "prompt": "Captured in a golden hour glow, a sensual woman poses in a Dublin alley, her fiery hair illuminated by a single overhead light as she beckons a passerby with a come-hither gaze, a short skirt riding up to reveal tantalizing thighs.",
+      "seed": 84483684,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/f1cad3c6-d850-4f2f-ab99-e09a8f2d1dca.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/62.webp",
       "status": "ok",
-      "bytes": 1539986
+      "bytes": 1282329
     }
   ]
 }

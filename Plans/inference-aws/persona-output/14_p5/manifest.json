@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:03:06Z",
+  "generated_at": "2026-08-15T11:25:01Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Ruby's curvaceous figure is showcased in a skimpy, metallic-accented string bikini as she kneels on the deserted beach at dawn, her tousled raven hair whipping in the ocean breeze. She turns to face the rising sun, her back arched, her breasts pushed forward as she looks over her shoulder with a sultry, half-lidded stare. The camera's shallow depth of field and warm, golden light emphasize her toned, sun-kissed skin and the way the bikini clings to her every curve, capturing a moment of sensual, awakening desire as the new day begins.",
-      "seed": 1554451343,
+      "prompt": "A scantily-clad woman lounges languidly on a plush, white bed, probes strewn carelessly across the sheets as she languidly strokes her own body, her heavy-lidded eyes half-closed in ecstasy as she beckons the viewer to join her in a private, intimate encounter, the soft focus and warm lighting of the scene evoking a sense of sensual, languid pleasure.",
+      "seed": 889763591,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/d9308467-7e71-4da4-859b-6c9e040c51b0.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/14.webp",
       "status": "ok",
-      "bytes": 1192203
+      "bytes": 1116783
     }
   ]
 }

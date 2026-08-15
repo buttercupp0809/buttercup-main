@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:37:01Z",
+  "generated_at": "2026-08-15T13:48:48Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a traditional Japanese onsen bathhouse, a woman sits on the edge of a steaming pool, water beading on her skin as she leans back, exposing her breasts. A kimono drapes loosely over her shoulder, and the warm light of a paper lantern casts a soft, inviting glow.",
-      "seed": 1643035650,
+      "prompt": "Amidst the opulent, velvet-draped decor of a secret underground club, a stunning dominatrix in a leather corset and thigh-high boots stands regally on a raised platform, a riding crop in hand as she commands a submissive to come to her, the low light and smoke casting a mysterious, alluring ambiance.",
+      "seed": 1114764930,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/5a239090-5227-491e-9077-11faa323864a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/85.webp",
       "status": "ok",
-      "bytes": 1324403
+      "bytes": 1242368
     }
   ]
 }

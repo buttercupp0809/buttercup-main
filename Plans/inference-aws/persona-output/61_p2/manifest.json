@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:45:25Z",
+  "generated_at": "2026-08-15T13:00:09Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, underground art studio, Sage poses provocatively on a worn velvet couch, her lacy red bra and matching thong leaving little to imagination as she looks directly at the camera, her expression a mix of coy and inviting, with a single strand of hair falling across her flushed cheek.",
-      "seed": 574491125,
+      "prompt": "Against the backdrop of a bustling city at golden hour, a provocative couple pose on a rooftop, their bodies entwined as they hold futuristic sex toys, their faces alight with lust and desire, the urban skyline a blurred, surreal expanse behind them, captured by a DSLR camera with a shallow depth of field.",
+      "seed": 1601264827,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/f6ab1742-1ddf-4880-b887-17588be2aca2.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/61.webp",
       "status": "ok",
-      "bytes": 1242960
+      "bytes": 1119791
     }
   ]
 }

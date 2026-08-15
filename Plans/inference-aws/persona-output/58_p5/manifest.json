@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:40:16Z",
+  "generated_at": "2026-08-15T12:55:13Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the intimate glow of a candlelit bath, Marlowe's skin glistens with water droplets as she leans back against the porcelain, her legs parted to reveal the glistening folds of her sex. A lacy bralette and high-waisted panties cling to her curves, the delicate fabric translucent against her flushed skin. Her eyes are heavy-lidded, her gaze both seductive and vulnerable as she surrenders to the warmth of the water and the soft focus of the lens.",
-      "seed": 1658231242,
+      "prompt": "In a cozy, intimate setting, a couple engaged in passionate foreplay hold probes, their bodies entwined on plush cushions as warm, golden hour light bathes them from above. The soft focus of the DSLR camera draws attention to their heated expressions and the sensual atmosphere, inviting a viewer to join in their erotic encounter.",
+      "seed": 1803811987,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/3ebd3cae-feb2-48b0-be21-d5f968513430.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/58.webp",
       "status": "ok",
-      "bytes": 1298519
+      "bytes": 1181198
     }
   ]
 }

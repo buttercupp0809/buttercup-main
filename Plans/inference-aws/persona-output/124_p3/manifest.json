@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:00:35Z",
+  "generated_at": "2026-08-15T15:07:59Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Rooftop rave under the stars; Indigo twists and turns, her body a blur of motion, the city skyline behind her, a neon-lit cocktail dress clinging to her figure, her hair a wild tangle.",
-      "seed": 1008456063,
+      "prompt": "In the midst of a decadent underground rave, a scantily-clad temptress in a glittering mask and barely-there attire moves to the pulsating beat, a neon-lit probe in hand as she beckons the camera closer, the strobing lights of the DJ booth casting a mesmerizing glow on her glistening skin, the crowd a blur of color and movement behind her.",
+      "seed": 21525588,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/af69d680-4114-4e78-af5a-d33032797a3f.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/124.webp",
       "status": "ok",
-      "bytes": 1347578
+      "bytes": 1409689
     }
   ]
 }

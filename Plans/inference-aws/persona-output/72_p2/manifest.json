@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:08:42Z",
+  "generated_at": "2026-08-15T13:22:06Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Moody, low-light atmosphere in a dimly lit, leather-bound nightclub; the woman, clad in a provocative leather corset and fishnet stockings, leans seductively against a pillar, her eyes half-lidded in invitation as she stretches a leg out, the reflective surface of her thigh-high stilettos drawing attention to her toned legs and barely concealed thong.",
-      "seed": 221549052,
+      "prompt": "In the hazy, neon-lit interior of a seedy backroom club, a scantily-clad stripper grinds her hips against a suited man's crotch, her glistening skin and come-hither eyes promising a private show as the pulsating beat of electronic music fills the air.",
+      "seed": 1099184098,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/f691b9d4-a409-4f19-958f-fb9cbf80ac91.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/72.webp",
       "status": "ok",
-      "bytes": 1223113
+      "bytes": 1138595
     }
   ]
 }

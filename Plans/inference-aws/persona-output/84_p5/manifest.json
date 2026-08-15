@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:35:23Z",
+  "generated_at": "2026-08-15T13:47:12Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Perched on the edge of a marble-topped vanity, Clara's back is arched, her legs crossed and one foot dangling as she applies a ruby-red lipstick, a sheer black robe clinging to her curves, the soft light of a bedside lamp casting a warm glow on her profile and the delicate jewelry adorning her neck.",
-      "seed": 1501965097,
+      "prompt": "A stunning model posing in lacy lingerie expertly manipulates probes while making sultry overtures, her eyes smoldering with a clear invitation for intimate exploration in a cozy, dimly lit setting, the soft focus of a DSLR lens emphasizing the sensual atmosphere.",
+      "seed": 628199975,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/4e7517ff-9e74-484d-b428-669f22b6fbac.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/84.webp",
       "status": "ok",
-      "bytes": 1183988
+      "bytes": 1115732
     }
   ]
 }

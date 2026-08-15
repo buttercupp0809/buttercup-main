@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:37:31Z",
+  "generated_at": "2026-08-15T11:54:53Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a secluded geothermal grotto, a provocative woman kneels on a moss-covered stone, her taut backside barely concealed by a gauzy white robe that falls open to reveal a tantalizing glimpse of her nether regions, her long raven hair cascading down her back like a waterfall.",
-      "seed": 116988503,
+      "prompt": "Amidst the golden hour glow of a rugged Icelandic landscape, a stunning adventurer clad in a tight, earth-toned outfit poses dramatically against a backdrop of rocky cliffs and wind-swept grass, her wild red hair whipping in the breeze as she holds probes aloft and shoots a come-hither look over her shoulder, beckoning a daring explorer to join her in the untamed wilderness.",
+      "seed": 946022378,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/f72e7bf7-5f78-473b-92bc-d527fb1afbeb.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/29.webp",
       "status": "ok",
-      "bytes": 1746163
+      "bytes": 1701947
     }
   ]
 }

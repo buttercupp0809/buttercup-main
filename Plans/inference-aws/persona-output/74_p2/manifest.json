@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:12:55Z",
+  "generated_at": "2026-08-15T13:26:07Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, seedy alley, a sultry Piper poses provocatively, her leather corset and fishnet stockings emphasizing her curves, as she crouches down with hands on knees, revealing the barely concealed thong clinging to her shapely derri\u00e8re, an inviting gaze and parted lips drawing the eye in a cinematic composition.",
-      "seed": 557402739,
+      "prompt": "A DSLR camera captures a provocative pose in a dimly lit, candlelit chamber, where a mysterious figure beckons with hypnotic movements and sultry whispers, leading her conquest to a velvet-draped altar, her lithe body clad in revealing lingerie.",
+      "seed": 168819655,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/19ae0340-689c-45c5-a26d-2a95914c35bc.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/74.webp",
       "status": "ok",
-      "bytes": 1318213
+      "bytes": 989849
     }
   ]
 }

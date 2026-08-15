@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:22:11Z",
+  "generated_at": "2026-08-15T13:34:42Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a steaming bathroom, Juniper stands under a cascading showerhead, rivulets of water streaming down her curves, soapy suds clinging to her breasts and thighs, her gaze half-lidded and inviting as the camera focuses on the translucent film of moisture highlighting her erect nipples, the water droplets glistening on her skin like diamonds.",
-      "seed": 1872202745,
+      "prompt": "Amidst the vibrant colors and pulsing lights of a neon-lit alleyway, the subject straddles a graffiti-covered wall, her revealing outfit and wanton expression inviting a passerby to pause and indulge in a moment of forbidden passion.",
+      "seed": 1564303626,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/da231791-e054-4462-9d61-b3149a822b53.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/78.webp",
       "status": "ok",
-      "bytes": 1533916
+      "bytes": 1543412
     }
   ]
 }

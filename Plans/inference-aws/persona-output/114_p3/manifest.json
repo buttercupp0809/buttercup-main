@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:39:06Z",
+  "generated_at": "2026-08-15T14:47:00Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Against the backdrop of a seedy, rain-soaked alley, Phoebe's leather corset and fishnet stockings cling to her body as she leans against a graffiti-covered wall, water droplets glistening on her bare skin, her eyes half-lidded with a coy invitation.",
-      "seed": 717307669,
+      "prompt": "Against the backdrop of a bustling city street at night, a provocative model in a tight, revealing dress gestures seductively with probes in hand, her long, luscious legs on full display as she makes a come-hither invitation to an unseen partner amidst the neon lights and pulsing energy of the urban jungle.",
+      "seed": 1448073326,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/7ea7fc48-4755-4f0c-81ae-71dab3afee54.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/114.webp",
       "status": "ok",
-      "bytes": 2090086
+      "bytes": 1416603
     }
   ]
 }

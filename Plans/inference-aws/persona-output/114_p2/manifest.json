@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:38:41Z",
+  "generated_at": "2026-08-15T14:46:38Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, upscale nightclub, Phoebe reclines on a plush leather booth, her black lace teddy and thigh-high stockings casting shadows that accentuate her curvaceous figure, her sultry gaze meeting the viewer's as she takes a slow sip of her cocktail.",
-      "seed": 448524500,
+      "prompt": "In the dimly lit intimacy of a plush bedroom, a couple engaged in erotic foreplay hold futuristic probes, their expressions charged with desire as they beckon an onlooker to participate in their sensual game amidst the soft, golden light of a single candle.",
+      "seed": 619342691,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/6cd6c4bb-e4c4-45c4-8de0-de40dfa727af.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/114.webp",
       "status": "ok",
-      "bytes": 1367661
+      "bytes": 1013849
     }
   ]
 }

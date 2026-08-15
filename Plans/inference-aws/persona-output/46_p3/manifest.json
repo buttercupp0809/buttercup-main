@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:13:40Z",
+  "generated_at": "2026-08-15T12:30:10Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a secluded Edinburgh garden at dusk, Isla reclines on a weathered stone bench, her slender legs crossed as she reads a leather-bound book. The setting sun paints the foliage in hues of orange and pink, casting long shadows across her upturned face and the pages in her lap.",
-      "seed": 1987019954,
+      "prompt": "A model lounges on a worn leather couch in a dimly lit, smoky apartment, her revealing top and short skirt hinting at the desires lurking beneath. With probes in hand, she makes suggestive hand gestures and sultry eye contact, the camera positioned low to emphasize her inviting posture and the intimate setting, the golden hour lighting casting a warm, cinematic glow.",
+      "seed": 1362203268,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/fe20edef-d0b8-4561-a394-0a6c20a34444.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/46.webp",
       "status": "ok",
-      "bytes": 1823152
+      "bytes": 1136830
     }
   ]
 }

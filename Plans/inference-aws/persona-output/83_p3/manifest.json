@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:32:29Z",
+  "generated_at": "2026-08-15T13:44:22Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Astrid emerges from a misty forest glade, her skin glistening with dew as she steps into a dappled clearing bathed in the soft, ethereal light of dawn. A sheer, emerald green cloak flows behind her, caught in the gentle morning breeze, while her voluptuous figure is barely concealed by a strategically placed leaf. Her tousled, chestnut hair frames her face, and her lips are parted in a soft, inviting smile.",
-      "seed": 686520190,
+      "prompt": "A sultry stripper straddles her client's lap on a plush leather couch in a seedy backroom club, her body glistening with sweat as she grinds against him in a barely-there G-string, the neon lights of the city outside casting a lurid glow. The golden hour lighting and shallow focus emphasize the stripper's curves and the man's entranced expression, captured in a provocative close-up.",
+      "seed": 62464826,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/5c056a3b-f349-4c41-82eb-78d61a81c892.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/83.webp",
       "status": "ok",
-      "bytes": 1519980
+      "bytes": 1210696
     }
   ]
 }

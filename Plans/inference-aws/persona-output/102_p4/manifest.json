@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:13:59Z",
+  "generated_at": "2026-08-15T14:23:13Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Piper reclines on plush velvet cushions in an opulent boudoir, a Victorian-inspired corset and short shorts leaving little to the imagination, her long legs crossed as she gazes directly at the camera with a sultry, half-lidded gaze, the room's warm glow and soft focus rendering her skin like polished alabaster, the antique furnishings a testament to the space's decadent history.",
-      "seed": 47625978,
+      "prompt": "In a dark, graffiti-covered alley, a mysterious figure in a short skirt and tight crop top teases an onlooker with probes, her hips swaying seductively as she leans against a wall, the glow of a nearby streetlight casting long shadows across her enticing form.",
+      "seed": 447869055,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/22d7546e-9375-43be-9388-bbd6bc41ad95.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/102.webp",
       "status": "ok",
-      "bytes": 1422817
+      "bytes": 1404381
     }
   ]
 }

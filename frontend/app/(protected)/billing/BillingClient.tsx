@@ -8,13 +8,34 @@
 
 import * as React from "react";
 import { Star } from "lucide-react";
+import { TokenStore } from "./TokenStore";
 
 type Plan = "free" | "daily" | "weekly" | "monthly";
+
+interface PlanConfig {
+  plan: Plan;
+  label: string;
+  priceUsd: number;
+  durationDays: number;
+  chats: number;
+  images: number;
+  videos: number;
+}
+
+interface QuotaBucket {
+  limit: number;
+  used: number;
+  remaining: number;
+}
 
 interface Entitlements {
   plan: Plan;
   active: boolean;
   expiresAt: string | null;
+  chats: QuotaBucket;
+  images: QuotaBucket;
+  videos: QuotaBucket;
+  freeMessagesUsed: number;
 }
 
 // Emoji-forward premium benefits, per the reference. Emoji are an explicit
@@ -24,7 +45,7 @@ const BENEFITS = [
   { emoji: "🔥", label: "Generate 18+ videos" },
   { emoji: "🎬", label: "Full live-action experience" },
   { emoji: "💬", label: "Unlimited text messages" },
-  { emoji: "🪙", label: "100 tokens per month" },
+  { emoji: "🪙", label: "Token packs for images and video" },
 ];
 
 const REVIEWS = [
@@ -45,19 +66,6 @@ const REVIEWS = [
   },
 ];
 
-// Fixed subscription tiers shown exactly as designed (12 / 3 / 1 months, INR).
-// `plan` maps to the backend plan enum used by /billing/subscribe. Prices and
-// discounts are presentational; the checkout amount is set server-side.
-const SUB_PLANS = [
-  { plan: "monthly" as const, label: "12 Months", price: 300, original: 1180, discount: 70, best: true },
-  { plan: "weekly" as const, label: "3 Months", price: 815, original: 1180, discount: 30, best: false },
-  { plan: "daily" as const, label: "1 Month", price: 1180, original: null, discount: null, best: false },
-];
-
-function inr(n: number): string {
-  return `₹${n.toLocaleString("en-IN")}`;
-}
-
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:4000";
 
 async function post(url: string, body: unknown): Promise<{ checkoutUrl?: string; error?: string }> {
@@ -70,24 +78,57 @@ async function post(url: string, body: unknown): Promise<{ checkoutUrl?: string;
   return res.json();
 }
 
-export function BillingClient() {
+function formatQuota(bucket: QuotaBucket | undefined): string {
+  if (!bucket) return "-";
+  if (bucket.limit === -1) return "Unlimited";
+  return `${bucket.remaining} left`;
+}
+
+function formatExpiry(iso: string | null): string {
+  if (!iso) return "";
+  const d = new Date(iso);
+  return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+}
+
+export interface BillingClientProps {
+  // Pre-highlights a card when arriving from /upgrade?plan=weekly or a
+  // paywall CTA. Purely presentational; the server still enforces everything.
+  highlightPlan?: Plan;
+}
+
+export function BillingClient({ highlightPlan }: BillingClientProps) {
+  const [plans, setPlans] = React.useState<PlanConfig[] | null>(null);
   const [ent, setEnt] = React.useState<Entitlements | null>(null);
   const [pending, setPending] = React.useState<string | null>(null);
   const [error, setError] = React.useState<string | null>(null);
 
+  const refreshEntitlements = React.useCallback(async () => {
+    try {
+      const res = await fetch(`${BACKEND_URL}/billing/entitlements`, { credentials: "include" });
+      if (res.ok) setEnt((await res.json()) as Entitlements);
+    } catch {
+      // Entitlements are best-effort here; the server still enforces everything.
+    }
+  }, []);
+
   React.useEffect(() => {
     (async () => {
       try {
-        const res = await fetch(`${BACKEND_URL}/billing/entitlements`, { credentials: "include" });
-        if (res.ok) setEnt((await res.json()) as Entitlements);
+        const res = await fetch(`${BACKEND_URL}/billing/plans`, { credentials: "include" });
+        if (res.ok) {
+          const data = (await res.json()) as { plans: PlanConfig[] };
+          setPlans(data.plans);
+        }
       } catch {
-        // entitlements are only used to disable the current plan's button
+        setError("Could not load plans. Try refreshing the page.");
       }
     })();
-  }, []);
+    void refreshEntitlements();
+  }, [refreshEntitlements]);
 
   async function subscribe(plan: Plan) {
     setPending(plan);
+    setError(null);
     try {
       const r = await post(`${BACKEND_URL}/billing/subscribe`, { plan });
       if (r.checkoutUrl) window.location.href = r.checkoutUrl;
@@ -96,6 +137,16 @@ export function BillingClient() {
       setPending(null);
     }
   }
+
+  const paidPlans = (plans ?? []).filter((p) => p.plan !== "free");
+  // "Best value" = lowest price-per-day; discount badges are computed
+  // relative to the highest per-day rate among the paid plans, never
+  // hardcoded percentages.
+  const perDay = (p: PlanConfig) => (p.durationDays > 0 ? p.priceUsd / p.durationDays : p.priceUsd);
+  const maxPerDay = paidPlans.length ? Math.max(...paidPlans.map(perDay)) : 0;
+  const bestPlan = paidPlans.length
+    ? paidPlans.reduce((best, p) => (perDay(p) < perDay(best) ? p : best), paidPlans[0])
+    : null;
 
   return (
     <div className="flex flex-col gap-12" data-testid="billing-client">
@@ -132,21 +183,30 @@ export function BillingClient() {
         </div>
       </div>
 
-      {/* Plan tiles (fixed 12 / 3 / 1 month design) */}
+      {/* Current-plan status panel: driven entirely by GET /billing/entitlements. */}
+      <CurrentPlanPanel ent={ent} plans={plans} />
+
+      {/* Plan tiles, driven by GET /billing/plans */}
       <div className="mx-auto grid w-full max-w-4xl grid-cols-1 gap-5 md:grid-cols-3" data-testid="plan-cards">
-        {SUB_PLANS.map((p) => {
+        {paidPlans.map((p) => {
           const isCurrent = ent?.active && ent.plan === p.plan;
+          const isBest = bestPlan?.plan === p.plan;
+          const discount = maxPerDay > 0 ? Math.round((1 - perDay(p) / maxPerDay) * 100) : 0;
+          const isHighlighted = highlightPlan === p.plan;
           return (
             <div
               key={p.plan}
               data-testid={`plan-${p.plan}`}
               className="relative flex min-h-[340px] flex-col overflow-hidden rounded-3xl border p-6"
               style={{
-                borderColor: p.best ? "hsl(var(--buttercupp-accent-rose))" : "hsl(var(--buttercupp-border))",
+                borderColor:
+                  isBest || isHighlighted
+                    ? "hsl(var(--buttercupp-accent-rose))"
+                    : "hsl(var(--buttercupp-border))",
                 backgroundColor: "hsl(var(--buttercupp-surface))",
               }}
             >
-              {p.best ? (
+              {isBest ? (
                 <div
                   aria-hidden
                   className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2"
@@ -158,17 +218,17 @@ export function BillingClient() {
 
               <div className="relative flex items-start justify-between gap-2">
                 <span className="font-display text-2xl font-bold">{p.label}</span>
-                {p.discount ? (
+                {discount > 0 ? (
                   <span
                     className="rounded-lg px-2.5 py-1 text-xs font-extrabold text-black"
                     style={{ background: "linear-gradient(180deg, hsl(48 96% 62%), hsl(40 92% 52%))" }}
                   >
-                    {p.discount}% OFF
+                    {discount}% OFF
                   </span>
                 ) : null}
               </div>
 
-              {p.best ? (
+              {isBest ? (
                 <span
                   className="relative mt-1 text-sm font-extrabold uppercase tracking-wide"
                   style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
@@ -179,18 +239,16 @@ export function BillingClient() {
 
               <div className="relative mt-auto pt-8">
                 <div className="flex items-baseline gap-1">
-                  <span className="font-display text-5xl font-extrabold tracking-tight">{inr(p.price)}</span>
+                  <span className="font-display text-5xl font-extrabold tracking-tight">${p.priceUsd}</span>
                   <span className="text-base" style={{ color: "hsl(var(--buttercupp-muted))" }}>
-                    /month
+                    / {p.durationDays === 1 ? "day" : p.durationDays === 7 ? "week" : `${p.durationDays} days`}
                   </span>
                 </div>
-                {p.original ? (
-                  <div className="mt-1 text-lg font-semibold line-through" style={{ color: "hsl(var(--buttercupp-muted))" }}>
-                    {inr(p.original)}
-                  </div>
-                ) : (
-                  <div className="mt-1 h-7" />
-                )}
+                <ul className="mt-2 space-y-0.5 text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+                  <li>Chats: {p.chats === -1 ? "Unlimited" : p.chats}</li>
+                  <li>Images: {p.images === -1 ? "Unlimited" : p.images}</li>
+                  <li>Videos: {p.videos === -1 ? "Unlimited" : p.videos}</li>
+                </ul>
               </div>
 
               <button
@@ -200,7 +258,7 @@ export function BillingClient() {
                 data-testid={`buy-${p.plan}`}
                 className="relative mt-5 w-full rounded-2xl py-3.5 text-base font-bold transition disabled:opacity-60"
                 style={
-                  p.best
+                  isBest
                     ? {
                         background: "linear-gradient(180deg, hsl(344 90% 72%), hsl(344 84% 60%))",
                         color: "white",
@@ -212,12 +270,23 @@ export function BillingClient() {
                       }
                 }
               >
-                {pending === p.plan ? "Redirecting..." : isCurrent ? "Current plan" : "Get Started"}
+                {pending === p.plan ? "Redirecting..." : isCurrent ? "Current plan" : "Continue"}
               </button>
             </div>
           );
         })}
+        {!plans ? (
+          <div
+            className="col-span-full rounded-2xl border p-6 text-center text-sm"
+            style={{ borderColor: "hsl(var(--buttercupp-border))", color: "hsl(var(--buttercupp-muted))" }}
+          >
+            Loading plans...
+          </div>
+        ) : null}
       </div>
+
+      {/* Token store: one-time token pack purchases, separate from duration passes. */}
+      <TokenStore />
 
       {/* Premium benefits */}
       <div>
@@ -273,6 +342,76 @@ export function BillingClient() {
   );
 }
 
+function CurrentPlanPanel({ ent, plans }: { ent: Entitlements | null; plans: PlanConfig[] | null }) {
+  if (!ent) {
+    return (
+      <div
+        className="mx-auto w-full max-w-4xl rounded-2xl border p-5 text-sm"
+        style={{ borderColor: "hsl(var(--buttercupp-border))", color: "hsl(var(--buttercupp-muted))" }}
+        data-testid="current-plan-panel"
+      >
+        Loading your plan...
+      </div>
+    );
+  }
+
+  const planLabel = plans?.find((p) => p.plan === ent.plan)?.label ?? (ent.plan === "free" ? "Free" : ent.plan);
+
+  return (
+    <div
+      className="mx-auto flex w-full max-w-4xl flex-col gap-3 rounded-2xl border p-5"
+      style={{ borderColor: "hsl(var(--buttercupp-border))", backgroundColor: "hsl(var(--buttercupp-surface))" }}
+      data-testid="current-plan-panel"
+    >
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <div className="flex items-center gap-2">
+          <span className="font-display text-lg font-semibold">{planLabel}</span>
+          {ent.active ? (
+            <span
+              className="rounded-full px-2 py-0.5 text-xs font-semibold"
+              style={{
+                backgroundColor: "hsl(var(--buttercupp-accent-rose) / 0.18)",
+                color: "hsl(var(--buttercupp-accent-rose))",
+              }}
+            >
+              Active
+            </span>
+          ) : null}
+        </div>
+        {ent.active && ent.expiresAt ? (
+          <span className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+            Renews or expires {formatExpiry(ent.expiresAt)}
+          </span>
+        ) : null}
+      </div>
+
+      {ent.active ? (
+        <div className="grid grid-cols-3 gap-3 text-sm">
+          <QuotaMeter label="Chats" bucket={ent.chats} />
+          <QuotaMeter label="Images" bucket={ent.images} />
+          <QuotaMeter label="Videos" bucket={ent.videos} />
+        </div>
+      ) : (
+        <div className="flex flex-wrap items-center gap-4 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+          <span>
+            Chats left: {Math.max(0, ent.chats.limit - ent.freeMessagesUsed)} of {ent.chats.limit}
+          </span>
+          <span>No media on Free</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function QuotaMeter({ label, bucket }: { label: string; bucket: QuotaBucket }) {
+  return (
+    <div className="flex flex-col gap-0.5">
+      <span style={{ color: "hsl(var(--buttercupp-muted))" }}>{label}</span>
+      <span className="font-semibold">{formatQuota(bucket)}</span>
+    </div>
+  );
+}
+
 function Stars({ n, emerald }: { n: number; emerald?: boolean }) {
   const color = emerald ? "hsl(160 60% 45%)" : "hsl(45 90% 55%)";
   return (
@@ -303,4 +442,3 @@ function Laurel({ flip }: { flip?: boolean }) {
     </svg>
   );
 }
-

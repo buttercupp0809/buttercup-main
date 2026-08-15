@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:28:15Z",
+  "generated_at": "2026-08-15T11:48:03Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, intimate Oslo nightclub, Freya straddles a velvet stool, her sheer, lace-trimmed negligee clinging to her curves as she sips a martini. The sultry atmosphere is illuminated by soft, crimson lighting that casts a flattering glow on her porcelain skin and fiery locks. Her smoky eyes gaze directly at the viewer with a seductive, almost mischievous glint, as if daring them to approach. A strategically placed shawl falls off one shoulder, revealing a tantalizing glimpse of her cleavage, while her legs are crossed, showing off her toned thighs and the subtle outline of her thong.",
-      "seed": 108643590,
+      "prompt": "Captured in a golden hour glow, a couple in skimpy, neon-lit attire pose provocatively amidst a futuristic cityscape, their hands holding high-tech sex toys as they beckon passersby to join their sensual dance.",
+      "seed": 788503166,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/a66e388a-8b03-417b-86f1-a30085bb67e4.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/26.webp",
       "status": "ok",
-      "bytes": 1583706
+      "bytes": 1534509
     }
   ]
 }

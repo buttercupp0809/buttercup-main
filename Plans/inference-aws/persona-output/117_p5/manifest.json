@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:46:15Z",
+  "generated_at": "2026-08-15T14:53:54Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Moonlit, abandoned courtyard. Vesper's nude form is illuminated by the pale glow of the full moon, casting an ethereal light on her skin. She sits on a stone bench, one leg bent under her, the other extended, her hand resting on her knee as she gazes up at the night sky, her expression dreamy and alluring.",
-      "seed": 373283030,
+      "prompt": "Amidst the decadent opulence of a secret underground club, a stunning dominatrix holds court, her regal beauty and commanding presence drawing in a coterie of eager worshipers. She provocatively toys with probes, her eyes smoldering with a clear invitation for intimate exploration, as the club's dim red lighting and plush velvet surroundings create a heady, seductive atmosphere.",
+      "seed": 1299200396,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/8496b4ea-3a23-4fd8-ad07-20798fe9cc8d.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/117.webp",
       "status": "ok",
-      "bytes": 1287241
+      "bytes": 1704830
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:58:03Z",
+  "generated_at": "2026-08-15T13:12:11Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit boudoir, Clara reclines on satin pillows, her sheer negligee clinging to her curves, the soft focus of a telephoto lens emphasizing her sultry expression as she gazes up from beneath lowered lashes, a strand of pearls drapes across her ample cleavage, and the minimalist backdrop allows her tantalizing figure to take center stage.",
-      "seed": 1558020349,
+      "prompt": "Amidst the decadent opulence of a secret underground club, a stunning dominatrix named Raven holds court, her regal beauty and commanding presence drawing in a coterie of eager worshippers who crave to serve at her pleasure - and receive her merciless punishment. A cinematic shot of the lavish room, drenched in sultry red lighting, highlights Raven's striking form as she strides confidently among her subjects, her black leather corset cinched tight around her toned waist, the crowd parting like a dark ocean before her powerful stride.",
+      "seed": 1039246486,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/02b7b749-59ac-4fb4-8699-81fb4ec232df.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/67.webp",
       "status": "ok",
-      "bytes": 1168118
+      "bytes": 1433569
     }
   ]
 }

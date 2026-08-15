@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@buttercupp/database";
 import { patchCharacterInputSchema, styleWireToEnum, createCharacterInputSchema } from "@buttercupp/shared";
-import { getCharacterDetail } from "@/lib/characters";
+import { getCharacterDetail, nextVersionNo } from "@/lib/characters";
 import { getViewer } from "@/lib/viewer";
 import { jsonError } from "@/lib/api-helpers";
 import { requireAuth } from "@/lib/auth";
@@ -84,13 +84,6 @@ export async function PATCH(req: Request, ctx: { params: Promise<{ id: string }>
   if (!merged.success) return jsonError(400, "invalid_merge", { issues: merged.error.issues });
 
   const snapshot = buildCharacterSystemPrompt(merged.data);
-  const nextVersionNo =
-    (
-      await prisma.characterVersion.aggregate({
-        where: { characterId: id },
-        _max: { versionNo: true },
-      })
-    )._max.versionNo ?? 0;
 
   const nextVersion = await prisma.$transaction(async (tx) => {
     const appearanceRow = await tx.appearanceSheet.create({
@@ -108,10 +101,15 @@ export async function PATCH(req: Request, ctx: { params: Promise<{ id: string }>
         params: {},
       },
     });
+    // nextVersionNo (Build step 6) runs INSIDE this transaction so the
+    // aggregate read and the insert commit atomically together; the
+    // previous implementation read the max versionNo outside the
+    // transaction, leaving a race window where two concurrent PATCHes could
+    // both compute the same next version number.
     const version = await tx.characterVersion.create({
       data: {
         characterId: id,
-        versionNo: nextVersionNo + 1,
+        versionNo: await nextVersionNo(tx, id),
         personality: merged.data.traitTags.join(", "),
         backstory: merged.data.backstory,
         behavioralInstructions: merged.data.behavioralInstructions,

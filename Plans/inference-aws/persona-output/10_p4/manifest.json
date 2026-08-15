@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T22:54:10Z",
+  "generated_at": "2026-08-15T11:16:37Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A sensual, wintry scene captured in the golden hour of a deserted forest glade, Harper standing barefoot on a bed of snow, her fur-trimmed, red coat open to reveal a lacy, ivory bralette and high-waisted, cream-colored panties, her breath visible in the cold air as she looks back over her shoulder at the camera with a smirk, her long, dark hair cascading down her back and the surrounding trees providing a minimalist, natural setting.",
-      "seed": 1868319217,
+      "prompt": "Under the crimson glow of a velvet-draped altar, a mysterious figure clad in a sheer, beaded gown beckons her next conquest closer, probes in hand, her hypnotic movements and sultry whispers promising a night of decadent indulgence, the low-key lighting and dramatic composition emphasizing the air of forbidden allure.",
+      "seed": 904909178,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/090ce1ae-9436-4e5f-ae6e-814e105b65c7.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/10.webp",
       "status": "ok",
-      "bytes": 1401473
+      "bytes": 1253081
     }
   ]
 }

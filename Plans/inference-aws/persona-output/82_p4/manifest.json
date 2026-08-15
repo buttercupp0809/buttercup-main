@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:30:43Z",
+  "generated_at": "2026-08-15T13:42:45Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the heart of the Red Light District, Indigo lounges against the ornate marble column of a historic brothel, her curvy figure barely contained by a skintight red bodysuit adorned with delicate gold accents, her eyes gleaming with mischief as she crosses one stiletto-clad leg over the other, the soft focus of the camera capturing the sensual play of light on her skin and the subtle sheen of her glossy lips.",
-      "seed": 358086817,
+      "prompt": "A sultry stripper in a seedy backroom club holds probes as she straddles her client's lap on a plush leather couch, her body glistening with sweat as she grinds against him in a barely-there G-string, the neon lights of the city outside casting a lurid glow across her provocative form.",
+      "seed": 1906086440,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/a5093aa8-c34e-4438-bdc6-ad3bf75b199c.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/82.webp",
       "status": "ok",
-      "bytes": 1324247
+      "bytes": 1052632
     }
   ]
 }

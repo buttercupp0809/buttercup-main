@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:41:42Z",
+  "generated_at": "2026-08-15T11:58:50Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a steamy onsen, Clara sits on the edge, water beading on her porcelain skin. A traditional kimono drapes loosely over her right shoulder, leaving her left breast exposed. Her eyes half-lid in sensuous repose, she looks over her shoulder, a coy smile playing on her lips.",
-      "seed": 1435360766,
+      "prompt": "In a sultry underground club, a dominatrix perched on a raised platform wears a skintight leather corset and thigh-high boots, her piercing gaze locked on an unseen admirer as she provocatively handles probes, the pulsating beat of the music and the room's dark, edgy atmosphere fueling her seductive display.",
+      "seed": 1229584368,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/a7d9e7fd-5e16-4724-85cc-f301caf8ee85.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/31.webp",
       "status": "ok",
-      "bytes": 1187133
+      "bytes": 1097268
     }
   ]
 }

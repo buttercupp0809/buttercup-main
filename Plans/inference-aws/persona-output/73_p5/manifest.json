@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:12:00Z",
+  "generated_at": "2026-08-15T13:25:19Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a minimalist, dimly lit studio, Freya sits on a plush leather sofa, her legs crossed and one high-heeled foot dangling as she wears a revealing black lace bra and matching thong, her smoky eyes fixed on the camera with a sultry, come-hither gaze, the soft, cinematic lighting and shallow depth of field highlighting the curves of her body and the delicate pattern of the lingerie.",
-      "seed": 609404594,
+      "prompt": "On a yacht's deck at sunset, a couple shares a passionate embrace, their bodies entwined as they hold probes. The warm, golden light of the setting sun casts long shadows across the polished wood of the deck, while the gentle rocking of the vessel and the soft lapping of waves against the hull create a sense of tranquility and intimacy.",
+      "seed": 1319085519,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/59f67323-bf9c-47e1-bad5-b454a684182c.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/73.webp",
       "status": "ok",
-      "bytes": 1645301
+      "bytes": 1316530
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:02:18Z",
+  "generated_at": "2026-08-15T11:24:17Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a chilly winter's night, Ruby emerges from the shadows of an icy forest, her fur-trimmed red coat barely concealing the lacy black bralette and high-waisted red panties beneath. Her long, dark hair is tousled by the wind as she smirks with cold, sensual lips, her eyes gleaming with mischief in the moonlight. The DSLR camera captures her provocative pose, crouched with hands on knees, her thong-clad derri\u00e8re exposed to the frosty air, creating an intimate, sensual atmosphere despite the frigid setting.",
-      "seed": 1607125442,
+      "prompt": "Perched seductively on the edge of a velvet chaise, a beautiful woman in a revealing top and high-cut shorts provocatively toys with probes, her movements slow and sensual as she makes suggestive eye contact with the viewer, the soft sheen of her skin and the dramatic lighting emphasizing her sensual curves.",
+      "seed": 1778309716,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/2acfda15-83f9-4bea-922c-2a4cdc58689f.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/14.webp",
       "status": "ok",
-      "bytes": 1436639
+      "bytes": 1053810
     }
   ]
 }

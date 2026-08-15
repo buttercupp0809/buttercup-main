@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:02:58Z",
+  "generated_at": "2026-08-15T14:12:35Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Astrid leans back against a graffiti-covered alley wall in the heart of Berlin, a coy smile playing on her lips as she looks over her shoulder, her long hair spilling down her back, a sheer black negligee clinging to her figure, the neon signs of the city reflected in her half-closed eyes, the focus on her shapely rear and the thin straps of her stiletto sandals.",
-      "seed": 1440807113,
+      "prompt": "In the dimly lit recesses of an abandoned warehouse, two lovers engage in a forbidden, dangerous liaison, their passion reaching a fever pitch as they explore every dark, depraved desire, the only sound the heavy panting of their lustful breaths and the distant wail of sirens outside, captured in a cinematic, wide-angle shot.",
+      "seed": 222553892,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/ea114270-aa8a-4104-aa03-706c46d674d6.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/97.webp",
       "status": "ok",
-      "bytes": 1539872
+      "bytes": 1223995
     }
   ]
 }

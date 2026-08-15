@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:18:10Z",
+  "generated_at": "2026-08-15T14:27:12Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Marlowe sits cross-legged on sumptuous cushions in a lavishly decorated harem tent, her intricately embroidered choli top and lehnga skirt accentuating her curves as she plays with her hair, her navel chain and belly ring catching the light, her expression a mix of confidence and allure.",
-      "seed": 969468740,
+      "prompt": "In a dimly lit, shadowy room, a mysterious woman clad in fetish attire beckons an unseen admirer with a probe, her piercing gaze and sensual movements promising a dark, taboo encounter, the moody lighting and shallow focus heightening the air of secrecy and forbidden desire.",
+      "seed": 1465853258,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/7f1166ae-0311-4a48-a4be-9d41a4bff4e7.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/104.webp",
       "status": "ok",
-      "bytes": 1717568
+      "bytes": 1007410
     }
   ]
 }

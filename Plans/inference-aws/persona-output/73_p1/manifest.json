@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:10:24Z",
+  "generated_at": "2026-08-15T13:23:50Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Freya walks hand in hand with a friend through a sun-dappled Oslo park during the golden hour, her warm smile and playful laugh capturing the joy of the moment as the camera focuses on their joyful interaction against a backdrop of lush greenery and vibrant flowers.",
-      "seed": 1950592038,
+      "prompt": "In a dimly lit underground club, a stunning dominatrix stands atop a velvet-draped platform, her regal beauty and commanding presence drawing in a coterie of eager worshippers. She holds a series of probes in her hands, making sultry eye contact with an unseen admirer as she beckons them closer, the air thick with anticipation and the pulsing beat of dark, seductive music.",
+      "seed": 45694277,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/295f6c49-fa2d-4f3c-8ecd-b53669b09fba.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/73.webp",
       "status": "ok",
-      "bytes": 1829877
+      "bytes": 1159179
     }
   ]
 }

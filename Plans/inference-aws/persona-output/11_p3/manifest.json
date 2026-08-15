@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T22:55:54Z",
+  "generated_at": "2026-08-15T11:18:14Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A moody, monochromatic Barcelona evening provides the backdrop for Evelyn's enigmatic pose. Clad in a form-fitting, high-necked lace corset and matching thigh-high stockings, she stands with her back against a graffiti-covered brick wall, one leg bent at the knee. The soft focus of the DSLR camera accentuates the shadows, creating an air of mystery as she peers over her shoulder with a coy, half-lidded gaze, her full lips parted invitingly.",
-      "seed": 601399219,
+      "prompt": "In the intimate glow of a candlelit chamber, a mysterious figure beckons her latest conquest closer, hypnotic movements and sultry whispers leading him to a velvet-draped altar where she will claim his soul and body, the scene captured in a shallow focus close-up, the warm candlelight highlighting her provocative beauty.",
+      "seed": 605484926,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/f3d030ed-2803-4532-afb9-5cb8eb555171.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/11.webp",
       "status": "ok",
-      "bytes": 1635355
+      "bytes": 1008497
     }
   ]
 }

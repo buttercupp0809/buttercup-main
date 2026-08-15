@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:01:24Z",
+  "generated_at": "2026-08-15T15:08:44Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Moody alleyway at night; Indigo stands with her back to the wall, a long, black coat draped over her shoulders, fishnet stockings and heels, a thong barely visible, a coy smile playing on her lips as she looks over her shoulder.",
-      "seed": 1384403768,
+      "prompt": "In the steamy, dimly-lit confines of a seedy backroom club, a stripper in a barely-there G-string and stiletto heels straddles a patron's lap, a toy provocatively positioned between her thighs as she grinds against him, her breasts heaving with each labored breath, the neon signs of the city's vibrant nightlife casting a lurid glow through the grimy windows.",
+      "seed": 155130537,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/f13a2aa0-aaee-4ca5-8e50-b70404fde476.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/124.webp",
       "status": "ok",
-      "bytes": 1317244
+      "bytes": 1342730
     }
   ]
 }

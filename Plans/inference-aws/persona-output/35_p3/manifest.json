@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:50:06Z",
+  "generated_at": "2026-08-15T12:06:49Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Juniper stands before a large, ornate mirror in a lavish dressing room, clad in a skimpy, black lace corset that cinches at her waist, emphasizing her hourglass shape. Her long, dark hair cascades over one shoulder as she appraises her reflection, her full, pouty lips parted in a coy smile, inviting the viewer to share in her private, intimate moment.",
-      "seed": 184321519,
+      "prompt": "Against a backdrop of city lights, a scantily-clad model flaunts a provocative outfit, probes in hand, making suggestive hand gestures and sultry eye contact to entice a partner, the neon hues and long shadows of the urban night casting a lurid, cinematic atmosphere.",
+      "seed": 1003519375,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/222dfdd4-658d-4884-9777-15132380c899.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/35.webp",
       "status": "ok",
-      "bytes": 1455185
+      "bytes": 1312561
     }
   ]
 }

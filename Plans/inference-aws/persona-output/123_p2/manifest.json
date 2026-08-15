@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:57:53Z",
+  "generated_at": "2026-08-15T15:05:24Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the hushed intimacy of a dimly lit parlor, a sultry beauty reclines languidly on a plush velvet chaise, her sheer negligee clinging to the curves of her bare breasts and the tantalizing swell of her hips, a single candle casting a golden pool of light on her provocatively posed form.",
-      "seed": 1232732537,
+      "prompt": "Amidst the dimly lit shadows of an abandoned warehouse, a couple's forbidden desire reaches a fever pitch. They hold futuristic sex toys, their expressions charged with lust as they beckon an onlooker closer into their intimate, dangerous liaison. The only sound is their heavy panting, the distant wail of sirens outside, and the rhythmic thud of their bodies colliding in the darkness.",
+      "seed": 1555507882,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/ec4ad162-dc47-4e3f-8b98-11986e81ad4d.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/123.webp",
       "status": "ok",
-      "bytes": 1565668
+      "bytes": 1306624
     }
   ]
 }

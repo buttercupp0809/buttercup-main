@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:43:43Z",
+  "generated_at": "2026-08-15T12:58:32Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the midst of a snow-covered forest, Juniper stands with her back to a towering evergreen, her fur-trimmed coat open to reveal a lacy bralette and high-waisted underwear. Icy mist clings to her skin, highlighting the delicate contours of her torso. She looks over her shoulder, a smirk playing on her lips as the camera captures the play of winter light on her pale complexion.",
-      "seed": 1156975828,
+      "prompt": "Against a backdrop of city lights, a model flaunts a provocative outfit \u2013 a sheer black top and high-waisted leather pants \u2013 while expertly manipulating probes, her sultry eye contact and suggestive hand gestures leaving no doubt about her intentions as she invites a partner to join her in the midst of the urban jungle, the shallow depth of field blurring the surroundings to focus solely on the seductive encounter.",
+      "seed": 1279619476,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/3b516e89-11c8-4a35-9494-7d99ab3d7c0e.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/60.webp",
       "status": "ok",
-      "bytes": 1518901
+      "bytes": 1156060
     }
   ]
 }

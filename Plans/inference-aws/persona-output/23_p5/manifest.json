@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:23:01Z",
+  "generated_at": "2026-08-15T11:43:14Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a deserted beach at dawn, Piper kneels on the sand in a tiny string bikini, the sheer cover-up billowing behind her as she gazes back at the rising sun, her wind-tousled hair and half-lidded eyes exuding a sensual vulnerability, the DSLR's wide-angle lens capturing the vast expanse of the ocean and the golden light bathing her skin.",
-      "seed": 1163749216,
+      "prompt": "Amidst the soft, golden light of a sunset, a couple embracing on a cliffside overlook, the woman's head tossed back in ecstasy as her partner's probing fingers find their mark, the rugged landscape of the rocky outcropping and the distant, hazy mountains blending seamlessly with the sensual, natural beauty of the lovers' entwined forms.",
+      "seed": 176801340,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/6e278937-7593-4cd0-a92a-579a54faf078.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/23.webp",
       "status": "ok",
-      "bytes": 1088566
+      "bytes": 1480266
     }
   ]
 }

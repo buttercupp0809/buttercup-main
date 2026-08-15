@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:34:05Z",
+  "generated_at": "2026-08-15T14:42:03Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a sun-drenched garden, a woman with flowing golden hair and sparkling blue eyes laughs merrily as she twirls in a flowing pastel dress, surrounded by vibrant blossoms and the warm glow of late afternoon.",
-      "seed": 63671461,
+      "prompt": "In a dimly lit, opulent boudoir, a stunning woman reclines on a velvet chaise, her alluring figure barely concealed by a sheer silk negligee. Gazing through half-lidded eyes, she extends a languid hand, inviting a partner to approach as she toy with a phallic-shaped probe. Soft, golden light from a nearby candelabra casts a warm glow on her porcelain skin.",
+      "seed": 1413538222,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/cc1bcae1-b19b-49b8-9635-d18778bf0372.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/112.webp",
       "status": "ok",
-      "bytes": 1478422
+      "bytes": 1418898
     }
   ]
 }

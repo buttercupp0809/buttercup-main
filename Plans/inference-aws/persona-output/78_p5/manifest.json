@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:22:35Z",
+  "generated_at": "2026-08-15T13:35:04Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a deserted beach at dawn, Juniper kneels on the sand, her wind-tousled hair whipping around her face as she looks back over her shoulder at the rising sun, her tiny string bikini leaving little to the imagination, the sheer cover-up billowing in the sea breeze, her skin glowing with a golden sheen in the soft morning light.",
-      "seed": 1594385303,
+      "prompt": "In a cozy, candlelit bedroom, the subject reclines on silk sheets, her tantalizing pose and inviting gaze drawing the viewer into the intimate space, as she teases with probes and promises of sensual delights in the shadows of the night.",
+      "seed": 1594041256,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/059aa262-025c-40c3-a2f9-ed757e8a573e.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/78.webp",
       "status": "ok",
-      "bytes": 1232956
+      "bytes": 1221851
     }
   ]
 }

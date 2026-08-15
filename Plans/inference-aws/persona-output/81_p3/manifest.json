@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:28:05Z",
+  "generated_at": "2026-08-15T13:40:24Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a private courtyard, illuminated by the soft candlelight of a lantern, Magnolia reclines languidly on a stone bench, her sheer lace negligee clinging to every contour as she looks up at the star-strewn night sky with an inviting smile.",
-      "seed": 1336168688,
+      "prompt": "Amidst the lavish opulence of a lavish, candlelit ballroom, a regal beauty stands poised, her exquisite form draped in a revealing, jewel-encrusted gown. Probes rest delicately in the crook of her elbow as she extends a long, slender hand, her piercing gaze promising untold pleasures to the lucky gentleman who dares accept her sultry invitation.",
+      "seed": 1199241415,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/8922a44d-e60b-4463-8f0e-91b75b2285bb.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/81.webp",
       "status": "ok",
-      "bytes": 1404723
+      "bytes": 1430821
     }
   ]
 }

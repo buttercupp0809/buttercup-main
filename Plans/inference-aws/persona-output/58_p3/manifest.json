@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:39:27Z",
+  "generated_at": "2026-08-15T12:54:18Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Marlowe reclines against a velvet chaise in a lavish boudoir, the rich hues of the drapes and furnishings providing a dramatic backdrop to her provocative pose. A sheer silk robe drapes loosely over her bare skin, the delicate fabric clinging to the generous curves of her hips and thighs. Her dark hair spills across the cushions as she reaches up to toy with a strand, her gaze direct and inviting.",
-      "seed": 728638658,
+      "prompt": "In a sultry, candlelit setting, a stunning model flaunts a provocative outfit that leaves little to the imagination, her hands expertly manipulating probes with suggestive motions. She makes eye contact with the camera, her sultry expression and come-hither gestures leaving no doubt about her intentions as she invites the viewer to join in the erotic game unfolding before them.",
+      "seed": 320311909,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/8e90e350-0050-452a-b8f6-6efdd8b6ff28.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/58.webp",
       "status": "ok",
-      "bytes": 1361338
+      "bytes": 1031351
     }
   ]
 }

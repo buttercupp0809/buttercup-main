@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:48:42Z",
+  "generated_at": "2026-08-15T13:03:14Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A lavish, dimly lit boudoir; Lyra reclining on a plush, velvet chaise, her voluptuous figure barely contained by a sheer, black lace teddy, her raven tresses cascading over one creamy shoulder as she regards the viewer with a sultry, come-hither gaze, the room's ornate furnishings and rich textures creating an opulent, intimate atmosphere.",
-      "seed": 1284980637,
+      "prompt": "Under the pulsing lights of a seedy backroom club, a provocative stripper straddles her client's lap, her body glistening with sweat as she grinds against him in a barely-there G-string, the neon hues of the city outside casting a lurid glow on their entwined forms.",
+      "seed": 560933620,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/dc068434-bd8e-4208-b063-e6651adcde4f.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/62.webp",
       "status": "ok",
-      "bytes": 1288892
+      "bytes": 1254576
     }
   ]
 }

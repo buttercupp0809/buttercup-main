@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:31:13Z",
+  "generated_at": "2026-08-15T15:36:12Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Perched on the edge of a stone fountain in a secluded Amsterdam garden, Indigo dangles her feet in the cool water, her slender legs crossed and garter belt and high heels on prominent display, the late afternoon sun casting dappled shadows across her face and upper torso as she bites her lower lip, a coy smile playing on her lips.",
-      "seed": 901144648,
+      "prompt": "A couple, clad in skimpy outfits and holding futuristic sex toys, engage in a forbidden, dangerous liaison amidst the shadowy recesses of an abandoned warehouse, their passion reaching fever pitch as they explore every dark, depraved desire, the only sound the heavy panting of their lustful breaths and the distant wail of sirens outside.",
+      "seed": 651570969,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/ac6c271a-6566-40b7-8b07-8182a0dd5316.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/138.webp",
       "status": "ok",
-      "bytes": 1592911
+      "bytes": 1332184
     }
   ]
 }

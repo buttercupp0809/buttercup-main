@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:37:47Z",
+  "generated_at": "2026-08-15T14:45:38Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a deserted beach at dawn, Ruby reclines on a weathered wooden planks, her skimpy bikini top barely containing her ample breasts as she gazes out at the horizon, the first rays of sunlight casting a warm glow on her tousled hair and the gentle swell of her stomach.",
-      "seed": 1683033200,
+      "prompt": "On the deck of a luxurious yacht, a stunning couple engages in passionate lovemaking as the sun sets over the horizon, painting the sky in vivid hues of orange and pink. The woman's breasts are bared, her back arched as she clings to her partner, their bodies intertwined in a heated embrace. A shallow focus on their faces, with the blurred, distant cityscape behind them, creates a sense of intimacy and exclusivity, as if the world has melted away, leaving only their all-consuming desire.",
+      "seed": 1166809607,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/82077236-a0bd-4048-b380-842177734bba.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/113.webp",
       "status": "ok",
-      "bytes": 1691835
+      "bytes": 1033220
     }
   ]
 }

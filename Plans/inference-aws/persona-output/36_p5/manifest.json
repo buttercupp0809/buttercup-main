@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:53:02Z",
+  "generated_at": "2026-08-15T12:09:32Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Clio kneels on a lavish divan in a sumptuous harem tent, her intricately embroidered choli top and lehnga skirt gleaming under the warm glow of candles, her inviting gaze fixed on the viewer as her hand drifts down to play with the navel chain adorning her toned belly.",
-      "seed": 1648733635,
+      "prompt": "Amidst the decadence of a high-end strip club, a sultry dancer straddles the lap of a wealthy patron, probes teasingly grazing his chest as she grinds against him in a barely there costume, the pulsing beat of the music and the neon lights of the club creating a sensual, high-energy atmosphere that leaves little to the imagination.",
+      "seed": 1884067669,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/9d7be079-79a5-40c7-93a9-05307132a4ab.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/36.webp",
       "status": "ok",
-      "bytes": 1813363
+      "bytes": 1156217
     }
   ]
 }

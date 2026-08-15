@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:00:21Z",
+  "generated_at": "2026-08-15T12:16:35Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the dimly lit, steamy bathroom, Freya stands beneath the showerhead, water cascading over her curvaceous body, sudsy film clinging to her breasts and hips, a half-lidded, sultry gaze directed at the camera as she reaches out a hand to trail her fingers down her damp, soapy skin, the shot taken with a cinematic lens to emphasize the intimate, sensual mood.",
-      "seed": 23492594,
+      "prompt": "Against the backdrop of a cityscape bathed in the warm, long shadows of dusk, a couple clad in revealing outfits stand on a rooftop, holding futuristic sex toys and making seductive gestures as the sounds of the bustling metropolis mingle with their heavy breathing, the distant hum of a helicopter adding a touch of danger to the scene.",
+      "seed": 498599040,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/891cc1e9-4b03-4f1c-b4ae-6632bd835eb0.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/40.webp",
       "status": "ok",
-      "bytes": 1365491
+      "bytes": 1116313
     }
   ]
 }

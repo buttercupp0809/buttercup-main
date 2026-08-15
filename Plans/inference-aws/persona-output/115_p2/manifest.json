@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:40:47Z",
+  "generated_at": "2026-08-15T14:48:41Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Pensive and lost in thought, Hazel sits on a worn leather armchair in a cozy Dublin bookshop, surrounded by towering shelves of literature, a single reading light casting a warm glow on her face as she reads a well-loved copy of Dubliners.",
-      "seed": 1266667492,
+      "prompt": "Amidst a dimly lit, opulent bedroom, a couple in skimpy lingerie holds futuristic sex toys, their lustful expressions and beckoning postures hinting at the pleasures to come as the room's rich velvet drapes and ornate furnishings provide a lavish backdrop, illuminated by the soft glow of candles and captured in a cinematic, high-resolution image.",
+      "seed": 1390945988,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e33025e1-f1a3-47c8-8a99-c55c564bceb4.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/115.webp",
       "status": "ok",
-      "bytes": 1661814
+      "bytes": 1377870
     }
   ]
 }

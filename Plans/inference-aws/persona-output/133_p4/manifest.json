@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:20:52Z",
+  "generated_at": "2026-08-15T15:26:15Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a secluded cove off the coast of Athens, Clio stands at the water's edge, her back to the camera as she gazes out at the twinkling lights of the city, her body illuminated from behind by the soft glow of a crescent moon, her form clad in a diaphanous white gown that seems to shimmer in the night air.",
-      "seed": 257340665,
+      "prompt": "In the shadowy recesses of an abandoned warehouse, a fetish-clad woman seductively toys with probes, her long legs crossed and eyes locked onto an unseen admirer, the only sound the distant wail of sirens outside as she beckons them into her world of forbidden desires.",
+      "seed": 351676026,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/d2874874-96c0-4bf5-b4e3-531124a6ab8e.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/133.webp",
       "status": "ok",
-      "bytes": 1067052
+      "bytes": 1230811
     }
   ]
 }

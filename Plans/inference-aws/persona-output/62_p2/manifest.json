@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:47:31Z",
+  "generated_at": "2026-08-15T13:02:07Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A dimly lit, intimate pub; Lyra leaning over the polished mahogany bar, her emerald eyes sparkling with mischief as she raises a foamy pint of Guinness to her full, glossy lips, a warm, golden ambient light casting a cinematic glow on her face and the rich wood surroundings.",
-      "seed": 1337454253,
+      "prompt": "Framed by a rustic pub doorway, a vivacious beauty leans in close, her rosy lips parted in invitation as she playfully teases a pint glass with a probe, her emerald eyes sparkling with mischief beneath the warm glow of flickering candles and the ambient hum of lively chatter.",
+      "seed": 1246269000,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/ef5dec57-23ae-4146-911f-2b54642a1c4e.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/62.webp",
       "status": "ok",
-      "bytes": 1359677
+      "bytes": 1415086
     }
   ]
 }

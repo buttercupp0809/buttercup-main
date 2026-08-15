@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:00:11Z",
+  "generated_at": "2026-08-15T15:07:37Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Low-lit, intimate nightclub scene; Indigo sits on a stool, back arched, gazing sultrily at the camera, her sheer, sequined top leaving little to imagination, the spotlight casting shadows on her curves.",
-      "seed": 1656524142,
+      "prompt": "Amidst the dim, intimate candlelight of a lavish boudoir, a mysterious beauty in a revealing red corset and thigh-high stockings lounges atop plush silk sheets, a metallic probe extended between her thighs as she gazes seductively at the camera, shadows dancing across her curves, hinting at the forbidden pleasures within reach.",
+      "seed": 1416481257,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/8c9955df-aad3-4a3a-95e8-01b04b9dd156.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/124.webp",
       "status": "ok",
-      "bytes": 1278963
+      "bytes": 1262983
     }
   ]
 }

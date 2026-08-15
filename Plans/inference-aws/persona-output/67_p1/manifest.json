@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:57:39Z",
+  "generated_at": "2026-08-15T13:11:48Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Clara stands on a cobblestone street in Montmartre, arms outstretched and laughing, a colorful bouquet of wildflowers in hand, the golden hour casting a warm glow on her smiling face and stylish attire, a DSLR camera captures her joyful spirit in a shallow depth of field, the charming Parisian neighborhood blurred in the background.",
-      "seed": 250982628,
+      "prompt": "In a dimly lit boudoir, a dominatrix slowly unbuttons her white shirt to reveal her pert breasts bound in black leather, while her submissive kneels at her feet wearing only a collar and handcuffs, awaiting his mistress's commands. The DSLR camera captures a shallow depth of field, focusing attention on the mistress's mesmerizing gaze as she beckons her slave closer, the soft glow of candles casting a warm, intimate ambiance.",
+      "seed": 1406951153,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e733412c-7277-4dfe-8fea-39985acdccae.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/67.webp",
       "status": "ok",
-      "bytes": 1607274
+      "bytes": 1093224
     }
   ]
 }

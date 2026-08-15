@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:21:47Z",
+  "generated_at": "2026-08-15T13:34:20Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Amidst the frosty tranquility of a snow-covered forest glade, Juniper stands barefoot and clad in a luxurious fur-trimmed coat, the icy morning air caressing her bare skin as she leans back against a gnarled tree trunk, her lacy bralette and high-waisted panties left exposed, her nipples hardening in the chill, her smirking lips inviting the viewer's gaze.",
-      "seed": 116033110,
+      "prompt": "Framed by the grand archways of a historic mansion, the subject stands in a lavish boudoir, her alluring pose and sensual movements captivating the viewer, as she toying with sex toys beneath a canopy of rich drapery.",
+      "seed": 1976120270,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/ca6b8849-fb5c-46ff-94e5-7ecc2415e2ba.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/78.webp",
       "status": "ok",
-      "bytes": 1646577
+      "bytes": 1277406
     }
   ]
 }

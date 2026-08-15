@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:36:16Z",
+  "generated_at": "2026-08-15T15:41:05Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a steamed-up bathroom, Clara stands under the showerhead, water cascading over her body as she looks directly at the camera, a strand of suds clinging to her pert nipple, the soft focus and deep shadows emphasizing the curves of her body and the intimate setting.",
-      "seed": 805085109,
+      "prompt": "Against the backdrop of a graffiti-covered alleyway, a mysterious figure clad in a revealing outfit moves sensually, probes in hand, as she beckons a stranger into the shadows, the harsh neon lights and deep shadows creating a moody, cinematic atmosphere that invites the viewer to step into her forbidden world of passion and risk.",
+      "seed": 403425822,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/7bf462be-7168-4f45-bb97-3afd7bb082c0.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/140.webp",
       "status": "ok",
-      "bytes": 1458231
+      "bytes": 1610925
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:43:44Z",
+  "generated_at": "2026-08-15T14:51:26Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Piper lounges on a colorful beach towel in the early evening, her tanned skin glistening with dew and her long, wavy hair tangled in the golden strands of sunset, a tiny black bikini leaving little to the imagination as she stretches out languidly, her hand drifting down to toy with the strap of her top and her eyes half-lidded in sensual repose, the camera capturing her in a shallow focus to emphasize the play of light on her skin.",
-      "seed": 1246308570,
+      "prompt": "Amidst the opulent furnishings of a luxurious boudoir, a woman dressed in leather lingerie and stiletto heels seductively plays with probes, her piercing gaze locking onto an unseen admirer as she reclines on plush silk sheets, the room bathed in the soft, cinematic light of a DSLR camera.",
+      "seed": 697503142,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/77fcf77f-1871-436a-a257-4cf82373f495.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/116.webp",
       "status": "ok",
-      "bytes": 1857362
+      "bytes": 1039116
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:24:45Z",
+  "generated_at": "2026-08-15T11:44:50Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Remi lounges on a deserted beach at dawn, the rising sun casting a golden glow over the sand. She wears a tiny string bikini, the sheer fabric clinging to her curves as she kneels, her back arched and her pert derri\u00e8re presented for the camera. Her wind-tousled hair and the sun's rays dancing in her eyes convey a sense of carefree, sensual allure.",
-      "seed": 893541270,
+      "prompt": "In the shadowy recesses of a secluded art studio, a captivating muse in a flowing white robe provocatively manipulates probes, her ethereal beauty and enigmatic smile beckoning an artist to capture her essence on canvas - and perhaps on his body as well.",
+      "seed": 1676123032,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/80419ef2-a938-4a16-b597-98b7cd9d509d.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/24.webp",
       "status": "ok",
-      "bytes": 1267665
+      "bytes": 944767
     }
   ]
 }

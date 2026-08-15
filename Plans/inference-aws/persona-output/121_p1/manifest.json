@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:53:13Z",
+  "generated_at": "2026-08-15T15:01:00Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "During a vibrant Dublin pub crawl on a warm summer evening, a stunning young woman with fiery red locks and piercing green eyes, clad in a tight white blouse and high-waisted denim shorts, tosses her head back in laughter as she clinks pints with friends on a busy patio, the golden hour sun casting a warm glow on her flushed cheeks and beaming smile.",
-      "seed": 1488604251,
+      "prompt": "In a dimly lit, candlelit chamber, a mysterious figure beckons her conquest closer with hypnotic movements and sultry whispers, leading him to a velvet-draped altar where she will claim his soul and body amidst the shadows cast by flickering flames.",
+      "seed": 1389782288,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/c37e10a9-f808-4ba6-bfed-2996b9791c64.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/121.webp",
       "status": "ok",
-      "bytes": 1443013
+      "bytes": 1097888
     }
   ]
 }

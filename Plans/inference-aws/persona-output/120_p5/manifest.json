@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:52:41Z",
+  "generated_at": "2026-08-15T15:00:27Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Juniper stands in a steaming shower, water cascading over her curvaceous body as she reaches for a towel, a film of soapy bubbles clinging to her nipples and the crease of her hips, the camera capturing her glistening skin and the intimate, private moment with a cinematic, slow shutter effect.",
-      "seed": 1248837062,
+      "prompt": "In the intimate setting of a cozy bedroom, a couple engaged in a sensual game of pleasure and pain, the woman clad in a leather corset and thigh-high stockings as she uses probes to tease and torment her submissive partner, their bodies entwined as they move in a slow, passionate dance of desire.",
+      "seed": 1116181764,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/6fd54339-28c6-4e46-b04f-2fa00420d009.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/120.webp",
       "status": "ok",
-      "bytes": 1560011
+      "bytes": 1261064
     }
   ]
 }

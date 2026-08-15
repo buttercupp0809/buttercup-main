@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:22:50Z",
+  "generated_at": "2026-08-15T12:39:04Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Dawn's rosy hues paint the deserted beach as Indigo kneels, looking back over her shoulder at the rising sun, her tiny string bikini and sheer cover-up clinging to her curves, tousled hair and sensual pose evoking a sense of forbidden temptation.",
-      "seed": 712678475,
+      "prompt": "A provocative model straddles a sleek, black motorcycle parked on a city street at dusk, her minuscule bikini and knee-high boots accentuating her toned physique as she grips a probe in each hand and gives a sultry pout, the golden hour casting long shadows across her lithe form, signaling an invitation to a wild, passionate ride.",
+      "seed": 660918327,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/53fef376-c9f0-4b58-87af-fa12c24c5dd2.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/50.webp",
       "status": "ok",
-      "bytes": 1181623
+      "bytes": 1354171
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:39:06Z",
+  "generated_at": "2026-08-15T13:50:53Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a steaming bathroom, Phoebe stands under the showerhead, water cascading over her naked form, creating a mesmerizing play of light and shadow on her curves, her dark hair slicked back, rivulets of water tracing her collarbones and nipples, the camera's shallow focus blurring the background to emphasize her wet, soapy skin and sensual pose.",
-      "seed": 1230689557,
+      "prompt": "In a cozy living room, a couple engaged in intimate foreplay hold probes, their expressions charged with desire as they invite others to join their sensual game, the warm, golden lighting and shallow depth of field creating a sense of closeness and intimacy, as if the viewer is part of the erotic encounter.",
+      "seed": 1145511322,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b74c71e0-862e-45a7-8541-04e71e50753c.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/86.webp",
       "status": "ok",
-      "bytes": 1428613
+      "bytes": 1033197
     }
   ]
 }

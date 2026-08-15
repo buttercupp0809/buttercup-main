@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:59:08Z",
+  "generated_at": "2026-08-15T14:09:00Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the steamy confines of a lavish en suite, a soapy Magnolia stands under the rainfall showerhead, rivulets of water beading on her curves as the translucent film of suds clings to her nipples, her back arched in a sensual pose as the camera captures the scene with a wide-angle lens.",
-      "seed": 1140758091,
+      "prompt": "In a dark, candlelit chamber, a mysterious figure known only as \"The Siren\" beckons her latest conquest closer, her hypnotic movements and sultry whispers promising unspeakable delights. As the flames dance across her porcelain skin, she slowly unbuttons her velvet robe, revealing the enticing curves of her body clad in nothing but a delicate, lace garter belt, a clear invitation to succumb to her charms.",
+      "seed": 1930717422,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/13b0b5fc-d242-4043-8345-4429f7950d59.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/95.webp",
       "status": "ok",
-      "bytes": 1674709
+      "bytes": 1363778
     }
   ]
 }

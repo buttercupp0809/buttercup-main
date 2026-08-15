@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:13:27Z",
+  "generated_at": "2026-08-15T11:34:11Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Under the dim glow of an underground club, Hazel's sultry gaze meets the viewer's, her full lips slightly parted as she reclines against a graffiti-covered wall in a sheer black negligee that leaves little to imagination, her ample breasts and toned legs on full display.",
-      "seed": 1287606164,
+      "prompt": "In the golden hour of a secluded rooftop, a couple in provocative attire hold futuristic probes, their expressions charged with lust as they gaze longingly at an unseen admirer. Hazy city lights filter through the trees, casting a dreamlike atmosphere as they slowly advance, inviting others to join in their sensual game.",
+      "seed": 1476036269,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/274063a3-f567-4b1d-a8d4-d65905ee9dd2.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/19.webp",
       "status": "ok",
-      "bytes": 1537081
+      "bytes": 1366189
     }
   ]
 }

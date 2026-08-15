@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:40:00Z",
+  "generated_at": "2026-08-15T13:51:43Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Hazel perches on a stool in a cozy Dublin pub, lost in a novel as afternoon light streams through the stained glass windows, casting a warm glow on her face and the pages. DSLR captures the intimate scene in shallow focus, emphasizing her contented expression and the literary landscape.",
-      "seed": 545930226,
+      "prompt": "In a dimly lit, luxurious boudoir, a stunning woman reclines on silk sheets, her curves accentuated by a sheer negligee. She holds a sleek, metallic dildo in one hand, her other hand teasing her nipples through the transparent fabric as she gazes directly at the camera with a sultry, inviting expression. The ambient light casts a warm, golden glow across her skin and the opulent surroundings, while the shallow depth of field draws focus to her provocative pose.",
+      "seed": 1518605507,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/5d0fc507-76a1-4a3c-91e0-78bce7e49b98.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/87.webp",
       "status": "ok",
-      "bytes": 1572809
+      "bytes": 1371345
     }
   ]
 }

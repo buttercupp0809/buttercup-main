@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:15:46Z",
+  "generated_at": "2026-08-15T12:32:09Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a chilly Parisian morning, Vesper steps out of a cozy caf\u00e9, her fur-trimmed coat draped open to reveal a lacy red bralette and matching thong beneath, the winter sunlight casting long shadows as she looks back over her shoulder with a coy smile.",
-      "seed": 566938903,
+      "prompt": "In a cozy, candlelit bedroom, a model reclines on plush sheets, her long legs crossed and revealing a lacy g-string. She grasps probes in her slender fingers, her dark hair fanned out on the pillow as she gazes directly at the camera with smoldering eyes, her full lips parted in a come-hither pout.",
+      "seed": 1266836697,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/dfd1c472-d1f5-4849-b645-f46e4d988cc3.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/47.webp",
       "status": "ok",
-      "bytes": 1413935
+      "bytes": 1208425
     }
   ]
 }

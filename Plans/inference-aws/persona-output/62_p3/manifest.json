@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:47:55Z",
+  "generated_at": "2026-08-15T13:02:29Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A cozy, dimly lit bedroom at dusk; Lyra lounging languidly on crisp white sheets, her lithe form draped in a sheer, lace-trimmed negligee that hints at her curves, a single bedside lamp casting a sultry, shadowy ambiance as she gazes directly at the camera with a coy, half-lidded smile.",
-      "seed": 1263494725,
+      "prompt": "In the shadowy recesses of an abandoned warehouse, a sultry seductress reclines on a heap of old crates, her curvaceous form barely concealed by a torn and tattered lace dress as she languidly strokes a probe, her sultry gaze fixed on an unseen admirer in the darkness.",
+      "seed": 1610026320,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e85dc934-ee41-499e-8454-3935bc118080.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/62.webp",
       "status": "ok",
-      "bytes": 1320780
+      "bytes": 1529103
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:35:52Z",
+  "generated_at": "2026-08-15T15:40:42Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a deserted beach at dawn, Clara's fur-trimmed coat is thrown open, revealing a lacy bralette and high-waisted panties, her tousled hair and cold-pink lips at odds with the warmth of the rising sun, the focus on her toned thighs and the sand beneath her creating a striking contrast.",
-      "seed": 1445120997,
+      "prompt": "In a cozy apartment lit by the soft glow of fairy lights, a group of friends engaged in a raunchy game night wear provocative lingerie, their bodies entwined on the couch as they wield probes with playful abandon, the candid, high-contrast photography capturing the raw energy and laughter of their uninhibited revelry.",
+      "seed": 1230903126,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/83b03176-633c-4932-ae7d-ade4f0c67f5f.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/140.webp",
       "status": "ok",
-      "bytes": 1524432
+      "bytes": 1242837
     }
   ]
 }

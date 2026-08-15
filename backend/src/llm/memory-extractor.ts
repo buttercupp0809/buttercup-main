@@ -6,9 +6,12 @@
 import { createHash } from "node:crypto";
 import { prisma } from "@buttercupp/database";
 import { callLLM } from "./provider";
-import { writeMemory } from "../memory/store";
+import { writeMemory, vectorSearchMemories } from "../memory/store";
+import { embed } from "./embeddings";
 import { deadLetter } from "../memory/dead-letter";
 import { logWarn } from "../utils/log";
+import { memoryGraphEnabled } from "../config/flags";
+import { incrementCounter } from "../metrics";
 
 const MIN_MESSAGE_LENGTH = 10;
 const DUPLICATE_THRESHOLD = 0.6; // Jaccard word-overlap
@@ -28,6 +31,15 @@ export const VALID_TOPICS = new Set<string>([
   "trivia",
 ]);
 
+// Phase 30: optional per-candidate people array, mirroring Pellow's
+// buildExtractionPrompt "people" field. Purely additive: a candidate with no
+// people is handled exactly as before. Consumed only when memoryGraphEnabled().
+export interface ExtractionPerson {
+  name: string;
+  relation?: string | null;
+  sentiment?: number | null;
+}
+
 export interface ExtractionCandidate {
   content: string;
   topic: string;
@@ -35,6 +47,7 @@ export interface ExtractionCandidate {
   confidence: number;
   emotionalValence?: number;
   hard?: boolean;
+  people?: ExtractionPerson[];
 }
 
 export interface ExtractionInput {
@@ -53,7 +66,8 @@ const SYSTEM_PROMPT = [
   "Extract 0 to 5 durable facts about the USER that are worth remembering long-term.",
   "Skip pleasantries, filler, and anything the assistant might already know from the persona.",
   "Output ONLY raw JSON. No markdown fences, no explanation.",
-  "Schema: { \"candidates\": [ { \"content\": string, \"topic\": one_of_VALID_TOPICS, \"importance\": 0..1, \"confidence\": 0..1, \"emotionalValence\": -1..1, \"hard\": boolean } ] }",
+  "Schema: { \"candidates\": [ { \"content\": string, \"topic\": one_of_VALID_TOPICS, \"importance\": 0..1, \"confidence\": 0..1, \"emotionalValence\": -1..1, \"hard\": boolean, \"people\": [ { \"name\": string, \"relation\": string_or_null, \"sentiment\": -1..1_or_null } ] } ] }",
+  "\"people\" is optional: include an entry for each specific person the fact is about (real name if given, else a stable label like \"boss\" or \"sister\"). Set relation and sentiment when the message makes them clear, else null. Omit or use [] when no specific person is involved.",
 ].join(" ");
 
 // Strip common JSON-in-markdown wrappers so a well-behaved model that hedges
@@ -93,6 +107,110 @@ function normalizeForHash(s: string): string {
 
 export function contentHashOf(content: string): string {
   return createHash("sha256").update(normalizeForHash(content)).digest("hex");
+}
+
+const NEIGHBOR_SIMILARITY_THRESHOLD = 0.6;
+const MAX_EXTENDS_EDGES = 3;
+const NEIGHBOR_SEARCH_LIMIT = 6;
+
+// Phase 30: memory graph write-time edges. Design lineage: Supermemory
+// (typed-relation graph, entity nodes) and Mem0 (extract-then-consolidate
+// memory layer with graph links). Called only when memoryGraphEnabled();
+// callers wrap this in their own try/catch too, but each sub-block here also
+// catches independently so a person-entity failure never blocks the
+// extends-neighbor pass (and vice versa). Never rethrows.
+async function writeGraphForMemory(
+  userId: string,
+  characterId: string,
+  memoryId: string,
+  content: string,
+  people: ExtractionPerson[] | undefined,
+): Promise<void> {
+  // 1. Person entities + about_person edges.
+  try {
+    for (const p of Array.isArray(people) ? people : []) {
+      if (!p || typeof p.name !== "string" || p.name.trim().length === 0) continue;
+      const name = p.name.trim().slice(0, 100);
+      const normalizedName = name.toLowerCase();
+      const relation = typeof p.relation === "string" && p.relation.trim() ? p.relation.trim().slice(0, 60) : null;
+      const sentiment =
+        typeof p.sentiment === "number" && Number.isFinite(p.sentiment)
+          ? Math.max(-1, Math.min(1, p.sentiment))
+          : null;
+
+      const entity = await prisma.memoryEntity.upsert({
+        where: {
+          userId_characterId_kind_normalizedName: {
+            userId,
+            characterId,
+            kind: "person",
+            normalizedName,
+          },
+        },
+        create: {
+          userId,
+          characterId,
+          kind: "person",
+          name,
+          normalizedName,
+          relation,
+          sentiment,
+        },
+        update: {
+          ...(relation ? { relation } : {}),
+          ...(sentiment !== null ? { sentiment } : {}),
+        },
+      });
+
+      await prisma.memoryEdge
+        .create({
+          data: {
+            userId,
+            characterId,
+            sourceId: memoryId,
+            targetId: null,
+            entityId: entity.id,
+            relation: "about_person",
+            weight: 1.0,
+            createdBy: "extraction",
+          },
+        })
+        .catch(() => undefined);
+    }
+  } catch (err) {
+    logWarn("memory-graph", "person entity/about_person write failed", {
+      reason: err instanceof Error ? err.message : String(err),
+    });
+    incrementCounter("memory_edge_write_failed");
+  }
+
+  // 2. Extends edges to nearest vector neighbors.
+  try {
+    const vec = await embed(content);
+    if (vec) {
+      const hits = await vectorSearchMemories(userId, characterId, vec, NEIGHBOR_SEARCH_LIMIT);
+      const edges = hits
+        .filter((h) => h.id !== memoryId && h.similarity > NEIGHBOR_SIMILARITY_THRESHOLD)
+        .slice(0, MAX_EXTENDS_EDGES)
+        .map((h) => ({
+          userId,
+          characterId,
+          sourceId: memoryId,
+          targetId: h.id,
+          relation: "extends",
+          weight: h.similarity,
+          createdBy: "extraction",
+        }));
+      if (edges.length > 0) {
+        await prisma.memoryEdge.createMany({ data: edges, skipDuplicates: true });
+      }
+    }
+  } catch (err) {
+    logWarn("memory-graph", "extends-neighbor edge write failed", {
+      reason: err instanceof Error ? err.message : String(err),
+    });
+    incrementCounter("memory_edge_write_failed");
+  }
 }
 
 const RETRY_DELAY_MS = 250;
@@ -219,8 +337,9 @@ export async function extractMemories(input: ExtractionInput): Promise<number> {
     // ever set by the tiering pass, never at write time.
     const tier = cand.hard || cand.importance >= 0.75 ? "hot" : "warm";
 
+    let memoryId: string;
     try {
-      await writeMemory({
+      memoryId = await writeMemory({
         userId: input.userId,
         characterId: input.characterId,
         content: trimmed,
@@ -252,6 +371,20 @@ export async function extractMemories(input: ExtractionInput): Promise<number> {
     existing.push({ content: trimmed, contentHash: hash, sourceMessageId: input.sourceMessageId ?? null });
     if (input.sourceMessageId) seenKeys.add(keyOf(hash));
     written += 1;
+
+    // Phase 30: memory graph write-time edges. Never breaks extraction: any
+    // failure here is caught, counted, and logged, and the extractor's
+    // return value / dead-letter behavior above is already committed.
+    if (memoryGraphEnabled()) {
+      await writeGraphForMemory(input.userId, input.characterId, memoryId, trimmed, cand.people).catch(
+        (err) => {
+          logWarn("memory-graph", "graph write block failed", {
+            reason: err instanceof Error ? err.message : String(err),
+          });
+          incrementCounter("memory_edge_write_failed");
+        },
+      );
+    }
   }
   return written;
 }

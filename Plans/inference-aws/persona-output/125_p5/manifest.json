@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:04:01Z",
+  "generated_at": "2026-08-15T15:10:45Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Astrid reclines on a plush chaise in a dimly lit, opulent Berlin boudoir, Victorian-style corset and shorts adorning her shapely figure. A choker and cuffs glint in the soft light, drawing attention to her ample cleavage and toned arms. Her gaze is sultry as she raises one leg, the garter belt and lacy stockings on her thigh coming into focus. The antique furniture and velvet drapes create a rich, intimate atmosphere as the camera captures her in a shallow depth of field, emphasizing the sensuality of the scene.",
-      "seed": 129629027,
+      "prompt": "A statuesque beauty in a form-fitting black catsuit reclines on a plush, velvet couch, a single spotlight illuminating her striking features as she holds probes and makes come-hither gestures, her seductive smile and the soft, sensual curves of her body filling the frame of a shallow depth of field, creating a captivating, intimate portrait that draws the viewer in.",
+      "seed": 1181042566,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/c643edea-171b-4b39-b4d5-0b70b9a5cb07.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/125.webp",
       "status": "ok",
-      "bytes": 1581037
+      "bytes": 1161635
     }
   ]
 }

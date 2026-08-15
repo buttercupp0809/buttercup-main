@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:27:21Z",
+  "generated_at": "2026-08-15T15:32:30Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the steamy atmosphere of a traditional Japanese onsen, Ophelia sits on the edge of a wooden tub, water beading on her skin as she leans back, exposing her breasts to the camera. A kimono is draped loosely over one shoulder, the silky fabric a contrast to her smooth, soapy skin. Her long black hair clings to her neck as she meets the viewer's gaze with a sensual, almost challenging look. The DSLR's shallow depth of field and warm lighting create a sense of intimacy, focusing attention on Ophelia's provocative pose and the tranquil, steamy environment.",
-      "seed": 1989961961,
+      "prompt": "A mysterious figure, draped in black leather and lace, stands in the shadows of an abandoned warehouse, probes in hand as she beckons a potential lover closer with hypnotic movements and sultry whispers, the only sound the heavy panting of lustful breaths and the distant wail of sirens outside, the dim lighting casting an air of danger and desire.",
+      "seed": 335053444,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/04e73a72-184c-4a91-bb90-3f814f44835c.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/136.webp",
       "status": "ok",
-      "bytes": 1188725
+      "bytes": 1600735
     }
   ]
 }

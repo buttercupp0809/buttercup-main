@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:13:11Z",
+  "generated_at": "2026-08-15T14:22:29Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Against the backdrop of Federation Square's majestic architecture, Piper saunters down the steps, a sheer black negligee clinging to her curves, its gauzy fabric billowing around her thighs as she looks back over her shoulder, her sultry gaze and coy smile beckoning the viewer into the shadows, the city lights casting a golden glow on her skin.",
-      "seed": 33349151,
+      "prompt": "Against a backdrop of neon city lights, a sultry stripper on a plush leather couch grinds against a client's lap, her barely-there G-string shimmering, as the camera captures a shallow depth of field, blurring the distractions outside to focus on the intimate, carnal encounter.",
+      "seed": 990136373,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e00c8ba9-5fd2-48df-8798-63d3e8b1d8f0.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/102.webp",
       "status": "ok",
-      "bytes": 1386972
+      "bytes": 1326206
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:31:01Z",
+  "generated_at": "2026-08-15T14:39:11Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A steamy bathroom, morning light filtering through the shower curtain. Water beads on Indigo's skin as she stands under the spray, translucent suds clinging to her curves, emphasizing the roundness of her breasts and the enticing shape of her derri\u00e8re. Her eyes are half-lidded, a sensual smirk playing on her lips.",
-      "seed": 1944663282,
+      "prompt": "A sultry stripper straddles her client's lap on a plush leather couch in a seedy backroom club, her body glistening with sweat as she grinds against him in a barely-there G-string, the neon lights of the city outside casting a lurid glow, her inviting gaze and seductive movements promising a night of unbridled passion.",
+      "seed": 4160819,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/923df0ec-0208-4232-8578-ae41fd333079.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/110.webp",
       "status": "ok",
-      "bytes": 1646073
+      "bytes": 1092433
     }
   ]
 }

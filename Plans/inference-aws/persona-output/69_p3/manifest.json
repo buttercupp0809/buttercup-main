@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:02:37Z",
+  "generated_at": "2026-08-15T13:16:34Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Moonlit courtyard: Phoebe reclines languidly on a stone bench, a sheer silk robe barely covering her, under the silvery glow of a full moon, her expression alluring as she gazes up at the camera, the ancient architecture providing a minimalist backdrop.",
-      "seed": 372204896,
+      "prompt": "In a plush, velvet-draped boudoir, a dominatrix reclines on a satin chaise, her statuesque form clad in black leather. A DSLR camera captures her sensual pose, a riding crop resting on her thigh as she gazes directly into the lens, a come-hither smile playing on her lips, probes and handcuffs artfully arranged around her.",
+      "seed": 824976051,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/14a3e700-9fb9-4b5c-94fc-24c1f1a9aa54.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/69.webp",
       "status": "ok",
-      "bytes": 1461654
+      "bytes": 1220153
     }
   ]
 }

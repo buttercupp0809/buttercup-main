@@ -15,6 +15,8 @@ function getS3Config() {
     region: process.env.AWS_REGION ?? "eu-north-1",
     generatedBucket: process.env.POPPY_S3_BUCKET_GENERATED ?? "",
     mediaBucket: process.env.S3_BUCKET ?? "",
+    // MinIO/LocalStack override for local dev, mirroring backend/src/media/storage.ts.
+    endpoint: process.env.S3_ENDPOINT || undefined,
   };
 }
 
@@ -31,14 +33,17 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "missing_key" }, { status: 400 });
   }
 
-  const { region, generatedBucket, mediaBucket } = getS3Config();
+  const { region, generatedBucket, mediaBucket, endpoint } = getS3Config();
   const bucket = bucketForKey(s3Key, generatedBucket, mediaBucket);
   if (!bucket) {
     return NextResponse.json({ error: "storage_not_configured" }, { status: 503 });
   }
 
   try {
-    const s3 = new S3Client({ region });
+    const s3 = new S3Client({
+      region,
+      ...(endpoint ? { endpoint, forcePathStyle: true } : {}),
+    });
     const command = new GetObjectCommand({ Bucket: bucket, Key: s3Key });
     const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
     return NextResponse.redirect(url, { status: 302 });

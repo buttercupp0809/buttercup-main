@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:06:12Z",
+  "generated_at": "2026-08-15T11:28:12Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the dimly lit, intimate space of a traditional taverna, Zoe reclines against plush crimson cushions, her sheer silk blouse clinging to her ample curves, a sultry half-smile playing on her lips as she raises a glass of ouzo in a toast.",
-      "seed": 1661851624,
+      "prompt": "In a dimly lit, velvet-draped chamber, a mysterious dominatrix lounges on a plush chaise, her lithe form barely concealed by a skimpy black lace bodysuit as she toys with probes, her piercing green eyes smoldering with lust as she beckons a willing participant closer, the air heavy with the scent of incense and forbidden desires.",
+      "seed": 58841601,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/cde535dc-eb46-47ad-b0a9-68a3588b32a4.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/16.webp",
       "status": "ok",
-      "bytes": 1369488
+      "bytes": 1369205
     }
   ]
 }

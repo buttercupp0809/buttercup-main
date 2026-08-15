@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T22:57:37Z",
+  "generated_at": "2026-08-15T11:19:51Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, seedy back alley at night, Hazel poses seductively against a graffiti-covered wall, dressed in a leather corset and fishnet stockings. A single, flickering streetlamp casts deep shadows, emphasizing her curves and the revealing thong barely covering her backside. Her sultry gaze and parted lips imply a hidden invitation to the viewer.",
-      "seed": 1417109180,
+      "prompt": "In the soft focus of a DSLR lens, a couple in skin-tight latex attire pose on a plush velvet couch in a dimly lit boudoir, fingers entwined and bodies pressed together, the woman's hand caressing a silver-plated probe while her partner's eyes smolder with desire, the scene bathed in the warm, seductive light of candles and a single bedside lamp.",
+      "seed": 839970306,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/38615fb0-41ea-43f4-8171-f3571fe8dbe6.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/12.webp",
       "status": "ok",
-      "bytes": 2291676
+      "bytes": 1293963
     }
   ]
 }

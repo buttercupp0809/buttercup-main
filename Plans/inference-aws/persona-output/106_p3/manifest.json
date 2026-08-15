@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:22:00Z",
+  "generated_at": "2026-08-15T14:30:49Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Moody urban alleyway at night - Juniper leans against a brick wall, clad in a tight leather corset, fishnet stockings, and a tiny thong. The harsh glow of a streetlight casts deep shadows, making her look mysterious and alluring. She looks over her shoulder with a coy smirk, her breasts straining against the corset as her gaze meets the viewer's with an unmistakable \"come hither\" invitation.",
-      "seed": 1262853948,
+      "prompt": "In the midst of a secluded, misty forest, a woman clad in a sheer white nightgown stands beneath the canopy of ancient trees, probes held aloft as she beckons the viewer closer with an enigmatic smile, the soft focus and muted colors of the DSLR creating an ethereal atmosphere of mystery and desire.",
+      "seed": 1277626610,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/36ebdfc3-620d-4bec-a6ff-c8c46cdf5fb2.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/106.webp",
       "status": "ok",
-      "bytes": 1722984
+      "bytes": 1222059
     }
   ]
 }

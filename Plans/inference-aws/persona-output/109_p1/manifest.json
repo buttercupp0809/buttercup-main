@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:27:34Z",
+  "generated_at": "2026-08-15T14:36:12Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A sun-dappled garden, golden hour softening the light, as Magnolia twirls with abandon in a flowing sundress, her dark hair a tousled halo, capturing a carefree, playful spirit with a shallow depth of field blurring the lush greenery behind her.",
-      "seed": 1467233989,
+      "prompt": "In a dimly lit, velvety boudoir bathed in warm candlelight, a statuesque beauty reclines on plush silk sheets, her curves barely contained by a sheer, black negligee. Probes are scattered across her ample chest as she languidly reaches out, her sultry gaze and come-hither smile inviting a willing participant to join her in a night of decadent pleasures.",
+      "seed": 328311783,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/f49e1de4-866d-442b-bea0-95243d99a5c5.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/109.webp",
       "status": "ok",
-      "bytes": 1613734
+      "bytes": 1210649
     }
   ]
 }

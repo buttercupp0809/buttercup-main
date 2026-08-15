@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:39:52Z",
+  "generated_at": "2026-08-15T12:54:51Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Amidst the shadows of a seedy alley, Marlowe steps out of the gloom, her leather corset and fishnet stockings a striking contrast to the dark, gritty surroundings. A silver choker catches the faint light, drawing attention to the creamy expanse of her throat and the pert curve of her breasts. She turns, presenting her thong-clad backside to the camera, the moon casting an ethereal glow on the supple skin.",
-      "seed": 11779794,
+      "prompt": "A woman dressed in fetish attire stands in the shadows of a dimly lit room, the only light coming from a single, flickering candle. She holds probes in a provocative pose, her piercing gaze fixed on an unseen observer as she beckons them to come closer and indulge in the dark desires she represents.",
+      "seed": 869906872,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/c3a51d82-2661-4d74-89cc-dd65e119ae86.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/58.webp",
       "status": "ok",
-      "bytes": 1137452
+      "bytes": 928344
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:12:31Z",
+  "generated_at": "2026-08-15T13:25:45Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Piper strides confidently through the vibrant streets of Melbourne during golden hour, her bright smile and lively energy radiating as she prepares for a night of theatrical performances in the city's iconic Federation Square, with the warm glow of streetlamps and the sounds of bustling crowds subtly capturing her carefree spirit in a DSLR photograph with a shallow depth of field, emphasizing her joyous expression and the urban backdrop.",
-      "seed": 1967482636,
+      "prompt": "In the soft golden glow of a sunset, a scantily-clad woman stands on a yacht's deck, probes in hand, as she turns to face an unseen admirer with a sultry gaze, the city skyline ablaze with orange and pink hues behind her.",
+      "seed": 611177313,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/663118ba-b1e6-4058-b295-4dacd6c85a64.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/74.webp",
       "status": "ok",
-      "bytes": 1398255
+      "bytes": 1153123
     }
   ]
 }

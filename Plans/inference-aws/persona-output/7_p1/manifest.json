@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T22:46:23Z",
+  "generated_at": "2026-08-15T11:09:25Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Lily stands in a sun-dappled park during the golden hour, a carefree smile on her face as she tosses a frisbee to her friend. Her casual sundress flows in the gentle breeze, and her ponytail bounces with each playful move. A DSLR camera captures the moment in a shallow depth of field, blurring the background as Lily's joyful expression takes center stage.",
-      "seed": 1455040120,
+      "prompt": "A sultry woman in a skimpy red dress leans against a graffiti-covered alley wall, probing fingers teasing at her lace panties as she smokes a cigarette, the city lights of Tokyo casting long shadows behind her.",
+      "seed": 172465830,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/4c595965-4f73-43c0-81e2-926ad45765da.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/7.webp",
       "status": "ok",
-      "bytes": 1531948
+      "bytes": 1758991
     }
   ]
 }

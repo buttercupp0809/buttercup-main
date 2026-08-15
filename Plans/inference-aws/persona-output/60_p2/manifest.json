@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:43:19Z",
+  "generated_at": "2026-08-15T12:58:03Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Against the gritty backdrop of a Seattle alley, Juniper leans back against a weathered brick wall, her legs bent at the knees and feet propped up. She sports a black leather corset that cinches her waist, paired with fishnet stockings and a provocative thong. A sultry gaze meets the camera's lens as she runs a hand through her tousled hair, the dim ambient light casting deep shadows across her curves.",
-      "seed": 1441655170,
+      "prompt": "In a dimly lit, steamy room, a couple in matching lingerie holds futuristic sex toys, their expressions charged with lust as they beckon someone closer amidst the hazy, dreamlike atmosphere of fogged mirrors and sensual music, a DSLR camera capturing every provocative detail.",
+      "seed": 424418556,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/2057dafe-e5d4-4d0c-96ea-d9931386ee42.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/60.webp",
       "status": "ok",
-      "bytes": 2079176
+      "bytes": 987904
     }
   ]
 }

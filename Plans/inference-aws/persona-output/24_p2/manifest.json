@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:23:57Z",
+  "generated_at": "2026-08-15T11:44:06Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Remi reclines on a plush velvet chaise, the antique furniture and drapery creating an intimate, sensual ambiance. She wears a tight-fitting corset and shorts, the fabric clinging to her curves as she stretches languidly. Soft, diffused lighting illuminates her features, her half-lidded eyes and parted lips conveying a subtle invitation. The camera's lens zooms in on Remi's toned legs, her garter belt and high heels drawing the eye to her shapely thighs.",
-      "seed": 270203291,
+      "prompt": "Against the moody backdrop of a dimly lit, smoke-filled jazz club, a sensual siren in a sequined black gown sensuously handles probes, her half-lidded eyes locking onto a potential conquest as she sways to the music, the low light casting dramatic shadows across her curves.",
+      "seed": 838940300,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/0fb73742-c2ea-478d-81c7-fbaa3b2063fa.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/24.webp",
       "status": "ok",
-      "bytes": 1382277
+      "bytes": 1326755
     }
   ]
 }

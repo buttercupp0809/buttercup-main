@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:20:04Z",
+  "generated_at": "2026-08-15T15:25:31Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit taverna, Clio reclines on a plush cushion, her sheer gauzy robe draped enticingly across her curves, as she regales friends with a tale of mythology, her sultry gaze and parted lips inviting the listener to lean in closer, the warm glow of candles and the Acropolis skyline visible through the arched windows.",
-      "seed": 246611881,
+      "prompt": "In the hazy, dreamlike atmosphere of a steamy underground club, a couple clad in skimpy attire hold futuristic sex toys, their lustful expressions and beckoning gestures drawing in curious onlookers amidst the pulsating strobe lights and heavy bass.",
+      "seed": 237084940,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/6f4cf3f8-b9e8-4813-8f6a-9f8df79b5a17.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/133.webp",
       "status": "ok",
-      "bytes": 1214678
+      "bytes": 1062506
     }
   ]
 }

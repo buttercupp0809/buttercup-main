@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:35:27Z",
+  "generated_at": "2026-08-15T15:40:20Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Clara reclines on a plush, crimson chaise in an ornate boudoir, a silk kimono slipped off one shoulder to reveal her bralette, gazing up at the camera with a coy smile as her high heels dangle from one foot, the rich textures and shadows creating an intimate, sensual atmosphere.",
-      "seed": 1766158761,
+      "prompt": "On the deck of a luxurious yacht at sunset, a stunning couple in swimwear holds probes as they share a passionate embrace, the warm glow of the orange sky and gentle rocking of the vessel adding to the intimate atmosphere, captured by a photographer using a wide-angle lens to emphasize their proximity and the expansive sea views beyond.",
+      "seed": 215372861,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b8b8d257-1f83-447c-9bb0-7cb7cc34b427.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/140.webp",
       "status": "ok",
-      "bytes": 1495175
+      "bytes": 1271048
     }
   ]
 }

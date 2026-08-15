@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:20:41Z",
+  "generated_at": "2026-08-15T14:29:35Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a secluded courtyard garden, Clio lounges on a plush divan, her body draped in a translucent, emerald-green robe that clings to every curve, the fabric barely concealing her erect nipples and the swell of her hips, as she absently plays with a curl of hair, her eyes half-lidded and sensual in the soft, moonlit shadows.",
-      "seed": 1345039605,
+      "prompt": "A group of friends, the women dressed in alluring lingerie, play seductive party games on a cozy living room couch, probes in hand as they laugh and flirt, the soft light of a table lamp and the distant thump of bass from speakers creating an intimate, arousing atmosphere.",
+      "seed": 90024878,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/c989afff-109e-4ff1-abb1-c26b61cab1b3.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/105.webp",
       "status": "ok",
-      "bytes": 1478283
+      "bytes": 1254987
     }
   ]
 }

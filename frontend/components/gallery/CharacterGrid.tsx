@@ -50,7 +50,7 @@ export function CharacterGrid({
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-5 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-3 md:gap-5 lg:grid-cols-4">
         {items.map((c, i) => (
           <CharacterCard
             key={c.id}
@@ -70,7 +70,7 @@ export function CharacterGrid({
       ) : null}
       {cursor ? (
         <div className="flex justify-center">
-          <Button onClick={loadMore} disabled={loading} variant="outline">
+          <Button onClick={loadMore} disabled={loading} variant="outline" className="tap-target">
             {loading ? "Loading..." : "Load more"}
           </Button>
         </div>

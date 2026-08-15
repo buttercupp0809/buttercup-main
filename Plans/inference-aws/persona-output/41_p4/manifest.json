@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:03:21Z",
+  "generated_at": "2026-08-15T12:19:35Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Piper sits on the edge of a traditional Japanese onsen hot spring, water beading on her skin as she leans back to expose her breasts. A sheer kimono is draped loosely over one shoulder, and she gazes down at the steamy water with a contemplative expression, the ambient light of the bathhouse casting a warm glow on her skin.",
-      "seed": 1146010705,
+      "prompt": "Framed by the ornate carvings of an antique four-poster bed, a woman in a daringly low-cut red dress provocatively plays with probes while reclining against plush pillows, her sultry expression and inviting gestures promising an evening of illicit pleasure to the lucky individual who accepts her sensual challenge.",
+      "seed": 729984590,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/31d8bf3e-6087-4e1a-8d8b-13742ecc4f8e.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/41.webp",
       "status": "ok",
-      "bytes": 1273307
+      "bytes": 1478104
     }
   ]
 }

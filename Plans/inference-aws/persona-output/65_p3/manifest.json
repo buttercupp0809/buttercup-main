@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:54:14Z",
+  "generated_at": "2026-08-15T13:08:27Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Propped against the railing of a rooftop overlooking the Mediterranean, Indigo wears a tiny string bikini and gauzy cover-up, her bronzed skin glistening with dew under the moonlight. She languidly raises a glass of wine, her tousled hair catching the breeze as she gazes out at the glittering cityscape.",
-      "seed": 606141975,
+      "prompt": "Framed by the ornate archways of a Gaud\u00ed-inspired mansion, a voluptuous enchantress in a diaphanous gown and choker holds a pair of gold-tipped probes, her raven tresses cascading down her back as she gazes at the viewer with smoldering intensity, the opulent surroundings echoing the decadence of her desires.",
+      "seed": 1762573275,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/be1ef812-0c28-4d3c-92a9-09ed99d488e3.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/65.webp",
       "status": "ok",
-      "bytes": 1367276
+      "bytes": 1610473
     }
   ]
 }

@@ -38,7 +38,7 @@ export function ReelScroller({ items }: { items: ReelItem[] }) {
   return (
     <div
       data-testid="reel-scroller"
-      className="mx-auto h-full w-full max-w-[460px] snap-y snap-mandatory overflow-y-scroll overscroll-contain"
+      className="mx-auto h-full w-full max-w-[460px] snap-y snap-mandatory overflow-y-scroll overscroll-contain [-webkit-overflow-scrolling:touch]"
     >
       {items.map((item, i) => (
         <Reel key={item.id} item={item} index={i} muted={muted} onToggleMute={() => setMuted((m) => !m)} />
@@ -163,7 +163,7 @@ function Reel({
           type="button"
           onClick={onToggleMute}
           aria-label={muted ? "Unmute" : "Mute"}
-          className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur transition hover:bg-black/60"
+          className="tap-target absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur transition hover:bg-black/60"
         >
           {muted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
         </button>
@@ -171,7 +171,7 @@ function Reel({
         {/* Bottom-left: avatar + name/location + Chat Now.
             Wrapper is pointer-events-none so taps on empty space still
             play/pause the video; interactive children re-enable pointer events. */}
-        <div className="pointer-events-none absolute inset-x-4 bottom-5 flex items-center gap-3 text-white">
+        <div className="pointer-events-none absolute inset-x-4 bottom-5 flex items-center gap-3 pb-safe text-white">
           <div className="h-11 w-11 shrink-0 overflow-hidden rounded-full ring-2 ring-white/70 bg-black/50">
             {item.avatar ? (
               <img
@@ -193,20 +193,20 @@ function Reel({
           </div>
           <Link
             href={item.chatHref}
-            className="pointer-events-auto ml-1 shrink-0 rounded-full border border-white/50 bg-white/10 px-4 py-1.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20"
+            className="tap-target pointer-events-auto ml-1 flex shrink-0 items-center justify-center rounded-full border border-white/50 bg-white/10 px-4 py-1.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20"
           >
             Chat Now
           </Link>
         </div>
 
         {/* Right rail: like */}
-        <div className="absolute bottom-24 right-3 flex flex-col items-center gap-1 text-white">
+        <div className="absolute bottom-24 right-3 flex flex-col items-center gap-1 pb-safe text-white">
           <button
             type="button"
             onClick={toggleLike}
             aria-pressed={liked}
             aria-label={liked ? "Unlike" : "Like"}
-            className="flex h-12 w-12 items-center justify-center rounded-full bg-black/35 backdrop-blur transition hover:bg-black/55 active:scale-90"
+            className="tap-target flex h-12 w-12 items-center justify-center rounded-full bg-black/35 backdrop-blur transition hover:bg-black/55 active:scale-90"
           >
             <Heart
               className="h-7 w-7 transition"

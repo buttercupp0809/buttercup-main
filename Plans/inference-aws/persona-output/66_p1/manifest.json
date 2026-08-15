@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:55:32Z",
+  "generated_at": "2026-08-15T13:09:42Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Astrid, clad in a vibrant sundress with ruffled hem, skips playfully in a sun-dappled meadow at golden hour, her long, tousled hair fluttering in the breeze. A DSLR camera captures her joyful expression and the lush greenery in a shallow depth of field, emphasizing her as the main subject in a cinematic shot.",
-      "seed": 928626282,
+      "prompt": "In the golden hour's warm light, a woman wearing a revealing crop top and high-waisted shorts provocatively poses, probes in hand, her sultry gaze and come-hither gestures inviting an admirer closer as the camera captures her from a low angle, emphasizing her curves.",
+      "seed": 1552543120,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/25c867b2-f352-46f4-9cb3-bf73d744948f.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/66.webp",
       "status": "ok",
-      "bytes": 1692014
+      "bytes": 969677
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:30:19Z",
+  "generated_at": "2026-08-15T13:42:23Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Late at night, Indigo stands at the edge of a secluded Amsterdam canal, the misty air glowing with the soft light of a full moon, her slender form clad in a sheer, midnight blue negligee that clings to every curve, her raven hair cascading down her back as she looks over her shoulder at the viewer with a coy, inviting smile, the city's distant sounds muffled by the still water.",
-      "seed": 37260197,
+      "prompt": "In the shadowy recesses of an abandoned warehouse, a couple engaged in a forbidden, dangerous liaison passionately hold probes as they explore every dark, depraved desire, the only sound the heavy panting of their lustful breaths and the distant wail of sirens outside, the room illuminated only by flickering neon signs.",
+      "seed": 1884093302,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/811c9c35-28a4-4be7-9962-c6469a62da13.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/82.webp",
       "status": "ok",
-      "bytes": 1247750
+      "bytes": 1255168
     }
   ]
 }

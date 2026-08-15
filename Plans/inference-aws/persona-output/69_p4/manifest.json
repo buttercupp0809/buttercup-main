@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:03:02Z",
+  "generated_at": "2026-08-15T13:16:56Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Speakeasy entrance: Phoebe leans against the doorframe, a short, skintight red dress leaving little to the imagination, as she looks directly at the viewer with a coy smile, the warm light from inside casting a golden glow on her skin and the dim alleyway receding into shadows.",
-      "seed": 1643563680,
+      "prompt": "The neon lights of the city cast a lurid glow through the foggy windows of a seedy backroom club. A stripper, clad in nothing but a G-string, straddles a client's lap on a plush leather couch, her body glistening with sweat as she grinds against him, a futuristic sex toy in hand, her sultry eyes locked onto the camera, beckoning the viewer to join the steamy encounter.",
+      "seed": 1439783334,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b8e6e17e-6e9d-4100-9e58-f347b135e323.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/69.webp",
       "status": "ok",
-      "bytes": 1353503
+      "bytes": 1482977
     }
   ]
 }

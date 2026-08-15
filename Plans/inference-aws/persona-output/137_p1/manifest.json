@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:28:15Z",
+  "generated_at": "2026-08-15T15:33:22Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A warm, golden hour in a Charleston garden as Magnolia sits on a stone bench, her elegant dress rustling in the soft breeze, a smile playing on her lips as she gazes at a vibrant azalea bush, sunlight casting a warm glow on her porcelain skin and highlighting her golden hair.",
-      "seed": 1185237364,
+      "prompt": "Amidst the warm glow of a setting sun, a woman clad in a sheer, jewel-toned nightgown poses languidly on a plush velvet divan, her sultry gaze inviting an unseen admirer as she seductively toys with probes, the camera capturing her sensual curves in a shallow focus, golden light dancing across her bare skin.",
+      "seed": 1458352627,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/379a86f4-9ffa-45b0-b609-b2196a1f1d30.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/137.webp",
       "status": "ok",
-      "bytes": 1611744
+      "bytes": 1250321
     }
   ]
 }

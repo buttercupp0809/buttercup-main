@@ -47,9 +47,16 @@ export function ImageMessage({ mediaAssetId, url, caption, error }: Props) {
           style={{ maxWidth: "200px" }}
           aria-label="View image"
         >
+          {/*
+            Alt text is intentionally empty (or the user's caption). A
+            literal "generated" fallback leaks into the message bubble as
+            broken-image text if the URL ever 404s, which is confusing to
+            the user; the image is decorative from an a11y standpoint
+            (the surrounding message says the character sent a photo).
+          */}
           <img
             src={url}
-            alt={caption ?? "generated"}
+            alt={caption ?? ""}
             loading="lazy"
             className="w-full h-auto block"
             style={{ maxHeight: "320px", objectFit: "cover" }}
@@ -113,7 +120,7 @@ function ImageModal({
         <div className="flex-none md:w-[55%] overflow-hidden">
           <img
             src={url}
-            alt={caption ?? "generated"}
+            alt={caption ?? ""}
             className="h-full w-full object-contain"
             style={{ maxHeight: "90vh" }}
           />

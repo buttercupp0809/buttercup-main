@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:16:34Z",
+  "generated_at": "2026-08-15T12:32:56Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a seedy, underground club, Vesper straddles a worn leather stool, her fishnet stockings and thigh-high stilettos on full display as she leans forward, her corseted waist and ample cleavage filling the frame, her eyes locked on the viewer with a daring, come-hither look.",
-      "seed": 1899459723,
+      "prompt": "In the midst of a raucous game night, a group of friends in provocative lingerie gather around a coffee table, probes and sex toys scattered amidst the remains of a seductive party. One woman, her chestnut hair tousled and eyes gleaming with mischief, leans forward to whisper in her friend's ear, her hand resting provocatively on the woman's thigh as they both gaze at the camera with playful, wanton expressions.",
+      "seed": 180347327,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/4a072d94-495c-49ea-9961-9bddb538a5bf.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/47.webp",
       "status": "ok",
-      "bytes": 1275751
+      "bytes": 1331233
     }
   ]
 }

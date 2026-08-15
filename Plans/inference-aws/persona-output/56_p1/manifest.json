@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:34:25Z",
+  "generated_at": "2026-08-15T12:49:23Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Piper stands atop a rocky peak at golden hour, laughing joyfully as the sun dips behind the mountains, casting her in a warm, soft light from a DSLR camera. Her long blonde hair flows in the wind, and her bright smile illuminates her face. She wears a fitted tank top and hiking pants, the rugged terrain behind her contrasting with her carefree, adventurous spirit.",
-      "seed": 1063154592,
+      "prompt": "A seductress, clad in a revealing red dress, reclines on a velvet chaise in a dimly lit boudoir, probes in hand as she beckons to a unseen suitor with a come-hither gaze, the room's intimate atmosphere charged with sexual tension captured in a DSLR photo with a shallow depth of field.",
+      "seed": 1306155158,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/917c00fb-1621-430e-84bf-0891e8598b0d.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/56.webp",
       "status": "ok",
-      "bytes": 1326874
+      "bytes": 1321852
     }
   ]
 }

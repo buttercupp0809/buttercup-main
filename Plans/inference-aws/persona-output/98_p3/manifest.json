@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:05:04Z",
+  "generated_at": "2026-08-15T14:14:33Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Clara straddles a worn leather chaise, her short denim skirt hiked up to reveal a lacy g-string as she leans back, her hands braced on the arms of the chair. A vintage chandelier casts deep shadows across her toned thighs and the curves of her hips, while the soft focus of a DSLR camera blurs the background, emphasizing her alluring figure.",
-      "seed": 713818717,
+      "prompt": "Shot with a shallow depth of field, a stunning model in a provocative ensemble gestures suggestively with probes, her eyes locking onto the viewer as she stands against a backdrop of city lights, the neon hues reflecting off her skin and adding to the urban, edgy atmosphere.",
+      "seed": 1357770336,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/84ba1061-9635-457a-86d8-5441ca76ad96.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/98.webp",
       "status": "ok",
-      "bytes": 1225863
+      "bytes": 1217485
     }
   ]
 }

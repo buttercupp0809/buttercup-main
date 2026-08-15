@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T22:58:49Z",
+  "generated_at": "2026-08-15T11:21:01Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a deserted beach at dawn, with the rising sun casting a warm, cinematic light, Hazel kneels in the sand, looking back over her shoulder at the photographer. She wears a tiny string bikini and a sheer cover-up, her wind-blown hair framing her face. One hand rests on her hip, the other on her knee, as she presents her toned, sun-kissed body in a provocative, yet innocent, pose, as if inviting the viewer to join her in this private, serene moment.",
-      "seed": 1195340231,
+      "prompt": "Amidst the decadent decor of a luxurious penthouse suite, a couple in provocative lingerie pose on a velvet chaise lounge, the woman straddling her partner's lap as they both hold sleek, high-tech sex toys, their expressions a mix of lust and playfulness, the city skyline glittering behind them through the floor-to-ceiling windows as the warm glow of a setting sun casts a golden, cinematic light over the scene.",
+      "seed": 1682134969,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/4ac14cb0-cd83-48ab-b00a-08895933923c.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/12.webp",
       "status": "ok",
-      "bytes": 1082302
+      "bytes": 1396694
     }
   ]
 }

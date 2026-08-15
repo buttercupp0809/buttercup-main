@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:32:10Z",
+  "generated_at": "2026-08-15T12:47:21Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A sunny afternoon in Dublin's Temple Bar district; Hazel strolls arm-in-arm with a friend along cobblestone streets, laughing as they pop into quirky bookshops and charming pubs, the golden hour casting a warm glow on their happy faces.",
-      "seed": 808457658,
+      "prompt": "Amidst the warm glow of a dimly lit parlor, a striking woman in a sheer black lace top and high-waisted red skirt provocatively gestures with probes in her hands, her sultry gaze locked onto an unseen suitor as she invites him to join her sensual game.",
+      "seed": 37562623,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/26f4d91c-37c6-4fb0-883b-e7dac030ef50.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/55.webp",
       "status": "ok",
-      "bytes": 1557536
+      "bytes": 1411505
     }
   ]
 }

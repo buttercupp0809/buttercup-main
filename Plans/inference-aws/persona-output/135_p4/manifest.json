@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:25:08Z",
+  "generated_at": "2026-08-15T15:30:24Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "The warm glow of candles illuminates Lyra's nude form as she reclines on a pile of furs in a lavish tent, her skin glowing in the soft light, her breasts and the curve of her hips subtly highlighted by the flickering flames.",
-      "seed": 56271508,
+      "prompt": "On a dimly lit, graffiti-covered alleyway wall, a woman clad in a provocative red skirt and matching lace top rides a stranger's cock, probes in hand as she grinds against him, the neon signs of the city casting a lurid glow, captured in a gritty, high-contrast shot by a handheld camera.",
+      "seed": 763425940,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/0f928a9b-aed8-422b-b708-a0201cae8174.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/135.webp",
       "status": "ok",
-      "bytes": 1348442
+      "bytes": 1532153
     }
   ]
 }

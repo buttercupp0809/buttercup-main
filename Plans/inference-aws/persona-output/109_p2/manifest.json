@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:28:06Z",
+  "generated_at": "2026-08-15T14:36:34Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Dimly lit, a velvet-draped boudoir, with a single bedside lamp casting shadows across Magnolia's curves, barely concealed in a sheer silk negligee that clings to every dip and swell, her eyes half-lidded in a sultry gaze, leaning back on plush pillows with a coy, inviting smile.",
-      "seed": 600302821,
+      "prompt": "Amidst the opulent setting of a high-end strip club, a stunning dancer provocatively grinds against a velvet pole, her barely-there costume shimmering under the pulsing lights. She tosses a probe high into the air, catching it with a seductive pout, as her eyes lock with a customer's, daring him to approach and indulge in the sinful delights she so eagerly offers.",
+      "seed": 1751557704,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e22cae73-a5de-4a9a-90e1-a6a0ead9dea9.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/109.webp",
       "status": "ok",
-      "bytes": 1160697
+      "bytes": 1050890
     }
   ]
 }

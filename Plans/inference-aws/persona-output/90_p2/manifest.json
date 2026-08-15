@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:46:42Z",
+  "generated_at": "2026-08-15T13:58:08Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, upscale cocktail lounge, Marlowe reclines on a plush velvet sofa, sipping a crimson martini as the soft glow of candles and neon signs dance across her skin. A sheer, silk blouse clings to her curves, plunging low to reveal a lacy bralette. Her gaze is sultry, half-lidded, and directed at the viewer with a clear invitation.",
-      "seed": 925943307,
+      "prompt": "In a hazy, dreamlike setting lit by pulsing neon lights, a sultry couple clad in revealing outfits hold futuristic sex toys, their lustful expressions and enticing postures inviting an observer to join their intimate game, the shallow depth of field blurring the surroundings to focus on their charged bodies.",
+      "seed": 1938418269,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/544ff6ea-fa42-49ef-99da-b26512028de1.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/90.webp",
       "status": "ok",
-      "bytes": 1356843
+      "bytes": 914142
     }
   ]
 }

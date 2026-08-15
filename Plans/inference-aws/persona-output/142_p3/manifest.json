@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:39:43Z",
+  "generated_at": "2026-08-15T15:44:20Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a steamy bathroom, Phoebe stands under the showerhead, water cascading over her bare skin, suds clinging to her curves, her nipples visible through the translucent soap film, her hair slicked back, her expression one of sensual relaxation as she leans against the tiled wall, the camera capturing the play of light on her wet body.",
-      "seed": 790353633,
+      "prompt": "In the seedy underbelly of a neon-soaked city, a striking dominatrix in a studded leather corset and thigh-high boots prowls the dimly lit backroom of a seedy strip club, probes in hand as she prowls the shadows, her intense gaze and commanding presence drawing in a hapless patron to indulge in her twisted whims, the pulsing beat of the club's music underscoring the illicit nature of their impending encounter.",
+      "seed": 429486093,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/72e4fbe8-1356-4c0a-b86d-19b9a17aeee8.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/142.webp",
       "status": "ok",
-      "bytes": 1315073
+      "bytes": 1428419
     }
   ]
 }

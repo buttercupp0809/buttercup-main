@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:32:06Z",
+  "generated_at": "2026-08-15T11:51:52Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Golden hour on a Dublin street; Lyra laughs with friends in a cozy pub, her bright red curls and green eyes sparkling in the warm light as she raises a pint to toast another night of lively tales and camaraderie, her simple white blouse and fitted jeans capturing her carefree spirit.",
-      "seed": 1467322751,
+      "prompt": "In a dimly lit, velvet-draped chamber, a statuesque beauty in a black corset and garter belt lounges on a plush chaise, her long legs crossed as she teases an unseen admirer with a silver probe, the room's crimson glow casting a sultry ambiance and the soft focus of a DSLR lens capturing every detail of her seductive pose.",
+      "seed": 534250444,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/d4c24e9b-4617-4a2d-a991-2ba5750cbca3.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/28.webp",
       "status": "ok",
-      "bytes": 1441987
+      "bytes": 1143899
     }
   ]
 }

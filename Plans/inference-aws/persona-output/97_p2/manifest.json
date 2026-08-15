@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:02:33Z",
+  "generated_at": "2026-08-15T14:12:13Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit Berlin nightclub, Astrid reclines on a plush velvet sofa, her slender legs crossed, a sultry gaze fixed on the viewer through heavy-lidded eyes, the low lighting casting shadows on her face and highlighting the curves of her body barely contained by a tight, beaded cocktail dress that clings to every inch of her form.",
-      "seed": 1868357314,
+      "prompt": "In the hazy, dreamlike atmosphere of a seedy backroom club, a seductive stripper straddles her client's lap, her glistening body barely concealed by a provocative G-string, neon lights casting lurid shadows as she toys with probes and makes suggestive come-hither gestures.",
+      "seed": 1568090689,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/f4340c82-b35f-4279-854c-a0d6cf5f3c55.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/97.webp",
       "status": "ok",
-      "bytes": 1424936
+      "bytes": 947256
     }
   ]
 }

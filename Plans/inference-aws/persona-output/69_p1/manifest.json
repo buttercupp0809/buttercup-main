@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:01:48Z",
+  "generated_at": "2026-08-15T13:15:43Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Golden hour in the French Quarter: Phoebe's playful energy radiates as she twirls in a sundress, flower crown askew, in the warm glow of a DSLR lens, with a shallow depth of field blurring the charming cobblestones behind her.",
-      "seed": 1735363122,
+      "prompt": "In a dimly lit French Quarter courtyard, a woman's voluptuous figure is illuminated by the soft glow of a single streetlamp. She wears a low-cut red dress that clings to her curves, and a coy smile plays on her full lips as she beckons a suitor closer, a silver probe teasingly dangling from her fingers.",
+      "seed": 1184957392,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/c6f5ad16-55e7-4b9a-acf7-4f5272975540.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/69.webp",
       "status": "ok",
-      "bytes": 1558099
+      "bytes": 1164662
     }
   ]
 }

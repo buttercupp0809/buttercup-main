@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:41:33Z",
+  "generated_at": "2026-08-15T13:53:11Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, velvet-draped boudoir, Hazel reclines on satin sheets, her body a silhouette against the rich fabrics. A sheer, babydoll nightie barely covers her, the delicate lace outlining her breasts and the subtle curve of her hips. Her long legs are bent and crossed, one hand resting on her thigh as she smokes a cigarette, her face a sensual mix of languor and allure in the low light.",
-      "seed": 816471312,
+      "prompt": "On a moonlit beach, a stunning woman in a barely-there bikini lounges on a weathered driftwood log, her long, tanned legs crossed as she provocatively toys with a set of sex aids. The cool, salty breeze tousles her golden hair as she looks directly at the camera with a sultry, come-hither gaze, the soft, grainy texture of the sand and the distant crashing of waves creating a sense of a private, secluded encounter.",
+      "seed": 502338451,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/d0e53080-79cd-48f8-8e18-44198ab648a7.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/87.webp",
       "status": "ok",
-      "bytes": 1247615
+      "bytes": 1406213
     }
   ]
 }

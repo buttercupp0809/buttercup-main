@@ -114,7 +114,22 @@ export function attachWsGateway(httpServer: HttpServer): WebSocketServer {
     logInfo("ws", "connected", { userId });
     const sub = createWorkerConnection();
     if (sub) {
-      void sub.subscribe(userChannel(userId));
+      // Not just fire-and-forget: if the client disconnects milliseconds
+      // after connecting (a reload, a flaky mobile network, a test
+      // navigation), this SUBSCRIBE can still be in flight when `sub.quit()`
+      // runs in the "close" handler below, rejecting this promise with
+      // "Connection is closed". `void` discards a promise's return value but
+      // does NOT catch its rejection, so an uncaught rejection here used to
+      // crash the entire backend process (confirmed locally: rapid WS
+      // connect/disconnect during an E2E run reliably took the whole server
+      // down). Every Redis command issued without an awaited try/catch needs
+      // an explicit .catch, this one is no exception.
+      sub.subscribe(userChannel(userId)).catch((err: Error) => {
+        logWarn("ws", "redis subscribe failed (connection likely already closing)", {
+          userId,
+          err: err.message,
+        });
+      });
       sub.on("message", (_ch: string, raw: string) => {
         let msg: WsBridgeMessage;
         try {

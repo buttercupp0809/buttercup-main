@@ -40,8 +40,12 @@ export async function listConversations(userId: string, take = 50): Promise<Conv
         include: {
           currentVersion: { include: { appearanceSheet: true } },
           media: {
-            where: { kind: "image" },
-            orderBy: [{ isPrimary: "desc" }, { sort: "asc" }],
+            // hidden: false is load-bearing: see the HIDDEN MEDIA CONVENTION
+            // in schema.prisma. isDisplay first: the free/public image must
+            // win over the isPrimary hero, exactly like lib/feed.ts and
+            // lib/characters.ts.
+            where: { kind: "image", hidden: false },
+            orderBy: [{ isDisplay: "desc" }, { isPrimary: "desc" }, { sort: "asc" }],
             take: 1,
           },
         },

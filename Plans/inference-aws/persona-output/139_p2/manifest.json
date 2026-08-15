@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:32:57Z",
+  "generated_at": "2026-08-15T15:37:56Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit nightclub, Astrid's bold style shines as she leans back against the wall, her black leather jacket slithering off one shoulder to reveal a lacy red bralette, the neon lights casting an ethereal glow on her porcelain skin and dark, tousled hair as she gazes sultrily at the pulsating dance floor.",
-      "seed": 421877767,
+      "prompt": "Amidst a dimly lit, opulent boudoir, a dominatrix reclines on a plush velvet chaise, her lithe body draped in black lace, probes in hand as she seductively teases an unseen admirer, the room's heavy curtains partially concealing her as a single candle flickers, casting deep shadows on her porcelain skin.",
+      "seed": 590067222,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/6a2158c8-c87d-4324-9718-3a02d00f0be8.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/139.webp",
       "status": "ok",
-      "bytes": 1046956
+      "bytes": 1458205
     }
   ]
 }

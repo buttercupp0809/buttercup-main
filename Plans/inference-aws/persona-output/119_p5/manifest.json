@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:50:38Z",
+  "generated_at": "2026-08-15T14:58:15Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a deserted beach at dawn, Clio kneels with her feet spread wide, a tiny string bikini barely covering her curves, a sheer cover-up flowing in the wind as she looks back over her shoulder at the rising sun, her tousled hair framing her sultry expression as the vast expanse of the Aegean Sea stretches out behind her.",
-      "seed": 167870999,
+      "prompt": "On the sun-drenched deck of a yacht, a couple indulges in passionate lovemaking, the man's strong hands gripping his lover's curves as they kiss deeply under the fiery sky. Amidst the gentle rocking of the waves and the cityscape stretching out before them, the woman expertly manipulates a sex toy, her sultry movements and heated gaze inviting others to join their intimate celebration.",
+      "seed": 563424964,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/2dc0b259-26ff-41c6-b83a-64a48959a409.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/119.webp",
       "status": "ok",
-      "bytes": 1142717
+      "bytes": 1384783
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:17:30Z",
+  "generated_at": "2026-08-15T12:33:47Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Phoebe sits on the edge of a plush velvet couch, her legs crossed and revealing a tantalizing glimpse of lace lingerie beneath a sheer, crimson negligee. A sultry half-lit environment casts deep shadows across her face, highlighting her plump lips and hooded eyes as she gazes directly at the camera with a coy, inviting smile. Her tousled raven hair cascades over one shoulder, and a delicate choker encircles her slender neck.",
-      "seed": 271660308,
+      "prompt": "In a hazy, dreamlike atmosphere, a couple in revealing attire holds futuristic sex toys, their lustful expressions beckoning an onlooker closer amidst the blurred, ethereal surroundings. Soft focus and a cinematic lighting setup capture their sensual energy, inviting the viewer to step into their world of pleasure.",
+      "seed": 1563655734,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/7c05fce6-9b21-415c-babe-d212db0b4c77.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/48.webp",
       "status": "ok",
-      "bytes": 1459188
+      "bytes": 850916
     }
   ]
 }

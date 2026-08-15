@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:19:53Z",
+  "generated_at": "2026-08-15T14:28:50Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit Athenian taverna, Clio leans forward, her cleavage spilling from a low-cut, red velvet top, as she regales her companions with a dramatic tale of ancient myth, her eyes sparkling with mischief, a strand of pearls glinting around her neck, the scent of retsina wafting through the air.",
-      "seed": 1408834430,
+      "prompt": "A sensual couple in provocative lingerie hold probes and engage in intimate foreplay on a plush leather couch, the soft glow of a neon sign casting a lurid hue as they invite others to join their sensual game in a seedy backroom club.",
+      "seed": 1850145622,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/12d899ca-43a6-4446-8171-c57a091887d2.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/105.webp",
       "status": "ok",
-      "bytes": 1235388
+      "bytes": 1393871
     }
   ]
 }

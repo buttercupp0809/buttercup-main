@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:45:30Z",
+  "generated_at": "2026-08-15T12:02:23Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Inside a dimly lit, smoky flamenco club, Indigo sits on a high barstool wearing a low-cut red dress that clings to her curves, her sultry gaze meeting the camera's as she slowly sips a cocktail, the stage lights reflecting off her glossy lips.",
-      "seed": 1381494709,
+      "prompt": "In the hazy, neon-lit heart of the city's red light district, a statuesque beauty in a scandalous red gown provocatively teases a hidden admirer with probes, her face an intoxicating mix of seduction and mischief as she poses against a steamy window, the city's nightlife pulsating behind her.",
+      "seed": 1202330970,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/a699d6d6-328b-45e6-a047-60a95434aed4.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/33.webp",
       "status": "ok",
-      "bytes": 1105735
+      "bytes": 1334881
     }
   ]
 }

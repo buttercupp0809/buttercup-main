@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:49:19Z",
+  "generated_at": "2026-08-15T12:06:05Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Juniper lounges on a sun-drenched hillside at golden hour, a DSLR camera in hand, her wavy locks fluttering in a gentle breeze as she surveys the lush, verdant landscape of the Pacific Northwest. The warm light bathes her relaxed, smiling face and the casual, comfortable clothing she wears, capturing a serene moment of contentment and appreciation for nature's beauty.",
-      "seed": 1905618167,
+      "prompt": "In the warm glow of a golden hour sunset, a woman in a revealing top and short skirt stands in a field of tall grass, probes in hand, her body turned towards the camera with a seductive gesture, inviting an unseen admirer to join her in the lush, sun-dappled landscape.",
+      "seed": 338632752,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/ae19cb43-156f-424d-9e99-5ce79e8c7eb1.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/35.webp",
       "status": "ok",
-      "bytes": 1641016
+      "bytes": 1445041
     }
   ]
 }

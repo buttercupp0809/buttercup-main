@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:42:31Z",
+  "generated_at": "2026-08-15T14:50:20Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Piper stands on a verdant hillside at golden hour, laughing joyfully as she tosses a frisbee to her friend in the distance, her sun-kissed hair blowing in the breeze and her smile radiant against the warm, golden light of the setting sun, captured in a shallow focus DSLR portrait that highlights her carefree spirit.",
-      "seed": 1933980408,
+      "prompt": "Framed by a rustic barn door, a woman wearing a lacy bodysuit and thigh-high boots provocatively teases an unseen partner, her hand movements and sultry gaze inviting a sensual encounter under the soft glow of golden hour.",
+      "seed": 1203610329,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/40c85aa6-9716-46c3-bfd4-0191f3c97947.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/116.webp",
       "status": "ok",
-      "bytes": 1541568
+      "bytes": 1537877
     }
   ]
 }

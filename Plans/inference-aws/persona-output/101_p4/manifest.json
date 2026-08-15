@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:11:53Z",
+  "generated_at": "2026-08-15T14:21:14Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the atmospheric glow of a candlelit boudoir, Hazel lounges on a four-poster bed, her curvaceous figure draped in a gauzy silk robe that slips off one shoulder, revealing the delicate lace of a bralette as she reaches up to play with a dangling pearl earring, her expression a blend of sensuality and mystery as the shallow depth of field focuses attention on her alluring form.",
-      "seed": 1552673130,
+      "prompt": "A woman dressed in a sheer, barely-there nightgown, her skin glowing in the soft light of a DSLR camera, sensually toys with probes as she beckons an unseen admirer, her longing gaze promising forbidden pleasures in the shadows of a darkened room.",
+      "seed": 1332380803,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/8a3928cd-c2c5-4c96-af82-5fbb53e91953.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/101.webp",
       "status": "ok",
-      "bytes": 1206617
+      "bytes": 988236
     }
   ]
 }

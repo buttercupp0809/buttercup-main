@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:38:56Z",
+  "generated_at": "2026-08-15T15:43:36Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Phoebe stands in a sunlit park, laughing as she tosses a frisbee in the air, her auburn hair fluttering and her bright eyes sparkling with joy, wearing a fitted white tank top and denim shorts, the warm glow of golden hour casting long shadows across the lush green grass.",
-      "seed": 988687958,
+      "prompt": "In the warm glow of a golden hour sunset, a woman in a revealing crop top and micro shorts lounges on a weathered pier, probes in hand as she seductively beckons a passerby to join her in the fading light, the distant sounds of the city mingling with the gentle lapping of waves against the wooden planks.",
+      "seed": 1681351267,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/267c51ce-fa46-4667-996e-053578115ffb.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/142.webp",
       "status": "ok",
-      "bytes": 1389431
+      "bytes": 1222933
     }
   ]
 }

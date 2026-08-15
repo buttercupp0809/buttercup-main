@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:33:53Z",
+  "generated_at": "2026-08-15T12:48:53Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A Dublin alleyway at dusk; shadows dance across the rough brick walls as Hazel leans against a weathered door, her fishnet stockings and leather corset a striking contrast to the urban grunge, one stiletto heel raised, her eyes holding a smoky allure as she looks straight at the camera.",
-      "seed": 562429392,
+      "prompt": "Set against the backdrop of a cozy, candlelit bedroom, a scantily-clad couple engaged in intimate foreplay hold probes, their faces flushed with desire as they invite others to join in their sensual game, the soft focus and warm lighting emphasizing the intimate, exclusive nature of their encounter.",
+      "seed": 1990937548,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/a8ff7dd5-ae9e-4d5b-822e-e8e37a814c3e.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/55.webp",
       "status": "ok",
-      "bytes": 1791736
+      "bytes": 1101805
     }
   ]
 }

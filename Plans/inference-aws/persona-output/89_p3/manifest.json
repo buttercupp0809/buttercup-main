@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:44:58Z",
+  "generated_at": "2026-08-15T13:56:24Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Vesper poses on a plush chaise in a dimly lit boudoir, her Victorian corset and shorts a striking contrast to the rich velvet drapes and antique furniture. Shallow focus renders her curves sharp against the blurred background. She runs a hand through her tousled raven locks, her eyes hooded and inviting as she looks directly at the viewer.",
-      "seed": 247108081,
+      "prompt": "Amidst the lush greenery of a secluded garden, a sultry temptress in a revealing red dress and heels kneels on a stone pedestal, her hands resting on her thighs as she gazes up at a hidden admirer, a single candle casting flickering shadows across her provocative pose and inviting him to join her in a night of passion and discovery.",
+      "seed": 1625092984,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/dc7a2f7a-8e62-4190-bac3-c22d62efc82d.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/89.webp",
       "status": "ok",
-      "bytes": 1475300
+      "bytes": 1642419
     }
   ]
 }

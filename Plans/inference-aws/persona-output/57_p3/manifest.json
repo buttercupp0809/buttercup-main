@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:37:20Z",
+  "generated_at": "2026-08-15T12:52:13Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Vesper poses in the shadows of a medieval Prague alleyway, her leather corset and fishnet stockings adding an air of mystery, a delicate silver choker glinting against her porcelain skin as she bends forward, her thong-clad derri\u00e8re on full display, her raven tresses falling like a curtain around her face.",
-      "seed": 468922014,
+      "prompt": "A model flaunts a provocative outfit, her pert breasts barely contained by a lacy bra, as she holds probes and makes suggestive hand gestures, her sultry eye contact and inviting posture leaving no doubt about her intentions in this DSLR-shot scene.",
+      "seed": 1135795436,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/768484ce-ac04-4d37-8d7d-ccac2b359cc8.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/57.webp",
       "status": "ok",
-      "bytes": 1872660
+      "bytes": 1233248
     }
   ]
 }

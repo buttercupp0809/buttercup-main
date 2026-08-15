@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:41:02Z",
+  "generated_at": "2026-08-15T15:45:35Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A bright summer afternoon in a Dublin park, with Hazel sitting on a blanket, surrounded by open books and colorful tea cups, lost in a world of words as sunlight filters through the leaves above, casting a warm glow on her joyful face and the pages in her hands.",
-      "seed": 555050253,
+      "prompt": "Amidst the warm glow of sunset, a woman in a revealing white crop top and high-waisted denim shorts provocatively teases an unseen admirer on a beach, her playful gestures and sultry gaze inviting him to join her sensual dance beneath the golden hour sky, captured in a shallow focus shot by a DSLR camera.",
+      "seed": 1962711094,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/9201dacc-7453-4386-82af-d7527cdef77f.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/143.webp",
       "status": "ok",
-      "bytes": 2088261
+      "bytes": 1135347
     }
   ]
 }

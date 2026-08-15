@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:49:50Z",
+  "generated_at": "2026-08-15T14:57:30Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A DSLR camera captures the sensual curves of a nearly nude Clio in a steamy bathroom, water droplets glistening on her skin as she stands under the showerhead, translucent soapy film highlighting her puckered nipples, suds clinging to her voluptuous figure.",
-      "seed": 800575887,
+      "prompt": "In the shadowy recesses of an abandoned warehouse, two lovers engage in a dangerous, forbidden tryst. Amidst the flickering candlelight, the woman provocatively toys with probes, her expression a mix of lust and mischief as she beckons her partner closer, the rough stone walls and distant wail of sirens adding to the illicit thrill.",
+      "seed": 343614724,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/1929c219-46b3-49df-9131-9ec46962868e.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/119.webp",
       "status": "ok",
-      "bytes": 1303939
+      "bytes": 1529090
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:51:19Z",
+  "generated_at": "2026-08-15T13:05:42Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Magnolia lounges on a sun-drenched porch, dressed in a flowy sundress with a floral pattern, her long hair loose and tousled by the gentle Charleston breeze. She's laughing at a joke, her eyes sparkling with mirth as she leans back on one arm, her other hand playfully twirling a strand of hair.",
-      "seed": 280758577,
+      "prompt": "In the warm glow of golden hour, a woman in a lacy black bra and matching thong leans against a weathered brick wall, probes in hand as she gazes longingly into the distance, her pouty lips parted and beckoning an unseen admirer closer.",
+      "seed": 1545406987,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/9ed14bf4-8fa9-4393-a6de-f4d54a73d3ce.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/64.webp",
       "status": "ok",
-      "bytes": 1279288
+      "bytes": 1407000
     }
   ]
 }

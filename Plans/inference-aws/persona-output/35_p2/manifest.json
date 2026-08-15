@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:49:43Z",
+  "generated_at": "2026-08-15T12:06:27Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the dimly lit, seductive ambiance of a luxurious boudoir, Juniper reclines on a plush, velvet-covered chaise, her alluring form draped in a sheer, silk negligee that clings to every curve, accentuating her voluptuous figure. The soft focus and shallow depth of field draw the eye to her sultry, half-lidded gaze and the tantalizing glimpse of her bare skin beneath the delicate fabric.",
-      "seed": 1679801355,
+      "prompt": "In a dimly lit, steamy boudoir, a couple in provocative attire hold futuristic sex toys, their expressions charged with lust as they beckon an onlooker closer, the camera capturing their sensual invitation through a shallow depth of field and soft focus, blurring the surrounding opulent furnishings.",
+      "seed": 1531682891,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/9c3ace75-df4e-49de-bcc4-6754c87008a4.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/35.webp",
       "status": "ok",
-      "bytes": 1330765
+      "bytes": 1066121
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:28:54Z",
+  "generated_at": "2026-08-15T14:37:18Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a shadowy alley, neon signs casting a lurid glow, Magnolia straddles a worn brick wall, her fishnet-clad thighs parted, the black lace of her thong barely covering her most intimate areas, her head thrown back in a sensual moan as she gazes up at a DSLR camera with a hooded, come-hither look.",
-      "seed": 1424839114,
+      "prompt": "On the sun-drenched deck of a luxurious yacht, a couple's passionate affair reaches new heights, their bodies entwined as they gaze out at the endless horizon. Probes are carelessly strewn about, a testament to their uninhibited lust, as they kiss deeply, the salty sea air mingling with their ragged breaths.",
+      "seed": 1820779249,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/cc3d0904-3f12-458e-8e25-45aa34db186c.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/109.webp",
       "status": "ok",
-      "bytes": 1658017
+      "bytes": 1312041
     }
   ]
 }

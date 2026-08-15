@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:12:49Z",
+  "generated_at": "2026-08-15T15:18:37Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a luxurious Copenhagen hotel suite, Hazel reclines on plush silk sheets, her body draped in a flowing white robe that's slowly slipping off one shoulder. The soft focus of the camera draws attention to her ample cleavage and the delicate curves of her neck as she gazes directly at the viewer with a coy, inviting smile. The room is bathed in warm, cinematic lighting, the deep shadows creating an air of intimacy and mystery.",
-      "seed": 1044391975,
+      "prompt": "On the sun-drenched deck of a luxurious yacht, a couple engaged in intimate foreplay holds probes, their expressions charged with desire as they invite others to join their sensual game, the waves gently rocking the vessel and the sky ablaze with hues of orange and pink behind them.",
+      "seed": 1167534086,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/a9512ccf-1770-4257-9bfc-3eecc2c0a8eb.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/129.webp",
       "status": "ok",
-      "bytes": 1079398
+      "bytes": 1166334
     }
   ]
 }

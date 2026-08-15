@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:12:52Z",
+  "generated_at": "2026-08-15T12:29:19Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Isla plays with a vintage typewriter in a charming Edinburgh bookshop, her auburn hair spilling over the desk as she ponders a new story. Warm golden light filters through the tall windows, casting a cozy glow on her smiling face and the stacks of novels surrounding her.",
-      "seed": 1605439714,
+      "prompt": "Amidst the soft glow of a dimly lit boudoir, a woman reclines on plush velvet sheets, her curves barely contained by a lacy negligee. Probes in hand, she gazes through the camera lens with sultry intent, the room's heavy drapes casting deep shadows that only accentuate her porcelain skin and alluring features, as if inviting the viewer to step into her intimate world.",
+      "seed": 1640308760,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/73e5408d-96d7-4d66-a9ba-141b24195d3d.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/46.webp",
       "status": "ok",
-      "bytes": 1368936
+      "bytes": 1344402
     }
   ]
 }

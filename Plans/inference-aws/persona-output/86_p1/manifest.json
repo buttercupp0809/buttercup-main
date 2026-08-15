@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:37:57Z",
+  "generated_at": "2026-08-15T13:49:46Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Phoebe stands in a sunny park during golden hour, her laughter echoing as she playfully tosses a frisbee, her long blonde hair whipping in the gentle breeze, captured in a DSLR photo with a shallow depth of field that emphasizes her bright smile and joyful expression, set against the vibrant green grass and warm, golden light.",
-      "seed": 1743831208,
+      "prompt": "On a luxurious yacht, the golden hour casts a warm glow as a scantily-clad woman in a sultry pose holds probes, inviting her companion closer amidst the gentle rocking of the waves and the vibrant hues of the sunset sky, captured in a cinematic, shallow depth of field by a DSLR camera.",
+      "seed": 499106031,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/4d7663c9-5353-4305-aa78-aa43159358c5.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/86.webp",
       "status": "ok",
-      "bytes": 1317163
+      "bytes": 1208195
     }
   ]
 }

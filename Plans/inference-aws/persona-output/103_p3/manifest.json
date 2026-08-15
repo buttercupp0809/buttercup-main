@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:15:40Z",
+  "generated_at": "2026-08-15T14:24:49Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Framed by the intricate archways of a secluded Ottoman palace, Vesper poses provocatively, her lacy lingerie barely containing her ample cleavage and the curves of her thighs, a sultry expression on her face as she gazes up at a DSLR camera with a 'come hither' look.",
-      "seed": 866321681,
+      "prompt": "In a dimly lit alleyway, a mysterious beauty clad in a sheer black gown and thigh-high stockings provocatively plays with sex toys, her alluring smile and come-hither gestures inviting a passing stranger to join her for a clandestine, passionate encounter.",
+      "seed": 302733021,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/7567c3e4-e849-4090-9b24-3dfb6bcf1606.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/103.webp",
       "status": "ok",
-      "bytes": 1846640
+      "bytes": 1360211
     }
   ]
 }

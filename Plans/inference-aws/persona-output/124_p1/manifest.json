@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:59:47Z",
+  "generated_at": "2026-08-15T15:07:15Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Golden hour in a lively Barcelona square, DSLR captures Indigo dancing joyfully, her colorful dress fluttering, candid smile lighting up her exotic features under the warm glow.",
-      "seed": 753744532,
+      "prompt": "In the golden hour glow of a rooftop lounge, a sultry dancer clad in a sequined bodysuit bends over a velvet-draped railing, her long raven hair cascading down her back as she teases a toy against her lips, eyes flashing with invitation beneath the city lights captured by a shallow depth of field DSLR shot.",
+      "seed": 147027570,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/a68b4ba7-e4b9-4303-b277-c43a9f757a2b.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/124.webp",
       "status": "ok",
-      "bytes": 1474844
+      "bytes": 1508487
     }
   ]
 }

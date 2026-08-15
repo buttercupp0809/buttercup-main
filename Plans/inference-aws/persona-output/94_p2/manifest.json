@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:55:11Z",
+  "generated_at": "2026-08-15T14:06:10Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit boudoir, Ophelia reclines on a plush velvet chaise, clad in a sheer black negligee that clings to her curves. Soft candlelight casts a warm, inviting glow on her skin as she looks directly at the camera with a sultry, half-lidded gaze. Her tousled hair cascades over one shoulder, and a delicate silver choker rests against her slender neck. The intimate composition focuses attention on her alluring form, with the velvety drapes and antique furniture creating a sensual backdrop.",
-      "seed": 1357952714,
+      "prompt": "Amidst the decadent opulence of an underground club, a stunning dominatrix holds court. Regal beauty and commanding presence draw in a coterie of eager worshippers, craving to serve at her pleasure and receive her merciless punishment. DSLR captures the vibrant colors and moody shadows in high definition, with a shallow depth of field emphasizing the dominant figure.",
+      "seed": 379933672,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/4466f561-6dfe-45da-96f6-4b9c805f8dd2.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/94.webp",
       "status": "ok",
-      "bytes": 1248530
+      "bytes": 1495278
     }
   ]
 }

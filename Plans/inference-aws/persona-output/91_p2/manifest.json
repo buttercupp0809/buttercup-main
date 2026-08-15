@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:48:48Z",
+  "generated_at": "2026-08-15T14:00:06Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit back alley of Athens, Clio lounges against a brick wall, wearing a sheer black lace bodysuit that highlights her curves under the faint glow of a streetlamp, her sultry gaze directed at the lens as her hand trails down her exposed midriff.",
-      "seed": 525310692,
+      "prompt": "In a dimly lit, plush boudoir, a sultry femme fatale reclines on a velvet chaise, her body barely concealed by sheer black lingerie as she expertly handles probes, her piercing gaze and seductive smile beckoning an unseen partner closer, the camera positioned for a cinematic close-up.",
+      "seed": 1001845350,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b780d1cc-d261-4791-9c96-bdfa81f3531d.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/91.webp",
       "status": "ok",
-      "bytes": 1374019
+      "bytes": 1073993
     }
   ]
 }

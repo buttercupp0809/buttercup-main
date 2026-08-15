@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:56:56Z",
+  "generated_at": "2026-08-15T15:04:28Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a secluded, overgrown garden, Ophelia kneels amidst the tall grass, her bare back arched as she reaches for a ripe berry on a nearby bush. The soft focus and shallow depth of field blur the environment, drawing attention to her nude form and the way the dappled sunlight highlights her curves and the subtle sheen of sweat on her skin.",
-      "seed": 378592214,
+      "prompt": "As the sun dips below the horizon, casting the landscape in a warm, cinematic glow, a couple entwined on a yacht's deck hold probes, their passionate lovemaking interrupted only by the gentle lapping of waves against the hull, the open sea stretching out before them like an endless invitation to explore the depths of their lust and desire.",
+      "seed": 1798809522,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/c08af686-f8ee-4d34-905f-303069ca38f5.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/122.webp",
       "status": "ok",
-      "bytes": 1503220
+      "bytes": 1309998
     }
   ]
 }

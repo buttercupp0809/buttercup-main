@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:13:43Z",
+  "generated_at": "2026-08-15T15:19:29Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, velvet-draped boudoir, Piper reclines provocatively on antique brocade cushions, the low light casting shadows across her barely concealed curves. A sheer, lace-trimmed negligee clings to her body, leaving little to the imagination. She stretches languidly, her gaze meeting the viewer's with a sultry, come-hither smile.",
-      "seed": 910210394,
+      "prompt": "Amidst the golden hour glow of a rooftop penthouse, a couple in provocative lingerie engage in passionate foreplay, their hands intertwined with probes as they beckon someone to join their intimate embrace, the city skyline shimmering in the background.",
+      "seed": 788753294,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/0a75addc-5a6d-4677-8079-78daf9d2669a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/130.webp",
       "status": "ok",
-      "bytes": 1841085
+      "bytes": 1285291
     }
   ]
 }

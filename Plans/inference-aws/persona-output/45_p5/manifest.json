@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:12:22Z",
+  "generated_at": "2026-08-15T12:28:48Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Amidst the lush foliage of a tropical garden, Ruby's naked form is bathed in the warm, golden light of dusk. She reclines on a stone bench, one leg bent, the other extended, as the camera captures the play of shadows on her skin. A diaphanous gauze drapes over her shoulders, barely covering her pert nipples, while her tousled hair cascades down her back, emphasizing her sensual, relaxed pose.",
-      "seed": 250175057,
+      "prompt": "On a plush, velvet couch in a sultry, dimly lit lounge, a scantily-clad woman provocatively toys with sex aids, making come-hither gestures as she smolders with seductive intent, the soft glow of candles and the city's distant hum creating an intimate, alluring atmosphere. Medium format, wide-angle lens, shallow focus.",
+      "seed": 864981896,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/37767174-5c46-4ba9-bca1-d1aa377b22bb.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/45.png",
       "status": "ok",
-      "bytes": 1578035
+      "bytes": 1251159
     }
   ]
 }

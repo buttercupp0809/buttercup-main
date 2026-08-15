@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:27:18Z",
+  "generated_at": "2026-08-15T13:39:40Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A DSLR camera captures Magnolia in the warm glow of golden hour, walking hand-in-hand with a loved one through the picturesque gardens of a historic Charleston estate, her elegant tea dress fluttering in the breeze as she beams with joy.",
-      "seed": 1447219285,
+      "prompt": "In a dimly lit, upscale boudoir, a stunning beauty reclines on satin sheets, her body draped in sheer, black lingerie. Probes lay artfully scattered across her curves as she languidly toys with them, her sultry gaze fixed on the viewer, inviting them to join her in a night of forbidden pleasures under the warm glow of a single, flickering candle.",
+      "seed": 1844411402,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/64079a1e-7a99-4880-9c0e-d75fa3774bb9.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/81.webp",
       "status": "ok",
-      "bytes": 1579587
+      "bytes": 1106847
     }
   ]
 }

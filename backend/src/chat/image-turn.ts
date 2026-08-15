@@ -232,8 +232,16 @@ export async function generateChatImage(
           },
         });
       }
-      const signedUrl = await getGeneratedSignedUrl(s3Key, 48 * 3600);
-      return { url: signedUrl, mediaAssetId: asset.id, provider, consistent, seed };
+      // Emit the same-origin /api/media proxy URL (not a raw S3/MinIO
+      // presigned URL) so the browser hits a URL under the app's own
+      // domain and the proxy handles endpoint / bucket / CDN selection.
+      // A raw presigned URL against S3_ENDPOINT (local MinIO) only
+      // resolves when the browser can reach that hostname directly; on a
+      // mobile viewport or a different network host it 404s and the
+      // <img> falls back to alt text ("generated"). Mirror how
+      // frontend/lib/cdn.ts::signAssetUrl already builds gallery URLs.
+      const proxyUrl = `/api/media?k=${encodeURIComponent(s3Key)}`;
+      return { url: proxyUrl, mediaAssetId: asset.id, provider, consistent, seed };
     }
     // Local dev fallback: return base64 data URL, nothing persisted.
     const dataUrl = `data:${contentType};base64,${buffer.toString("base64")}`;

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:06:53Z",
+  "generated_at": "2026-08-15T13:20:30Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit favela club, Odessa's sultry gaze meets the camera as she leans back against a brick wall, her curves barely contained in a black lace bra and thong, a single spotlight highlighting the dewy sheen on her skin and the shimmer of her jewelry against her ample cleavage.",
-      "seed": 852599329,
+      "prompt": "As a group of friends giggle and flirt over cocktails in a dimly lit lounge, a woman in a barely-there black dress provocatively manipulates probes on the table, her sultry eyes meeting those of a handsome stranger as she extends an invitation to join in their naughty games.",
+      "seed": 1399899817,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/3297b1bd-5d20-4ba0-9e69-2692a22b30bb.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/71.webp",
       "status": "ok",
-      "bytes": 1396781
+      "bytes": 861875
     }
   ]
 }

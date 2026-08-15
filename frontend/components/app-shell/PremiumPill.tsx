@@ -15,7 +15,7 @@ export function PremiumPill({ label = "70% OFF" }: { label?: string }) {
       }}
     >
       <span
-        className="flex items-center gap-1.5 rounded-full px-4 py-1.5 text-sm font-bold"
+        className="flex h-9 items-center gap-1.5 rounded-full px-3.5 text-sm font-semibold"
         style={{ backgroundColor: "hsl(var(--buttercupp-bg))", color: "hsl(var(--buttercupp-fg))" }}
       >
         Premium

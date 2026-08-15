@@ -1,12 +1,17 @@
 "use client";
 
 // Blocking paywall modal. Rendered when the server emits a `paywall` frame
-// on either transport. The plan catalog comes with the event; we also poll
+// on either transport. The plan catalog comes with the event (fallback to
+// GET /billing/plans if the frame sent an empty array); we also poll
 // GET /billing/entitlements while the modal is open so the UI resumes as
 // soon as the checkout webhook flips `active` to true.
 //
 // This is a UI overlay only. The server is the source of truth for the
-// gate; nothing on this page can bypass it.
+// gate; nothing on this page can bypass it. ESC hides the dialog chrome
+// (a small reopen banner takes its place) but does NOT clear the parent's
+// `paywalled` state, so the chat input stays disabled and the entitlement
+// poll keeps running underneath. Only a server-confirmed entitlement flip
+// (onResumed) actually re-enables the chat.
 
 import * as React from "react";
 import type { TransportPaywallPlan } from "@/lib/chat-transport";
@@ -38,13 +43,43 @@ interface EntitlementsShape {
   active: boolean;
 }
 
-export function PaywallModal({ scope, kind, used, limit, plans, onResumed }: PaywallModalProps) {
+const FOCUSABLE_SELECTOR =
+  'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
+
+export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, onResumed }: PaywallModalProps) {
   const [pending, setPending] = React.useState<string | null>(null);
   const [error, setError] = React.useState<string | null>(null);
+  const [fallbackPlans, setFallbackPlans] = React.useState<TransportPaywallPlan[] | null>(null);
+  const [dismissed, setDismissed] = React.useState(false);
+  const dialogRef = React.useRef<HTMLDivElement | null>(null);
+
+  const plans = plansFromEvent.length > 0 ? plansFromEvent : (fallbackPlans ?? []);
+
+  // Fallback catalog fetch: the paywall frame should carry `plans`, but if
+  // it ever arrives empty, fetch the public plan list directly.
+  React.useEffect(() => {
+    if (plansFromEvent.length > 0) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const r = await fetch(`${BACKEND_URL}/billing/plans`, { credentials: "include" });
+        if (!r.ok) return;
+        const data = (await r.json()) as { plans: TransportPaywallPlan[] };
+        if (!cancelled) setFallbackPlans(data.plans);
+      } catch {
+        // Leave fallbackPlans null; the modal still renders (with no cards)
+        // rather than throwing.
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [plansFromEvent]);
 
   // Poll entitlements every 5s while the modal is open. Bounded implicitly
   // by the component lifetime (unmounts when parent resumes). Server-side
-  // entitlement is the only signal that flips the paywall off.
+  // entitlement is the only signal that flips the paywall off. Keeps
+  // running even while `dismissed` is true so ESC never blocks the resume.
   React.useEffect(() => {
     let cancelled = false;
     const tick = async () => {
@@ -66,6 +101,45 @@ export function PaywallModal({ scope, kind, used, limit, plans, onResumed }: Pay
     };
   }, [onResumed]);
 
+  // ESC dismisses the dialog chrome to a read-only chat view; it does not
+  // touch the parent's `paywalled` state, so the input stays disabled.
+  React.useEffect(() => {
+    if (dismissed) return;
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setDismissed(true);
+    }
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [dismissed]);
+
+  // Focus trap: move focus into the dialog on open/reopen, and keep Tab /
+  // Shift+Tab cycling within it.
+  React.useEffect(() => {
+    if (dismissed) return;
+    const node = dialogRef.current;
+    if (!node) return;
+    const focusables = () => Array.from(node.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR));
+    const first = focusables()[0];
+    first?.focus();
+
+    function onKeydown(e: KeyboardEvent) {
+      if (e.key !== "Tab") return;
+      const items = focusables();
+      if (items.length === 0) return;
+      const firstEl = items[0];
+      const lastEl = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === firstEl) {
+        e.preventDefault();
+        lastEl.focus();
+      } else if (!e.shiftKey && document.activeElement === lastEl) {
+        e.preventDefault();
+        firstEl.focus();
+      }
+    }
+    node.addEventListener("keydown", onKeydown);
+    return () => node.removeEventListener("keydown", onKeydown);
+  }, [dismissed]);
+
   async function subscribe(plan: string) {
     setPending(plan);
     try {
@@ -77,11 +151,23 @@ export function PaywallModal({ scope, kind, used, limit, plans, onResumed }: Pay
     }
   }
 
+  // Copy is scope/kind-aware:
+  //  - free_trial: the lifetime free-message allowance ran out.
+  //  - plan_quota + kind=chat: an active plan's chat quota ran out.
+  //  - plan_quota + kind=image/video, used===0: the user has never had a
+  //    plan that grants this media type ("requires a plan").
+  //  - plan_quota + kind=image/video, used>0: an active plan's media quota
+  //    for that kind ran out.
+  const mediaRequiresPlan = scope === "plan_quota" && kind !== "chat" && used === 0;
   const headline =
     scope === "free_trial"
-      ? "You have used all 10 free messages"
+      ? `You have used all ${limit === -1 ? "your free" : limit} free messages`
       : kind === "chat"
       ? "You have used all your plan messages"
+      : mediaRequiresPlan
+      ? kind === "image"
+        ? "Images require a plan"
+        : "Videos require a plan"
       : kind === "image"
       ? "Your plan images are used up"
       : "Your plan videos are used up";
@@ -89,7 +175,36 @@ export function PaywallModal({ scope, kind, used, limit, plans, onResumed }: Pay
   const sub =
     scope === "free_trial"
       ? "Pick a pass to keep chatting. Cancel any time."
+      : mediaRequiresPlan
+      ? "Choose a pass below, or buy a token pack for one-off images and videos."
       : `You used ${used} of ${limit === -1 ? "unlimited" : limit}. Buy another pass to continue.`;
+
+  const showBuyTokens = kind === "image" || kind === "video";
+
+  if (dismissed) {
+    return (
+      <div
+        data-testid="paywall-modal-dismissed-banner"
+        role="status"
+        className="fixed inset-x-0 bottom-4 z-50 mx-auto flex w-fit max-w-sm items-center gap-3 rounded-full px-4 py-2 text-sm shadow-lg"
+        style={{
+          backgroundColor: "hsl(var(--buttercupp-surface, 210 40% 96%))",
+          border: "1px solid hsl(var(--buttercupp-border, 214 32% 91%))",
+        }}
+      >
+        <span>Upgrade to keep chatting.</span>
+        <button
+          type="button"
+          onClick={() => setDismissed(false)}
+          data-testid="paywall-reopen"
+          className="font-semibold underline"
+          style={{ color: "hsl(var(--buttercupp-accent-rose, 344 84% 71%))" }}
+        >
+          View plans
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -101,6 +216,7 @@ export function PaywallModal({ scope, kind, used, limit, plans, onResumed }: Pay
       style={{ backgroundColor: "hsl(var(--buttercupp-bg) / 0.8)" }}
     >
       <div
+        ref={dialogRef}
         className="w-full max-w-2xl rounded-2xl p-6 shadow-2xl"
         style={{
           backgroundColor: "hsl(var(--buttercupp-surface, 210 40% 96%))",
@@ -159,6 +275,17 @@ export function PaywallModal({ scope, kind, used, limit, plans, onResumed }: Pay
               </div>
             ))}
         </div>
+
+        {showBuyTokens ? (
+          <a
+            href="/billing#token-store"
+            data-testid="paywall-buy-tokens-instead"
+            className="mt-4 block text-center text-sm font-medium underline"
+            style={{ color: "hsl(var(--buttercupp-accent-violet, 262 72% 68%))" }}
+          >
+            Buy tokens instead
+          </a>
+        ) : null}
 
         <p className="mt-4 text-[11px] opacity-60">
           After checkout, chat will resume automatically once payment confirms.

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:32:53Z",
+  "generated_at": "2026-08-15T13:44:45Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Astrid lounges on a plush chaise in a lavish, dimly lit boudoir, the rich textures of velvet and silk surrounding her. She wears a provocative, crimson corset that pushes her ample breasts upward, adorned with a delicate lace garter belt and a matching thong. Her long, raven tresses cascade over one shoulder, and her sultry gaze lingers on the viewer, her full, rosy lips slightly parted in a suggestive smile.",
-      "seed": 1075558371,
+      "prompt": "In a dark, candlelit chamber, a mysterious figure known only as \"The Siren\" beckons her latest conquest closer with hypnotic movements and sultry whispers, leading him to a velvet-draped altar where she will claim his soul...and his body. A low-angle shot, bathed in warm candlelight, presents The Siren's alluring form and the man's captivated gaze, immersing the viewer in the sensual, mysterious atmosphere.",
+      "seed": 1350485333,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/a2d310a5-079f-43fb-a8e4-5b50f7b7bf7b.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/83.webp",
       "status": "ok",
-      "bytes": 1394077
+      "bytes": 1164109
     }
   ]
 }

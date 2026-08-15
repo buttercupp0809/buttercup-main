@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:13:19Z",
+  "generated_at": "2026-08-15T15:19:07Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Piper stands confidently on the edge of Melbourne's Federation Square, her vibrant smile illuminated by the warm golden hour glow of late afternoon. Dressed in a sleek black dress that hugs her curves, she gazes out at the bustling city scene through a shallow depth of field, her features in sharp focus against the blurred background.",
-      "seed": 56335310,
+      "prompt": "In a dimly lit, opulent boudoir, a stunning dominatrix reclines on a velvet chaise, her toned, leather-clad body glistening with sweat as she seductively handles probes, her piercing gaze locked onto an unseen admirer.",
+      "seed": 1848226060,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/09fe25e8-f430-4770-8bad-4ce5f0d6f57f.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/130.webp",
       "status": "ok",
-      "bytes": 1313751
+      "bytes": 1299780
     }
   ]
 }

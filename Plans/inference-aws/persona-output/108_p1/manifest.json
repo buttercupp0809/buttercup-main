@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:25:26Z",
+  "generated_at": "2026-08-15T14:34:11Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Ophelia playfully skips down a cobblestone street in Prague's historic district, her bright smile illuminating the golden hour as she pauses to admire a vibrant street art mural, DSLR in hand to capture the moment.",
-      "seed": 1477111969,
+      "prompt": "In the warm glow of golden hour, a woman clad in a revealing white top and short black skirt stands in a dimly lit alley, probes in hand. She tilts her head seductively, beckoning an onlooker closer with one finger while her other hand caresses a probe suggestively, her dark eyes smoldering with promise.",
+      "seed": 505224706,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/937d4a1a-cd6e-46e2-9093-1c765500808d.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/108.webp",
       "status": "ok",
-      "bytes": 1583360
+      "bytes": 1080505
     }
   ]
 }

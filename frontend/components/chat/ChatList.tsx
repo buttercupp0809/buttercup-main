@@ -4,12 +4,16 @@
 // conversations. Each row shows a hover menu with two actions:
 //   Remove  - hides the tile locally (localStorage-persisted, no DB write)
 //   Delete  - deletes the conversation from the DB, then hides the tile
+//
+// Below `lg` the inline aside is `hidden`, so `ChatListMobileTrigger` exposes
+// the SAME list content through a PanelSheet left slide-over instead.
 
 import * as React from "react";
 import Link from "next/link";
 import { Search, Users, MoreVertical, Trash2, EyeOff } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { ConversationRow } from "@/lib/chats";
+import { PanelSheet } from "@/components/chat/PanelSheet";
 
 const DISMISSED_KEY = "buttercupp:dismissed_conversations";
 
@@ -40,15 +44,16 @@ function preview(text: string | null): string {
   return text.replace(/\*/g, "").trim().slice(0, 60);
 }
 
-export function ChatList({
-  conversations,
-  activeCharacterId,
-}: {
+export interface ChatListContentProps {
   conversations: ConversationRow[];
   activeCharacterId: string;
-}) {
+  onNavigate?: () => void;
+}
+
+// Shared header + search + list markup, reused by the desktop inline aside
+// and the mobile PanelSheet so the two never drift out of sync.
+function ChatListContent({ conversations, activeCharacterId, onNavigate }: ChatListContentProps) {
   const [q, setQ] = React.useState("");
-  // conversationIds that were locally dismissed (Remove) or deleted
   const [hidden, setHidden] = React.useState<Set<string>>(() => new Set());
 
   React.useEffect(() => {
@@ -83,14 +88,12 @@ export function ChatList({
   }
 
   return (
-    <aside
-      className="hidden h-full w-80 shrink-0 flex-col border-r lg:flex"
-      style={{ borderColor: "hsl(var(--buttercupp-border))" }}
-    >
+    <>
       <div className="flex items-center justify-between px-4 py-4">
         <h2 className="font-display text-2xl font-semibold">Chat</h2>
         <Link
           href="/discover"
+          onClick={onNavigate}
           className="flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-medium"
           style={{ borderColor: "hsl(var(--buttercupp-border))", color: "hsl(var(--buttercupp-accent-rose))" }}
         >
@@ -132,11 +135,51 @@ export function ChatList({
               active={c.characterId === activeCharacterId}
               onRemove={() => handleRemove(c.conversationId)}
               onDelete={() => handleDelete(c.conversationId)}
+              onNavigate={onNavigate}
             />
           ))
         )}
       </div>
+    </>
+  );
+}
+
+export function ChatList({ conversations, activeCharacterId }: ChatListContentProps) {
+  return (
+    <aside
+      className="hidden h-full w-80 shrink-0 flex-col border-r lg:flex"
+      style={{ borderColor: "hsl(var(--buttercupp-border))" }}
+    >
+      <ChatListContent conversations={conversations} activeCharacterId={activeCharacterId} />
     </aside>
+  );
+}
+
+// Mobile/tablet access: below `lg` the aside above is `hidden`, so this
+// trigger (surfaced in the compact chat top-bar) opens the same list content
+// in a left slide-over PanelSheet.
+export function ChatListMobileTrigger({ conversations, activeCharacterId }: ChatListContentProps) {
+  const [open, setOpen] = React.useState(false);
+
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        aria-label="Open conversation list"
+        data-testid="chatlist-trigger"
+        className="tap-target flex items-center justify-center rounded-md text-white lg:hidden"
+      >
+        <Users className="h-5 w-5" />
+      </button>
+      <PanelSheet side="left" open={open} onClose={() => setOpen(false)} label="Conversations">
+        <ChatListContent
+          conversations={conversations}
+          activeCharacterId={activeCharacterId}
+          onNavigate={() => setOpen(false)}
+        />
+      </PanelSheet>
+    </>
   );
 }
 
@@ -145,11 +188,13 @@ function ConversationRow({
   active,
   onRemove,
   onDelete,
+  onNavigate,
 }: {
   conv: ConversationRow;
   active: boolean;
   onRemove: () => void;
   onDelete: () => void;
+  onNavigate?: () => void;
 }) {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const menuRef = React.useRef<HTMLDivElement>(null);
@@ -180,7 +225,10 @@ function ConversationRow({
       <Link
         href={`/chat/${conv.characterId}`}
         className="flex min-w-0 flex-1 items-center gap-3"
-        onClick={() => setMenuOpen(false)}
+        onClick={() => {
+          setMenuOpen(false);
+          onNavigate?.();
+        }}
       >
         <div
           className="h-11 w-11 shrink-0 overflow-hidden rounded-full"
@@ -213,17 +261,18 @@ function ConversationRow({
         </div>
       </Link>
 
-      {/* Actions button: visible on hover or when menu is open */}
+      {/* Actions button: visible on hover or when menu is open. tap-target
+          keeps the touch hit area >= 44px while the icon glyph stays small. */}
       <div className="relative shrink-0" ref={menuRef}>
         <button
           type="button"
           onClick={(e) => { e.preventDefault(); setMenuOpen((o) => !o); }}
           aria-label="Conversation actions"
           className={cn(
-            "flex h-7 w-7 items-center justify-center rounded-full transition",
+            "tap-target flex h-7 w-7 items-center justify-center rounded-full transition",
             menuOpen
               ? "opacity-100"
-              : "opacity-0 group-hover:opacity-100",
+              : "opacity-0 group-hover:opacity-100 focus-visible:opacity-100",
           )}
           style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))", color: "hsl(var(--buttercupp-muted))" }}
         >

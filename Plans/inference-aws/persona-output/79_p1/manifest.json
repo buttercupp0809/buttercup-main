@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:23:05Z",
+  "generated_at": "2026-08-15T13:35:40Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Lykke poses playfully against a vibrant mural in a sunny alleyway, her bright smile and laughing eyes capturing the joy of a golden hour stroll through Copenhagen's artistic quarter, DSLR camera in hand to document the city's eccentric beauty.",
-      "seed": 659143816,
+      "prompt": "In the warm glow of a golden hour sunset, a provocative model posing in a lacy bra and short skirt gestures sultrily with probes in hand, her inviting smile and come-hither eyes beckoning an onlooker to join her on the deserted city rooftop.",
+      "seed": 1366510373,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/80914267-e417-466b-9324-596ce1a87709.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/79.webp",
       "status": "ok",
-      "bytes": 1515406
+      "bytes": 1183602
     }
   ]
 }

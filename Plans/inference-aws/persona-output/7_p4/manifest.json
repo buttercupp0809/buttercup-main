@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T22:47:35Z",
+  "generated_at": "2026-08-15T11:10:31Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a traditional Japanese onsen bathhouse, Lily sits on the edge of a wooden tub, water droplets beading on her skin as she leans back to expose her breasts. A kimono is draped loosely over one shoulder, and the camera captures the play of light on her wet skin, highlighting the curves of her body. Her expression is one of serene contentment, yet her eyes hint at the thrill of discovery in this hidden world.",
-      "seed": 194282743,
+      "prompt": "In a dimly lit, opulent boudoir, a dominatrix in a corset and thigh-high stockings playfully teases with probes, her regal beauty and commanding presence promising a night of intense pleasure for her willing submissive.",
+      "seed": 1229901026,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b2854dff-9e08-46af-a9c7-f99b7c374eae.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/7.webp",
       "status": "ok",
-      "bytes": 1214881
+      "bytes": 1015276
     }
   ]
 }

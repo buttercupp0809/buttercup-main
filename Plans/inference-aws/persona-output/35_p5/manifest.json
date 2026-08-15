@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:50:55Z",
+  "generated_at": "2026-08-15T12:07:33Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Juniper poses in a secluded, overgrown garden at dusk, the soft, diffused light casting long shadows across her skin. She wears a thin, flowing dress that catches the breeze, the diaphanous fabric clinging to her curves and leaving little to the imagination. Her hair is loose and windswept, and her eyes are cast downward, a hint of a smile playing on her lips as she appears lost in thought, yet undeniably alluring in her natural, untamed beauty.",
-      "seed": 898879896,
+      "prompt": "Amidst the opulence of a luxurious penthouse suite, a stunning model in lingerie expertly manipulates probes as she makes sultry overtures to an unseen suitor, the camera capturing her hypnotic movements and smoldering gaze through a wide-angle lens, showcasing the expansive city skyline beyond the floor-to-ceiling windows.",
+      "seed": 984641622,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/9a0909e8-836e-493c-afa9-e060eafd4458.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/35.webp",
       "status": "ok",
-      "bytes": 1612129
+      "bytes": 1110550
     }
   ]
 }

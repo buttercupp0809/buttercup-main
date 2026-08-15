@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:34:09Z",
+  "generated_at": "2026-08-15T15:38:59Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Astrid reclines on a marble bench in a steamy, dimly lit sauna, her skin glistening with sweat as she wears only a gauzy white robe that clings to her every curve, her hair pulled back in a loose ponytail, her half-closed eyes fixed on the viewer with an unmistakable \"come hither\" look, the air heavy with steam and the scent of her arousal.",
-      "seed": 219274904,
+      "prompt": "On a yacht's deck at sunset, a couple engage in passionate lovemaking, the man's strong hands gripping his lover's curves as they kiss deeply, waves gently rocking the vessel and the sky ablaze with hues of orange and pink behind them, a DSLR capturing the intimate scene with a shallow depth of field, blurring the distant horizon as the couple's passion reaches its peak.",
+      "seed": 1351962369,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/addd13bb-dccd-4d08-a57a-d6db69fc4dc2.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/139.webp",
       "status": "ok",
-      "bytes": 1295031
+      "bytes": 1298606
     }
   ]
 }

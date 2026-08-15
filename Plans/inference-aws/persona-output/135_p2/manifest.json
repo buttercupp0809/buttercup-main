@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:24:19Z",
+  "generated_at": "2026-08-15T15:29:33Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Lyra lounges on a plush velvet chaise in a dimly lit bedroom, wearing a sheer black negligee that clings to her curves, her legs crossed to reveal the edge of a lacy thong, as she smirks at the camera with half-lidded eyes and parted lips.",
-      "seed": 1008765447,
+      "prompt": "Amidst the dim, smoky atmosphere of a secret underground club, a dominatrix clad in leather fetish attire seductively manipulates probes while making come-hither gestures to an unseen admirer, her piercing gaze and commanding presence drawing in a coterie of eager worshippers, the scene captured in cinematic detail by a low-lit camera.",
+      "seed": 297807107,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b5b3e784-e0c2-4fd4-b267-6be507f106ca.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/135.webp",
       "status": "ok",
-      "bytes": 1233815
+      "bytes": 1366472
     }
   ]
 }

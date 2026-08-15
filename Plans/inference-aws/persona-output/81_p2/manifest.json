@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:27:42Z",
+  "generated_at": "2026-08-15T13:40:02Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Framed against the dimly lit opulence of a grand antebellum ballroom, Magnolia's sultry gaze meets the viewer's as she leans back against a velvet-draped pillar, her form-hugging silk gown revealing tantalizing hints of her curves.",
-      "seed": 646068625,
+      "prompt": "Captured in a snapshot of motion, a seductive vixen whirls through a smoky, velvet-draped nightclub, her barely-there ensemble shimmering in the pulsating light. Probes dangle from her fingers as she beckons an unseen admirer closer, her provocative pose and smoldering expression hinting at the depraved delights awaiting behind the heavy curtains.",
+      "seed": 75110092,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/44d67156-b1a3-4f44-b6b8-2cf21aa3c8d8.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/81.webp",
       "status": "ok",
-      "bytes": 1362438
+      "bytes": 1429774
     }
   ]
 }

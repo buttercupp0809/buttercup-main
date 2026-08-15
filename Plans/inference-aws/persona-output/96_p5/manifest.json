@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:01:39Z",
+  "generated_at": "2026-08-15T14:11:21Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a deserted, moonlit beach, Indigo kneels in the sand, her tiny string bikini leaving little to the imagination as she gazes up at the star-filled sky, wind blowing her long, raven locks across her face, the waves crashing softly in the background, the scene bathed in the soft, romantic glow of a DSLR camera's low-light settings.",
-      "seed": 723282947,
+      "prompt": "In the midst of a raucous, candlelit soiree, a gorgeous, provocatively-dressed woman stands atop a grand, antique table, surrounded by adoring suitors, a gleaming silver probe held high as she performs a sensual, hypnotic dance, her body glistening with sweat and her eyes smoldering with barely-contained desire.",
+      "seed": 1315037255,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/2fd9afb1-9ad4-4a18-9d2b-ad959a97ee7b.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/96.webp",
       "status": "ok",
-      "bytes": 1062367
+      "bytes": 1215855
     }
   ]
 }

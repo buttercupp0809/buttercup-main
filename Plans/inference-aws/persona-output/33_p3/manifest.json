@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:45:54Z",
+  "generated_at": "2026-08-15T12:02:45Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a moonlit rooftop, Indigo reclines on a plush couch in a sheer white robe, the city skyline glittering behind her as she looks up at the night sky with a coy, inviting expression, a single strand of hair falling across her bare shoulder.",
-      "seed": 1506530169,
+      "prompt": "Amidst the opulent decadence of an exclusive underground club, a stunning dominatrix reigns supreme, her regal beauty commanding attention as she expertly manipulates probes with a riding crop in hand, her piercing gaze daring anyone to challenge her authority, the air thick with the heady scent of lust and submission.",
+      "seed": 1864615510,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/943615c9-6586-489b-82e6-6f3809d63366.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/33.webp",
       "status": "ok",
-      "bytes": 1103609
+      "bytes": 1639181
     }
   ]
 }

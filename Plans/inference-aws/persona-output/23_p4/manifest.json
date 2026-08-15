@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:22:38Z",
+  "generated_at": "2026-08-15T11:42:52Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a snow-dusted forest glade, Piper's fur-trimmed coat hangs open, revealing a lacy bralette and high-waisted panties that leave little to the imagination, her smirking face upturned to the icy sky, the soft focus and warm lighting imbuing her with an otherworldly allure.",
-      "seed": 48335516,
+      "prompt": "In the midst of a raucous party, a scantily-clad woman in a revealing, beaded bikini top and high-waisted denim shorts playfully brandishes probes, her hips swaying to the pulsating beat of the music, the frenetic energy of the crowd and the strobing lights of the DJ booth creating a frenzied, hedonistic atmosphere.",
+      "seed": 145090857,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e3b4b6f7-dcf5-4766-9a2d-4f581dfb72b7.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/23.webp",
       "status": "ok",
-      "bytes": 1498364
+      "bytes": 1117954
     }
   ]
 }

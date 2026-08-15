@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:17:46Z",
+  "generated_at": "2026-08-15T14:26:49Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a moonlit, sandy beach, Marlowe lounges on a colorful towel, her barely-there metallic bikini glistening with sweat as she stretches languidly, one hand drifting down to the hem of her bottoms, her tousled hair and sultry expression belying the crowded beach party scene.",
-      "seed": 1210004686,
+      "prompt": "Against a backdrop of dark, rich wood paneling, a stunning model in a daring red corset and matching thigh-high stockings provocatively poses with probes, her sultry gaze and come-hither hand gestures inviting a partner to join in the erotic fun, the crisp focus and dramatic lighting accentuating her voluptuous figure and seductive aura.",
+      "seed": 266094400,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/9e219782-91fe-4a4d-b0b7-15fb8024ed52.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/104.webp",
       "status": "ok",
-      "bytes": 1223811
+      "bytes": 1477767
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T22:50:08Z",
+  "generated_at": "2026-08-15T11:12:53Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a steamy, dimly lit bathroom, Charlotte stands under a cascading showerhead, water droplets clinging to her bare skin. She wears a sheer, translucent robe that barely covers her curves, leaving little to the imagination. Her long, wet hair clings to her neck and shoulders, and her eyes are half-closed as she gazes at the camera with a seductive expression. A DSLR captures the intimate moment, the steamy atmosphere, and the sensual play of light on her glistening skin.",
-      "seed": 1905748582,
+      "prompt": "In a cozy, dimly lit apartment, a couple engaged in intimate foreplay on a plush, velvet couch hold high-tech sex aids, their expressions charged with desire. They invite others to join their sensual game, their bodies entwined in a passionate embrace, as the camera captures their intimate moment in warm, cinematic detail, with the golden hour light filtering through the curtains.",
+      "seed": 722634132,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/6a22ee6d-c315-4b7c-99ab-2939ee2d9dda.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/8.webp",
       "status": "ok",
-      "bytes": 1492028
+      "bytes": 1160136
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:49:36Z",
+  "generated_at": "2026-08-15T13:04:06Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Against the backdrop of an ornate palace ceiling, Ophelia stands in a sheer, beaded bodysuit, her back arched and breasts thrust forward, gazing over her shoulder with a sultry, half-lidded stare as a shallow depth of field blurs the rich textures around her.",
-      "seed": 1604677038,
+      "prompt": "Amidst the opulent splendor of a grand ballroom, a statuesque beauty dressed in a daring red gown holds a silver probe aloft, her sapphire eyes locked on an unseen partner as she sways to the lilting melody, the soft light of chandeliers casting a mesmerizing glow across the scene.",
+      "seed": 604340346,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/53a135b8-c089-4002-b9ec-c8d5ad18c4b5.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/63.webp",
       "status": "ok",
-      "bytes": 1335076
+      "bytes": 1325341
     }
   ]
 }

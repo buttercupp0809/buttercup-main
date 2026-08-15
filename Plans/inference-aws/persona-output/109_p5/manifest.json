@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:29:18Z",
+  "generated_at": "2026-08-15T14:37:37Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Amidst the opulence of a Victorian manor, a sumptuous four-poster bed draped in heavy curtains, Magnolia reclines on crimson satin sheets, a corset and shorts leaving little to the imagination, one leg bent and the other extended, a choker and cuffs adding a touch of bondage, her full lips parted in a sultry invitation as she meets the viewer's gaze with a smoldering intensity, the camera capturing her in a shallow focus with a shallow depth of field.",
-      "seed": 36366323,
+      "prompt": "In the intimate setting of a cozy apartment, a group of friends engage in a raunchy game night, their inhibitions lowered by alcohol and the promise of forbidden pleasures. One woman, clad in a provocative lingerie set, teases her partner with a probe, her playful moans and the clinking of glasses filling the room as they dive headfirst into a night of sensual exploration and naughty delights.",
+      "seed": 1405759902,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/43a84d4b-0535-4b0e-b53f-3f70d4c47e49.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/109.webp",
       "status": "ok",
-      "bytes": 1439742
+      "bytes": 1101577
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:36:10Z",
+  "generated_at": "2026-08-15T11:53:35Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A deserted beach at dawn; Lyra kneels on the sand, her tiny string bikini almost invisible against her sun-kissed skin, the early light casting a golden sheen as she gazes out at the horizon, her wind-blown hair framing her face and her hand splayed across her thigh, the air heavy with the promise of a new day.",
-      "seed": 922940383,
+      "prompt": "In a secluded, moonlit garden, a woman in a revealing, sequined gown and high heels reclines on a stone bench, a probe in hand as she slowly unzips her dress, revealing her bare breasts to the camera, the soft focus and warm, golden tones of a cinematic DSLR capturing the sensuality of the moment and the promise of a private, nocturnal encounter.",
+      "seed": 1733791327,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/dd639588-d59a-42b9-b870-220b3b03383b.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/28.webp",
       "status": "ok",
-      "bytes": 1252858
+      "bytes": 1626798
     }
   ]
 }

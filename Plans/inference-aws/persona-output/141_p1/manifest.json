@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:36:48Z",
+  "generated_at": "2026-08-15T15:41:36Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Ruby stands in a sunlit meadow on a warm summer day, surrounded by wildflowers that match the vibrant hues of her flowing sundress. With a carefree smile, she skips towards the camera, her long blonde hair bouncing behind her, as a DSLR captures the scene with a shallow depth of field to emphasize her joyful expression and the lush greenery.",
-      "seed": 1649708594,
+      "prompt": "In a dimly lit, upscale boudoir, a stunning woman with fiery red hair and piercing green eyes lounges on a plush, velvet chaise, clad in a sheer, black lace negligee that leaves little to the imagination. She holds a sleek, silver sex toy in one hand and a come-hither gaze in her eyes as she beckons her partner closer, the soft glow of a nearby candle casting a warm, intimate ambiance.",
+      "seed": 818551598,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b1b72a13-2d70-44c7-a418-ea4558290cc3.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/141.webp",
       "status": "ok",
-      "bytes": 1737815
+      "bytes": 1447294
     }
   ]
 }

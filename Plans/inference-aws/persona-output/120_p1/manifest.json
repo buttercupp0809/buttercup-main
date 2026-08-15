@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:51:04Z",
+  "generated_at": "2026-08-15T14:58:45Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Juniper strums her guitar on a sunny Seattle afternoon, bathed in warm golden hour light as she performs on a outdoor stage for a crowd of enthusiastic fans, her joyful expression and flowing hair capturing the carefree spirit of the Pacific Northwest grunge scene.",
-      "seed": 1229302875,
+      "prompt": "Amidst the dimly lit recesses of an exclusive nightclub, a stunning dominatrix straddles her chosen submissive, her pert breasts barely contained in a black leather corset as she slowly plunges a large, violet-tipped probe into his eager mouth, her sultry gaze locked onto his as she commands him to worship her.",
+      "seed": 1063132594,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/87e0403c-faee-49d2-9639-7244fe29b950.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/120.webp",
       "status": "ok",
-      "bytes": 1612947
+      "bytes": 1467171
     }
   ]
 }

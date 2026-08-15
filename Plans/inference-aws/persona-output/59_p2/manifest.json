@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:41:10Z",
+  "generated_at": "2026-08-15T12:56:05Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, ancient taverna, a sultry beauty with tousled raven locks and smoldering emerald eyes leans back on a worn wooden bench, her sheer silk blouse slipping off one shoulder to reveal a tantalizing glimpse of her lace-clad breast as she regales her companions with a passionate tale of mythological romance.",
-      "seed": 732934487,
+      "prompt": "In a dimly lit, underground lair, a dominatrix draped in leather and chains teases her bound submissive with probes, her intense, commanding stare and the soft glow of red neon casting an air of dark, forbidden desire.",
+      "seed": 443633915,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/fa9e9b57-48ee-443b-ac55-b6d0da9da160.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/59.webp",
       "status": "ok",
-      "bytes": 1404460
+      "bytes": 1299989
     }
   ]
 }

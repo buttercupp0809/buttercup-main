@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T22:45:27Z",
+  "generated_at": "2026-08-15T11:08:34Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a steamy, dimly lit bathroom, Mia stands under the pounding showerhead, rivulets of water cascading over her voluptuous form, her wet, tousled hair clinging to her neck as she reaches up to touch the droplets beading on her full, pert breasts, her eyes half-lidded in sensual abandon.",
-      "seed": 981715721,
+      "prompt": "In the secluded, candlelit alcove of a historic library, a mysterious seductress in a long, flowing gown sits cross-legged, probes resting on her ample cleavage as she whispers ancient incantations, her eyes gleaming with supernatural allure, beckoning an unsuspecting scholar into her web of dark desires.",
+      "seed": 143882130,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/92922034-f41b-42a0-9eea-3f7e477387ec.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/6.webp",
       "status": "ok",
-      "bytes": 1268663
+      "bytes": 1500026
     }
   ]
 }

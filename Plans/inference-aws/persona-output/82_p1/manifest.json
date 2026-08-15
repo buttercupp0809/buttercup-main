@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:29:24Z",
+  "generated_at": "2026-08-15T13:41:38Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Indigo strolls through Amsterdam's charming Vondelpark on a warm spring morning, her dark hair blowing in the gentle breeze as she smiles at a family of ducks gliding across a sunlit pond, wearing a flowy bohemian dress in shades of lavender and teal that catch the golden hour light filtering through the trees, her hand grasping a bouquet of wildflowers.",
-      "seed": 150933312,
+      "prompt": "In the golden hour, a mysterious woman stands alone on a secluded canal bridge in Amsterdam, the setting sun casting long shadows behind her as she provocatively holds probes, her revealing top and short skirt hiked up to reveal tantalizing skin, her seductive gaze beckoning a passerby to join her.",
+      "seed": 1307736998,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/6dfc68fd-89d6-4761-852c-4199020043da.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/82.webp",
       "status": "ok",
-      "bytes": 1771272
+      "bytes": 1428354
     }
   ]
 }

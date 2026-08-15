@@ -10,14 +10,18 @@ export const dynamic = "force-dynamic";
 // carries its persona (name, location, avatar, chat link) straight from the DB.
 async function dbReels(userId: string | null): Promise<ReelItem[]> {
   const videos = await prisma.characterMedia.findMany({
-    where: { kind: "video" },
+    // hidden: false is load-bearing: see the HIDDEN MEDIA CONVENTION in
+    // schema.prisma.
+    where: { kind: "video", hidden: false },
     orderBy: [{ characterId: "asc" }, { sort: "asc" }],
     include: {
       character: {
         include: {
           media: {
-            where: { kind: "image" as const },
-            orderBy: [{ isPrimary: "desc" as const }, { sort: "asc" as const }],
+            where: { kind: "image" as const, hidden: false },
+            // isDisplay first: the free/public image must win over the
+            // isPrimary hero, exactly like lib/feed.ts and lib/characters.ts.
+            orderBy: [{ isDisplay: "desc" as const }, { isPrimary: "desc" as const }, { sort: "asc" as const }],
             take: 1,
           },
         },

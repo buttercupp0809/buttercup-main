@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:46:13Z",
+  "generated_at": "2026-08-15T13:00:53Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Amidst the vibrant colors and eclectic decor of a Portland thrift shop, Sage bends over a vintage trunk, her black leather corset and fishnet stockings on full display as she searches for treasures, her tousled hair falling over her bare back and the curves of her derri\u00e8re jutting out invitingly.",
-      "seed": 1606039350,
+      "prompt": "Amidst the decadent opulence of a luxurious penthouse suite, a dominant female figure stands over her bound submissive, a riding crop in hand, her regal beauty and commanding presence on full display, the city skyline visible through the floor-to-ceiling windows, a single, intense spotlight highlighting the power dynamics at play.",
+      "seed": 128203949,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/1a9aaa13-7206-46a3-b2da-6ce09856862a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/61.webp",
       "status": "ok",
-      "bytes": 1255186
+      "bytes": 1195478
     }
   ]
 }

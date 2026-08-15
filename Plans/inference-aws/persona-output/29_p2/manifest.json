@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:37:07Z",
+  "generated_at": "2026-08-15T11:54:31Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Captured in the golden glow of an Icelandic dusk, a sultry beauty leans against a rocky outcropping, her sheer black lace negligee clinging to every curve as she gazes out at the Northern Lights dancing across the night sky, a coy smile playing on her lips.",
-      "seed": 1322428271,
+      "prompt": "In a dimly lit, velvety boudoir, a sultry beauty lounges on plush cushions, her curves accentuated by a barely-there negligee as she toys with a collection of probes and sex toys, her sultry gaze and inviting gestures promising a night of decadent pleasures for the lucky soul who enters her lair.",
+      "seed": 1075122047,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/ec24a984-01cc-4f8b-a5d9-bb2799f4505b.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/29.webp",
       "status": "ok",
-      "bytes": 1335118
+      "bytes": 1159595
     }
   ]
 }

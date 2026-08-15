@@ -24,7 +24,7 @@ export default async function HomePage() {
       <ReelsCarousel reels={reels} />
       <ValueProps />
       <SocialProof />
-      <section className="mx-auto max-w-4xl px-6 py-20 text-center">
+      <section className="mx-auto max-w-4xl px-6 px-safe py-20 text-center">
         <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
           Your companion is waiting.
         </h2>
@@ -32,11 +32,11 @@ export default async function HomePage() {
           Sign up in seconds. 18+ only. No pressure, no lectures.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Link href="/signup">
-            <Button className="px-6 py-6 text-base">Create your companion</Button>
+          <Link href="/signup" className="w-full sm:w-auto">
+            <Button className="w-full px-6 py-6 text-base sm:w-auto">Create your companion</Button>
           </Link>
-          <Link href="/gallery">
-            <Button variant="outline" className="px-6 py-6 text-base">
+          <Link href="/gallery" className="w-full sm:w-auto">
+            <Button variant="outline" className="w-full px-6 py-6 text-base sm:w-auto">
               Browse
             </Button>
           </Link>

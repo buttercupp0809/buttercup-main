@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:35:42Z",
+  "generated_at": "2026-08-15T14:43:32Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Against a backdrop of snow-capped mountains, a woman in a fur-trimmed coat and thigh-high leather boots stands at the edge of a frozen lake, the moon casting an icy glow on her raven locks and pale complexion as she gazes out at the frozen expanse, her fingers playing with the hem of her coat to reveal a hint of lace lingerie.",
-      "seed": 1585936941,
+      "prompt": "Amidst the cozy, warm ambiance of a rustic cabin, a couple engages in intimate foreplay on a plush, fur-covered bed. They hold probes, their expressions charged with desire as they invite others to join their sensual game. The soft, golden light of a nearby fireplace casts a warm glow on their entwined bodies, while the rustic, natural surroundings add an air of primal passion to the scene.",
+      "seed": 1397513186,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/75727a76-4ca3-4a89-97e1-8a76fc031094.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/112.webp",
       "status": "ok",
-      "bytes": 1133248
+      "bytes": 1672736
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:28:53Z",
+  "generated_at": "2026-08-15T12:44:39Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Against the stark whiteness of freshly fallen snow, Freya stands with her back arched, one hand braced on a weathered wooden fence, the other reaching behind to unclasp her fur-trimmed coat, revealing a lacy red bra and matching thong, her breath visible in the frigid air as she looks over her shoulder with a defiant, sexy glare.",
-      "seed": 784256649,
+      "prompt": "In a seedy back alley, a disheveled woman in a torn dress and fishnet stockings beckons a passerby with a desperate look in her eyes, a dildo tucked into her waistband. Shot with a gritty, high-contrast aesthetic, the scene evokes a sense of danger and raw desire.",
+      "seed": 1880132718,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
       "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/53.webp",
       "status": "ok",
-      "bytes": 1583975
+      "bytes": 1713312
     }
   ]
 }

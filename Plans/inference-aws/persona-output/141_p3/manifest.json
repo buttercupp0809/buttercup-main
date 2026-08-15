@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:37:37Z",
+  "generated_at": "2026-08-15T15:42:20Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Amidst a snow-dusted pine forest, Ruby's fur-trimmed coat is open, revealing a lacy bralette and high-waisted panties as she poses on a fallen log. The icy atmosphere and her smirking, cold lips convey a sense of rebellious sensuality. The shallow depth of field and warm lighting on her skin contrast with the crisp, wintry backdrop, creating a captivating visual tension.",
-      "seed": 1364615172,
+      "prompt": "In a cozy, candlelit bedroom, a sensual couple entwined on the sheets hold futuristic sex toys, their passionate lovemaking interrupted only by heated gazes and tender caresses. The soft focus of a DSLR camera captures the intimate moment, the warm, golden light of the candles creating a romantic, inviting atmosphere as the couple invites others to share in their erotic game.",
+      "seed": 106315269,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/24c83de6-63a3-423c-b015-0b1ce7f2ae4c.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/141.webp",
       "status": "ok",
-      "bytes": 1739174
+      "bytes": 1010720
     }
   ]
 }

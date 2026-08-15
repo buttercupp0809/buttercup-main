@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T22:45:52Z",
+  "generated_at": "2026-08-15T11:08:56Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Against a backdrop of lush, velvety darkness, Mia reclines on a sumptuous, antique four-poster bed, clad in a sheer, red silk negligee that barely contains her curves, a single, flickering candle casting dramatic shadows across her face and the curves of her body as she languidly trails a hand down her thigh, her expression a sultry, inviting smile.",
-      "seed": 1381382166,
+      "prompt": "A curvaceous model lounges seductively on a plush, white satin bed, her lacy lingerie barely concealing her ample assets as she toys with probes, her sultry gaze and provocative poses promising a night of passionate exploration for the lucky man who answers her invitation, the soft focus and warm lighting of a DSLR camera capturing every sensual detail.",
+      "seed": 467959981,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/a7491789-39d5-4630-8be1-d7982b50eca3.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/6.webp",
       "status": "ok",
-      "bytes": 1311265
+      "bytes": 1128140
     }
   ]
 }

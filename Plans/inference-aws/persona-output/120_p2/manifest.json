@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:51:29Z",
+  "generated_at": "2026-08-15T14:59:10Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit underground music venue, Juniper's sultry gaze locks with the viewer from behind a makeshift curtain, her bare shoulders and upper chest on display through a sheer, lace-trimmed top, the shadows accentuating her curves and the promise of the intimate performance to come.",
-      "seed": 1128129153,
+      "prompt": "In the golden hour light of a secluded beach, a couple entwines on a blanket, their toned bodies glistening with sweat as they passionately kiss and explore each other with probes, the waves gently lapping at their feet and the setting sun casting long shadows behind them.",
+      "seed": 1665511849,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/afa0c807-43d9-4d52-97df-502761698b5e.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/120.webp",
       "status": "ok",
-      "bytes": 1618732
+      "bytes": 1944662
     }
   ]
 }

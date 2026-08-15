@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:08:56Z",
+  "generated_at": "2026-08-15T12:25:27Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit art gallery, Hazel reclines on a velvet chaise, her sheer silk robe draped loosely to reveal the curves of her breasts and the lacy edge of her bra, her sultry gaze meeting the viewer's as she smokes a cigarette, the soft light casting shadows on her porcelain skin and the abstract art behind her.",
-      "seed": 1566414040,
+      "prompt": "Against the backdrop of a cityscape at golden hour, a couple in provocative attire - a skin-tight jumpsuit and fishnet stockings - pose sensually, each grasping a futuristic sex toy, their faces etched with desire as they gesture for a passerby to join their intimate game, the shallow depth of field blurring the urban landscape behind them.",
+      "seed": 122627064,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/befba963-6770-4313-8b48-52fb253ee634.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/44.webp",
       "status": "ok",
-      "bytes": 1230780
+      "bytes": 1464202
     }
   ]
 }

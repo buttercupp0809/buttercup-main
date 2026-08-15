@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:03:46Z",
+  "generated_at": "2026-08-15T14:13:19Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Astrid sprawls across a plush leather couch in a chic Berlin apartment, a sheer silk robe barely covering her nude form, the fabric clinging to her curves and allowing glimpses of her breasts and the swell of her hips, her legs extended and crossed at the ankle, a glass of champagne dangling from her fingertips as she smirks at the camera with a 'come hither' look, the room bathed in soft, cinematic lighting.",
-      "seed": 1587973531,
+      "prompt": "In the shadowy, neon-lit alleyway of a bustling city, a woman clad in a provocative outfit moves sensually while handling probes, her hypnotic movements and alluring smile beckoning an audience to share in the erotic spectacle unfolding before them, captured in a dynamic, wide-angle shot, with the city's nightlife sounds and distant sirens providing an urban, pulsing soundtrack.",
+      "seed": 182186721,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/450dbbdd-145b-4f4e-8542-073bd33a28e0.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/97.webp",
       "status": "ok",
-      "bytes": 1199288
+      "bytes": 1389107
     }
   ]
 }

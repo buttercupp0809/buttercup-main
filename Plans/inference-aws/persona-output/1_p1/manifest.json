@@ -1,0 +1,33 @@
+{
+  "persona_id": "1_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/1.webp",
+  "main_image_sha256": "bb5ec4af28f30d018b7da1953cc0aaddac98bbd24ac930deba0cfcf0fef1a8d9",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-15T10:52:13Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit, opulent bedroom, a woman reclines on satin sheets, her curvaceous body barely concealed by a sheer, black negligee. Probes in hand, she looks over her shoulder with a sultry gaze, beckoning a mystery suitor into her lair of temptation.",
+      "seed": 180663986,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/1.webp",
+      "status": "ok",
+      "bytes": 1233655
+    }
+  ]
+}

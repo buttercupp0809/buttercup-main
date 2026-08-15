@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:15:48Z",
+  "generated_at": "2026-08-15T15:21:33Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, ornate boudoir, Vesper reclines on plush velvet cushions, her lacy negligee clinging to every curve, the candlelight casting shadows that dance across her breasts and the slope of her hips as she languidly trails a finger down her cleavage, her sultry gaze directed at the camera.",
-      "seed": 1871424043,
+      "prompt": "Against the backdrop of a dimly lit, ornate bazaar, a mysterious woman clad in a black leather corset and matching pants provocatively toys with probes, her enigmatic expression and come-hither gestures hinting at forbidden pleasures waiting to be discovered in the labyrinthine stalls.",
+      "seed": 1037314058,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/77c3c987-c523-46c5-a1e0-c11f6d23d0b2.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/131.webp",
       "status": "ok",
-      "bytes": 1425917
+      "bytes": 1502644
     }
   ]
 }

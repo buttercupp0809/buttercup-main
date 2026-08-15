@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:28:38Z",
+  "generated_at": "2026-08-15T11:48:32Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a crisp winter morning in Oslo's snow-dusted woods, Freya poses against a gnarled tree trunk, her fur-trimmed coat opened to reveal a lacy, burgundy bralette and matching high-waisted panties. Her breath mists in the chilly air as she looks over her shoulder with a coy, cold-lipped smirk, her tousled auburn hair framing her face. The DSLR camera captures the scene in high contrast, with the stark white snow and dark tree bark providing a dramatic backdrop to her alluring, winter-goddess pose.",
-      "seed": 570664406,
+      "prompt": "In a dimly lit alleyway, a scantily-clad woman in a tight red dress provocatively teases with a silver probe, her come-hither smile and seductive sway of her hips inviting a stranger to step into her shadowy embrace.",
+      "seed": 492449721,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/a03b582b-905f-4760-9b15-337aa7513bf9.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/26.webp",
       "status": "ok",
-      "bytes": 1642599
+      "bytes": 1307459
     }
   ]
 }

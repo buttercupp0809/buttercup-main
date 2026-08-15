@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:10:12Z",
+  "generated_at": "2026-08-15T12:26:43Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Leaning against a weathered brick wall in a shadowy alley, Hazel wears a skimpy leather corset and fishnet stockings, her thong-clad derri\u00e8re on full display as she looks back over her shoulder, her full lips parted in a coy smile, the neon signs of a seedy bar flickering in the background, a sense of danger and allure emanating from her provocative pose.",
-      "seed": 214882361,
+      "prompt": "In the warm, golden light of a cozy boudoir, a couple engaged in intimate foreplay - the woman's back arched, her breasts exposed, and the man's hand between her thighs - hold probes, their faces alight with passion as they invite others to join their sensual exploration, the plush bedding and ornate furnishings of the room a testament to their wealth and desire for pleasure.",
+      "seed": 425336504,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/daafb9ac-6334-4caf-91f5-9b6bdfcc8c6e.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/44.webp",
       "status": "ok",
-      "bytes": 2042338
+      "bytes": 1248023
     }
   ]
 }

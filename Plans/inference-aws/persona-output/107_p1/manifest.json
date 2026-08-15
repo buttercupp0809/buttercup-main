@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:23:21Z",
+  "generated_at": "2026-08-15T14:32:13Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A lively Dublin pub on a warm summer evening; Lyra stands by the bar, laughing heartily with friends as the warm glow of golden hour spills through the windows, casting a soft, cinematic light on her vibrant features and the ale-fueled merriment in her eyes. Her auburn curls bounce with each giggle as she clinks a pint glass with her companions, the DSLR camera capturing the joyful scene in a shallow depth of field, Lyra's lively spirit the main focus.",
-      "seed": 1619632114,
+      "prompt": "In a dimly lit, intimate boudoir, a stunning woman with fiery locks and alluring green eyes reclines on velvet pillows, her revealing black lace lingerie barely containing her ample curves as she provocatively toys with probes, her sultry gaze locked onto an unseen admirer.",
+      "seed": 333772549,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/30b25774-3e39-44c2-925a-07fa4070b00e.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/107.webp",
       "status": "ok",
-      "bytes": 1538321
+      "bytes": 1394030
     }
   ]
 }

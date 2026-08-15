@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:58:21Z",
+  "generated_at": "2026-08-15T14:08:16Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, ornate bedroom, a sultry Magnolia reclines on silken sheets, her sheer negligee draped across her curves as she gazes up at the viewer with hooded eyes, a coy smile playing on her lips as the soft glow of candles creates an intimate atmosphere.",
-      "seed": 1762601471,
+      "prompt": "In the hazy, dreamlike atmosphere of a secret underground club, a stunning dominatrix struts her stuff, her toned body barely concealed by a black leather corset and matching thigh-high boots. She wields a futuristic sex toy, her sultry smile and come-hither eyes promising an evening of wild, uninhibited lust to anyone brave enough to step into her domain.",
+      "seed": 188249440,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/7a06f57b-17a6-4576-b01f-8d6332643a79.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/95.webp",
       "status": "ok",
-      "bytes": 1109656
+      "bytes": 1709341
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:36:11Z",
+  "generated_at": "2026-08-15T14:44:04Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Ruby stands on a sun-dappled meadow, golden hour casting a warm glow on her joyful face as she twirls in a flowy sundress, a DSLR camera in hand, capturing the beauty of the Rocky Mountains in the distance.",
-      "seed": 211419131,
+      "prompt": "A striking woman, her fiery locks cascading over bare shoulders, leans in close to a man, her hand on his chest. She wears a low-cut, black leather corset and a micro skirt, her skin glistening under warm studio lights. In the background, a cityscape is visible through a large window, the sky ablaze with the hues of a golden hour sunset. Her sultry gaze and inviting pose suggest a seductive encounter about to unfold.",
+      "seed": 1438287406,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/04b37823-8df4-408b-bfc6-651b86c1629a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/113.webp",
       "status": "ok",
-      "bytes": 1549440
+      "bytes": 1246660
     }
   ]
 }

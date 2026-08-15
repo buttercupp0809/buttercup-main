@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:13:16Z",
+  "generated_at": "2026-08-15T12:29:48Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "At a lively pub in Edinburgh's Old Town, Isla leans against the bar, her emerald eyes sparkling with mischief under the dim, smoky lighting. A crimson scarf drapes around her neck, contrasting with the creamy skin of her d\u00e9colletage, as she laughs with the bartender amidst clinking glasses and lively Celtic music.",
-      "seed": 658329697,
+      "prompt": "In a hazy, neon-lit nightclub, a couple in provocative attire - a miniskirt and studded leather corset - pose seductively with futuristic sex toys, their expressions charged with lust as they beckon someone closer amidst the swirling mist and pulsating beats of the dance floor, the scene captured in a shallow depth of field with the DSLR camera's wide aperture.",
+      "seed": 863821638,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e7368284-d279-49f4-9b58-7f711c0c2cf3.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/46.webp",
       "status": "ok",
-      "bytes": 1399923
+      "bytes": 1234570
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:30:49Z",
+  "generated_at": "2026-08-15T15:35:50Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, upscale lingerie boutique, Indigo reclines on plush velvet cushions, trying on a sheer black babydoll nightie that clings to her curvy figure, her gaze direct and inviting as she stands to model the revealing garment before a full-length mirror, the soft focus and cinematic lighting emphasizing her sensual appeal.",
-      "seed": 1629166369,
+      "prompt": "In a dimly lit underground club, a stunning dominatrix commands attention, her regal beauty and commanding presence drawing in a coterie of eager worshippers as she holds probes, her sultry movements and piercing eyes hinting at the pleasures she can bestow upon those who dare to approach her velvet-draped altar.",
+      "seed": 305494361,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/8c3b411d-b59d-44b3-8db8-0c19b5a24569.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/138.webp",
       "status": "ok",
-      "bytes": 1062434
+      "bytes": 1094344
     }
   ]
 }

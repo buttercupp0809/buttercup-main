@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:39:19Z",
+  "generated_at": "2026-08-15T15:43:58Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Phoebe reclines on a plush velvet chaise in a dimly lit boudoir, wearing a sheer black negligee that clings to her curves, her bare legs crossed seductively, a coy smile playing on her lips as she gazes up through half-lidded eyes, the camera focused intently on her shapely thighs and the lacy tops of her stockings.",
-      "seed": 1893619206,
+      "prompt": "Amidst the dimly lit, crimson-hued ambiance of an underground speakeasy, a sultry siren clad in a black lace bodice and matching thong teases a prospective lover with probes, her full lips curled into a wicked smirk as she sways to the sultry jazz melodies wafting from the vintage record player, the air thick with the scent of fine whiskey and forbidden desires.",
+      "seed": 1512425280,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e83798ed-1e19-48ab-a033-86b37db9e3af.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/142.webp",
       "status": "ok",
-      "bytes": 1439852
+      "bytes": 1851590
     }
   ]
 }

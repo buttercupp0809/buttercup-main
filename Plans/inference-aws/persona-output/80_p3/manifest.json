@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:26:00Z",
+  "generated_at": "2026-08-15T13:38:24Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a deserted, moonlit beach, Ophelia stands at the water's edge in a sheer, gauzy robe that clings to her curves, the ocean breeze tousling her long, dark hair as she gazes out at the shimmering waves, her expression a mix of longing and mystery, a solitary figure against the vast, star-studded sky.",
-      "seed": 1089281818,
+      "prompt": "In the warm, golden light of a sunset, a scantily-clad couple on a yacht's deck holds probes, their faces flushed with desire as they gaze longingly at each other, the waves gently rocking the vessel and the distant city skyline glowing in the background.",
+      "seed": 1057242053,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/564129d8-1b4c-447d-b8d4-55cafc46701c.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/80.webp",
       "status": "ok",
-      "bytes": 1265560
+      "bytes": 1133955
     }
   ]
 }

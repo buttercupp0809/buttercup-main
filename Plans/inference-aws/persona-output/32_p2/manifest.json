@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:43:24Z",
+  "generated_at": "2026-08-15T12:00:23Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit underground music venue, Sage's alluring figure is partially obscured by shadows, yet her full, round breasts strain against a tight, black lace bra as she leans against the wall, her slender thighs and toned hips on display in a short, sheer skirt, her legs crossed to reveal a glimpse of lacy panties.",
-      "seed": 275697438,
+      "prompt": "In a dimly lit, ornate chamber, a sultry dominatrix reclines on a plush velvet chaise, her body clad in sheer black lingerie as she seductively manipulates futuristic sex toys, her heavy-lidded gaze locked on an unseen admirer as the cinematic camera angles create an air of mystery and forbidden desire.",
+      "seed": 901354219,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/6df78916-1956-4bb2-b31b-3fc7140e8c5a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/32.webp",
       "status": "ok",
-      "bytes": 1326101
+      "bytes": 1314154
     }
   ]
 }

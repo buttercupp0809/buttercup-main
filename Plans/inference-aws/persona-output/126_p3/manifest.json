@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:05:38Z",
+  "generated_at": "2026-08-15T15:12:00Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Captured in a cinematic close-up, Clara's face is illuminated by the soft, golden light of a DSLR lens, her full lips parted in a seductive smile as she runs a delicate finger along the curve of her breast, her eyes locked on the camera with a hypnotic, come-hither stare.",
-      "seed": 1151354600,
+      "prompt": "In a lavish, golden hour-lit garden, a statuesque model poses amidst a tapestry of blooming flowers. She wears a diaphanous, pastel pink gown that clings to her every curve, her raven tresses cascading down her back. A glistening, crystal dildo rests against her thigh as she gazes directly into the camera, her eyes smoldering with unspoken desire.",
+      "seed": 309007655,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e63fe1bb-1849-4e1d-8549-c490c4557217.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/126.webp",
       "status": "ok",
-      "bytes": 1330413
+      "bytes": 1659238
     }
   ]
 }

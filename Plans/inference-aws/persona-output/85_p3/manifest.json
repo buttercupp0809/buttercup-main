@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:36:38Z",
+  "generated_at": "2026-08-15T13:48:26Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Wearing a fur-trimmed coat opened to reveal a lacy bralette and high-waisted panties, the woman sits on a tree stump in a winter forest glade, her smirking face illuminated by the soft glow of a nearby bonfire. Snowflakes dance around her as the camera captures a cinematic, intimate shot.",
-      "seed": 837346297,
+      "prompt": "In a shadowy, dimly-lit alleyway, a scantily-clad woman in a red latex bodysuit provocatively toys with probes, her high heels clicking on the wet pavement as she makes suggestive hand gestures and smolders with desire, the neon signs of a distant cityscape casting an eerie, surreal glow.",
+      "seed": 1303375792,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/448b9303-1f8b-4348-b090-e7b605e77c99.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/85.webp",
       "status": "ok",
-      "bytes": 1474432
+      "bytes": 1452649
     }
   ]
 }

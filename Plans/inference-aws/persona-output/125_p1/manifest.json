@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:01:57Z",
+  "generated_at": "2026-08-15T15:09:15Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Astrid stands on a sun-drenched rooftop garden in the heart of Berlin, her dark hair fluttering in the warm breeze as she gazes out over the vibrant cityscape with a joyful, carefree expression. Wearing a casual striped top and denim shorts, her hands are clasped behind her back, radiating contentment and a sense of freedom. A DSLR camera captures her in golden hour light, the shallow depth of field emphasizing her bright smile and the lush greenery surrounding her.",
-      "seed": 1000371598,
+      "prompt": "In the fading golden hour, a striking woman in a plunging red dress and stiletto heels leans against a graffiti-covered alley wall, her back to the camera as she provocatively toys with a sex toy, the city skyline visible in the background, a DSLR camera capturing her sultry profile and the play of light on her curves with a shallow depth of field.",
+      "seed": 1823923327,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/1b0b0af9-cd6b-49d7-81df-2e68593f2d54.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/125.webp",
       "status": "ok",
-      "bytes": 1563629
+      "bytes": 1524491
     }
   ]
 }

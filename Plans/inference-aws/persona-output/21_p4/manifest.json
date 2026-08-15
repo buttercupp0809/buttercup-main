@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:18:29Z",
+  "generated_at": "2026-08-15T11:38:53Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "With one stiletto heel propped on a wooden crate, Matilda leans forward, her sheer, black lace thong and garter belt ensemble leaving little to the imagination, the low light of a dimly lit backstage area casting deep shadows across her toned thighs and rounded buttocks, her eyes smoldering with a coquettish promise as she gazes back over her shoulder.",
-      "seed": 1526833628,
+      "prompt": "Amidst the decadent surroundings of an underground dungeon, a stunning dominatrix, clad in leather and lace, stands over her bound submissive, probes in hand, her regal beauty and commanding presence radiating an aura of power and lust, the harsh red glow of flickering lanterns illuminating her intense stare.",
+      "seed": 1291615659,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/d80e3df6-01bb-433e-b75a-2917b77a8bdb.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/21.webp",
       "status": "ok",
-      "bytes": 1172680
+      "bytes": 1504854
     }
   ]
 }

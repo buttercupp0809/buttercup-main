@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:07:14Z",
+  "generated_at": "2026-08-15T12:23:46Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a lavish antebellum bedroom, Magnolia reclines on a velvet chaise, her sheer, lace-trimmed negligee clinging to her curves, the fabric translucent against her skin, as she languidly runs a hand through her tousled hair, gazing at the viewer with a sultry, half-lidded gaze, the low light casting shadows on her features.",
-      "seed": 1997310796,
+      "prompt": "A stunning model in lacy black lingerie and stockings kneels on a plush carpet, prodding a stranger's crotch with a gleaming metal probe while making sultry eye contact, her curves accentuated by the low-angle shot and soft focus of a professional studio's backdrop in a dimly lit, intimate setting.",
+      "seed": 949593307,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/bf763cf0-0716-4b38-8912-4501f04616ae.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/43.webp",
       "status": "ok",
-      "bytes": 1421148
+      "bytes": 1199613
     }
   ]
 }

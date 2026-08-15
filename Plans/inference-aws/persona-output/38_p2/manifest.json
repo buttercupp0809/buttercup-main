@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:56:03Z",
+  "generated_at": "2026-08-15T12:12:30Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A sultry Lykke reclining on a plush chaise in a dimly lit bedroom, wearing a sheer black negligee that clings to her curves, her tousled hair cascading over one shoulder as she gazes directly at the camera with a coy, inviting smile, one hand trailing down her chest to her cleavage.",
-      "seed": 1871635170,
+      "prompt": "In a dimly lit, smoke-filled room, a statuesque dominatrix stands before a bound submissive, her black leather corset accentuating her curves as she brandishes a riding crop, the red glow of candles casting sinister shadows on the couple's faces, a sense of raw, unbridled power emanating from the dominatrix's every move.",
+      "seed": 563956871,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/d1aff369-8f3a-4cce-a7cf-ad3086c65810.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/38.webp",
       "status": "ok",
-      "bytes": 1357418
+      "bytes": 1134459
     }
   ]
 }

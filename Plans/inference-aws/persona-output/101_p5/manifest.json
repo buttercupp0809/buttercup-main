@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:12:17Z",
+  "generated_at": "2026-08-15T14:21:37Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Against the backdrop of a dimly lit, minimalist studio, Hazel stands with one leg bent behind her, her hand resting on her hip as she looks directly at the camera with an unmistakable \"come hither\" gaze, her body clad in a skintight black leather corset and matching thigh-high boots that accentuate her toned legs and rounded derri\u00e8re, the low-key lighting creating deep shadows that only add to her raw, lusty appeal.",
-      "seed": 1750279979,
+      "prompt": "In a cozy, dimly lit apartment, friends engaged in erotic role-play wield probes, their flirty banter and heated glances hinting at the naughty games to come as they entwine on a plush leather couch, the city nightlife humming in the background through open windows.",
+      "seed": 1397376105,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/8101de8f-aece-4554-82ba-0e6953549469.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/101.webp",
       "status": "ok",
-      "bytes": 1004855
+      "bytes": 910924
     }
   ]
 }

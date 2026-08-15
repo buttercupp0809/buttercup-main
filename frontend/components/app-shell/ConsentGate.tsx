@@ -2,6 +2,8 @@
 
 import * as React from "react";
 import { useRouter } from "next/navigation";
+import { ShieldCheck } from "lucide-react";
+import { POLICY_VERSION } from "@/lib/consent";
 
 interface Props {
   needsConsent: boolean;
@@ -10,176 +12,174 @@ interface Props {
 
 export function ConsentGate({ needsConsent, children }: Props) {
   const router = useRouter();
-  const [dob, setDob] = React.useState("");
-  const [tosAccepted, setTosAccepted] = React.useState(false);
-  const [privacyAccepted, setPrivacyAccepted] = React.useState(false);
   const [err, setErr] = React.useState<string | null>(null);
-  const [busy, setBusy] = React.useState(false);
+  const [busy, setBusy] = React.useState<"accept" | "decline" | null>(null);
 
   if (!needsConsent) return <>{children}</>;
 
-  // Max DOB for 18+ (today minus 18 years)
-  const maxDob = new Date(Date.now() - 18 * 365.25 * 86_400_000)
-    .toISOString()
-    .split("T")[0];
-
-  async function agree(e: React.FormEvent) {
-    e.preventDefault();
-    setBusy(true);
+  // A single "I Agree" action stands in for all three consents at once: the
+  // beautifully-written copy right above the button is what makes clear
+  // *what* the user is agreeing to (18+, Terms, Privacy), so one affirmative
+  // tap can honestly send all three fields as true together. The server DTO
+  // (ConsentAcceptDto, packages/shared/src/dto/consent.ts) still requires
+  // all three as z.literal(true) independently; this UI simply stops making
+  // the user click three checkboxes to produce that same true/true/true.
+  async function agree() {
+    setBusy("accept");
     setErr(null);
-    const res = await fetch("/api/age/verify", {
+    const res = await fetch("/api/consent/accept", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
-        dob: new Date(dob).toISOString(),
-        jurisdiction: "IN",
-        tosAccepted,
-        privacyAccepted,
+        policyVersion: POLICY_VERSION,
+        tosAccepted: true,
+        privacyAccepted: true,
+        ageConfirmed: true,
       }),
     });
-    setBusy(false);
     if (!res.ok) {
       const body = (await res.json().catch(() => ({}))) as { error?: string };
-      const code = body.error ?? "verification_failed";
+      const code = body.error ?? "consent_failed";
       setErr(
-        code === "under_min_age"
-          ? "You must be 18 or older to use Poppy."
-          : "Verification failed. Please try again.",
+        code === "stale_policy_version"
+          ? "Our policies were updated. Please refresh and try again."
+          : "Something went wrong. Please try again.",
       );
+      setBusy(null);
       return;
     }
-    // Mark consent in a long-lived cookie so the client reflects it immediately.
-    document.cookie = "consent_v1=1; max-age=31536000; path=/; SameSite=Lax";
+    // The server row is authoritative: re-render the (protected) layout so it
+    // re-evaluates needsConsent(user) against the freshly written consent
+    // and unmounts this gate. No client cookie is set or trusted here.
     router.refresh();
   }
 
   async function decline() {
-    await fetch("/api/auth/logout", { method: "POST" }).catch(() => null);
-    router.push("/login");
+    setBusy("decline");
+    const res = await fetch("/api/consent/decline", { method: "POST" }).catch(() => null);
+    const body = (await res?.json().catch(() => null)) as { redirect?: string } | null;
+    router.push(body?.redirect ?? "/login");
   }
-
-  const canSubmit = tosAccepted && privacyAccepted && dob.length > 0 && !busy;
 
   return (
     <>
       {/* App shell blurred underneath the gate */}
       <div className="pointer-events-none select-none blur-sm">{children}</div>
 
-      {/* Fullscreen consent overlay */}
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4 backdrop-blur-sm">
+      {/* Fullscreen consent overlay. Non-dismissible: no close button, no
+          click-outside-to-close, no escape-to-close. The only exits are
+          Agree (proceed) and Decline (auto-logout). One prominent action
+          replaces the old three-checkbox form: agreeing to the single
+          "I Agree" action IS agreeing to all three things named in the copy
+          right above it, so the request still sends all three fields true
+          together (see agree() above). */}
+      <div
+        data-testid="consent-modal"
+        role="alertdialog"
+        aria-modal="true"
+        aria-labelledby="consent-heading"
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4 py-8 backdrop-blur-sm"
+      >
         <div
-          className="buttercupp-glass w-full max-w-md rounded-2xl p-8 shadow-2xl"
+          className="buttercupp-glass w-full max-w-lg rounded-2xl p-8 shadow-2xl sm:p-10"
           style={{
             backgroundColor: "hsl(var(--buttercupp-surface))",
             borderColor: "hsl(var(--buttercupp-border))",
             border: "1px solid",
           }}
         >
-          <h1 className="font-display text-2xl font-semibold tracking-tight">
-            Age verification
+          <div
+            className="flex h-12 w-12 items-center justify-center rounded-full p-[1.5px]"
+            style={{
+              background:
+                "linear-gradient(135deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
+            }}
+          >
+            <div
+              className="flex h-full w-full items-center justify-center rounded-full"
+              style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))" }}
+            >
+              <ShieldCheck className="h-6 w-6" style={{ color: "hsl(var(--buttercupp-accent-rose))" }} />
+            </div>
+          </div>
+
+          <h1
+            id="consent-heading"
+            className="font-display mt-5 text-2xl font-semibold tracking-tight sm:text-[1.75rem]"
+          >
+            Before you continue
           </h1>
-          <p className="mt-2 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
-            Poppy is exclusively for adults aged 18 and over. Confirm your date of
-            birth and accept our policies to continue.
+
+          <p className="mt-3 text-[0.95rem] leading-relaxed" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+            Poppy is an 18+ platform for adult AI companionship. By selecting{" "}
+            <span style={{ color: "hsl(var(--buttercupp-fg))" }}>&ldquo;I Agree&rdquo;</span> below, you
+            confirm you are at least 18 years old and accept our{" "}
+            <a
+              href="/legal/terms"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2"
+              style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
+            >
+              Terms of Service
+            </a>
+            ,{" "}
+            <a
+              href="/legal/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2"
+              style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
+            >
+              Privacy Policy
+            </a>
+            , and{" "}
+            <a
+              href="/legal/cookie"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2"
+              style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
+            >
+              Cookie Policy
+            </a>
+            . These govern how conversations, images, and payments work on Poppy.
           </p>
 
-          <form onSubmit={agree} className="mt-6 flex flex-col gap-4">
-            <label className="flex flex-col gap-1 text-sm">
-              <span style={{ color: "hsl(var(--buttercupp-fg))" }}>Date of birth</span>
-              <input
-                type="date"
-                required
-                max={maxDob}
-                className="rounded-md border px-3 py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
-                style={{
-                  borderColor: "hsl(var(--buttercupp-border))",
-                  backgroundColor: "hsl(var(--buttercupp-surface-2))",
-                  color: "hsl(var(--buttercupp-fg))",
-                }}
-                value={dob}
-                onChange={(e) => setDob(e.target.value)}
-              />
-            </label>
+          {err ? (
+            <p className="mt-4 text-sm" style={{ color: "hsl(var(--buttercupp-accent-rose))" }}>
+              {err}
+            </p>
+          ) : null}
 
-            <label className="flex cursor-pointer items-start gap-3 text-sm">
-              <input
-                type="checkbox"
-                className="mt-0.5 accent-rose-500"
-                checked={tosAccepted}
-                onChange={(e) => setTosAccepted(e.target.checked)}
-              />
-              <span style={{ color: "hsl(var(--buttercupp-fg))" }}>
-                I accept the{" "}
-                <a
-                  href="/legal/terms"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline"
-                  style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
-                >
-                  Terms of Service
-                </a>
-              </span>
-            </label>
-
-            <label className="flex cursor-pointer items-start gap-3 text-sm">
-              <input
-                type="checkbox"
-                className="mt-0.5 accent-rose-500"
-                checked={privacyAccepted}
-                onChange={(e) => setPrivacyAccepted(e.target.checked)}
-              />
-              <span style={{ color: "hsl(var(--buttercupp-fg))" }}>
-                I accept the{" "}
-                <a
-                  href="/legal/privacy"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline"
-                  style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
-                >
-                  Privacy Policy
-                </a>{" "}
-                and{" "}
-                <a
-                  href="/legal/cookie"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline"
-                  style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
-                >
-                  Cookie Policy
-                </a>
-              </span>
-            </label>
-
-            {err ? (
-              <p className="text-sm" style={{ color: "hsl(var(--buttercupp-accent-rose))" }}>
-                {err}
-              </p>
-            ) : null}
-
+          <div className="mt-8 flex flex-col-reverse gap-3 sm:flex-row">
             <button
-              type="submit"
-              disabled={!canSubmit}
-              className="mt-2 rounded-lg py-3 text-sm font-semibold transition disabled:opacity-50"
+              type="button"
+              data-testid="consent-decline"
+              onClick={decline}
+              disabled={busy !== null}
+              className="rounded-lg border px-5 py-3 text-sm font-semibold transition hover:bg-white/5 disabled:opacity-50 sm:flex-1"
+              style={{
+                borderColor: "hsl(var(--buttercupp-border))",
+                color: "hsl(var(--buttercupp-muted))",
+              }}
+            >
+              {busy === "decline" ? "Signing out..." : "Decline"}
+            </button>
+            <button
+              type="button"
+              data-testid="consent-accept"
+              onClick={agree}
+              disabled={busy !== null}
+              className="rounded-lg px-5 py-3 text-sm font-semibold transition hover:opacity-90 disabled:opacity-50 sm:flex-[1.4]"
               style={{
                 backgroundColor: "hsl(var(--buttercupp-accent-rose))",
                 color: "hsl(var(--buttercupp-primary-fg))",
               }}
             >
-              {busy ? "Verifying..." : "I agree, continue"}
+              {busy === "accept" ? "Confirming..." : "I Agree, continue"}
             </button>
-
-            <button
-              type="button"
-              onClick={decline}
-              className="py-1 text-center text-xs transition hover:underline"
-              style={{ color: "hsl(var(--buttercupp-muted))" }}
-            >
-              Decline and sign out
-            </button>
-          </form>
+          </div>
         </div>
       </div>
     </>

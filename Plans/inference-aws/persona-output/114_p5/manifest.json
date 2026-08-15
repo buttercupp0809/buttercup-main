@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:39:54Z",
+  "generated_at": "2026-08-15T14:47:49Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a deserted beach at dawn, the first light of day casts long shadows across the sand as Phoebe kneels, her tiny string bikini barely containing her ample assets, her wind-tousled hair framing her face as she looks back over her shoulder, a sultry smile playing on her lips.",
-      "seed": 814207732,
+      "prompt": "On the deck of a luxury yacht as the sun dips below the horizon, a couple in provocative swimwear hold probes, their bodies entwined as they make out passionately, the waves gently rocking the vessel and the sky ablaze with hues of orange and pink as they invite others to join in the intimate, romantic encounter.",
+      "seed": 571204962,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/6db3aab3-0d31-48af-bd15-65205e7f43e3.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/114.webp",
       "status": "ok",
-      "bytes": 1195884
+      "bytes": 1186703
     }
   ]
 }

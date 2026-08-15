@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:14:57Z",
+  "generated_at": "2026-08-15T15:20:42Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Piper lounges seductively on a plush chaise in a dimly lit bedroom, her figure barely contained by a lacy, barely-there teddy. The camera's shallow depth of field blurs the room, drawing the viewer's attention to the provocative pose of her legs, crossed at the ankle and revealing a hint of her garter-clad thigh. Her gaze, half-lidded and inviting, holds the camera's eye.",
-      "seed": 1154061595,
+      "prompt": "In a cozy, dimly lit apartment, a group of friends engage in a provocative game night, the women dressed in lacy lingerie as they wield probes and entwine their bodies on the couch, their laughter and moans mingling with the thump of bass from nearby speakers, the scene captured in a shallow depth of field with a DSLR camera.",
+      "seed": 1717284666,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/6e6f78c8-cae7-41cf-924f-cfd0e9972fe4.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/130.webp",
       "status": "ok",
-      "bytes": 1119616
+      "bytes": 1230408
     }
   ]
 }

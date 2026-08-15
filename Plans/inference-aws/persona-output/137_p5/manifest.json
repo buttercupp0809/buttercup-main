@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:29:54Z",
+  "generated_at": "2026-08-15T15:34:57Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Against the backdrop of a dimly lit, abstract cityscape, Magnolia stands in the shadows, clad in a sleek black leather corset, her toned legs barely covered by thigh-high fishnet stockings, her eyes gleaming with a seductive intensity as she looks over her shoulder, her full lips parted in a come-hither smile, the city lights casting a mesmerizing glow on her skin.",
-      "seed": 1320083123,
+      "prompt": "In the midst of a playful, intimate gathering, a group of friends engage in erotic role-play, their flirty banter and heated glances interspersed with the sensual play of probes, the camera capturing the cozy atmosphere with a soft focus and warm tones, emphasizing the sense of shared pleasure and naughty delight.",
+      "seed": 1372650017,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/eeb9074f-8d7d-4bd4-acbc-1faa6b6da231.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/137.webp",
       "status": "ok",
-      "bytes": 1238302
+      "bytes": 936803
     }
   ]
 }

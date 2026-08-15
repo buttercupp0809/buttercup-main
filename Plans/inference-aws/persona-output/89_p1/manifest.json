@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:44:10Z",
+  "generated_at": "2026-08-15T13:55:40Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A carefree Vesper strolls along the Seine at sunset, her laughter echoing as she tosses a flower into the water. She wears a flowy sundress in shades of lavender and cream, her auburn hair catching the warm golden hour light. A DSLR camera captures her joyful expression and the romantic Parisian scenery in a shallow focus frame.",
-      "seed": 1800939533,
+      "prompt": "In the soft, golden light of a Parisian courtyard at dusk, a mysterious beauty languidly reclines on a worn stone bench, her sheer black lace gown billowing in the gentle breeze as she provocatively toys with probes, her enigmatic gaze beckoning an unsuspecting admirer to approach and unravel her secrets.",
+      "seed": 1358486634,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/00611f8c-46a3-4a5a-8441-8626cee91556.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/89.webp",
       "status": "ok",
-      "bytes": 1421800
+      "bytes": 1455397
     }
   ]
 }

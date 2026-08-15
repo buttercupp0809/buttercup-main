@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:25:53Z",
+  "generated_at": "2026-08-15T14:34:34Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Under a dimly lit velvet curtain, Ophelia lounges on a plush chaise in a luxurious boudoir, her lacy Victorian corset and shorts revealing tantalizing glimpses of skin as she reclines languidly, gazing up with a coy smile.",
-      "seed": 1496978564,
+      "prompt": "A couple in provocative attire - his jeans unbuttoned, her bra straps slipping down - hold futuristic sex toys in a hazy, dreamlike setting. Shallow depth of field blurs the background as they exchange lustful glances, beckoning others into their intimate world.",
+      "seed": 453279307,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/5a6fac9e-fdb0-4530-bf77-e6a5ef67b254.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/108.webp",
       "status": "ok",
-      "bytes": 1511460
+      "bytes": 966584
     }
   ]
 }

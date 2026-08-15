@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:27:59Z",
+  "generated_at": "2026-08-15T12:43:54Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "The Northern Lights swirl overhead in an ethereal dance, casting an otherworldly glow on Freya as she stands at the edge of a geothermal hot spring, steam curling around her bare shoulders, a flowing white robe clinging to her curves, her eyes closed in rapturous wonder.",
-      "seed": 1169152546,
+      "prompt": "In a dimly lit, opulent boudoir, a dominatrix in a leather corset and thigh-high boots kneels before her submissive, a wicked-looking flogger in one hand and a vibrator in the other. The scene is shot with a cinematic flair, the low light and deep shadows emphasizing the power dynamics at play.",
+      "seed": 1467704642,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/0e6d2812-2fc3-4ea1-af5d-bd2972da2bad.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/53.webp",
       "status": "ok",
-      "bytes": 1312503
+      "bytes": 1248807
     }
   ]
 }

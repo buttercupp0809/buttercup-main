@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:54:24Z",
+  "generated_at": "2026-08-15T15:02:07Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a steamy Dublin bathhouse, a ravishing redhead with emerald eyes and full, kissable lips, wearing only a sheer, transparent robe that clings to her every curve, lounges on a plush couch, one leg crossed over the other as she runs a soapy loofah over her toned thigh, the scent of lavender and vanilla wafting through the air as the soft glow of candles and the hum of the steam room create an intimate, sensual atmosphere.",
-      "seed": 849679217,
+      "prompt": "A sultry stripper straddles her client's lap on a plush leather couch in a seedy backroom club, her body glistening with sweat as she grinds against him in a barely-there G-string, the neon lights of the city outside casting a lurid glow through the smoky haze, shot in a shallow depth of field to emphasize her curves.",
+      "seed": 1660429126,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/c8165ca6-67e7-4302-8989-f89000e6faf3.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/121.webp",
       "status": "ok",
-      "bytes": 1173540
+      "bytes": 1298085
     }
   ]
 }

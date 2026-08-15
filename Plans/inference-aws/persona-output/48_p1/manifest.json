@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:17:06Z",
+  "generated_at": "2026-08-15T12:33:25Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Phoebe, her long blonde hair swept back in a playful updo, grins widely as she holds a vintage Polaroid camera in one hand and a colorful balloon bouquet in the other. She stands in a sun-drenched park at golden hour, the warm light casting a soft glow on her bright sundress and bare legs. The shallow depth of field blurs the background, focusing attention solely on her carefree expression and infectious joy.",
-      "seed": 1687006405,
+      "prompt": "On a dimly lit stage, a provocative performer in a skimpy costume poses seductively with probes, her sultry gaze meeting the camera's lens as she invites the viewer to join her in a night of erotic pleasures. The warm glow of stage lights accentuates her curves, while a DSLR's shallow depth of field keeps her in sharp focus.",
+      "seed": 483143079,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/fb37b65d-537c-45e4-993e-e3338107cbb7.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/48.webp",
       "status": "ok",
-      "bytes": 1299584
+      "bytes": 993083
     }
   ]
 }

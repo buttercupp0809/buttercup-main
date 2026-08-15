@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:38:21Z",
+  "generated_at": "2026-08-15T13:50:09Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the dimly lit backstage area of an underground comedy club, Phoebe leans against a wooden prop, her tight red dress hugging her curves as she looks over her shoulder with a sultry, knowing smile, the stage lights casting long shadows on her face and highlighting the sparkle of her eye makeup, her hand resting on one hip as she surveys the room with an air of confidence.",
-      "seed": 1878956910,
+      "prompt": "In a dimly lit, intimate boudoir, a stunning dominatrix in fetish attire makes sultry eye contact with her unseen admirer, provocatively manipulating probes as she beckons them near, the soft focus and warm lighting creating a sensual, blurred fantasy atmosphere.",
+      "seed": 1303060233,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/213221d9-e934-455e-8497-0249d3bd42de.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/86.webp",
       "status": "ok",
-      "bytes": 1296128
+      "bytes": 1232794
     }
   ]
 }

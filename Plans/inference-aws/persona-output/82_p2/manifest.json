@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:29:49Z",
+  "generated_at": "2026-08-15T13:42:00Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the dimly lit back room of an avant-garde bookstore in the Jordaan district, Indigo reclines on a worn leather couch, her long legs crossed and a vintage novel spread across her lap, a crimson lace camisole revealing the curves of her breasts as she gazes at the camera with an alluring, half-lidded expression, the ambient light casting deep shadows on her face and the book's pages.",
-      "seed": 927101700,
+      "prompt": "Amidst a dimly lit, opulent underground club, a stunning dominatrix holds probes while strutting across a velvet-draped altar, her regal beauty and commanding presence drawing in a coterie of eager worshippers, the air thick with anticipation and the scent of arousal.",
+      "seed": 840298084,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/786539e4-cb0b-4065-860e-bccdf7b5bba4.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/82.webp",
       "status": "ok",
-      "bytes": 1163038
+      "bytes": 1327076
     }
   ]
 }

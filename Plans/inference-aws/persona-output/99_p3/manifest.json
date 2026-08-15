@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:07:13Z",
+  "generated_at": "2026-08-15T14:16:31Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Wandering through a moonlit Sydney park, Ruby's silhouette is framed by the majestic Sydney Opera House in the distance, the city lights twinkling below. She wears a short, fitted leather jacket and a slinky red dress that clings to her curves, the fabric barely hiding the outline of her full breasts and the swell of her hips as she moves with a feline grace under the starry sky.",
-      "seed": 967877429,
+      "prompt": "In a luxurious penthouse suite bathed in the warm glow of sunset, a ravishing vixen reclines on a silk-draped chaise, her curvaceous figure barely contained by a sheer black negligee as she sensually manipulates a sleek silver probe, her honey-brown eyes sparkling with desire and mischief.",
+      "seed": 1466212677,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/00ff0776-ddc9-4c8c-90b5-5e81916c5957.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/99.webp",
       "status": "ok",
-      "bytes": 1229377
+      "bytes": 1461995
     }
   ]
 }

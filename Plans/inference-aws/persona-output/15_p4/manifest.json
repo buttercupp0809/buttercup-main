@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:04:50Z",
+  "generated_at": "2026-08-15T11:26:50Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Juliette's porcelain skin glows in the soft, golden light of a desert sunset as she lounges on a weathered beach towel, her tiny bikini leaving little to the imagination, long legs stretched out and one hand tracing idle patterns on the sand as she gazes out at the horizon with a dreamy, alluring expression.",
-      "seed": 1498171505,
+      "prompt": "In a secluded, candlelit chamber, a woman draped in fetish attire seductively manipulates probes, her hypnotic movements and longing gaze fixed on an unseen suitor as she invites them to indulge in her dark, carnal desires, the soft flicker of candlelight casting dramatic shadows on her sensual form.",
+      "seed": 1222876224,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/524006e4-37b6-4dbb-b367-8e33d1bc287b.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/15.webp",
       "status": "ok",
-      "bytes": 1941172
+      "bytes": 969790
     }
   ]
 }

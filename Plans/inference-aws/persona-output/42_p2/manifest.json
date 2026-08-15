@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:04:40Z",
+  "generated_at": "2026-08-15T12:20:55Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Basking in the soft light of a London evening, Ophelia leans against a stone wall, her sultry gaze directed at the camera through half-lidded eyes as she wears a sheer lace blouse that clings to her ample cleavage and a high-waisted skirt that barely covers her hips, her curves defined by the shadows.",
-      "seed": 197713163,
+      "prompt": "Amidst the vibrant nightlife of a neon-drenched city, a stunning couple clad in futuristic lingerie hold high-tech sex toys, their expressions charged with lust and anticipation. They beckon passersby to join their sensual game, set against a blurred backdrop of hazy lights and pulsating rhythms.",
+      "seed": 1615108335,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/6e6a8037-6299-4ed1-a4b0-b1ae20140c07.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/42.webp",
       "status": "ok",
-      "bytes": 1752640
+      "bytes": 1403243
     }
   ]
 }

@@ -5,7 +5,7 @@ import {
   styleWireToEnum,
 } from "@buttercupp/shared";
 import { prisma } from "@buttercupp/database";
-import { listCharacters } from "@/lib/characters";
+import { listCharacters, nextVersionNo } from "@/lib/characters";
 import { getViewer } from "@/lib/viewer";
 import { jsonError } from "@/lib/api-helpers";
 import { requireAgeVerified } from "@/lib/auth";
@@ -94,7 +94,10 @@ export async function POST(req: Request) {
     const version = await tx.characterVersion.create({
       data: {
         characterId: character.id,
-        versionNo: 1,
+        // nextVersionNo (Build step 6) is the single source of truth shared
+        // with PATCH /api/characters/:id; for a brand-new character it is
+        // always 1 since no prior CharacterVersion rows exist yet.
+        versionNo: await nextVersionNo(tx, character.id),
         personality: body.traitTags.join(", "),
         backstory: body.backstory,
         behavioralInstructions: body.behavioralInstructions,

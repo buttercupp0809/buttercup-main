@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:58:44Z",
+  "generated_at": "2026-08-15T14:08:38Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A provocative Magnolia straddles the back of a velvet-upholstered chaise, her barely-there thong and garter belt-clad derri\u00e8re presented for view as she leans forward, her tousled hair cascading over her shoulder and a string of pearls dangling between her breasts, bathed in the warm, golden light of late afternoon.",
-      "seed": 1022235825,
+      "prompt": "A model flaunts her assets in a provocative ensemble - a daring, red lace bra and matching G-string - as she provocatively manipulates a set of probes. Her expressive eyes lock onto the viewer, her lips parted in a seductive pout, the soft focus of a DSLR camera capturing every tantalizing detail of her erotic tease.",
+      "seed": 1475584474,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/1bd7c850-c721-449a-9006-8037b24e001c.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/95.webp",
       "status": "ok",
-      "bytes": 1145973
+      "bytes": 1078726
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:08:09Z",
+  "generated_at": "2026-08-15T15:14:18Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a secluded desert oasis, Ruby lounges on a pile of cushions, her body barely concealed by a sheer, gold-embroidered robe that clings to her skin. Her tousled hair and sultry expression exude a sensual confidence as she stretches out languidly.",
-      "seed": 242617916,
+      "prompt": "Amidst the shadows of an abandoned warehouse, a woman dressed in fetish attire provocatively toys with probes, her seductive movements and longing gaze fixated on an unseen admirer as she beckons them near, the dim lighting and eerie atmosphere adding to the allure of her dark desires.",
+      "seed": 722072479,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/d9afda2d-3358-4865-93fb-4653a8cd0f48.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/127.webp",
       "status": "ok",
-      "bytes": 1856386
+      "bytes": 1326587
     }
   ]
 }

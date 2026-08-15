@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:19:40Z",
+  "generated_at": "2026-08-15T13:32:22Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Against the backdrop of the Parthenon's marble columns, Clio stands with her back to the camera, wearing a tiny, metallic bikini that accentuates her curves, her tousled hair blowing in the golden hour light, a sultry expression on her face as she looks out over the Acropolis.",
-      "seed": 1847185837,
+      "prompt": "Against a backdrop of opulent red velvet and dark wood, a stunning dominatrix in leather attire beckons her submissive with a riding crop, her piercing gaze and seductive curves captured in a cinematic close-up as she prepares to unleash her dominance in a lavish underground dungeon.",
+      "seed": 1014688371,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/6e2ba86c-f6bd-4d63-8e59-caec4e2e659d.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/77.webp",
       "status": "ok",
-      "bytes": 1423177
+      "bytes": 1370236
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:51:53Z",
+  "generated_at": "2026-08-15T14:59:36Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Juniper's figure is silhouetted against the misty Olympic Mountains as she stands on the edge of a rugged cliff, wind-tousled hair and a short, fitted leather jacket contrasting with the ethereal, otherworldly atmosphere, her bold pose and direct gaze conveying a sense of untamed wildness.",
-      "seed": 1444813086,
+      "prompt": "In a lavish, velvet-draped boudoir, a woman lounges seductively on a plush chaise, her curvaceous figure barely concealed by a sheer, crimson negligee as she teases a submissive lover with a set of probes, her sultry eyes and inviting smile promising a night of decadent pleasure.",
+      "seed": 1256846171,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/4abc813b-47c4-430f-be03-4ab624dac8bc.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/120.webp",
       "status": "ok",
-      "bytes": 1184568
+      "bytes": 1642972
     }
   ]
 }

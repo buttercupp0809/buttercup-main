@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:22:12Z",
+  "generated_at": "2026-08-15T15:27:29Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit alleyway, the city's neon lights reflecting off wet cobblestones, a scantily clad Juniper leans against a brick wall, her leather corset and fishnet stockings a striking contrast to the urban grime. She looks back over her shoulder, her smoky eye and parted lips beckoning, as she runs a hand through her tousled raven hair.",
-      "seed": 1403839515,
+      "prompt": "In a dimly lit, candlelit boudoir, a dominatrix clad in studded leather poses seductively on a plush velvet chaise, her gloved hand holding a probe as she gazes intensely at an unseen admirer, the flickering candlelight casting shadows across her confident, alluring expression.",
+      "seed": 815476193,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/90c36bc8-6609-45cb-a45d-537ddbbcc892.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/134.webp",
       "status": "ok",
-      "bytes": 1899802
+      "bytes": 1554306
     }
   ]
 }

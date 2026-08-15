@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:59:01Z",
+  "generated_at": "2026-08-15T12:15:27Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Perched on a stool in a steamy onsen bathhouse, Marlowe's kimono drapes loosely over a bare shoulder, beads of water glistening on her skin as she leans back, exposing her breasts to the warm air. Her gaze is direct and inviting, her parted lips subtly upturned in a coy smile. The DSLR's shallow focus captures the soft, luminous quality of the steam, enveloping Marlowe in an intimate, sensual atmosphere.",
-      "seed": 59500038,
+      "prompt": "In the shadowy depths of an abandoned warehouse, a woman in fetish attire seductively totes with probes, her gaze locking onto an unseen admirer as she beckons them near, the dim red glow of a single lantern casting long, ominous shadows across the decrepit surroundings.",
+      "seed": 1757152424,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/30615051-8795-4979-8761-f536fc8cd4a4.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/39.webp",
       "status": "ok",
-      "bytes": 1452082
+      "bytes": 1268183
     }
   ]
 }

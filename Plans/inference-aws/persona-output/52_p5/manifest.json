@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:27:04Z",
+  "generated_at": "2026-08-15T12:43:02Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A provocative Lila reclines on a chaise in a lavish harem tent, wearing an intricately embroidered choli top and lehnga skirt, her legs crossed and one hand playing with her long, dark hair as she gazes directly at the viewer with a sultry, come-hither look, the opulent textiles and tapestries of the tent setting forming a sumptuous, sensual backdrop.",
-      "seed": 110526202,
+      "prompt": "A couple in a cozy, candlelit bedroom, the woman in a sheer, black babydoll nightgown, the man in boxers, both holding intimate, pulsing probes, their expressions charged with arousal as they invite others to join their sensual game, the warm, soft focus capturing the intimacy and passion of the moment.",
+      "seed": 392148052,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/95d6797b-09ad-4a84-9217-7510056df541.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/52.webp",
       "status": "ok",
-      "bytes": 2033242
+      "bytes": 1138625
     }
   ]
 }

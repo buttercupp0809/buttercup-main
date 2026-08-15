@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:36:17Z",
+  "generated_at": "2026-08-15T13:48:04Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit alley at night, a woman in a leather corset and fishnet stockings crouches down, her thong-clad rear facing the camera. The neon signs of a seedy nightclub cast a hazy blue light, while a shallow depth of field blurs the background, focusing attention on her curves.",
-      "seed": 1718064109,
+      "prompt": "A couple entwined on a plush couch, clad in lacy lingerie, holds futuristic sex toys as they beckon an unseen admirer closer amidst the soft focus of a dimly lit boudoir, the DSLR camera capturing their charged, intimate atmosphere in a cinematic composition.",
+      "seed": 306823088,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/60af938c-0125-4e0d-a513-1270b0fe3108.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/85.webp",
       "status": "ok",
-      "bytes": 1270167
+      "bytes": 1166661
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:38:25Z",
+  "generated_at": "2026-08-15T15:43:05Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a deserted beach at dawn, Ruby kneels in the sand, looking back over her shoulder at the rising sun. Wearing a tiny string bikini and a sheer cover-up, her wind-blown, tousled hair frames her face as she smirks at the camera. The warm, golden light of the early morning and the expansive, empty beachscape emphasize her striking figure and the sense of freedom and adventure in her expression.",
-      "seed": 1666988442,
+      "prompt": "In a lavish, penthouse suite overlooking the glittering city skyline, a ravishing beauty reclines on a silk-covered chaise, her skin glistening with sweat as she plays with probes. Clad only in a lacy, black thong and a sheer, white bra, she exudes raw, uninhibited desire, her sultry eyes and wanton smile daring a suitor to join her in a night of decadent, hedonistic pleasure amidst the opulence of her luxurious surroundings.",
+      "seed": 423668932,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/51da8e3a-bb71-4b5f-bc30-fe09dcf84e21.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/141.webp",
       "status": "ok",
-      "bytes": 1383271
+      "bytes": 1362626
     }
   ]
 }

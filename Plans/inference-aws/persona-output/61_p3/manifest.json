@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:45:49Z",
+  "generated_at": "2026-08-15T13:00:31Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Wearing a sheer, gauzy robe that clings to her curves, Sage reclines on a plush chaise in a lavish boudoir, the soft candlelight casting seductive shadows on her features as she gazes up at the viewer with half-lidded eyes, a hand trailing down the robe's front to tease the swell of her breast.",
-      "seed": 1274726837,
+      "prompt": "In a cozy, candlelit apartment, a group of friends engage in a naughty game night, the women clad in lingerie and high heels, expertly wielding probes as they flirt and tease, the atmosphere charged with anticipation and erotic playfulness, a cinematic shot capturing the scene in warm, inviting tones.",
+      "seed": 111039151,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/42793e8e-48a3-4da7-8ff7-958cea49adb4.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/61.webp",
       "status": "ok",
-      "bytes": 1390488
+      "bytes": 965953
     }
   ]
 }

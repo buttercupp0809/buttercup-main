@@ -4,11 +4,17 @@
 // notifies the user; on InsufficientTokensError it bails immediately with no
 // retry.
 
-import type { MediaJobData } from "@buttercupp/shared";
+import { parseCreationImagePayload, type MediaJobData } from "@buttercupp/shared";
 import { withRetry, RETRY_PRESETS } from "../utils/retry";
-import { markProcessing, markReady, markFailed } from "../media/asset";
+import {
+  markProcessing,
+  markReady,
+  markFailed,
+  attachCreationCharacterMedia,
+  attachCharacterMediaMeta,
+} from "../media/asset";
 import { debitTokens, refundTokens, InsufficientTokensError } from "../media/token-ledger";
-import { uploadMedia, getSignedUrl } from "../media/storage";
+import { uploadMedia } from "../media/storage";
 import { handlers } from "../media/handlers";
 import { consumePlanQuota } from "../subscription/enforce";
 import { entitlementsFor } from "../subscription/entitlements";
@@ -79,6 +85,32 @@ export async function processJob(job: JobLike): Promise<{ ok: boolean; s3Key?: s
     });
     await markReady(data.mediaAssetId, s3Key, out.meta);
 
+    // Phase 28: creation-time character images also need a canonical
+    // CharacterMedia row (gallery reads MediaAsset; chat + cards read
+    // CharacterMedia). This mirrors the dual-write backend/src/chat/
+    // image-turn.ts already does for chat selfies. Best-effort: a failure
+    // here must not undo the already-committed `ready` MediaAsset; it is
+    // logged so the row can be backfilled instead.
+    if (data.kind === "image" && data.characterId) {
+      const creation = parseCreationImagePayload(data.payload);
+      if (creation) {
+        try {
+          const { characterMediaId } = await attachCreationCharacterMedia({
+            characterId: data.characterId,
+            url: s3Key,
+            sort: creation.variant,
+          });
+          await attachCharacterMediaMeta(data.mediaAssetId, characterMediaId);
+        } catch (err) {
+          logWarn("media", `creation dual-write failed for job ${job.id}`, {
+            mediaAssetId: data.mediaAssetId,
+            characterId: data.characterId,
+            err: err instanceof Error ? err.message : String(err),
+          });
+        }
+      }
+    }
+
     // Phase 21: consume plan quota on TERMINAL success only. markReady is
     // called exactly once (the row's status flips from processing -> ready),
     // so a BullMQ retry cannot reach here twice; that + the atomic upsert
@@ -98,7 +130,11 @@ export async function processJob(job: JobLike): Promise<{ ok: boolean; s3Key?: s
       }
     }
 
-    const url = await getSignedUrl(s3Key);
+    // Emit the same-origin /api/media proxy URL (not a raw presigned S3
+    // URL). The proxy respects S3_ENDPOINT + bucket routing and works
+    // uniformly across local MinIO dev, mobile clients, and prod CDN
+    // without leaking backend-only host names into the browser.
+    const url = `/api/media?k=${encodeURIComponent(s3Key)}`;
     await notifyMediaReady(data.userId, {
       mediaAssetId: data.mediaAssetId,
       url,

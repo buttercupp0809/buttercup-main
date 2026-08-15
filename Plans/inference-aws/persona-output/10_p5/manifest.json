@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T22:54:34Z",
+  "generated_at": "2026-08-15T11:16:59Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A provocative, high-energy image set in a crowded, pulsating nightclub at midnight, Harper straddling a tabletop as confetti and laser lights swirl around her, wearing a barely-there, metallic bikini that showcases her toned physique and leaves little to the imagination, her eyes closed in ecstasy as she throws her head back, her long, platinum hair flying in all directions, a DSLR camera freezing the action in a split second of time and a shallow depth of field adding a sense of intimacy and allure.",
-      "seed": 382864828,
+      "prompt": "On a yacht's deck bathed in the warm, golden light of sunset, a couple engaged in passionate foreplay hold probes, their heated gazes and intimate poses inviting others to join in their sensual game, the ocean waves gently rocking the vessel and the scenic backdrop of the horizon adding to the atmosphere of a romantic, wild escapade.",
+      "seed": 293430087,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/ea5f4916-5c33-4df5-8149-0d2a0de8fd53.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/10.webp",
       "status": "ok",
-      "bytes": 1746382
+      "bytes": 1295821
     }
   ]
 }

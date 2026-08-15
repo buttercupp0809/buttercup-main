@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:41:51Z",
+  "generated_at": "2026-08-15T15:46:19Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A quiet, misty morning in a Dublin cemetery, with Hazel standing amidst ancient gravestones, her long coat billowing in the damp air, as she reads from a weathered book, the ethereal light casting long shadows across her face and the worn stone beneath her feet.",
-      "seed": 1716738276,
+      "prompt": "A scantily-clad woman in a red lace bra and matching G-string provocatively toys with probes on a plush, velvet-covered couch in a dimly lit, opulent chamber, her sultry expression and seductive movements promising a night of decadent pleasure for the right partner, captured in a high-contrast, low-light shot.",
+      "seed": 42865218,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/02c336de-9485-4428-a852-1b7d83526885.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/143.webp",
       "status": "ok",
-      "bytes": 1464613
+      "bytes": 1113894
     }
   ]
 }

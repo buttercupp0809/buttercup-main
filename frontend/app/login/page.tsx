@@ -15,7 +15,9 @@ async function getFeaturedChars(): Promise<PreviewChar[]> {
       select: {
         name: true,
         media: {
-          where: { kind: "image", isPrimary: true },
+          // hidden: false is load-bearing: see the HIDDEN MEDIA CONVENTION
+          // in schema.prisma.
+          where: { kind: "image", isPrimary: true, hidden: false },
           take: 1,
           select: { url: true },
         },

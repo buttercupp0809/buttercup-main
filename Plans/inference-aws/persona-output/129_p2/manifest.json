@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:11:37Z",
+  "generated_at": "2026-08-15T15:17:31Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit Copenhagen nightclub, Hazel's figure emerges from the shadows, draped in a sheer black dress that clings to her curves. Low light accentuates the subtle sparkle of her eyes and the plumpness of her lips as she gazes over her shoulder, her tousled hair cascading down her back. The camera focuses on the sensual lines of her body, the fabric barely concealing her form.",
-      "seed": 340940551,
+      "prompt": "Amidst the dim, hazy atmosphere of a seedy backroom club, a dominatrix dressed in leather and lace holds probes, her regal beauty and commanding presence drawing in a coterie of eager worshippers as she beckons them closer with hypnotic movements and sultry whispers.",
+      "seed": 1177575709,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/d60efc3d-46e6-413e-9a1b-3165d6de4bc3.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/129.webp",
       "status": "ok",
-      "bytes": 1077562
+      "bytes": 1556838
     }
   ]
 }

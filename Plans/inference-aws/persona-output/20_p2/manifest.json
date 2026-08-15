@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:15:31Z",
+  "generated_at": "2026-08-15T11:36:08Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit back alley, Phoebe's leather corset and fishnet stockings seem to glow with a sultry mystique. She crouches down, presenting her thong-clad rear to the camera, a coy smile playing on her lips as she looks back over her shoulder. The city's neon signs cast shadows that accentuate her curves.",
-      "seed": 643596532,
+      "prompt": "A scantily-clad woman provocatively toys with probes in a lavish penthouse suite, the city skyline twinkling beyond floor-to-ceiling windows as golden hour light bathes the room in a warm, cinematic glow. Her long, curly hair cascades down her bare back as she turns to make sultry eye contact with an unseen admirer, the soft focus of a DSLR lens emphasizing her alluring curves and inviting pose.",
+      "seed": 1650817593,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/6294b292-aaa7-4132-857e-b96f4569c938.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/20.webp",
       "status": "ok",
-      "bytes": 1709005
+      "bytes": 1006540
     }
   ]
 }

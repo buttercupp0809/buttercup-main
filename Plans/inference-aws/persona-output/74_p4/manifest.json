@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:13:43Z",
+  "generated_at": "2026-08-15T13:26:52Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the intimate, steamy atmosphere of a traditional Japanese onsen, Piper sits on the edge of a bath, water beading on her skin as she leans back to expose her breasts, a sheer kimono draped loosely over one shoulder, her inviting gaze meeting the viewer's in a candid, sensual moment captured by a DSLR camera.",
-      "seed": 1085428866,
+      "prompt": "A dominatrix stands regally in the center of an underground club, her commanding presence and stunning beauty drawing in a coterie of eager worshippers, probes in hand, as she surveys her domain with a fierce, unyielding gaze.",
+      "seed": 1622672920,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/a8491322-0646-4793-8c9d-8bb09741c4de.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/74.webp",
       "status": "ok",
-      "bytes": 1221751
+      "bytes": 1264162
     }
   ]
 }

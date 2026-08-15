@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:38:01Z",
+  "generated_at": "2026-08-15T15:42:43Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the steamy atmosphere of a traditional Japanese onsen bathhouse, Ruby sits on the edge, water beading on her skin as she leans back to expose her breasts. A loosely draped kimono falls over one shoulder, while her gaze is fixed on the camera with an air of quiet confidence. The soft, diffused light and the subtle focus on her face and upper body create an intimate, sensual mood.",
-      "seed": 174718168,
+      "prompt": "Deep in the heart of a dark, mysterious forest, a seductive woodland nymph beckons a potential lover closer, her alluring figure barely visible beneath a diaphanous gown that catches the moonlight filtering through the trees. Probes in hand, she moves with a feline grace, her hypnotic gaze and sensual curves promising a night of primal, untamed passion in the shadowy depths of the woods.",
+      "seed": 1173518821,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/6cf248c1-6d63-411d-9692-ca64af2145eb.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/141.webp",
       "status": "ok",
-      "bytes": 1360116
+      "bytes": 1567473
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:09:20Z",
+  "generated_at": "2026-08-15T14:18:29Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Phoebe reclines on a plush velvet chaise in an opulent bedroom, her sheer, silk robe barely covering her toned legs and the curves of her ample breasts, the soft light of table lamps casting shadows across her face as she smirks invitingly, her gaze locked on the viewer through a shallow depth of field.",
-      "seed": 1495690162,
+      "prompt": "Against the backdrop of a graffiti-covered alleyway, a couple in provocative attire engage in a steamy public tryst, the woman riding the man's cock against a brick wall as they pant and moan, a passerby's camera lens captures their forbidden passion in a shallow focus frame.",
+      "seed": 964243523,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/035568ea-d36c-4859-99a0-74756e8d0361.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/100.webp",
       "status": "ok",
-      "bytes": 1301746
+      "bytes": 1730413
     }
   ]
 }

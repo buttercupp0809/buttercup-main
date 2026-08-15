@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:15:51Z",
+  "generated_at": "2026-08-15T13:28:50Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a steamy, dimly-lit onsen bathhouse, Vesper's skin glistens with moisture as she sits on the edge of a wooden tub, her kimono draped loosely over one shoulder to reveal the curve of her breast. She looks back over her shoulder, steam curling around her face as her gaze meets the camera's.",
-      "seed": 156943557,
+      "prompt": "In a steamy, dimly lit boudoir, a woman in provocative lingerie slowly unbuttons her shirt, revealing her pert breasts bound in black leather, as her submissive kneels at her feet, awaiting his mistress's commands, a single red glow stick casting an eerie, sensual light on their entwined bodies.",
+      "seed": 1769635467,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/2aefffb1-aa75-4826-8a6d-743ac3a0b00c.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/75.webp",
       "status": "ok",
-      "bytes": 1140259
+      "bytes": 1068090
     }
   ]
 }

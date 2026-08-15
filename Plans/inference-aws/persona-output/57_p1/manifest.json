@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:36:31Z",
+  "generated_at": "2026-08-15T12:51:27Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Vesper strolls through a sun-dappled Prague garden, her laughter echoing as she playfully tosses a bouquet of wildflowers, her auburn hair shining in the golden afternoon light captured by a DSLR camera in a shallow focus, her vibrant green sundress fluttering in the breeze.",
-      "seed": 1449023753,
+      "prompt": "In the soft glow of a golden hour, a woman clad in a revealing ensemble, her curves accentuated by a tight corset and short skirt, provocatively gestures with probes, her sultry gaze beckoning an onlooker closer as the cityscape provides a lush background.",
+      "seed": 1729407632,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/8054422b-587a-4bf0-bc07-c3c961f95225.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/57.webp",
       "status": "ok",
-      "bytes": 1751670
+      "bytes": 1173974
     }
   ]
 }

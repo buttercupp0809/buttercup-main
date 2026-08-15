@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:18:42Z",
+  "generated_at": "2026-08-15T12:34:54Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a deserted beach at dawn, Phoebe kneels on the sand, her tiny string bikini glistening with dew as the rising sun casts a warm, golden glow. Her hair is wind-blown and tousled, and her eyes are half-lidded, gazing out at the vast, empty horizon. The camera frames her from behind, focusing on the curves of her backside and the way the bikini bottoms cling to her hips, as if she's posing for an unseen admirer.",
-      "seed": 565569854,
+      "prompt": "Amidst a cozy, intimate setting, a couple engaged in sensual foreplay holds probes, their charged expressions inviting others to join their erotic game. Soft, natural lighting and a DSLR's wide aperture capture every detail of their entwined bodies, creating a warm, inviting atmosphere that draws the viewer in.",
+      "seed": 1727529464,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/fb99589b-b8a0-4726-9a66-3cc2b4fa93f2.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/48.webp",
       "status": "ok",
-      "bytes": 1099824
+      "bytes": 948657
     }
   ]
 }

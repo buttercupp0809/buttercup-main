@@ -16,10 +16,19 @@ import type { ContentRating } from "@buttercupp/database";
 import { buildPromptLayers } from "../llm/prompts";
 import { streamLLM } from "../llm/provider";
 import { StreamGuard, stripThinkingBlocks } from "../llm/sanitize";
-import { getRelevantMemories, getLatestSummary, renderMemoryBlock } from "../llm/memory-retriever";
+import {
+  getRelevantMemories,
+  getRelevantMemoriesWithGraph,
+  getLatestSummary,
+  renderMemoryBlock,
+  renderMemoryBlockWithConnections,
+} from "../llm/memory-retriever";
 import { extractMemories } from "../llm/memory-extractor";
 import { runCrisisGate } from "../safety/sb243-protocol";
 import { logInfo, logWarn } from "../utils/log";
+import { memoryGraphEnabled, userRulebookEnabled } from "../config/flags";
+import { buildUserPersona, shouldBootstrapPersona } from "../memory/persona-builder";
+import { captureRule } from "../memory/rulebook";
 
 // Age-in-years from a dob column. Server side only; never trust the client.
 function ageYearsOrNull(dob: Date | null): number | null {
@@ -154,19 +163,39 @@ export async function runChatTurn(params: RunChatTurnParams): Promise<RunChatTur
 
   // Memory retrieval (Phase 05). Runs before generation; failures degrade to
   // no injected memory rather than blocking the reply.
+  //
+  // Phase 30: when memoryGraphEnabled(), route through the graph-aware
+  // variant, which wraps this exact getRelevantMemories call as its seed set
+  // and only ever APPENDS graph neighbors. Flag-off calls getRelevantMemories
+  // directly, UNCHANGED, so that path stays byte-identical to Phase 05/23.
   let injectedMemory: string | null = null;
   try {
-    const [scored, summary] = await Promise.all([
-      getRelevantMemories({
-        userId,
-        characterId: conv.characterId,
-        currentMessage: userText,
-      }),
+    const [memoryResult, summary] = await Promise.all([
+      memoryGraphEnabled()
+        ? getRelevantMemoriesWithGraph({
+            userId,
+            characterId: conv.characterId,
+            currentMessage: userText,
+          })
+        : getRelevantMemories({
+            userId,
+            characterId: conv.characterId,
+            currentMessage: userText,
+          }).then((scored) => ({ scored, connections: [] })),
       getLatestSummary(userId, conv.characterId),
     ]);
+    const { scored, connections } = memoryResult;
     if (scored.length > 0 || summary) {
-      injectedMemory = renderMemoryBlock(scored, summary);
-      logInfo("chat", `memory injected conv=${conversationId}: ${scored.length} snippet(s)${summary ? " + summary" : ""}`);
+      injectedMemory =
+        connections.length > 0
+          ? renderMemoryBlockWithConnections(scored, summary, connections)
+          : renderMemoryBlock(scored, summary);
+      logInfo(
+        "chat",
+        `memory injected conv=${conversationId}: ${scored.length} snippet(s)${summary ? " + summary" : ""}${
+          connections.length > 0 ? ` + ${connections.length} connection(s)` : ""
+        }`,
+      );
     }
   } catch {
     injectedMemory = null;
@@ -277,6 +306,24 @@ export async function runChatTurn(params: RunChatTurnParams): Promise<RunChatTur
   }).catch(() => {
     // swallowed
   });
+
+  // Phase 30: optional fire-and-forget persona build + rule capture. Both
+  // are wrapped so a failure can never affect the streamed reply that has
+  // already been sent; both are gated behind their own flag and, for
+  // persona, a message-count threshold so we do not re-run the LLM every
+  // single turn once a persona exists.
+  if (memoryGraphEnabled()) {
+    void shouldBootstrapPersona(userId, conv.characterId)
+      .then((should) => (should ? buildUserPersona(userId, conv.characterId) : undefined))
+      .catch(() => {
+        // swallowed
+      });
+  }
+  if (userRulebookEnabled()) {
+    void captureRule(userId, conv.characterId, userText, userMessage.id).catch(() => {
+      // swallowed
+    });
+  }
 
   logInfo(
     "chat",

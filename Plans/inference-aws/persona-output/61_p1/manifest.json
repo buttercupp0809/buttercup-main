@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:45:01Z",
+  "generated_at": "2026-08-15T12:59:46Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Sage stands in a lush park at golden hour, the soft DSLR glow illuminating her sun-kissed skin and auburn hair as she laughs with friends, her eyes sparkling with joy and her yellow sundress fluttering in the breeze, a carefree spirit captured in the warm light.",
-      "seed": 884737646,
+      "prompt": "In a dimly lit, intimate boudoir, a stunning woman reclines on silk sheets, her curves accentuated by a sheer black negligee as she provocatively toys with probes, her sultry gaze locked onto an unseen admirer across the room, the air heavy with unspoken promises.",
+      "seed": 388134943,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/c73cf3b9-eaba-46ed-9320-507ab0692951.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/61.webp",
       "status": "ok",
-      "bytes": 1527328
+      "bytes": 1264960
     }
   ]
 }

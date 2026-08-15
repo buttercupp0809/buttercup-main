@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:51:24Z",
+  "generated_at": "2026-08-15T12:08:03Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A warm golden hour illuminates Clio's bright smile as she skips playfully through an Athens market, her sundress fluttering in the breeze, surrounded by vibrant stalls of fresh produce and lively chatter.",
-      "seed": 1051052622,
+      "prompt": "Against a backdrop of golden hour light spilling through gauzy curtains, a scantily clad woman reclines on a plush velvet sofa, probes artfully arranged on her curves as she pouts seductively, inviting a suitor to join her in a game of carnal discovery.",
+      "seed": 338690848,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/c3d91b67-e71a-4113-b544-820ad1889efd.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/36.webp",
       "status": "ok",
-      "bytes": 1651201
+      "bytes": 1262072
     }
   ]
 }

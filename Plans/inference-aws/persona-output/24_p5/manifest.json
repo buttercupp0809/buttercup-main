@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:25:09Z",
+  "generated_at": "2026-08-15T11:45:12Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit bedroom, Remi sits on the edge of a plush bed, her legs crossed and her back straight. She wears lacy stockings, a garter belt, and high heels, the intimate setting emphasizing her feminine allure. As she looks up at the camera with a sultry gaze, Remi slowly raises one leg, revealing her thong-clad crotch in a tantalizing pose. The camera's low angle and Remi's direct stare create a sense of intimacy and invitation.",
-      "seed": 1159695553,
+      "prompt": "With the city skyline ablaze in the background, a ravishing woman in a sleek black catsuit stands at the prow of a luxury yacht, the wind whipping her raven locks as she expertly wields probes, her sultry eyes challenging a potential lover to take the plunge and join her in a night of passion on the high seas.",
+      "seed": 1865261461,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b560e280-d07d-4f6a-8c91-aeda83861946.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/24.webp",
       "status": "ok",
-      "bytes": 1098163
+      "bytes": 1157743
     }
   ]
 }

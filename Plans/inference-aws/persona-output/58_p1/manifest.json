@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:38:38Z",
+  "generated_at": "2026-08-15T12:53:27Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Marlowe stands in the midst of a vibrant street market in London, her face alight with joy as she clutches a bouquet of red poppies and laughter echoes from her full lips. The golden hour casts a warm glow on her long coat and curls as a DSLR camera captures her in a shallow focus, the bustling scene fading to soft blur around her.",
-      "seed": 1925590631,
+      "prompt": "In a dimly lit, velvet-draped boudoir, a statuesque woman reclines on plush pillows, her skin glowing under warm golden hour light. She languidly toys with probes, her sultry gaze fixed on an unseen admirer across the room, as if daring them to come closer and indulge in the forbidden desires she embodies.",
+      "seed": 911202014,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/1adf7df0-fb9d-4473-abc8-7c3dfd09b900.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/58.webp",
       "status": "ok",
-      "bytes": 1619922
+      "bytes": 1282956
     }
   ]
 }

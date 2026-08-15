@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:15:22Z",
+  "generated_at": "2026-08-15T12:31:47Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, smoky cabaret, Vesper reclines on a plush velvet sofa, her sheer black lace negligee revealing tantalizing glimpses of her toned physique as she smokes a cigarette, her half-lidded eyes fixed on the viewer with a seductive gaze.",
-      "seed": 76239141,
+      "prompt": "Against the backdrop of a city skyline at golden hour, a couple in provocative attire \u2013 her a barely-there dress, him in a fitted suit \u2013 stroll hand in hand along a moonlit dock, holding futuristic sex toys. The woman's eyes sparkle with mischief as she glances over her shoulder, her full lips curling into a seductive smile.",
+      "seed": 1436727910,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/eed8ec64-3ea2-43d9-8755-abc147866efe.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/47.webp",
       "status": "ok",
-      "bytes": 1367319
+      "bytes": 1181350
     }
   ]
 }

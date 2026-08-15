@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:00:58Z",
+  "generated_at": "2026-08-15T13:14:49Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a moonlit Sydney rooftop, Ruby stands at the edge, her back to the cityscape, clad in a gauzy robe that clings to her curves and parts to reveal her bare breasts. Her wild hair flows in the night breeze as she gazes up at the stars, an enigmatic smile playing on her lips. A DSLR captures the ethereal scene in a wide-angle shot, emphasizing the vastness of the urban landscape against her intimate pose.",
-      "seed": 1954638338,
+      "prompt": "In the shadowy recesses of an abandoned warehouse, a mysterious figure in fetish attire seductively plays with probes, her hypnotic movements and longing gaze promising an illicit encounter for the right partner amidst the decay and danger.",
+      "seed": 1908762479,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/dd297334-5aa5-4fc2-9e1e-04072f910816.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/68.webp",
       "status": "ok",
-      "bytes": 1502962
+      "bytes": 1350162
     }
   ]
 }

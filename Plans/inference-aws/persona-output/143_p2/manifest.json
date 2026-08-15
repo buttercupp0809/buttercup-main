@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:41:27Z",
+  "generated_at": "2026-08-15T15:45:57Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A cozy Dublin pub at dusk, with Hazel leaning against the rustic wooden bar, sipping a whiskey as the soft glow of the setting sun filters through the stained glass windows, casting a warm, inviting light on her profile and the gentle curves of her figure in a fitted dress.",
-      "seed": 1828490654,
+      "prompt": "In a dimly lit, luxurious boudoir, a stunning dominatrix in a black leather corset and thigh-high stockings slowly uncoils a futuristic sex toy, her eyes locked with an onlooker's as she beckons him closer, the soft focus of a cinematic lens heightening the intimate, forbidden atmosphere.",
+      "seed": 1297776754,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/a6afcdbd-047d-4711-b763-2192ee8c24aa.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/143.webp",
       "status": "ok",
-      "bytes": 1624932
+      "bytes": 1187920
     }
   ]
 }

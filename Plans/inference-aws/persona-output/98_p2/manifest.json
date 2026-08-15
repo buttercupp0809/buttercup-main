@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:04:40Z",
+  "generated_at": "2026-08-15T14:14:11Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit bedroom, Clara reclines on plush velvet pillows, her lacy black bra and thong set off by the soft sheen of moonlight filtering through heavy drapes. She gazes directly at the viewer with half-lidded eyes, her lips parted in a sultry invitation as she reaches up to caress the swell of her breast.",
-      "seed": 132691551,
+      "prompt": "Captured in a golden hour glow, a couple in intimate embrace hold futuristic sex toys, their expressions charged with desire as they beckon the viewer closer amidst a lush, verdant garden setting, with the warm sunlight filtering through the trellised vines.",
+      "seed": 1376744143,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e68d0199-179f-42aa-affb-ee3083864144.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/98.webp",
       "status": "ok",
-      "bytes": 1200809
+      "bytes": 1398737
     }
   ]
 }

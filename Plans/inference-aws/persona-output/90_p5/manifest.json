@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:47:54Z",
+  "generated_at": "2026-08-15T13:59:14Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Marlowe straddles a worn, leather armchair, her slender legs crossed as she leans back, her tousled auburn hair spilling over one shoulder. A vintage, red satin robe drapes loosely around her curves, the fabric parted to reveal the soft swell of her breasts and a hint of her toned midriff. The camera captures her in a soft, diffused light, with a shallow depth of field that isolates her figure against a blurred, dark background, evoking a sense of mystery and allure.",
-      "seed": 958835681,
+      "prompt": "Set against a backdrop of lavish silk sheets, a couple engages in intimate foreplay, their hands intertwined as they hold probes, their expressions a mix of desire and playful mischief as they invite others to join their sensual exploration, the soft focus and warm lighting creating a cozy, inviting atmosphere.",
+      "seed": 409215308,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/4bdf97aa-3413-4f41-9894-90fbc38c3936.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/90.webp",
       "status": "ok",
-      "bytes": 1267460
+      "bytes": 996911
     }
   ]
 }

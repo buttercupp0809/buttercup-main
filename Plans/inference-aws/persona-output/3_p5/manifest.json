@@ -1,0 +1,33 @@
+{
+  "persona_id": "3_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/3.png",
+  "main_image_sha256": "dd03784089425431358ffa4cce65d1486cc4aa6f41fbd0d76ea30f0b7c571906",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-15T11:02:53Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Under the warm glow of a backyard fire pit, a scantily-clad woman in a playful yet arousing scenario teases an unseen companion with sex aids, her inviting body language and flirty overtures promising a night of naughty games and intimate pleasures in the cozy, secluded setting.",
+      "seed": 1997281871,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/3.png",
+      "status": "ok",
+      "bytes": 1525590
+    }
+  ]
+}

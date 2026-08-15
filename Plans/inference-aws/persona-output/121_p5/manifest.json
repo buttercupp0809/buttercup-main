@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:54:49Z",
+  "generated_at": "2026-08-15T15:02:29Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Under the cover of night in Dublin's winding Temple Bar district, a stunning vixen with raven tresses and striking amber eyes, clad in a black leather corset, fishnet stockings, and a tiny garter belt, bends over a stone wall, her backside on prominent display as she pulls up her thong and adjusts it, the neon lights of nearby pubs casting a kaleidoscope of colors on her skin, her gaze intense and alluring as she looks back over her shoulder at the viewer with a seductive smirk.",
-      "seed": 502521468,
+      "prompt": "On a yacht's deck at sunset, a couple's passionate lovemaking is captured in a golden hour portrait, the man's strong hands gripping his lover's curves as they kiss deeply, waves gently rocking the vessel and the sky ablaze with hues of orange and pink behind them, the intimate scene rendered in stunning photorealism with a high-end camera.",
+      "seed": 1250389016,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/9a79b296-ae50-451b-9057-0a7a9b3af3f3.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/121.webp",
       "status": "ok",
-      "bytes": 1862646
+      "bytes": 1215818
     }
   ]
 }

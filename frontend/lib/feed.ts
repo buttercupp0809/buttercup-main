@@ -68,8 +68,14 @@ async function loadRecents(userId: string): Promise<RecentChat[]> {
         include: {
           currentVersion: { include: { appearanceSheet: true } },
           media: {
-            where: { kind: "image" as const },
-            orderBy: [{ isPrimary: "desc" as const }, { sort: "asc" as const }],
+            // hidden: false is load-bearing: see the HIDDEN MEDIA CONVENTION
+            // in schema.prisma.
+            where: { kind: "image" as const, hidden: false },
+            orderBy: [
+              { isDisplay: "desc" as const },
+              { isPrimary: "desc" as const },
+              { sort: "asc" as const },
+            ],
             take: 1,
           },
         },

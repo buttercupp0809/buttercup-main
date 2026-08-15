@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:21:26Z",
+  "generated_at": "2026-08-15T11:41:45Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A sunny mountain meadow at golden hour, Piper stands smiling, arms outstretched to embrace the breathtaking vista behind her, her vibrant outfit matching the wildflowers dotting the landscape, captured in a DSLR shot with a shallow depth of field to emphasize her joyful expression and the lush environment.",
-      "seed": 435910754,
+      "prompt": "A provocative model clad in a lacy black teddy leans against a velvet-draped wall, her sultry eyes locked onto the camera as she sensually manipulates probes, the soft glow of a single golden lamp casting a warm, intimate light on her alluring features.",
+      "seed": 354325712,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/91167638-e31c-423a-9198-88e55441bf04.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/23.webp",
       "status": "ok",
-      "bytes": 1569900
+      "bytes": 1281415
     }
   ]
 }

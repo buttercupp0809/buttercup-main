@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:37:53Z",
+  "generated_at": "2026-08-15T11:55:15Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Framed by the icy vastness of a frozen tundra, a statuesque blonde straddles a weathered driftwood log, her leather corset and fishnet stockings leaving little to the imagination as she looks over her shoulder with a hooded, inviting gaze, her breath visible in the frigid air.",
-      "seed": 1609553529,
+      "prompt": "In the shadowy recesses of a Reykjavik nightclub, a mysterious figure draped in black leather and lace dominates the scene, her piercing gaze and provocative postures commanding attention as she slowly manipulates probes on a mirrored table, her movements both sensual and commanding, promising an evening of dark, forbidden pleasures for those brave enough to follow her lead.",
+      "seed": 1317571302,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/f5f3327d-052c-44c0-9538-f2f6023fa619.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/29.webp",
       "status": "ok",
-      "bytes": 1664488
+      "bytes": 1305463
     }
   ]
 }

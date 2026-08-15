@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:17:53Z",
+  "generated_at": "2026-08-15T12:34:09Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, seedy back alley at night, Phoebe leans against a weathered brick wall, her leather corset and fishnet stockings providing a striking contrast to the urban grime. She crouches down, hands on knees, revealing the dark thong that barely covers her derri\u00e8re. Her expression is sultry yet guarded, her piercing blue eyes fixed on something in the distance, as if daring an unseen observer to approach.",
-      "seed": 1741771612,
+      "prompt": "A model flaunts a provocative ensemble, her hands playfully manipulating probes as she makes suggestive gestures and maintains sultry eye contact. Golden hour lighting bathes her in a warm, inviting glow, while a shallow depth of field emphasizes her alluring features and the intimate nature of the scene.",
+      "seed": 759027682,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/f1eb5d6a-1f3a-4649-8d23-493a03fb31c4.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/48.webp",
       "status": "ok",
-      "bytes": 1940949
+      "bytes": 995383
     }
   ]
 }

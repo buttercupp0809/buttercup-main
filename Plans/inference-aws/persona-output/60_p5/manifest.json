@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:44:32Z",
+  "generated_at": "2026-08-15T12:59:16Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a deserted beach at dawn, Juniper kneels on the sand, her back to the rising sun. She wears a tiny string bikini, the straps digging into her shoulders as the light catches the beads of dew on her skin. Her hair is wind-tousled, and her expression is one of quiet contentment as she gazes out at the endless expanse of ocean.",
-      "seed": 666549928,
+      "prompt": "On a private yacht at dusk, a scantily-clad woman provocatively toys with sex aids while making come-hither gestures, her sultry demeanor and inviting gaze promising an intimate encounter as the setting sun paints the sky in hues of orange and pink, a cinematic composition framing her curves against the boat's sleek lines.",
+      "seed": 1365220568,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/2c215c70-a428-4cf8-b70b-742331c59ab0.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/60.webp",
       "status": "ok",
-      "bytes": 1056558
+      "bytes": 1091742
     }
   ]
 }

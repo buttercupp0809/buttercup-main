@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:28:53Z",
+  "generated_at": "2026-08-15T13:41:09Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Amidst the lush, overgrown foliage of a hidden garden, the steamy mist of a hidden waterfall shrouds Magnolia's curvaceous form as she stands barefoot and clad only in a sheer, gauzy robe that clings to her skin, her back arched and hair loose around her shoulders, exuding raw sensuality and untamed desire.",
-      "seed": 1532659260,
+      "prompt": "Beneath the golden glow of a sunset, a provocative siren poses on a weathered dock, her tawny skin glowing against a backdrop of swirling, azure waters. Probes dangle from her fingertips as she arches her back, her luscious curves and sultry, half-lidded eyes promising a sensual escapade for the brave soul who dares to step into her shimmering, oceanic realm.",
+      "seed": 1503330629,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/a7d6b799-5247-438e-99a4-a12a00aa065a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/81.webp",
       "status": "ok",
-      "bytes": 1571120
+      "bytes": 1105481
     }
   ]
 }

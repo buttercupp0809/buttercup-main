@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:19:20Z",
+  "generated_at": "2026-08-15T11:39:46Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Penelope stands on a sunlit rooftop in Istanbul, her golden hair blown back by a warm breeze. Clad in a flowy sundress, she gazes out at the Bosphorus Strait with a carefree smile, DSLR camera in hand, ready to capture the city's vibrant beauty.",
-      "seed": 199479292,
+      "prompt": "Amidst the golden hour's soft glow, a stunning beauty lounges provocatively on a velvet chaise, her barely-there lingerie and strategically placed props hinting at sensual games to come, as the DSLR captures her every sultry movement in crisp, high-definition detail.",
+      "seed": 1909474786,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/db45f6ec-16da-4b91-8660-e4f7de1bafaf.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/22.webp",
       "status": "ok",
-      "bytes": 1505350
+      "bytes": 1352924
     }
   ]
 }

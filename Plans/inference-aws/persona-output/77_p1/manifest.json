@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:18:52Z",
+  "generated_at": "2026-08-15T13:31:41Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Clio playfully explores an ancient Greek amphitheater at sunset, her sundress fluttering in the breeze as she leaps with joy, the warm light casting long shadows behind her.",
-      "seed": 966550160,
+      "prompt": "Golden hour illuminates the woman's alluring form as she poses on a weathered stone bench in a secluded ancient ruin, her revealing clothing and provocative gestures inviting an unseen admirer to join her amidst the crumbling columns and flickering torchlight.",
+      "seed": 1969998168,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/8bb34715-2f4f-4b83-a390-0a39f6b28527.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/77.webp",
       "status": "ok",
-      "bytes": 1462301
+      "bytes": 1504095
     }
   ]
 }

@@ -7,7 +7,10 @@ import { describe, expect, it } from "vitest";
 import { prisma } from "@buttercupp/database";
 import { processSubscriptionEvent } from "./shared";
 import type { NormalizedEvent } from "../types";
-import { verifySignature as verifyCcbill } from "./ccbill";
+import { verifySignature as verifyCcbill, ccbillWebhookSchema } from "./ccbill";
+import { verifySignature as verifyVerotel, verotelWebhookSchema } from "./verotel";
+import { verifySignature as verifySegpay, segpayWebhookSchema } from "./segpay";
+import { verifySignature as verifyCrypto, normalize as normalizeCrypto, cryptoWebhookSchema } from "./crypto";
 import crypto from "node:crypto";
 import { dbReachable } from "../../test-utils/db";
 
@@ -140,6 +143,120 @@ describe("CCBill signature verification", () => {
       .digest("hex");
     expect(
       verifyCcbill({ eventType: "NewSaleSuccess", subscriptionId, timestamp, digest } as never),
+    ).toBe(true);
+  });
+});
+
+describe("Verotel signature verification", () => {
+  it("rejects a tampered signature", () => {
+    process.env.VEROTEL_SIGNATURE_KEY = "verotel-key";
+    expect(
+      verifyVerotel({ type: "approved", userId: "u1", saleID: "s1", signature: "not-a-real-signature" }),
+    ).toBe(false);
+  });
+
+  it("accepts a valid signature computed over sorted fields", () => {
+    process.env.VEROTEL_SIGNATURE_KEY = "verotel-key";
+    const payload: Record<string, string> = { type: "approved", userId: "u1", saleID: "s1" };
+    const entries = Object.entries(payload).sort(([a], [b]) => a.localeCompare(b));
+    const canonical = entries.map(([k, v]) => `${k}=${v}`).join(":");
+    const signature = crypto.createHash("sha256").update(`verotel-key:${canonical}`).digest("hex");
+    expect(verifyVerotel({ ...payload, signature })).toBe(true);
+  });
+});
+
+describe("SegPay signature verification", () => {
+  it("rejects a tampered signature", () => {
+    process.env.SEGPAY_HMAC_KEY = "segpay-key";
+    expect(verifySegpay('{"eventType":"auth"}', "not-a-real-signature")).toBe(false);
+  });
+
+  it("accepts a valid HMAC-SHA1 signature over the raw body", () => {
+    process.env.SEGPAY_HMAC_KEY = "segpay-key";
+    const raw = '{"eventType":"auth","userId":"u1"}';
+    const signature = crypto.createHmac("sha1", "segpay-key").update(raw).digest("hex");
+    expect(verifySegpay(raw, signature)).toBe(true);
+  });
+});
+
+describe("crypto (Coinbase Commerce) webhook", () => {
+  it("verifySignature returns false when the shared secret is unset", () => {
+    delete process.env.COINBASE_COMMERCE_WEBHOOK_SECRET;
+    expect(verifyCrypto("{}", "anything")).toBe(false);
+  });
+
+  it("rejects a tampered signature", () => {
+    process.env.COINBASE_COMMERCE_WEBHOOK_SECRET = "cc-secret";
+    expect(verifyCrypto('{"event":{"type":"charge:confirmed"}}', "not-a-real-signature")).toBe(false);
+  });
+
+  it("accepts a valid HMAC-SHA256 signature over the raw body", () => {
+    process.env.COINBASE_COMMERCE_WEBHOOK_SECRET = "cc-secret";
+    const raw = JSON.stringify({ event: { type: "charge:confirmed" } });
+    const signature = crypto.createHmac("sha256", "cc-secret").update(raw).digest("hex");
+    expect(verifyCrypto(raw, signature)).toBe(true);
+  });
+
+  it("normalizes charge:confirmed / charge:resolved to transaction.completed, never to subscription.activated", () => {
+    const payload = cryptoWebhookSchema.parse({
+      event: {
+        id: "evt_1",
+        type: "charge:confirmed",
+        data: { id: "charge_1", metadata: { userId: "u1", tokenPackId: "pack_100" } },
+      },
+    });
+    const ev = normalizeCrypto(payload);
+    expect(ev).not.toBeNull();
+    expect(ev?.eventType).toBe("transaction.completed");
+    expect(ev?.eventType).not.toBe("subscription.activated");
+    expect(ev?.userId).toBe("u1");
+    expect(ev?.tokenPackId).toBe("pack_100");
+
+    const resolved = normalizeCrypto(
+      cryptoWebhookSchema.parse({
+        event: { type: "charge:resolved", data: { metadata: { userId: "u2", tokenPackId: "pack_500" } } },
+      }),
+    );
+    expect(resolved?.eventType).toBe("transaction.completed");
+  });
+
+  it("returns null (unmapped) for events without a mapped type or missing metadata", () => {
+    const pending = cryptoWebhookSchema.parse({ event: { type: "charge:pending", data: {} } });
+    expect(normalizeCrypto(pending)).toBeNull();
+
+    const noMetadata = cryptoWebhookSchema.parse({ event: { type: "charge:confirmed", data: {} } });
+    expect(normalizeCrypto(noMetadata)).toBeNull();
+  });
+});
+
+describe("webhook body shape validation (Zod, trust boundary)", () => {
+  it("ccbillWebhookSchema rejects a body missing eventType", () => {
+    expect(ccbillWebhookSchema.safeParse({ subscriptionId: "s1" }).success).toBe(false);
+  });
+  it("ccbillWebhookSchema accepts a well-formed body", () => {
+    expect(ccbillWebhookSchema.safeParse({ eventType: "NewSaleSuccess", userId: "u1" }).success).toBe(true);
+  });
+
+  it("verotelWebhookSchema rejects a body with a non-string field", () => {
+    expect(verotelWebhookSchema.safeParse({ type: "approved", extra: { nested: true } }).success).toBe(false);
+  });
+  it("verotelWebhookSchema accepts a well-formed body", () => {
+    expect(verotelWebhookSchema.safeParse({ type: "approved", userId: "u1", saleID: "s1" }).success).toBe(true);
+  });
+
+  it("segpayWebhookSchema rejects a body with a non-string field", () => {
+    expect(segpayWebhookSchema.safeParse({ eventType: 123 }).success).toBe(false);
+  });
+  it("segpayWebhookSchema accepts a well-formed body", () => {
+    expect(segpayWebhookSchema.safeParse({ eventType: "auth", userId: "u1" }).success).toBe(true);
+  });
+
+  it("cryptoWebhookSchema rejects a body missing event.type", () => {
+    expect(cryptoWebhookSchema.safeParse({ event: { data: {} } }).success).toBe(false);
+  });
+  it("cryptoWebhookSchema accepts a well-formed body", () => {
+    expect(
+      cryptoWebhookSchema.safeParse({ event: { type: "charge:confirmed", data: { metadata: {} } } }).success,
     ).toBe(true);
   });
 });

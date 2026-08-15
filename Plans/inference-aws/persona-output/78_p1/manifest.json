@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:20:59Z",
+  "generated_at": "2026-08-15T13:33:35Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Juniper playfully skips through a lush Vancouver park during golden hour, her laughter echoing through the leaves as a warm DSLR captures her in a sun-dappled clearing, her casual sundress fluttering in the breeze and her long hair streaming behind her, a carefree smile illuminating her face.",
-      "seed": 1789766931,
+      "prompt": "Golden hour illumination bathes the secluded garden in warm, inviting tones as the subject lounges on a weathered stone bench, her revealing outfit and playful gestures inviting an admirer to join her in the lush foliage.",
+      "seed": 876253227,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/55cbabbb-ca00-459f-8641-27ae939e3162.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/78.webp",
       "status": "ok",
-      "bytes": 1811568
+      "bytes": 1565636
     }
   ]
 }

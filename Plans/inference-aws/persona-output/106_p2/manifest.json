@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:21:36Z",
+  "generated_at": "2026-08-15T14:30:27Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Intimate dimly lit boudoir - Juniper reclines on a plush velvet chaise, wearing only a sheer black teddy with lace trim. The cinematic low-key lighting accentuates the curves of her body, from her ample cleavage to her toned thighs and the garter belt holding up sheer stockings. She gazes straight at the camera with a sultry half-lidded look, one hand resting on her hip, the other playfully toying with the teddy's neckline.",
-      "seed": 1640260832,
+      "prompt": "Amidst a dimly lit, opulent boudoir, a stunning model in black lace lingerie reclines on velvet cushions, probes resting provocatively on her curves as she casts a smoldering gaze at the unseen photographer, the warm tones of golden hour lighting her alluring figure in a shallow depth of field.",
+      "seed": 1772291824,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b336459c-7c8b-4ed8-90a1-3137f76315ab.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/106.webp",
       "status": "ok",
-      "bytes": 1503378
+      "bytes": 1505764
     }
   ]
 }

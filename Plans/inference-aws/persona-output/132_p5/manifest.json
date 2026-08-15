@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:19:10Z",
+  "generated_at": "2026-08-15T15:24:39Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit alleyway, Marlowe leans against a brick wall, her long coat open to reveal a lacy red bralette and a thong, the city lights casting shadows on her pale skin as she looks back over her shoulder with a coy, inviting smile, her gaze challenging the camera.",
-      "seed": 1742852614,
+      "prompt": "Amidst the decadent opulence of a secret underground club, a stunning dominatrix holds court, her regal beauty and commanding presence drawing in a coterie of eager worshippers as she flaunts her provocative outfit and wields probes with a sultry smirk, the dim red lighting casting an air of mystery and intrigue.",
+      "seed": 715395274,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/aac281b3-5192-4a2d-8352-ced5b16527d2.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/132.webp",
       "status": "ok",
-      "bytes": 1682185
+      "bytes": 1379460
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:30:05Z",
+  "generated_at": "2026-08-15T12:45:26Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A playful Odessa laughing with joy, her bright smile lighting up a sun-drenched park on a warm afternoon, golden hour casting a soft glow as she playfully tosses a frisbee in the air with her slender arms, wearing a casual white sundress that flutters in the breeze, her long hair tied back in a ponytail, the DSLR camera capturing her carefree spirit with a shallow depth of field emphasizing her radiant face.",
-      "seed": 1215425352,
+      "prompt": "In the warm glow of a golden sunset, a stunning beauty lounges seductively on a plush velvet sofa, her sultry gaze inviting an admirer closer as she provocatively handles probes, her revealing outfit hinting at the pleasures to come amidst the opulent setting of a luxurious boudoir.",
+      "seed": 945933074,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/37b533f2-96b5-4b66-80d8-17cf6c2be50a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/54.webp",
       "status": "ok",
-      "bytes": 1272510
+      "bytes": 1361239
     }
   ]
 }

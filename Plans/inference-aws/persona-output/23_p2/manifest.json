@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:21:50Z",
+  "generated_at": "2026-08-15T11:42:07Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, steamy bathroom, Piper's nude form is silhouetted against the glass shower door as warm water cascades over her, the translucent soapy film accentuating her curves, her gaze inviting as she reaches for a towel, the ambient light casting a flattering glow on her skin.",
-      "seed": 990915444,
+      "prompt": "In the midst of a decadent boudoir, a stunning dominatrix lounges on a plush, red velvet chaise, her curves barely contained by a skimpy leather corset as she teases probes, her long, raven hair cascading down her back, the room bathed in the warm, cinematic tones of a DSLR camera.",
+      "seed": 1658971590,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/60927f20-bbd4-45dd-a8ea-6b6bc6fe5abb.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/23.webp",
       "status": "ok",
-      "bytes": 1869538
+      "bytes": 1442865
     }
   ]
 }

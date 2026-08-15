@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:50:14Z",
+  "generated_at": "2026-08-15T14:57:53Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a lavish, silken tent adorned with tapestries, a provocative Clio sits cross-legged on cushions, her intricately embroidered choli top and lehnga skirt leaving little to the imagination, a navel chain glinting in the soft light, her hand playing with her long, dark locks.",
-      "seed": 404142855,
+      "prompt": "A sultry dominatrix reigns supreme in the opulent, dimly lit confines of her secret underground lair. Dressed in provocative leather and lace, she holds a sleek, metallic probe, her commanding presence and regal beauty drawing in a coterie of eager worshippers. The air is heavy with the scent of incense and desire as she awaits their devotion.",
+      "seed": 1564527747,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/4271ebba-fff7-4d1c-b0ce-509ab0454f8b.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/119.webp",
       "status": "ok",
-      "bytes": 1944505
+      "bytes": 1870933
     }
   ]
 }

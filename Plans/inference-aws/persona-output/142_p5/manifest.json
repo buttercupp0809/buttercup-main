@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:40:32Z",
+  "generated_at": "2026-08-15T15:45:05Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a lavish tent interior adorned with silks and tapestries, Phoebe sits cross-legged on plush cushions, wearing an intricately embroidered choli top and lehnga skirt, her navel chain catching the light, her hands playing with her long, dark hair as she looks up with a sultry, inviting gaze, the camera capturing the rich textures and colors of the harem-inspired setting as it highlights her exotic beauty.",
-      "seed": 1956349619,
+      "prompt": "On a moonlit rooftop overlooking the glittering skyline of Los Angeles, a stunning woman in a sheer, beaded gown reclines against a weathered stone parapet, probes glinting in the silver light as she extends a sensual invitation to a lucky suitor to join her in a night of passionate, boundary-pushing delights, the city's endless expanse stretching out before them like a canvas of limitless possibility.",
+      "seed": 347917630,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/8d7d1e28-f517-49c5-9f2a-7578225b03d2.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/142.webp",
       "status": "ok",
-      "bytes": 1854881
+      "bytes": 1534672
     }
   ]
 }

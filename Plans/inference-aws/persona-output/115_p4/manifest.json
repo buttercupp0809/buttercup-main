@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:41:35Z",
+  "generated_at": "2026-08-15T14:49:28Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit Dublin pub, Hazel leans against the bar, her eyes half-lidded as she sips a whiskey, the amber liquid reflecting in her gaze, the dim lighting accentuating her full lips and the gentle curve of her cheekbone.",
-      "seed": 1473930352,
+      "prompt": "In the shadowy recesses of a dimly lit, leather-bound boudoir, a woman dressed in fetish attire seductively plays with probes, her piercing gaze locking onto an unseen admirer as she beckons them near, the room's dark, sensual ambiance and the model's provocative pose creating an air of dark desire, captured in a high-contrast, black-and-white image.",
+      "seed": 1384246106,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/5a53aeee-aa4c-450c-8b4b-606cffbf26cd.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/115.webp",
       "status": "ok",
-      "bytes": 1325819
+      "bytes": 995553
     }
   ]
 }

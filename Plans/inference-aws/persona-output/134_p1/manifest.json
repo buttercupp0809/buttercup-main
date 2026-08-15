@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:21:48Z",
+  "generated_at": "2026-08-15T15:27:07Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Juniper strolls through a lush forest glade at golden hour, the warm DSLR light casting long shadows across her smiling face and the vibrant foliage. She wears a flowing sundress in autumnal hues that catch the fading light, and her loose curls dance in the gentle breeze as she laughs, carefree and joyful.",
-      "seed": 1429367194,
+      "prompt": "Captured in the golden light of sunset, a woman in a sheer, black teddy lounges languidly on a weathered pier, probes in hand, her sultry gaze beckoning a lover to join her intimate seaside escapade as the waves gently lap at the shore behind.",
+      "seed": 1168799158,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/de9f010d-cdea-447d-9556-0f5a7f98629a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/134.webp",
       "status": "ok",
-      "bytes": 1905114
+      "bytes": 1423786
     }
   ]
 }

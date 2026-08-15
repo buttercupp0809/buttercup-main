@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:53:25Z",
+  "generated_at": "2026-08-15T14:04:26Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Amidst a winter forest glade, Lyra stands with her back to a towering evergreen, her fur-trimmed coat open to reveal a lacy bralette and high-waisted panties. Icy mist swirls around her as she looks over her shoulder, her cold lips curled into a mischievous grin, her chestnut hair tousled by the biting wind.",
-      "seed": 1381156666,
+      "prompt": "In the sultry haze of a backstreet club, a curvaceous stripper with long, curly auburn hair and smoldering brown eyes straddles a client's lap, her barely-there red G-string riding high on her hips as she grinds against him with sensual abandon, the neon lights outside casting a lurid glow on her glistening skin and the couple's entwined forms, the atmosphere electric with forbidden desire.",
+      "seed": 487738048,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/05e9400e-802e-4427-a136-c028cd28f53a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/93.webp",
       "status": "ok",
-      "bytes": 1598102
+      "bytes": 1359887
     }
   ]
 }

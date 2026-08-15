@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:38:17Z",
+  "generated_at": "2026-08-15T11:55:38Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit Reykjavik bar, a mysterious raven-haired siren perches on a high stool, her lacy crimson bra and matching thong barely hidden beneath a short, black leather jacket as she raises a glass, her full lips parted in a sultry smirk, her intense blue eyes locking with the viewer's in a provocative challenge.",
-      "seed": 1841180815,
+      "prompt": "On a secluded black sand beach bathed in the soft, warm light of a setting sun, a curvaceous beauty clad in a shimmering gold bikini reclines on a beach blanket, her long legs stretched out invitingly as she teases a collection of probes with her toes, her sultry gaze and languid smile hinting at a sensual encounter for the lucky soul who stumbles upon her secluded paradise.",
+      "seed": 1912402327,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/ae4e45a9-a05c-4635-82ac-ff11fbfd7bcc.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/29.webp",
       "status": "ok",
-      "bytes": 1408096
+      "bytes": 2251015
     }
   ]
 }

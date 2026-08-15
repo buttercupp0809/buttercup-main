@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:50:54Z",
+  "generated_at": "2026-08-15T14:02:04Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, smoky bar, Juniper leans against the worn wooden counter, her black leather jacket open to reveal a low-cut red top, the neon signs casting a seductive glow on her features as she looks directly at the camera with a sultry, half-lidded gaze.",
-      "seed": 352222644,
+      "prompt": "In the soft, golden light of a sunset, a couple in matching black lace lingerie entwine on a plush velvet chaise, probes strewn artfully between them as they gaze deeply into each other's eyes, the lush greenery of an opulent garden visible through floor-to-ceiling windows behind them.",
+      "seed": 804711018,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/2daacd8d-3bc9-48e8-b7c9-12ee019ee0df.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/92.webp",
       "status": "ok",
-      "bytes": 1425012
+      "bytes": 1474491
     }
   ]
 }

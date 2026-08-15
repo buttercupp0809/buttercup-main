@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:50:24Z",
+  "generated_at": "2026-08-15T13:04:50Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a moonlit rooftop, Ophelia perches on the edge, her tight, black leather ensemble clinging to every inch of her body. Her long hair streams in the wind as she gazes out at the city, one stiletto heel extended, a cinematic silhouette against the night sky.",
-      "seed": 334297747,
+      "prompt": "Against the backdrop of a moonlit garden, a bewitching figure in a sheer black gown stands poised, a sleek probe clutched in one hand as she extends the other in a seductive invitation, her raven locks cascading down her back, the ethereal atmosphere heavy with promise of a mysterious and passionate tryst.",
+      "seed": 1084326703,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/30220cb1-a189-425e-b06d-84def032d159.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/63.webp",
       "status": "ok",
-      "bytes": 1466669
+      "bytes": 1244038
     }
   ]
 }

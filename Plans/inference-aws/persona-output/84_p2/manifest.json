@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:34:11Z",
+  "generated_at": "2026-08-15T13:46:05Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit opera box, Clara's raven hair cascades over her bare shoulders as she leans back against the velvet curtain, her sheer black negligee clinging to every curve, a sultry smile playing on her lips as she gazes out at the stage, the spotlight's glow illuminating her porcelain skin.",
-      "seed": 941229715,
+      "prompt": "In a dimly lit, opulent boudoir, a dominatrix slowly unbuttons her white shirt, revealing perky breasts bound in black leather as she commands her submissive to kneel, the room's sumptuous furnishings and crimson drapes reflecting her regal authority, a DSLR lens narrowing the focus to emphasize her power.",
+      "seed": 1987832606,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/45ff85a8-80e2-4140-8248-da21e0b155ee.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/84.webp",
       "status": "ok",
-      "bytes": 1562230
+      "bytes": 1208277
     }
   ]
 }

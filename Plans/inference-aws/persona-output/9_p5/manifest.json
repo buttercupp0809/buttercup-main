@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T22:52:23Z",
+  "generated_at": "2026-08-15T11:15:00Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Against a backdrop of abstract, neon-lit cityscape, Amelia perches on the edge of a high table, her fishnet stockings and leather corset leaving little to the imagination as she looks directly at the camera with a provocative, come-hither gaze, one stiletto heel hooked on the edge of the surface, her full, parted lips inviting the viewer to step into her world of passion and desire.",
-      "seed": 522610638,
+      "prompt": "In a dingy motel room, a couple's depraved encounter reaches its climax - the man holding his partner down on the bed as he forces himself into her mouth, her throat bulging around his girth while tears stream down her face. Probes litter the floor amidst the chaos of the scene, which is rendered in a gritty, high-contrast style that captures the harsh reality of their twisted, violent passion.",
+      "seed": 23726060,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/876c3f98-c8c3-44e4-ba23-3a47832bb995.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/9.webp",
       "status": "ok",
-      "bytes": 1090611
+      "bytes": 1080649
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:57:26Z",
+  "generated_at": "2026-08-15T15:04:59Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A young woman, surrounded by friends, throws her arms up in joyful abandon against a vibrant sunset sky as they celebrate the end of summer at a beach bonfire, the warm glow illuminating her face and the carefree laughter of the group.",
-      "seed": 84606561,
+      "prompt": "In the warm glow of golden hour, a provocative model lounges on a plush velvet couch, her revealing lingerie illuminated by the soft DSLR light. She teases an unseen admirer with probes, her sultry gaze and inviting pose leaving no doubt about her intentions amidst the lavish backdrop of a luxurious boudoir.",
+      "seed": 172257910,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/3745203e-5566-4b62-aae2-154950c2a568.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/123.webp",
       "status": "ok",
-      "bytes": 1135968
+      "bytes": 1512314
     }
   ]
 }

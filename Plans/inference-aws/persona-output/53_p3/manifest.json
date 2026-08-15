@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:28:24Z",
+  "generated_at": "2026-08-15T12:44:16Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit Reykjavik nightclub, Freya reclines on a plush velvet couch, her legs crossed, a sheer black lace negligee leaving little to the imagination, the soft lighting casting a sensual sheen on her skin, her gaze smoldering as she sips a cocktail with a come-hither smile.",
-      "seed": 1731791160,
+      "prompt": "A statuesque blonde in a revealing bikini and oversized sunglasses lounges provocatively on a yacht's deck, her long legs stretched out as she teases a unsuspecting male with a sex toy. The warm sunset light bathes the scene in a nostalgic, retro aesthetic, while the shallow focus pulls the viewer's eye to her tantalizing curves.",
+      "seed": 725878723,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
       "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/53.webp",
       "status": "ok",
-      "bytes": 1250921
+      "bytes": 1222228
     }
   ]
 }

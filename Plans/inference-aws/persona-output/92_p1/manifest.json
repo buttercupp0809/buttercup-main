@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:50:30Z",
+  "generated_at": "2026-08-15T14:01:42Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Juniper stands on a sun-dappled hillside, her back to the camera, arms outstretched as she twirls in a flowy sundress, her long hair streaming behind her in the golden hour light, a DSLR capturing the joyous moment with a shallow depth of field, focusing attention on her carefree expression.",
-      "seed": 226426936,
+      "prompt": "Against a backdrop of rain-soaked city streets, a woman in a plunging leather jacket and revealing miniskirt leans against a graffiti-covered wall, one stiletto heel hooked on the brick as she provocatively plays with probes, her eyes smoldering with desire in the flickering neon glow of a distant storefront.",
+      "seed": 1334178909,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/7703ad81-f07e-4521-b0f3-cbe7e32947be.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/92.webp",
       "status": "ok",
-      "bytes": 1527482
+      "bytes": 1724637
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:16:10Z",
+  "generated_at": "2026-08-15T12:32:31Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a luxurious penthouse suite, Vesper lounges on a satin-draped chaise, her body barely concealed by a sheer, gauzy robe that clings to her every curve, her long, tousled hair spilling across the cushions as she raises a glass of champagne to her lips with a sultry invitation.",
-      "seed": 1036820780,
+      "prompt": "A woman dressed in a sheer, black babydoll nightgown stands in the shadows of an abandoned warehouse, the moonlight casting an ethereal glow on her pale skin. She holds probes in her delicate hands, her raven tresses tumbling over her shoulders as she beckons an unseen admirer with a coy, inviting gaze.",
+      "seed": 1363475723,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/bb791cfa-4c1b-45b8-bc33-88371076beaa.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/47.webp",
       "status": "ok",
-      "bytes": 1072692
+      "bytes": 1283903
     }
   ]
 }

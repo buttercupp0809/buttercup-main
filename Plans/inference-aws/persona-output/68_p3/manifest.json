@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:00:34Z",
+  "generated_at": "2026-08-15T13:14:27Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Ruby lounges languidly on a plush chaise in a lavish boudoir, clad in sheer lace lingerie that leaves little to the imagination. Dangling jewelry catches the soft glow of candles scattered across the room, drawing attention to her heaving breasts and the tantalizing curve of her hip. Her gaze is hooded, inviting, as she reclines seductively, one leg bent at the knee.",
-      "seed": 1010969657,
+      "prompt": "Amidst the opulent decor of a luxurious penthouse, a wealthy couple engaged in a BDSM session hold probes, their expressions charged with lust as they invite others to join their intimate, high-stakes game of power and pleasure.",
+      "seed": 1200264193,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/98fe4790-fde6-449b-b40a-62ea93a26059.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/68.webp",
       "status": "ok",
-      "bytes": 1316967
+      "bytes": 1139081
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:10:18Z",
+  "generated_at": "2026-08-15T15:16:17Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Phoebe straddles a weathered wooden fence in a secluded alleyway, her back arched and long legs splayed provocatively. A black leather corset and fishnet stockings leave little to the imagination, the thong strap of her skimpy bottoms peeking out from between her cheeks. The city lights cast a shadowy glow, while a nearby dumpster adds an edgy, seedy ambiance.",
-      "seed": 1058677132,
+      "prompt": "In the shadowy recesses of an abandoned warehouse, a woman in a sheer black nightgown kneels on a pile of crates, probing her own body with tantalizing slow motions. The camera, positioned from a low angle, captures her tempting form and longing gaze as she invites an unseen admirer to join her illicit encounter.",
+      "seed": 20426423,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/257d071c-37fb-4f80-9b9e-0e59d5049f01.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/128.webp",
       "status": "ok",
-      "bytes": 1535108
+      "bytes": 1187892
     }
   ]
 }

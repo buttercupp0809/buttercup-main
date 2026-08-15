@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:32:47Z",
+  "generated_at": "2026-08-15T14:40:47Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Wearing only a sheer, ivory negligee that clings to every curve, Astrid lounges against plush velvet pillows in a dimly lit boudoir, her legs crossed, one high heel dangling from her foot as she gazes at the viewer with a coy, inviting smile, her tousled locks framing her face, the soft focus and warm tones evoking intimacy and desire.",
-      "seed": 1158271151,
+      "prompt": "In the shadowy recesses of an abandoned warehouse, two lovers engage in a forbidden, dangerous liaison, their passion reaching a fever pitch as they explore every dark, depraved desire, their skin glistening with sweat in the dim light filtering through the grimy windows, the only sound the heavy panting of their lustful breaths and the distant wail of sirens outside.",
+      "seed": 324411415,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/df1e04a2-0c9a-46f8-8bf0-bc591504e726.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/111.webp",
       "status": "ok",
-      "bytes": 1157587
+      "bytes": 1359690
     }
   ]
 }

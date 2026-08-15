@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:42:55Z",
+  "generated_at": "2026-08-15T14:50:42Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit bedroom, Piper reclines on plush velvet sheets, her bare skin illuminated by the soft glow of candles and a full moon peeking through sheer curtains, her legs bent and thighs parted as she gazes seductively at the camera, her tousled hair cascading over one shoulder and a lacy black negligee barely containing her ample breasts.",
-      "seed": 1050892509,
+      "prompt": "In the shadows of an upscale nightclub, a couple clad in revealing attire holds futuristic sex toys, their expressions charged with lust as they beckon someone closer amidst the pulsing neon lights and hazy fog machines of a packed dance floor.",
+      "seed": 1614932350,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/936b200d-96d7-4103-8a7c-b8843150721d.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/116.webp",
       "status": "ok",
-      "bytes": 1109335
+      "bytes": 992085
     }
   ]
 }

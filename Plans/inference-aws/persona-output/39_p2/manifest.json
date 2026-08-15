@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:58:13Z",
+  "generated_at": "2026-08-15T12:14:36Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Straddling a vintage motorcycle in a dimly lit alley, Marlowe flashes a sultry smile as her short leather skirt rides up to reveal a pair of lacy thong panties. Neon signs reflect off her long, tousled hair as she looks over her shoulder, one high heel kicked back, the other pressed to the pavement. The shallow depth of field blurs the background, focusing attention solely on her provocative pose.",
-      "seed": 167340487,
+      "prompt": "Amidst the steamy haze of a private sauna, a couple in skimpy attire hold futuristic sex toys, their expressions charged with lust as they beckon an onlooker to join their intimate encounter, the warm, wet air and soft focus creating a dreamlike atmosphere.",
+      "seed": 523738530,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/545d4ea5-56e3-45f9-b452-78e4e7e55612.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/39.webp",
       "status": "ok",
-      "bytes": 1521838
+      "bytes": 1071065
     }
   ]
 }

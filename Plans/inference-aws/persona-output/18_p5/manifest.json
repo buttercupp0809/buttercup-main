@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:12:33Z",
+  "generated_at": "2026-08-15T11:33:23Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the midst of a crowded Stockholm nightclub, Ava's sultry figure is barely contained by a daring, black leather corset and fishnet stockings that leave her toned thighs and shapely bottom on full display. Her long, dark hair is styled in loose, cascading waves as she leans against a dimly lit wall, her legs bent at the knees and feet crossed at the ankles. With a sultry, half-closed gaze, she seems to invite the viewer into her private world of pulsating rhythms and carnal desires.",
-      "seed": 578340336,
+      "prompt": "On a moonlit beach, a scantily-clad woman with sun-kissed skin and flowing golden hair straddles a man's lap, her back arched as she guides a probe between their bodies. The ocean's gentle waves lap at their feet, while the clear night sky stretches above, studded with stars. The couple's heated gazes meet in a passionate, almost feral intensity.",
+      "seed": 1696155479,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/781f176f-86fa-446a-9c6e-5aca7ff1c081.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/18.webp",
       "status": "ok",
-      "bytes": 1153671
+      "bytes": 1128400
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:06:05Z",
+  "generated_at": "2026-08-15T13:19:46Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Odessa dances in a Rio Carnival parade, her vibrant outfit gleaming under the golden hour sun as the crowd cheers, DSLR capturing a shallow depth of field to isolate her joyful expression and twirling motion amidst the festive scene.",
-      "seed": 1666528668,
+      "prompt": "Against the soft glow of a sunset on a secluded beach, a woman in a sultry string bikini provocatively toys with probes, her body glistening with dew and her sultry gaze beckoning a solitary observer to join her in the sand.",
+      "seed": 430259872,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/ddfb7a1b-4d64-4a6b-a616-1484882d0638.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/71.webp",
       "status": "ok",
-      "bytes": 1273438
+      "bytes": 1184640
     }
   ]
 }

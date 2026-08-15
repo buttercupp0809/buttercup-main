@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:44:34Z",
+  "generated_at": "2026-08-15T13:56:02Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a smoky underground club, Vesper leans against a worn leather couch, her sheer black blouse partially unbuttoned to reveal a lacy red bra. Dangling silver earrings and a choker add to her sultry allure. The dim red lighting creates deep shadows, highlighting her full lips as she smirks at the camera with a come-hither gaze.",
-      "seed": 1083185564,
+      "prompt": "In a dimly lit, underground club pulsating with electric energy, a stunning dominatrix in leather and lace commands attention, her piercing green eyes locked on a willing submissive as she teases him with probes, the air thick with the scent of incense and the promise of forbidden pleasures.",
+      "seed": 1749525565,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/0a79e1d4-a733-4fb4-a313-0721e400d15f.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/89.webp",
       "status": "ok",
-      "bytes": 1142654
+      "bytes": 1462516
     }
   ]
 }

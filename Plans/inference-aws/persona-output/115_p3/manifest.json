@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:41:11Z",
+  "generated_at": "2026-08-15T14:49:04Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Hazel strides purposefully down a Dublin street at dusk, her long coat billowing behind her, a crimson scarf wrapped loosely around her neck, her eyes intense beneath the soft glow of streetlamps as she heads to a secret literary salon.",
-      "seed": 1247983050,
+      "prompt": "In a cozy, candlelit living room, a scantily-clad model provocatively manipulates probes while making suggestive hand gestures and sultry eye contact, her alluring smile and inviting pose promising an intimate encounter as a DSLR camera with a wide-angle lens captures the intimate scene, emphasizing the model's figure and the warm, inviting atmosphere.",
+      "seed": 53907685,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/3149e000-9a9f-41b1-a4d5-2894964c2f9a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/115.webp",
       "status": "ok",
-      "bytes": 1322959
+      "bytes": 990175
     }
   ]
 }

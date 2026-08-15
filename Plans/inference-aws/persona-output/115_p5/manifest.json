@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:42:00Z",
+  "generated_at": "2026-08-15T14:49:51Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Hazel perches on the edge of a worn ottoman in a dimly lit study, her bare feet swinging, a single candle flickering on the nearby desk, casting dancing shadows on her face as she ponders her latest writing project.",
-      "seed": 1177839567,
+      "prompt": "On the sun-kissed deck of a luxurious yacht, a couple engaged in intimate foreplay holds probes, their charged expressions and inviting postures hinting at the pleasures to come as the surrounding turquoise waters and the setting sun's fiery hues provide a stunning backdrop, captured in a high-resolution image by a DSLR camera with a wide-angle lens.",
+      "seed": 1793805525,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/529e11d2-29b4-4ab3-bb0d-aff1b5c7b2fa.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/115.webp",
       "status": "ok",
-      "bytes": 1238591
+      "bytes": 1241584
     }
   ]
 }

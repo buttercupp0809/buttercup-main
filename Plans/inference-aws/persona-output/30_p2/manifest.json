@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:39:11Z",
+  "generated_at": "2026-08-15T11:56:29Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the dimly lit intimacy of a backstage dressing room, a lone spotlight illuminates Camilla's sensual curves as she slips into a sheer, black lace negligee, the soft fabric clinging to her ample breasts and the subtle sheen hinting at the skin beneath, her smoky eyes fixed on the mirror with a coy, seductive gaze.",
-      "seed": 1737266102,
+      "prompt": "In a dimly lit, underground club, a stunning dominatrix holds a pair of futuristic sex toys, her regal beauty and commanding presence drawing in a coterie of eager worshippers as the pulsing beats of electronic music fill the air, the neon lights casting a lurid glow on her curves.",
+      "seed": 452164064,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/6047ff1b-65b5-47e2-a603-312f77a3ebe0.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/30.webp",
       "status": "ok",
-      "bytes": 1375173
+      "bytes": 1199450
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:54:21Z",
+  "generated_at": "2026-08-15T12:10:53Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Odessa sprawls across a plush chaise in a lavish bedroom, her Victorian corset and shorts a provocative contrast to the opulent antique furniture and velvet drapes. A shallow depth of field isolates her reclined form, the soft focus of the blurred surroundings heightening the intimate atmosphere. Her sultry gaze lingers on the viewer as she languidly stretches, a single hand drifting down to graze the hem of her shorts.",
-      "seed": 1878785319,
+      "prompt": "Set against the dimly lit, ornate architecture of a luxurious mansion, a woman in a daring red corset and matching thigh-high stockings slowly manipulates probes, her body language a tantalizing mix of seductive and dominant as she looks over her shoulder, her eyes promising a night of untamed passion.",
+      "seed": 1649477501,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/a7f32a0c-9a47-48db-afc7-b487545710c4.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/37.webp",
       "status": "ok",
-      "bytes": 1416898
+      "bytes": 1604866
     }
   ]
 }

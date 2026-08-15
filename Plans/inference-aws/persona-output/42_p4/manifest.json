@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:05:27Z",
+  "generated_at": "2026-08-15T12:21:47Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Ophelia straddles the edge of a velvet chaise, her toned thighs gripping the plush upholstery as she looks back over her shoulder at the camera with a sultry, inviting gaze, a sheer black negligee clinging to her body and leaving little to the imagination, the room's shadows emphasizing the curves of her derri\u00e8re.",
-      "seed": 1076682706,
+      "prompt": "In a dimly lit, underground dungeon, a mysterious dominatrix clad in fetish attire beckons an unseen admirer with a commanding gaze and provocative movements. Probes in hand, she teases and tortures herself, promising an illicit encounter for those brave enough to enter her shadowy lair.",
+      "seed": 1444110301,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/0067d1fc-4f63-4835-805f-8a60ad23f309.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/42.webp",
       "status": "ok",
-      "bytes": 1059915
+      "bytes": 1529100
     }
   ]
 }

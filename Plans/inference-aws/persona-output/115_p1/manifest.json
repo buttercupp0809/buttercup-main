@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:40:23Z",
+  "generated_at": "2026-08-15T14:48:19Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a charming Dublin park during golden hour, Hazel giggles as she tosses a frisbee, her ponytail fluttering in the breeze, wearing a fitted white tank top and distressed denim shorts that catch the warm sunlight.",
-      "seed": 320672270,
+      "prompt": "In the golden glow of sunset, a woman clad in a revealing white top and short black skirt poses provocatively on a weathered wooden dock, probes in hand, her sultry gaze inviting an onlooker to join her as the city skyline blurs in the hazy distance, captured by a DSLR camera with a shallow depth of field that emphasizes her curves.",
+      "seed": 713322481,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/c8be8c5a-002e-4152-bc03-d8af86974f4f.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/115.webp",
       "status": "ok",
-      "bytes": 1526333
+      "bytes": 1068703
     }
   ]
 }

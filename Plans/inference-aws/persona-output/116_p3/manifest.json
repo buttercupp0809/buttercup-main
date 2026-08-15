@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:43:19Z",
+  "generated_at": "2026-08-15T14:51:04Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Piper straddles a weathered log on a remote forest trail, wearing a sheer white tank top that clings to her curves and a pair of tight, earthy-toned hiking shorts, her toned legs parted and her hands braced on the log as she leans back, her long hair spilling down her back and her face tilted up to the dappled sunlight filtering through the trees, exuding a sense of wild, untamed beauty.",
-      "seed": 1435300793,
+      "prompt": "Set against the warm tones of a vintage parlor, a model wearing a corset and ruffled skirt provocatively toys with probes, her come-hither gestures and playful smiles hinting at the naughty games to come as the camera captures her in a shallow focus against the soft glow of candlelight.",
+      "seed": 791627215,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/ce88f3e5-c682-4ba4-ba50-d5c7b5babb91.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/116.webp",
       "status": "ok",
-      "bytes": 1583467
+      "bytes": 1363641
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:04:49Z",
+  "generated_at": "2026-08-15T15:11:16Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Clara steps out of a charming Parisian caf\u00e9 into the soft glow of a golden hour, her elegant dress and wide-brimmed hat catching the warm light as she smiles at a street performer juggling fire, her eyes sparkling with joy and wonder at the lively scene before her.",
-      "seed": 441156131,
+      "prompt": "In a dimly lit, opulent boudoir, a stunning beauty reclines on silk sheets, her curves accentuated by a sheer black negligee. She holds a sleek, chrome dildo, her piercing green eyes locked on the camera with a sultry, come-hither gaze, inviting an admirer to join her in a night of passion and pleasure.",
+      "seed": 1203605622,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/f10c60b4-477d-4118-882b-4a69d3278f67.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/126.webp",
       "status": "ok",
-      "bytes": 1643576
+      "bytes": 1484357
     }
   ]
 }

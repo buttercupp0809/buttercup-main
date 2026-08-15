@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:31:59Z",
+  "generated_at": "2026-08-15T14:40:03Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Astrid, radiant with joy, skips through a sunlit Stockholm park, her auburn hair fluttering in a gentle breeze as she holds a bouquet of wildflowers, her bright smile and carefree laughter captured in a warm, golden hour glow by a DSLR lens, the shallow depth of field drawing attention to her sparkling eyes and flushed cheeks.",
-      "seed": 237117918,
+      "prompt": "In a dimly lit, candle-lit chamber, a sultry woman in a sheer black negligee beckons a mysterious figure closer, her hypnotic movements and sultry whispers promising untold pleasures as she leads him to a velvet-draped altar, the only sound the soft crackle of the flames and their heavy, lustful breathing.",
+      "seed": 1356413270,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e5fc5935-99f0-49f2-9dbf-0a87c8f2c570.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/111.webp",
       "status": "ok",
-      "bytes": 1561261
+      "bytes": 1025167
     }
   ]
 }

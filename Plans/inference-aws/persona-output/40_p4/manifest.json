@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:01:09Z",
+  "generated_at": "2026-08-15T12:17:19Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a moonlit night, Freya straddles an antique, ornate bench in a secluded, overgrown garden, the silvery light casting long shadows across her bare skin as she wears a sheer, lace negligee that clings to her every curve, her back arched and head thrown back in a pose of sensuality, the focus tight on her exposed breasts and the hint of her thong, the shot capturing a moody, intimate atmosphere with a shallow depth of field.",
-      "seed": 800593251,
+      "prompt": "In the heart of a bustling marketplace, a tantalizing woman dressed in a revealing belly dancer costume seductively twirls a probe between her fingers, her hypnotic movements and inviting smile drawing in a crowd of mesmerized onlookers as the sounds of exotic music and lively haggling fill the air.",
+      "seed": 849961648,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e6b51c41-2b3a-4526-955d-4de5120050e6.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/40.webp",
       "status": "ok",
-      "bytes": 1690018
+      "bytes": 1359536
     }
   ]
 }

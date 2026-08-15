@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:46:18Z",
+  "generated_at": "2026-08-15T13:57:46Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Marlowe steps out of a cozy caf\u00e9 on a sunny London afternoon, her face alight with joy as she savors a warm latte and nibbles a buttery croissant. DSLR captures the scene in warm, golden hour light, with a shallow depth of field that softly blurs the background of charming street life. Her tousled chestnut hair and bright green eyes sparkle with contentment.",
-      "seed": 1454899671,
+      "prompt": "Captured in the warm glow of golden hour, a woman stands seductively in a dimly lit alley, her skin glistening with dew as she provocatively handles probes, beckoning a passerby with a coy smile and a come-hither gesture, the city skyline looming in the background.",
+      "seed": 1828365569,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b95cf94f-8dbe-4df6-b8cd-aa36596447e3.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/90.webp",
       "status": "ok",
-      "bytes": 1484060
+      "bytes": 1338458
     }
   ]
 }

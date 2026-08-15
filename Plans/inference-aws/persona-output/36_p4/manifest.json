@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:52:38Z",
+  "generated_at": "2026-08-15T12:09:10Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit boudoir, Clio reclines on a plush chaise, her Victorian corset and shorts hugging her figure tightly, as she coyly lifts a leg, exposing the lace trim of her garter belt and the sheen of her stocking-clad thigh.",
-      "seed": 310232852,
+      "prompt": "In a luxurious penthouse suite, a woman clad in a sheer black negligee reclines on a king-sized bed, probes scattered across her skin as she beckons her partner closer with a sultry smile, the city skyline a glittering backdrop to their decadent encounter, the room bathed in the soft glow of candles and the city lights below.",
+      "seed": 711650567,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e0d6ff7b-9dce-4bda-8a20-67f1949c7afc.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/36.webp",
       "status": "ok",
-      "bytes": 1267200
+      "bytes": 1202983
     }
   ]
 }

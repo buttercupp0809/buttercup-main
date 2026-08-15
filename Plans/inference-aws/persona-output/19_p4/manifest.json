@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:14:16Z",
+  "generated_at": "2026-08-15T11:34:56Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the intimate setting of a traditional Japanese onsen bathhouse, Hazel sits on the edge, water beading on her smooth skin as she arches her back to expose her breasts, a kimono loosely draped over one shoulder, the soft light casting a warm glow on her sensual form.",
-      "seed": 1071123567,
+      "prompt": "In a dimly lit, intimate setting, a woman dressed in fetish attire plays seductively with probes, her intense gaze fixed on an unseen admirer as she beckons them closer. The soft, focused lighting accentuates her curves, while the shadows playfully hide her most alluring features.",
+      "seed": 976558732,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b7c17220-2883-4e19-989f-2d01be671be5.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/19.webp",
       "status": "ok",
-      "bytes": 1218399
+      "bytes": 874023
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:11:29Z",
+  "generated_at": "2026-08-15T14:20:51Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a moonlit Copenhagen rooftop, Hazel poses seductively against a stone railing, her body barely concealed by a sheer white robe that billows in the night breeze, her tousled hair framing her face as she looks back over her shoulder with a coy, inviting smile, the city lights twinkling in the background and the DSLR camera capturing every sultry detail.",
-      "seed": 1269680251,
+      "prompt": "In a lavish, crimson-draped boudoir, a model wearing a provocative silk robe and nothing underneath provocatively manipulates probes, her sultry movements and heated gaze promising an intimate encounter for the right partner, the room lit by the soft glow of candles and a massive four-poster bed.",
+      "seed": 1280972472,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/197c745a-2b63-48c5-a7e5-e9586d051bc2.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/101.webp",
       "status": "ok",
-      "bytes": 1176899
+      "bytes": 1135488
     }
   ]
 }

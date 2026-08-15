@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:02:57Z",
+  "generated_at": "2026-08-15T12:19:09Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Piper's fur-trimmed coat is open, revealing a lacy bralette and high-waisted panties as she smirks in an icy winter forest glade. Snowflakes gently fall on her upturned face, her long hair cascading down her back. The camera focuses on the way her nipples harden against the chilled air, caught in a candid moment of vulnerability.",
-      "seed": 559943235,
+      "prompt": "In a dimly lit, underground sex club, a stunning dominatrix clad in leather and stiletto heels stands poised before a bound submissive, a riding crop in one hand and a probe in the other, her piercing eyes locked onto her audience as she slowly, seductively demonstrates the implements of her trade, the air thick with anticipation and desire.",
+      "seed": 1454154179,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/bdbb0a22-6f5a-4e6f-96ea-1bdb0849ebb1.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/41.webp",
       "status": "ok",
-      "bytes": 1630205
+      "bytes": 1109312
     }
   ]
 }

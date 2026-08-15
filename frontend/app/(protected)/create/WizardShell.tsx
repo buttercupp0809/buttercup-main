@@ -1,69 +1,60 @@
 "use client";
 
 import * as React from "react";
-import { useRouter } from "next/navigation";
 import { useCharacterWizard } from "./context";
 import { CHARACTER_STEPS } from "./steps";
 import { PreviewCard } from "@/components/create/PreviewCard";
+import { GenerationStatus } from "@/components/create/GenerationStatus";
 
 export function WizardShell({ children }: { children: React.ReactNode }) {
-  const router = useRouter();
-  const { currentStepKey, canContinue, saving, goNext, goBack, submit, draft } =
+  const { currentStepKey, canContinue, saving, goNext, goBack, submit, draft, mode } =
     useCharacterWizard();
   const currentIndex = CHARACTER_STEPS.findIndex((s) => s.key === currentStepKey);
   const isLast = currentIndex === CHARACTER_STEPS.length - 1;
-  const [genToast, setGenToast] = React.useState(false);
+  // Set once Finish succeeds; swaps the step content for the generation
+  // status screen instead of navigating away immediately (Build step 8).
+  // Navigation to /chat/:id is never blocked on generation finishing.
+  const [finishedId, setFinishedId] = React.useState<string | null>(null);
 
   async function handleFinish() {
     const result = await submit();
     if (result.ok) {
-      setGenToast(true);
-      setTimeout(() => router.push(`/chat/${result.id}`), 1800);
+      setFinishedId(result.id);
     } else {
       alert(`Save failed: ${result.error}`);
     }
   }
 
   return (
-    <>
-    {genToast && (
-      <div
-        className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-xl px-5 py-3 text-sm font-medium shadow-lg"
-        style={{
-          backgroundColor: "hsl(var(--buttercupp-accent-rose))",
-          color: "hsl(var(--buttercupp-primary-fg))",
-        }}
-      >
-        Companion saved. Generating images in the background...
-      </div>
-    )}
     <section className="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-6 py-6 md:grid-cols-[1fr_320px]">
       <div>
-        <ol className="mb-6 flex items-center gap-2 text-sm">
-          {CHARACTER_STEPS.map((s, i) => (
-            <li
-              key={s.key}
-              className="flex items-center gap-2"
-              style={{
-                color:
-                  i === currentIndex
-                    ? "hsl(var(--buttercupp-accent-rose))"
-                    : i < currentIndex
-                      ? "hsl(var(--buttercupp-fg))"
-                      : "hsl(var(--buttercupp-muted))",
-                fontWeight: i === currentIndex ? 600 : 400,
-              }}
-            >
-              <span className="rounded-full border border-current px-2 py-0.5 text-xs">
-                {i + 1}
-              </span>
-              {s.label}
-              {i < CHARACTER_STEPS.length - 1 ? (
-                <span style={{ color: "hsl(var(--buttercupp-border))" }}>-</span>
-              ) : null}
-            </li>
-          ))}
-        </ol>
+        {!finishedId && (
+          <ol className="mb-6 flex items-center gap-2 text-sm">
+            {CHARACTER_STEPS.map((s, i) => (
+              <li
+                key={s.key}
+                className="flex items-center gap-2"
+                style={{
+                  color:
+                    i === currentIndex
+                      ? "hsl(var(--buttercupp-accent-rose))"
+                      : i < currentIndex
+                        ? "hsl(var(--buttercupp-fg))"
+                        : "hsl(var(--buttercupp-muted))",
+                  fontWeight: i === currentIndex ? 600 : 400,
+                }}
+              >
+                <span className="rounded-full border border-current px-2 py-0.5 text-xs">
+                  {i + 1}
+                </span>
+                {s.label}
+                {i < CHARACTER_STEPS.length - 1 ? (
+                  <span style={{ color: "hsl(var(--buttercupp-border))" }}>-</span>
+                ) : null}
+              </li>
+            ))}
+          </ol>
+        )}
 
         <div
           className="rounded-xl border p-6"
@@ -72,32 +63,34 @@ export function WizardShell({ children }: { children: React.ReactNode }) {
             borderColor: "hsl(var(--buttercupp-border))",
           }}
         >
-          {children}
+          {finishedId ? <GenerationStatus characterId={finishedId} /> : children}
         </div>
 
-        <div className="mt-6 flex items-center justify-between">
-          <button
-            type="button"
-            onClick={goBack}
-            disabled={currentIndex === 0}
-            className="rounded-md border px-4 py-2 text-sm disabled:opacity-50"
-            style={{ borderColor: "hsl(var(--buttercupp-border))", color: "hsl(var(--buttercupp-fg))" }}
-          >
-            Back
-          </button>
-          <button
-            type="button"
-            onClick={isLast ? handleFinish : goNext}
-            disabled={!canContinue || (isLast && saving)}
-            className="rounded-md px-4 py-2 text-sm font-semibold disabled:opacity-50"
-            style={{
-              backgroundColor: "hsl(var(--buttercupp-accent-rose))",
-              color: "hsl(var(--buttercupp-primary-fg))",
-            }}
-          >
-            {isLast ? (saving ? "Saving..." : "Finish") : "Next"}
-          </button>
-        </div>
+        {!finishedId && (
+          <div className="mt-6 flex items-center justify-between">
+            <button
+              type="button"
+              onClick={goBack}
+              disabled={currentIndex === 0}
+              className="rounded-md border px-4 py-2 text-sm disabled:opacity-50"
+              style={{ borderColor: "hsl(var(--buttercupp-border))", color: "hsl(var(--buttercupp-fg))" }}
+            >
+              Back
+            </button>
+            <button
+              type="button"
+              onClick={isLast ? handleFinish : goNext}
+              disabled={!canContinue || (isLast && saving)}
+              className="rounded-md px-4 py-2 text-sm font-semibold disabled:opacity-50"
+              style={{
+                backgroundColor: "hsl(var(--buttercupp-accent-rose))",
+                color: "hsl(var(--buttercupp-primary-fg))",
+              }}
+            >
+              {isLast ? (saving ? "Saving..." : mode === "edit" ? "Save changes" : "Finish") : "Next"}
+            </button>
+          </div>
+        )}
       </div>
 
       <aside>
@@ -112,6 +105,5 @@ export function WizardShell({ children }: { children: React.ReactNode }) {
         </div>
       </aside>
     </section>
-    </>
   );
 }

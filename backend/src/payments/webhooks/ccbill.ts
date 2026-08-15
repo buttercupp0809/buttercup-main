@@ -3,24 +3,31 @@
 // specific concatenated fields + the DataLink salt).
 
 import crypto from "node:crypto";
+import { z } from "zod";
 import type { NormalizedEvent } from "../types";
 import { normalizeTier } from "../../subscription/tier";
 
-interface CcBillPayload {
-  eventType: string;
-  subscriptionId?: string;
-  transactionId?: string;
-  clientAccnum?: string;
-  clientSubacc?: string;
-  timestamp?: string;
-  digest?: string;
-  userId?: string; // we pass buttercupp user id through as customFields[0]
-  tier?: string;
-  tokenPackId?: string;
-  amount?: string;
-  currencyCode?: string;
-  nextRenewalDate?: string;
-}
+// Shape validated at the trust boundary BEFORE verifySignature/normalize
+// ever see the body (backend/src/http/billing.ts). All fields are optional
+// strings because CCBill's DataLink postback is form-encoded and only
+// `eventType` is guaranteed present; verifySignature/normalize already
+// null-check the fields they require.
+export const ccbillWebhookSchema = z.object({
+  eventType: z.string(),
+  subscriptionId: z.string().optional(),
+  transactionId: z.string().optional(),
+  clientAccnum: z.string().optional(),
+  clientSubacc: z.string().optional(),
+  timestamp: z.string().optional(),
+  digest: z.string().optional(),
+  userId: z.string().optional(),
+  tier: z.string().optional(),
+  tokenPackId: z.string().optional(),
+  amount: z.string().optional(),
+  currencyCode: z.string().optional(),
+  nextRenewalDate: z.string().optional(),
+});
+export type CcBillPayload = z.infer<typeof ccbillWebhookSchema>;
 
 export function verifySignature(payload: CcBillPayload): boolean {
   const salt = process.env.CCBILL_DATALINK_SALT;

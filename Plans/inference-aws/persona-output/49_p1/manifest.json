@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:19:11Z",
+  "generated_at": "2026-08-15T12:35:24Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Clara stands in a sun-dappled courtyard, arms outstretched and a radiant smile as she twirls in a flowing floral sundress, the warm golden hour light casting a soft glow on her animated features and the vibrant petals she's gathered.",
-      "seed": 765532118,
+      "prompt": "In a dimly lit chamber, a captivating figure draped in sheer lace beckons an unseen admirer, her slender fingers teasingly fondling probes as her smoldering gaze invites a closer, intimate encounter amidst the warm, golden glow of candles and the sensual music of a string quartet.",
+      "seed": 1221652295,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e3704d73-23da-45bd-9f67-62eca3e4ad0a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/49.webp",
       "status": "ok",
-      "bytes": 1831854
+      "bytes": 1316520
     }
   ]
 }

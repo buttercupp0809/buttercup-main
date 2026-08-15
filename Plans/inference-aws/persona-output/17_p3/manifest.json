@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:08:42Z",
+  "generated_at": "2026-08-15T11:30:40Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Bathed in the golden hour's warm light, Chloe reclines on a plush velvet chaise, her long legs crossed and her sheer black negligee clinging to every curve as she gazes at the camera with a sultry, inviting smile, the backdrop a hazy, abstract blur of shadows and textures.",
-      "seed": 939873758,
+      "prompt": "In the shadowy recesses of an abandoned warehouse, a sultry woman in a torn fishnet bodystocking provocatively toys with probes, her crimson lipstick smeared as she makes sultry eye contact with a potential conquest, the only illumination a single flickering overhead bulb casting deep shadows across her curves.",
+      "seed": 1490527447,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/a60a1827-635e-417c-a441-b46e62231d87.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/17.webp",
       "status": "ok",
-      "bytes": 1340397
+      "bytes": 1393165
     }
   ]
 }

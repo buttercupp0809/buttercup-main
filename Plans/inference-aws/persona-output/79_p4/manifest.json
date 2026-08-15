@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:24:17Z",
+  "generated_at": "2026-08-15T13:36:47Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Inside a traditional Japanese onsen bathhouse, Lykke sits on the edge of a steaming pool, the hot water beading on her skin as she leans back to expose her breasts to the cool air, a kimono draped loosely over one shoulder as she smirks at the camera, the wood-paneled room dimly lit by candles.",
-      "seed": 99846229,
+      "prompt": "In the shadowy recesses of an abandoned warehouse, a dominatrix clad in fetish attire seductively plays with probes, her hypnotic movements and longing gaze promising an illicit encounter to the right partner, the dim lighting and graffiti-covered walls adding to the dark, dangerous allure.",
+      "seed": 1806499810,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/0e516917-dd68-401c-96cf-6a6f86051386.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/79.webp",
       "status": "ok",
-      "bytes": 1197875
+      "bytes": 1692950
     }
   ]
 }

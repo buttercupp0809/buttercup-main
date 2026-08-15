@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:54:37Z",
+  "generated_at": "2026-08-15T13:08:50Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Indigo reclines on a plush chaise in a luxurious boudoir, clad in a sheer black negligee that clings to every curve. The soft light of a single candle casts shadows on her face as she smirks, one hand drifting down to trace the lacy edge of her thong while the other toys with a dangling earring.",
-      "seed": 227359944,
+      "prompt": "On the sun-kissed deck of a yacht moored off Barcelona's Costa Brava, a stunning siren in a string bikini and glistening with sea spray lounges on a plush cushion, a silver-plated probe resting suggestively on her tanned thigh as she casts a sultry gaze out to the horizon, the shimmering Mediterranean serving as a vast, erotic playground.",
+      "seed": 162013023,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/767e25d0-d3d6-4e6e-8747-7178c5f8a06d.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/65.webp",
       "status": "ok",
-      "bytes": 1378227
+      "bytes": 1164553
     }
   ]
 }

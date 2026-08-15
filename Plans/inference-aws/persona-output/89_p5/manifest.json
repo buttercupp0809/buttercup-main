@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:45:47Z",
+  "generated_at": "2026-08-15T13:57:16Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a steamy bathroom, Vesper stands under the showerhead, water cascading over her voluptuous curves. Suds cling to her breasts and thighs, a translucent soapy film highlighting her erect nipples. Her tousled hair frames her face, and her half-lidded eyes hold a seductive intensity as she looks straight at the camera, her full lips parted in a subtle invitation.",
-      "seed": 257039110,
+      "prompt": "In a seedy backroom of a Parisian cabaret, a provocative stripper in a skimpy black corset and thigh-high stockings perches on the edge of a worn leather table, her long legs crossed as she teases her client with probes, the neon lights of the city casting a lurid glow on her sweat-glistened skin and leaving no doubt about her intentions to provide an unforgettable, carnal experience.",
+      "seed": 357869604,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/8c9f26a3-ff7e-458f-be4e-aad8eb9135ac.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/89.webp",
       "status": "ok",
-      "bytes": 1518410
+      "bytes": 1338130
     }
   ]
 }

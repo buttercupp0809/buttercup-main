@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:14:58Z",
+  "generated_at": "2026-08-15T12:31:25Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Amidst the vibrant streets of Montmartre at golden hour, Vesper twirls playfully, her loose curls fluttering in the breeze as she wears a floral sundress that clings to her curves, a DSLR camera slung over her shoulder to capture the beauty of the city.",
-      "seed": 1384225807,
+      "prompt": "In a dimly lit underground club, a stunning dominatrix with piercing eyes and porcelain skin wears a black leather corset, her long raven hair cascading down her back. She holds probes in her gloved hands, her lips parted in a sultry invitation as she leans against a velvet-draped altar, the air thick with the scent of incense and desire.",
+      "seed": 1349520834,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/336d5cce-67b5-40f7-933a-43e7322062ec.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/47.webp",
       "status": "ok",
-      "bytes": 1508826
+      "bytes": 1420958
     }
   ]
 }

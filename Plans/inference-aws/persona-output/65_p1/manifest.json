@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:53:26Z",
+  "generated_at": "2026-08-15T13:07:43Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Indigo perches on a colorful vintage scooter, grinning at the camera as golden hour light bathes her in a warm glow. Wearing a flowy sundress and strappy sandals, she's surrounded by Barcelona's vibrant street art, her ponytail bouncing with each laugh.",
-      "seed": 254567930,
+      "prompt": "In a dimly lit, sumptuous boudoir, a statuesque beauty reclines on satin sheets, her curves barely contained by lacy lingerie as she languidly teases a sleek, chrome probe with a painted red nail, her bedroom eyes locked on the viewer with a sultry promise of forbidden pleasures.",
+      "seed": 1207006676,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/682b7ac1-5a97-4c2a-8c45-f7d48acd754f.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/65.webp",
       "status": "ok",
-      "bytes": 1480871
+      "bytes": 1268372
     }
   ]
 }

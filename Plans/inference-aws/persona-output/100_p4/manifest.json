@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:09:44Z",
+  "generated_at": "2026-08-15T14:18:58Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Phoebe struts down a deserted, moonlit alley in New Orleans, her thong-clad rear and stiletto heels prominent as she moves, a sheer, black lace bra leaving her nipples exposed, the camera's wide-angle lens capturing the gritty urban backdrop and her confident, seductive stride.",
-      "seed": 80000084,
+      "prompt": "Amidst the opulent decadence of an exclusive underground club, a stunning dominatrix holds court, her regal beauty and commanding presence drawing in a coterie of eager worshippers as she teases a submissive with probes, her piercing gaze and sultry voice commanding their undivided attention.",
+      "seed": 1945313741,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/929e4655-0bdd-4439-b6f6-a0fbb54c7dce.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/100.webp",
       "status": "ok",
-      "bytes": 1367701
+      "bytes": 1728710
     }
   ]
 }

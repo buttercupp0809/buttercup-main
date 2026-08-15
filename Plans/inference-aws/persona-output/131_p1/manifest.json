@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:15:24Z",
+  "generated_at": "2026-08-15T15:21:11Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Golden hour glow bathes Vesper's face as she giggles with abandon, twirling in a vibrant market square amidst colorful lanterns and bustling stalls, her embroidered kaftan fluttering around her toned legs, her long hair a wild tangle of curls framing her carefree smile, captured in a shallow focus DSLR shot.",
-      "seed": 1664642415,
+      "prompt": "In the golden hour glow of a rooftop bar overlooking Istanbul's skyline, a statuesque beauty in a red silk dress poses seductively with probes, her smoky eyes and sultry smile beckoning an admirer to join her for a private, sensual encounter.",
+      "seed": 1049391123,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/46b40751-aee1-4cd9-bde4-712c0c24d861.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/131.webp",
       "status": "ok",
-      "bytes": 1577912
+      "bytes": 1254937
     }
   ]
 }

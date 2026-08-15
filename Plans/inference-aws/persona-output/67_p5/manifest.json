@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:59:15Z",
+  "generated_at": "2026-08-15T13:13:17Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a plush, velvet chaise in a dimly lit, antique-filled boudoir, Clara reclines, one leg bent at the knee, the other extended along the cushions, her Victorian-style corset and shorts leaving little to the imagination, a macro lens zooms in on the intricate lace trim of her corset as she looks up at the camera with a sultry, half-lidded gaze, the soft light and shadows accentuating the curves of her body.",
-      "seed": 1565272299,
+      "prompt": "In a dingy motel room, a woman's back arches in ecstasy as a man's hands roam her curves, a trail of silken ties and probes scattered across the bed beside them. The camera captures a close-up shot, the woman's eyes rolled back in pleasure, her lips parted in a silent moan as the man's fingers tease her nipples, the harsh fluorescent light overhead casting an eerie, high-contrast glow on their entwined bodies.",
+      "seed": 1015220430,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/2ffe10dd-c5a5-4c3a-91d9-20165c4f41c1.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/67.webp",
       "status": "ok",
-      "bytes": 1582054
+      "bytes": 914276
     }
   ]
 }

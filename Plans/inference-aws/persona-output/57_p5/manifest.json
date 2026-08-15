@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:38:07Z",
+  "generated_at": "2026-08-15T12:52:57Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit Prague bathhouse, Vesper sits on the edge of a steaming tub, her skin glistening with moisture as she leans back, her lacy bralette and high-waisted panties barely concealing her curves, a kimono draped over one shoulder, her raven tresses tumbling down her back, her half-closed eyes fixed on the viewer with an unmistakable invitation.",
-      "seed": 1360693169,
+      "prompt": "Amidst the lush foliage of a secret garden, a scantily-clad woman, her skin glistening with dew, provocatively toys with sex aids while making come-hither gestures, her sultry demeanor promising an illicit encounter for the right partner as the warm sunlight filters through the leaves, capturing the intimacy of the moment in a shallow depth of field.",
+      "seed": 1145633910,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/f39f8f49-b02a-40cf-910c-4c5ad78e0d12.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/57.webp",
       "status": "ok",
-      "bytes": 1120419
+      "bytes": 1804688
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:20:04Z",
+  "generated_at": "2026-08-15T13:32:44Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Clio lounges on a weathered stone bench in a secluded, moonlit temple garden, her body barely concealed by a flowing white toga that has slipped off one shoulder, her gaze direct and alluring as she reaches down to gently caress her exposed thigh.",
-      "seed": 1551966982,
+      "prompt": "In a dimly lit, shadowy alleyway, a mysterious woman in a sheer nightgown coyly toys with probes, her longing gaze and sultry movements promising a forbidden tryst to any brave enough to approach, the city's distant hum and the glow of streetlights casting an air of secrecy and danger.",
+      "seed": 839537160,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/2b606dbf-5881-4f26-8888-5662b9606719.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/77.webp",
       "status": "ok",
-      "bytes": 1394996
+      "bytes": 1329879
     }
   ]
 }

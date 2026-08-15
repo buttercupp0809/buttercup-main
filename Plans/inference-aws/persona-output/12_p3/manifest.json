@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T22:58:01Z",
+  "generated_at": "2026-08-15T11:20:13Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Amidst the icy grandeur of a snow-covered forest, Hazel stands with her back to a towering evergreen, her fur-trimmed coat open to reveal a lacy bralette and high-waisted panties. Frost glistens on her skin, and her breath mists the chilly air as she looks over her shoulder, a smirk playing on her lips. The camera captures her in a shallow depth of field, emphasizing her exposed flesh.",
-      "seed": 1867630814,
+      "prompt": "On a moonlit beach, a scantily-clad woman in a shimmering silver bikini walks towards the camera, hips swaying hypnotically as she holds aloft a gleaming silver sex toy, her eyes locked on the viewer with a provocative challenge, the sound of waves gently lapping at the shore and the distant hum of a beach party creating a sensual, almost primal atmosphere.",
+      "seed": 552680631,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/dc6514a5-6cee-4c11-b787-de48e4a0a98e.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/12.webp",
       "status": "ok",
-      "bytes": 1360890
+      "bytes": 1132078
     }
   ]
 }

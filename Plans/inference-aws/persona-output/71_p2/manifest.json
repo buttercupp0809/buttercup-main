@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:06:29Z",
+  "generated_at": "2026-08-15T13:20:08Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Odessa lounges on a balcony overlooking Copacabana Beach at dusk, the soft glow of streetlights casting long shadows across her lithe form draped in a sheer white robe, her tousled hair and languid pose evoking a sultry, invitation-filled mood.",
-      "seed": 194388523,
+      "prompt": "In a dimly lit, velvet-draped chamber, a dominatrix clad in leather and lace slowly unbuttons her top, her eyes smoldering with desire as she beckons her latest playmate closer with a probing gaze and a teasing gesture with a studded leather glove.",
+      "seed": 75435239,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/88470883-7b31-49c1-b394-d2355e16c570.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/71.webp",
       "status": "ok",
-      "bytes": 1217663
+      "bytes": 1416472
     }
   ]
 }

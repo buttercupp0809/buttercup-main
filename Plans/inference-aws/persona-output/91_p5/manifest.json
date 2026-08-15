@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:50:00Z",
+  "generated_at": "2026-08-15T14:01:12Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a deserted beach at dawn, Clio emerges from the surf, her tiny string bikini gleaming with sea spray, the rising sun casting long shadows across her body as she kneels on the sand, her tousled hair blowing in the ocean breeze, her eyes locked on the camera with a sultry, inviting gaze.",
-      "seed": 764870687,
+      "prompt": "Amidst the opulent decor of a private yacht, the setting sun casting a warm, golden light through the windows, a stunning couple in revealing swimwear engage in intimate foreplay, their hands holding probes as they gaze into each other's eyes, the camera positioned for a dramatic, sweeping shot that captures the lavish surroundings and the passion of their encounter.",
+      "seed": 961680498,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/52447e89-8dcd-4f8e-ada9-0827c3d4d123.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/91.webp",
       "status": "ok",
-      "bytes": 1189356
+      "bytes": 1273514
     }
   ]
 }

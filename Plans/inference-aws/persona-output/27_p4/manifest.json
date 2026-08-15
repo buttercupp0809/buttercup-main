@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:31:11Z",
+  "generated_at": "2026-08-15T11:50:59Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a steaming bathroom, Ophelia stands beneath the showerhead, water cascading over her voluptuous body, creating a mesmerizing veil that obscures her face and obscures the details of her breasts and genital area, except for the enticing curves of her buttocks and the trail of water running down her inner thigh. Slick, soapy suds cling to her skin, highlighting the contours of her form as the soft light of the bathroom casts a warm glow on her wet, glistening flesh.",
-      "seed": 1184921117,
+      "prompt": "A dominatrix clad in black PVC attire stands in the center of an abandoned warehouse, probes at her feet. Her piercing blue gaze scans the shadows, searching for her next conquest. The only light comes from a few, flickering overhead bulbs, casting harsh, industrial shadows across her toned physique and the graffiti-covered walls. She exudes a palpable aura of danger and lust, her presence both intimidating and alluring.",
+      "seed": 856512727,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/3d873f58-b785-4b09-8128-442abe485257.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/27.webp",
       "status": "ok",
-      "bytes": 1469544
+      "bytes": 1469445
     }
   ]
 }

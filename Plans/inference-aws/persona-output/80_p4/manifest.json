@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:26:24Z",
+  "generated_at": "2026-08-15T13:38:46Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the intimate, steamy atmosphere of a rustic bathhouse, Ophelia sits on the edge of a wooden tub, her back arched as she leans back to expose her breasts to the camera, rivulets of water cascading down her skin, a single, dripping strand clinging to her pert nipple, her sultry gaze locked with the viewer's as if inviting them into her private sanctuary.",
-      "seed": 43628020,
+      "prompt": "In a secret underground dungeon, a stunning dominatrix in a black, latex catsuit stands over her bound, submissive partner, a riding crop in hand as she teases his nipples with a cold, metal tongue, the dim red glow of glow sticks casting an eerie, sensual light on their entwined bodies.",
+      "seed": 1890726531,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/2260f4f4-5883-4de7-8cec-222c405ec819.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/80.webp",
       "status": "ok",
-      "bytes": 1339533
+      "bytes": 1070684
     }
   ]
 }

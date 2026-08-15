@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:22:24Z",
+  "generated_at": "2026-08-15T14:31:11Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Frosted winter wonderland - Juniper stands in a snow-covered forest glade, her fur-trimmed coat open to reveal a lacy bralette and high-waisted panties underneath. Her breath mists in the frigid air as she tilts her head back, smirking with cold-pink lips. The camera focuses on her exposed midriff and the way the snowflakes catch on her eyelashes, creating a sensual, wintry scene.",
-      "seed": 286552327,
+      "prompt": "In a lavish, ornate bedroom, a dominatrix in a leather corset and stiletto heels kneels on a plush carpet, probes in hand as she gazes up at the viewer with a commanding, lustful gaze, the warm glow of candles and the soft focus of the camera creating an intimate, sensual mood.",
+      "seed": 122834213,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/ee13018f-ff02-4db2-84ef-b66d7e9dc83b.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/106.webp",
       "status": "ok",
-      "bytes": 1444576
+      "bytes": 1397277
     }
   ]
 }

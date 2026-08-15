@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:06:36Z",
+  "generated_at": "2026-08-15T11:28:34Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Bathed in the golden glow of late afternoon, Zoe lounges on a weathered wooden dock, her tiny string bikini glistening with dew as she dangles her legs in the sea, her long lashes shielding her eyes from the sun's intensity, an air of languid contentment surrounding her.",
-      "seed": 745237126,
+      "prompt": "Amidst the vibrant colors and lively energy of a bustling Athenian market, a stunning woman in a tight, crimson tank top and short denim skirt playfully teases a potential suitor with probes, her full lips curled into a seductive smile as she bounces and twirls, the DSLR camera capturing her in a shallow depth of field, the busy street scene blurred in the background.",
+      "seed": 1366141522,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/d5822deb-629d-4f8f-91c8-2a90f7d1e68a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/16.webp",
       "status": "ok",
-      "bytes": 1495111
+      "bytes": 1273932
     }
   ]
 }

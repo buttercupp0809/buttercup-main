@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 
@@ -17,6 +17,15 @@ const geist = Geist({
 export const metadata: Metadata = {
   title: "ButterCupp",
   description: "companions built for adults.",
+};
+
+// viewportFit: "cover" lets the layout draw edge to edge on notched/home-bar
+// devices so env(safe-area-inset-*) resolves to a real value instead of 0
+// everywhere (used by the .pt-safe/.pb-safe/.px-safe utilities in globals.css).
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

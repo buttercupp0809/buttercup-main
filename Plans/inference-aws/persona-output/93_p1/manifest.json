@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:52:37Z",
+  "generated_at": "2026-08-15T14:03:42Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Lyra laughs heartily as she tosses back a pint of Guinness in a lively Dublin pub, her vibrant green eyes sparkling in the warm golden hour light as the sun sets through the stained glass windows. DSLR camera captures her joy in a shallow depth of field, focusing on her smiling face and outstretched arms as the bustling pub scene fades into the background.",
-      "seed": 20736496,
+      "prompt": "Amidst the warm glow of a late afternoon golden hour, a striking woman with fiery locks and piercing green eyes poses on a weathered dock, her fitted white tank top and high-waisted denim shorts accentuating her toned physique as she beckons a passerby with a flirtatious finger, the DSLR's shallow depth of field highlighting her inviting smile and the shimmering water behind her.",
+      "seed": 551710440,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/8887b531-bc30-414b-a0e5-fc3f5603b046.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/93.webp",
       "status": "ok",
-      "bytes": 1536269
+      "bytes": 1189649
     }
   ]
 }

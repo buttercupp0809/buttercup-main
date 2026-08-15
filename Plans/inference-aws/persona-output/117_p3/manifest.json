@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:45:27Z",
+  "generated_at": "2026-08-15T14:53:09Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Intimate, candlelit boudoir. Vesper reclines on a plush, four-poster bed, wearing only a sheer, crimson robe that leaves little to the imagination. She runs a hand through her tousled, chestnut hair as she looks directly at the viewer with a sultry, hooded gaze, her full lips parted slightly.",
-      "seed": 1066249792,
+      "prompt": "In a cozy, candlelit apartment, a scantily-clad model provocatively plays with probes, her come-hither gestures and sultry eye contact promising an explosive encounter. The warm, intimate lighting and shallow depth of field create a sense of closeness, as if the viewer is part of the erotic game unfolding before them.",
+      "seed": 576044662,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e59202b3-1666-4056-bfe1-6457c4af72e0.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/117.webp",
       "status": "ok",
-      "bytes": 1175433
+      "bytes": 1044572
     }
   ]
 }

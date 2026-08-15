@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:26:41Z",
+  "generated_at": "2026-08-15T14:35:19Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a deserted beach at dawn, Ophelia kneels in the sand, wind-blown hair and tiny string bikini glistening with dew as she turns to face the rising sun, her sultry expression and provocative pose beckoning the photographer closer.",
-      "seed": 1885450099,
+      "prompt": "In a dimly lit room, a woman dressed in fetish attire - a leather corset, fishnet stockings, and stiletto heels - seductively plays with probes, her eyes fixed longingly on an unseen partner. A single flickering candle casts dramatic shadows across her curves as she beckons him near.",
+      "seed": 301115395,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/189094aa-61da-406e-b14c-96d71803e61e.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/108.webp",
       "status": "ok",
-      "bytes": 1186410
+      "bytes": 1042545
     }
   ]
 }

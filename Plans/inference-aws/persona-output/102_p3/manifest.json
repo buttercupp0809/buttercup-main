@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:13:35Z",
+  "generated_at": "2026-08-15T14:22:51Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit backstage area, Piper leans against a worn brick wall, a corset and fishnets accentuating her toned physique as she fixes her makeup in a handheld mirror, her tousled hair cascading down her back, the soft focus of the camera emphasizing her eyes' smoky intensity and inviting lips, a single spotlight casting long shadows across the concrete floor.",
-      "seed": 1595325048,
+      "prompt": "In an opulent, candlelit bedroom, a woman in lacy lingerie holds probes, her sultry expression and provocative pose inviting an unseen partner to join her beneath the silk sheets, as a DSLR lens frames the intimate scene with a cinematic flair.",
+      "seed": 618829571,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/903e93c6-992c-494a-8fac-6def48ab5ac5.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/102.webp",
       "status": "ok",
-      "bytes": 1413061
+      "bytes": 1173687
     }
   ]
 }

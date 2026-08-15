@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:27:35Z",
+  "generated_at": "2026-08-15T12:43:32Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Golden hour dapples the rugged Icelandic landscape as Freya frolics through a field of wildflowers, her long, dark hair fluttering in the breeze, a bright smile illuminating her flushed cheeks beneath a straw hat, a carefree spirit embracing the beauty of nature.",
-      "seed": 1035247483,
+      "prompt": "A sultry temptress, clad in a sheer black negligee, reclines on a velvet chaise longue, her legs elegantly crossed as she languidly totes a strap-on dildo. The soft focus of a DSLR lens captures her in the warm glow of a golden hour, the shallow depth of field drawing attention to her seductive gaze and inviting lips.",
+      "seed": 543747959,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/60eaec68-8327-4f98-857a-825c25a43d2c.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/53.webp",
       "status": "ok",
-      "bytes": 1464131
+      "bytes": 1267353
     }
   ]
 }

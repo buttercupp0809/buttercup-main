@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:06:26Z",
+  "generated_at": "2026-08-15T15:12:45Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a steamy, dimly lit bathroom, Clara stands under the spray of a hot shower, rivulets of water cascading over her curves as she reaches for a towel, her skin glistening with moisture, a delicate necklace of pearls resting between her breasts, her eyes hooded with a sensual, almost feral intensity.",
-      "seed": 13507743,
+      "prompt": "On the deck of a luxurious yacht, a sultry seductress lounges on a plush, crimson cushion, her toned legs crossed as she toys with a glimmering, diamond-encrusted clit ring. The setting sun casts a warm, golden glow over her sun-kissed skin and long, raven tresses. She meets the viewer's gaze with a sly, inviting smile, her full lips parted as if beckoning them to join her in the sea of desire that surrounds her.",
+      "seed": 1167653132,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/73e73e3c-1db7-4862-a89c-604e5a1188d1.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/126.webp",
       "status": "ok",
-      "bytes": 1453383
+      "bytes": 1168460
     }
   ]
 }

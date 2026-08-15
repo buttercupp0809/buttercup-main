@@ -119,6 +119,17 @@ model User {
   ageVerificationLevel   AgeVerificationLevel @default(none)
   tosAcceptedAt          DateTime?
   privacyAcceptedAt      DateTime?
+  // Phase 29: versioned consent gate. consentAcceptedAt is the timestamp of
+  // the most recent accept; acceptedPolicyVersion is compared against
+  // POLICY_VERSION (frontend/lib/consent.ts) to decide whether the gate
+  // reshows. Both additive/nullable: null acceptedPolicyVersion means "never
+  // accepted the current version" and the modal shows.
+  consentAcceptedAt      DateTime?
+  acceptedPolicyVersion  String?
+  // Phase 24: once-flag for the magical onboarding wizard. Lives on User
+  // (not in JSON) because the (protected) layout reads it on every request;
+  // it must stay a single cheap column read. Null means "run the wizard".
+  completedOnboardingAt  DateTime?
   createdAt              DateTime             @default(now())
   updatedAt              DateTime             @updatedAt
 
@@ -134,6 +145,35 @@ model User {
   crisisEvents           CrisisEvent[]
   magicLinks             MagicLink[]
   reelLikes              ReelLike[]
+  profile                UserProfile?
+  // Phase 30: memory graph back-relations (see model MemoryEntity / MemoryEdge
+  // below). Additive; every read/write on these is also scoped by characterId.
+  memoryEntities         MemoryEntity[]
+  memoryEdges            MemoryEdge[]
+  // Phase 30: user-set conversational rulebook (see model UserRule below).
+  userRules              UserRule[]
+}
+
+// Phase 24: additive 1:1 onboarding profile. Kept separate from User because
+// (a) these fields are optional and evolve independently of auth/billing
+// fields, keeping the hot User row lean, (b) a dedicated table lets us
+// index/extend taste fields later without more User columns, (c) Json for
+// the free-form taste blob avoids a column explosion while the shape
+// stabilizes. Every field is nullable; there is no backfill, so this
+// migration is safe for existing users (they get profile = null until they
+// complete onboarding once).
+model UserProfile {
+  id           String   @id @default(uuid())
+  userId       String   @unique
+  displayName  String?
+  gender       String?
+  // Free-form taste blob: { vibe, interests: string[], companionGoal }.
+  // Kept as Json to avoid a column explosion while the shape stabilizes.
+  preferences  Json?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model AgeVerification {
@@ -540,6 +580,30 @@ enum CharacterMediaKind {
 // owns lives here as a row. `url` is the stored link (an S3/CloudFront URL in
 // production, a /public path in local dev). One persona has many media; this
 // is the table that lets a character carry multiple images AND multiple reels.
+//
+// =============================================================================
+// HIDDEN MEDIA CONVENTION (permanent, not a one-time cleanup, read this first)
+// =============================================================================
+// `hidden` marks a row as retired from every user-facing surface while
+// PRESERVING it (in the DB and in S3/disk) for audit/history. Hiding is
+// additive and reversible by design:
+//   - Hidden rows are NEVER deleted, from Postgres, S3, or local disk.
+//   - Hidden rows MUST NEVER be selected/rendered by ANY read site. Every
+//     query that lists CharacterMedia for display purposes (chat page,
+//     PersonaPanel, CharacterCard, gallery/discover grid, dashboard recents,
+//     public character detail, marketing landing, reels, and anything added
+//     later) MUST filter `hidden: false` (or an equivalent explicit
+//     exclusion) in its `where` clause. There is no such thing as a read site
+//     that is exempt from this rule.
+//   - This was introduced when the stock/placeholder `/personas/N.webp`
+//     reference images (seeded only to bootstrap face-consistency generation,
+//     never real generated content) were hidden in favor of real
+//     Juggernaut-generated images. The same convention applies to any future
+//     media that needs to be retired without losing history.
+// If you are adding a new query against CharacterMedia, assume you must add
+// `hidden: false` to it unless you have an explicit, documented reason not to
+// (e.g. an admin/audit tool that intentionally needs to see hidden rows).
+// =============================================================================
 model CharacterMedia {
   id          String             @id @default(uuid())
   characterId String
@@ -548,6 +612,17 @@ model CharacterMedia {
   // Primary image = the avatar shown on cards. Exactly one per character is
   // expected to be true, enforced by the seed/writer, not the DB.
   isPrimary   Boolean            @default(false)
+  // Free/public image: the one shown on cards, avatars, chat-top, landing.
+  // Exactly one per character is expected to be true (writer-enforced, like
+  // isPrimary). Decoupled from isPrimary so the hero/paywalled asset and the
+  // free/display asset can be different rows.
+  isDisplay   Boolean            @default(false)
+  // Retired-but-preserved flag. See the HIDDEN MEDIA CONVENTION block above
+  // the model: hidden rows stay in the database (and their backing file stays
+  // in S3/disk) forever for audit/history, but must never be read by any
+  // display query. Default false so every pre-existing and newly written row
+  // is visible unless explicitly hidden.
+  hidden      Boolean            @default(false)
   // Optional caption/title for videos (and future images).
   title       String?
   // Seed like count for video reels; per-user ReelLike rows are added on top.
@@ -558,4 +633,98 @@ model CharacterMedia {
 
   @@index([characterId, kind])
   @@index([kind])
+  @@index([characterId, isDisplay])
+  @@index([characterId, hidden])
+}
+
+// =============================================================================
+// Phase 30: memory graph (entities + edges) and user rulebook
+// =============================================================================
+//
+// Lineage: this graph design descends from Supermemory (typed-relation graph,
+// entity nodes) and Mem0 (extract-then-consolidate memory layer with graph
+// links). Poppy already implements the extract stage (Phase 05, model
+// Memory); these two models add the link + consolidate stage on top, additive
+// and local-only, ported from the sibling Pellow project.
+//
+// `sourceId` / `targetId` on MemoryEdge reference Memory.id but are
+// INTENTIONALLY NOT declared as foreign keys. Pellow keeps this reference
+// loose so that pruning/tiering a memory never cascade-deletes an edge; a
+// dangling edge is swept in a later maintenance pass instead. Poppy mirrors
+// this. Every row also carries BOTH userId AND characterId (unlike Pellow,
+// which is single-companion and keys by userId alone): this pair is the
+// isolation boundary so a fact/entity for character A never surfaces for
+// character B, same user.
+
+// A stable person (or other entity kind) that recurs across a user's
+// memories for one character, e.g. "Sam, the user's sister". Upserted by the
+// extractor (see llm/memory-extractor.ts) on (userId, characterId, kind,
+// normalizedName) so naming the same person twice never creates a duplicate.
+model MemoryEntity {
+  id             String   @id @default(uuid())
+  userId         String
+  characterId    String
+  kind           String   @default("person")
+  name           String
+  normalizedName String
+  relation       String?
+  sentiment      Float?
+  aliases        String[] @default([])
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  user  User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  edges MemoryEdge[]
+
+  @@unique([userId, characterId, kind, normalizedName])
+  @@index([userId, characterId, kind])
+}
+
+// A typed relation between two memories, or between a memory and an entity.
+// relation is one of "about_person" (memory -> entity), "extends" (memory ->
+// nearest vector neighbor memory), or "derives" (dreaming-derived insight ->
+// cluster member). Nullable targetId means multiple NULL-targetId rows can
+// share the same (sourceId, relation) under Postgres NULL-distinct unique
+// semantics, matching Pellow.
+model MemoryEdge {
+  id          String   @id @default(uuid())
+  userId      String
+  characterId String
+  sourceId    String
+  targetId    String?
+  entityId    String?
+  relation    String
+  weight      Float    @default(0.5)
+  label       String?
+  createdBy   String   @default("extraction")
+  createdAt   DateTime @default(now())
+
+  user   User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  entity MemoryEntity? @relation(fields: [entityId], references: [id], onDelete: Cascade)
+
+  @@unique([sourceId, targetId, relation])
+  @@index([userId, characterId, sourceId])
+  @@index([userId, characterId, targetId])
+  @@index([entityId])
+}
+
+// Phase 30: user-set conversational rulebook, ported from Pellow's
+// UserRule table. getActiveRules() feeds an OWNER RULES prompt layer.
+// Keyed by (userId, characterId) since poppy is multi-character (Pellow
+// keys by userId alone).
+model UserRule {
+  id              String   @id @default(uuid())
+  userId          String
+  characterId     String
+  ruleText        String
+  instruction     String
+  sourceMessageId String?
+  status          String   @default("active")
+  timesReinforced Int      @default(1)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, characterId, status])
 }

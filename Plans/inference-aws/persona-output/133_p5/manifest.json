@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:21:17Z",
+  "generated_at": "2026-08-15T15:26:37Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On the rooftop of a traditional Athenian house, Clio leans against a stone parapet, her legs crossed and her feet dangling above the cobblestone streets below, a sheer black negligee leaving little to the imagination as the city lights twinkle in the distance, the silhouette of the Acropolis a dark shadow against the night sky, the only light a single candle flickering at her feet.",
-      "seed": 288358777,
+      "prompt": "Amidst the vibrant colors and lively energy of a Greek taverna, a scantily-clad woman provocatively manipulates probes as she regales her friends with tales of mythological lovers, her sultry demeanor and inviting smile promising a night of sensual revelry under the starry Athenian sky.",
+      "seed": 218896723,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/5e01e096-8b18-401c-a69a-a242e01a7d09.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/133.webp",
       "status": "ok",
-      "bytes": 1633357
+      "bytes": 1164372
     }
   ]
 }

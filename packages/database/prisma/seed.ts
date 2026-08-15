@@ -200,9 +200,21 @@ async function upsertPersona(p: Persona): Promise<string> {
     },
   });
 
-  let character = await prisma.character.findFirst({
-    where: { ownerUserId: null, name: p.name },
+  // Identity is the seed image URL, NOT the character name. sync-personas.ts
+  // renames these characters to persona-list canonical names after seed.ts
+  // creates them; a subsequent seed run therefore never re-matches by name
+  // and used to create a SECOND Character per persona (the exact root cause
+  // of the historical duplicate-Character rows dedupe-characters.ts cleans
+  // up). The /personas/N.webp media row is hidden by hide-external-media.ts
+  // but preserved by design (see the HIDDEN MEDIA CONVENTION in
+  // schema.prisma), so it remains a stable natural key for identity here.
+  const existingMedia = await prisma.characterMedia.findFirst({
+    where: { url: p.image, character: { ownerUserId: null } },
+    select: { characterId: true },
   });
+  let character = existingMedia
+    ? await prisma.character.findUnique({ where: { id: existingMedia.characterId } })
+    : null;
   if (!character) {
     character = await prisma.character.create({
       data: {
@@ -248,20 +260,46 @@ async function upsertPersona(p: Persona): Promise<string> {
     },
   });
 
-  // Rebuild media every run (idempotent). Primary image + assigned reels.
-  await prisma.characterMedia.deleteMany({ where: { characterId: character.id } });
-  await prisma.characterMedia.createMany({
-    data: [
-      { characterId: character.id, kind: "image" as const, url: p.image, isPrimary: true, sort: 0 },
-      ...p.videos.map((url, i) => ({
+  // Rebuild media every run, but scoped: only the seed persona image and the
+  // reels are rebuilt. Imported Juggernaut variants (see
+  // import-generated-variants.ts) and any hidden legacy rows are NEVER
+  // touched here so a re-seed does not erase real generated content or drop
+  // the retained-but-hidden `/personas/N.webp` audit row.
+  //
+  // The persona image row is INSERTED only when missing; if it already exists
+  // (e.g. hidden by hide-external-media.ts) its existing hidden/isPrimary/
+  // isDisplay flags are preserved so we don't re-promote a retired reference
+  // image over an imported real one.
+  const existingSeedImage = await prisma.characterMedia.findFirst({
+    where: { characterId: character.id, url: p.image },
+    select: { id: true },
+  });
+  if (!existingSeedImage) {
+    await prisma.characterMedia.create({
+      data: {
+        characterId: character.id,
+        kind: "image",
+        url: p.image,
+        isPrimary: true,
+        isDisplay: true,
+        sort: 0,
+      },
+    });
+  }
+  await prisma.characterMedia.deleteMany({
+    where: { characterId: character.id, kind: "video" },
+  });
+  if (p.videos.length > 0) {
+    await prisma.characterMedia.createMany({
+      data: p.videos.map((url, i) => ({
         characterId: character.id,
         kind: "video" as const,
         url,
         likesBase: likesBaseFor(url),
         sort: i,
       })),
-    ],
-  });
+    });
+  }
 
   return character.id;
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:09:07Z",
+  "generated_at": "2026-08-15T11:31:02Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Chloe perches on the edge of a king-size bed, clad in a lacy black bra and matching thong, her back arched and her breasts thrust forward as she looks over her shoulder, a sultry, 'come hither' expression on her face, the dim ambient light casting deep shadows across her skin.",
-      "seed": 85755351,
+      "prompt": "A model in a provocative black leather bodysuit and fishnet stockings kneels on a plush leather couch in a dimly lit VIP room, probes in hand as she gazes up at an unseen client through heavy lidded eyes, her full lips parted in a seductive invitation amidst the neon-lit cityscape visible through the tinted window behind her.",
+      "seed": 1666588778,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/9d65503c-6ed9-4d64-9773-e99fbb75ef91.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/17.webp",
       "status": "ok",
-      "bytes": 1164571
+      "bytes": 1458834
     }
   ]
 }

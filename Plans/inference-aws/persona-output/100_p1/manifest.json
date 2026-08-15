@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:08:31Z",
+  "generated_at": "2026-08-15T14:17:45Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Phoebe's laughter echoes through a vibrant French Quarter courtyard as she twirls in a flowing sundress under the warm glow of golden hour, DSLR camera capturing her joy and carefree spirit in a shallow depth of field against a cinematic backdrop of ancient brick walls and lush greenery.",
-      "seed": 516320203,
+      "prompt": "A sultry dancer in a neon-lit club, her body glistening with sweat, beckons to an unseen admirer while provocatively twirling a probe, the strobing lights casting a mesmerizing glow across her curves.",
+      "seed": 1995157,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/cc50f255-10b9-4b09-a23e-405026bb7d20.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/100.webp",
       "status": "ok",
-      "bytes": 1619537
+      "bytes": 1128038
     }
   ]
 }

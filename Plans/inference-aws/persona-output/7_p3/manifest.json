@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T22:47:11Z",
+  "generated_at": "2026-08-15T11:10:09Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Snowflakes gently fall around Lily as she stands at the edge of a frozen pond, her fur-trimmed coat open to reveal a lacy bralette and high-waisted panties. The icy landscape stretches out behind her, and the camera's shallow depth of field isolates her figure against the abstract textures of snow and shadow. Her lips curl into a cold, smirk as she meets the viewer's gaze, her eyes gleaming with mischief.",
-      "seed": 389179053,
+      "prompt": "With a provocative hand gesture, a model in a barely-there black ensemble holds a probe, her sultry gaze locked on an unseen admirer in the dimly lit, upscale nightclub as the DJ spins a seductive beat.",
+      "seed": 809550146,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/0aa834da-a148-4a7a-b73f-1ff2bca9b061.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/7.webp",
       "status": "ok",
-      "bytes": 1111165
+      "bytes": 1030693
     }
   ]
 }

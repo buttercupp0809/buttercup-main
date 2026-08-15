@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:06:57Z",
+  "generated_at": "2026-08-15T15:13:14Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Ruby strides along the sun-drenched Sydney beach at golden hour, her smile radiant as she tosses a beach ball in the air. Wearing a colorful sundress and sunglasses, she looks carefree and joyful, the Opera House looming in the distance behind her.",
-      "seed": 377040607,
+      "prompt": "In the warm glow of a golden hour sunset, a woman in a revealing, skin-tight bodysuit provocatively holds probes, her long legs crossed and one stiletto heel hooked on the other as she gazes directly at the camera, her sultry expression and tantalizing pose inviting a closer look.",
+      "seed": 1212445732,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/cbf8b97e-09fd-44ce-871e-c80b7efe0433.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/127.webp",
       "status": "ok",
-      "bytes": 1432584
+      "bytes": 963107
     }
   ]
 }

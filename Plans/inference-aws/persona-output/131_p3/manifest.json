@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:16:12Z",
+  "generated_at": "2026-08-15T15:21:56Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Against the backdrop of a snow-dusted Ottoman palace, Vesper stands with her back to a massive archway, her fur-trimmed coat slung open to reveal a sheer black bra and high-waisted red panties, the cold air causing her nipples to pebble against the fabric as she gazes over her shoulder with a smoldering intensity, her long hair billowing in the wind.",
-      "seed": 1462915946,
+      "prompt": "In the hazy, dreamlike ambiance of a seedy nightclub, a sultry seductress in a revealing top and short skirt holds probes and makes suggestive hand gestures, her heavy-lidded eyes locking onto an unseen suitor as the pulsating music and flashing lights set the mood for a wild, depraved night.",
+      "seed": 1471445969,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/694d16fd-f38b-418d-88bc-48a0fa587157.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/131.webp",
       "status": "ok",
-      "bytes": 1410089
+      "bytes": 1177350
     }
   ]
 }

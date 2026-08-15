@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:26:17Z",
+  "generated_at": "2026-08-15T14:34:57Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a secluded alleyway, Ophelia's leather corset and fishnet stockings cast shadows on the damp pavement as she crouches down, hands on knees, her thong-clad derri\u00e8re offered invitingly to the camera's lens in the seedy, moonlit atmosphere.",
-      "seed": 1483113458,
+      "prompt": "Perched on a plush velvet couch, a model in a skin-tight red dress provocatively gestures with probes, her sultry gaze locked on an unseen admirer. Soft focus and cinematic lighting create an air of sensual mystery as she invites him to join her forbidden pleasures.",
+      "seed": 19574047,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/a21100bb-5a8d-450a-839d-38f8b3c1727d.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/108.webp",
       "status": "ok",
-      "bytes": 1565681
+      "bytes": 1302777
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:15:26Z",
+  "generated_at": "2026-08-15T13:28:28Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Standing before a intricately tiled mosque entrance, Vesper's sheer, diaphanous robe clings to her curves as she pauses to adjust a gold headpiece, her profile framed by the mosque's stately arches and the soft, diffused light of early morning.",
-      "seed": 1402000903,
+      "prompt": "Amidst the dimly lit opulence of a secret underground club, a stunning dominatrix holds court, her regal beauty and commanding presence drawing in a coterie of eager worshippers, her black leather corset and thigh-high boots accentuating her curves as she teases a helpless submissive with probes.",
+      "seed": 1915168312,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/ba03a606-9459-4a47-b7f4-011a2f2c8e7e.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/75.webp",
       "status": "ok",
-      "bytes": 1982565
+      "bytes": 1064842
     }
   ]
 }

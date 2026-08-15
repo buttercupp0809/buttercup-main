@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:56:44Z",
+  "generated_at": "2026-08-15T13:10:48Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Astrid straddles a vintage motorcycle in a gritty urban alley, her leather corset and fishnet stockings a bold contrast to the industrial surroundings. The low light and harsh shadows emphasize her daring attitude as she looks directly at the camera with a sly, come-hither smile, her thong-clad derri\u00e8re presented in a suggestive crouch, captured in a gritty, high-contrast image.",
-      "seed": 1645361593,
+      "prompt": "In a dimly lit underground dungeon, a dominatrix stands over her bound submissive, a riding crop in hand as she teases his nipples with a cold metal tongue, her regal beauty and commanding presence drawing in a coterie of eager worshippers, the room lit only by red glow sticks, the composition emphasizing her power and control.",
+      "seed": 281953397,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/f808e20a-6680-4c02-aaba-5a8993996932.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/66.webp",
       "status": "ok",
-      "bytes": 1542162
+      "bytes": 1306462
     }
   ]
 }

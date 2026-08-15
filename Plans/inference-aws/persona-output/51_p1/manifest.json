@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:23:21Z",
+  "generated_at": "2026-08-15T12:39:34Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Astrid frolics in a sun-drenched meadow on a warm summer day, her golden hair cascading in loose waves as she gazes up at the camera with an infectious smile, wearing a flowy sundress that catches the golden hour's soft light in a DSLR capture with a shallow depth of field, emphasizing her playful, carefree spirit.",
-      "seed": 895098806,
+      "prompt": "Amidst the warm glow of a golden hour sunset on a private yacht, a scantily-clad woman in a barely-there bikini poses seductively on the deck, probes in hand, as she beckons a suitor closer with sultry, inviting gestures amidst the gentle rocking of the vessel and the distant calls of seagulls.",
+      "seed": 967207724,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/00a3bad1-3f19-4967-8e67-89dd79f7ec02.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/51.webp",
       "status": "ok",
-      "bytes": 1821039
+      "bytes": 1271139
     }
   ]
 }

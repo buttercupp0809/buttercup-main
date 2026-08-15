@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:33:12Z",
+  "generated_at": "2026-08-15T14:41:10Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Astrid straddles a leather ottoman in a seedy back alley at night, her fishnet-clad thighs parted wide as she leans forward, her leather corset stretched taut over her ample breasts, the neon signs of the city casting a lurid glow on her skin, her piercing gaze directly challenging the viewer, the deep shadows and sharp contrast emphasizing her provocative pose.",
-      "seed": 1161649188,
+      "prompt": "A sultry stripper straddles her client's lap on a plush leather couch in a seedy backroom club, her body glistening with sweat as she grinds against him in a barely-there G-string, the neon lights of the city outside casting a lurid glow on her curves, her sultry gaze locked on her admirer's as she teases him with every provocative movement.",
+      "seed": 885350099,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/379edb35-10c8-4ea3-b4ae-b966e4ddffc1.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/111.webp",
       "status": "ok",
-      "bytes": 1947944
+      "bytes": 1234757
     }
   ]
 }

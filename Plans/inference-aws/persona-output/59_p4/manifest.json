@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:41:58Z",
+  "generated_at": "2026-08-15T12:56:49Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a shadowy alleyway, a seductive siren with fiery red hair piled high on her head and piercing blue eyes peeks out from behind a crumbling stone column, her revealing black corset and fishnet stockings barely concealing her womanly assets as she gazes at the viewer with a coy, inviting smile.",
-      "seed": 212063291,
+      "prompt": "In a dimly lit, atmospheric taverna, a captivating woman dressed in a revealing, ancient Greek-inspired outfit holds probes, her sultry gaze and provocative movements drawing in a crowd of enthralled onlookers as she weaves a spell of mythic seduction.",
+      "seed": 1452271127,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/1e63e239-746d-4e29-996a-be68947bd6c7.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/59.webp",
       "status": "ok",
-      "bytes": 1594284
+      "bytes": 1282588
     }
   ]
 }

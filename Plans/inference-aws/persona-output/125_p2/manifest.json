@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:02:22Z",
+  "generated_at": "2026-08-15T15:09:38Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the dimly lit foyer of an upscale Berlin nightclub, Astrid leans against a sleek, black wall, her form barely illuminated by the pulsing strobe lights. Clad in a sheer, long-sleeved top that leaves little to the imagination, she crosses one leg over the other, the curve of her thigh on full display. Her eyes are half-lidded, a coy smile playing on her lips as she meets the viewer's gaze directly, an invitation to the forbidden pleasures within.",
-      "seed": 1690555516,
+      "prompt": "A couple in barely-there lingerie hold sleek, futuristic probes, their heated expressions and intimate body language beckoning a voyeur closer amidst a dimly lit, hazy room that seems to blur the lines between reality and fantasy, captured by a cinematic lens with expert focus on their lustful eyes and entwined bodies.",
+      "seed": 716692731,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b7b26c81-1874-4ca4-b744-a4bafdcd22f5.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/125.webp",
       "status": "ok",
-      "bytes": 1515734
+      "bytes": 1041291
     }
   ]
 }

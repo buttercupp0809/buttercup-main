@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:14:04Z",
+  "generated_at": "2026-08-15T12:30:32Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Isla stands in the doorway of a quaint Edinburgh bed and breakfast, her long coat billowing behind her as she gazes out at the misty morning cityscape. The soft pink light of dawn illuminates her profile, highlighting the delicate lines of her nose and the soft curve of her lips as she breathes in the crisp air.",
-      "seed": 1430957985,
+      "prompt": "In a shadowy, opulent bedroom, a woman dressed in fetish attire - fishnet stockings, a corset, and a leather skirt - kneels on the floor, probes scattered around her. She looks up from beneath long lashes, her gaze locking onto the viewer with a mix of longing and daring, the camera positioned from a low angle to create a sense of power and seduction, the room's lavish decor adding to the air of indulgence.",
+      "seed": 1771691535,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/f4ddc519-d57e-4411-adf7-13366aec2b7e.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/46.webp",
       "status": "ok",
-      "bytes": 1077710
+      "bytes": 1246295
     }
   ]
 }

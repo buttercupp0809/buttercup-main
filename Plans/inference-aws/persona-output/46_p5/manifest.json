@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:14:28Z",
+  "generated_at": "2026-08-15T12:30:54Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit Edinburgh alleyway, Isla's silhouette is backlit by a single streetlamp, casting a warm glow on her profile and the curves of her body as she leans against a brick wall. A fitted red dress clings to her figure, the shadows accentuating her ample breasts and the subtle sway of her hips, as she seems lost in thought, her hands tucked into the pockets of her skirt.",
-      "seed": 548131394,
+      "prompt": "A couple, their bodies entwined on a plush, oversized bed, hold probes as they gaze into each other's eyes with raw desire, the scene captured in the warm, soft light of a late afternoon. The woman's hair cascades around her face, the man's hand resting possessively on her hip, the intimate setting and tender moment inviting the viewer to witness their passion unfold, the DSLR's high resolution preserving every detail of their skin and the textures of the bed sheets.",
+      "seed": 1931773353,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/c00d80fe-0563-41fa-8849-e3f8cb38e2ff.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/46.webp",
       "status": "ok",
-      "bytes": 1495187
+      "bytes": 1161834
     }
   ]
 }

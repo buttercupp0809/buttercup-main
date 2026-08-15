@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:42:51Z",
+  "generated_at": "2026-08-15T13:54:25Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the midst of a lively outdoor music festival, Piper's lush figure is barely contained by a form-fitting crop top and high-waisted denim shorts as she moves with infectious energy, her long hair whipping around her face under the warm glow of stage lights, her eyes sparkling with joy and abandon.",
-      "seed": 266880220,
+      "prompt": "On the sun-kissed deck of a luxurious yacht, a stunning woman in a tiny bikini playfully manipulates probes, her bronzed skin glistening with sea spray as she leans provocatively against the railing, her sultry gaze locked onto the horizon, the endless blue waters stretching out before her.",
+      "seed": 1704842238,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/2f345428-3890-477b-8d02-6c77d274e401.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/88.webp",
       "status": "ok",
-      "bytes": 1343077
+      "bytes": 1279161
     }
   ]
 }

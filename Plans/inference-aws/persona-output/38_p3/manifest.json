@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:56:27Z",
+  "generated_at": "2026-08-15T12:12:52Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A provocative Lykke straddling the back of a leather motorcycle, parked in a seedy back alley at night, her black leather corset and fishnet stockings clinging to her body as she looks over her shoulder with a seductive smirk, her thong-clad derri\u00e8re on full display.",
-      "seed": 1784289124,
+      "prompt": "A couple's passionate embrace is illuminated by the soft, ethereal light of a full moon, their bare skin glistening with dew as they entwine on a mossy forest glade, the DSLR's wide-angle lens capturing the intimate scene and the lovers' heated expressions, the surrounding trees looming like silent witnesses to their illicit tryst.",
+      "seed": 240299181,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/a7705a74-f582-424b-a822-25e8fd998ab7.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/38.webp",
       "status": "ok",
-      "bytes": 1438396
+      "bytes": 1361405
     }
   ]
 }

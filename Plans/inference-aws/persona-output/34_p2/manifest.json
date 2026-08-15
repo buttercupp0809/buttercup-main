@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:47:36Z",
+  "generated_at": "2026-08-15T12:04:28Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Straddling a worn leather couch in a dimly lit underground club, Astrid's lithe form is barely contained by a sheer, black lace bodysuit that clings to every curve, her piercing blue eyes half-lidded in a sultry, inviting gaze, as the neon lights dance across her skin.",
-      "seed": 935417341,
+      "prompt": "Against the backdrop of a luxurious penthouse suite, a couple in barely-there lingerie hold futuristic sex toys, their expressions charged with lust as they beckon someone closer amidst the hazy, dreamlike atmosphere of a golden hour sunset casting a warm, cinematic glow through the floor-to-ceiling windows.",
+      "seed": 858249430,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/5d59270b-221d-4dd5-82ab-847c532fec73.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/34.webp",
       "status": "ok",
-      "bytes": 1633722
+      "bytes": 1082059
     }
   ]
 }

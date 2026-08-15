@@ -9,6 +9,9 @@
 //      authentication + basic API hygiene (content-type on POST/PUT/PATCH,
 //      same-origin for cross-origin writes). The age gate is enforced
 //      server-side by the (protected) layout via requireAgeVerified().
+//      Consent-version enforcement (Phase 29, needsConsent() in
+//      frontend/lib/consent.ts) also lives in the (protected) layout, not
+//      here, for the same reason: it needs the User row.
 //
 // Matcher covers the protected paths (see PROTECTED_PATH_PREFIXES) and every
 // /api route.
@@ -24,7 +27,6 @@ const PROTECTED_PATH_PREFIXES = [
   "/dashboard",
   "/chat",
   "/create",
-  "/characters",
   "/settings",
 ];
 
@@ -76,6 +78,15 @@ function isPublicApi(pathname: string): boolean {
 function contentTypeOk(req: NextRequest): boolean {
   const m = req.method.toUpperCase();
   if (m !== "POST" && m !== "PUT" && m !== "PATCH") return true;
+  // A genuinely bodyless write (e.g. POST /api/consent/decline, POST
+  // /api/auth/logout) has no Content-Length (or "0") and no Transfer-Encoding,
+  // so there is nothing for a content-type sniff to protect against. Without
+  // this carve-out, `fetch(url, { method: "POST" })` (no body, no headers,
+  // exactly what the browser sends) gets rejected here before it ever reaches
+  // the route handler, silently breaking the endpoint.
+  const contentLength = req.headers.get("content-length");
+  const hasNoBody = (contentLength === null || contentLength === "0") && !req.headers.get("transfer-encoding");
+  if (hasNoBody) return true;
   const ct = req.headers.get("content-type") ?? "";
   // Accept JSON and multipart (media upload). Reject everything else on write.
   return ct.startsWith("application/json") || ct.startsWith("multipart/form-data");
@@ -121,8 +132,6 @@ export const config = {
     "/chat",
     "/create/:path*",
     "/create",
-    "/characters/:path*",
-    "/characters",
     "/settings/:path*",
     "/settings",
   ],

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:38:45Z",
+  "generated_at": "2026-08-15T13:50:31Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A close-up shot focuses on Phoebe's legs and feet as she perches on the edge of a plush bed, her long, toned thighs and ankles clad in sheer black stockings, the garter belt and high heels adding a touch of fetish wear, her gaze direct and inviting as she slowly raises one heel, the room's soft lighting casting a warm, intimate glow on her skin.",
-      "seed": 61225600,
+      "prompt": "Against a backdrop of city nightlife, a provocative woman in a revealing outfit gestures seductively with probes, her expression a mix of mischief and longing as she invites a passerby to join her in a steamy public tryst, captured in a single, evocative frame by a high-end DSLR camera.",
+      "seed": 838909625,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/00419ec2-020c-482b-bc07-496b77d85217.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/86.webp",
       "status": "ok",
-      "bytes": 1255366
+      "bytes": 1104932
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:04:16Z",
+  "generated_at": "2026-08-15T12:20:33Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Ophelia frolics in a vibrant park on a warm spring day, laughing as she chases butterflies with the sun casting a golden glow on her joyful face, her long hair streaming in the breeze as she wears a pastel sundress that flutters around her slender legs.",
-      "seed": 533760820,
+      "prompt": "A sensual temptress lounges on a plush velvet couch at dusk, her golden skin illuminated by the soft glow of a single candle. She beckons an unseen suitor with a seductive gaze and a provocative pose, her delicate fingers toying with probes as she awaits his approach in this intimate, candlelit chamber.",
+      "seed": 1322470087,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e9f27a9d-4534-4c2c-82d1-3135bd230851.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/42.webp",
       "status": "ok",
-      "bytes": 1673858
+      "bytes": 1330857
     }
   ]
 }

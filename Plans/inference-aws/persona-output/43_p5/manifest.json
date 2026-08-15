@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:08:02Z",
+  "generated_at": "2026-08-15T12:24:31Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a steaming bathroom, Magnolia stands under the showerhead, water droplets glistening on her naked body, her curves accentuated by the rivulets running down her skin, her nipples hardened, her hands braced on the marble countertop, her gaze straight at the camera, a coy smile playing on her lips as the steam swirls around her.",
-      "seed": 1150584413,
+      "prompt": "A provocative dominatrix in a leather corset and thigh-high boots kneels in a dimly lit dungeon, her piercing gaze fixed on a bound submissive as she slowly runs a probe along his bare chest, the harsh red glow of neon signs and the metallic clink of chains adding an edgy, industrial atmosphere to the intense, forbidden scene captured in a high-contrast, cinematic composition.",
+      "seed": 1739702638,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/c3ad839b-18ac-4b46-b0fa-d095205f6fbe.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/43.webp",
       "status": "ok",
-      "bytes": 1313563
+      "bytes": 1599495
     }
   ]
 }

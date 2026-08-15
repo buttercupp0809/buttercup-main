@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:24:41Z",
+  "generated_at": "2026-08-15T13:37:09Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a deserted beach at dawn, Lykke kneels in the sand, her tiny string bikini and sheer cover-up glistening with dew as she looks back at the rising sun, her tousled hair blown by the ocean breeze, the vast expanse of the Atlantic stretching out behind her in the pre-dawn light.",
-      "seed": 442971035,
+      "prompt": "Amidst the decadent opulence of an underground club, a stunning dominatrix holds court, her regal beauty and commanding presence drawing in a coterie of eager worshippers as she beckons them closer with probes in hand, the rich colors and sumptuous textures of the setting enhancing the provocative mood.",
+      "seed": 1047110898,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/3ca9bca5-3156-489e-a8a4-72ab4a6c8a00.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/79.webp",
       "status": "ok",
-      "bytes": 1179336
+      "bytes": 1588249
     }
   ]
 }

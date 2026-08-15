@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:56:00Z",
+  "generated_at": "2026-08-15T14:06:54Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a steamy bathroom, Ophelia stands under the showerhead, water cascading over her naked form. Suds cling to her breasts and curves, emphasizing her feminine shape. With a look of contentment, she closes her eyes and tilts her head back, letting the warm water rinse over her. The camera captures her in a tight, cinematic frame, the steam and water droplets creating a veil of intimacy around her. The scene's focus is on the play of light on her skin, with the blurred background and shallow depth of field adding to the sensual, private ambiance.",
-      "seed": 999084377,
+      "prompt": "A sultry stripper straddles her client's lap on a plush leather couch in a seedy backroom club. Glistening with sweat, she grinds against him in a barely-there G-string, neon lights outside casting a lurid glow. A shallow depth of field draws focus to her provocative pose, while the gritty environment adds an edgy, illicit vibe.",
+      "seed": 513555067,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/8ea49d23-1487-46fa-a6dd-54ebf61562b9.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/94.webp",
       "status": "ok",
-      "bytes": 1390942
+      "bytes": 1092811
     }
   ]
 }

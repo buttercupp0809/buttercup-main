@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:03:25Z",
+  "generated_at": "2026-08-15T13:17:18Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Intimate boudoir: Phoebe lies on a plush velvet chaise, a lacy black teddy barely concealing her naked form, her hand resting on the curve of her hip as she raises an eyebrow at the camera, the room bathed in soft, warm light and the focus tight on her sensual pose.",
-      "seed": 473564910,
+      "prompt": "In an abandoned warehouse, a couple's forbidden passion reaches a fever pitch in the shadowy recesses. The woman's slender form is barely concealed by torn lingerie as she leans against a graffiti-covered wall, her legs wrapped around her partner's waist, a probe held between them as they engage in a dangerous, depraved liaison, the only sounds their heavy panting and the distant wail of sirens outside.",
+      "seed": 1822169581,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/0d820c1e-31c8-4f75-a73a-df1c4fd9834b.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/69.webp",
       "status": "ok",
-      "bytes": 1329626
+      "bytes": 1577416
     }
   ]
 }

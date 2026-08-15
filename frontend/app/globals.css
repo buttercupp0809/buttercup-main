@@ -97,6 +97,35 @@ body {
 }
 
 /*
+ * Mobile-responsive pass (Phase 25): safe-area + touch-target utilities.
+ * Plain CSS, no new design tokens. Requires viewport-fit=cover (see
+ * app/layout.tsx viewport export) or env(safe-area-inset-*) resolves to 0
+ * everywhere, which keeps these no-ops on devices without insets.
+ */
+.pb-safe {
+  padding-bottom: max(env(safe-area-inset-bottom), 0px);
+}
+.pt-safe {
+  padding-top: max(env(safe-area-inset-top), 0px);
+}
+.px-safe {
+  padding-left: max(env(safe-area-inset-left), 0px);
+  padding-right: max(env(safe-area-inset-right), 0px);
+}
+
+/* Minimum comfortable tap target (WCAG 2.5.5 / Apple HIG). */
+.tap-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Dynamic viewport height: tracks the visual viewport as the mobile URL bar
+   or on-screen keyboard collapse/expand, unlike 100vh. */
+.h-dvh {
+  height: 100dvh;
+}
+
+/*
  * Persona-card entrance animation. Consumed by CharacterCard via
  * `animate-[buttercupp-card-in_...]`. prefers-reduced-motion callers get a still
  * card because the class is scoped through Tailwind's `motion-safe:` variant.

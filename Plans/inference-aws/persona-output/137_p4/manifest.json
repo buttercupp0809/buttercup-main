@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:29:30Z",
+  "generated_at": "2026-08-15T15:34:35Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the quiet, hushed intimacy of a candlelit boudoir, Magnolia reclines on a plush velvet bed, her torso draped in a sheer lace negligee, the delicate fabric barely concealing her rosy nipples, her tousled hair fanned out around her as she looks directly at the viewer with a sultry, half-lidded gaze.",
-      "seed": 1304756794,
+      "prompt": "In a decadent, candlelit chamber, a woman in fetish attire seductively manipulates probes, her long, raven locks cascading down her back as she gazes intensely at an unseen admirer, the warm glow of the candles and the deep shadows cast by the chamber's stone walls adding an air of mystery and temptation.",
+      "seed": 542206801,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/c0d4bcaa-c011-46c5-9a91-4dc79949c1ce.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/137.webp",
       "status": "ok",
-      "bytes": 1503685
+      "bytes": 1550386
     }
   ]
 }

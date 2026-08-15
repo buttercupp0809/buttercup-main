@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:25:12Z",
+  "generated_at": "2026-08-15T13:37:40Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A bright, sunlit cobblestone square in Prague, Ophelia laughing with abandon as she tosses a bouquet of wildflowers, her sundress fluttering in the warm breeze, a DSLR camera capturing her joyful, carefree spirit in a shallow depth of field, with the ancient Gothic spires of the city's cathedral rising softly in the golden hour background.",
-      "seed": 123835009,
+      "prompt": "In a dimly lit, velvet-draped chamber, a statuesque beauty in a sheer, black bodysuit stands atop a plush, crimson altar, probes in hand as she beckons her prey with a come-hither gaze, the only illumination coming from flickering, golden candelabras surrounding her.",
+      "seed": 583065580,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/556f2062-b00d-45f5-824a-4db694de9195.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/80.webp",
       "status": "ok",
-      "bytes": 1486841
+      "bytes": 1120719
     }
   ]
 }

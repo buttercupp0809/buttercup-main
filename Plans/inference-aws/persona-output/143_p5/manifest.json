@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:42:39Z",
+  "generated_at": "2026-08-15T15:47:04Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A secluded Dublin rooftop at twilight, with Hazel sitting on the edge, her legs dangling over the edge as she gazes out at the city's skyline, the golden light of the setting sun casting long shadows across her face and the curves of her body in a loose sweater and jeans, the distant sounds of Dublin's nightlife beginning to rise from below.",
-      "seed": 1566742105,
+      "prompt": "A stunning, curvy woman in a provocative, black and red latex bodysuit and stiletto heels poses seductively on the edge of a massive, velvet-draped bed, a futuristic sex toy in hand as she makes come-hither gestures to an off-camera audience, the camera positioned low and looking up to emphasize her alluring figure, captured in a high-contrast, moody shot.",
+      "seed": 1481528750,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/d262d44e-5ae6-4b7b-9137-46935ce8d2b9.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/143.webp",
       "status": "ok",
-      "bytes": 1527390
+      "bytes": 1281844
     }
   ]
 }

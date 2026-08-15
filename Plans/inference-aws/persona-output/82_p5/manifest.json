@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:31:08Z",
+  "generated_at": "2026-08-15T13:43:07Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Indoors at a private, members-only club, Indigo perches on the edge of a plush, black leather sofa, her legs parted to reveal the lacy tops of sheer thigh-high stockings and the garter belt holding them in place, a sheer, emerald green robe draped loosely around her shoulders, its edges barely covering her pert nipples and the swell of her hips, her gaze direct and sultry as she looks at the camera, her raven hair styled in loose, tousled waves framing her face.",
-      "seed": 1185795640,
+      "prompt": "On a yacht's deck at sunset, a couple engaged in passionate lovemaking hold probes as they kiss deeply, waves gently rocking the vessel and the sky ablaze with hues of orange and pink behind them, their intimate scene a sensual oasis amidst the turbulent sea and city skyline.",
+      "seed": 391598892,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/79917fc1-aa4a-434a-9194-6ac6283fe098.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/82.webp",
       "status": "ok",
-      "bytes": 1342419
+      "bytes": 1020228
     }
   ]
 }

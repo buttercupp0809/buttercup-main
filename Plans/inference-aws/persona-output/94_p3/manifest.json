@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:55:35Z",
+  "generated_at": "2026-08-15T14:06:32Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Ophelia poses in a lush garden, wearing a revealing red lace bra and matching thong, her skin glistening with dew in the morning mist. She leans back against a stone wall, one leg bent at the knee, the other extended along the mossy ground. Her tousled hair frames her face, and her lips are parted in a coy smile as she meets the camera's gaze. The shallow depth of field and soft focus on her skin create an intimate, dreamlike atmosphere, with the abstract garden textures and dim light serving to heighten the mood's sensuality.",
-      "seed": 252753177,
+      "prompt": "In a cozy apartment, friends share a raunchy game night. Women dressed in provocative lingerie entwine on the couch, bodies pressed together, laughter and moans mingling with the clinking of glasses and thumping bass. Soft, cinematic lighting bathes the scene in a warm, inviting glow, capturing the intimate atmosphere.",
+      "seed": 1767865359,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/21366744-b2ce-49fb-8a24-31c01134b809.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/94.webp",
       "status": "ok",
-      "bytes": 1511078
+      "bytes": 1142688
     }
   ]
 }

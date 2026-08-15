@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:48:01Z",
+  "generated_at": "2026-08-15T14:55:53Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Standing in the steamy confines of a luxurious bathroom, Marlowe's body is nearly obscured by a veil of water cascading from the showerhead. The suds clinging to her skin highlight the gentle swell of her breasts, the translucent film accentuating the rosy hue of her nipples as she turns her head to gaze at her reflection with a coy, half-lidded expression.",
-      "seed": 11159393,
+      "prompt": "Amidst the shadows of an abandoned warehouse, a couple in revealing outfits engage in a dangerous, forbidden tryst, the woman provocatively manipulating probes as her lover's hands roam her body, their heavy breathing and moans echoing off the walls, captured in a dramatic low-key exposure.",
+      "seed": 1805272606,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b06da7f8-15b6-4aa9-9eed-b1c0e747cad6.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/118.webp",
       "status": "ok",
-      "bytes": 1288093
+      "bytes": 1154717
     }
   ]
 }

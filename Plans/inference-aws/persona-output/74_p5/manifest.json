@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:14:07Z",
+  "generated_at": "2026-08-15T13:27:14Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "As the first light of dawn creeps over a deserted beach, Piper kneels on the sand, her tiny string bikini and sheer cover-up hugging her figure as she looks back over her shoulder at the rising sun, her wind-blown hair and tousled waves framing a sultry expression, the warm light casting long shadows behind her in a cinematic, shallow focus composition.",
-      "seed": 190948350,
+      "prompt": "In a dark, shadowy alleyway, a woman clad in a short skirt and revealing top provocatively toys with probes, her gaze locked onto an unseen partner as she gestures seductively, the neon lights of the city casting an lurid glow on her curves.",
+      "seed": 802773236,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/f0a337ed-1377-4263-9ea8-9d90ee1ca3ce.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/74.webp",
       "status": "ok",
-      "bytes": 1111759
+      "bytes": 1357724
     }
   ]
 }

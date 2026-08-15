@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:17:11Z",
+  "generated_at": "2026-08-15T13:30:05Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, retro-themed cocktail lounge, Marlowe reclines on a plush velvet sofa, the soft glow of a neon sign casting a flattering light on her curves as she languidly adjusts her sheer, black lace negligee, the delicate fabric clinging to her ample bust and hinting at the nudity beneath, her sultry gaze meeting the viewer's as she sips a martini with a come-hither smile.",
-      "seed": 1737001655,
+      "prompt": "In the golden hour, a stunning couple pose on a lavish, outdoor daybed, the woman clad in a barely-there bikini, the man in a towel slung low on his hips. They both grip futuristic, sex toys, their expressions a mix of desire and mischief as they invite onlookers to join their playful, sun-kissed tryst amidst the lush, tropical foliage.",
+      "seed": 1119155832,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/4b41b0dc-56b7-4cbf-9144-33ee01c81528.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/76.webp",
       "status": "ok",
-      "bytes": 1350177
+      "bytes": 1448647
     }
   ]
 }

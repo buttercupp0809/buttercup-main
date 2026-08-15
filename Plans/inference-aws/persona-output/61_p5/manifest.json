@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:46:37Z",
+  "generated_at": "2026-08-15T13:01:15Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a deserted alley at night, Sage leans against a graffiti-covered wall, her long legs clad in high-heeled boots and a short, pleated skirt, as she looks back over her shoulder with a sultry smirk, the neon signs casting a lurid glow on her pale skin and the black lace of her bra peeking from beneath her jacket.",
-      "seed": 1354040530,
+      "prompt": "In a seedy, neon-lit backroom of a strip club, a sultry dancer straddles her client's lap, her body glistening with sweat as she grinds against him in a barely-there G-string, probes glinting in the lurid light, the distant thump of bass and the chatter of patrons creating a raunchy, immersive atmosphere, captured in a gritty, high-contrast photograph.",
+      "seed": 422444339,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b2416a0f-a793-4418-ad1e-e4be666ab1ab.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/61.webp",
       "status": "ok",
-      "bytes": 1750192
+      "bytes": 1088268
     }
   ]
 }

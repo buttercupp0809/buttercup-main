@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T22:52:57Z",
+  "generated_at": "2026-08-15T11:15:30Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A vibrant, playful scene at a lively outdoor cafe on a sunny afternoon, Harper beaming with joy as she raises a glass in a toast, her golden locks catching the warm light of the setting sun, dressed in a bright floral sundress that hugs her curvy figure and shows off her toned legs, a DSLR camera capturing the moment in a shallow depth of field with a soft, creamy bokeh.",
-      "seed": 738884309,
+      "prompt": "In the warm glow of golden hour, a sultry woman in a sheer black teddy and stiletto heels lounges on a plush velvet couch, proffering probes with a come-hither gaze, the soft focus and shallow depth of field emphasizing her alluring curves as a DSLR camera captures her provocative pose.",
+      "seed": 789534373,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/23deb7a7-c2d0-4ea7-ac0d-8e033294ee30.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/10.webp",
       "status": "ok",
-      "bytes": 1382185
+      "bytes": 1366579
     }
   ]
 }

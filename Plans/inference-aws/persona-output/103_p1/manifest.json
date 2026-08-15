@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:14:53Z",
+  "generated_at": "2026-08-15T14:24:04Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Golden hour illuminates Vesper's vibrant smile as she playfully tosses a colorful scarf in the air, its ethereal folds dancing in the warm breeze against a backdrop of Istanbul's ancient city walls, a DSLR capturing her joy in a shallow depth of field.",
-      "seed": 1210552906,
+      "prompt": "In the golden glow of a city rooftop at dusk, a stunning woman in a red lace bodysuit poses seductively, probes in hand, her backlit silhouette highlighted against the skyline as she beckons a suitor to join her sultry dance.",
+      "seed": 939973532,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/03f2354c-44f7-4de0-ba38-66f14cb1e6d6.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/103.webp",
       "status": "ok",
-      "bytes": 1369214
+      "bytes": 1149937
     }
   ]
 }

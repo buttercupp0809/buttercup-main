@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:13:02Z",
+  "generated_at": "2026-08-15T11:33:49Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Hazel's joyful spirit shines as she skips through a colorful Copenhagen park during golden hour, DSLR capturing her flowing hair and playful smile against a backdrop of blooming flowers and lush greenery, with a shallow depth of field blurring the surroundings to focus attention on her carefree essence.",
-      "seed": 1561884982,
+      "prompt": "Amidst the soft glow of a dimly lit boudoir, a stunning woman lounges on a plush velvet chaise, her curvaceous figure barely concealed by a sheer black negligee. Probes and sex toys scattered around her invite exploration, while her sultry gaze and inviting hand gestures beckon an eager partner closer.",
+      "seed": 514241531,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/8e8a6255-02d0-4906-8a58-b5f6c29d2e28.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/19.webp",
       "status": "ok",
-      "bytes": 1662353
+      "bytes": 1403620
     }
   ]
 }

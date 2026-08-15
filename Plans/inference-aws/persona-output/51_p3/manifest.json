@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:24:10Z",
+  "generated_at": "2026-08-15T12:40:19Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Astrid reclines on a worn, fur-covered couch in her cozy Oslo apartment, the soft light of a single lamp casting a warm glow across her face as she reaches up to slowly unclasp her black lace bra, revealing her pert, rosy nipples, her eyes locked on the camera with a sultry, bedroom gaze, the shadows of the room framing her sensual pose.",
-      "seed": 828700527,
+      "prompt": "In a seedy backroom club, a sultry stripper straddles a client's lap on a plush leather couch, her glistening skin barely covered by a skimpy G-string as she grinds against him, probes in hand, her seductive movements and sultry whispers promising a night of decadent pleasures under the lurid neon glow.",
+      "seed": 1534157544,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/084a568b-c37b-4964-a848-230f6180e081.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/51.webp",
       "status": "ok",
-      "bytes": 1334224
+      "bytes": 1186906
     }
   ]
 }

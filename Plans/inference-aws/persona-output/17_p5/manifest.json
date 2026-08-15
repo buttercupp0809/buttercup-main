@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:09:30Z",
+  "generated_at": "2026-08-15T11:31:24Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a steamy bathroom, Chloe stands under the showerhead, rivulets of water cascading over her naked body as she reaches up to play with a droplet on her nipple, her hair plastered to her face and her eyes heavy-lidded with desire, the camera capturing every glistening detail in a shallow depth of field.",
-      "seed": 512976029,
+      "prompt": "A couple entwined in intimate embrace on a moonlit beach, the woman's body clad only in a sheer white sarong, the man's strong hands gripping her curves as they make love under the stars, the sound of waves gently lapping at the shore and the distant call of a seagull mingling with their passionate whispers.",
+      "seed": 1366046547,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/fb71487c-41f6-4a90-82c1-257268660aa3.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/17.webp",
       "status": "ok",
-      "bytes": 1368348
+      "bytes": 1195871
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:22:36Z",
+  "generated_at": "2026-08-15T15:27:53Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Juniper stands before an icy mountain stream, the frigid waters of the river reflecting the winter sky above. She wears a fur-trimmed coat opened to reveal a lacy bralette and high-waisted panties, the chill evident in her rosy cheeks and the way her nipples pucker beneath the translucent fabric. Her windswept hair frames her smirking face as she gazes down at her reflection in the crystal-clear water.",
-      "seed": 365357821,
+      "prompt": "Set against the backdrop of a bustling city street at night, a provocative woman in a short, red dress holds probes as she sashays down the sidewalk, her high heels clicking on the pavement, her seductive gaze darting to and fro, inviting a willing partner to follow her into a nearby alleyway.",
+      "seed": 1677122482,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/1aa189a0-2aaa-4ffa-b637-171409b26b0f.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/134.webp",
       "status": "ok",
-      "bytes": 1494188
+      "bytes": 1251424
     }
   ]
 }

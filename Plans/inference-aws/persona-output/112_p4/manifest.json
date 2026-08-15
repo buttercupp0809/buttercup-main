@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:35:18Z",
+  "generated_at": "2026-08-15T14:43:10Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "The cool mist of an onsen steam room envelops a woman as she steps out onto a natural stone slab, the heat causing beads of moisture to cling to her porcelain skin, her black silk kimono slipping off one shoulder to reveal a delicate lace bra as she looks back at the camera with a coy, inviting gaze.",
-      "seed": 1381945236,
+      "prompt": "In a dimly lit, intimate setting, a woman dressed in fetish attire sits on a plush ottoman, her legs crossed to reveal a tantalizing glimpse of her thigh. She toys with probes, her gaze locking onto an unseen admirer as she beckons them closer with a seductive movement of her hand. Soft, golden light from a nearby table lamp casts a warm, flattering glow on her curves, creating a sense of mystery and allure.",
+      "seed": 984528168,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/5fc234c6-c78b-41a6-922e-b2355198f7a1.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/112.webp",
       "status": "ok",
-      "bytes": 1786470
+      "bytes": 1009259
     }
   ]
 }

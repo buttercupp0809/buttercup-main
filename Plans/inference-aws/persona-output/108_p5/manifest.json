@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:27:04Z",
+  "generated_at": "2026-08-15T14:35:41Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a steaming bathroom, Ophelia stands beneath a powerful showerhead, water cascading over her curvaceous form as soap suds cling to her skin, highlighting her nipples and emphasizing her feminine allure in the intimate, dimly lit setting.",
-      "seed": 519502313,
+      "prompt": "Amidst the opulence of a lavish boudoir, a scantily-clad woman reclines on a plush silk bed, probes scattered across her bare skin. With one hand teasing a probe between her thighs, she looks directly at the camera with a sultry, come-hither gaze, the soft focus and warm lighting of a DSLR camera capturing her sensual allure.",
+      "seed": 1628903064,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/2449eac1-33bb-4645-9cb6-622c3fa0eeb5.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/108.webp",
       "status": "ok",
-      "bytes": 1413799
+      "bytes": 1183302
     }
   ]
 }

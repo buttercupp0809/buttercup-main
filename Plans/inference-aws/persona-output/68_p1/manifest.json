@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:59:46Z",
+  "generated_at": "2026-08-15T13:13:43Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Ruby poses playfully on a sun-kissed beach at golden hour, gazing out at the horizon with a bright smile. She wears a vibrant, ruffled sundress that flows in the gentle breeze, her long hair tousled by the sea air. A DSLR camera captures her joy in a shallow depth of field, the soft focus emphasizing the dreamy atmosphere.",
-      "seed": 499100053,
+      "prompt": "A provocative model stands in the golden hour, gazing seductively at the camera while provocatively manipulating probes in her hands, her revealing outfit and alluring expression inviting a partner to join her in a steamy encounter on the beach.",
+      "seed": 1603867944,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/7354f0cc-705d-40e1-a4ba-e926444c3231.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/68.webp",
       "status": "ok",
-      "bytes": 1247673
+      "bytes": 1121974
     }
   ]
 }

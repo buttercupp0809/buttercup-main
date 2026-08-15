@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:39:30Z",
+  "generated_at": "2026-08-15T14:47:24Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the intimate glow of a candleslit bedroom, Phoebe lounges on silk sheets, a sheer, black negligee hugging her full breasts and the curve of her hips, her long, tousled hair splayed across the pillow as she gazes at the viewer with a hooded, seductive expression.",
-      "seed": 1765310961,
+      "prompt": "In the shadowy recesses of an abandoned warehouse, a fetish-clad woman sensually plays with probes, her heavy breathing and lustful gaze locking onto an unseen admirer as she beckons them closer into the dark, illicit space where forbidden desires can unfold unbridled.",
+      "seed": 1142742998,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e9e34acb-2ef3-434a-9e7b-0371a7875a4a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/114.webp",
       "status": "ok",
-      "bytes": 1288904
+      "bytes": 1452926
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:31:27Z",
+  "generated_at": "2026-08-15T14:39:33Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A dimly lit, minimalist studio. Indigo, wearing a black, lace garter belt and matching thigh-high stockings, perches on the edge of a leather ottoman, one high heel dangling. Her gaze is direct, an unmistakable invitation in her eyes. The focus is on her shapely legs and the barely concealed mound of her sex.",
-      "seed": 1686861666,
+      "prompt": "In a dimly lit boudoir, a dominatrix slowly unbuttons her white shirt to reveal her pert breasts bound in black leather, while her submissive kneels at her feet wearing only a collar and handcuffs, awaiting his mistress's commands, the only illumination coming from the flickering candles on the velvet-draped altar behind her.",
+      "seed": 484875084,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/4a4196e6-6dff-483c-8dc0-b4bd0d8517e9.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/110.webp",
       "status": "ok",
-      "bytes": 1153625
+      "bytes": 1137866
     }
   ]
 }

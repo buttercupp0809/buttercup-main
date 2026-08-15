@@ -8,6 +8,9 @@
 
 import { z } from "zod";
 import type { CharacterStyle, ContentRating } from "./types";
+// Type-only: character-create.ts imports VALUES from this module, so this
+// import must stay type-only to avoid a runtime circular dependency.
+import type { CreateCharacterInput } from "./character-create";
 
 export const characterSortSchema = z.enum(["popular", "new", "trending"]);
 export type CharacterSort = z.infer<typeof characterSortSchema>;
@@ -66,6 +69,13 @@ export interface CharacterDetailDTO extends CharacterCardDTO {
   };
   requiresAgeVerification?: boolean;
   galleryImages: string[];
+  // True only when the requesting viewer owns this character. Drives the
+  // "Edit" entry point on the detail page.
+  isOwner: boolean;
+  // Full editable draft, populated ONLY when isOwner is true. Seeds the
+  // wizard in edit mode (see frontend/app/(protected)/create/context.tsx)
+  // so PATCH can be driven from the same step UI as create.
+  editDraft?: CreateCharacterInput;
 }
 
 export interface CharacterListResponse {

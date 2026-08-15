@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:17:14Z",
+  "generated_at": "2026-08-15T11:37:46Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Matilda strolls through Edinburgh's Royal Mile, her laughter echoing off the historic stone buildings as she gestures animatedly to a friend, her auburn hair catching the golden hour's warm glow in a DSLR frame, the camera focused on the joyful expression on her face, the bustling street scene fading into a shallow depth of field.",
-      "seed": 893585401,
+      "prompt": "A sultry woman reclines on a velvet chaise, her curves barely contained by a slinky black dress, as she seductively manipulates probes, her emerald eyes locking onto an unseen suitor amidst the opulent decor of a hidden salon, soft candlelight casting a golden glow.",
+      "seed": 634590654,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/3ab57131-39ab-418e-b356-5e39128915cd.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/21.webp",
       "status": "ok",
-      "bytes": 1497160
+      "bytes": 1313846
     }
   ]
 }

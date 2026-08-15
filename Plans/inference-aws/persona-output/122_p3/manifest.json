@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:56:08Z",
+  "generated_at": "2026-08-15T15:03:44Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Ophelia reclines languidly on a plush chaise in a luxurious boudoir, her figure barely concealed by a scandalously short lace negligee. The soft, warm light of candles and a fireplace casts a sensual glow across her skin as she stares into the distance with a dreamy, slightly hooded expression.",
-      "seed": 376704299,
+      "prompt": "Amidst a sumptuous bedroom, a buxom beauty in sheer nightclothes languidly plays with probes, her movements slow and sensual as she invites the viewer to join her in a forbidden tryst, the room bathed in the soft glow of table lamps and the promise of a passionate night ahead.",
+      "seed": 1880647550,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/d05a2183-a70c-460d-9c70-b4f6ab52d741.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/122.webp",
       "status": "ok",
-      "bytes": 1611870
+      "bytes": 1119632
     }
   ]
 }

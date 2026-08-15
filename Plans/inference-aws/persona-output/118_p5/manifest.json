@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:48:28Z",
+  "generated_at": "2026-08-15T14:56:12Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the midst of a seedy back alley, Marlowe crouches low, hands braced on her knees as her leather corset and fishnet stockings reveal every tantalizing curve of her body. The dim streetlights cast long shadows, highlighting the provocative curve of her thong-clad rear as she looks back over her shoulder with a smoldering gaze, inviting the viewer to step into her secret world.",
-      "seed": 827388614,
+      "prompt": "In a plush penthouse suite overlooking the glittering London skyline, a wealthy couple share an exclusive BDSM session, the woman's body adorned with intricate rope designs as she kneels before her partner, probes held invitingly as her eyes lock in a fierce, dominant/submissive gaze, the city lights reflecting off the polished hardwood floor.",
+      "seed": 637497761,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/7ebd6c62-54bf-4900-ba73-19fb2c1c4e88.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/118.webp",
       "status": "ok",
-      "bytes": 1319264
+      "bytes": 1268722
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:03:36Z",
+  "generated_at": "2026-08-15T11:25:33Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Juliette playfully skips through a vibrant Montreal market on a warm summer afternoon, her bright red sundress fluttering in the breeze as she grins at the camera with sparkling eyes and a carefree smile, surrounded by colorful produce and lively chatter.",
-      "seed": 774609509,
+      "prompt": "In the golden hour glow, a woman reclines on a velvet couch, her sheer lingerie catching the fading light as she sensually toys with probes, her inviting gaze and come-hither gestures beckoning an onlooker to join her intimate game.",
+      "seed": 1315144384,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b1c05a19-b1d6-4cd9-8052-e2854930a620.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/15.webp",
       "status": "ok",
-      "bytes": 1351178
+      "bytes": 1330717
     }
   ]
 }

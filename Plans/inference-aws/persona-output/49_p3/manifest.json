@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:19:56Z",
+  "generated_at": "2026-08-15T12:36:15Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Seated on a plush, red velvet divan, Clara's posture is languid, one leg crossed over the other as she peruses a leather-bound score, a single candle casting a warm, inviting light on her face and the delicate lace of her camisole, her expression pensive and focused.",
-      "seed": 326061920,
+      "prompt": "In the intimate glow of a boudoir, a stunning model reclines on plush velvet pillows, her toned physique barely concealed by a sheer black negligee as she provocatively manipulates probes, her sultry eyes and parted lips promising a night of uninhibited pleasure for the lucky partner who responds to her seductive overtures.",
+      "seed": 1519884883,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/3b9588f4-a7df-446a-ab64-20ca7b9fb016.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/49.webp",
       "status": "ok",
-      "bytes": 1435778
+      "bytes": 1225910
     }
   ]
 }

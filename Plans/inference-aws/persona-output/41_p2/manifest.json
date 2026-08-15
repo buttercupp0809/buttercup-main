@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:02:29Z",
+  "generated_at": "2026-08-15T12:18:44Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Piper stands seductively in a dimly lit alley, clad in a leather corset and fishnet stockings that highlight her toned legs. The city's neon lights cast a moody glow on her porcelain skin as she poses with one hand on her hip, the other holding a cigarette, her red lips curled into a sultry smile.",
-      "seed": 1652766057,
+      "prompt": "Captured in a DSLR shot at the perfect golden hour, a couple in provocative lingerie poses intimately amidst a cluttered, bohemian boudoir, their faces charged with lust as they hold futuristic sex toys and make sultry overtures, the warm sunlight streaming through dusty windowpanes casting a sensual haze.",
+      "seed": 565862593,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/d69eb18f-ef09-4ddf-8030-7feeed52f96a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/41.webp",
       "status": "ok",
-      "bytes": 1435115
+      "bytes": 1372093
     }
   ]
 }

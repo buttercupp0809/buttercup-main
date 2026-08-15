@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:55:44Z",
+  "generated_at": "2026-08-15T15:03:21Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the dimly lit foyer of a grand palace, Ophelia stands with her back against a ornate column, clad in a sheer black negligee that leaves little to the imagination. A single spotlight illuminates her from above, casting long shadows across her curves as she looks over her shoulder with a sultry, inviting gaze.",
-      "seed": 1818970561,
+      "prompt": "Set against a backdrop of city skyscrapers at dusk, a stunning woman in a micro-dress and heels poses with probes in a dimly lit alley, her confident expression and come-hither smile radiating an air of danger and desire as she beckons passersby to join her illicit encounter.",
+      "seed": 1994824842,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/cf91211b-ea6e-4b3e-a6b3-21fe23fddfb8.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/122.webp",
       "status": "ok",
-      "bytes": 1318345
+      "bytes": 1325781
     }
   ]
 }

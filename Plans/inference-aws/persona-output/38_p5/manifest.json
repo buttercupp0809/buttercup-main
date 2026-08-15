@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:57:16Z",
+  "generated_at": "2026-08-15T12:13:37Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A bold Lykke standing barefoot on a deserted beach at dawn, the rising sun casting a warm glow on her toned figure as she wears a tiny string bikini and a sheer white cover-up, her wind-blown hair framing her face as she looks directly at the camera with a confident, seductive gaze, her hands on her hips accentuating her hourglass figure.",
-      "seed": 1455066944,
+      "prompt": "Amidst the decadent atmosphere of an underground, members-only club, a mysterious figure in a skintight, iridescent catsuit stands atop a raised platform, a series of probes and sex toys suspended from the ceiling as she begins a mesmerizing, hypnotic dance, the strobing lights of the club casting a disorienting, otherworldly glow on her gyrating form and the rapt audience gathered before her, eager to partake in the forbidden pleasures she promises.",
+      "seed": 831162593,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/f46dc5a8-2d1b-4a46-95d2-6bdd8291fdb0.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/38.webp",
       "status": "ok",
-      "bytes": 1040292
+      "bytes": 1096642
     }
   ]
 }

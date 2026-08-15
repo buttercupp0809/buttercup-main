@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:10:02Z",
+  "generated_at": "2026-08-15T11:31:54Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Ava stands in a sun-drenched Stockholm park during golden hour, her vibrant blue eyes sparkling with joy as she throws a colorful frisbee to a playful golden retriever. Wearing a lightweight white sundress, her long blonde hair flows in the gentle breeze. A DSLR camera captures her carefree smile and the soft focus of the background trees, emphasizing her radiant beauty against the serene natural surroundings.",
-      "seed": 265329728,
+      "prompt": "A woman, her raven locks cascading down her back, reclines sensually on a velvet chaise lounge in a dimly lit boudoir. Her pale skin glows under the soft candlelight as she languidly plays with a set of probes, her piercing emerald eyes locked onto the viewer with a sultry, come-hither gaze.",
+      "seed": 90796544,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/0c53b1a8-76b9-483e-b171-472e4e3b2d38.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/18.webp",
       "status": "ok",
-      "bytes": 1326833
+      "bytes": 1380340
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:55:20Z",
+  "generated_at": "2026-08-15T15:02:59Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Ophelia playfully twirls in a sun-drenched Viennese park, her flowing yellow sundress catching the warm golden hour light as it filters through the trees. A DSLR camera captures her joyful expression and carefree movements in a shallow depth of field, emphasizing her happiness amidst the lush greenery.",
-      "seed": 1757594479,
+      "prompt": "In a lavish boudoir bathed in golden hour light, a statuesque beauty reclines on a velvet chaise, her porcelain skin glowing as she teases a shiny black probe with her painted lips, a sultry gaze fixed on the viewer through half-lidded eyes, her curves barely contained in lacy lingerie.",
+      "seed": 1799401265,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/00c82e81-3b7a-452c-b811-6142f13e02ec.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/122.webp",
       "status": "ok",
-      "bytes": 1681797
+      "bytes": 1273514
     }
   ]
 }

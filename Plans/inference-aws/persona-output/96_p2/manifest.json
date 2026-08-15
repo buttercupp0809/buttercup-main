@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:00:26Z",
+  "generated_at": "2026-08-15T14:10:15Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the intimate glow of a dimly lit nightclub, Indigo reclines on a plush velvet couch, her sheer, lace-trimmed negligee clinging to every curve as she sips a crimson cocktail, her smoky gaze meeting the camera's lens with a sultry, come-hither look, a single lit candle casting a flattering highlight on her full, parted lips.",
-      "seed": 34855279,
+      "prompt": "In a dimly lit, opulent chamber, a statuesque dominatrix clad in black leather reigns supreme, her piercing eyes smoldering with lust as she brandishes a metallic phallus, her voluptuous form draped over a velvet throne, the air thick with the promise of dark desires yet to be fulfilled.",
+      "seed": 764842587,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e8f0eba0-b5e7-4b7c-9aef-3fa6f1fff05a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/96.webp",
       "status": "ok",
-      "bytes": 1478080
+      "bytes": 1496584
     }
   ]
 }

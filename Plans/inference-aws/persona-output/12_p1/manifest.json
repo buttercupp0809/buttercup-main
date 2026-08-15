@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T22:57:13Z",
+  "generated_at": "2026-08-15T11:19:29Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A warm, golden hour scene in a vibrant San Francisco neighborhood, with Hazel playfully skipping along a colorful street, her long hair flowing behind her. She's wearing a bright sundress that flutters in the breeze, a large smile on her face as she laughs at something in the distance, caught in a candid, joyful moment.",
-      "seed": 449889576,
+      "prompt": "A stunning woman in a revealing red dress leans seductively against a graffiti-covered brick wall under the golden glow of a streetlamp, one stiletto heel hooked on the wall as she toys with a sleek black sex toy, her sultry gaze inviting a passing stranger to join her in a midnight tryst.",
+      "seed": 1972630846,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/49dfb6c9-a5b9-47e5-b437-960dd9ce2f82.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/12.webp",
       "status": "ok",
-      "bytes": 1501258
+      "bytes": 1893434
     }
   ]
 }

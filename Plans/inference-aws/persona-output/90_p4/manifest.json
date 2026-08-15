@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:47:30Z",
+  "generated_at": "2026-08-15T13:58:52Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the intimate glow of a private boudoir, Marlowe lounges on satin sheets, her body barely concealed by a sheer, lace negligee. The camera's shallow depth of field draws attention to her full, rosy lips parted in a coy smile as she gazes directly at the lens with a seductive, come-hither look. The soft focus and warm lighting create a sensual, cinematic atmosphere.",
-      "seed": 961139623,
+      "prompt": "In the shadowy recesses of an abandoned warehouse, a woman dressed in fetish attire stands in a pool of crimson light, her movements hypnotic as she teases the probes, her intense stare seeming to pierce through the darkness, beckoning an unseen lover to join her in her lair of forbidden desires.",
+      "seed": 848674138,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/304f5a0c-1892-4a4f-aa6e-cdfd4a60a01b.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/90.webp",
       "status": "ok",
-      "bytes": 1315673
+      "bytes": 1183556
     }
   ]
 }

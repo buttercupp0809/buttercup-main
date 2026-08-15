@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:31:17Z",
+  "generated_at": "2026-08-15T12:46:33Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Odessa perched on the edge of a marble sink in a sumptuous, art deco-style bathroom, her slender legs crossed as she leans forward, her sheer, black stockings and garter belt accentuating the curves of her thighs, her barely-there thong and lacy bralette leaving little to the imagination, the steam from the shower filling the room, casting a misty, sensual atmosphere as the camera captures her inviting, coy expression and the way her hair clings to her neck and shoulders.",
-      "seed": 25259039,
+      "prompt": "A scantily-clad temptress provocatively toys with sex aids on the deck of a luxury yacht at sunset, her inviting movements and sultry smile promising an intimate encounter amidst the salty sea air and stunning ocean views.",
+      "seed": 165594350,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b24363ef-a823-457a-96c5-97d75164fbe9.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/54.webp",
       "status": "ok",
-      "bytes": 1190463
+      "bytes": 1256890
     }
   ]
 }

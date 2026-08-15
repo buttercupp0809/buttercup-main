@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:32:33Z",
+  "generated_at": "2026-08-15T15:37:34Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Astrid strides into a vibrant summer market in Stockholm, her bright smile and laughter infectious as she mingles with colorful stalls selling handmade crafts and delectable street food under the warm golden hour light, a DSLR camera capturing her joyful essence in a shallow depth of field against a bustling, lively backdrop.",
-      "seed": 1567928827,
+      "prompt": "In the golden hour's soft glow, a stunning woman poses on a moonlit beach, her barely-there bikini glistening with sea spray as she beckons a lover closer with a come-hither gaze, the ocean's waves crashing gently behind her, a DSLR capturing every sultry detail in sharp focus.",
+      "seed": 1935462707,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/92f1fb91-c2dc-4f5a-acbb-921fea2c1936.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/139.webp",
       "status": "ok",
-      "bytes": 1638444
+      "bytes": 1229899
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:21:14Z",
+  "generated_at": "2026-08-15T12:37:29Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A joyful Indigo twirls through a vibrant Rio street carnival, her colorful costume fluttering as she laughs with abandon under the warm golden hour sunlight, captured by a DSLR camera in a shallow focus with the lively crowd blurred in the background.",
-      "seed": 1624881262,
+      "prompt": "A sultry model lounges on a plush leather sofa, her curves accentuated by a low-cut red dress as she toys with a sleek, silver probe, her sultry gaze inviting an admirer to join her in a private after-hours encounter at an upscale nightspot.",
+      "seed": 1978086209,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/3cc5da51-b6b5-4ccb-972c-c3bd18aa62cf.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/50.webp",
       "status": "ok",
-      "bytes": 1494185
+      "bytes": 1268393
     }
   ]
 }

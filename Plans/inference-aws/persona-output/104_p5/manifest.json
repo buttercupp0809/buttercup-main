@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:18:34Z",
+  "generated_at": "2026-08-15T14:27:35Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a steaming bathroom, Marlowe stands beneath the showerhead, water cascading over her voluptuous figure, suds clinging to her breasts and thighs, her eyes half-closed in pleasure as the camera focuses on the translucent soapy film highlighting her nipples and the curves of her body.",
-      "seed": 960841336,
+      "prompt": "Set against a vibrant, neon-lit cityscape, a sensual stripper in a barely-there G-string and heels provocatively grinds against a leather couch, a probe in her hand as she seductively teases the air, her glistening skin and sultry expression capturing the essence of a sultry, alluring night out in the city that never sleeps, the DSLR camera capturing every provocative detail with stunning realism.",
+      "seed": 183668273,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/03138882-6c88-4e49-81b5-93938aeb3653.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/104.webp",
       "status": "ok",
-      "bytes": 1417047
+      "bytes": 1070584
     }
   ]
 }

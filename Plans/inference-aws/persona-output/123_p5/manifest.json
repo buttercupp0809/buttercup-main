@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:59:15Z",
+  "generated_at": "2026-08-15T15:06:41Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Amidst the lush, jasmine-scented gardens of a Charleston estate, a stunning beauty in a flowing, silk evening gown pauses on a moonlit path, her slender back arched as she reaches up to adjust the delicate lace of her bodice, the pale light casting an ethereal glow on her porcelain skin and the dark, seductive sheen of her eyes.",
-      "seed": 454148130,
+      "prompt": "Under the warm, cinematic glow of a penthouse suite, a wealthy couple engage in an exclusive BDSM session. The woman, her body marked with intricate rope designs, kneels at her partner's feet, their eyes locked in a fierce, dominant/submissive gaze. The skyline of skyscrapers twinkles through the floor-to-ceiling windows as they surrender to their darkest desires, the air thick with the heady mix of lust, power, and forbidden pleasure.",
+      "seed": 1949950725,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/2a937313-d30f-4050-ad13-d0e00b01aad3.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/123.webp",
       "status": "ok",
-      "bytes": 1507488
+      "bytes": 1468143
     }
   ]
 }

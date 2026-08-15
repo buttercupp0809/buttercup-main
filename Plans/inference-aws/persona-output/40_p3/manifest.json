@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:00:45Z",
+  "generated_at": "2026-08-15T12:16:57Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Freya lounges on a plush, velvet chaise in an opulent, dimly lit boudoir, the antique furniture and draping curtains creating an air of mystery and seduction as she reclines in a Victorian-style corset and shorts, one leg bent at the knee, the other extended along the cushions, her gaze upturned and lips slightly parted in a coy invitation, the shot rendered in deep shadows and highlights to draw the viewer's eye to her alluring form.",
-      "seed": 1178175943,
+      "prompt": "In a dimly lit, opulent boudoir, a stunning model reclines on a plush velvet chaise, her body barely concealed by a sheer black nightgown as she playfully manipulates probes, her sultry eyes locked onto the viewer while a single candle flickers on the nearby nightstand, casting eerie shadows across her curves.",
+      "seed": 1428512162,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/8beec360-fc07-4dba-a36f-e35ebf8f9c63.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/40.webp",
       "status": "ok",
-      "bytes": 1525700
+      "bytes": 956844
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:42:03Z",
+  "generated_at": "2026-08-15T13:53:41Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Piper stands at the summit of a majestic mountain, wind-tousled hair and a beaming smile catching the golden hour light as she raises her arms in triumph, a vibrant hiking jacket and sturdy boots framing her fit, adventurous form against the breathtaking panorama of the Rockies stretching out behind her.",
-      "seed": 890195975,
+      "prompt": "Against a backdrop of towering evergreens, a woman's curves are accentuated by a skin-tight, earth-toned bodysuit as she poses seductively, one leg bent and probed held teasingly near her lips, her emerald eyes gleaming with mischief under the golden hour light filtering through the forest canopy.",
+      "seed": 1845646219,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b3171ff9-9035-40b4-965c-409f05500cb1.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/88.webp",
       "status": "ok",
-      "bytes": 1499765
+      "bytes": 1356184
     }
   ]
 }

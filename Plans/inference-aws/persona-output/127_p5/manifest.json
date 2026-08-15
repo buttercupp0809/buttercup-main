@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:08:33Z",
+  "generated_at": "2026-08-15T15:14:40Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Perched high on a rocky outcropping overlooking the Sydney coastline, Ruby poses in a tiny, metallic bikini, her body silhouetted against the sunset's fiery hues. With her hands on her hips and a defiant glint in her eye, she appears unencumbered and untamed, the vast expanse of the ocean at her feet.",
-      "seed": 1865243979,
+      "prompt": "Against the backdrop of a neon-lit city skyline, a scantily-clad woman provocatively grinds against a man on a plush leather couch in a seedy backroom club, her body glistening with sweat as she holds probes and makes come-hither gestures, the lurid glow of the lights casting a sultry, erotic ambiance.",
+      "seed": 1054293754,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/9102d6c5-48f0-4817-84ae-e50020f9243e.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/127.webp",
       "status": "ok",
-      "bytes": 1175420
+      "bytes": 1446885
     }
   ]
 }

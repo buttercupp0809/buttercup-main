@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:24:58Z",
+  "generated_at": "2026-08-15T12:41:03Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the steamy, dimly lit bathroom of her Oslo flat, Astrid stands under the showerhead, rivulets of water cascading over her curvaceous form as she reaches up to capture a droplet on her pink, pert nipple, her eyes hooded with desire, her dark hair slicked back, the transparent film of soap highlighting every tantalizing curve of her nude body, a DSLR lens capturing the intimate moment with cinematic precision.",
-      "seed": 1743706211,
+      "prompt": "Against the backdrop of Oslo's snow-capped mountains at dusk, a mysterious figure known only as \"The Siren\" beckons her latest conquest closer with hypnotic movements and sultry whispers in a secluded, candlelit glade, probes in hand, as she leads him to a velvet-draped altar where she will claim not only his body but his very soul under the eerie, flickering light of the flickering flames.",
+      "seed": 1007039680,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/2770d2a6-8b2c-4db6-aca3-90f6ac19703a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/51.webp",
       "status": "ok",
-      "bytes": 1274793
+      "bytes": 1208762
     }
   ]
 }

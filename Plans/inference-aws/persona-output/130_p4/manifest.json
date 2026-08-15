@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:14:33Z",
+  "generated_at": "2026-08-15T15:20:20Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a steamy bathroom, Piper stands under the showerhead, rivulets of water cascading over her naked form. The camera focuses on the delicate curve of her breast, a bead of water tracing a path down her abdomen to disappear between her thighs. A DSLR lens captures every droplet, detail and shadow in high definition.",
-      "seed": 847591567,
+      "prompt": "On a plush, leather couch in a seedy backroom club, a scantily-clad stripper straddles her client's lap, her body glistening with sweat as she grinds against him, a probe in hand as she teases and beckons him closer amidst the pulsing neon lights.",
+      "seed": 1301106743,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/71b87127-86f2-4f85-a9f7-74d82d801ac2.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/130.webp",
       "status": "ok",
-      "bytes": 1462434
+      "bytes": 1227287
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:07:21Z",
+  "generated_at": "2026-08-15T15:13:33Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, trendy nightclub, Ruby sips a cocktail and leans against the bar, her skin-tight dress showcasing her curves. Her sultry gaze meets the camera's as she bites her lower lip, the pulsing lights casting a hypnotic glow.",
-      "seed": 779943908,
+      "prompt": "Captured in a shallow depth of field by a DSLR lens, a couple in risqu\u00e9 lingerie and futuristic sex toys sensually entwine on a plush couch, their expressions charged with lust as they beckon the viewer to join their intimate encounter, the dimly lit room and hazy surroundings blurring the lines between fantasy and reality.",
+      "seed": 1400666631,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/4bb0dde7-1fe4-4615-80f3-ae6a916ab8e4.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/127.webp",
       "status": "ok",
-      "bytes": 1242766
+      "bytes": 1208113
     }
   ]
 }

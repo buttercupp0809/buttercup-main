@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:27:51Z",
+  "generated_at": "2026-08-15T11:47:41Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Freya playfully skips through a vibrant, sun-drenched Oslo park during golden hour, her long, auburn hair fluttering in the breeze as she holds a bouquet of wildflowers. Clad in a flowy, bohemian dress with floral patterns, she looks carefree and joyful, her bright smile capturing the warm light of the setting sun. A DSLR camera captures her exuberance from a slight distance, the background a soft focus of lush greenery and colorful blooms, emphasizing her radiant figure and carefree spirit.",
-      "seed": 507970700,
+      "prompt": "A woman reclines on a plush velvet couch, her sheer black lingerie barely concealing her curves as she slowly plays with a metallic probe, her sultry gaze fixed on an unseen admirer in the dimly lit room.",
+      "seed": 317690700,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/d43116c0-e083-4d28-bd37-14817b756127.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/26.webp",
       "status": "ok",
-      "bytes": 1562233
+      "bytes": 1082106
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:49:02Z",
+  "generated_at": "2026-08-15T14:56:46Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Clio strolls through the sun-drenched agora of ancient Athens, her golden hair shining in the golden hour light as she giggles with friends, a colorful market shawl draped over her shoulder, baskets of fresh figs and olives in hand.",
-      "seed": 357565590,
+      "prompt": "In the soft, golden glow of a late afternoon sunbeam streaming through a sheer curtain, a stunning woman lounges on a plush velvet chaise, her curves accentuated by a barely-there lace teddy. Provocatively, she plays with a sleek, metallic probe, her sultry gaze inviting an admirer to join her in the intimate, candlelit boudoir.",
+      "seed": 286877931,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/04876e47-fe6d-4fa9-904d-2cb991d362d5.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/119.webp",
       "status": "ok",
-      "bytes": 1522292
+      "bytes": 1606430
     }
   ]
 }

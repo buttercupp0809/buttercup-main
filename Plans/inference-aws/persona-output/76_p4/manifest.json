@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:17:59Z",
+  "generated_at": "2026-08-15T13:30:49Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Marlowe stands in the steamy, dimly lit bathroom, water droplets beading on her naked skin as she reaches for a towel, her full, perky breasts glistening with moisture, her nipples visibly hard, her slender waist and flared hips leading down to the juncture of her thighs, which are slightly parted, hinting at her intimate region, as the camera captures a sensual, close-up view through the misty glass door.",
-      "seed": 1405541539,
+      "prompt": "In a cozy, living room setting bathed in soft, morning light, a couple entwined on the couch, their skin still flushed from a passionate night. They both hold probes, their expressions charged with satisfaction and playfulness as they invite friends over for a fun, intimate brunch, the scent of freshly brewed coffee and pancakes mingling with the remnants of their lovemaking.",
+      "seed": 1842878809,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/0ae7f977-4317-4067-8442-6f45d7ebbcdd.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/76.webp",
       "status": "ok",
-      "bytes": 1402306
+      "bytes": 1472674
     }
   ]
 }

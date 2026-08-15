@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:49:12Z",
+  "generated_at": "2026-08-15T14:00:28Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Winter's chill is forgotten as Clio sits in a secluded grove, her fur-trimmed coat opened to reveal a lacy bralette and high-waisted panties, her cheeks flushed from the cold as she looks back at the camera with a mischievous smirk, snowflakes gently falling around her.",
-      "seed": 1152472532,
+      "prompt": "On a moonlit beach, the sound of waves gently lapping at the shore, a scantily-clad beauty in a micro-bikini plays with probes, her movements hypnotic and sensual as she walks towards the water's edge, the camera capturing her from a low angle, the golden light of the moon casting a flattering glow.",
+      "seed": 1215843973,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/4edc1933-151c-4886-9974-f1e05074ac5b.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/91.webp",
       "status": "ok",
-      "bytes": 1494556
+      "bytes": 1151975
     }
   ]
 }

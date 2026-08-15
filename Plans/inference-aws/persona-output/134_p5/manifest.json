@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:23:25Z",
+  "generated_at": "2026-08-15T15:28:38Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a deserted beach at dawn, Juniper kneels on the sand, her body turned to face the rising sun as its golden light illuminates her glistening skin. She wears a tiny string bikini and a sheer cover-up, the fabric clinging to her curves and the wind tousling her long, dark hair. Her face is turned up to the sky, a dreamy expression on her lips as she seems lost in the beauty of the moment, her legs slightly spread, hinting at the promise beneath.",
-      "seed": 307213452,
+      "prompt": "In a luxurious, dimly lit penthouse suite, a stunning woman in a black, lace negligee reclines on a plush, velvet sofa, probes resting on her toned thighs as she smokes a cigarette, her sultry, mysterious gaze fixed on an unseen observer across the room, the glittering city skyline visible through the floor-to-ceiling windows behind her.",
+      "seed": 1109731575,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/8abcb315-f71f-42f1-af2c-a64d1c50ed55.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/134.webp",
       "status": "ok",
-      "bytes": 1396590
+      "bytes": 1198796
     }
   ]
 }

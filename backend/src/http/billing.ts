@@ -10,6 +10,11 @@ import { processSubscriptionEvent, TOKEN_PACKS } from "../payments/webhooks/shar
 import * as ccbillHook from "../payments/webhooks/ccbill";
 import * as verotelHook from "../payments/webhooks/verotel";
 import * as segpayHook from "../payments/webhooks/segpay";
+import * as cryptoHook from "../payments/webhooks/crypto";
+import { ccbillWebhookSchema } from "../payments/webhooks/ccbill";
+import { verotelWebhookSchema } from "../payments/webhooks/verotel";
+import { segpayWebhookSchema } from "../payments/webhooks/segpay";
+import { cryptoWebhookSchema } from "../payments/webhooks/crypto";
 import type { NormalizedEvent, PaymentProvider } from "../payments/types";
 import { normalizeTier } from "../subscription/tier";
 import { entitlementsFor } from "../subscription/entitlements";
@@ -113,6 +118,14 @@ async function handleListPlans(_req: IncomingMessage, res: ServerResponse) {
   return send(res, 200, { plans: items });
 }
 
+async function handleTokenPacks(_req: IncomingMessage, res: ServerResponse) {
+  // Public: the token pack catalog is not secret. The UI reads this instead
+  // of hardcoding credits/price so TOKEN_PACKS in webhooks/shared.ts stays
+  // the single source of truth.
+  const items = Object.entries(TOKEN_PACKS).map(([id, pack]) => ({ id, ...pack }));
+  return send(res, 200, { packs: items });
+}
+
 async function handleBuyTokens(req: IncomingMessage, res: ServerResponse) {
   const userId = await authenticate(req);
   if (!userId) return send(res, 401, { error: "unauthorized" });
@@ -142,15 +155,27 @@ async function handleWebhook(
   let event: NormalizedEvent | null;
   try {
     if (provider === "ccbill") {
-      if (!ccbillHook.verifySignature(json as never)) return send(res, 401, { error: "bad_signature" });
-      event = ccbillHook.normalize(json as never);
+      const parsed = ccbillWebhookSchema.safeParse(json);
+      if (!parsed.success) return send(res, 400, { error: "bad_body" });
+      if (!ccbillHook.verifySignature(parsed.data)) return send(res, 401, { error: "bad_signature" });
+      event = ccbillHook.normalize(parsed.data);
     } else if (provider === "verotel") {
-      if (!verotelHook.verifySignature(json as never)) return send(res, 401, { error: "bad_signature" });
-      event = verotelHook.normalize(json as never);
+      const parsed = verotelWebhookSchema.safeParse(json);
+      if (!parsed.success) return send(res, 400, { error: "bad_body" });
+      if (!verotelHook.verifySignature(parsed.data)) return send(res, 401, { error: "bad_signature" });
+      event = verotelHook.normalize(parsed.data);
     } else if (provider === "segpay") {
+      const parsed = segpayWebhookSchema.safeParse(json);
+      if (!parsed.success) return send(res, 400, { error: "bad_body" });
       const sig = req.headers["x-segpay-signature"] as string | undefined;
       if (!segpayHook.verifySignature(raw, sig)) return send(res, 401, { error: "bad_signature" });
-      event = segpayHook.normalize(json as never);
+      event = segpayHook.normalize(parsed.data);
+    } else if (provider === "crypto") {
+      const parsed = cryptoWebhookSchema.safeParse(json);
+      if (!parsed.success) return send(res, 400, { error: "bad_body" });
+      const sig = req.headers["x-cc-webhook-signature"] as string | undefined;
+      if (!cryptoHook.verifySignature(raw, sig)) return send(res, 401, { error: "bad_signature" });
+      event = cryptoHook.normalize(parsed.data);
     } else {
       return send(res, 400, { error: "unsupported_provider" });
     }
@@ -183,7 +208,11 @@ export async function handleBillingRoute(
     await handleListPlans(req, res);
     return true;
   }
-  const webhookMatch = req.url.match(/^\/webhooks\/(ccbill|verotel|segpay)\/?$/);
+  if (req.method === "GET" && req.url === "/billing/token-packs") {
+    await handleTokenPacks(req, res);
+    return true;
+  }
+  const webhookMatch = req.url.match(/^\/webhooks\/(ccbill|verotel|segpay|crypto)\/?$/);
   if (webhookMatch && req.method === "POST") {
     await handleWebhook(req, res, webhookMatch[1] as PaymentProvider);
     return true;

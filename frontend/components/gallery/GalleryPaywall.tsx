@@ -30,6 +30,8 @@ export function GalleryPaywall({ images, blurs, characterName }: Props) {
             return (
               <div
                 key={i}
+                data-testid={`character-gallery-tile-${i}`}
+                data-locked={isFree ? "false" : "true"}
                 className="relative w-28 flex-none overflow-hidden rounded-2xl"
                 style={{
                   aspectRatio: "9 / 16",

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:18:21Z",
+  "generated_at": "2026-08-15T15:23:55Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "As twilight descends over Haight-Ashbury, Marlowe perches on a graffiti-covered wall, her legs crossed and one foot dangling, a vintage band tee clinging to her toned midriff, her tousled hair framing a sultry expression as she gazes out at the neon-lit street scene.",
-      "seed": 22858506,
+      "prompt": "A sultry model flaunts her assets in a daring ensemble - a revealing top and short skirt - as she provocatively toys with probes, her sultry eyes locked onto an unseen admirer as she makes suggestive hand gestures, the DSLR camera capturing every seductive detail in crisp focus.",
+      "seed": 567306705,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/63ba7232-6c88-485e-a697-d778add94483.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/132.webp",
       "status": "ok",
-      "bytes": 1988263
+      "bytes": 1175535
     }
   ]
 }

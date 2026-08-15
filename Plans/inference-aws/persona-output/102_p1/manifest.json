@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:12:47Z",
+  "generated_at": "2026-08-15T14:22:07Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Piper stands in a sun-drenched meadow at golden hour, her arms outstretched and laughter carrying on the breeze as daffodils sway in the soft gusts, a DSLR camera capturing her carefree joy in a shallow focus frame, the rolling hills of Melbourne's countryside fading into the warm, hazy light of day's end.",
-      "seed": 345990288,
+      "prompt": "In a dimly lit, velvet-draped chamber, a statuesque dominatrix in a leather corset and thigh-high boots beckons a client closer with a come-hither gaze, probes in hand, as golden hour light filters through the heavy curtains.",
+      "seed": 1449912507,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/34589415-7361-4535-b487-fb17aa10b534.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/102.webp",
       "status": "ok",
-      "bytes": 1445863
+      "bytes": 1632491
     }
   ]
 }

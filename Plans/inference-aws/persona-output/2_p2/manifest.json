@@ -1,0 +1,33 @@
+{
+  "persona_id": "2_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/2.png",
+  "main_image_sha256": "b0573f26ffe937ecc59b0b8e2f123a63635f0e4d775008ccc6808e38c78faef9",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-15T10:59:42Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Amidst a hazy, dreamlike setting, a couple in seductive attire hold futuristic sex toys, their lustful glances and inviting postures drawing an onlooker into their intimate world. The soft focus and warm lighting create a sensual, ethereal atmosphere, emphasizing the couple's charged desire.",
+      "seed": 1075751867,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/2.png",
+      "status": "ok",
+      "bytes": 926560
+    }
+  ]
+}

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:40:25Z",
+  "generated_at": "2026-08-15T13:52:05Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit bookshop at dusk, Hazel bends over a shelf, her dark hair spilling over a sheer white blouse that clings to her curves, hinting at the lacy bra underneath. The golden hour's soft light dances across her skin as she scans the titles, a sensual pose accentuating her derri\u00e8re in fitted jeans.",
-      "seed": 1992737230,
+      "prompt": "Against the backdrop of a gritty, neon-lit city alley, a provocative woman in a scandalously short skirt and tight top provocatively manipulates probes, her movements sensual and hypnotic under the harsh, flickering streetlights. Her piercing green eyes lock onto an unseen admirer, her full lips curled into a seductive smile as she beckons them closer, the city sounds muffled in the distance.",
+      "seed": 599657693,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/21e3f83a-032c-44e6-9272-52ec1d9c3663.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/87.webp",
       "status": "ok",
-      "bytes": 1483464
+      "bytes": 1257605
     }
   ]
 }

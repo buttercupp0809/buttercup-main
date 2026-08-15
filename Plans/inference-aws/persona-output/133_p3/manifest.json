@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:20:28Z",
+  "generated_at": "2026-08-15T15:25:53Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Clio lounges on a weathered stone bench in the shadow of the Parthenon, her body barely concealed beneath a sheer, wine-colored slip dress, the fabric clinging to her every curve as the fading light of sunset casts long shadows across the ancient marble, her profile turned slightly to gaze out over the Aegean Sea.",
-      "seed": 1825672066,
+      "prompt": "With a provocative smirk and come-hither gaze, a provocatively dressed model plays with probes in a dimly lit chamber, the flickering candles casting shadows that dance across her curves as she makes suggestive hand gestures, her very presence an invitation to a night of unbridled passion.",
+      "seed": 553914821,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/a6b723ee-65cf-4a84-b533-d7b279d80f85.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/133.webp",
       "status": "ok",
-      "bytes": 1454738
+      "bytes": 1204479
     }
   ]
 }

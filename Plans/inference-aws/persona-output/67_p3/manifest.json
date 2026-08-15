@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:58:27Z",
+  "generated_at": "2026-08-15T13:12:33Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a moonlit balcony overlooking the Eiffel Tower, Clara leans against the ornate railing, her body barely concealed by a diaphanous robe that clings to her shapely form, the city lights reflecting in her half-closed eyes, a cinematic wide-angle lens captures the sweeping vista behind her as she turns to face the camera with a coy, inviting smile.",
-      "seed": 1776366491,
+      "prompt": "In a steamy, dimly lit alleyway, a woman clad in a sheer, red lingerie set presses her curves against a graffiti-covered brick wall, her eyes hooded with lust as she beckons a passerby to join her provocative dance. The DSLR camera captures a shallow depth of field, focusing on the woman's parted lips and heavy-lidded gaze as she sways her hips, the neon signs of the city's nightlife casting a lurid glow on her skin.",
+      "seed": 771265355,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/9fc595de-3500-4805-b6c2-5cc18710b585.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/67.webp",
       "status": "ok",
-      "bytes": 1745217
+      "bytes": 1524076
     }
   ]
 }

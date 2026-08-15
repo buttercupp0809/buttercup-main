@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:47:34Z",
+  "generated_at": "2026-08-15T14:55:14Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Marlowe's provocative pose on a plush bedroom sofa is bathed in warm candlelight, shadows dancing across her bare skin as she lounges in a lacy black negligee that clings to every curve. Her heavy-lidded eyes meet the viewer's with a come-hither look, a strand of pearls glistening around her throat as she absently runs a hand down the side of her thigh.",
-      "seed": 441745330,
+      "prompt": "In a steamy underground club, a dominatrix clad in black leather and stiletto heels holds probes aloft as she surveys the crowd from atop a raised platform, her regal beauty and commanding presence drawing in worshippers, the air thick with the scent of arousal, illuminated by pulsing neon lights.",
+      "seed": 1137104163,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/809ae644-4d83-47fc-89d0-0ec2bf3ab377.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/118.webp",
       "status": "ok",
-      "bytes": 1549269
+      "bytes": 1176076
     }
   ]
 }

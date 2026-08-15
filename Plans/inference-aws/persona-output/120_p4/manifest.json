@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:52:17Z",
+  "generated_at": "2026-08-15T15:00:01Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Juniper reclines on a plush, velvet chaise in a dimly lit, opulent boudoir, her corset-clad torso and exposed thighs on full display as she runs a hand languidly through her undone hair, the soft focus and shallow depth of field emphasizing her alluring, sensual presence.",
-      "seed": 1958057675,
+      "prompt": "In a dimly lit alleyway, a mysterious figure clad in a long, black coat and a fedora beckons a passerby with a provocative pose, her gloved hand holding a large, silver probe as she gazes at the stranger with smoldering intensity, the city's neon lights reflecting off her dark attire.",
+      "seed": 1202358741,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/bb071c5a-9236-4337-b1c9-07d7abf9eb7c.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/120.webp",
       "status": "ok",
-      "bytes": 1277785
+      "bytes": 1189413
     }
   ]
 }

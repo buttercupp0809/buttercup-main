@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:07:38Z",
+  "generated_at": "2026-08-15T12:24:08Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Late evening in a dimly lit parlor as Magnolia sits on a plush couch, her skin-tight, black lace gown hugging her form, the fabric barely concealing her full breasts and the hint of her thong-clad derri\u00e8re, as she leans back, one high heel hooked on the couch, her leg raised, her eyes fixed on the viewer with a come-hither look.",
-      "seed": 1474249688,
+      "prompt": "In the midst of a decadent masquerade ball, a masked woman in a revealing, beaded bodice and a feathered mask provocatively waves a probe in the air as she dances with a mysterious partner, the flickering candlelight casting shadows across her sensual movements and the ornate, Baroque-inspired ballroom setting.",
+      "seed": 1759321957,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/3b272a83-2723-47db-aa00-32810ee78903.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/43.webp",
       "status": "ok",
-      "bytes": 1387898
+      "bytes": 1583933
     }
   ]
 }

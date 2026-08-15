@@ -2,8 +2,30 @@
 // params + signatureKey (Verotel docs).
 
 import crypto from "node:crypto";
+import { z } from "zod";
 import type { NormalizedEvent } from "../types";
 import { normalizeTier } from "../../subscription/tier";
+
+// Verotel FlexPay postback params are all strings (query-string style).
+// `catchall` still requires every extra key to be a string so the signature
+// canonicalization (which signs every non-"signature" field) never operates
+// on a non-string value.
+export const verotelWebhookSchema = z
+  .object({
+    type: z.string().optional(),
+    userId: z.string().optional(),
+    tier: z.string().optional(),
+    tokenPackId: z.string().optional(),
+    priceAmount: z.string().optional(),
+    priceCurrency: z.string().optional(),
+    nextChargeOn: z.string().optional(),
+    referenceID: z.string().optional(),
+    transactionID: z.string().optional(),
+    saleID: z.string().optional(),
+    signature: z.string().optional(),
+  })
+  .catchall(z.string());
+export type VerotelWebhookPayload = z.infer<typeof verotelWebhookSchema>;
 
 export function verifySignature(payload: Record<string, string>): boolean {
   const key = process.env.VEROTEL_SIGNATURE_KEY;

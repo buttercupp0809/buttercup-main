@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:37:23Z",
+  "generated_at": "2026-08-15T14:45:12Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the steamy confines of a traditional Japanese onsen, Ruby sits on the edge of the tub, water droplets glistening on her skin as she arches her back, the sheer fabric of her kimono slipping off one shoulder to expose the tender flesh of her breasts.",
-      "seed": 1065137184,
+      "prompt": "Amidst the shadowy recesses of an abandoned warehouse, a mysterious woman, clad in a sheer, black nightgown, beckons an unseen admirer with a provocative pose. The dim light of a single, bare bulb casts eerie shadows across her curves as she leans against a graffiti-covered wall, probes in hand. The atmosphere is charged with danger and desire, the rustling of old crates and distant sirens outside underscoring the illicit nature of her seductive invitation.",
+      "seed": 1472527229,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/4ca76315-7314-47e7-8fc7-328438449c9d.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/113.webp",
       "status": "ok",
-      "bytes": 1218007
+      "bytes": 1941812
     }
   ]
 }

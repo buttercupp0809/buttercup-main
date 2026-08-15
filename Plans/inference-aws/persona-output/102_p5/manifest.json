@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:14:23Z",
+  "generated_at": "2026-08-15T14:23:36Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the hazy light of a desert dawn, Piper emerges from the shadows of a beachfront building, a tiny string bikini hugging her curves as she pads across the sand in high heels, the wind whipping her hair into a frenzy and the first rays of sun casting a golden glow on her skin, the camera capturing her in a shallow focus, the ocean stretching out to infinity behind her as she pauses to look back over her shoulder, a coy smile playing on her lips.",
-      "seed": 927390028,
+      "prompt": "On the sun-drenched deck of a luxury yacht, a couple entwined in passionate lovemaking hold probes, their heated gazes locking as the waves gently rock the vessel, the camera capturing a shallow focus on the lovers' bodies as the sky blazes with the hues of a tropical sunset in the background.",
+      "seed": 46000952,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/d377312a-5d1d-42a9-8be1-3458bab05616.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/102.webp",
       "status": "ok",
-      "bytes": 1022681
+      "bytes": 1350261
     }
   ]
 }

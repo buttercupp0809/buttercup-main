@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:05:53Z",
+  "generated_at": "2026-08-15T14:15:17Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Clara poses on a stone fountain edge in a secluded garden, her body arched back as she reaches for a low-hanging branch, her white lace bra and matching thong clinging to her wet skin after a dip in the water. A shaft of late afternoon sunlight illuminates her glistening form, casting a warm glow on the lush foliage surrounding her as she looks back at the camera with a sultry, inviting gaze.",
-      "seed": 606321422,
+      "prompt": "Amidst the opulent, crimson-hued decor of a high-end private club, a dominatrix in leather attire stands before a bound submissive, probes in hand as she teases his nipples with a metal tongue before delivering a series of sharp, stinging strikes, the room lit by red glow sticks and the harsh gleam of her studded collar.",
+      "seed": 617697690,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/d883e0ec-8980-4c1a-a882-04243151e6cd.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/98.webp",
       "status": "ok",
-      "bytes": 1624211
+      "bytes": 1603744
     }
   ]
 }

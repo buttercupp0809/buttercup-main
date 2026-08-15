@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:05:29Z",
+  "generated_at": "2026-08-15T14:14:55Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the midst of a lavish ball, Clara moves gracefully across a marble dance floor, her red satin gown shimmering under the chandeliers as she looks over her shoulder with a coy smile. The dress is cut low, showcasing the cleavage of her ample breasts, and the tight bodice accentuates her narrow waist before flowing out to a full, flared skirt.",
-      "seed": 1509623297,
+      "prompt": "In a dark, candlelit chamber, the subject kneels on a velvet-draped altar, her back arched and pert breasts on full display in a sheer, lace top. She holds probes in one hand, beckoning with the other as her sultry voice whispers an invitation, the flickering candlelight casting an air of mystery and seduction.",
+      "seed": 863148708,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/6ad602dd-3ed8-4a2e-8d28-4290fd4c2722.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/98.webp",
       "status": "ok",
-      "bytes": 1376595
+      "bytes": 1497037
     }
   ]
 }

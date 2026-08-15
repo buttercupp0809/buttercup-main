@@ -59,6 +59,38 @@ describe.skipIf(!DB_UP)("token ledger", () => {
     expect(ledger[0].delta).toBe(10);
   });
 
+  // Phase 28: creation-time character images are free (tokenCost: 0).
+  it("a zero-cost debit is a no-op: no ledger row, balance untouched", async () => {
+    const userId = await makeUser(15);
+    const { balanceAfter, ledgerId } = await debitTokens({ userId, delta: 0, reason: "image_gen" });
+    expect(balanceAfter).toBe(15);
+    expect(ledgerId).toBeNull();
+    const ledger = await prisma.tokenLedger.findMany({ where: { userId } });
+    expect(ledger).toHaveLength(0);
+  });
+
+  it("a zero-cost refund is a no-op: no ledger row, balance untouched", async () => {
+    const userId = await makeUser(15);
+    const { balanceAfter } = await refundTokens({ userId, delta: 0, reason: "image_gen" });
+    expect(balanceAfter).toBe(15);
+    const ledger = await prisma.tokenLedger.findMany({ where: { userId } });
+    expect(ledger).toHaveLength(0);
+  });
+
+  it("a chat selfie at IMAGE_TOKEN_COST still debits and writes a ledger row", async () => {
+    const IMAGE_TOKEN_COST = 20;
+    const userId = await makeUser(50);
+    const { balanceAfter, ledgerId } = await debitTokens({
+      userId,
+      delta: IMAGE_TOKEN_COST,
+      reason: "image_gen",
+    });
+    expect(balanceAfter).toBe(30);
+    expect(ledgerId).not.toBeNull();
+    const ledger = await prisma.tokenLedger.findMany({ where: { userId } });
+    expect(ledger).toHaveLength(1);
+  });
+
   it("concurrent debits never drive the balance negative", async () => {
     const userId = await makeUser(30);
     const results = await Promise.allSettled([

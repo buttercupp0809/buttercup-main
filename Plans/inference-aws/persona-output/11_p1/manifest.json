@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T22:55:06Z",
+  "generated_at": "2026-08-15T11:17:29Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Evelyn playfully skips through the lively streets of Barcelona's Gothic Quarter, her dark hair fluttering in the warm breeze. She wears a bright floral sundress that swishes around her thighs, a woven basket of art supplies dangling from her arm. The golden hour casts a warm glow, illuminating her smiling face as she disappears into a narrow alley, eager to discover new hidden gems.",
-      "seed": 391136359,
+      "prompt": "Amidst the warm golden hour glow of a Barcelona rooftop, a stunning woman in a low-cut red dress provocatively teases an unseen admirer with probes, her sultry eyes and inviting pose promising a passionate encounter under the setting sun's soft light, captured in a shallow focus DSLR shot.",
+      "seed": 1179799205,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e241f819-c271-4a68-beb8-58d9ee58f98d.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/11.webp",
       "status": "ok",
-      "bytes": 1572174
+      "bytes": 1169529
     }
   ]
 }

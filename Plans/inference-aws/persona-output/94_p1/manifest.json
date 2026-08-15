@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:54:47Z",
+  "generated_at": "2026-08-15T14:05:48Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Ophelia stands in the grand courtyard of a Viennese palace, bathed in the warm glow of golden hour. She's dressed in a flowing lavender gown with intricate lace details, her hair styled in loose waves. With a soft smile and sparkling eyes, she gazes upwards at the ornate architecture, her hands clasped behind her back as if in appreciation. The scene is captured with a DSLR camera, using a shallow depth of field to blur the background and emphasize her ethereal beauty.",
-      "seed": 1450370928,
+      "prompt": "In a dimly lit boudoir, a dominatrix slowly unbuttons her white shirt, revealing pert breasts bound in black leather. Her submissive kneels at her feet, wearing only a collar and handcuffs, awaiting her mistress's commands. Golden hour light filters through sheer curtains, casting a sensual glow on the scene.",
+      "seed": 935504269,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/efcdf47b-acf6-4af7-86ff-1852fac25010.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/94.webp",
       "status": "ok",
-      "bytes": 1534686
+      "bytes": 1156979
     }
   ]
 }

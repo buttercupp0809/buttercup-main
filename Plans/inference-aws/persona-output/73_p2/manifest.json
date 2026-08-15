@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:10:48Z",
+  "generated_at": "2026-08-15T13:24:12Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, intimate boudoir, Freya reclines on satin sheets, her sheer negligee clinging to her curves as she gazes directly at the camera with a sultry, half-lidded expression, a delicate silver necklace drawing the eye to her ample cleavage as the soft focus and shallow depth of field emphasize her sensuality.",
-      "seed": 1232400329,
+      "prompt": "Amidst the golden hour glow of a secluded hot spring, a sensual model sits on the rocky edge, her toned body glistening with water droplets as she provocatively toys with probes. The surrounding landscape of rugged mountains and lush greenery creates a breathtaking backdrop, while the soft focus and shallow depth of field of a DSLR camera add a cinematic, dreamlike quality to the scene.",
+      "seed": 1404089685,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/8dbaab9a-2c20-4404-86ef-6f793a6041d0.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/73.webp",
       "status": "ok",
-      "bytes": 1093957
+      "bytes": 1474037
     }
   ]
 }

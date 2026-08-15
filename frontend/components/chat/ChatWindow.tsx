@@ -174,7 +174,15 @@ export function ChatWindow({
   }
 
   return (
-    <div className="relative flex h-full flex-col gap-3 p-4">
+    // Full-height flex column driven by the parent chat page's height chain
+    // (see app/(protected)/chat/[characterId]/page.tsx: the page wrapper is
+    // `h-full` inside `<main>`). A previous `h-dvh md:h-full` forced the pane
+    // to viewport height on mobile, which pushed the composer below the
+    // parent's overflow-hidden clip and made recent messages appear to sit
+    // under it. `h-full min-h-0` keeps the pane bounded by its actual parent
+    // so the flex-1 message list and shrink-0 composer lay out without any
+    // sticky/absolute overlap.
+    <div className="relative flex h-full min-h-0 flex-col gap-3 p-4">
       {/*
         Immersive backdrop (PRD §1): a subtle blurred character image behind
         the message list. `pointer-events-none` so it never intercepts
@@ -234,7 +242,7 @@ export function ChatWindow({
 
       <div
         ref={scrollAreaRef}
-        className="flex-1 space-y-3 overflow-y-auto rounded-md p-4"
+        className="min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain rounded-md p-4"
         style={{ backgroundColor: "hsl(var(--buttercupp-surface) / 0.55)" }}
       >
         {messages.map((m) =>
@@ -270,7 +278,13 @@ export function ChatWindow({
 
       <form
         onSubmit={submit}
-        className="rounded-2xl border p-3"
+        // shrink-0 so the composer keeps its intrinsic height and never
+        // overlaps the flex-1 message list above. Sticky positioning was
+        // removed: it created ambiguous overlap on mobile because the
+        // nearest scrolling ancestor was the outer <main>, not the message
+        // list, so the composer could sit on top of trailing messages when
+        // the viewport was smaller than the pane.
+        className="shrink-0 rounded-2xl border p-3 pb-safe"
         style={{
           backgroundColor: "hsl(var(--buttercupp-surface-2))",
           borderColor: "hsl(var(--buttercupp-border))",
@@ -288,7 +302,7 @@ export function ChatWindow({
           style={{ color: "hsl(var(--buttercupp-fg))" }}
         />
         <div className="mt-2 flex items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
+          <div className="flex min-h-[36px] flex-wrap items-center gap-2">
             <span className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
               Show me the scene:
             </span>
@@ -317,7 +331,7 @@ export function ChatWindow({
             disabled={pending || paywall !== null || !input.trim()}
             data-testid="chat-send"
             aria-label="Send"
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white shadow-sm disabled:opacity-50"
+            className="tap-target flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white shadow-sm disabled:opacity-50"
             style={{
               background:
                 "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
@@ -380,7 +394,7 @@ function MessageBubble({
   return (
     <div className={`flex ${mine ? "justify-end" : "justify-start"}`} data-testid={`bubble-${role}`}>
       <div
-        className="max-w-[75%] rounded-2xl px-4 py-3 shadow-sm"
+        className="max-w-[85%] rounded-2xl px-4 py-3 shadow-sm sm:max-w-[75%]"
         style={
           mine
             ? {

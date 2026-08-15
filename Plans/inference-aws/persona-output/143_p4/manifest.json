@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:42:15Z",
+  "generated_at": "2026-08-15T15:46:41Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A dimly lit Dublin bookstore at night, with Hazel perched on a high stool, surrounded by towering shelves of literary treasures, her face illuminated by the soft glow of a desk lamp as she writes in a leather-bound journal, the city's bustle muffled outside the store's worn glass doors.",
-      "seed": 581258628,
+      "prompt": "In a secluded, misty forest glade illuminated by the soft, ethereal glow of a full moon, a mysterious, nude figure with long, raven hair beckons an unsuspecting wanderer closer, her body glistening with dew as she holds a pair of probes, the camera's shallow focus emphasizing the dreamlike, enchanting quality of the scene.",
+      "seed": 1502042588,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/cd98bf9c-227e-4b0c-ae0c-17c432eac08e.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/143.webp",
       "status": "ok",
-      "bytes": 1500975
+      "bytes": 1211145
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:19:16Z",
+  "generated_at": "2026-08-15T13:32:03Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Amidst the dim, candlelit interior of a hidden Athens taverna, Clio reclines on plush cushions, her sheer blouse slipping off one shoulder, gazing invitingly at the camera with a coy smile, a goblet of retsina resting on her ample hip.",
-      "seed": 1630144234,
+      "prompt": "In the hazy, neon-drenched backroom of a seedy club, a scantily-clad stripper straddles her client's lap, her body glistening with sweat as she grinds against him with sensual movements, the probes held in her hands adding a futuristic edge to the steamy encounter captured by a DSLR camera's shallow depth of field.",
+      "seed": 1345435418,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/9d44e49b-a700-4f4d-86d8-617a5bc5941a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/77.webp",
       "status": "ok",
-      "bytes": 1239412
+      "bytes": 1068915
     }
   ]
 }

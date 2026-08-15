@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:26:49Z",
+  "generated_at": "2026-08-15T13:39:09Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Amid the ornate, jewel-toned opulence of a lavish harem tent, Ophelia reclines on plush cushions, her intricately embroidered choli top and lehnga skirt a testament to ancient Indian craftsmanship, her hands playing with the delicate curls of her hair as her half-lidded, inviting eyes seem to beckon the viewer closer, the soft, diffused light casting a warm, sensuous glow over her seductive form.",
-      "seed": 85283364,
+      "prompt": "In a luxurious, penthouse suite at dusk, a wealthy couple engages in a provocative BDSM session, the woman's nude form marked with intricate rope designs as she kneels at her partner's feet, their eyes locked in a fierce, dominant/submissive gaze, the city skyline visible through the floor-to-ceiling windows.",
+      "seed": 661748156,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/3685f35b-28f6-4e0e-b676-7b9c80d6443a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/80.webp",
       "status": "ok",
-      "bytes": 1892236
+      "bytes": 1349236
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:05:14Z",
+  "generated_at": "2026-08-15T15:11:38Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit boudoir, Clara reclines on a plush velvet chaise, wearing a sheer, black lace negligee that clings to her curves, her long hair cascading over one shoulder as she raises a glass of red wine to her lips, her gaze sultry and inviting through half-lidded eyes.",
-      "seed": 1314703649,
+      "prompt": "Against a backdrop of neon city lights, a curvaceous siren straddles the hood of a sleek, black sports car. Her tight, red dress is ripped at the seams, revealing tantalizing glimpses of skin. She grasps a pair of metallic clamps in one hand, her full lips curled into a provocative smile as she beckons a passerby to step into the shadows with her.",
+      "seed": 1040414262,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/63a7e09c-eb4c-4d4d-bfbd-271ced50b56e.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/126.webp",
       "status": "ok",
-      "bytes": 1271921
+      "bytes": 1288364
     }
   ]
 }

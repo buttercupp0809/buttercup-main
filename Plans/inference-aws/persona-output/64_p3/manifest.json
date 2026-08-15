@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:52:08Z",
+  "generated_at": "2026-08-15T13:06:26Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Set against the misty, ethereal backdrop of a moonlit garden, Magnolia reclines on a wrought-iron bench, her legs crossed and one arm draped along the backrest. She's wearing a sleek, black evening gown that hugs her figure, the fabric falling in soft folds around her. Her hair is styled in loose, flowing waves, and she gazes up at the stars with a dreamy, enigmatic expression.",
-      "seed": 1824761127,
+      "prompt": "Perched on the edge of a velvet chaise, a model in a provocative red corset and garter belt teases an imaginary partner with probes, her hips swaying seductively as she purses her plump lips and bats her lashes, the DSLR camera capturing every alluring detail in crisp, cinematic clarity.",
+      "seed": 979077119,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/53a5b02e-9b0c-4937-90e0-de67b0575cf2.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/64.webp",
       "status": "ok",
-      "bytes": 1307204
+      "bytes": 1261457
     }
   ]
 }

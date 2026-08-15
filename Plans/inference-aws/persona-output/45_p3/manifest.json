@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:11:35Z",
+  "generated_at": "2026-08-15T12:28:04Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit underground music venue, Ruby moves to the pulsing beat, her body glistening with sweat as she wears a tight, red lace bra and thong. The strobe lights dance across her toned limbs and rounded hips, emphasizing her seductive pose as she sways to the rhythm, her gaze locked on the DJ spinning records behind the glass.",
-      "seed": 1353528614,
+      "prompt": "In a luxurious penthouse suite bathed in warm, soft light, a stunning model flaunts a provocative outfit, holding probes with one hand while making suggestive hand gestures and sultry eye contact, inviting a partner to join her in a night of pleasure. High-end DSLR, prime lens, studio setup.",
+      "seed": 134506548,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/79d5ffcc-645b-4470-bff8-82aa15afe566.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/45.png",
       "status": "ok",
-      "bytes": 1075822
+      "bytes": 1011156
     }
   ]
 }

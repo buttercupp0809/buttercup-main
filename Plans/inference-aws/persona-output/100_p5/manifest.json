@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:10:08Z",
+  "generated_at": "2026-08-15T14:19:21Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Basking in the steamy heat of a dimly lit onsen, Phoebe sits on the edge of a wooden tub, her glistening skin and the beads of water on her curves contrasting against the rustic, textured surroundings, a kimono draped loosely over one shoulder as she gazes at the viewer with a coy, half-lidded expression, the camera's narrow depth of field drawing attention to her sensual, relaxed pose.",
-      "seed": 1772400561,
+      "prompt": "In a cozy apartment, a group of friends gathered for a raunchy game night, the women dressed in provocative lingerie as they play seductive party games, bodies entwined on the couch, laughter and moans mingling with the clinking of glasses and the thump of bass from nearby speakers, captured in a cinematic frame by a DSLR camera's wide-angle lens.",
+      "seed": 1620394975,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/88176221-614e-451d-b6ae-77b3e69b21b7.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/100.webp",
       "status": "ok",
-      "bytes": 1132878
+      "bytes": 1066088
     }
   ]
 }

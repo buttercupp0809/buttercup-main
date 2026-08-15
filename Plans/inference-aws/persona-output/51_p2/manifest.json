@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:23:45Z",
+  "generated_at": "2026-08-15T12:39:56Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the dimly lit, smoky interior of an Oslo music venue, Astrid stands at the edge of the crowded dance floor, her eyes gleaming with excitement behind her tousled hair as she sports a revealing, strapless red dress that hugs her curves, the strobe lights casting dramatic shadows across her face and the rippling muscles of her bare shoulders.",
-      "seed": 74551950,
+      "prompt": "In a dimly lit, intimate boudoir set against a backdrop of rich velvets and dark wood, a stunning model reclines on a plush chaise, her lithe body clad in provocative lingerie as she teases a partner with probes, her sultry eyes locked in a charged, come-hither gaze under the soft, cinematic lighting of a DSLR.",
+      "seed": 1797081213,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/8e8f7baa-8321-4157-857b-3eb19b929610.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/51.webp",
       "status": "ok",
-      "bytes": 1272203
+      "bytes": 1320919
     }
   ]
 }

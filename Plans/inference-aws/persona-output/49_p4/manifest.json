@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:20:20Z",
+  "generated_at": "2026-08-15T12:36:37Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Clara's figure is silhouetted against a large, arched window as she gazes out over the snow-dusted rooftops of Vienna, her arms wrapped around herself in a fur-trimmed coat, the city lights casting a soft, ethereal glow on her features.",
-      "seed": 1917046902,
+      "prompt": "As the last rays of sunset paint the sky in hues of fiery orange and deep crimson, a beautiful woman dressed in a provocative red dress stands on the deck of a yacht, her long legs crossed as she toys with probes, her gaze locked onto the horizon and her mind filled with the promise of a romantic, sensual encounter beneath the star-studded night sky.",
+      "seed": 615199582,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/3dea7a1f-4392-447d-9dfd-992737cf8403.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/49.webp",
       "status": "ok",
-      "bytes": 1417250
+      "bytes": 1193229
     }
   ]
 }

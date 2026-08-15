@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:45:23Z",
+  "generated_at": "2026-08-15T13:56:46Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a deserted moonlit beach, Vesper reclines on a colorful towel, her tiny string bikini leaving little to the imagination. The breeze tousles her wind-blown hair as she gazes up at the star-filled sky, a sly smile playing on her lips. A DSLR captures the scene with a shallow depth of field, emphasizing her sensual pose and the glistening sand beneath her.",
-      "seed": 1582810740,
+      "prompt": "In the opulent boudoir of a luxurious penthouse suite, a wealthy socialite reclines on a plush velvet chaise, her designer lingerie barely concealing her curves as she sensually plays with probes, the city skyline glowing in the background, her sultry smile promising an unforgettable evening of decadence and indulgence to the right partner.",
+      "seed": 61962945,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/501bd290-403d-4a05-91a6-28c4abf3b370.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/89.webp",
       "status": "ok",
-      "bytes": 1280755
+      "bytes": 1176469
     }
   ]
 }

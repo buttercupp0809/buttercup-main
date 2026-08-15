@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:18:23Z",
+  "generated_at": "2026-08-15T13:31:12Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Lying on a luxurious, cream-colored bedspread in a lavish hotel suite, Marlowe's curvaceous body is draped across the pillows in a provocative, nearly nude pose, a sheer, baby-blue negligee barely containing her ample breasts and the curve of her hips, her long, toned legs extended and crossed at the ankles, her face turned towards the camera with a sultry, half-lidded gaze and a seductive, parted-lips smile, the soft, warm lighting accentuating her creamy, sun-kissed skin and the sensual lines of her body.",
-      "seed": 103425284,
+      "prompt": "Amidst the neon-lit bustle of a seedy, back-alley strip club, a scantily-clad stripper straddles a client's lap on a worn, leather couch. The city's lurid glow casts a harsh, but alluring light on her glistening, sweat-drenched body as she grinds against him, a provocative G-string barely covering her most intimate areas, the air thick with the scent of cheap perfume and stale cigarettes.",
+      "seed": 637300131,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/1371cac2-7854-44f0-b84b-629c0d7c2a66.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/76.webp",
       "status": "ok",
-      "bytes": 1367431
+      "bytes": 1291333
     }
   ]
 }

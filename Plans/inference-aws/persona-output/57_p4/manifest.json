@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:37:43Z",
+  "generated_at": "2026-08-15T12:52:35Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Vesper lounges on a stone bench in a secret catacomb, the flickering torchlight casting long shadows on her semi-naked form, a diaphanous white robe clinging to her voluptuous figure as she gazes up at the ancient stone ceiling, her raven hair spilling over her shoulders, her eyes gleaming with intrigue.",
-      "seed": 1503103961,
+      "prompt": "In a dimly lit, opulent chamber, a woman dressed in fetish attire, her body adorned with intricate leather straps, seductively plays with probes, her gaze locked onto an unseen admirer as she beckons them near, the warm glow of candelabras casting shadows across her sultry form.",
+      "seed": 186949513,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/c84ca86e-1806-4df2-88e0-3daba2abb3b6.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/57.webp",
       "status": "ok",
-      "bytes": 1402231
+      "bytes": 1353725
     }
   ]
 }

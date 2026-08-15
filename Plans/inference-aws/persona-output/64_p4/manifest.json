@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:52:32Z",
+  "generated_at": "2026-08-15T13:06:48Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the midst of a lavish, candlelit ballroom, Magnolia glides across the polished marble floor, her red satin gown shimmering under the chandeliers. Her dark hair is swept up in an elegant updo, and a string of pearls graces her neck. With a coy, sidelong glance, she extends a gloved hand to a waiting partner, her full lips curved in a playful, inviting smile.",
-      "seed": 1588524616,
+      "prompt": "Dressed in a sheer, black negligee that leaves little to the imagination, a woman reclines on a plush, dark-wood four-poster bed, her slender fingers playing with probes as her piercing green eyes lock onto the viewer, her sultry expression and inviting pose promising a night of forbidden pleasures.",
+      "seed": 49770520,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/9099c5ae-ebee-48d4-8e4f-fdeb8811bd8b.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/64.webp",
       "status": "ok",
-      "bytes": 1064365
+      "bytes": 1222908
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:11:04Z",
+  "generated_at": "2026-08-15T14:20:20Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the dimly lit, intimate confines of an underground art collective, Hazel reclines on a plush velvet couch, her sheer black negligee clinging to her curves as she gazes up at the viewer with a sultry, half-lidded gaze, the cinematic lighting casting deep shadows that accentuate her ample cleavage and the tantalizing glimpse of lace beneath her thigh-high stockings.",
-      "seed": 205232934,
+      "prompt": "Amidst the warm glow of a golden hour sunset, a couple in revealing attire hold futuristic sex toys, their expressions charged with desire as they invite others to join them on a plush outdoor sofa, the city skyline blurred in the background.",
+      "seed": 1144017302,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/45fd8f2a-d8fc-4e0b-8599-a74e5c917f2c.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/101.webp",
       "status": "ok",
-      "bytes": 1407019
+      "bytes": 1328953
     }
   ]
 }

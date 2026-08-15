@@ -4,10 +4,10 @@
 //
 // Run from repo root: npx tsx packages/database/prisma/sync-personas.ts
 
-import { config } from "dotenv";
+import "./load-env";
 import { readFileSync, existsSync } from "node:fs";
 import path from "node:path";
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@buttercupp/database";
 
 const PERSONAS_MD = path.join(__dirname, "..", "..", "..", "Plans", "persona-list.md");
 const PUBLIC_PERSONAS = path.join(__dirname, "..", "..", "..", "frontend", "public", "personas");
@@ -41,11 +41,10 @@ function parsePersonaList(content: string): ParsedPersona[] {
 }
 
 async function main() {
-  // Load env before creating the client so DATABASE_URL is set.
-  config({ path: path.join(__dirname, "..", "..", "..", "backend", ".env") });
-  // Standalone script: one dedicated client per run (no HMR concern).
-  const prisma = new PrismaClient();
-
+  // Uses the @buttercupp/database singleton (CLAUDE.md hard rule: never new
+  // PrismaClient() outside packages/database/src/client.ts). ./load-env is
+  // imported at the top so DATABASE_URL is populated before the singleton
+  // module initializes.
   console.log("[sync] Ensuring location column exists...");
   await prisma.$executeRawUnsafe(
     `ALTER TABLE "Character" ADD COLUMN IF NOT EXISTS "location" TEXT`,
@@ -100,12 +99,15 @@ async function main() {
           popularityScore: 0,
         },
       });
+      // Single seeded image: both hero (isPrimary) and free/public (isDisplay),
+      // same reasoning as seed.ts's single-image personas.
       await prisma.characterMedia.create({
         data: {
           characterId: character.id,
           kind: "image",
           url: imageUrl,
           isPrimary: true,
+          isDisplay: true,
           sort: 0,
         },
       });

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:55:39Z",
+  "generated_at": "2026-08-15T12:12:08Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A playful Lykke skipping through a Copenhagen park on a golden hour late spring afternoon, surrounded by blooming cherry blossoms and daffodils, with a DSLR camera capturing her joyful, carefree expression and the vibrant colors of her floral dress as it flutters in the gentle breeze.",
-      "seed": 747250927,
+      "prompt": "A sultry woman lounges on a velvet chaise, her slender frame draped in lacy lingerie, as she beckons a lover closer with a come-hither gaze, the soft light of a golden hour casting a warm glow on her porcelain skin and the DSLR camera capturing every tantalizing detail.",
+      "seed": 426310774,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/99331331-a03f-4ae6-8eae-22eb383332b7.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/38.webp",
       "status": "ok",
-      "bytes": 1483969
+      "bytes": 1303854
     }
   ]
 }

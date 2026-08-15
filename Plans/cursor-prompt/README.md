@@ -45,3 +45,23 @@ This folder contains the **sequenced, copy-paste prompts** that build ButterCupp
 | 11 | `11-safety-compliance.md` | Crisis detector + SB 243 protocol, break reminders, jurisdiction gating, audit |
 | 12 | `12-settings-observability.md` | Settings/account, export/delete, Sentry, analytics, metrics |
 | 13 | `13-deploy-aws.md` | Amplify + ECS + RDS + ElastiCache + S3 + CloudFront, CI (build only) |
+
+> Phases 14 to 23 are prior extension phases (marketing site, legal pages, Google/password auth, app shell, persona gallery, chat gestures, plans/limits, paywall triggers, prompt structure, memory/RAG hardening). See the individual files for their scope.
+
+## Experience and monetization batch (24 to 30)
+
+These seven phases were added together to make the product magical, mobile, monetized, and memory-rich. Each is a self-contained prompt that follows the standard template and bakes in a sanity checklist plus manual E2E steps plus automated tests (Vitest + Playwright). They map 1:1 to seven product asks and are grounded in the current codebase (several of these features are partially built already, so the prompts audit and finish rather than build from zero).
+
+| # | File | Delivers | State it targets |
+|---|---|---|---|
+| 24 | `24-magical-onboarding.md` | 3 to 4 step post-signup wizard: name + gender, taste/preferences, first-companion match. Adds `UserProfile` + `completedOnboardingAt`, seeds prefs. | Net-new (signup currently goes straight to `/dashboard`). |
+| 25 | `25-mobile-responsive-pass.md` | Audit + harden mobile across marketing site, app shell/sidenav, chat 3-pane, and scroll/feed. Drawers/bottom-sheets, safe-area, 44px targets, tablet `md` gap. | Already mobile-first; this is a hardening pass. |
+| 26 | `26-image-swap-free-asset.md` | Make the free (non-paywalled) asset the public display image everywhere (avatar, chat-top, card, gallery, landing) via an explicit `isDisplay` flag + backfill. | DB + UI swap; seed currently ships one image per character. |
+| 27 | `27-payments-checkout.md` | Checkout/upgrade UI + token store, entitlement wiring, webhook activation verify. Recommends CCBill primary, SegPay fallback, Verotel third, crypto for one-time packs. | Finish (adult-friendly adapters + ledger already exist). |
+| 28 | `28-creation-pipeline-fix.md` | Unify the create-time media path: kill the detached `persona_pipeline.py` subprocess, route generation through the BullMQ queue, converge `CharacterMedia`/`MediaAsset`, expose the existing edit `PATCH`. | Repair (wizard + worker work; the two media paths diverge). |
+| 29 | `29-first-login-consent-modal.md` | Blocking first-login modal: TOS + privacy + 18+ acceptance, accept enters, decline auto-logs-out. Policy-version aware, server-enforced. | Harden (partial `ConsentGate.tsx` scaffold exists). |
+| 30 | `30-memory-graph-port.md` | Port Pellow's graph memory: `MemoryEntity` + `MemoryEdge` models, `dreaming`/`pattern-detector`/`persona-builder`/`rulebook`/`coverage` modules, route existing extraction through the graph. | Port from `../Pellow` (extraction already fires at `engine.ts:269`). |
+
+### Recommended build order
+
+`26 -> 29 -> 24 -> 25 -> 28 -> 27 -> 30` (quick wins and safety first, heaviest ports last). Each is independent enough to run alone, but this order minimizes rework: the free-display asset (26) and consent gate (29) are small and unblock clean testing of onboarding (24) and the mobile pass (25); the pipeline fix (28) precedes payments (27) so generated media is stable before you gate it; the memory graph port (30) is the largest and lands last.

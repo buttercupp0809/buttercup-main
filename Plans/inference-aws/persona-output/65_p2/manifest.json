@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:53:50Z",
+  "generated_at": "2026-08-15T13:08:05Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit flamenco club, Indigo's lithe form is barely concealed by a sheer lace skirt and high-heeled sandals. Her ample cleavage is on display in a low-cut top, glistening with sweat as she dances with fervor, her hips swiveling seductively under the pulsing strobe lights.",
-      "seed": 178590807,
+      "prompt": "Under the soft, golden glow of a city streetlamp, a scantily-clad seductress in fishnets and a cropped leather jacket prowls the sidewalk, a pair of black-diamond probes dangling from her fingers as she beckons passersby with a come-hither grin, the bustling nightlife of Barcelona's El Raval district providing a provocative backdrop.",
+      "seed": 552413069,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e6ca12ff-cd3f-49bb-9739-238c97c57ff0.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/65.webp",
       "status": "ok",
-      "bytes": 1232411
+      "bytes": 1360941
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:20:29Z",
+  "generated_at": "2026-08-15T13:33:07Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the warm glow of a dimly lit, ornate bedroom, Clio sits on the edge of a plush four-poster bed, her legs crossed, a sheer, lace-trimmed nightgown clinging to her curves, her dark hair cascading over one bare shoulder as she looks over her shoulder at the camera with a mysterious, bedroom eyes expression, a faint, inviting smile playing on her lips.",
-      "seed": 601800767,
+      "prompt": "On a plush leather sofa in a private boudoir, a dominatrix slowly unbuttons her white shirt to reveal her pert breasts bound in black leather, while her submissive kneels at her feet, awaiting her mistress's commands, the scene bathed in soft, warm lighting and captured in intimate detail by a DSLR camera's expert composition.",
+      "seed": 136629891,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/d0330c78-c6f8-4a49-aa51-eb0a4e3cfaf4.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/77.webp",
       "status": "ok",
-      "bytes": 1410429
+      "bytes": 1318749
     }
   ]
 }

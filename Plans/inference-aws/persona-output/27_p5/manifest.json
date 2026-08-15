@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:31:35Z",
+  "generated_at": "2026-08-15T11:51:22Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a moonlit, stone balcony overlooking the Vltava River, Ophelia perches on the edge, her long, slender legs extended in front of her, her feet bare and crossed at the ankles. She wears a diaphanous, pale blue robe that falls open, revealing the creamy expanse of her back and the tantalizing curves of her breasts, barely contained by a lacy bra. Her raven hair is loose and flowing, and she looks down at the glittering river below with an enigmatic, half-lidded gaze, her full, parted lips inviting the viewer to share her secret world.",
-      "seed": 542448645,
+      "prompt": "On the deck of a luxury yacht, a couple in skimpy, white beach attire recline on a plush, striped blanket. The woman, her long, raven hair cascading down her back, holds a probe in each hand, her pouty lips curled into a seductive smile as she gazes at her partner. The man, his chiseled features and tanned skin glistening in the fading light of sunset, reaches out to caress her thigh, his eyes dark with desire. The warm, golden tones of the late afternoon sky mingle with the soft, blue hues of the ocean, creating a breathtaking, idyllic scene of love and temptation.",
+      "seed": 102785607,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/9238743b-63b2-4da0-b2d2-f052da1481d6.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/27.webp",
       "status": "ok",
-      "bytes": 1504151
+      "bytes": 1485285
     }
   ]
 }

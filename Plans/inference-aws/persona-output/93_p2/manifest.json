@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:53:01Z",
+  "generated_at": "2026-08-15T14:04:04Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, smoke-filled back alley, a sultry Lyra leans against a brick wall, her leather corset and fishnet stockings a striking contrast to the seedy surroundings. A single streetlamp casts long shadows across her curves as she smirks, one hand resting on the hip of her thong-clad derri\u00e8re, the other holding a lit cigarette.",
-      "seed": 1471180306,
+      "prompt": "In a dimly lit, upscale boudoir, a statuesque dominatrix with raven hair and piercing violet eyes gazes seductively into the camera lens, her slender fingers wrapped around a gleaming black sex toy as she reclines on a plush velvet chaise, the low light casting dramatic shadows across her sculpted features and the lavish silks that drape her body, her regal presence commanding attention and surrender.",
+      "seed": 1984417173,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/d2e915b9-5a96-46f3-ba9e-86f6c2c50d0d.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/93.webp",
       "status": "ok",
-      "bytes": 1626029
+      "bytes": 1359873
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:09:54Z",
+  "generated_at": "2026-08-15T15:15:55Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Phoebe reclines on a plush chaise in a lavish bedroom, draped in an antique brocade throw. A Victorian-style corset cinches her waist, paired with matching shorts that hug her toned thighs. The camera focuses on her enticing legs, garter belt and high heels adding a touch of naughty allure. A choker and cuff adorn her neck and wrist as she gazes directly at the lens with a coy, inviting smile.",
-      "seed": 77308182,
+      "prompt": "A young couple in skimpy swimsuits lounge on a yacht's deck as the sun dips below the horizon, casting a golden glow. They hold sleek, futuristic sex toys, their expressions charged with lust as they beckon an onlooker closer, the waves gently rocking the vessel and the sky ablaze with hues of orange and pink.",
+      "seed": 706057215,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b86fd2ac-54d4-486e-9224-e92ea6e88bb3.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/128.webp",
       "status": "ok",
-      "bytes": 1714528
+      "bytes": 1223737
     }
   ]
 }

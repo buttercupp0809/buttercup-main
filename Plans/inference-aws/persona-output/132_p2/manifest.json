@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:17:57Z",
+  "generated_at": "2026-08-15T15:23:33Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Under the soft glow of a candlelit room, Marlowe reclines on a plush velvet chaise, her lithe figure barely concealed by a sheer black negligee that clings to her ample cleavage and the gentle curves of her hips, her gaze inviting as she reaches out a hand.",
-      "seed": 1411603842,
+      "prompt": "In a dimly lit, high-tech sex dungeon, a couple clad in futuristic fetish attire engage in an erotic game of seduction, their expressions charged with lust as they hold probes and make come-hither gestures amidst the hazy, dreamlike atmosphere of crimson lighting and fog machines.",
+      "seed": 1906268768,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/f5f8f309-7f57-419c-a34a-d48d28cd6b88.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/132.webp",
       "status": "ok",
-      "bytes": 1067996
+      "bytes": 1090440
     }
   ]
 }

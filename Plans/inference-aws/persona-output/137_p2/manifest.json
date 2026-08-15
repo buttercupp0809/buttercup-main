@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:28:39Z",
+  "generated_at": "2026-08-15T15:33:44Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the grand ballroom of a historic mansion, Magnolia twirls in a flowing, strapless evening gown, the silk shimmering under the chandelier's glow, her long, curly tresses cascading down her back as she moves with grace, lost in the joy of the moment.",
-      "seed": 334942873,
+      "prompt": "In a dimly lit, art deco boudoir, a stunning beauty in lacy lingerie provocatively plays with sex aids, her smoky eyes locked onto an invisible partner as she beckons them closer, the soft focus and warm tones of the DSLR camera emphasizing her alluring features.",
+      "seed": 1086107916,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e7203c2f-83dc-4f78-aeca-61a02b2235fa.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/137.webp",
       "status": "ok",
-      "bytes": 1311999
+      "bytes": 1206573
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:22:27Z",
+  "generated_at": "2026-08-15T12:38:35Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Indigo's graceful form is silhouetted against the steamy interior of a traditional Japanese onsen bathhouse, water beading on her skin as she leans back to expose her breasts, a kimono draped loosely over a shoulder, the soft focus DSLR capturing intimate details.",
-      "seed": 1612660187,
+      "prompt": "In a secluded, moonlit garden, a temptress in a flowing white gown reclines on a velvet daybed, a collection of probes scattered across her bare skin as she languidly plays with them, her enchanting beauty and alluring aura beckoning a brave suitor to explore the forbidden pleasures hidden within her mystical realm.",
+      "seed": 57431035,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/d1e4147b-d68f-4ea3-b22e-b64e56e30803.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/50.webp",
       "status": "ok",
-      "bytes": 1172993
+      "bytes": 1187137
     }
   ]
 }

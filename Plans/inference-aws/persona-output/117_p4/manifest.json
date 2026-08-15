@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:45:51Z",
+  "generated_at": "2026-08-15T14:53:31Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Steamy, underground art studio. Vesper stands in the shadows, wearing a sleek, black leather corset that accentuates her ample bosom, paired with high-waisted, fishnet stockings and a thong. She leans against a graffiti-covered brick wall, her hand trailing down her curves as she smirks at the camera, her eyes gleaming with mischief.",
-      "seed": 1353193595,
+      "prompt": "In a mysterious, candlelit chamber, a woman dressed in fetish attire seductively manipulates probes, her longing gaze fixed on an unseen partner as she beckons them nearer. The room's dark, sensual ambiance, punctuated by the flickering candlelight, sets the stage for a forbidden and alluring tryst.",
+      "seed": 466462991,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/d09b632e-67a0-4d2a-8dd5-c8a1c96da401.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/117.webp",
       "status": "ok",
-      "bytes": 2002424
+      "bytes": 925620
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:31:37Z",
+  "generated_at": "2026-08-15T15:36:41Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a cozy, candlelit bookshop, Indigo browses the shelves in a silk camisole and matching panties, the soft fabric clinging to her body as she bends to select a volume, her bare legs and feet visible beneath the hem of her outfit, the warm glow of the candles and the shallow focus of the shot drawing attention to her intimate attire.",
-      "seed": 1235691946,
+      "prompt": "In the intimate setting of a cozy apartment, friends share a raunchy game night, the women dressed in provocative lingerie as they play seductive party games, bodies entwined on the couch, laughter and moans mingling with the clinking of glasses and the thump of bass from nearby speakers, probes adding an extra layer of excitement to their playful revelry.",
+      "seed": 100216942,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/227d02cd-fd43-48c4-9af4-559f2658627a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/138.webp",
       "status": "ok",
-      "bytes": 1264279
+      "bytes": 1060961
     }
   ]
 }

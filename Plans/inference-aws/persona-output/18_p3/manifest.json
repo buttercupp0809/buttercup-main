@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:10:51Z",
+  "generated_at": "2026-08-15T11:32:39Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Ava lounges on a plush, velvety chaise in a dimly lit boudoir, the antique furniture and heavy drapes casting long shadows across her provocatively posed body. She wears a sheer, crimson lace negligee that clings to her every contour, leaving little to the imagination. Her long, raven hair tumbles down her back as she looks over her shoulder with a coy, half-lidded gaze, one hand trailing down her thigh to the edge of her garter belt.",
-      "seed": 1007065985,
+      "prompt": "In a sleek, modern apartment, a statuesque beauty clad in a revealing red dress gestures seductively with probes, her long legs crossed and one stiletto heel kicked off to reveal creamy thigh. The cinematic composition draws the viewer's eye to her sultry, half-lidded gaze and plump, parted lips, as if beckoning them closer.",
+      "seed": 1858886041,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/49c73087-53b5-4e1e-8bb0-d7cb806aac2b.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/18.webp",
       "status": "ok",
-      "bytes": 1386675
+      "bytes": 1017855
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:33:44Z",
+  "generated_at": "2026-08-15T15:38:37Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Astrid's sculpted form is illuminated by the soft, moody lighting of a deserted alleyway, clad in a tight, high-necked bodysuit that showcases her toned physique, her hands on her hips as she looks over her shoulder with a sultry, mischievous gaze, the city lights casting long shadows across her bare legs.",
-      "seed": 1448891811,
+      "prompt": "In a seedy backroom club, a sultry stripper straddles her client's lap, her body glistening with sweat as she grinds against him in a barely-there G-string, probes clutched in her hand as she makes seductive overtures to the unseen audience, the neon lights outside casting lurid shadows on her curves.",
+      "seed": 160766866,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/5c628893-3448-4793-a483-470231803139.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/139.webp",
       "status": "ok",
-      "bytes": 1222762
+      "bytes": 1036321
     }
   ]
 }

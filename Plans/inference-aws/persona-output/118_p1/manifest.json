@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:46:46Z",
+  "generated_at": "2026-08-15T14:54:23Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Marlowe strides through a vibrant London market on a golden afternoon, her laughter echoing off the stalls as she samples artisanal cheeses and sips wine from a vendor's cup. DSLR captures the scene's warmth and playfulness with a shallow depth of field emphasizing her joyous expression.",
-      "seed": 1014497176,
+      "prompt": "In a dimly lit, luxurious boudoir, a stunning model wearing a sheer black teddy poses seductively on a plush velvet chaise, one hand trailing down her curves as she beckons an admirer closer with smoldering eyes, the soft glow of candles casting warm shadows across her skin, captured in a shallow depth of field by a DSLR camera.",
+      "seed": 612190359,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/fc37c236-42ea-4a59-acc6-00b4315322cf.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/118.webp",
       "status": "ok",
-      "bytes": 1497928
+      "bytes": 1291957
     }
   ]
 }

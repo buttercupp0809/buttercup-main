@@ -23,6 +23,13 @@ export function GalleryToolbar({ viewerAllowsMature: _viewerAllowsMature, availa
   const pathname = usePathname();
 
   const [q, setQ] = React.useState(params.get("q") ?? "");
+  // Guards the debounce effect below against firing on mount. `q`'s initial
+  // value already equals the URL's `q`, so a mount-time push is always a
+  // no-op replace, but it still starts a real navigation. If that fires
+  // 300ms later (e.g. while a slow RSC fetch for a just-clicked character
+  // card is still in flight during a cold dev compile), router.replace here
+  // wins the race and yanks the user straight back to /gallery mid-navigation.
+  const mounted = React.useRef(false);
 
   const push = React.useCallback(
     (patch: Record<string, string | null>) => {
@@ -38,6 +45,10 @@ export function GalleryToolbar({ viewerAllowsMature: _viewerAllowsMature, availa
   );
 
   React.useEffect(() => {
+    if (!mounted.current) {
+      mounted.current = true;
+      return;
+    }
     const t = setTimeout(() => {
       push({ q: q.trim() || null });
     }, 300);

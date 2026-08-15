@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:00:50Z",
+  "generated_at": "2026-08-15T14:10:37Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Against the moody backdrop of a Barcelona alleyway at dusk, Indigo poses with her back to the camera, clad only in a black leather corset and fishnet stockings, her thong barely concealing the swell of her derri\u00e8re as she bends forward, hands grasping her knees, the dim streetlights casting long shadows across her toned, athletic physique.",
-      "seed": 1333444169,
+      "prompt": "A sultry, scantily-clad temptress lounges seductively in the backseat of a sleek, black sports car, parked in a secluded alley, her slender fingers teasing a silver probe as she locks eyes with a potential conquest through the open window, the city's neon lights casting a lurid glow.",
+      "seed": 884417172,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/7bbd1e26-9f2f-4e76-b360-d4d595fe92aa.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/96.webp",
       "status": "ok",
-      "bytes": 1417898
+      "bytes": 1351356
     }
   ]
 }

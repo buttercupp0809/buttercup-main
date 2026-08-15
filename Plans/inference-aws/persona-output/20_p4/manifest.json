@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T23:16:20Z",
+  "generated_at": "2026-08-15T11:36:54Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a traditional Japanese onsen, Phoebe sits on the edge of a steaming pool, her skin glistening with water droplets. She leans back, allowing the camera a tantalizing glimpse of her breasts as she dangles a kimono over one shoulder. Soft light from lanterns creates a warm, intimate atmosphere.",
-      "seed": 117410034,
+      "prompt": "A stunning model posing in lingerie expertly manipulates probes on a velvet-draped altar, her eyes smoldering with a clear invitation for intimate exploration. The room is shrouded in shadows, lit only by the soft glow of candles, creating a sense of mystery and allure as she gazes directly at the camera, her posture and composition drawing the viewer's gaze to her tantalizing form.",
+      "seed": 1434731247,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/5a792440-2261-4616-8144-d4338a4ef84e.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/20.webp",
       "status": "ok",
-      "bytes": 1234262
+      "bytes": 1153296
     }
   ]
 }

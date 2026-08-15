@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:59:32Z",
+  "generated_at": "2026-08-15T14:09:23Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Perched on the edge of a plush ottoman in a dimly lit boudoir, Magnolia's lacy stockings and high heels frame her shapely legs as she looks back over her shoulder, a \"come hither\" gaze directed straight at the viewer, her sheer robe gaping open to reveal the tantalizing swell of her breasts, the soft focus of the camera blurring the background to emphasize her alluring form.",
-      "seed": 1299838096,
+      "prompt": "A couple engaged in intimate foreplay on a plush, velvet chaise lounge, their bodies entwined as they explore each other's curves. The woman, clad in a lacy, black bra and matching panties, holds a sleek, metallic probe in her hand, her sultry gaze and come-hither smile beckoning an audience to join in their sensual game, the golden hour light casting a warm, inviting glow over the erotic scene unfolding before them.",
+      "seed": 1829074349,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/560ee8f4-c936-499f-9d6d-b06602bc99ff.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/95.webp",
       "status": "ok",
-      "bytes": 1359339
+      "bytes": 1230960
     }
   ]
 }

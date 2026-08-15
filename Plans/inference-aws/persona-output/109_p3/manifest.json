@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:28:30Z",
+  "generated_at": "2026-08-15T14:36:56Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A desert night, the Milky Way twinkling above, as Magnolia stands naked beneath a starry sky, a crescent moon illuminating her from behind, highlighting the gentle curves of her back and the soft swell of her buttocks, her hands raised to touch the heavens as she exudes an aura of sensual freedom.",
-      "seed": 946104102,
+      "prompt": "In a shadowy, underground dungeon, a dominatrix in leather and lace commands the attention of a bound submissive, her probes at the ready to deliver pleasure or pain. The flickering glow of red lanterns casts an eerie ambiance, heightening the tension as she leans in, her breath hot against his ear, to whisper her darkest desires.",
+      "seed": 1479584787,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/1a3d95c9-53d2-4b3b-a8ba-38d0164b0860.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/109.webp",
       "status": "ok",
-      "bytes": 1491460
+      "bytes": 1814994
     }
   ]
 }

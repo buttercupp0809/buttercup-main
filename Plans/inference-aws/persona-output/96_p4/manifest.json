@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:01:15Z",
+  "generated_at": "2026-08-15T14:10:59Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the steamy heat of a private onsen, Indigo sits on the edge of a wooden tub, water droplets glistening on her smooth, olive skin as she leans back, her kimono slipping off one shoulder to reveal the lacy bralette beneath, her dark hair cascading down her back in loose waves, the ambient light casting a soft, ethereal glow.",
-      "seed": 1709686037,
+      "prompt": "Against the warm, honey-toned walls of a rustic, candlelit boudoir, a stunning, lingerie-clad siren reclines on plush silk sheets, her toned legs spread invitingly as she playfully toys with a metallic dildo, her sultry smile and come-hither gaze promising an evening of uninhibited passion to a lucky admirer.",
+      "seed": 987213655,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/6075c252-9262-435e-b484-d74afffdb475.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/96.webp",
       "status": "ok",
-      "bytes": 1305385
+      "bytes": 1590761
     }
   ]
 }

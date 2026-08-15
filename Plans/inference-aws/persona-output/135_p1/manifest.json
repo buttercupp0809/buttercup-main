@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:23:54Z",
+  "generated_at": "2026-08-15T15:29:07Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A lively Dublin street on a crisp autumn afternoon, with golden light filtering through the fog, as Lyra in a bright red coat and matching beret laughs merrily with friends outside a cozy pub, her dark hair and eyes sparkling with warmth.",
-      "seed": 1718145062,
+      "prompt": "In the warm glow of a golden hour sunset, a sensual woman wearing a sheer, orange nightgown lounges provocatively on a beach towel, probes in hand as she beckons a suitor to join her, the shimmering sea and distant cliffs providing a backdrop to their illicit encounter, captured in a shallow depth of field by a DSLR camera.",
+      "seed": 661880743,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b04c63fc-fd9b-4590-a036-1a242220653b.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/135.webp",
       "status": "ok",
-      "bytes": 1367396
+      "bytes": 1275891
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:25:31Z",
+  "generated_at": "2026-08-15T15:30:49Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Lyra stands in the steamy bathroom, water cascading over her soapy body as she looks back at the camera with a coy smile, her breasts and the swell of her hips just visible above the suds, her dark hair plastered to her face and neck.",
-      "seed": 1329059328,
+      "prompt": "In the shadowy recesses of an abandoned warehouse, two lovers engage in a forbidden, dangerous liaison, the woman provocatively playing with probes while straddling her partner's lap, the only sound their heavy panting and the distant wail of sirens outside, a cinematic low-angle shot emphasizing their dangerous, illicit passion.",
+      "seed": 1610693753,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/9fc8b19a-d189-4bb3-b575-1137f30e8152.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/135.webp",
       "status": "ok",
-      "bytes": 1412863
+      "bytes": 1192571
     }
   ]
 }

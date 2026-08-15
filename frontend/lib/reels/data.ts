@@ -20,15 +20,19 @@ export interface PublicReel {
 export async function getPublicReels(limit = 12): Promise<PublicReel[]> {
   try {
     const vids = await prisma.characterMedia.findMany({
-      where: { kind: "video" },
+      // hidden: false is load-bearing: see the HIDDEN MEDIA CONVENTION in
+      // schema.prisma.
+      where: { kind: "video", hidden: false },
       orderBy: [{ createdAt: "asc" }],
       take: limit,
       include: {
         character: {
           include: {
             media: {
-              where: { kind: "image" },
-              orderBy: [{ isPrimary: "desc" }, { sort: "asc" }],
+              where: { kind: "image", hidden: false },
+              // isDisplay first: the free/public image must win over the
+              // isPrimary hero, exactly like lib/feed.ts and lib/characters.ts.
+              orderBy: [{ isDisplay: "desc" }, { isPrimary: "desc" }, { sort: "asc" }],
               take: 1,
             },
           },

@@ -7,3 +7,4 @@ export * from "./memory";
 export * from "./character-create";
 export * from "./media";
 export * from "./analytics";
+export * from "./onboarding";

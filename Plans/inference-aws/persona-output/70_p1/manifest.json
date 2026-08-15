@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:03:58Z",
+  "generated_at": "2026-08-15T13:17:48Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Hazel playfully skips through a sun-dappled park on a warm summer afternoon, her long blonde hair fluttering in the breeze as she wears a lightweight, pastel-colored sundress that hugs her curves, a wide-brimmed hat shading her face, and a bright smile on her lips, captured in a shallow depth of field with a DSLR camera in the golden hour light, emphasizing the soft focus on her surroundings and the sharp detail on her joyful expression and flowing attire.",
-      "seed": 1224365553,
+      "prompt": "In the warm glow of golden hour, a woman's silhouette is backlit against a sun-drenched window, her hand provocatively resting on the curve of her hip as she beckons an unseen admirer closer, her alluring gaze and coy smile inviting sensual exploration.",
+      "seed": 449102457,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/4557ec64-d7e0-4b93-82d8-d4c127c5cd82.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/70.webp",
       "status": "ok",
-      "bytes": 1393798
+      "bytes": 1069089
     }
   ]
 }

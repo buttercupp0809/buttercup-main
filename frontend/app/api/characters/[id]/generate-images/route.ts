@@ -1,155 +1,64 @@
-import { spawn } from "child_process";
-import { join } from "path";
+// Phase 28: creation-time image generation is routed through the SAME
+// Phase-07 BullMQ queue + Phase-09 imageHandler that chat selfies use. This
+// route no longer spawns a detached persona_pipeline.py subprocess; the
+// script (Plans/inference-aws/persona_pipeline.py) remains on disk as the
+// batch/offline tool, but the in-process worker (backend/src/queue/
+// media-worker.ts) is now the single create-time image path.
+//
+// The actual enqueue work (createQueuedAsset + enqueueMediaJob) has to run
+// in the backend workspace, since that is where BullMQ/ioredis and the
+// queue definition live (packages/shared stays I/O-free per CLAUDE.md, and
+// frontend has no dependency on @buttercupp/backend). This route therefore
+// authenticates + owns the character itself, then asks the backend service
+// to do the enqueue over an internal, short-lived-token-authenticated call,
+// the same way the old code minted a bearer token for the subprocess.
 import { requireAuth, signAuthToken } from "@/lib/auth";
 import { prisma } from "@buttercupp/database";
 import { jsonError, jsonOk } from "@/lib/api-helpers";
+import { assertSafeId } from "@/lib/safe-types";
+import { AUTH_COOKIE } from "@/lib/constants";
 
 export const runtime = "nodejs";
-
-interface CharacterData {
-  name: string;
-  age: number;
-  gender: string;
-  style: string;
-  bio: string;
-  location?: string | null;
-  stylePrompt: string | null;
-  negativePrompt: string | null;
-  traits: Record<string, string | undefined> | null;
-  personality: string | null;
-  backstory: string | null;
-}
-
-// Builds a rich style tag based on the chosen visual style.
-function styleTag(style: string): string {
-  if (style === "anime") return "anime style, detailed illustration, vivid color palette, cel shading, expressive eyes";
-  if (style === "3d") return "stylized 3D render, subsurface scattering, soft rim lighting, ambient occlusion";
-  return "photorealistic, 8k uhd, RAW photo, DSLR, sharp focus, high detail, cinematic";
-}
-
-// Builds the appearance clause from wizard trait selections.
-function appearanceClause(traits: Record<string, string | undefined> | null): string {
-  if (!traits) return "";
-  const parts: string[] = [];
-  if (traits.hair) parts.push(`${traits.hair} hair`);
-  if (traits.eye) parts.push(`${traits.eye} eyes`);
-  if (traits.body) parts.push(traits.body);
-  if (traits.clothing) parts.push(`wearing ${traits.clothing}`);
-  return parts.join(", ");
-}
-
-// Rule-based prompt generator. Produces 4 thematically distinct prompts
-// from the character's stored data -- no external API call needed.
-function buildPrompts(data: CharacterData): { prompts: string[]; negative: string } {
-  const { name, age, gender, style, bio, location, stylePrompt, traits, personality } = data;
-
-  const st = styleTag(style);
-  const appearance = appearanceClause(traits);
-  const base = [
-    stylePrompt ?? `portrait of ${name}`,
-    `${age} year old ${gender}`,
-    appearance,
-    st,
-  ].filter(Boolean).join(", ");
-
-  // Pull a short descriptive phrase from the bio for scene variety
-  const bioFragment = bio ? bio.split(",")[0].replace(/^[A-Z][a-z]+\s+/, "").trim() : "";
-  const loc = location ? `in ${location}` : "";
-
-  const prompts = [
-    // 1. Classic portrait -- direct, polished
-    `${base}, soft natural light, confident gaze directly at camera, clean background, editorial portrait`,
-
-    // 2. Environmental / lifestyle -- character in their world
-    `${base}, ${loc || "urban environment"}, golden hour, candid lifestyle photo, shallow depth of field, authentic mood`,
-
-    // 3. Scene from bio/personality
-    `${base}, ${bioFragment || "relaxed expression"}, warm ambient light, intimate atmosphere, story-driven composition`,
-
-    // 4. Dramatic / editorial
-    `${base}, dramatic studio lighting, high contrast, bold composition, fashion editorial, ${personality ? personality.split(".")[0] : "confident"}`,
-  ];
-
-  const negative = [
-    data.negativePrompt,
-    "deformed, disfigured, blurry, low quality, watermark, text, logo, extra fingers, bad anatomy, child, underage",
-  ].filter(Boolean).join(", ");
-
-  return { prompts, negative };
-}
 
 export async function POST(
   _req: Request,
   ctx: { params: Promise<{ id: string }> },
 ) {
   const user = await requireAuth();
-  const { id } = await ctx.params;
+  const { id: rawId } = await ctx.params;
+  let id: string;
+  try {
+    id = assertSafeId(rawId, "characterId");
+  } catch {
+    return jsonError(400, "invalid_id");
+  }
 
   const character = await prisma.character.findUnique({
     where: { id },
     include: { currentVersion: { include: { appearanceSheet: true } } },
   });
-
   if (!character) return jsonError(404, "character_not_found");
   if (character.ownerUserId !== user.id) return jsonError(403, "forbidden");
+  if (!character.currentVersion?.appearanceSheet) return jsonError(409, "appearance_missing");
 
-  const version = character.currentVersion;
-  const appearance = version?.appearanceSheet ?? null;
+  const backendUrl = process.env.BACKEND_URL ?? "http://localhost:4000";
+  const token = await signAuthToken(user.id);
 
-  const { prompts, negative } = buildPrompts({
-    name: character.name,
-    age: character.age,
-    gender: character.gender,
-    style: character.style,
-    bio: character.bio,
-    location: (character as { location?: string | null }).location ?? null,
-    stylePrompt: appearance?.stylePrompt ?? null,
-    negativePrompt: appearance?.negativePrompt ?? null,
-    traits: (appearance?.traits as Record<string, string | undefined> | null) ?? null,
-    personality: version?.personality ?? null,
-    backstory: version?.backstory ?? null,
-  });
-
-  const apiToken = await signAuthToken(user.id);
-  const apiBase = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
-
-  const comfyHost = process.env.COMFYUI_HOST;
-  if (!comfyHost) {
-    return jsonOk({ status: "queued", message: "GPU not configured; generation skipped." });
+  try {
+    const res = await fetch(`${backendUrl}/media/character/${id}/creation-images`, {
+      method: "POST",
+      headers: { cookie: `${AUTH_COOKIE}=${token}` },
+    });
+    if (!res.ok) {
+      // Non-blocking: the wizard already saved the character. Generation
+      // simply did not start; the finish screen's status poll will show no
+      // images and the user can still chat immediately.
+      return jsonOk({ status: "unavailable", message: `enqueue_failed_${res.status}` });
+    }
+    const body = (await res.json()) as { status: string; assetIds?: string[]; message?: string };
+    return jsonOk(body);
+  } catch {
+    // Backend service unreachable (e.g. not running in this dev session).
+    return jsonOk({ status: "unavailable", message: "backend_unreachable" });
   }
-
-  const pipelineScript = join(process.cwd(), "..", "Plans", "inference-aws", "persona_pipeline.py");
-  const venvPython = join(process.cwd(), "..", "Plans", "inference-aws", ".venv", "bin", "python3");
-  const outDir = join(process.cwd(), "..", "Plans", "inference-aws", "persona-output", id);
-  const ckpt = process.env.COMFYUI_CKPT ?? "juggernautXL_v8Rundiffusion.safetensors";
-
-  const quality =
-    "full body from head to toe, entire figure visible, standing far from camera, " +
-    "masterpiece, best quality, soft even lighting, bright natural light, ";
-
-  // 4 rule-built prompts, each generates 1 image (VARIANTS_PER_PROMPT=1) = 4 images total
-  const args = [
-    pipelineScript,
-    comfyHost, id,
-    "", outDir, "",
-    ckpt, "1.05", "0.0", "0.75", "30", "4.5", "dpmpp_2m", "karras",
-    negative, quality,
-    ...prompts,
-  ];
-
-  const child = spawn(venvPython, args, {
-    detached: true,
-    stdio: "ignore",
-    env: {
-      ...process.env,
-      VARIANTS_PER_PROMPT: "1",
-      S3_BUCKET: process.env.POPPY_S3_BUCKET_GENERATED ?? process.env.S3_BUCKET ?? "",
-      CHARACTER_ID: id,
-      API_BASE: apiBase,
-      API_TOKEN: apiToken,
-    },
-  });
-  child.unref();
-
-  return jsonOk({ status: "generating", message: "Image generation started in background." });
 }

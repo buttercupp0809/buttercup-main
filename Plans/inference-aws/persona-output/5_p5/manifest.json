@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-11T22:43:43Z",
+  "generated_at": "2026-08-15T11:06:50Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a steaming, marble-clad bathroom, a woman stands beneath a showerhead, rivulets of water cascading over her curves, her eyes closed in ecstasy as she reaches a hand between her thighs, her soapy breasts and nipples visible through the translucent film of suds.",
-      "seed": 1823323782,
+      "prompt": "A couple in a luxurious hot tub on a yacht's deck gaze out at the city skyline as the sun dips below the horizon, casting a warm, golden glow across the water. The woman cradles a probe in her hand, her breasts rising and falling with each breath as she leans in close to her partner, their lips nearly touching in a passionate, intimate moment that invites the viewer to join their sensual escapade.",
+      "seed": 36493549,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/542090c2-9a4c-477f-b759-785e6367d6de.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/5.webp",
       "status": "ok",
-      "bytes": 1339767
+      "bytes": 1172954
     }
   ]
 }

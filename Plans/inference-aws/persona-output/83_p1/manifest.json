@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:31:40Z",
+  "generated_at": "2026-08-15T13:43:38Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Astrid stands on a sun-drenched hillside, surrounded by vibrant wildflowers, her long blonde hair blowing gently in the warm breeze. A bright smile illuminates her face as she gazes out at the stunning vista, arms outstretched in carefree joy, clad in a flowy white sundress that catches the golden light of late afternoon, a DSLR camera hanging casually from her neck.",
-      "seed": 1625956744,
+      "prompt": "In a dimly lit boudoir, a dominatrix slowly unbuttons her white shirt to reveal her pert breasts bound in black leather, while her submissive kneels at her feet wearing only a collar and handcuffs, awaiting her mistress's commands. The DSLR camera captures a shallow depth of field, emphasizing the model's alluring eyes and the gleam of metal on leather.",
+      "seed": 752241927,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/40be9bb3-adbe-4b2f-924a-05e2175632ae.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/83.webp",
       "status": "ok",
-      "bytes": 1391250
+      "bytes": 1035032
     }
   ]
 }

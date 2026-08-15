@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:56:24Z",
+  "generated_at": "2026-08-15T14:07:17Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Ophelia sits on the edge of a marble hot tub, the warm water beading on her bare skin as she leans back, exposing her breasts to the camera. A sheer, gauzy robe is draped loosely over one shoulder, while her long hair flows down her back in soft waves. Her gaze is direct, with a hint of mischief in her eyes as she runs a hand down her thigh, drawing attention to the toned muscles and the edge of her lace panties. The dim lighting and abstract textures of the onsen bathhouse create a sensual, almost voyeuristic atmosphere, with the camera's shallow focus emphasizing her alluring form and inviting pose.",
-      "seed": 1521856324,
+      "prompt": "On a yacht's deck at sunset, a couple engages in passionate lovemaking. Strong hands grip curves as they kiss deeply, waves gently rocking the vessel. The sky ablaze with orange and pink hues provides a breathtaking backdrop, captured in high definition by a DSLR camera. The sensual intimacy of the moment is heightened by the romantic setting.",
+      "seed": 1598797329,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/47003a47-5cc3-4444-b59f-c7bb80a78c58.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/94.webp",
       "status": "ok",
-      "bytes": 1423309
+      "bytes": 1149908
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:19:40Z",
+  "generated_at": "2026-08-15T15:25:09Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A lively Clio strolls through the ancient Agora of Athens as the sun rises, her laughter carrying through the columns and her vibrant dress catching the golden morning light of a DSLR camera, the shallow depth of field blurring the background while her bright smile takes center stage.",
-      "seed": 1053230693,
+      "prompt": "Bathed in the warm glow of golden hour, a stunning woman in a revealing crop top and high-waisted skirt poses seductively against a weathered stone wall, probes in hand, her sultry gaze inviting an onlooker to join her in the ancient ruins of Athens.",
+      "seed": 195626049,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e5280c2b-44cf-490e-a2c2-9a3461fcf0c4.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/133.webp",
       "status": "ok",
-      "bytes": 1216315
+      "bytes": 1575569
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:22:02Z",
+  "generated_at": "2026-08-15T12:38:13Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Winter's chill hasn't diminished Indigo's allure as she stands provocatively in a frosted forest glade, her fur-trimmed coat open to reveal a lacy bralette and high-waisted panties, her smirking lips and hooded eyes inviting the viewer's gaze amidst the icy scenery.",
-      "seed": 1936429608,
+      "prompt": "Amidst the pulsating lights and thumping bass of a seedy backroom club, a scantily-clad stripper perches on a worn barstool, a gleaming metal probe in her hand as she sways her hips seductively, her heavy-lidded eyes promising a private show for the right patron willing to indulge her sensual whims.",
+      "seed": 1332671459,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/59971937-c227-4904-82a0-41256d1c6901.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/50.webp",
       "status": "ok",
-      "bytes": 1608462
+      "bytes": 1042415
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:23:00Z",
+  "generated_at": "2026-08-15T15:28:15Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the intimate ambiance of a traditional Japanese onsen, Juniper sits on the edge of a steaming pool, the heat beading on her porcelain skin. A loosely draped kimono hangs off one shoulder, allowing her lacy bralette and the curve of her breasts to be glimpsed. Her sultry half-lidded eyes meet the viewer's gaze as she leans back, the water cascading over her toned body and highlighting the delicate rise of her hips and thighs.",
-      "seed": 970808316,
+      "prompt": "Framed by lush greenery, a couple in matching, flesh-toned bodysuits kneel face-to-face in a secluded glade, probes in hand, their eyes locked in a passionate, intimate stare as they beckon others to join their sensual forest encounter under the dappled sunlight filtering through the trees above.",
+      "seed": 1800675667,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b369cda7-df63-4832-8574-bd48ec712486.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/134.webp",
       "status": "ok",
-      "bytes": 1332622
+      "bytes": 1749570
     }
   ]
 }

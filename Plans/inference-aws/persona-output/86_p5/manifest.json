@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:39:30Z",
+  "generated_at": "2026-08-15T13:51:12Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Phoebe reclines on a chaise lounge in a dimly lit boudoir, the soft velvet drapes and antique furniture creating a sultry, luxurious atmosphere, her Victorian-inspired corset and short skirt leaving little to the imagination, one leg bent and the other extended as she languidly stretches, her hand drifting down to caress her thigh, the camera's low angle and deep shadows emphasizing her sensuality and the allure of her partially exposed body.",
-      "seed": 1949176815,
+      "prompt": "Against a dark, graffiti-covered alleyway, a woman in a provocative skirt and top provocatively toys with probes, her sultry demeanor and inviting gaze promising a forbidden, illicit encounter to anyone brave enough to approach, the dramatic lighting and composition drawing the viewer into the steamy scene unfolding before them.",
+      "seed": 613908124,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e9811b32-245c-4a1b-b2bf-6b2cafda0837.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/86.webp",
       "status": "ok",
-      "bytes": 1241298
+      "bytes": 1449476
     }
   ]
 }

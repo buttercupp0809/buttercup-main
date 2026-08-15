@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:24:10Z",
+  "generated_at": "2026-08-15T14:32:58Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "A secluded winter glade in Dublin's Phoenix Park; Lyra stands amidst a grove of bare-branched trees, her fur-trimmed coat open to reveal a lacy bralette and high-waisted panties. Frost glistens on her skin as she looks back over her shoulder at the camera, a smirk playing on her cold lips. The cold winter air sets her nipples hard, the delicate fabric of her lingerie barely containing them. The DSLR captures the intimate scene in a shallow depth of field, Lyra's figure the sole focus against the icy, barren backdrop.",
-      "seed": 1297479402,
+      "prompt": "In a lavish, opulent chamber, a dominatrix with piercing blue eyes and raven hair stands before her bound submissive, her regal beauty and commanding presence evident as she teases his nipples with a cold metal tongue, the only sound the soft clinking of probes against her leather-clad thigh.",
+      "seed": 558355421,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b0c53034-e099-44c6-b796-b300034b9722.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/107.webp",
       "status": "ok",
-      "bytes": 1286894
+      "bytes": 1538854
     }
   ]
 }

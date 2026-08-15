@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:32:02Z",
+  "generated_at": "2026-08-15T15:37:03Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a private balcony overlooking a moonlit Amsterdam canal, Indigo lounges on a plush chaise, a sheer white robe draped loosely around her, the fabric clinging to her breasts and the tops of her thighs as she reclines, her legs crossed and one hand languidly toying with a strand of pearls around her neck, the camera capturing her in a sensual repose, with the cityscape blurred softly in the background.",
-      "seed": 42647600,
+      "prompt": "Against the backdrop of a seedy backroom club, a sultry stripper straddles her client's lap on a plush leather couch, her body glistening with sweat as she grinds against him in a barely-there G-string, probes in her hands adding a touch of mischief to her already provocative routine, the neon lights of the city outside casting a lurid glow on her provocative form.",
+      "seed": 1773649363,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/793c0ae3-f1f2-4d65-ace3-11e8648bfb18.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/138.webp",
       "status": "ok",
-      "bytes": 1232479
+      "bytes": 1339326
     }
   ]
 }

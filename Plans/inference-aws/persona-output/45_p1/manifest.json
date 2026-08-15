@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:10:46Z",
+  "generated_at": "2026-08-15T12:27:19Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Ruby plays with the golden sand between her toes as she gazes out at the sun-kissed Sydney coastline, her long blonde hair fluttering in the sea breeze. She's dressed in a flowy sundress that catches the light, her bright blue eyes sparkling with joy as she kicks up a spray of grains, carefree in the moment.",
-      "seed": 1751725244,
+      "prompt": "A sensual dancer, clad in a sheer, metallic bodysuit, poses seductively on a dimly lit stage, her skin glistening under the spotlight as she provocatively teases the audience with probes, her eyes smoldering with desire. DSLR, f/1.4, 1/125sec, ISO 6400.",
+      "seed": 1887475193,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/a9204cd8-3881-4769-9f08-23ddc92034b2.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/45.png",
       "status": "ok",
-      "bytes": 1364937
+      "bytes": 1121325
     }
   ]
 }

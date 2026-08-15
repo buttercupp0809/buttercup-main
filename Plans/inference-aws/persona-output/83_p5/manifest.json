@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:33:18Z",
+  "generated_at": "2026-08-15T13:45:07Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Astrid poses seductively in the heart of a bustling, neon-lit nightclub, the pulsating beat of the music evident in her provocative movements. Clad in a skimpy, silver lam\u00e9 bodysuit that hugs her every curve, she arches her back, her pert breasts thrust forward as she runs a hand down her toned, exposed stomach to the edge of her thong. Her long, dark hair falls in loose waves around her face, and her eyes, heavy with desire, lock onto the viewer's as she bites her lower lip, beckoning them closer to the heat of the dance floor.",
-      "seed": 1159700657,
+      "prompt": "A couple engages in passionate lovemaking on a yacht's deck at sunset, the man's strong hands gripping his lover's curves as they kiss deeply, waves gently rocking the vessel and the sky ablaze with hues of orange and pink behind them. A sweeping, cinematic shot captures the intimate scene, with the shallow focus emphasizing the couple's entwined forms and the golden light casting a romantic glow on their skin and the yacht's polished surfaces.",
+      "seed": 377014828,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/d02b9bac-c9ed-4431-8cc0-6072036271a9.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/83.webp",
       "status": "ok",
-      "bytes": 1056422
+      "bytes": 1395651
     }
   ]
 }

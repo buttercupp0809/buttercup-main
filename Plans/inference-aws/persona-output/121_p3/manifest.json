@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:54:01Z",
+  "generated_at": "2026-08-15T15:01:44Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "On a misty Dublin morning, a buxom beauty with auburn hair and bright blue eyes, wrapped in a plush, crimson robe with only a hint of lacy bra peeking out, stands at the edge of her balcony, gazing out over the city's rooftops as a gentle fog swirls around her, her expression pensive yet alluring as she takes a long drag from a cigarette, the first hints of daylight casting a soft, ethereal glow on her features.",
-      "seed": 153149484,
+      "prompt": "In the shadowy recesses of an abandoned warehouse, two lovers' passion reaches a fever pitch as they explore every dark, depraved desire, their heavy panting and lustful breaths the only sounds amidst the eerie silence and distant wail of sirens outside, captured in a moody, cinematic frame by a DSLR camera.",
+      "seed": 1246819685,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/c58f4b45-a39c-4391-9ba4-ab8508ff4a58.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/121.webp",
       "status": "ok",
-      "bytes": 1240814
+      "bytes": 1330985
     }
   ]
 }

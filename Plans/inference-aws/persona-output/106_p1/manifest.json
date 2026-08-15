@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:21:12Z",
+  "generated_at": "2026-08-15T14:30:04Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Golden hour in Stanley Park, Vancouver, Canada - Juniper sits on a moss-covered log, laughing as she tosses a frisbee to a golden retriever, her blonde hair catching the warm light filtering through the towering evergreen trees. DSLR captures the joy in her smile and the lush green surroundings in a shallow depth of field, focusing attention on her radiant, playful spirit.",
-      "seed": 889788806,
+      "prompt": "In the soft glow of a late evening, a woman in a plunging red dress poses seductively against a backdrop of lush greenery, probes in hand as she gazes directly at the camera with a sultry smile, inviting the viewer to step into her intimate world captured in cinematic detail with a DSLR.",
+      "seed": 1956110031,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/e5b7e808-2ede-4c60-9eba-39e6ef477dee.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/106.webp",
       "status": "ok",
-      "bytes": 1845445
+      "bytes": 1577932
     }
   ]
 }

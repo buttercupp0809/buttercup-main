@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:03:22Z",
+  "generated_at": "2026-08-15T14:12:57Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a steamy Berlin sauna, Astrid sits on a wooden bench, her skin glistening with sweat, a towel draped loosely around her shoulders, revealing the soft curves of her breasts and the delicate trail of hair leading down to her parted thighs, her eyes heavy-lidded with pleasure as she leans back against the wall, the warm air and dim lighting creating a sensual atmosphere.",
-      "seed": 960515715,
+      "prompt": "A stunning dominatrix named Raven holds court in the opulent surroundings of a secret underground club, her regal beauty and commanding presence drawing in a coterie of eager worshippers, who crave to serve at her pleasure and receive her merciless punishment, the scene illuminated by the pulsing, strobe-like lights of the club, with a shallow focus on Raven's provocative pose.",
+      "seed": 733244032,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/b11ff4e7-9ae5-4eb4-9a17-b5a4841fc013.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/97.webp",
       "status": "ok",
-      "bytes": 1201835
+      "bytes": 1501863
     }
   ]
 }

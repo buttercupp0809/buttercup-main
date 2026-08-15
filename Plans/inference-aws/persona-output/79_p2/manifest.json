@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:23:29Z",
+  "generated_at": "2026-08-15T13:36:03Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit underground art collective, a sultry Lykke leans against a graffiti-covered brick wall, her sheer lace teddy clinging to every curve as she gazes at the viewer with half-lidded eyes and parted lips, the flickering stage lights casting shadows across her skin.",
-      "seed": 1738003127,
+      "prompt": "Amidst the hazy, dreamlike surroundings of a dimly lit boudoir, a couple in skimpy lingerie holds futuristic sex toys, their lustful expressions and sensual postures inviting a third to join their intimate game, the soft focus and shallow depth of field adding to the allure.",
+      "seed": 582437777,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/01a7e0f4-758b-4843-8bd7-0757bc4b46ab.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/79.webp",
       "status": "ok",
-      "bytes": 1623157
+      "bytes": 1028284
     }
   ]
 }

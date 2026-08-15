@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:01:00Z",
+  "generated_at": "2026-08-15T15:08:21Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Dimly lit, ornate bedroom; Indigo reclines on satin sheets, a vintage-inspired negligee barely covering her, one leg raised, garter belt and stockings a focus, her eyes heavy-lidded and inviting.",
-      "seed": 239594602,
+      "prompt": "Set against the backdrop of an ornate, Gothic cathedral at dusk, a statuesque dominatrix in a black leather bodysuit and spiked collar kneels before an altar, her hand trailing a probe along the ornate wood as she looks up with a sultry, unspoken challenge, the warm light of the setting sun casting long shadows across the stone floor.",
+      "seed": 1016274431,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/8a77c712-ede4-4c88-b5cf-9cca2c065b9d.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/124.webp",
       "status": "ok",
-      "bytes": 1380006
+      "bytes": 1615061
     }
   ]
 }

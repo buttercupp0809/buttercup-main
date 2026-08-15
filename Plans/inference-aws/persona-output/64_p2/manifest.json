@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:51:43Z",
+  "generated_at": "2026-08-15T13:06:04Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Against the backdrop of a dimly lit, ornate bedroom, Magnolia stands by the bed, her back to the camera. She's clad in a sheer, lace negligee that clings to her curves, the fabric barely concealing her breasts and the tops of her thighs. Her long hair cascades down her back in loose waves, and she looks over her shoulder with a sultry, half-lidded gaze.",
-      "seed": 1680975292,
+      "prompt": "A couple in skin-tight latex lounge on a sleek, minimalist couch, holding futuristic sex toys as they exchange sultry, dreamy glances amidst the soft focus of a shallow depth of field, inviting the viewer to step into their sensual world.",
+      "seed": 1744861734,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/dd6ff791-1b69-4daf-8d2c-ac155cfce522.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/64.webp",
       "status": "ok",
-      "bytes": 1280106
+      "bytes": 1081298
     }
   ]
 }

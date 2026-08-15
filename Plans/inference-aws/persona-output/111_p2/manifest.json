@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T02:32:23Z",
+  "generated_at": "2026-08-15T14:40:25Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In the dimly lit, crimson-hued interior of an underground club, a seductive Astrid stands in the shadows, her curves barely contained by a black lace bodysuit, her gaze smoldering as she looks over her shoulder, a sly smile playing on her parted lips, her tousled hair cascading down her back like a dark waterfall.",
-      "seed": 1543896103,
+      "prompt": "Amidst the pulsing neon lights and thumping beats of a secret underground club, a stunning dominatrix stands regally in the center of a crowded dance floor, her regal beauty and commanding presence drawing in a coterie of eager worshippers as she holds court, her black leather corset and thigh-high stilettos a testament to her dominance.",
+      "seed": 1664291080,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/7a6a008d-0327-4a23-b1f8-6219868bf81a.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/111.webp",
       "status": "ok",
-      "bytes": 1447607
+      "bytes": 1132103
     }
   ]
 }

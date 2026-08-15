@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:39:03Z",
+  "generated_at": "2026-08-15T12:53:49Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a dimly lit, smoke-filled jazz club, Marlowe sits at a small table, her legs crossed as she leans forward, chin resting in her hand. The low light plays across her face, emphasizing the sultry curve of her lips and the half-lidded gaze of her emerald eyes. A crimson dress hugs her curves, the neckline plunging to reveal the swell of her breasts.",
-      "seed": 1978247136,
+      "prompt": "Against a backdrop of swirling, hazy purple, a scantily-clad couple in futuristic outfits hold high-tech sex toys, their faces etched with lust as they beckon a potential partner into their intimate, dreamlike world. Soft, cinematic lighting from a DSLR camera casts a shallow depth of field, emphasizing their provocative poses and the futuristic ambiance.",
+      "seed": 1774016161,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/462a5e08-5949-4b26-9ab3-14a16edca10d.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/58.webp",
       "status": "ok",
-      "bytes": 1087503
+      "bytes": 1083537
     }
   ]
 }

@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T03:12:25Z",
+  "generated_at": "2026-08-15T15:18:15Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a deserted alleyway, the city's nightlife still pulses through the air. Hazel's leather corset and fishnet stockings leave little to the imagination as she leans against a brick wall, one knee bent, her other leg extended. She looks back over her shoulder, her half-lidded eyes smoldering with a sultry intensity. The camera captures the play of shadows on her skin, highlighting the dangerous allure of the urban jungle.",
-      "seed": 605629495,
+      "prompt": "Against the backdrop of a graffiti-covered alleyway, a woman clad in a revealing top and short skirt gestures seductively with probes in her hands, her provocative pose and inviting demeanor beckoning a passerby to stop and indulge in the steamy public tryst unfolding before them.",
+      "seed": 1720316028,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/d3d02d72-f353-44b4-912b-8fd3231d1a1b.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/129.webp",
       "status": "ok",
-      "bytes": 1583227
+      "bytes": 1441254
     }
   ]
 }

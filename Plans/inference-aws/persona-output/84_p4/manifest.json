@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T01:34:59Z",
+  "generated_at": "2026-08-15T13:46:50Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "In a sumptuous boudoir, Clara reclines on a plush four-poster bed, her rich auburn locks splayed across the silk pillows, a lacy camisole and matching panties barely concealing her voluptuous form as she gazes languidly at the viewer, a single candle flickering beside her, casting shadows that dance across her skin.",
-      "seed": 786820481,
+      "prompt": "In a dark, candlelit chamber, a mysterious figure known only as \"The Siren\" beckons her latest conquest closer with hypnotic movements and sultry whispers, leading him to a velvet-draped altar where she will claim his soul...and his body, a DSLR camera's wide lens framing the scene with an air of foreboding.",
+      "seed": 158411643,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/cdadf874-92b4-46d1-8a4f-20b3ea0747ff.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/84.webp",
       "status": "ok",
-      "bytes": 1252560
+      "bytes": 1157923
     }
   ]
 }

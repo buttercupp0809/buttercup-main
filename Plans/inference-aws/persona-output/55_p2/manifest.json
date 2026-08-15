@@ -15,19 +15,19 @@
     "width": 768,
     "height": 1344
   },
-  "generated_at": "2026-08-12T00:32:41Z",
+  "generated_at": "2026-08-15T12:47:43Z",
   "variants": [
     {
       "index": 1,
       "variant": 1,
-      "prompt": "Late evening in a Dublin pub; dimly lit with flickering candles, a DSLR captures a sultry close-up of Hazel's face, eyes half-lidded and parted lips glistening with a hint of lipstick, as she leans in to share a whispered secret with her companion.",
-      "seed": 543297615,
+      "prompt": "In the soft focus of a dreamlike setting, a couple clad in skimpy futuristic outfits hold high-tech sex toys, their expressions charged with lust as they beckon a third party closer, the hazy atmosphere adding to the allure of their forbidden encounter.",
+      "seed": 304075291,
       "pose": "looking directly at camera",
       "file": "variant-p1-v1.png",
-      "s3Key": "images/d6dcd6f9-c82b-4564-ba3a-4ed41f715b3e.png",
+      "s3Key": "",
       "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/55.webp",
       "status": "ok",
-      "bytes": 1032098
+      "bytes": 1052762
     }
   ]
 }
