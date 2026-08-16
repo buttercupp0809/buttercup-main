@@ -246,7 +246,11 @@ export async function runChatTurn(params: RunChatTurnParams): Promise<RunChatTur
       purpose: "chat",
       systemPrompt,
       messages: [...history, { role: "user", content: userText }],
-      maxTokens: 1024,
+      // Safety-net ceiling for the "2 to 3 line" length rule in the system
+      // prompt (see buildPromptLayers "# Length"). The prompt does the real
+      // shaping; this just stops a runaway reply. ~220 tokens comfortably
+      // fits two or three lines plus an action beat without truncating.
+      maxTokens: 220,
       temperature: 0.8,
       contentRating,
       tier: user.subscriptionTier,

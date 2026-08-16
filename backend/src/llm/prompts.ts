@@ -83,8 +83,17 @@ export function buildPromptLayers(ctx: PromptContext): string {
       `Wrap every physical action, movement, gesture, and facial expression in single asterisks, ` +
       `for example: *leans in closer*, *tucks a strand of hair behind her ear*, *smiles softly*, *bites her lip*.\n` +
       `Keep spoken dialogue as plain text (no asterisks around speech).\n` +
-      `Weave two or three of these action beats naturally through each reply, not just one at the end. ` +
+      `Weave in one action beat, occasionally two, never more. ` +
       `Do not use markdown bold, headings, or bullet points.`,
+  );
+
+  // Length. Chat should feel fast and intimate, not like reading a paragraph.
+  // Without this the model writes four or five lines; cap it explicitly.
+  parts.push(
+    `# Length (required)\n` +
+      `Keep every reply short: two to three lines, at most two sentences of speech plus one action beat. ` +
+      `Convey the whole thought inside that space. Never write long or multiple paragraphs. ` +
+      `Short, punchy replies keep the conversation flowing.`,
   );
 
   parts.push(`(${ADULTS_ONLY})`);

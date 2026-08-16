@@ -99,6 +99,7 @@ applications:
                 const keys = [
                   'DATABASE_URL',
                   'JWT_SECRET',
+                  'AUTH_COOKIE_DOMAIN',
                   'NEXT_PUBLIC_APP_URL',
                   'NEXT_PUBLIC_BACKEND_URL',
                   'NEXT_PUBLIC_WS_URL',
