@@ -12,6 +12,7 @@ import path from "node:path";
 import { readFile } from "node:fs/promises";
 import { prisma } from "@buttercupp/database";
 import { generateImage, generateWithComfyUIConsistent } from "../media/image/providers";
+import { callLLM } from "../llm/provider";
 import { SAFETY_NEGATIVE } from "../media/image/constants";
 import { IMAGE_ENRICHMENT_FILLS } from "../media/image/enrichment-fills";
 import { toWebP } from "../media/image/convert";
@@ -134,38 +135,33 @@ async function enrichImagePrompt(rawPrompt: string): Promise<string> {
   }
 }
 
-// Ask Steno for a short in-character message the character sends while the image
-// is being generated. Returns a safe fallback on any failure so the caller
-// never has to handle errors.
+// Ask for a short in-character message the character sends while the image is
+// being generated. Routed through the full LLM chain (callLLM), NOT Stheno
+// directly: when the self-hosted GPU box is down (prod symptom), a direct
+// Stheno call fails and every teaser degrades to the bland canned line below.
+// callLLM falls through to OpenRouter (already configured in prod), so the
+// teaser stays creative even with the box offline. Returns a safe fallback on
+// any failure so the caller never has to handle errors.
 export async function generateImageTeaser(
   characterName: string,
   userPrompt: string,
 ): Promise<string> {
+  const fallback = `Give me just a moment to get that perfect shot ready for you...`;
   try {
-    const base = await resolvePoppyBaseUrl("stheno");
-    const res = await fetch(`${base}/v1/chat/completions`, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        model: "stheno",
-        messages: [
-          {
-            role: "system",
-            content: `You are ${characterName}. The user has requested a photo of you. Write a short, playful, in-character response (1-2 sentences) to let them know their photo is on its way. Be flirtatious and stay fully in character. No hashtags, no emojis, no stage directions.`,
-          },
-          { role: "user", content: userPrompt },
-        ],
-        max_tokens: 70,
-        temperature: 0.9,
-        stream: false,
-      }),
-      signal: AbortSignal.timeout(10_000),
+    const result = await callLLM({
+      purpose: "chat",
+      systemPrompt: `You are ${characterName}. The user has requested a photo of you. Write a short, playful, in-character response (1-2 sentences) to let them know their photo is on its way. Be flirtatious and stay fully in character. No hashtags, no emojis, no stage directions.`,
+      messages: [{ role: "user", content: userPrompt }],
+      maxTokens: 70,
+      temperature: 0.9,
+      contentRating: "mature",
     });
-    if (!res.ok) return `Give me just a moment to get that perfect shot ready for you...`;
-    const data = (await res.json()) as { choices?: { message?: { content?: string } }[] };
-    return data.choices?.[0]?.message?.content?.trim() || `Give me just a moment to get that perfect shot ready for you...`;
+    const text = result.text?.trim();
+    // Never surface the generic hardcoded LLM fallback as a teaser.
+    if (!text || result.provider === "hardcoded") return fallback;
+    return text;
   } catch {
-    return `Give me just a moment to get that perfect shot ready for you...`;
+    return fallback;
   }
 }
 

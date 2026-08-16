@@ -103,7 +103,14 @@ export function isStorageConfigured(): boolean {
 // Lighter guard: true when S3 can accept uploads, even without CloudFront.
 // Use this to decide whether to persist generated images. URL signing falls
 // back to S3 presigned URLs when CloudFront is absent.
+//
+// POPPY_DISABLE_S3_UPLOAD=true forces the caller's local-dev fallback (return
+// the image inline as a base64 data URL) even though bucket names are set.
+// This lets local dev READ reference images from real S3 (buckets configured,
+// S3_ENDPOINT empty) WITHOUT writing generated images into the shared/prod
+// bucket: reads hit real S3, writes stay in-memory as data URLs.
 export function canUploadToS3(): boolean {
+  if (process.env.POPPY_DISABLE_S3_UPLOAD === "true") return false;
   return Boolean(process.env.POPPY_S3_BUCKET_GENERATED ?? process.env.S3_BUCKET);
 }
 

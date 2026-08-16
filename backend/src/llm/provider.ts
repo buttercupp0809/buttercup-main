@@ -50,6 +50,7 @@ export type TokenSink = (delta: string) => void;
 interface HealthEntry {
   failures: number;
   disabledUntil: number;
+  probing?: boolean;
 }
 const providerHealth: Record<string, HealthEntry> = {};
 
@@ -57,8 +58,19 @@ function isHealthy(name: string): boolean {
   const h = providerHealth[name];
   if (!h) return true;
   if (Date.now() > h.disabledUntil) {
-    delete providerHealth[name];
-    logInfo("LLM", `${name} re-enabled after cooldown`);
+    // Cooldown elapsed: allow ONE probe attempt but KEEP the failure count so a
+    // repeat failure escalates the next cooldown (30 -> 60 -> 120 -> 240 -> 300s
+    // cap) instead of resetting to 30s forever. Previously the entry was
+    // deleted here, so a permanently-down provider (e.g. the self-hosted GPU
+    // box offline) reset to a 30s cooldown every time and every ~30s a user's
+    // turn re-tested it and ate the full request timeout. A real success calls
+    // markSuccess(), which fully clears the entry. Net effect when the box is
+    // down: the provider is skipped for up to 5 min at a stretch, so at most
+    // one turn per window pays the probe latency.
+    if (!h.probing) {
+      h.probing = true;
+      logInfo("LLM", `${name} probe allowed after cooldown`);
+    }
     return true;
   }
   return false;
@@ -67,10 +79,17 @@ function isHealthy(name: string): boolean {
 function markFailed(name: string): void {
   const h = providerHealth[name] ?? { failures: 0, disabledUntil: 0 };
   h.failures += 1;
+  h.probing = false;
   const cooldownMs = Math.min(30_000 * Math.pow(2, h.failures - 1), 300_000);
   h.disabledUntil = Date.now() + cooldownMs;
   providerHealth[name] = h;
   logWarn("LLM", `${name} disabled for ${cooldownMs / 1000}s after ${h.failures} failure(s)`);
+}
+
+// A provider returned successfully: clear its breaker so a recovered box is
+// immediately trusted again (and the escalating failure count resets).
+function markSuccess(name: string): void {
+  if (providerHealth[name]) delete providerHealth[name];
 }
 
 // Test-only. Clears breaker state between tests.
@@ -114,7 +133,7 @@ type OpenAILike = {
 };
 
 interface OpenAICtor {
-  new (opts: { apiKey: string; baseURL?: string }): OpenAILike;
+  new (opts: { apiKey: string; baseURL?: string; timeout?: number; maxRetries?: number }): OpenAILike;
 }
 
 function tryLoadOpenAI(): OpenAICtor | null {
@@ -204,6 +223,13 @@ async function resolvePoppyChatClient(): Promise<OpenAILike | null> {
       _poppy = new Ctor({
         apiKey: process.env.POPPY_API_KEY ?? "sk-none",
         baseURL: `${base}/v1`,
+        // Fast-fail when the GPU box is down/unreachable. Without a cap a hung
+        // box stalls the whole turn ~30s before falling through to OpenRouter,
+        // which the user feels as lag. A healthy Stheno streams its first token
+        // well under this, so it only trims the dead wait, never a live stream.
+        // maxRetries: 0 because the routing loop already handles fallthrough.
+        timeout: Number(process.env.POPPY_TIMEOUT_MS ?? 12000),
+        maxRetries: 0,
       });
       _poppyBase = base;
     }
@@ -427,6 +453,7 @@ export async function streamLLM(
       const fallback = provider !== routing.order[0];
       recordLatency(`llm:${params.purpose}`, elapsed);
       recordProviderOutcome({ provider, success: true, fallback });
+      markSuccess(provider);
       incrementCounter(`llm_provider:${provider}`);
       logInfo("LLM", `${params.purpose} -> ${provider}/${model} in ${elapsed}ms${fallback ? " (fallback)" : ""}`);
       return { text, provider, model, fallback };

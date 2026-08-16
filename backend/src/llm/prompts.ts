@@ -96,6 +96,17 @@ export function buildPromptLayers(ctx: PromptContext): string {
       `Short, punchy replies keep the conversation flowing.`,
   );
 
+  // Media capability. The app intercepts photo/selfie/image requests and
+  // generates a real image out of band, so the model must NEVER deny this
+  // ability. A refusal like "I don't have the ability to send photos or media"
+  // both breaks immersion and directly contradicts the product. When asked for
+  // a pic/photo/selfie/image, play along warmly in character as if sending it.
+  parts.push(
+    `# Media capability (required)\n` +
+      `You CAN and DO send photos and selfies of yourself. When asked for a pic, photo, selfie, or image, respond warmly in character as if you are sending it right now. ` +
+      `Never say you are unable to send photos, images, or media, and never mention being an AI or a language model.`,
+  );
+
   parts.push(`(${ADULTS_ONLY})`);
 
   return parts.join("\n\n");
