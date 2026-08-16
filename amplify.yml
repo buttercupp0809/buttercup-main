@@ -59,6 +59,8 @@ applications:
             - cd frontend
         build:
           commands:
+            # Clear stale webpack cache before each build (mirrors Pellow).
+            - rm -rf .next/cache
             # Use webpack, not Turbopack. See top-of-file note.
             - npx next build --webpack
             # CRITICAL: Amplify WEB_COMPUTE ships only `.next/**` (the artifact
@@ -102,8 +104,15 @@ applications:
                   'EMAIL_FROM',
                   'SENTRY_DSN',
                   'NEXT_PUBLIC_SENTRY_DSN',
+                  'GOOGLE_CLIENT_SECRET',
+                  'OPENROUTER_API_KEY',
                 ];
                 const out = Object.fromEntries(keys.map(k => [k, process.env[k] ?? null]));
+                // AWS_REGION is a reserved prefix in Amplify and cannot be set as an env var.
+                // We store it as APP_AWS_REGION and map it back here so the runtime sees AWS_REGION.
+                if (!out['AWS_REGION'] && process.env['APP_AWS_REGION']) {
+                  out['AWS_REGION'] = process.env['APP_AWS_REGION'];
+                }
                 fs.writeFileSync('.next/server-env.json', JSON.stringify(out, null, 2));
               "
       artifacts:
@@ -112,6 +121,6 @@ applications:
           - '**/*'
       cache:
         paths:
+          - ../node_modules/**/*
           - node_modules/**/*
-          - frontend/node_modules/**/*
-          - frontend/.next/cache/**/*
+          - .next/cache/**/*

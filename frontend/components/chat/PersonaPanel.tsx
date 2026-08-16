@@ -22,6 +22,7 @@ import Link from "next/link";
 import { ChevronRight, Play, Lock, Images } from "lucide-react";
 import { UpgradeModal } from "@/components/ui/UpgradeModal";
 import { PanelSheet } from "@/components/chat/PanelSheet";
+import { mediaIdentity } from "@/lib/character-media";
 
 export interface PanelMedia {
   kind: "image" | "video";
@@ -50,10 +51,28 @@ export interface PersonaPanelProps {
 // two never drift out of sync.
 function PersonaPanelContent({ name, description, location, images, imageBlurs = [], assets }: PersonaPanelProps) {
   const primaryImage = images[0] ?? null;
-  const galleryImages = images.slice(1);
-  const galleryImageBlurs = imageBlurs.slice(1);
+  // Gallery is everything after the hero, minus any duplicates of the hero
+  // itself. Comparison is on media *identity* (last path segment of the
+  // underlying S3 key), not the full URL string: the seed writes byte-
+  // identical PNGs to two different owner-prefixed keys and assigns one to
+  // isDisplay (images[0]) and the other to isPrimary (images[1]). A raw
+  // string dedup misses that and leaks the hero as free gallery tile 0
+  // (the reported "hero == free teaser" duplication bug). See
+  // frontend/lib/character-media.ts. Blurs stay aligned to their surviving
+  // URLs so the locked-tile blur pipeline is preserved.
+  const heroIdentity = primaryImage ? mediaIdentity(primaryImage) : null;
+  const seenIdentities = new Set<string>();
+  if (heroIdentity) seenIdentities.add(heroIdentity);
+  const galleryPairs: { url: string; blur: string | undefined }[] = [];
+  const tailBlurs = imageBlurs.slice(1);
+  images.slice(1).forEach((url, idx) => {
+    const id = mediaIdentity(url);
+    if (seenIdentities.has(id)) return;
+    seenIdentities.add(id);
+    galleryPairs.push({ url, blur: tailBlurs[idx] });
+  });
   const galleryItems: GalleryItem[] = [
-    ...galleryImages.map((url, idx) => ({ kind: "image" as const, url, blur: galleryImageBlurs[idx] })),
+    ...galleryPairs.map((p) => ({ kind: "image" as const, url: p.url, blur: p.blur })),
     ...assets.map((a) => ({ ...a })),
   ];
 

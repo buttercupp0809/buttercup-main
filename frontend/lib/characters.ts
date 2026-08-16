@@ -15,6 +15,7 @@ import {
 } from "@buttercupp/shared";
 import { assertSafeId } from "@/lib/safe-types";
 import { signAssetUrl } from "@/lib/cdn";
+import { dedupeByIdentity, excludeHeroIdentity } from "@/lib/character-media";
 
 // Only return a URL when CloudFront is configured. A raw S3 key is not a
 // displayable URL, so we return null when the CDN base is absent.
@@ -147,14 +148,29 @@ export async function getCharacterDetail(
   // locked gallery is every image that is NOT the display image (the
   // hero/isPrimary asset and any other non-display rows), so the free/display
   // image never doubles up as a "locked" tile.
-  const galleryImages = viewer.id !== null
+  //
+  // Dedup notes: comparing full URL strings against `card.avatarUrl` misses
+  // two real duplicate cases in the seeded local DB and staging:
+  //   1. Signed CloudFront URLs vary every call (dateLessThan), so the same
+  //      key produces different strings between the avatar sign and the
+  //      gallery sign.
+  //   2. The seed writes byte-identical PNGs to two different owner-prefixed
+  //      keys (e.g. `character-media/<A>/juggernaut-1-p1-v1.png` and
+  //      `character-media/<B>/juggernaut-1-p1-v1.png`) and assigns one to
+  //      isDisplay and the other to isPrimary. They have different keys but
+  //      the same file bytes, so a string-URL dedup fails and the hero
+  //      leaks in as free gallery tile 0 (the reported bug).
+  // `mediaIdentity` (via excludeHeroIdentity/dedupeByIdentity) normalizes to
+  // the last path segment of the underlying key, which is stable across
+  // both cases. See frontend/lib/character-media.ts.
+  const rawGallery = viewer.id !== null
     ? ((row as CharacterWithCurrent).media ?? [])
         .filter((m) => m.kind === "image" && !m.isDisplay && !m.url.startsWith("/"))
-        .map((m) => {
-          if (m.url.startsWith("http")) return m.url;
-          return signAssetUrl(m.url);
-        })
+        .map((m) => (m.url.startsWith("http") ? m.url : signAssetUrl(m.url)))
     : [];
+  const galleryImages = dedupeByIdentity(
+    excludeHeroIdentity(card.avatarUrl, rawGallery),
+  );
 
   const detail: CharacterDetailDTO = {
     ...card,

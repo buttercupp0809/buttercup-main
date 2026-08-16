@@ -10,6 +10,7 @@ import { getRelationship } from "@/lib/relationship";
 import { listConversations } from "@/lib/chats";
 import { signAssetUrl } from "@/lib/cdn";
 import { blurMany } from "@/lib/media-blur";
+import { dedupeByIdentity, excludeHeroIdentity } from "@/lib/character-media";
 
 export const dynamic = "force-dynamic";
 
@@ -96,7 +97,18 @@ export default async function ChatPage({
       if (m.url.startsWith("/") || m.url.startsWith("http")) return m.url;
       return signAssetUrl(m.url);
     });
-  const carouselImages = images;
+  // Dedup the panel image list by media identity (last segment of the key).
+  // The seed writes byte-identical PNGs to two different owner-prefixed keys
+  // and assigns one to isDisplay (index 0 here) and the other to isPrimary
+  // (index 1 here), so string-equality dedup fails and images[1] leaks the
+  // same picture as images[0] into the free gallery tile above the paywall.
+  // Filtering by `mediaIdentity` normalizes to the last path segment which
+  // is stable across owner prefix, signing tokens, and the /api/media proxy.
+  // See frontend/lib/character-media.ts.
+  const dedupedImages: string[] = dedupeByIdentity(images);
+  const heroUrl: string | null = dedupedImages[0] ?? null;
+  const galleryTail: string[] = excludeHeroIdentity(heroUrl, dedupedImages.slice(1));
+  const carouselImages: string[] = heroUrl ? [heroUrl, ...galleryTail] : [];
   const assets: PanelMedia[] = character.media
     .filter((m) => m.kind === "video")
     .map((m) => ({ kind: "video" as const, url: m.url }));

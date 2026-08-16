@@ -127,6 +127,95 @@ describe("getCharacterDetail (gallery excludes the display asset)", () => {
     expect(detail?.galleryImages).toEqual(["https://cdn.example.com/hero.jpg"]);
     expect(detail?.galleryImages).not.toContain("https://cdn.example.com/secondary.jpg");
   });
+
+  it("drops a gallery entry whose underlying key filename matches the avatar's (byte-identical seed images under different owner prefixes)", async () => {
+    // The seed data bug: two different CharacterMedia rows point to
+    // byte-identical PNGs at different owner-prefixed S3 keys. Full-URL
+    // string dedup misses this because the keys differ; identity-based
+    // dedup (last path segment) catches it. This is the case the previous
+    // fix failed to cover.
+    findUniqueCharacter.mockResolvedValue({
+      id: "char-3",
+      name: "Ariana",
+      bio: "bio",
+      tags: [],
+      style: "realistic",
+      contentRating: "sfw",
+      popularityScore: 0,
+      createdAt: new Date("2026-01-01T00:00:00.000Z"),
+      ownerUserId: null,
+      visibility: "public",
+      moderationStatus: "approved",
+      currentVersion: { greeting: "hi", personality: "p", id: "v1", versionNo: 1, createdAt: new Date() },
+      media: [
+        // isDisplay row uses ownerA prefix.
+        {
+          url: "character-media/ownerA/juggernaut-1-p1-v1.png",
+          kind: "image",
+          isPrimary: false,
+          isDisplay: true,
+        },
+        // isPrimary row: DIFFERENT owner prefix but SAME filename (byte-
+        // identical PNG). Legacy dedup missed this; identity-based dedup
+        // must drop it.
+        {
+          url: "character-media/ownerB/juggernaut-1-p1-v1.png",
+          kind: "image",
+          isPrimary: true,
+          isDisplay: false,
+        },
+        {
+          url: "character-media/ownerA/juggernaut-1-p2-v1.png",
+          kind: "image",
+          isPrimary: false,
+          isDisplay: false,
+        },
+      ],
+    });
+
+    const detail = await getCharacterDetail("char-3", { id: "viewer-1", ageVerified: true });
+
+    expect(detail?.galleryImages).toEqual([
+      "/api/media?k=character-media%2FownerA%2Fjuggernaut-1-p2-v1.png",
+    ]);
+    // The duplicate under ownerB must NOT appear in the gallery.
+    expect(detail?.galleryImages).not.toEqual(
+      expect.arrayContaining([
+        "/api/media?k=character-media%2FownerB%2Fjuggernaut-1-p1-v1.png",
+      ]),
+    );
+  });
+
+  it("does not duplicate the avatarUrl into galleryImages when no row is isDisplay (pre-backfill fallback)", async () => {
+    // Pre-backfill row set: no isDisplay flag set anywhere. primaryImageFrom
+    // falls back to the first image, and the naive gallery filter (!isDisplay)
+    // would otherwise return every image, so index 0 of the gallery would be
+    // the exact same URL as the hero avatar. Verify the extra guard drops it.
+    findUniqueCharacter.mockResolvedValue({
+      id: "char-2",
+      name: "Nova",
+      bio: "bio",
+      tags: [],
+      style: "realistic",
+      contentRating: "sfw",
+      popularityScore: 0,
+      createdAt: new Date("2026-01-01T00:00:00.000Z"),
+      ownerUserId: null,
+      visibility: "public",
+      moderationStatus: "approved",
+      currentVersion: { greeting: "hi", personality: "p", id: "v1", versionNo: 1, createdAt: new Date() },
+      media: [
+        { url: "https://cdn.example.com/a.jpg", kind: "image", isPrimary: true, isDisplay: false },
+        { url: "https://cdn.example.com/b.jpg", kind: "image", isPrimary: false, isDisplay: false },
+      ],
+    });
+
+    const detail = await getCharacterDetail("char-2", { id: "viewer-1", ageVerified: true });
+
+    expect(detail?.avatarUrl).toBe("https://cdn.example.com/a.jpg");
+    expect(detail?.galleryImages).not.toContain("https://cdn.example.com/a.jpg");
+    expect(detail?.galleryImages).toEqual(["https://cdn.example.com/b.jpg"]);
+  });
 });
 
 describe("nextVersionNo (Build step 6: single version-number source of truth)", () => {

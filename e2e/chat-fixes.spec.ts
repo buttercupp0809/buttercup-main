@@ -8,6 +8,36 @@
 
 import { test, expect, type Page } from "@playwright/test";
 
+// Extract the underlying media identity from any URL form the app produces
+// (raw key, /api/media?k= dev proxy, signed CloudFront). Mirrors
+// frontend/lib/character-media.ts::mediaIdentity: two visually-identical
+// files under different owner-prefixed S3 keys collide on filename, which
+// is exactly the "hero == free gallery tile" bug (byte-identical PNGs at
+// distinct keys). Comparing full URL strings (as the previous assertion
+// did) missed it.
+function identityFromSrc(src: string | null): string {
+  if (!src) return "";
+  if (src.startsWith("/api/media")) {
+    const q = src.indexOf("?");
+    const params = new URLSearchParams(q >= 0 ? src.slice(q) : "");
+    const k = params.get("k") ?? "";
+    const slash = k.lastIndexOf("/");
+    return slash >= 0 ? k.slice(slash + 1) : k;
+  }
+  let path = src;
+  const q = src.indexOf("?");
+  if (q >= 0) path = src.slice(0, q);
+  if (/^https?:\/\//i.test(path)) {
+    try {
+      path = new URL(path).pathname;
+    } catch {
+      /* fall through */
+    }
+  }
+  const slash = path.lastIndexOf("/");
+  return slash >= 0 ? path.slice(slash + 1) : path;
+}
+
 const seeded = process.env.E2E_SEEDED === "1";
 const characterId = process.env.E2E_CHAT_CHARACTER_ID;
 const canRun = seeded && Boolean(characterId);
@@ -73,6 +103,16 @@ test.describe("chat page fixes", () => {
     const tile1 = page.getByTestId("chat-persona-gallery-tile-1");
     await expect(tile0).toHaveAttribute("data-locked", "false");
     await expect(tile1).toHaveAttribute("data-locked", "true");
+    // Hero != free tile: the free teaser must be a different image than the
+    // hero above, never a duplicate.
+    const heroSrc = await hero.locator("img").getAttribute("src");
+    const tile0Src = await tile0.locator("img").first().getAttribute("src");
+    expect(heroSrc).toBeTruthy();
+    expect(tile0Src).toBeTruthy();
+    // Compare by media identity (basename of the underlying S3 key), not
+    // by full URL: byte-identical seed PNGs live at different owner-prefixed
+    // keys, so full URLs differ while the picture is the same.
+    expect(identityFromSrc(tile0Src)).not.toBe(identityFromSrc(heroSrc));
     await page.screenshot({ path: "/tmp/chat-fixes/gallery-chat-desktop.png", fullPage: false });
 
     await tile0.click();
@@ -84,6 +124,14 @@ test.describe("chat page fixes", () => {
     const pubTile1 = page.getByTestId("character-gallery-tile-1");
     await expect(pubTile0).toHaveAttribute("data-locked", "false");
     await expect(pubTile1).toHaveAttribute("data-locked", "true");
+    // Hero != free tile on the public detail page too. The hero is the
+    // portrait card at the top of the left column; tile 0 sits in the
+    // horizontal Photos strip and must not duplicate it.
+    const pubHeroSrc = await page.locator("h1").first().locator("xpath=ancestor::div[1]/../..//img").first().getAttribute("src");
+    const pubTile0Src = await pubTile0.locator("img").first().getAttribute("src");
+    expect(pubHeroSrc).toBeTruthy();
+    expect(pubTile0Src).toBeTruthy();
+    expect(identityFromSrc(pubTile0Src)).not.toBe(identityFromSrc(pubHeroSrc));
     await page.screenshot({ path: "/tmp/chat-fixes/gallery-public-desktop.png", fullPage: false });
   });
 
@@ -100,6 +148,12 @@ test.describe("chat page fixes", () => {
     await expect(tile0).toBeVisible();
     await expect(tile0).toHaveAttribute("data-locked", "false");
     await expect(tile1).toHaveAttribute("data-locked", "true");
+    const mobileHero = sheet.getByTestId("persona-panel-hero");
+    const mobileHeroSrc = await mobileHero.locator("img").getAttribute("src");
+    const mobileTile0Src = await tile0.locator("img").first().getAttribute("src");
+    expect(mobileHeroSrc).toBeTruthy();
+    expect(mobileTile0Src).toBeTruthy();
+    expect(identityFromSrc(mobileTile0Src)).not.toBe(identityFromSrc(mobileHeroSrc));
     await page.screenshot({ path: "/tmp/chat-fixes/gallery-chat-mobile.png", fullPage: false });
   });
 });
