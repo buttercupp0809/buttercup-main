@@ -250,7 +250,7 @@ export async function runChatTurn(params: RunChatTurnParams): Promise<RunChatTur
       // prompt (see buildPromptLayers "# Length"). The prompt does the real
       // shaping; this just stops a runaway reply. ~220 tokens comfortably
       // fits two or three lines plus an action beat without truncating.
-      maxTokens: 220,
+      maxTokens: 350,
       temperature: 0.8,
       contentRating,
       tier: user.subscriptionTier,
