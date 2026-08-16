@@ -78,7 +78,7 @@ applications:
             # into EVERY location Prisma actually searches: .next/, .next/server/,
             # and .next/server/node_modules/.prisma/client/.
             - ENGINE=$(find node_modules/.prisma/client ../node_modules/.prisma/client -name "libquery_engine-rhel-openssl-3.0.x.so.node" 2>/dev/null | head -1)
-            - echo "Prisma engine source: $ENGINE"
+            - 'echo "Prisma engine source=$ENGINE"'
             - mkdir -p .next/server/node_modules/.prisma/client
             - cp "$ENGINE" .next/ 2>/dev/null || echo "WARN engine not copied to .next"
             - cp "$ENGINE" .next/server/ 2>/dev/null || echo "WARN engine not copied to .next/server"
