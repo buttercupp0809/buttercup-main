@@ -4,6 +4,7 @@ import * as React from "react";
 import { useRouter } from "next/navigation";
 import { ShieldCheck } from "lucide-react";
 import { POLICY_VERSION } from "@/lib/consent";
+import { ModalOverlay, ModalCard } from "@/components/ui/Modal";
 
 interface Props {
   needsConsent: boolean;
@@ -73,21 +74,15 @@ export function ConsentGate({ needsConsent, children }: Props) {
           "I Agree" action IS agreeing to all three things named in the copy
           right above it, so the request still sends all three fields true
           together (see agree() above). */}
-      <div
+      <ModalOverlay
         data-testid="consent-modal"
         role="alertdialog"
         aria-modal="true"
         aria-labelledby="consent-heading"
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4 py-8 backdrop-blur-sm"
+        backdropOpacity={0.8}
+        backdropBlur="lg"
       >
-        <div
-          className="buttercupp-glass w-full max-w-lg rounded-2xl p-8 shadow-2xl sm:p-10"
-          style={{
-            backgroundColor: "hsl(var(--buttercupp-surface))",
-            borderColor: "hsl(var(--buttercupp-border))",
-            border: "1px solid",
-          }}
-        >
+        <ModalCard size="md" className="p-8 sm:p-10">
           <div
             className="flex h-12 w-12 items-center justify-center rounded-full p-[1.5px]"
             style={{
@@ -171,17 +166,18 @@ export function ConsentGate({ needsConsent, children }: Props) {
               data-testid="consent-accept"
               onClick={agree}
               disabled={busy !== null}
-              className="rounded-lg px-5 py-3 text-sm font-semibold transition hover:opacity-90 disabled:opacity-50 sm:flex-[1.4]"
+              className="rounded-lg px-5 py-3 text-sm font-semibold text-white transition hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 sm:flex-[1.4]"
               style={{
-                backgroundColor: "hsl(var(--buttercupp-accent-rose))",
-                color: "hsl(var(--buttercupp-primary-fg))",
+                background:
+                  "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
+                boxShadow: "0 10px 24px -6px hsl(var(--buttercupp-accent-rose) / 0.55)",
               }}
             >
               {busy === "accept" ? "Confirming..." : "I Agree, continue"}
             </button>
           </div>
-        </div>
-      </div>
+        </ModalCard>
+      </ModalOverlay>
     </>
   );
 }

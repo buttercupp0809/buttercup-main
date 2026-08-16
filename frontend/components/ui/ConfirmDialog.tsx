@@ -8,6 +8,7 @@
 import * as React from "react";
 import { AlertTriangle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ModalOverlay, ModalCard } from "@/components/ui/Modal";
 
 export interface ConfirmDialogProps {
   open: boolean;
@@ -51,24 +52,16 @@ export function ConfirmDialog({
   if (!open) return null;
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ backgroundColor: "rgba(0,0,0,0.75)", backdropFilter: "blur(8px)" }}
-      onClick={(e) => {
-        if (e.target === e.currentTarget && !busy) onCancel();
-      }}
+    <ModalOverlay
       role="dialog"
       aria-modal
       aria-labelledby="confirm-dialog-title"
       data-testid="confirm-dialog"
+      onClick={(e) => {
+        if (e.target === e.currentTarget && !busy) onCancel();
+      }}
     >
-      <div
-        className="w-full max-w-md overflow-hidden rounded-2xl shadow-2xl"
-        style={{
-          border: "1px solid hsl(var(--buttercupp-border))",
-          backgroundColor: "hsl(var(--buttercupp-surface))",
-        }}
-      >
+      <ModalCard size="sm">
         <div className="flex items-start gap-3 p-6">
           {destructive ? (
             <div
@@ -114,15 +107,15 @@ export function ConfirmDialog({
               "tap-target rounded-full px-4 py-2 text-sm font-medium text-white shadow disabled:opacity-60",
             )}
             style={{
-              backgroundColor: destructive
-                ? "rgb(220,38,38)"
-                : "hsl(var(--buttercupp-accent-rose))",
+              background: destructive
+                ? "linear-gradient(90deg, rgb(220,38,38), rgb(190,18,60))"
+                : "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
             }}
           >
             {busy ? "Working..." : confirmLabel}
           </button>
         </div>
-      </div>
-    </div>
+      </ModalCard>
+    </ModalOverlay>
   );
 }

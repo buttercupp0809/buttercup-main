@@ -5,7 +5,8 @@
 // the left and an upgrade / browse CTA on the right.
 
 import * as React from "react";
-import { X, Lock } from "lucide-react";
+import { Lock } from "lucide-react";
+import { ModalOverlay, ModalCard, ModalCloseButton } from "@/components/ui/Modal";
 
 interface Props {
   mediaAssetId: string;
@@ -90,47 +91,38 @@ function ImageModal({
   }, [onClose]);
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ backgroundColor: "rgba(0,0,0,0.82)", backdropFilter: "blur(8px)" }}
-      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+    <ModalOverlay
       role="dialog"
       aria-modal
+      backdropOpacity={0.82}
+      onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
-      <div
-        className="relative flex w-full max-w-3xl flex-col gap-0 overflow-hidden rounded-2xl shadow-2xl md:flex-row"
-        style={{
-          backgroundColor: "hsl(240 14% 9%)",
-          border: "1px solid hsl(240 10% 18%)",
-          maxHeight: "90vh",
-        }}
-      >
-        {/* Close button */}
-        <button
-          type="button"
-          onClick={onClose}
-          aria-label="Close"
-          className="absolute right-3 top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full"
-          style={{ backgroundColor: "rgba(0,0,0,0.55)", color: "#fff" }}
-        >
-          <X className="h-4 w-4" />
-        </button>
+      <ModalCard size="xl" className="max-h-[90vh]">
+        <ModalCloseButton onClick={onClose} />
 
-        {/* Left: image */}
-        <div className="flex-none md:w-[55%] overflow-hidden">
-          <img
-            src={url}
-            alt={caption ?? ""}
-            className="h-full w-full object-contain"
-            style={{ maxHeight: "90vh" }}
-          />
-        </div>
+        <div className="relative flex flex-col md:flex-row">
+          {/* Left: image. Chat images are always 9:16 (portrait); we lock
+              the left panel to that aspect and use object-cover so the
+              image fills edge-to-edge with no letterbox bar showing the
+              ModalCard's rose gradient behind it. On mobile it takes
+              full modal width; on md+ it is a 45% column. */}
+          <div
+            className="relative w-full flex-none overflow-hidden md:w-[45%]"
+            style={{ aspectRatio: "9 / 16", backgroundColor: "hsl(var(--buttercupp-bg))" }}
+          >
+            <img
+              src={url}
+              alt={caption ?? ""}
+              className="absolute inset-0 h-full w-full object-cover object-center"
+            />
+          </div>
 
-        {/* Right: upgrade CTA */}
-        <div
-          className="flex flex-col justify-center gap-5 p-7 md:w-[45%]"
-          style={{ borderLeft: "1px solid hsl(240 10% 18%)" }}
-        >
+          {/* Right: upgrade CTA. Divider stacks (border-top) on mobile and
+              becomes a vertical rule (border-left) side-by-side on md+. */}
+          <div
+            className="flex flex-1 flex-col justify-center gap-5 border-t p-6 sm:p-7 md:border-l md:border-t-0"
+            style={{ borderColor: "hsl(var(--buttercupp-border))" }}
+          >
           <div
             className="flex h-11 w-11 items-center justify-center rounded-full"
             style={{
@@ -216,8 +208,9 @@ function ImageModal({
               </a>
             </div>
           </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </ModalCard>
+    </ModalOverlay>
   );
 }

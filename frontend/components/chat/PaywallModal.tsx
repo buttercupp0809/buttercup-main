@@ -15,6 +15,7 @@
 
 import * as React from "react";
 import type { TransportPaywallPlan } from "@/lib/chat-transport";
+import { ModalOverlay, ModalCard, ModalCloseButton } from "@/components/ui/Modal";
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:4000";
 
@@ -53,7 +54,10 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
   const [dismissed, setDismissed] = React.useState(false);
   const dialogRef = React.useRef<HTMLDivElement | null>(null);
 
-  const plans = plansFromEvent.length > 0 ? plansFromEvent : (fallbackPlans ?? []);
+  const plans = React.useMemo(
+    () => (plansFromEvent.length > 0 ? plansFromEvent : (fallbackPlans ?? [])).filter((p) => p.plan !== "free"),
+    [plansFromEvent, fallbackPlans],
+  );
 
   // Fallback catalog fetch: the paywall frame should carry `plans`, but if
   // it ever arrives empty, fetch the public plan list directly.
@@ -159,46 +163,64 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
   //  - plan_quota + kind=image/video, used>0: an active plan's media quota
   //    for that kind ran out.
   const mediaRequiresPlan = scope === "plan_quota" && kind !== "chat" && used === 0;
-  const headline =
+
+  // Split the headline into a body + emphasized token so the token can
+  // wear the rose to violet gradient without hardcoding brittle string
+  // slicing on every branch.
+  const headlineParts: { body: string; token?: string } =
     scope === "free_trial"
-      ? `You have used all ${limit === -1 ? "your free" : limit} free messages`
+      ? {
+          body: "You have used all",
+          token: `${limit === -1 ? "your free" : limit} free messages`,
+        }
       : kind === "chat"
-      ? "You have used all your plan messages"
+      ? { body: "You have used all", token: "your plan messages" }
       : mediaRequiresPlan
-      ? kind === "image"
-        ? "Images require a plan"
-        : "Videos require a plan"
-      : kind === "image"
-      ? "Your plan images are used up"
-      : "Your plan videos are used up";
+      ? { body: kind === "image" ? "Images" : "Videos", token: "require a plan" }
+      : { body: `Your plan ${kind === "image" ? "images" : "videos"}`, token: "are used up" };
 
   const sub =
     scope === "free_trial"
-      ? "Pick a pass to keep chatting. Cancel any time."
+      ? "Pick a pass and keep the story going. Cancel any time, no drama."
       : mediaRequiresPlan
-      ? "Choose a pass below, or buy a token pack for one-off images and videos."
-      : `You used ${used} of ${limit === -1 ? "unlimited" : limit}. Buy another pass to continue.`;
+      ? "Grab a pass, or buy a token pack for one-off images and videos."
+      : `You used ${used} of ${limit === -1 ? "unlimited" : limit}. One more pass and you are back in the moment.`;
 
   const showBuyTokens = kind === "image" || kind === "video";
+
+  // Recommendation heuristic: with 3 plans, mark the middle one as
+  // "Most popular" and the longest as "Best value". With 2 plans, mark the
+  // longer one as "Best value". With 1 plan or 0, no ribbon.
+  const highlightIndex = plans.length >= 3 ? 1 : -1;
+  const bestValueIndex = plans.length >= 2 ? plans.length - 1 : -1;
+  const kindIcon =
+    kind === "image" ? <ImageIcon className="h-6 w-6" /> : kind === "video" ? <VideoIcon className="h-6 w-6" /> : <SparkleIcon className="h-6 w-6" />;
 
   if (dismissed) {
     return (
       <div
         data-testid="paywall-modal-dismissed-banner"
         role="status"
-        className="fixed inset-x-0 bottom-4 z-50 mx-auto flex w-fit max-w-sm items-center gap-3 rounded-full px-4 py-2 text-sm shadow-lg"
+        className="fixed inset-x-0 bottom-4 z-50 mx-auto flex w-fit max-w-sm items-center gap-3 rounded-full px-4 py-2 text-sm shadow-lg backdrop-blur"
         style={{
-          backgroundColor: "hsl(var(--buttercupp-surface, 210 40% 96%))",
-          border: "1px solid hsl(var(--buttercupp-border, 214 32% 91%))",
+          backgroundColor: "hsl(var(--buttercupp-surface) / 0.85)",
+          border: "1px solid hsl(var(--buttercupp-accent-rose) / 0.35)",
+          color: "hsl(var(--buttercupp-fg))",
         }}
       >
-        <span>Upgrade to keep chatting.</span>
+        <span className="flex items-center gap-1.5">
+          <SparkleIcon className="h-3.5 w-3.5" style={{ color: "hsl(var(--buttercupp-accent-rose))" }} />
+          Upgrade to keep chatting
+        </span>
         <button
           type="button"
           onClick={() => setDismissed(false)}
           data-testid="paywall-reopen"
-          className="font-semibold underline"
-          style={{ color: "hsl(var(--buttercupp-accent-rose, 344 84% 71%))" }}
+          className="rounded-full px-3 py-1 text-xs font-semibold text-white shadow-sm"
+          style={{
+            background:
+              "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
+          }}
         >
           View plans
         </button>
@@ -207,90 +229,360 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
   }
 
   return (
-    <div
+    <ModalOverlay
       role="dialog"
       aria-modal="true"
       aria-labelledby="paywall-title"
       data-testid="paywall-modal"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ backgroundColor: "hsl(var(--buttercupp-bg) / 0.8)" }}
     >
-      <div
-        ref={dialogRef}
-        className="w-full max-w-2xl rounded-2xl p-6 shadow-2xl"
-        style={{
-          backgroundColor: "hsl(var(--buttercupp-surface, 210 40% 96%))",
-          border: "1px solid hsl(var(--buttercupp-border, 214 32% 91%))",
-        }}
-      >
-        <h2 id="paywall-title" className="font-display text-2xl font-semibold">
-          {headline}
-        </h2>
-        <p className="mt-1 text-sm opacity-80">{sub}</p>
+      <ModalCard ref={dialogRef} size="xl">
+        <ModalCloseButton onClick={() => setDismissed(true)} ariaLabel="Minimize" />
 
-        {error ? (
-          <div className="mt-3 rounded-md border border-amber-300 bg-amber-50 p-2 text-xs text-amber-900 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-200">
-            {error}
-          </div>
-        ) : null}
+        <div className="relative px-6 pb-6 pt-8 sm:px-10 sm:pb-8 sm:pt-10">
+          <div className="flex flex-col items-center text-center">
+            <div
+              className="relative flex h-14 w-14 items-center justify-center rounded-2xl"
+              style={{
+                background:
+                  "linear-gradient(135deg, hsl(var(--buttercupp-accent-rose) / 0.25), hsl(var(--buttercupp-accent-violet) / 0.25))",
+                border: "1px solid hsl(var(--buttercupp-accent-rose) / 0.4)",
+                color: "hsl(var(--buttercupp-accent-rose))",
+                boxShadow: "0 8px 24px -6px hsl(var(--buttercupp-accent-rose) / 0.45)",
+              }}
+            >
+              {kindIcon}
+              <span
+                aria-hidden
+                className="absolute inset-0 -z-10 animate-pulse rounded-2xl"
+                style={{ background: "hsl(var(--buttercupp-accent-rose) / 0.2)", filter: "blur(14px)" }}
+              />
+            </div>
 
-        <div className="mt-5 grid grid-cols-1 gap-3 md:grid-cols-3">
-          {plans
-            .filter((p) => p.plan !== "free")
-            .map((p) => (
-              <div
-                key={p.plan}
-                data-testid={`paywall-plan-${p.plan}`}
-                className="rounded-xl p-4"
-                style={{
-                  backgroundColor: "hsl(var(--buttercupp-surface-2, 210 40% 96%))",
-                  border: "1px solid hsl(var(--buttercupp-border, 214 32% 91%))",
-                }}
-              >
-                <div className="flex items-baseline justify-between">
-                  <div className="font-display text-base font-semibold">{p.label}</div>
-                  <div className="text-sm opacity-80">${p.priceUsd}</div>
-                </div>
-                <div className="text-xs opacity-70">
-                  {p.durationDays === 1 ? "1 day" : p.durationDays === 7 ? "7 days" : `${p.durationDays} days`}
-                </div>
-                <ul className="mt-2 space-y-0.5 text-xs opacity-90">
-                  <li>Chats: {p.chats === -1 ? "Unlimited" : p.chats}</li>
-                  <li>Images: {p.images === -1 ? "Unlimited" : p.images}</li>
-                  <li>Videos: {p.videos === -1 ? "Unlimited" : p.videos}</li>
-                </ul>
-                <button
-                  type="button"
-                  onClick={() => subscribe(p.plan)}
-                  disabled={pending === p.plan}
-                  data-testid={`paywall-buy-${p.plan}`}
-                  className="mt-3 w-full rounded-md py-2 text-sm font-medium text-white shadow-sm disabled:opacity-50"
+            <h2
+              id="paywall-title"
+              className="font-display mt-5 text-balance text-3xl font-semibold tracking-tight sm:text-4xl"
+              style={{ color: "hsl(var(--buttercupp-fg))" }}
+            >
+              {headlineParts.body}{" "}
+              {headlineParts.token ? (
+                <span
                   style={{
                     background:
-                      "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose, 344 84% 71%)), hsl(var(--buttercupp-accent-violet, 262 72% 68%)))",
+                      "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
                   }}
                 >
-                  {pending === p.plan ? "Redirecting..." : `Continue - $${p.priceUsd}`}
-                </button>
-              </div>
-            ))}
-        </div>
+                  {headlineParts.token}
+                </span>
+              ) : null}
+            </h2>
+            <p
+              className="mt-3 max-w-lg text-pretty text-sm sm:text-base"
+              style={{ color: "hsl(var(--buttercupp-muted))" }}
+            >
+              {sub}
+            </p>
+          </div>
 
-        {showBuyTokens ? (
-          <a
-            href="/billing#token-store"
-            data-testid="paywall-buy-tokens-instead"
-            className="mt-4 block text-center text-sm font-medium underline"
-            style={{ color: "hsl(var(--buttercupp-accent-violet, 262 72% 68%))" }}
+          {error ? (
+            <div
+              className="mt-5 rounded-xl border px-3 py-2 text-xs"
+              style={{
+                borderColor: "hsl(38 92% 58% / 0.4)",
+                background: "hsl(38 92% 58% / 0.08)",
+                color: "hsl(38 92% 78%)",
+              }}
+            >
+              {error}
+            </div>
+          ) : null}
+
+          {/* gap-8 on mobile so the "-top-3" ribbon on each card never
+              overlaps the card stacked above it. gap-4 on md+ where the
+              three cards sit side-by-side. */}
+          <div className="mt-10 grid grid-cols-1 gap-8 md:mt-8 md:grid-cols-3 md:gap-4">
+            {plans.map((p, i) => {
+              const highlight = i === highlightIndex;
+              const bestValue = !highlight && i === bestValueIndex;
+              const perDay = p.priceUsd / p.durationDays;
+              const perDayText = p.durationDays > 1 ? `~$${perDay.toFixed(2)}/day` : null;
+
+              return (
+                <div
+                  key={p.plan}
+                  data-testid={`paywall-plan-${p.plan}`}
+                  className={`relative flex flex-col rounded-2xl p-5 transition ${
+                    highlight ? "md:-translate-y-2" : ""
+                  }`}
+                  style={{
+                    background: highlight
+                      ? "linear-gradient(160deg, hsl(var(--buttercupp-accent-rose) / 0.12), hsl(var(--buttercupp-accent-violet) / 0.12))"
+                      : "hsl(var(--buttercupp-surface-2) / 0.7)",
+                    border: highlight
+                      ? "1px solid hsl(var(--buttercupp-accent-rose) / 0.55)"
+                      : "1px solid hsl(var(--buttercupp-border))",
+                    boxShadow: highlight
+                      ? "0 20px 40px -12px hsl(var(--buttercupp-accent-rose) / 0.35)"
+                      : "none",
+                  }}
+                >
+                  {highlight ? <Ribbon label="Most popular" /> : null}
+                  {bestValue ? <Ribbon label="Best value" variant="violet" /> : null}
+
+                  <div className="flex items-baseline justify-between gap-3">
+                    <div className="font-display text-lg font-semibold" style={{ color: "hsl(var(--buttercupp-fg))" }}>
+                      {p.label}
+                    </div>
+                    <div className="flex flex-col items-end">
+                      <div className="font-display text-2xl font-semibold" style={{ color: "hsl(var(--buttercupp-fg))" }}>
+                        ${p.priceUsd}
+                      </div>
+                      {perDayText ? (
+                        <div className="text-[10px]" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+                          {perDayText}
+                        </div>
+                      ) : null}
+                    </div>
+                  </div>
+                  <div
+                    className="mt-1 text-xs uppercase tracking-wider"
+                    style={{ color: "hsl(var(--buttercupp-muted))" }}
+                  >
+                    {p.durationDays === 1 ? "1 day access" : p.durationDays === 7 ? "7 days access" : `${p.durationDays} days access`}
+                  </div>
+
+                  <ul className="mt-4 space-y-2 text-sm">
+                    <PerkRow
+                      icon={<ChatIcon className="h-3.5 w-3.5" />}
+                      label="Chats"
+                      value={p.chats === -1 ? "Unlimited" : p.chats.toLocaleString()}
+                    />
+                    <PerkRow
+                      icon={<ImageIcon className="h-3.5 w-3.5" />}
+                      label="Images"
+                      value={p.images === -1 ? "Unlimited" : p.images.toLocaleString()}
+                    />
+                    <PerkRow
+                      icon={<VideoIcon className="h-3.5 w-3.5" />}
+                      label="Videos"
+                      value={p.videos === -1 ? "Unlimited" : p.videos.toLocaleString()}
+                    />
+                  </ul>
+
+                  <button
+                    type="button"
+                    onClick={() => subscribe(p.plan)}
+                    disabled={pending === p.plan}
+                    data-testid={`paywall-buy-${p.plan}`}
+                    className="group mt-5 flex w-full items-center justify-center gap-1.5 rounded-xl py-3 text-sm font-semibold text-white shadow-sm transition hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60 disabled:hover:scale-100"
+                    style={{
+                      background:
+                        "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
+                      boxShadow: highlight
+                        ? "0 10px 24px -6px hsl(var(--buttercupp-accent-rose) / 0.55)"
+                        : "0 6px 16px -6px hsl(var(--buttercupp-accent-rose) / 0.4)",
+                    }}
+                  >
+                    {pending === p.plan ? (
+                      <>
+                        <SpinnerIcon className="h-3.5 w-3.5" />
+                        Redirecting...
+                      </>
+                    ) : (
+                      <>
+                        Continue for ${p.priceUsd}
+                        <ArrowRightIcon className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                      </>
+                    )}
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+
+          {showBuyTokens ? (
+            <div className="mt-6 flex justify-center">
+              <a
+                href="/billing#token-store"
+                data-testid="paywall-buy-tokens-instead"
+                className="inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-xs font-medium transition hover:opacity-80"
+                style={{
+                  borderColor: "hsl(var(--buttercupp-accent-violet) / 0.5)",
+                  color: "hsl(var(--buttercupp-accent-violet))",
+                  background: "hsl(var(--buttercupp-accent-violet) / 0.08)",
+                }}
+              >
+                <CoinIcon className="h-3.5 w-3.5" />
+                Buy tokens instead
+              </a>
+            </div>
+          ) : null}
+
+          <div
+            className="mt-6 flex flex-wrap items-center justify-center gap-3 border-t pt-5 text-[11px]"
+            style={{ borderColor: "hsl(var(--buttercupp-border))", color: "hsl(var(--buttercupp-muted))" }}
           >
-            Buy tokens instead
-          </a>
-        ) : null}
+            <TrustPill icon={<LockIcon className="h-3 w-3" />} label="Secure checkout" />
+            <TrustPill icon={<HeartIcon className="h-3 w-3" />} label="Cancel anytime" />
+            <TrustPill icon={<BoltIcon className="h-3 w-3" />} label="Instant access" />
+          </div>
 
-        <p className="mt-4 text-[11px] opacity-60">
-          After checkout, chat will resume automatically once payment confirms.
-        </p>
-      </div>
+          <p
+            className="mt-4 text-center text-[11px]"
+            style={{ color: "hsl(var(--buttercupp-muted) / 0.8)" }}
+          >
+            After checkout, your chat resumes automatically once payment confirms.
+          </p>
+        </div>
+      </ModalCard>
+    </ModalOverlay>
+  );
+}
+
+function Ribbon({ label, variant = "rose" }: { label: string; variant?: "rose" | "violet" }) {
+  const isViolet = variant === "violet";
+  return (
+    <div
+      className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white shadow-md"
+      style={{
+        background: isViolet
+          ? "linear-gradient(90deg, hsl(var(--buttercupp-accent-violet)), hsl(262 72% 58%))"
+          : "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
+        boxShadow: "0 6px 14px -4px hsl(var(--buttercupp-accent-rose) / 0.5)",
+      }}
+    >
+      {label}
     </div>
+  );
+}
+
+function PerkRow({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
+  return (
+    <li className="flex items-center justify-between gap-3">
+      <span className="flex items-center gap-2" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+        <span
+          className="flex h-5 w-5 items-center justify-center rounded-md"
+          style={{
+            background: "hsl(var(--buttercupp-accent-rose) / 0.15)",
+            color: "hsl(var(--buttercupp-accent-rose))",
+          }}
+          aria-hidden
+        >
+          {icon}
+        </span>
+        {label}
+      </span>
+      <span className="font-medium" style={{ color: "hsl(var(--buttercupp-fg))" }}>
+        {value}
+      </span>
+    </li>
+  );
+}
+
+function TrustPill({ icon, label }: { icon: React.ReactNode; label: string }) {
+  return (
+    <span
+      className="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1"
+      style={{
+        borderColor: "hsl(var(--buttercupp-border))",
+        background: "hsl(var(--buttercupp-surface-2) / 0.6)",
+      }}
+    >
+      <span style={{ color: "hsl(var(--buttercupp-accent-rose))" }}>{icon}</span>
+      {label}
+    </span>
+  );
+}
+
+// Icon set (inline SVG, no runtime lib dependency). Kept minimal, 24x24
+// viewBox, stroke-based so they inherit currentColor gracefully.
+function iconProps(className?: string): React.SVGProps<SVGSVGElement> {
+  return {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.9,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    className,
+    "aria-hidden": true,
+  } as React.SVGProps<SVGSVGElement>;
+}
+
+function SparkleIcon({ className, style }: { className?: string; style?: React.CSSProperties }) {
+  return (
+    <svg {...iconProps(className)} style={style}>
+      <path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M6 18l2.5-2.5M15.5 8.5L18 6" />
+    </svg>
+  );
+}
+function ChatIcon({ className }: { className?: string }) {
+  return (
+    <svg {...iconProps(className)}>
+      <path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.4A8 8 0 1 1 21 12z" />
+    </svg>
+  );
+}
+function ImageIcon({ className }: { className?: string }) {
+  return (
+    <svg {...iconProps(className)}>
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <circle cx="8.5" cy="9.5" r="1.5" />
+      <path d="M21 16l-5-5-8 8" />
+    </svg>
+  );
+}
+function VideoIcon({ className }: { className?: string }) {
+  return (
+    <svg {...iconProps(className)}>
+      <rect x="3" y="6" width="14" height="12" rx="2" />
+      <path d="M17 10l4-2v8l-4-2z" />
+    </svg>
+  );
+}
+function LockIcon({ className }: { className?: string }) {
+  return (
+    <svg {...iconProps(className)}>
+      <rect x="4" y="11" width="16" height="10" rx="2" />
+      <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+    </svg>
+  );
+}
+function HeartIcon({ className }: { className?: string }) {
+  return (
+    <svg {...iconProps(className)}>
+      <path d="M20.8 6.6a5.5 5.5 0 0 0-9-1.8L12 5l-.2-.2a5.5 5.5 0 1 0-7.8 7.8l7.3 7.5a1 1 0 0 0 1.4 0l7.3-7.5a5.5 5.5 0 0 0 .8-6z" />
+    </svg>
+  );
+}
+function BoltIcon({ className }: { className?: string }) {
+  return (
+    <svg {...iconProps(className)}>
+      <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" />
+    </svg>
+  );
+}
+function CoinIcon({ className }: { className?: string }) {
+  return (
+    <svg {...iconProps(className)}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v10M9 10h4a2 2 0 0 1 0 4h-4M9 14h5" />
+    </svg>
+  );
+}
+function ArrowRightIcon({ className }: { className?: string }) {
+  return (
+    <svg {...iconProps(className)}>
+      <path d="M5 12h14M13 5l7 7-7 7" />
+    </svg>
+  );
+}
+function SpinnerIcon({ className }: { className?: string }) {
+  return (
+    <svg {...iconProps(className)} className={`${className ?? ""} animate-spin`}>
+      <path d="M12 3a9 9 0 1 0 9 9" />
+    </svg>
   );
 }
