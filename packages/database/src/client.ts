@@ -18,6 +18,8 @@
 import { PrismaClient } from "@prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import pg from "pg";
+import fs from "fs";
+import path from "path";
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
@@ -28,6 +30,39 @@ const isServerless = !!(
   process.env.VERCEL ||
   process.env.AWS_EXECUTION_ENV
 );
+
+// Safety net for Amplify WEB_COMPUTE. Prisma's native engine ships in the
+// `.next/**` artifact, but Prisma searches paths relative to the client bundle
+// (e.g. `<cwd>/.next/server`, `.prisma/client`) that do not match where the
+// binary lands, producing "could not locate the Query Engine for runtime
+// rhel-openssl-3.0.x" (confirmed via /api/debug). amplify.yml now copies the
+// engine into every search location; as a belt-and-suspenders we also point
+// PRISMA_QUERY_ENGINE_LIBRARY straight at the binary if we can find it. Runs
+// lazily (first query), so cwd and the shipped files are stable by then.
+function resolveEnginePathForLambda(): void {
+  if (!isServerless) return;
+  if (process.env.PRISMA_QUERY_ENGINE_LIBRARY) return;
+  const engineName = "libquery_engine-rhel-openssl-3.0.x.so.node";
+  const cwd = process.cwd();
+  const candidates = [
+    path.join(cwd, ".next", engineName),
+    path.join(cwd, ".next", "server", engineName),
+    path.join(cwd, engineName),
+    path.join("/var/task", ".next", engineName),
+    path.join("/var/task", ".next", "server", engineName),
+    path.join(cwd, "node_modules", ".prisma", "client", engineName),
+  ];
+  for (const c of candidates) {
+    try {
+      if (fs.existsSync(c)) {
+        process.env.PRISMA_QUERY_ENGINE_LIBRARY = c;
+        return;
+      }
+    } catch {
+      /* ignore */
+    }
+  }
+}
 
 function getDbUrl(): string {
   const url = process.env.DATABASE_URL || "";
@@ -74,8 +109,27 @@ function createPrismaClient(): PrismaClient {
   });
 }
 
-export const prisma: PrismaClient = globalForPrisma.prisma ?? createPrismaClient();
-
-if (process.env.NODE_ENV !== "production") {
-  globalForPrisma.prisma = prisma;
+// LAZY construction. The singleton is built on first property access, not at
+// import time. This is the critical fix for Amplify WEB_COMPUTE: env vars are
+// injected into process.env by frontend/instrumentation.ts at server startup,
+// but the exact ordering of that vs. the first import of this module is not
+// guaranteed. Eager construction (`const prisma = createPrismaClient()`) can
+// therefore freeze an empty/placeholder DATABASE_URL into the pg.Pool, after
+// which every query fails with "Can't reach database server at `placeholder`"
+// (confirmed reproduction). Deferring construction to first use guarantees
+// DATABASE_URL is present by the time the pool is built.
+function getClient(): PrismaClient {
+  if (!globalForPrisma.prisma) {
+    resolveEnginePathForLambda();
+    globalForPrisma.prisma = createPrismaClient();
+  }
+  return globalForPrisma.prisma;
 }
+
+export const prisma: PrismaClient = new Proxy({} as PrismaClient, {
+  get(_target, prop, receiver) {
+    const client = getClient();
+    const value = Reflect.get(client, prop, receiver);
+    return typeof value === "function" ? value.bind(client) : value;
+  },
+});
