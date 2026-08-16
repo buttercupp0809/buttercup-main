@@ -7,6 +7,7 @@ import { handleMediaRoute } from "./http/media";
 import { handleBillingRoute } from "./http/billing";
 import { applyCors } from "./http/cors";
 import { getHealthSnapshot } from "./metrics";
+import { getQueueHealth } from "./queue/queue-health";
 import { logInfo, logWarn, logError } from "./utils/log";
 
 void prisma;
@@ -29,8 +30,37 @@ const server = http.createServer(async (req, res) => {
       dbOk = false;
     }
     const snap = getHealthSnapshot();
+    // Queue health is best-effort. A Redis outage MUST NOT flip /health
+    // to 500: we still want the liveness probe to succeed as long as the
+    // API can talk to the DB, and callers read `redisReachable` +
+    // `queue` to spot a dead worker. Only DB failure demotes the status.
+    let queue = {
+      redisConfigured: false,
+      redisReachable: false,
+      queue: null as null | Record<string, number>,
+      error: null as null | string,
+    };
+    try {
+      queue = (await getQueueHealth()) as typeof queue;
+    } catch (err) {
+      queue = {
+        redisConfigured: false,
+        redisReachable: false,
+        queue: null,
+        error: err instanceof Error ? err.message : "queue_error",
+      };
+    }
     res.writeHead(dbOk ? 200 : 503, { "Content-Type": "application/json" });
-    res.end(JSON.stringify({ ok: dbOk, db: dbOk, ...snap }));
+    res.end(
+      JSON.stringify({
+        ok: dbOk,
+        db: dbOk,
+        redisConfigured: queue.redisConfigured,
+        redisReachable: queue.redisReachable,
+        queue: queue.queue,
+        ...snap,
+      }),
+    );
     return;
   }
   if (await handleChatStream(req, res)) return;

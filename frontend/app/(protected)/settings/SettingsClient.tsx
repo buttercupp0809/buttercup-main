@@ -4,7 +4,9 @@
 // download, and account deletion with typed confirmation.
 
 import * as React from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { TRUST_CHIPS } from "@/components/trust/copy";
 
 interface Props {
   email: string;
@@ -141,6 +143,51 @@ export function SettingsClient(props: Props) {
           </button>
           {pwStatus ? <span className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>{pwStatus}</span> : null}
         </form>
+      </section>
+
+      {/*
+        Your privacy: an in-app reminder of the same promises we make on the
+        marketing home and in onboarding. Sits above "Data" so that a user
+        who lands here to export or delete sees the reassurance context
+        first. The chip labels and href are shared with TrustStrip so we
+        never fork the wording.
+      */}
+      <section
+        className="rounded-lg border p-4"
+        style={{
+          borderColor: "hsl(var(--buttercupp-accent-rose) / 0.35)",
+          background:
+            "linear-gradient(135deg, hsl(var(--buttercupp-accent-rose) / 0.06), hsl(var(--buttercupp-accent-violet) / 0.06))",
+        }}
+      >
+        <h2 className="mb-1 text-lg font-semibold" style={{ color: "hsl(var(--buttercupp-fg))" }}>
+          Your privacy
+        </h2>
+        <p className="mb-3 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+          Locked in transit, locked at rest, scoped to your account. Not sold, not used to train other AIs.
+        </p>
+        <div className="flex flex-wrap gap-1.5">
+          {TRUST_CHIPS.map((c) => (
+            <span
+              key={c.id}
+              className="inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-medium"
+              style={{
+                borderColor: "hsl(var(--buttercupp-border))",
+                color: "hsl(var(--buttercupp-fg))",
+                background: "hsl(var(--buttercupp-surface-2) / 0.6)",
+              }}
+            >
+              {c.label}
+            </span>
+          ))}
+        </div>
+        <Link
+          href="/legal/privacy-promise"
+          className="mt-3 inline-block text-xs underline underline-offset-2"
+          style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
+        >
+          Read our privacy promise
+        </Link>
       </section>
 
       <section className="rounded-lg border p-4" style={sectionStyle}>

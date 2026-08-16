@@ -129,23 +129,42 @@ export async function signMagicScopeToken(userId: string): Promise<string> {
 type CookieSetter = { set: (name: string, value: string, opts: Record<string, unknown>) => void };
 type CookieAwareResponse = { cookies: CookieSetter };
 
+// Cross-subdomain cookie scope. In production the app is served from
+// www.buttercupp.fun while the WS gateway and REST backend live at
+// api.buttercupp.fun. A host-only cookie (no Domain) is only ever sent back
+// to www, so the WebSocket handshake to api arrives with no auth cookie, the
+// gateway rejects it (401), and chat silently drops to a non-streaming
+// fallback that never delivers the reply live (the message only appears on
+// reload). Setting Domain=.buttercupp.fun makes the browser send the auth
+// cookie to every *.buttercupp.fun host, so the WS authenticates and streams.
+// Leave AUTH_COOKIE_DOMAIN unset in local dev (localhost is single-host) so
+// nothing changes there.
+function cookieDomain(): string | undefined {
+  const d = process.env.AUTH_COOKIE_DOMAIN?.trim();
+  return d ? d : undefined;
+}
+
 export function setAuthCookie(res: CookieAwareResponse, token: string) {
+  const domain = cookieDomain();
   res.cookies.set(AUTH_COOKIE, token, {
     httpOnly: true,
     secure: isProd(),
     sameSite: "lax",
     path: "/",
     maxAge: TOKEN_MAX_AGE,
+    ...(domain ? { domain } : {}),
   });
 }
 
 export function clearAuthCookie(res: CookieAwareResponse) {
+  const domain = cookieDomain();
   res.cookies.set(AUTH_COOKIE, "", {
     httpOnly: true,
     secure: isProd(),
     sameSite: "lax",
     path: "/",
     maxAge: 0,
+    ...(domain ? { domain } : {}),
   });
 }
 

@@ -8,6 +8,7 @@ import {
   Compass,
   Clapperboard,
   Sparkles,
+  Users,
   Gem,
   Settings as SettingsIcon,
   ChevronLeft,
@@ -23,6 +24,7 @@ const ICONS: Record<NavIcon, React.ComponentType<{ className?: string; style?: R
   discover: Compass,
   reels: Clapperboard,
   create: Sparkles,
+  companions: Users,
   billing: Gem,
   settings: SettingsIcon,
 };

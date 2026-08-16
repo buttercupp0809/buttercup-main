@@ -25,6 +25,7 @@ export interface LegalPageEntry {
 export const LEGAL_PAGES: readonly LegalPageEntry[] = [
   { slug: "terms", title: "Terms of Service", group: "legal" },
   { slug: "privacy", title: "Privacy Policy", group: "legal" },
+  { slug: "privacy-promise", title: "Privacy Promise", group: "legal" },
   { slug: "cookie", title: "Cookie Policy", group: "legal" },
   { slug: "content-policy", title: "Content and Community Policy", group: "legal" },
   { slug: "dmca", title: "DMCA Policy", group: "legal" },

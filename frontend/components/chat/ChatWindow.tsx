@@ -8,6 +8,7 @@ import { GestureText } from "@/components/chat/GestureText";
 import { TypingDots } from "@/components/chat/TypingDots";
 import { PaywallModal } from "@/components/chat/PaywallModal";
 import { ImageMessage } from "@/components/chat/ImageMessage";
+import { LockedBadge } from "@/components/trust/LockedBadge";
 
 interface PaywallState {
   scope: "free_trial" | "plan_quota";
@@ -227,7 +228,13 @@ export function ChatWindow({
             )}
           </div>
           <div className="flex flex-col">
-            <span className="font-display text-lg leading-tight">{characterName}</span>
+            <div className="flex items-center gap-2">
+              <span className="font-display text-lg leading-tight">{characterName}</span>
+              {/* Trust chip in the chat header: reassures users mid-session
+                  that the conversation is private and links to the full
+                  privacy promise for anyone who wants the details. */}
+              <LockedBadge size="sm" />
+            </div>
             {relationship ? (
               <AffectionMeter
                 size="sm"
@@ -284,7 +291,7 @@ export function ChatWindow({
         // nearest scrolling ancestor was the outer <main>, not the message
         // list, so the composer could sit on top of trailing messages when
         // the viewport was smaller than the pane.
-        className="shrink-0 rounded-2xl border p-3 pb-safe"
+        className="shrink-0 rounded-2xl border px-3 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
         style={{
           backgroundColor: "hsl(var(--buttercupp-surface-2))",
           borderColor: "hsl(var(--buttercupp-border))",
@@ -331,13 +338,13 @@ export function ChatWindow({
             disabled={pending || paywall !== null || !input.trim()}
             data-testid="chat-send"
             aria-label="Send"
-            className="tap-target flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white shadow-sm disabled:opacity-50"
+            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white shadow-sm transition-transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:hover:scale-100"
             style={{
               background:
                 "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
             }}
           >
-            <Send className="h-4 w-4" />
+            <Send className="h-3.5 w-3.5" />
           </button>
         </div>
       </form>

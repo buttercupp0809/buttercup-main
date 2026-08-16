@@ -166,6 +166,8 @@ export async function processJob(job: JobLike): Promise<{ ok: boolean; s3Key?: s
   }
 }
 
+const HEARTBEAT_INTERVAL_MS = 30_000;
+
 // Boot a real BullMQ worker. Called from backend/src/worker.ts.
 export function startMediaWorker(): { close: () => Promise<void> } | null {
   const connection = createWorkerConnection();
@@ -179,15 +181,51 @@ export function startMediaWorker(): { close: () => Promise<void> } | null {
     return null;
   }
   const concurrency = Number(process.env.MEDIA_WORKER_CONCURRENCY ?? 4);
+  // Backpressure for the single self-hosted GPU. Juggernaut/ComfyUI serves one
+  // image at a time (~15-20s each); an unbounded burst of jobs all hit /prompt
+  // at once, pile into ComfyUI's internal queue, and trip the 300s poll timeout
+  // in waves (each timeout then retries up to 3x, amplifying the load). A BullMQ
+  // limiter caps how many jobs START per window so the queue drains steadily.
+  // Defaults are a generous ceiling (above one A10G's real throughput, so they
+  // only bind during a flood); tune down if the managed fallbacks rate-limit.
+  // Zero infra cost.
+  const rateMax = Number(process.env.MEDIA_WORKER_RATE_MAX ?? 12);
+  const rateDurationMs = Number(process.env.MEDIA_WORKER_RATE_DURATION_MS ?? 60_000);
   const WorkerCtor = mod.Worker as new (
     name: string,
     fn: (job: JobLike) => Promise<unknown>,
     opts: Record<string, unknown>,
-  ) => { close: () => Promise<void> };
+  ) => { close: () => Promise<void>; on: (evt: string, fn: (...a: unknown[]) => void) => void };
+  // Liveness signal. Emitting after every job AND on a timer means an
+  // idle-but-alive worker still shows up in /ecs/buttercupp-worker logs,
+  // and a crash-looping worker is visible as a gap in heartbeat lines.
+  // Counters are process-local; log values only (never REDIS_URL or any
+  // credential; see the security checklist in phase doc).
+  let processed = 0;
   const worker = new WorkerCtor(MEDIA_QUEUE_NAME, (job) => processJob(job), {
     connection,
     concurrency,
+    limiter: { max: rateMax, duration: rateDurationMs },
   });
-  logInfo("media-worker", `started (concurrency ${concurrency})`);
-  return worker;
+  worker.on("completed", () => {
+    processed += 1;
+    logInfo("media-worker", "heartbeat", { processed, concurrency, trigger: "completed" });
+  });
+  worker.on("failed", () => {
+    logInfo("media-worker", "heartbeat", { processed, concurrency, trigger: "failed" });
+  });
+  const timer = setInterval(() => {
+    logInfo("media-worker", "heartbeat", { processed, concurrency, trigger: "timer" });
+  }, HEARTBEAT_INTERVAL_MS);
+  // Unref so the timer never blocks graceful shutdown.
+  if (typeof timer.unref === "function") timer.unref();
+
+  const close = worker.close.bind(worker);
+  logInfo("media-worker", `started (concurrency ${concurrency}, limiter ${rateMax}/${rateDurationMs}ms)`);
+  return {
+    close: async () => {
+      clearInterval(timer);
+      await close();
+    },
+  };
 }

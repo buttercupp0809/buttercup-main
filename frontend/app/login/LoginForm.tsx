@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { PasswordField } from "@/components/auth/PasswordField";
 import { GoogleButton } from "@/components/auth/GoogleButton";
+import { TrustStrip } from "@/components/trust/TrustStrip";
 
 function LoginFormInner() {
   const router = useRouter();
@@ -132,6 +133,10 @@ function LoginFormInner() {
             Create one
           </a>
         </p>
+      </div>
+
+      <div className="mt-6 w-full" style={{ maxWidth: "26rem" }}>
+        <TrustStrip />
       </div>
     </div>
   );

@@ -44,6 +44,26 @@ export async function debitTokens(
     return { balanceAfter: user.tokenBalance, ledgerId: null };
   }
   return prisma.$transaction(async (tx) => {
+    // Idempotency guard. A BullMQ job that crashed after debiting but before
+    // markReady is replayed by stalled-job recovery. Every media job carries a
+    // unique refId (the MediaAsset id), so a debit ledger row already tagged
+    // with this refId means we charged for it once already; a replay must not
+    // decrement a second time. Checked inside the tx so it shares the debit's
+    // atomicity. This can only ever prevent an over-charge, never cause one.
+    if (params.refId) {
+      const priorDebit = await tx.tokenLedger.findFirst({
+        where: {
+          userId: params.userId,
+          refId: params.refId,
+          reason: params.reason,
+          delta: { lt: 0 },
+        },
+        select: { id: true, balanceAfter: true },
+      });
+      if (priorDebit) {
+        return { balanceAfter: priorDebit.balanceAfter, ledgerId: priorDebit.id };
+      }
+    }
     // Conditional update. When the balance is short, updateMany returns
     // count 0 and we throw without touching the ledger.
     const result = await tx.user.updateMany({

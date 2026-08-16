@@ -65,3 +65,9 @@ These seven phases were added together to make the product magical, mobile, mone
 ### Recommended build order
 
 `26 -> 29 -> 24 -> 25 -> 28 -> 27 -> 30` (quick wins and safety first, heaviest ports last). Each is independent enough to run alone, but this order minimizes rework: the free-display asset (26) and consent gate (29) are small and unblock clean testing of onboarding (24) and the mobile pass (25); the pipeline fix (28) precedes payments (27) so generated media is stable before you gate it; the memory graph port (30) is the largest and lands last.
+
+## Ownership and operations batch (31)
+
+| # | File | Delivers | State it targets |
+|---|---|---|---|
+| 31 | `31-your-companions-and-worker-ops.md` | Net-new "Your Companions" sidenav section (per-user list of characters they own, with live image status + Chat/Regenerate), plus the BullMQ media-worker operational fix: local run runbook, `/health` queue depth + worker heartbeat observability, graceful UI when the queue is down, and a read-only prod diagnosis runbook for the `buttercupp-worker` ECS service. | Additive + repair. Ownership already exists (`Character.ownerUserId`, no migration); the Phase-28 pipeline is correct, the worker process was simply not running. |

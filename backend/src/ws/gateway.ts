@@ -90,6 +90,32 @@ function sendError(ws: WebSocket, code: string, message: string): void {
 export function attachWsGateway(httpServer: HttpServer): WebSocketServer {
   const wss = new WebSocketServer({ noServer: true });
 
+  // Keepalive. The ALB (and most proxies) silently drop a WebSocket after an
+  // idle window (buttercupp's ALB is 300s). Without app-level pings a long
+  // pause between messages kills the socket from the proxy's side; the next
+  // server push (chat.done, media.ready) then hits a half-open connection and
+  // is lost, leaving the client stuck on the typing indicator until a reload.
+  // A 30s ping/pong keeps the connection warm and evicts genuinely dead
+  // sockets (no pong since the last tick). Zero infra cost.
+  const HEARTBEAT_MS = 30_000;
+  const alive = new WeakMap<WebSocket, boolean>();
+  const heartbeat = setInterval(() => {
+    for (const client of wss.clients) {
+      if (alive.get(client) === false) {
+        client.terminate();
+        continue;
+      }
+      alive.set(client, false);
+      try {
+        client.ping();
+      } catch {
+        // Socket already closing; the next tick's terminate() reaps it.
+      }
+    }
+  }, HEARTBEAT_MS);
+  if (typeof heartbeat.unref === "function") heartbeat.unref();
+  wss.on("close", () => clearInterval(heartbeat));
+
   httpServer.on("upgrade", async (req, socket, head) => {
     if (!req.url || !req.url.startsWith("/ws")) {
       socket.destroy();
@@ -112,6 +138,10 @@ export function attachWsGateway(httpServer: HttpServer): WebSocketServer {
   wss.on("connection", (ws: WebSocket, _req: IncomingMessage, userId: string) => {
     const session = newSession(userId);
     logInfo("ws", "connected", { userId });
+    // Mark alive on connect and on every pong, so the heartbeat above only
+    // reaps sockets that have gone silent for a full interval.
+    alive.set(ws, true);
+    ws.on("pong", () => alive.set(ws, true));
     const sub = createWorkerConnection();
     if (sub) {
       // Not just fire-and-forget: if the client disconnects milliseconds

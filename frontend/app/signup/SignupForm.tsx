@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { PasswordField } from "@/components/auth/PasswordField";
 import { GoogleButton } from "@/components/auth/GoogleButton";
+import { TrustStrip } from "@/components/trust/TrustStrip";
 
 function errorMessage(body: Record<string, unknown>): string {
   const issues = body?.issues as { path?: unknown[]; message?: string }[] | undefined;
@@ -177,6 +178,10 @@ export function SignupForm() {
             Sign in
           </a>
         </p>
+      </div>
+
+      <div className="mt-6 w-full" style={{ maxWidth: "26rem" }}>
+        <TrustStrip />
       </div>
     </div>
   );

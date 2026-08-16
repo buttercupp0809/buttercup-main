@@ -10,6 +10,7 @@ import {
   Compass,
   Clapperboard,
   Sparkles,
+  Users,
   Gem,
   User as UserIcon,
 } from "lucide-react";
@@ -24,6 +25,7 @@ const ICONS: Record<NavIcon, React.ComponentType<{ className?: string }>> = {
   discover: Compass,
   reels: Clapperboard,
   create: Sparkles,
+  companions: Users,
   billing: Gem,
   settings: UserIcon,
 };

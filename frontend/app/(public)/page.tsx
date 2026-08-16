@@ -5,6 +5,7 @@ import { Hero } from "@/components/marketing/Hero";
 import { ReelsCarousel } from "@/components/marketing/ReelsCarousel";
 import { ValueProps } from "@/components/marketing/ValueProps";
 import { SocialProof } from "@/components/marketing/SocialProof";
+import { TrustPromise } from "@/components/trust/TrustPromise";
 import { Button } from "@/components/ui/button";
 
 // Server component inside the (public) route group so it inherits the shared
@@ -23,6 +24,7 @@ export default async function HomePage() {
       <Hero items={items} viewerAllowsMature={viewerAllowsMature} />
       <ReelsCarousel reels={reels} />
       <ValueProps />
+      <TrustPromise />
       <SocialProof />
       <section className="mx-auto max-w-4xl px-6 px-safe py-20 text-center">
         <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
