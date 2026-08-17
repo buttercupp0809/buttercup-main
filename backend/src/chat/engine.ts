@@ -30,6 +30,19 @@ import { memoryGraphEnabled, userRulebookEnabled } from "../config/flags";
 import { buildUserPersona, shouldBootstrapPersona } from "../memory/persona-builder";
 import { captureRule } from "../memory/rulebook";
 
+// Chat history is fed to the LLM as plain text. An assistant "image" turn can
+// carry a base64 data URL in its content (the no-S3 fallback path stores the
+// data URL directly). Left raw, one such message is ~1.3M tokens, which blows
+// Stheno's 8192-token context: the model 400s ("exceeds available context
+// size"), every fallback provider chokes on the same payload, and the user
+// gets the hardcoded "lost the thread" reply. Replace any data URL with a short
+// marker and hard-cap any pathologically long message so history can never
+// overflow the window regardless of what got persisted.
+function sanitizeHistoryContent(content: string): string {
+  if (content.startsWith("data:")) return "[shared a photo]";
+  return content.length > 8000 ? content.slice(0, 8000) : content;
+}
+
 // Age-in-years from a dob column. Server side only; never trust the client.
 function ageYearsOrNull(dob: Date | null): number | null {
   if (!dob) return null;
@@ -232,7 +245,7 @@ export async function runChatTurn(params: RunChatTurnParams): Promise<RunChatTur
     .reverse()
     .map((m) => ({
       role: m.role as "user" | "assistant",
-      content: m.content,
+      content: sanitizeHistoryContent(m.content),
     }));
 
   const guard = new StreamGuard();
