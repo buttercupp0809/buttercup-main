@@ -39,8 +39,13 @@ const CSP_DIRECTIVES = [
     "https://*.s3.eu-north-1.amazonaws.com",
     ...DEV_LOCAL_MEDIA_ORIGINS,
   ].join(" "),
-  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
-  "style-src 'self' 'unsafe-inline'",
+  // Google Identity Services (Sign in with Google): the GIS client script is
+  // loaded from accounts.google.com; without it here the button never renders
+  // (CSP blocks https://accounts.google.com/gsi/client). The button also draws
+  // in an accounts.google.com iframe (frame-src) and pulls an external GIS
+  // stylesheet (style-src) that 'unsafe-inline' does NOT cover.
+  `script-src 'self' 'unsafe-inline' https://accounts.google.com${isDev ? " 'unsafe-eval'" : ""}`,
+  "style-src 'self' 'unsafe-inline' https://accounts.google.com",
   [
     "connect-src 'self' https: wss:",
     // Dev-only: the browser calls the local backend (BillingClient, media,
@@ -67,7 +72,7 @@ const CSP_DIRECTIVES = [
     "https://commerce.coinbase.com",
     "https://*.sentry.io",
   ].join(" "),
-  "frame-src 'self' https://api.ccbill.com https://secure.verotel.com https://secure2.segpay.com https://commerce.coinbase.com",
+  "frame-src 'self' https://accounts.google.com https://api.ccbill.com https://secure.verotel.com https://secure2.segpay.com https://commerce.coinbase.com",
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self' https://api.ccbill.com https://secure.verotel.com https://secure2.segpay.com https://commerce.coinbase.com",
