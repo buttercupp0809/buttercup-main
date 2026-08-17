@@ -71,3 +71,9 @@ These seven phases were added together to make the product magical, mobile, mone
 | # | File | Delivers | State it targets |
 |---|---|---|---|
 | 31 | `31-your-companions-and-worker-ops.md` | Net-new "Your Companions" sidenav section (per-user list of characters they own, with live image status + Chat/Regenerate), plus the BullMQ media-worker operational fix: local run runbook, `/health` queue depth + worker heartbeat observability, graceful UI when the queue is down, and a read-only prod diagnosis runbook for the `buttercupp-worker` ECS service. | Additive + repair. Ownership already exists (`Character.ownerUserId`, no migration); the Phase-28 pipeline is correct, the worker process was simply not running. |
+
+## Payments + auth batch (32)
+
+| # | File | Delivers | State it targets |
+|---|---|---|---|
+| 32 | `32-dodo-payments-and-google-auth.md` | (A) Dodo Payments as a new adult-compatible primary processor plugged into the EXISTING backend adapter + `NormalizedEvent` webhook pipeline (SDK client, hosted checkout, Standard-Webhooks verification, metadata-carries-intent, idempotent grants) for the 3 duration passes + 3 token packs = 6 Dodo products. (B) Google sign-in sanity: the flow is already coded (`/api/auth/oauth/google` + `GoogleButton`), so this audits/fixes wiring and documents the Google Cloud + env config. | Add (Dodo) + verify (Google). Reuses `plans.ts` / `TOKEN_PACKS` / `provider.ts` / `processSubscriptionEvent`; the compile-time stripe/paypal lock stays intact. Google needs config, not code. |

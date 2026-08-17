@@ -11,11 +11,13 @@ import * as ccbillHook from "../payments/webhooks/ccbill";
 import * as verotelHook from "../payments/webhooks/verotel";
 import * as segpayHook from "../payments/webhooks/segpay";
 import * as cryptoHook from "../payments/webhooks/crypto";
+import * as dodoHook from "../payments/webhooks/dodo";
 import { ccbillWebhookSchema } from "../payments/webhooks/ccbill";
 import { verotelWebhookSchema } from "../payments/webhooks/verotel";
 import { segpayWebhookSchema } from "../payments/webhooks/segpay";
 import { cryptoWebhookSchema } from "../payments/webhooks/crypto";
 import type { NormalizedEvent, PaymentProvider } from "../payments/types";
+import { writeAuditLog } from "../utils/audit";
 import { normalizeTier } from "../subscription/tier";
 import { entitlementsFor } from "../subscription/entitlements";
 import { PLANS, PLANS_ORDER, isPlan } from "../subscription/plans";
@@ -64,11 +66,38 @@ async function authenticate(req: IncomingMessage): Promise<string | null> {
   }
 }
 
+// Absolute-URL defaults for hosted-checkout providers (Dodo requires absolute
+// URLs and returns HTTP 400 on relative paths). We prefer the request's
+// Origin (browser-supplied), then FRONTEND_URL from env, then the first
+// entry of CORS_ALLOWED_ORIGINS, then localhost:3000 as the local fallback.
+function frontendOrigin(req: IncomingMessage): string {
+  const originHeader = req.headers.origin;
+  if (typeof originHeader === "string" && /^https?:\/\//.test(originHeader)) return originHeader;
+  const envUrl = process.env.FRONTEND_URL ?? process.env.NEXT_PUBLIC_APP_URL;
+  if (envUrl && /^https?:\/\//.test(envUrl)) return envUrl.replace(/\/$/, "");
+  const cors = process.env.CORS_ALLOWED_ORIGINS?.split(",")[0]?.trim();
+  if (cors && /^https?:\/\//.test(cors)) return cors;
+  return "http://localhost:3000";
+}
+
+function defaultUrls(req: IncomingMessage, body: { successUrl?: string; cancelUrl?: string }): {
+  successUrl: string; cancelUrl: string;
+} {
+  const origin = frontendOrigin(req);
+  const abs = (u: string | undefined, path: string): string =>
+    u && /^https?:\/\//.test(u) ? u : `${origin}${u && u.startsWith("/") ? u : path}`;
+  return {
+    successUrl: abs(body.successUrl, "/billing?success=1"),
+    cancelUrl: abs(body.cancelUrl, "/billing?cancel=1"),
+  };
+}
+
 async function handleSubscribe(req: IncomingMessage, res: ServerResponse) {
   const userId = await authenticate(req);
   if (!userId) return send(res, 401, { error: "unauthorized" });
   const { json } = await readBody(req);
   const body = json as { plan?: string; tier?: string; successUrl?: string; cancelUrl?: string };
+  const urls = defaultUrls(req, body);
 
   // Phase 20 preferred path: `{ plan: "daily" | "weekly" | "monthly" }`.
   // Falls through to the legacy tier body if `plan` is absent, so pre-Phase-20
@@ -79,8 +108,8 @@ async function handleSubscribe(req: IncomingMessage, res: ServerResponse) {
         userId,
         intent: "subscription",
         plan: body.plan,
-        successUrl: body.successUrl ?? "/billing?success=1",
-        cancelUrl: body.cancelUrl ?? "/billing?cancel=1",
+        successUrl: urls.successUrl,
+        cancelUrl: urls.cancelUrl,
       });
       return send(res, 200, resp);
     } catch (err) {
@@ -95,8 +124,8 @@ async function handleSubscribe(req: IncomingMessage, res: ServerResponse) {
       userId,
       intent: "subscription",
       tier,
-      successUrl: body.successUrl ?? "/billing?success=1",
-      cancelUrl: body.cancelUrl ?? "/billing?cancel=1",
+      successUrl: urls.successUrl,
+      cancelUrl: urls.cancelUrl,
     });
     return send(res, 200, resp);
   } catch (err) {
@@ -132,13 +161,14 @@ async function handleBuyTokens(req: IncomingMessage, res: ServerResponse) {
   const { json } = await readBody(req);
   const body = json as { packId?: string; successUrl?: string; cancelUrl?: string };
   if (!body.packId || !TOKEN_PACKS[body.packId]) return send(res, 400, { error: "invalid_pack" });
+  const urls = defaultUrls(req, body);
   try {
     const resp = await createCheckoutSession({
       userId,
       intent: "tokens",
       tokenPackId: body.packId,
-      successUrl: body.successUrl ?? "/billing?success=1",
-      cancelUrl: body.cancelUrl ?? "/billing?cancel=1",
+      successUrl: urls.successUrl,
+      cancelUrl: urls.cancelUrl,
     });
     return send(res, 200, resp);
   } catch (err) {
@@ -176,6 +206,23 @@ async function handleWebhook(
       const sig = req.headers["x-cc-webhook-signature"] as string | undefined;
       if (!cryptoHook.verifySignature(raw, sig)) return send(res, 401, { error: "bad_signature" });
       event = cryptoHook.normalize(parsed.data);
+    } else if (provider === "dodo") {
+      // Standard-Webhooks verification requires the EXACT raw bytes plus the
+      // three `webhook-*` headers. Any pre-parsing (JSON.parse etc.) would
+      // corrupt the signature check, so we hand the raw string to the SDK.
+      const headers: Record<string, string> = {};
+      for (const k of ["webhook-id", "webhook-signature", "webhook-timestamp"]) {
+        const v = req.headers[k];
+        if (typeof v === "string") headers[k] = v;
+      }
+      let unwrapped;
+      try {
+        unwrapped = dodoHook.verifyAndParse(raw, headers);
+      } catch {
+        writeAuditLog({ action: "webhook.signature_failed", resource: "dodo" });
+        return send(res, 400, { error: "bad_signature" });
+      }
+      event = dodoHook.normalize(unwrapped);
     } else {
       return send(res, 400, { error: "unsupported_provider" });
     }
@@ -212,14 +259,15 @@ export async function handleBillingRoute(
     await handleTokenPacks(req, res);
     return true;
   }
-  const webhookMatch = req.url.match(/^\/webhooks\/(ccbill|verotel|segpay|crypto)\/?$/);
+  const webhookMatch = req.url.match(/^\/webhooks\/(ccbill|verotel|segpay|crypto|dodo)\/?$/);
   if (webhookMatch && req.method === "POST") {
     await handleWebhook(req, res, webhookMatch[1] as PaymentProvider);
     return true;
   }
   if (req.url === "/billing/reset-provider-health" && req.method === "POST") {
     resetProviderHealth();
-    return send(res, 200, { ok: true }) as unknown as boolean;
+    send(res, 200, { ok: true });
+    return true;
   }
   return false;
 }

@@ -5,9 +5,9 @@
 import type { Tier } from "../subscription/tier";
 import type { Plan } from "../subscription/plans";
 
-export type PaymentProvider = "ccbill" | "verotel" | "segpay" | "crypto";
+export type PaymentProvider = "ccbill" | "verotel" | "segpay" | "crypto" | "dodo";
 
-export const ADULT_PROVIDERS: PaymentProvider[] = ["ccbill", "verotel", "segpay", "crypto"];
+export const ADULT_PROVIDERS: PaymentProvider[] = ["ccbill", "verotel", "segpay", "crypto", "dodo"];
 
 // Compile-time proof that "stripe" / "paypal" are not valid values for the
 // PaymentProvider type. Attempting to use them elsewhere would be a type

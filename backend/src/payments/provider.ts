@@ -11,10 +11,12 @@ import {
   type CheckoutResponse,
   type PaymentProvider,
 } from "./types";
+import { logWarn } from "../utils/log";
 import * as ccbill from "./ccbill";
 import * as verotel from "./verotel";
 import * as segpay from "./segpay";
 import * as crypto from "./crypto";
+import * as dodo from "./dodo";
 
 type Adapter = {
   isConfigured: () => boolean;
@@ -26,6 +28,7 @@ const ADAPTERS: Record<PaymentProvider, Adapter> = {
   verotel,
   segpay,
   crypto,
+  dodo,
 };
 
 // Session-scoped health tracker (simple circuit breaker). A failing
@@ -66,6 +69,7 @@ export async function createCheckoutSession(req: CheckoutRequest): Promise<Check
       assertMatureCompatibleProvider(resp.provider);
       return resp;
     } catch (err) {
+      logWarn("payments", `provider ${p} failed`, { message: (err as Error).message });
       unhealthy.add(p);
       lastError = err;
     }

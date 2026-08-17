@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { CharacterCardDTO } from "@buttercupp/shared";
 import { PersonaPreviewCard } from "@/components/marketing/PersonaPreviewCard";
+import { Button } from "@/components/ui/button";
 
 const AUTO_ADVANCE_MS = 4500;
 
@@ -71,26 +72,10 @@ export function Hero({ items, viewerAllowsMature }: HeroProps) {
         </p>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <Link href="/signup">
-            <button
-              className="rounded-lg px-6 py-3 text-base font-semibold text-white transition hover:opacity-90"
-              style={{
-                background: "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
-              }}
-            >
-              Create your companion
-            </button>
+            <Button size="lg" className="px-6">Create your companion</Button>
           </Link>
           <Link href="/gallery">
-            <button
-              className="rounded-lg px-6 py-3 text-base font-semibold transition hover:opacity-80"
-              style={{
-                border: "1px solid hsl(344 84% 71% / 0.5)",
-                color: "hsl(344 84% 71%)",
-                background: "transparent",
-              }}
-            >
-              Browse
-            </button>
+            <Button variant="outline" size="lg" className="px-6">Browse</Button>
           </Link>
         </div>
       </div>

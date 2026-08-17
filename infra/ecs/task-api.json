@@ -106,6 +106,42 @@
         {
           "name": "POPPY_JUGGERNAUT_URL",
           "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/POPPY_JUGGERNAUT_URL"
+        },
+        {
+          "name": "DODO_API_KEY",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/DODO_API_KEY"
+        },
+        {
+          "name": "DODO_WEBHOOK_KEY",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/DODO_WEBHOOK_KEY"
+        },
+        {
+          "name": "DODO_ENVIRONMENT",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/DODO_ENVIRONMENT"
+        },
+        {
+          "name": "DODO_PRODUCT_DAILY",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/DODO_PRODUCT_DAILY"
+        },
+        {
+          "name": "DODO_PRODUCT_WEEKLY",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/DODO_PRODUCT_WEEKLY"
+        },
+        {
+          "name": "DODO_PRODUCT_MONTHLY",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/DODO_PRODUCT_MONTHLY"
+        },
+        {
+          "name": "DODO_PRODUCT_PACK_100",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/DODO_PRODUCT_PACK_100"
+        },
+        {
+          "name": "DODO_PRODUCT_PACK_500",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/DODO_PRODUCT_PACK_500"
+        },
+        {
+          "name": "DODO_PRODUCT_PACK_2000",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/DODO_PRODUCT_PACK_2000"
         }
       ],
       "healthCheck": {

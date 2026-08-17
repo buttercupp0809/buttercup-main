@@ -72,7 +72,7 @@ export function SideNav({ user, recents }: SideNavProps) {
       className={cn(
         "hidden shrink-0 flex-col border-r md:flex",
         "sticky top-0 h-screen",
-        collapsed ? "w-16" : "w-64",
+        collapsed ? "w-16" : "w-48",
       )}
       style={{ borderColor: "hsl(var(--buttercupp-border))" }}
     >
