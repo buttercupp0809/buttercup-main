@@ -1,0 +1,33 @@
+{
+  "persona_id": "95_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/95.webp",
+  "main_image_sha256": "86074b247319067d173f505289506e0b124d8bfce2cbe1f39e165c197c9c9d0f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:07:32Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Against a backdrop of neon city lights, she stands in a revealing bikini, the bright colors contrasting with her pale skin and fiery locks. The low-cut top barely contains her ample breasts, and the thong bottoms leave little to the imagination. A high ponytail showcases her delicate, porcelain features, and a pair of stiletto heels elongate her legs. Her emerald eyes seem to glow with an inner fire as they meet the camera's gaze, the harsh lighting emphasizing every curve and contour.",
+      "seed": 581659880,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/506108dd-8600-4bf9-87f4-474c52d2a904.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/95.webp",
+      "status": "ok",
+      "bytes": 1266863
+    }
+  ]
+}

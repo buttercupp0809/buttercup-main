@@ -91,6 +91,18 @@ export async function uploadMedia(buffer: Buffer, ctx: UploadContext): Promise<s
   return key;
 }
 
+// Route an S3 key to the bucket that owns it. Keeps prefix rules colocated
+// with the rest of the storage layer so backend signers, uploaders, and the
+// frontend media proxy stay in sync.
+//   images/* -> POPPY_S3_BUCKET_GENERATED (generated character/user images)
+//   reels/*  -> POPPY_S3_BUCKET_REELS     (reel mp4s)
+//   default  -> S3_BUCKET                 (raw uploads, everything else)
+export function bucketForKey(key: string): string {
+  if (key.startsWith("images/")) return process.env.POPPY_S3_BUCKET_GENERATED ?? "";
+  if (key.startsWith("reels/")) return process.env.POPPY_S3_BUCKET_REELS ?? "";
+  return process.env.S3_BUCKET ?? "";
+}
+
 export function isStorageConfigured(): boolean {
   return Boolean(
     (process.env.POPPY_S3_BUCKET_GENERATED ?? process.env.S3_BUCKET) &&

@@ -1,0 +1,33 @@
+{
+  "persona_id": "13_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/13.webp",
+  "main_image_sha256": "6f45a212916d6541ee2147854c709c997753f61df6fd4b6af7fb2d0a8ba1b32b",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:58:56Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORMED LIGHTING/TIME: Basking in the glow of neon lights, the scene shifts to an underground club. The woman's smoldering emerald eyes seem to pierce the darkness as she leans against a sleek, chrome bar, the fitted black jacket now discarded, revealing her porcelain skin. Harsh spotlights cast dramatic shadows, emphasizing her adventurous confidence.",
+      "seed": 676283425,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/3fa679fd-9e5d-4f01-b5bc-afd908a19aa6.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/13.webp",
+      "status": "ok",
+      "bytes": 1063827
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "21_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/21.webp",
+  "main_image_sha256": "ddfd4ac0a2c34ea5ad064323b000f0a564110260807e74585431cd57d4002e1e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:28:34Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Clad in lacy black lingerie that barely conceals her curves, she perches on the edge of a yacht's sun deck, the Mediterranean Sea stretching out behind her as the golden sun sets, her raven hair billowing in the sea breeze, her piercing emerald eyes sparkling with mischief as she turns to flash a playful smile over her shoulder.",
+      "seed": 269068305,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/885b17ed-b382-46df-aa44-8bfe1f58bf47.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/21.webp",
+      "status": "ok",
+      "bytes": 1521726
+    }
+  ]
+}

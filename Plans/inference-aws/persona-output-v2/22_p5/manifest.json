@@ -1,0 +1,33 @@
+{
+  "persona_id": "22_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/22.webp",
+  "main_image_sha256": "efe6b56c3dcc4c0baf9380938b1a19c7e6cc3c0c63956ae77f6c5dd2ba4f5fc1",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:32:10Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Exotic beauty is framed in a tight medium shot from behind, gazing over her shoulder with a playful, teasing smile. Her sleek black evening gown is slightly askew, revealing a tantalizing glimpse of golden skin. The camera's shallow focus isolates her face and decolletage, with the blurred background hinting at a lavish setting. Every detail, from the gleaming gold jewelry to the subtle sheen on her olive complexion, is rendered in exquisite photorealism.",
+      "seed": 1505124312,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/637c3ab8-f9e5-4110-98db-3e25ad9eff4c.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/22.webp",
+      "status": "ok",
+      "bytes": 1171849
+    }
+  ]
+}

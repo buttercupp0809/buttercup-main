@@ -1,0 +1,33 @@
+{
+  "persona_id": "77_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/77.webp",
+  "main_image_sha256": "bfb2229d6e9bf93caadee15b4fddbf0b3a695c5e70ba0587d39cad8a0b977b33",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:39:02Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Render a provocative portrait of the vivacious young woman reclining seductively on a plush velvet chaise in a dimly lit, crimson-hued boudoir. The walls are adorned with ornate gold frames, and a crystal chandelier casts a warm, ambient glow. Her emerald green tunic has fallen open, revealing the creamy expanse of her collarbones and the swell of her breasts, barely contained by a lacy, black bra.",
+      "seed": 1569046995,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/f042a7ae-f79a-41a4-954d-e796d6529b96.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/77.webp",
+      "status": "ok",
+      "bytes": 1584877
+    }
+  ]
+}

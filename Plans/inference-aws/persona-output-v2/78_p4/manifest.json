@@ -1,0 +1,33 @@
+{
+  "persona_id": "78_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/78.webp",
+  "main_image_sha256": "8e6f18d4db8b6a630b5b643841e6ef254e2ae5eed255662942a37df3322ef355",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:42:24Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM MOOD/EXPRESSION: With an intense, sultry gaze and parted, inviting lips, the woman perches on the edge of a gleaming, marble bathtub, her skin glistening with dew from a recent shower. Her slender fingers trace the rim of the tub as she seems to contemplate the water's edge, exuding a sense of raw, unbridled desire.",
+      "seed": 1934499241,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/22704919-cbfb-44b1-86c4-2d2e3dcda3ca.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/78.webp",
+      "status": "ok",
+      "bytes": 1175921
+    }
+  ]
+}

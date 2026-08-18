@@ -1,0 +1,33 @@
+{
+  "persona_id": "68_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/68.webp",
+  "main_image_sha256": "8ad41283ff35da66a909076f42ead274eca27af869cd2337518d8637b037c0ce",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:19:43Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A fiery vixen poses on the deck of a sleek, modern yacht at sunset, the golden glow casting long shadows across her taut, sun-kissed skin. She wears nothing but a sheer, black lace teddy that leaves little to the imagination, the fabric clinging to every curve. Her strappy black heels are kicked off, revealing toned, pedicured feet. Emerald eyes sparkle with mischief as she tilts her head back, throat exposed, the salty sea breeze tousling her wild, crimson tresses.",
+      "seed": 154696114,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/f64bf99a-1164-4dcf-98f4-0a12eb874d13.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/68.webp",
+      "status": "ok",
+      "bytes": 1220182
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "55_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/55.webp",
+  "main_image_sha256": "3b33f91f43b99fa321b662a6f728fa28f1a5ababcf2af5be51df039fc6b774c8",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:51:13Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A striking young woman with rich chestnut hair swept into an effortless updo, bright emerald eyes glowing under neon club lighting, leans against a sleek, black pole in a pulsing dance club. Her smooth porcelain skin glistens under the strobing lights. She exudes confidence in a barely-there bikini, the iridescent fabric clinging to her curves, paired with glittering thigh-high boots and a statement silver necklace. Neon hues dance across her skin as she moves to the throbbing beat.",
+      "seed": 1926942285,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/63aad47c-5b4e-4576-a3e0-be5ff4289289.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/55.webp",
+      "status": "ok",
+      "bytes": 1496664
+    }
+  ]
+}

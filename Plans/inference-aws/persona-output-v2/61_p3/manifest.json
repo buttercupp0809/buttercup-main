@@ -1,0 +1,33 @@
+{
+  "persona_id": "61_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/61.webp",
+  "main_image_sha256": "d2d49cf8efc07da7e7902c21e52e584935b7da753a351d44de36cb9833cce21e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:04:56Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORMED LIGHTING/TIME: Bathed in the neon pulse of a downtown nightclub, she commands attention with a bold, confident stride, her flowing indigo dress shimmering under the harsh lights. The dress, slashed to mid-thigh, reveals toned legs and a flash of creamy thigh. Shadows cast by the strobing lights accentuate the sharp planes of her face and the bright, challenging gleam in her green eyes.",
+      "seed": 1011536344,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/94a27a09-64e3-47f4-a7d4-33cd32324adf.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/61.webp",
+      "status": "ok",
+      "bytes": 1202397
+    }
+  ]
+}

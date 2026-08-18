@@ -1,0 +1,33 @@
+{
+  "persona_id": "80_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/80.webp",
+  "main_image_sha256": "154961ea3e25385ac6f9be8687827802f7759b00e974bce3f99ca3c3b3500a0e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:27:52Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Framed by the warm, golden light of a rooftop at sunset, the enigmatic beauty exudes a bold, commanding presence. Her raven tresses are swept back, accentuating her angular features, as she looks directly into the camera with an intense, dominant gaze. Her porcelain skin seems to glow, and the delicate silver choker around her neck draws attention to her slender neck and the subtle pulse of desire in her cerulean eyes. A flowy black blouse with lace trim and high-waisted, distressed denim convey her bohemian style, but it's her unyielding confidence that truly dominates the shot.",
+      "seed": 935640066,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/6bfa096a-94d4-4677-9ceb-07f24e398344.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/80.webp",
+      "status": "ok",
+      "bytes": 1295827
+    }
+  ]
+}

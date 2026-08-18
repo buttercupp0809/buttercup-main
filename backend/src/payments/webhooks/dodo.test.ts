@@ -138,6 +138,23 @@ describe("dodo webhook normalize", () => {
     expect(n?.plan).toBe("monthly");
   });
 
+  it("subscription.renewed with plan=sub_yearly normalizes to activated + sub_yearly", async () => {
+    const { normalize } = await loadWebhookModule();
+    const n = normalize({
+      type: "subscription.renewed",
+      business_id: "biz",
+      timestamp: "2026-08-17T00:00:00Z",
+      data: {
+        subscription_id: "sub_yr",
+        metadata: { userId: "user-7", intent: "subscription", plan: "sub_yearly" },
+      },
+    } as never);
+    expect(n?.eventType).toBe("subscription.activated");
+    expect(n?.plan).toBe("sub_yearly");
+    expect(n?.userId).toBe("user-7");
+    expect(n?.externalSubscriptionId).toBe("sub_yr");
+  });
+
   it("subscription.on_hold normalizes to subscription.past_due", async () => {
     const { normalize } = await loadWebhookModule();
     const n = normalize({

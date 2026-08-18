@@ -1,0 +1,33 @@
+{
+  "persona_id": "94_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/94.webp",
+  "main_image_sha256": "aabfca569500e35a278a5e9bdbb55b9ec2c331a54be80d176b2eceeac1fc812a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:05:22Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a candlelit chamber, the enigmatic beauty sits cross-legged on a plush ottoman, her captivating emerald gaze fixed intently on the viewer. A soft, rosy glow illuminates her porcelain skin, highlighting the delicate lace trim of her high-necked corset and the subtle rosy hue that warms her cheeks. Her long, rich chestnut waves fall around her like a velvet curtain, framing the vulnerable, soft expression on her face.",
+      "seed": 1291137186,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/5f284b30-5102-4e78-9b9f-4a98401487d3.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/94.webp",
+      "status": "ok",
+      "bytes": 1488836
+    }
+  ]
+}

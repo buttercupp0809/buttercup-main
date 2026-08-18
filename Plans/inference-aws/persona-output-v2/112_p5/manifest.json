@@ -1,0 +1,33 @@
+{
+  "persona_id": "112_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/112.webp",
+  "main_image_sha256": "3b72670281dd2f252fa0bd6362d942fc8fa8489b839d42f4ad1d4842aee4aaa5",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:52:30Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Framed in a tight, medium shot from behind, the statuesque beauty turns her head slightly, her piercing emerald eyes catching the light as she glances over her shoulder. She wears a sleek, form-fitting leather bodysuit in a deep, rich red that clings to every muscle and curve of her athletic physique. The camera's shallow focus blurs the luxurious background of the rooftop at dusk, drawing the viewer's attention solely to the provocative, golden-hour glow of her skin and the promise of mystery in her gaze.",
+      "seed": 1751357586,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/d02b0be4-213c-4f63-a2d9-37065a4115c5.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/112.webp",
+      "status": "ok",
+      "bytes": 1400402
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "2_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/2.png",
+  "main_image_sha256": "b0573f26ffe937ecc59b0b8e2f123a63635f0e4d775008ccc6808e38c78faef9",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:02:37Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "The setting sun casts a warm, golden glow across this beauty as she stands by the edge of a shimmering pool, the fiery mane of her hair illuminated against the deep blue of the evening sky. Her red dress, fitted and daringly low, highlights every curve before disappearing into the thigh-high slit. Shallow focus blurs the lush greenery behind her, emphasizing her radiant, confident presence.",
+      "seed": 345544620,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/06c73d50-d99a-4cfe-8209-d2a17dbb0e5d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/2.png",
+      "status": "ok",
+      "bytes": 1527200
+    }
+  ]
+}

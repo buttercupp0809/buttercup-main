@@ -1,0 +1,33 @@
+{
+  "persona_id": "31_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/31.webp",
+  "main_image_sha256": "422cea2ff7c4983934712fd4c75db98bf5e6e2dc182320733fd4ebba8bf62877",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:53:28Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORMED MOOD/EXPRESSION: Striking a bold and commanding pose, the confident woman stands in the center of a sleek, minimalist penthouse, her gown clinging to every curve. Her piercing emerald eyes bore into the camera with an intense, dominant stare, her full lips pressed into a firm line. One hand rests on her hip, the other holding a gleaming diamond necklace, exuding a sense of power and unapologetic sensuality.",
+      "seed": 1435293801,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/47519ad3-f61c-4749-a844-d7d50ffb854c.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/31.webp",
+      "status": "ok",
+      "bytes": 1287578
+    }
+  ]
+}

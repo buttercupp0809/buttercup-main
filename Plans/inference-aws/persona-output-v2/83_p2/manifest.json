@@ -1,0 +1,33 @@
+{
+  "persona_id": "83_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/83.webp",
+  "main_image_sha256": "6dbd9245f2f77173d831c7f948e9dfac07e14b4073cdba352b8272593bf1d047",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:33:52Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Wearing nothing but a delicate lace corset that barely contains her ample breasts, the adventurous beauty straddles the edge of a yacht deck, the wind whipping her fiery locks into a frenzy as she gazes out at the endless expanse of the open sea, the sun setting behind her in a blaze of fiery hues.",
+      "seed": 871208596,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/29017390-267c-4013-99b2-6fbf58875bf6.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/83.webp",
+      "status": "ok",
+      "bytes": 1483862
+    }
+  ]
+}

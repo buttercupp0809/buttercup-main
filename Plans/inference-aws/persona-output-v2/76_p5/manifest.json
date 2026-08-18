@@ -1,0 +1,33 @@
+{
+  "persona_id": "76_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/76.webp",
+  "main_image_sha256": "c422ac5665d370afbf23de583d84cdf39d55b11ec7df480ccd6aea9fc50b48d9",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:38:29Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM CAMERA ANGLE/COMPOSITION: Captured in a sensual extreme close-up, the camera focuses intently on her face and d\u00e9colletage. Her emerald eyes sparkle with mischief, lips parted to reveal a hint of pink tongue as she smirks coyly. The shallow depth of field blurs the background, emphasizing her captivating features and the delicate chain of her choker glinting against porcelain skin.",
+      "seed": 508111949,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/c96d6a7d-1030-4a6c-a4a9-c71fab83e94b.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/76.webp",
+      "status": "ok",
+      "bytes": 1206344
+    }
+  ]
+}

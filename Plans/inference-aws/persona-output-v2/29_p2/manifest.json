@@ -1,0 +1,33 @@
+{
+  "persona_id": "29_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/29.webp",
+  "main_image_sha256": "d275fbe74b90aba4b4034ed4feb8a3a4ae273cb70bdb4e6add51417e99a2eae6",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:47:55Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit boudoir, she reclines on plush velvet cushions, the delicate lace of her corset barely containing her ample bust. A trail of soft candlelight dances across her porcelain skin, highlighting the smattering of freckles across her nose. Her piercing emerald eyes seem to pierce through the shadows as she gazes directly at the camera.",
+      "seed": 268470289,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/c94c667c-bd78-4f5b-83c2-7ccb385097ce.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/29.webp",
+      "status": "ok",
+      "bytes": 1289107
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "10_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/10.webp",
+  "main_image_sha256": "a7071bbf585029f29a5a8a796f0f0554343763e24d73b97f4fb75a8b966bee89",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:51:30Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Captured on a yacht deck at dusk, the emerald-eyed siren struts in a barely-there bikini, the neon hues of the city skyline reflected in her glossy hair. The golden hour light casts long shadows as she turns to flash a playful, teasing smile at the camera. A chunky gold chain and dangling earrings add a touch of opulence to her provocative ensemble.",
+      "seed": 1233829389,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/91154c9a-f13b-42bc-b760-ad25bb3bd6a1.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/10.webp",
+      "status": "ok",
+      "bytes": 1324112
+    }
+  ]
+}

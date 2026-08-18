@@ -1,0 +1,33 @@
+{
+  "persona_id": "54_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/54.webp",
+  "main_image_sha256": "5828def077cfc31b82cfad8e12398892cdcefffb53862a64a86ff4e594e24a61",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:49:01Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dramatic shift, she appears bathed in the cool, neon glow of a city nightclub, her crimson kaftan replaced by a skintight, metallic silver bodysuit that hugs every contour as she poses on a sleek, chrome-plated catwalk, the harsh backlighting accentuating the sharp lines of her body and the sparkle of her statement jewelry.",
+      "seed": 259833557,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/9956d199-3264-4140-a943-d5e2739e5b1a.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/54.webp",
+      "status": "ok",
+      "bytes": 1269939
+    }
+  ]
+}

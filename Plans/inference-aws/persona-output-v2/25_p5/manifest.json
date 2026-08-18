@@ -1,0 +1,33 @@
+{
+  "persona_id": "25_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/25.webp",
+  "main_image_sha256": "e9017f0533920451bc064679f2e0b79fe697b3481b0c73eed02b5d6af501e217",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:39:13Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Captured in a tantalizing side profile, the belle's raven hair cascades over one eye as she glances over her shoulder, a flush of pink on her porcelain cheek. She stands in the doorway of a rooftop suite at sunset, her burgundy gown billowing in the warm breeze, the cityscape a hazy blur behind her.",
+      "seed": 1531228403,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/b09a8e7d-3c4f-45ab-b6d9-26bb23d0222f.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/25.webp",
+      "status": "ok",
+      "bytes": 1289238
+    }
+  ]
+}

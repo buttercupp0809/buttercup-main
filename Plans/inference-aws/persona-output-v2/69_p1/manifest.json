@@ -1,0 +1,33 @@
+{
+  "persona_id": "69_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/69.webp",
+  "main_image_sha256": "ec189202c44c4a5d9bd1cd6e4c9d8ad7b20615ee3375fd3319146f369ec240cc",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:21:33Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A stunning young woman with fiery auburn locks cascading down her back in loose, effortless waves, gazes intently with deep, soulful green eyes set in a heart-shaped face from the shadows of a dimly lit penthouse suite. Warm, golden skin glows under the soft, sultry lighting. She exudes confidence in sheer black lingerie, paired with thigh-high stockings and stiletto heels, finished with a delicate choker and bold red lip. Captured in a tight medium shot, her expressive eyes and relaxed posture convey a sultry, inviting air amidst the opulent city skyline visible through floor-to-ceiling windows.",
+      "seed": 288626228,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/12242dd8-e01b-4969-a20c-d21a4bb329d6.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/69.webp",
+      "status": "ok",
+      "bytes": 1231744
+    }
+  ]
+}

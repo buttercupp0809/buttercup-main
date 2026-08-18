@@ -1,0 +1,33 @@
+{
+  "persona_id": "41_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/41.webp",
+  "main_image_sha256": "5341872a2fe6ea5056e2b86a456e952692f7694c274479f13548e9c302a8654e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:18:24Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a striking, full-body shot, the vivacious young woman stands on the rooftop of a modern high-rise, her emerald eyes gleaming under the warm, golden light of a sunset. She wears a barely-there bikini, the sheer fabric clinging to her curves and providing a tantalizing glimpse of her toned physique. A bold red lip and statement earrings add a pop of color to her striking appearance, while her fiery auburn tresses flow in the gentle breeze, framing her assertive posture and commanding gaze. The shallow depth of field blurs the urban skyline, focusing the viewer's attention on her captivating presence and the stunning contrast of her porcelain skin against the rich, golden hues of the setting sun.",
+      "seed": 6942863,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/8dc9e41d-6200-40be-8f1e-5dbda0139ef8.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/41.webp",
+      "status": "ok",
+      "bytes": 1302485
+    }
+  ]
+}

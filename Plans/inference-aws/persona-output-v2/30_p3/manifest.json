@@ -1,0 +1,33 @@
+{
+  "persona_id": "30_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/30.webp",
+  "main_image_sha256": "ffc70fff3e8998b1cb67443fc85264c89c983375eb174b587276e61cf8e222ab",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:50:41Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "At the peak of a skyscraper, as the golden sun dips below the horizon, the provocative woman stands at the edge of the rooftop, lost in thought. The city sprawls out before her, a twinkling tapestry of lights, and the warm glow of the setting sun casts long shadows across her face and body. She wears a barely-there bikini that leaves little to the imagination, her porcelain skin glowing against the vibrant hues of the sunset, while her raven tresses billow gently in the evening breeze.",
+      "seed": 1867838872,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/f1916a2b-ddaa-4749-84b9-af6239dd806c.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/30.webp",
+      "status": "ok",
+      "bytes": 1262836
+    }
+  ]
+}

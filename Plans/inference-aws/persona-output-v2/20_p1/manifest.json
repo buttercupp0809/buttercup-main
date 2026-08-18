@@ -1,0 +1,33 @@
+{
+  "persona_id": "20_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/20.webp",
+  "main_image_sha256": "a7b1c460935849d74a0bd392e00bd3adc54fb5f271c8723524ae04f34ae8430a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:25:57Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM SCENE/SETTING: On the opulent yacht deck, the vivacious young woman lounges on a plush, crimson velvet chaise, the warm glow of sunset casting a golden sheen across her honeyed skin. The vibrant floral print of her sundress whispers against the rich wood and polished chrome of the luxury vessel, while the salty sea breeze tousles her wild auburn curls.",
+      "seed": 265970784,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/01a3c46a-0f00-4787-9155-f12c0b0f730e.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/20.webp",
+      "status": "ok",
+      "bytes": 1544954
+    }
+  ]
+}

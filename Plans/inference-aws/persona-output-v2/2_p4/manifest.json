@@ -1,0 +1,33 @@
+{
+  "persona_id": "2_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/2.png",
+  "main_image_sha256": "b0573f26ffe937ecc59b0b8e2f123a63635f0e4d775008ccc6808e38c78faef9",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:03:03Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a candlelit chamber, this stunning Italian beauty sits cross-legged on a velvet divan, her emerald gaze burning with intense, dominant heat. Full lips are pressed into a firm, commanding line as she surveys the space with a bold, unyielding air. A sheer, beaded bodysuit leaves little to the imagination, emphasizing her every curve and muscle as the soft glow of candlelight dances across porcelain skin.",
+      "seed": 889662068,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/e393c282-9972-4104-9e0d-f4430750e87c.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/2.png",
+      "status": "ok",
+      "bytes": 1172573
+    }
+  ]
+}

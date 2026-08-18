@@ -1,0 +1,33 @@
+{
+  "persona_id": "110_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/110.webp",
+  "main_image_sha256": "cbf5b8330add23a88a6d3b1b760c3fbb352aeb4c53ee9257776346716c8b840a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:47:57Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Perched on the edge of a rooftop at golden hour, she looks out over the Amsterdam skyline, her raven hair whipping in the wind. Her angular face with high cheekbones, defined jawline, and striking emerald eyes is tilted up to the sky, a look of pure exhilaration and freedom on her features. Medium olive skin glows with a subtle sheen, hinting at her love of the city's vibrant nightlife. She wears a flowy maxi dress that billows in the breeze, the hem riding high on her thighs, revealing toned legs. Layered necklaces and chunky boots add an edgy touch, as the camera captures her in an extreme close-up, the shallow depth of field blurring the cityscape into a warm, golden haze that enhances the texture of her skin and the sparkle in her eyes, her expression a perfect blend of daring and joy.",
+      "seed": 553914590,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/dd7e2a50-5d70-4ab4-88f4-c4d452e11680.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/110.webp",
+      "status": "ok",
+      "bytes": 1343518
+    }
+  ]
+}

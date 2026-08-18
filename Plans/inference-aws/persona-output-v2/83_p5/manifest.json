@@ -1,0 +1,33 @@
+{
+  "persona_id": "83_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/83.webp",
+  "main_image_sha256": "6dbd9245f2f77173d831c7f948e9dfac07e14b4073cdba352b8272593bf1d047",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:35:05Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Captured in an extreme close-up, the captivating woman's face fills the frame, her plush lips parted in a bold, commanding smile as she looks directly into the lens, her piercing emerald eyes radiating a fierce, unbridled intensity, the focus falling squarely on the delicate freckles dusting her sharp jawline and the subtle sheen of her creamy skin in the soft, diffused light.",
+      "seed": 686437117,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/6ef8eabb-d235-434b-8fba-6a4d89e056d5.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/83.webp",
+      "status": "ok",
+      "bytes": 1352596
+    }
+  ]
+}

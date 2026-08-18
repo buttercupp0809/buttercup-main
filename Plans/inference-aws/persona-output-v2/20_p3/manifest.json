@@ -1,0 +1,33 @@
+{
+  "persona_id": "20_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/20.webp",
+  "main_image_sha256": "a7b1c460935849d74a0bd392e00bd3adc54fb5f271c8723524ae04f34ae8430a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:26:46Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM LIGHTING/TIME: Under the neon glare of the pulsing nightclub, the young woman's emerald eyes gleam with mischief as she leans against the wall, her tiered sundress riding up to expose a tantalizing stretch of thigh. The harsh, blue-white light accentuates her defined cheekbones and the subtle sheen of her skin, while the thumping bass seems to reverberate through her very being.",
+      "seed": 36317519,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/8dc5e59b-f8eb-46c8-9404-60616184169f.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/20.webp",
+      "status": "ok",
+      "bytes": 1257475
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "57_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/57.webp",
+  "main_image_sha256": "e4cf8e105dd732f734ec1a5fcce8588042abac55cc5e05a186ed29441a8c12e4",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:55:00Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Photorealistic portrait of an alluring woman reclining on a plush, crimson velvet chaise lounge in the candlelit intimacy of an opulent boudoir, raven-black hair spilling across the silk duvet, emerald-green eyes sparkling with intrigue as she gazes directly at the camera, porcelain skin glowing in the warm, diffuse light filtering through gauzy drapes, a delicate necklace of pearls adorning her slender throat, the rich velvet of her coat and cream blouse barely visible beneath the lavish bed linens, captured in a shallow focus against a blurred backdrop of ornate antiques and velvet drapes, evoking a sense of private, forbidden indulgence.",
+      "seed": 1173622190,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/55ca89e0-5936-4fc4-afaf-64f6cf29f4ba.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/57.webp",
+      "status": "ok",
+      "bytes": 1714802
+    }
+  ]
+}

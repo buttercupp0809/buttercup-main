@@ -1,0 +1,33 @@
+{
+  "persona_id": "44_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/44.webp",
+  "main_image_sha256": "d5ed4c1d12260111758c16863aeb70c80e8ce088438b91f00b031198cbc10fea",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:24:39Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM OUTFIT/ATTIRE: In a sumptuous boudoir, the auburn-haired beauty reclines on a velvet chaise, her curvaceous form barely contained in a sheer, champagne-hued negligee that clings to every contour, its delicate lace trim drawing attention to her pebbled nipples and the subtle rise of her hips. A matching garter belt and thigh-high stockings complete the alluring ensemble, as she runs a stocking-clad foot along the smooth, dark wood of a four-poster bed.",
+      "seed": 1079873027,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/a94af1d6-3b56-4c2d-90e5-8edead3d9358.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/44.webp",
+      "status": "ok",
+      "bytes": 1455210
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import { requireAuth } from "@/lib/auth";
+import { PageHeader } from "@/components/ui/PageHeader";
 import { BillingClient } from "./BillingClient";
 
 // Server component: gates on auth. Plan cards + the current-plan panel are
@@ -13,9 +14,16 @@ export default async function BillingPage({
 }) {
   await requireAuth();
   const { plan } = await searchParams;
-  const highlightPlan = plan === "daily" || plan === "weekly" || plan === "monthly" ? plan : undefined;
+  const highlightPlan =
+    plan === "daily" ||
+      plan === "weekly" ||
+      plan === "monthly" ||
+      plan === "sub_monthly" ||
+      plan === "sub_yearly"
+      ? plan
+      : undefined;
   return (
-    <section className="mx-auto max-w-5xl px-6 py-10">
+    <section className="mx-auto max-w-5xl px-6 py-6 sm:py-8">
       <BillingClient highlightPlan={highlightPlan} />
     </section>
   );

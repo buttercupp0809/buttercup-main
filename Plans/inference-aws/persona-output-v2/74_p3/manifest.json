@@ -1,0 +1,33 @@
+{
+  "persona_id": "74_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/74.webp",
+  "main_image_sha256": "a8d30a0d4f3b018e74982207b65f89100139f82158eecfafc39760a011d74c0b",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:33:23Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Illuminated by the mesmerizing glow of neon signs, the sultry siren poses provocatively in the midst of a bustling night club. Her fiery mane is styled in a wild, tousled mess, and her piercing emerald eyes seem to drink in the pulsating energy of the room. The fitted, red latex bodysuit clings to every curve of her figure, the high collar framing her face like a seductive mask. A DSLR captures the scene, the shallow depth of field blurring the flashing lights and revelers into a kaleidoscope of color and motion.",
+      "seed": 1807574675,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/00e2f328-ddd6-4994-b55e-479927ce94c8.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/74.webp",
+      "status": "ok",
+      "bytes": 1363915
+    }
+  ]
+}

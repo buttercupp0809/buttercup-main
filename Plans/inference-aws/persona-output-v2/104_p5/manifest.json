@@ -1,0 +1,33 @@
+{
+  "persona_id": "104_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/104.webp",
+  "main_image_sha256": "712b362d9eb0cad1e5b9b4252c1af776ccfaa04d560f5abbbb8dd839df90bbad",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:30:22Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM CAMERA ANGLE: From a low, angled perspective, the camera captures the woman's figure in a candid, provocative pose. She stands in the doorway of a dimly lit room, her slender silhouette backlit by a warm, golden glow. Her hands rest on the doorframe, and she looks over her shoulder, her striking emerald eyes meeting the lens with a playful, teasing glint. The shallow depth of field blurs the background, drawing the viewer's attention to her sensual curves and the confident, inviting expression on her face.",
+      "seed": 1637596163,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/5265a95b-9334-4ee7-b618-8c483e190d33.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/104.webp",
+      "status": "ok",
+      "bytes": 1060110
+    }
+  ]
+}

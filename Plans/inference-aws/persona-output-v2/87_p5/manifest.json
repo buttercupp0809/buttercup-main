@@ -1,0 +1,33 @@
+{
+  "persona_id": "87_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/87.webp",
+  "main_image_sha256": "6ed40b312ad249de9e01cd6cce4af96794afd706f94b903b376bef984a650336",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:44:13Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a tight medium shot from behind, the woman's profile is silhouetted against the soft blue light of a late-night room, her auburn hair a wild tumble of waves down her back. She glances over her shoulder, her emerald eyes sparkling with a playful, teasing smile as she clutches a book to her chest, the creamy expanse of her back and the subtle curve of her hips visible through the thin fabric of her sheer black lingerie, the shallow focus drawing attention to her sensual form.",
+      "seed": 463919318,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/2501939c-4934-419b-bc5e-7a80b852d60b.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/87.webp",
+      "status": "ok",
+      "bytes": 1117283
+    }
+  ]
+}

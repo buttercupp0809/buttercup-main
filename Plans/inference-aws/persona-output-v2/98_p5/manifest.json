@@ -1,0 +1,33 @@
+{
+  "persona_id": "98_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/98.webp",
+  "main_image_sha256": "69a8a0156e6fce31bc4e0b691b8af46fe031767798ddacb775b1d61669193331",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:15:44Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In an extreme close-up, the viewer is drawn into the sultry, inviting gaze of the beauty, her hazel eyes seeming to hold the camera captive. Framed by the delicate lace of her sweetheart neckline, her porcelain skin glows with a subtle sheen, the soft focus of the DSLR lens blurring the edges of the image into a dreamy, ethereal haze.",
+      "seed": 522392471,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/eb49a402-f596-4fca-997a-e529fa2a2110.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/98.webp",
+      "status": "ok",
+      "bytes": 1250370
+    }
+  ]
+}

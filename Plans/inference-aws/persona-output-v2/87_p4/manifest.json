@@ -1,0 +1,33 @@
+{
+  "persona_id": "87_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/87.webp",
+  "main_image_sha256": "6ed40b312ad249de9e01cd6cce4af96794afd706f94b903b376bef984a650336",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:43:48Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Framed against the warm golden light of a rooftop at dusk, the young woman exudes a sense of vulnerable softness, her emerald eyes downcast as she rests her chin in her hand, a stray auburn lock falling across her cheek. She wears a delicate lace corset that pushes up her pert breasts, the fabric translucent against her creamy skin, as she gazes wistfully out at the city skyline, the shallow depth of field blurring the urban landscape.",
+      "seed": 1024285362,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/1d79fb25-39bc-4b2b-b445-330411d7f05d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/87.webp",
+      "status": "ok",
+      "bytes": 1254082
+    }
+  ]
+}

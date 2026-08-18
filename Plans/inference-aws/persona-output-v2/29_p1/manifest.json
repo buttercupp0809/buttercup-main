@@ -1,0 +1,33 @@
+{
+  "persona_id": "29_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/29.webp",
+  "main_image_sha256": "d275fbe74b90aba4b4034ed4feb8a3a4ae273cb70bdb4e6add51417e99a2eae6",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:47:24Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On the deck of a luxurious yacht, she stands confidently at the bow, sea breeze tousling her fiery locks as the horizon stretches out behind her. The sun dips low, casting a warm orange glow across her sun-kissed skin and the sleek white sails. A flowing sheer cover-up clings to her curves, billowing in the ocean air.",
+      "seed": 121435133,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/90f3627b-aa31-4449-907e-27220f9a7328.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/29.webp",
+      "status": "ok",
+      "bytes": 1213354
+    }
+  ]
+}

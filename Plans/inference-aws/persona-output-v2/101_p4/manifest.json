@@ -1,0 +1,33 @@
+{
+  "persona_id": "101_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/101.webp",
+  "main_image_sha256": "61c3f77ce9659974a8b2b3dc3e9e94d8164ae8bcec32bca0683d0ecd48cbb8a2",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:22:22Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Hazel's porcelain skin is on full display as she strides confidently across a yacht's deck, the warm Mediterranean sun glinting off her glistening, oiled skin. She wears only a barely-there bikini, its emerald green hues matching her striking eyes. The bikini bottoms are cut high, barely covering her derriere, while the halter top leaves her toned midriff bare. A delicate gold chain adorns her neck, and a pair of oversized, glamorous sunglasses perch on her platinum blonde hair. A DSLR, set to shallow focus, zeroes in on her taut, sun-kissed physique as she moves towards the camera.",
+      "seed": 1415727549,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/a3efa7be-d733-4507-b148-a2ef06ccfaac.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/101.webp",
+      "status": "ok",
+      "bytes": 1326832
+    }
+  ]
+}

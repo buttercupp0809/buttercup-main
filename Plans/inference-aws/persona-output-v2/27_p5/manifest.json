@@ -1,0 +1,33 @@
+{
+  "persona_id": "27_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/27.webp",
+  "main_image_sha256": "fe02de3bc6a7abcb0775f83cadc9507d65b76de3cfab2bf42714ba1e0fe38f42",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:44:19Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM CAMERA ANGLE: In a dramatic, extreme close-up, the lens focuses intently on the woman's face, capturing every delicate feature in exquisite detail. Her porcelain skin glows with a soft, warm light, while the smoky green of her eyes seems to sparkle with mischief. A few loose strands of platinum blonde hair frame her face, and the soft focus of the camera lens blurs the background, creating an intimate, almost private atmosphere that draws the viewer's gaze inexorably into the depths of her captivating eyes.",
+      "seed": 35784478,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/1c7376aa-535c-41a8-99ad-9a6a7d0874d1.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/27.webp",
+      "status": "ok",
+      "bytes": 1309411
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "94_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/94.webp",
+  "main_image_sha256": "aabfca569500e35a278a5e9bdbb55b9ec2c331a54be80d176b2eceeac1fc812a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:03:33Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "The poised young woman reclines on a plush velvet chaise in a dimly lit boudoir, the air heavy with the scent of jasmine and sandalwood. Soft candlelight dances across her porcelain skin, casting a warm glow on her chestnut waves cascading over the shoulders of a sheer, lace-trimmed negligee that clings to her curves.",
+      "seed": 1772938382,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/24f6da04-c6e2-4986-bf7d-25207fa7ef77.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/94.webp",
+      "status": "ok",
+      "bytes": 1237079
+    }
+  ]
+}

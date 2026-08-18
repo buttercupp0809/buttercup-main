@@ -1,0 +1,33 @@
+{
+  "persona_id": "95_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/95.webp",
+  "main_image_sha256": "86074b247319067d173f505289506e0b124d8bfce2cbe1f39e165c197c9c9d0f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:08:31Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a tight medium shot from behind, she turns to look over her shoulder, her auburn locks cascading down her back like a waterfall of fire. She wears a sleek, ivory evening gown that clings to her curves, the low back revealing a tantalizing glimpse of her bare skin. The camera frames her from just above the nape of her neck to her hips, emphasizing the sway of her rear as she glances back at the lens. Her emerald eyes meet the camera's gaze with a bold, commanding intensity that seems to pull the viewer in.",
+      "seed": 215965196,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/975007c1-08fd-4475-b5ae-101a551f16b3.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/95.webp",
+      "status": "ok",
+      "bytes": 1239518
+    }
+  ]
+}

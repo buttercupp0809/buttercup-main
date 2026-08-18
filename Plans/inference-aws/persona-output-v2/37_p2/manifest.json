@@ -1,0 +1,33 @@
+{
+  "persona_id": "37_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/37.webp",
+  "main_image_sha256": "a8044bacf8b2a521e61daccf40c8c53ac87eaefd84b970e0c1cb68134c9fe04f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:06:24Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a penthouse suite's candlelit boudoir, the confident beauty lounges on a velvet chaise, a barely-there red bikini leaving little to the imagination. Her auburn tresses spill across the cushions as she props herself up on one elbow, a playful smile on her full lips, the soft glow of candles casting a warm, intimate atmosphere.",
+      "seed": 990657113,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/8223f282-a92f-4aa2-84c7-42bd12faede5.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/37.webp",
+      "status": "ok",
+      "bytes": 1187993
+    }
+  ]
+}

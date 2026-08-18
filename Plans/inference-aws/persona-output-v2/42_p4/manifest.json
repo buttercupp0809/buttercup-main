@@ -1,0 +1,33 @@
+{
+  "persona_id": "42_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/42.webp",
+  "main_image_sha256": "999ce0469e413c51be6c69debc9c24e77073bab7a8bdcc042be2b3f535582ed0",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:20:35Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORMED MOOD/EXPRESSION: In a candlelit chamber, the raven-haired beauty reclines on a four-poster bed, her vintage lace dress slipping off one shoulder to reveal the soft, creamy expanse of her collarbone. Her emerald eyes are soft and vulnerable, gazing up at the viewer with an air of quiet longing. Her full, plush lips are parted slightly, as if inviting a tender kiss. A delicate silver locket rests at the base of her throat, adding a touch of understated elegance to the intimate scene. The warm glow of the candles casts a romantic ambiance, the shadows playing across her features in a sensual dance.",
+      "seed": 805620164,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/b38c926a-ee2c-47e7-bd60-8bf01ca2bccc.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/42.webp",
+      "status": "ok",
+      "bytes": 1343068
+    }
+  ]
+}

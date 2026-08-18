@@ -1,0 +1,33 @@
+{
+  "persona_id": "45_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/45.png",
+  "main_image_sha256": "d52897e8c43d8412e4495d208daf5fd76bea64f184509a23f2b8be5fad018b7e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:26:46Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On the sun-drenched deck of a luxurious yacht, the fiery redhead lounges on a plush cushion, her tousled chestnut locks cascading down her back. Emerald eyes, smoldering with desire, gaze out at the horizon as a warm breeze tousles her hair. She wears a barely-there bikini, the golden skin of her tanned torso glistening in the bright light, as she stretches languidly, a sultry smile playing on her full lips.",
+      "seed": 1399879496,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/2fc30200-1c01-48cc-9d03-5c20353469a6.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/45.png",
+      "status": "ok",
+      "bytes": 1317153
+    }
+  ]
+}

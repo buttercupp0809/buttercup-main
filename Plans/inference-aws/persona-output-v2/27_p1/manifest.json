@@ -1,0 +1,33 @@
+{
+  "persona_id": "27_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/27.webp",
+  "main_image_sha256": "fe02de3bc6a7abcb0775f83cadc9507d65b76de3cfab2bf42714ba1e0fe38f42",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:42:18Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM SCENE/SETTING: On the foredeck of an opulent yacht, the alluring woman lounges on plush cushions, her gilded dress slipping off one shoulder as she gazes out at the horizon, the Mediterranean Sea stretching to the hazy blue horizon. Soft moonlight casts an ethereal glow, with the yacht's white sails billowing in the breeze. The sound of gentle waves against the hull and distant laughter from the party below create an intimate, sensual atmosphere.",
+      "seed": 964014445,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/c590c6c8-800f-424c-aacd-77315aa71749.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/27.webp",
+      "status": "ok",
+      "bytes": 1307649
+    }
+  ]
+}

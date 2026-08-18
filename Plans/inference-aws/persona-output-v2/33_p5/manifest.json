@@ -1,0 +1,33 @@
+{
+  "persona_id": "33_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/33.webp",
+  "main_image_sha256": "1fa01099c006e593226150626fa3e5bb910d93d9aedf46f011baa343ced605bb",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:58:30Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM CAMERA ANGLE: On a private, rooftop balcony at dusk, she stands with her back to the camera, gazing out over the Barcelona skyline. The black leather jacket and tight red dress are now a revealing, high-cut black swimsuit that accentuates her toned physique. Her striking amber eyes, highlighted by smoky eye makeup, gaze out at the cityscape, a sly, playful smile playing on her full lips. A DSLR camera, positioned low and looking up, captures her from behind, her raven-black hair cascading down her back and the subtle curves of her backside emphasized as she leans forward. The blurred city lights create a romantic, dreamlike ambiance in the shallow focus shot.",
+      "seed": 1862890819,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/8598bdab-efbf-4842-b349-b03bc72327d4.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/33.webp",
+      "status": "ok",
+      "bytes": 1255507
+    }
+  ]
+}

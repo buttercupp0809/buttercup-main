@@ -1,0 +1,33 @@
+{
+  "persona_id": "55_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/55.webp",
+  "main_image_sha256": "3b33f91f43b99fa321b662a6f728fa28f1a5ababcf2af5be51df039fc6b774c8",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:52:02Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "An extreme close-up captures a striking young woman with rich chestnut hair, her bright emerald eyes half-lidded and sultry as she gazes directly into the camera lens. Her porcelain skin glows under soft, golden light. Her lips, painted a deep, berry red, are parted slightly, inviting. A delicate silver Celtic necklace glimmers at her throat, drawing the eye to her creamy d\u00e9colletage. The shallow depth of field blurs the background, emphasizing her captivating face and sensuous allure.",
+      "seed": 290999920,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/88a5fe03-876d-4812-ab72-fe739797007a.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/55.webp",
+      "status": "ok",
+      "bytes": 1136830
+    }
+  ]
+}

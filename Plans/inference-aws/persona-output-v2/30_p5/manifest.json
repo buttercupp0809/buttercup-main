@@ -1,0 +1,33 @@
+{
+  "persona_id": "30_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/30.webp",
+  "main_image_sha256": "ffc70fff3e8998b1cb67443fc85264c89c983375eb174b587276e61cf8e222ab",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:51:30Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "From a low, dramatic angle, the camera captures the woman's profile as she glances over her shoulder, a sly smirk playing on her lips. The shot is bathed in the soft, moody light of a blue-tinted evening, casting long shadows across her features. She wears a leather jacket slung carelessly over one shoulder, revealing a black lace bra and the toned expanse of her back. Her raven tresses tumble down her back in untamed waves, and her almond eyes sparkle with mischief in the dim light, inviting the viewer to explore the secrets hidden behind her enigmatic smile.",
+      "seed": 795427612,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/a098dc3f-30be-4ae7-a2ed-0e2301d9b99b.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/30.webp",
+      "status": "ok",
+      "bytes": 1326563
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "56_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/56.webp",
+  "main_image_sha256": "a44413dcb11cba341462e5a7abc192276cefb5d65205881fc59dcd92e91b2072",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:53:07Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM OUTFIT/ATTIRE: On the rooftop at golden hour, the spirited young woman wears a barely-there bikini, the skimpy triangles of fabric barely containing her ample breasts. A chunky silver necklace adorns her collarbone, drawing attention to her toned physique. Her tousled locks cascade down her back, and multiple colorful tattoos decorate her arms and shoulders. The high-waisted bikini bottoms hug her hips, while the scuffed ankle boots add a touch of edge to her sun-kissed skin. Shot in high definition with a DSLR, the image features a shallow depth of field that isolates her face, emphasizing her striking features and captivating gaze, as if frozen in a moment of carefree joy.",
+      "seed": 851065456,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/931e8351-fcfa-4451-a4a5-239bcf7dd56c.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/56.webp",
+      "status": "ok",
+      "bytes": 1294604
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "66_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/66.webp",
+  "main_image_sha256": "eaedb03251c257d7cbe81934c3398d3876fd24c74bdc473c0e3dddc60e076ddc",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:16:09Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Vulnerable and soft, she rests her chin on her hand, looking directly at the camera with a hint of sadness in her emerald gaze, her platinum blonde hair cascading down one shoulder, against a warm, dimly lit background of plush red velvet curtains.",
+      "seed": 1480222422,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/61364f90-8c94-48e4-89ec-8382735f07ac.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/66.webp",
+      "status": "ok",
+      "bytes": 1378391
+    }
+  ]
+}

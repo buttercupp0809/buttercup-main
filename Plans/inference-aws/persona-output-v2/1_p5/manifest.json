@@ -1,0 +1,33 @@
+{
+  "persona_id": "1_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/1.webp",
+  "main_image_sha256": "bb5ec4af28f30d018b7da1953cc0aaddac98bbd24ac930deba0cfcf0fef1a8d9",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:01:01Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Captured in an extreme close-up, her face fills the frame as she looks directly at the viewer with an intense, dominant gaze, her full, pouty lips parted slightly and her emerald eyes blazing with unbridled desire, the shallow depth of field blurring everything but her captivating features.",
+      "seed": 711286618,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/8fb01fe1-40fb-4231-adc1-6d77d28d2e05.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/1.webp",
+      "status": "ok",
+      "bytes": 1207348
+    }
+  ]
+}

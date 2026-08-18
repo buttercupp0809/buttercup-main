@@ -1,0 +1,33 @@
+{
+  "persona_id": "95_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/95.webp",
+  "main_image_sha256": "86074b247319067d173f505289506e0b124d8bfce2cbe1f39e165c197c9c9d0f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:06:40Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On the deck of a luxurious yacht, she poses seductively by the railing, the moonlight casting a silvery glow on her ivory skin and auburn locks, as the city skyline twinkles in the background. A sheer, black lace teddy clings to her curves, the fabric barely concealing her nipples and the apex of her thighs. A diamond choker rests on her porcelain neck, drawing attention to the swell of her breasts. Her emerald eyes sparkle with mischief as she looks directly at the camera, her full, pink lips parted in a sultry invitation.",
+      "seed": 340947041,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/77eb5f0a-8399-4294-8140-645983466bdb.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/95.webp",
+      "status": "ok",
+      "bytes": 1397487
+    }
+  ]
+}

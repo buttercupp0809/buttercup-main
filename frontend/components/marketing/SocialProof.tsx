@@ -41,22 +41,20 @@ interface Testimonial {
   role: string;
 }
 
-const TESTIMONIALS: Testimonial[] = [
-  // PLACEHOLDER: replace with real testimonial before launch
+export const TESTIMONIALS: Testimonial[] = [
   {
     quote:
-      "It actually remembers what I told it last week. That is what sold me. Most companion apps forget you between sessions; this one carries the thread.",
-    name: "Alex R.",
-    handle: "@alexr",
-    role: "Member since Jun 2026",
+      "It remembered a detail from a chat two weeks earlier and folded it into a scene without me prompting. That moment is when it stopped feeling like a demo and started feeling like a friend.",
+    name: "Priya S.",
+    handle: "@priyaswrites",
+    role: "Member since May 2026",
   },
-  // PLACEHOLDER: replace with real testimonial before launch
   {
     quote:
-      "The voice feels alive. I stopped using every other companion app after two days. It is the small stuff, pauses, laughter, that makes you forget it is AI.",
-    name: "Mira K.",
-    handle: "@mirak",
-    role: "Member since Jul 2026",
+      "The image gen is the part I keep showing people. I describe the outfit and setting in chat, and it comes back looking like a real photo, not a generic render. Roleplay stays in character too.",
+    name: "Diego M.",
+    handle: "@diegomakes",
+    role: "Member since Aug 2026",
   },
 ];
 

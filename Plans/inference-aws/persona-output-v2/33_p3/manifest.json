@@ -1,0 +1,33 @@
+{
+  "persona_id": "33_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/33.webp",
+  "main_image_sha256": "1fa01099c006e593226150626fa3e5bb910d93d9aedf46f011baa343ced605bb",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:57:39Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM LIGHTING/TIME: On the rooftop of a sleek, modern high-rise at the peak of golden hour, she leans against the railing, the city skyline stretching out before her. The black leather jacket and tight red dress are now a skintight, metallic silver bodysuit that clings to her every contour. Her striking amber eyes sparkle under the warm sunset glow, her raven-black hair blown back by the gentle breeze. A DSLR camera, set to capture the vibrant colors and long shadows, shoots her in a dramatic, shallow focus wide shot, the bustling cityscape blurred in the background.",
+      "seed": 1092295932,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/4d0421f0-21fd-4d53-82cf-a54f782cc072.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/33.webp",
+      "status": "ok",
+      "bytes": 1224582
+    }
+  ]
+}

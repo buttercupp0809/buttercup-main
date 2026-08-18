@@ -1,0 +1,33 @@
+{
+  "persona_id": "3_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/3.png",
+  "main_image_sha256": "dd03784089425431358ffa4cce65d1486cc4aa6f41fbd0d76ea30f0b7c571906",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:05:56Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM CAMERA ANGLE/COMPOSITION: In a tight medium shot from behind, the woman glances over her shoulder, her emerald eyes meeting the camera with a bold, commanding gaze. Her rich auburn hair tumbles over one shoulder, and the fitted black pantsuit clings to her shapely figure. The shallow depth of field blurs the background, emphasizing her sharp jawline and assertive posture.",
+      "seed": 877007540,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/5133e8b3-e097-41a5-9e6e-aa6d76672e5d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/3.png",
+      "status": "ok",
+      "bytes": 839421
+    }
+  ]
+}

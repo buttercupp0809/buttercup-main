@@ -1,0 +1,33 @@
+{
+  "persona_id": "48_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/48.webp",
+  "main_image_sha256": "ebb76f622743df3aa9aa6a8fc619517211816e3a7f633581ce0fa35b70cf8d3f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:34:50Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A provocative close-up of a woman's face, eyes closed and lips parted, bathed in the soft, warm glow of candlelight. Her porcelain skin and fiery red hair are illuminated, while the rest of the scene is dark and blurred, save for a few scattered roses. A vintage band tee and black leather jacket drape loosely over one shoulder, the fabric soft and rumpled. The DSLR lens captures every detail of her sultry expression, the shallow focus emphasizing the sensual curves of her face and neck.",
+      "seed": 1197823407,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/bcb7b08b-5810-4202-8991-b86c84a7ed38.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/48.webp",
+      "status": "ok",
+      "bytes": 1201665
+    }
+  ]
+}

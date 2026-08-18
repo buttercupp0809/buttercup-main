@@ -1,0 +1,33 @@
+{
+  "persona_id": "37_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/37.webp",
+  "main_image_sha256": "a8044bacf8b2a521e61daccf40c8c53ac87eaefd84b970e0c1cb68134c9fe04f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:07:16Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the golden hour on a rooftop, the sensual woman turns to face the camera, her back to the city skyline. Vulnerability and softness emanate from her features as she gazes down, a single tear glistening on her cheek. She wears a flowing, sheer white robe, the fabric clinging to her curves, paired with delicate gold jewelry. The warm light bathes her in a tender glow, the blurred background of the urban landscape adding to the emotional intimacy.",
+      "seed": 1144956763,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/006f03d8-c44c-4a51-a49d-6e1deb92cf82.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/37.webp",
+      "status": "ok",
+      "bytes": 1226235
+    }
+  ]
+}

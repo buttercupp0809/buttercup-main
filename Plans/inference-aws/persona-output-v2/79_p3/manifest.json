@@ -1,0 +1,33 @@
+{
+  "persona_id": "79_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/79.webp",
+  "main_image_sha256": "8de79f5879ad5cffcd3469fb2c3508ef1d0805c37de90f4e3eceab14133a37e2",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:44:09Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM LIGHTING/TIME: A sultry young woman lounges on a plush, white leather couch in a dimly lit, high-end nightclub. Neon lights from the bar and dance floor cast a rainbow of hues on her porcelain skin, accentuating the subtle contours of her face and the curves of her body. Her fitted, black leather jacket and distressed denim mini-skirt seem almost out of place in the chic, upscale setting. She leans back, one stiletto heel crossed over the other, her emerald green eyes half-lidded and inviting as she surveys the lively scene before her.",
+      "seed": 75145232,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/c3b310b4-8924-47a0-b0f4-48a8fdeca704.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/79.webp",
+      "status": "ok",
+      "bytes": 1087895
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "10_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/10.webp",
+  "main_image_sha256": "a7071bbf585029f29a5a8a796f0f0554343763e24d73b97f4fb75a8b966bee89",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:52:45Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In an extreme close-up, the DSLR lens focuses intently on the siren's decolletage, her porcelain skin and lush cleavage barely contained by the plunging neckline of her red dress. The bokeh effect of the blurred background emphasizes her striking features and the sense of closeness, as if the viewer is inches from her captivating allure.",
+      "seed": 1697839524,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/95752ecf-8e0b-451f-ad6d-50f777e612cb.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/10.webp",
+      "status": "ok",
+      "bytes": 1373138
+    }
+  ]
+}

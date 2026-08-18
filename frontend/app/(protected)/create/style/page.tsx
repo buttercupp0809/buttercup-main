@@ -10,31 +10,31 @@ const OPTIONS: {
   gradient: string;
   accentColor: string;
 }[] = [
-  {
-    key: "realistic",
-    label: "Hyper-realistic",
-    tagline: "Cinematic photography",
-    bullets: ["8K photorealism", "Cinematic lighting", "Natural skin tones", "DSLR depth of field"],
-    gradient: "linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%)",
-    accentColor: "#e8b4b8",
-  },
-  {
-    key: "3d",
-    label: "Stylized 3D",
-    tagline: "Polished render art",
-    bullets: ["3D character model", "Expressive features", "Soft subsurface glow", "Dynamic poses"],
-    gradient: "linear-gradient(135deg, #0d1b2a 0%, #1b2838 40%, #2d3561 100%)",
-    accentColor: "#b4c8e8",
-  },
-  {
-    key: "anime",
-    label: "Anime",
-    tagline: "Illustrated & vibrant",
-    bullets: ["Hand-drawn aesthetic", "Bold outlines", "Vivid color palette", "Expressive eyes"],
-    gradient: "linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 40%, #4a1a6e 100%)",
-    accentColor: "#e8a0ef",
-  },
-];
+    {
+      key: "realistic",
+      label: "Hyper-realistic",
+      tagline: "Cinematic photography",
+      bullets: ["8K photorealism", "Cinematic lighting", "Natural skin tones", "DSLR depth of field"],
+      gradient: "linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%)",
+      accentColor: "#e8b4b8",
+    },
+    {
+      key: "3d",
+      label: "Stylized 3D",
+      tagline: "Polished render art",
+      bullets: ["3D character model", "Expressive features", "Soft subsurface glow", "Dynamic poses"],
+      gradient: "linear-gradient(135deg, #0d1b2a 0%, #1b2838 40%, #2d3561 100%)",
+      accentColor: "#b4c8e8",
+    },
+    {
+      key: "anime",
+      label: "Anime",
+      tagline: "Illustrated & vibrant",
+      bullets: ["Hand-drawn aesthetic", "Bold outlines", "Vivid color palette", "Expressive eyes"],
+      gradient: "linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 40%, #4a1a6e 100%)",
+      accentColor: "#e8a0ef",
+    },
+  ];
 
 // Decorative inner pattern per style
 function StyleVisual({ styleKey }: { styleKey: "realistic" | "3d" | "anime" }) {

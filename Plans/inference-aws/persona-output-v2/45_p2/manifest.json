@@ -1,0 +1,33 @@
+{
+  "persona_id": "45_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/45.png",
+  "main_image_sha256": "d52897e8c43d8412e4495d208daf5fd76bea64f184509a23f2b8be5fad018b7e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:27:12Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the dimly lit boudoir, the bold redhead reclines on a velvet chaise, her angular face illuminated by the soft glow of candles. She's draped in sheer black lace lingerie, the delicate fabric clinging to her curves, highlighting the swell of her breasts and the subtle definition of her waist. Her emerald eyes sparkle with mischief as she runs a hand through her tousled chestnut locks, a playful smile on her lips.",
+      "seed": 69336140,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/c4176f9f-cc30-4962-b54a-ee4e79d1cab3.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/45.png",
+      "status": "ok",
+      "bytes": 1472566
+    }
+  ]
+}

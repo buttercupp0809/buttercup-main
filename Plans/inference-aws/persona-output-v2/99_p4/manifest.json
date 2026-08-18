@@ -1,0 +1,33 @@
+{
+  "persona_id": "99_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/99.webp",
+  "main_image_sha256": "6550d02011c0fe04d297d65d98cd12d3141018ff1f3a349816fe87d9009343cd",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:17:37Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Render a mesmerizing portrait of the young beauty in a moody, blue-tinged night light, her vulnerable expression soft and inviting, her green eyes half-lidded, a delicate lace corset barely containing her ample bosom, the plunging neckline revealing a tantalizing expanse of cleavage, her fiery locks spilling down her back in loose waves, the shallow depth of field blurring the dark shadows of the room behind her, conveying a sense of quiet, intimate longing.",
+      "seed": 1267924272,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/849cd569-e9c2-47c0-9201-c743e581acc9.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/99.webp",
+      "status": "ok",
+      "bytes": 1304581
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "109_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/109.webp",
+  "main_image_sha256": "a8112b3b5f1e972fa4bcf4a13304f42956a01839e6279117cd88d00ac8c0bbfe",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:45:13Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a lavish penthouse suite bathed in soft, golden candlelight, the beauty wears a delicate lace corset that barely covers her porcelain skin, leaving little to the imagination. Vulnerable and soft, her emerald eyes gaze longingly into the distance as she sits on the edge of a plush king-sized bed. The warm glow and shallow depth of field convey a sense of intimacy and tender vulnerability, while her tousled honey-blonde curls and parted lips suggest a deep emotional connection.",
+      "seed": 171001478,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/15527b97-cd4d-46ac-8a0a-777d98905c81.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/109.webp",
+      "status": "ok",
+      "bytes": 1329543
+    }
+  ]
+}

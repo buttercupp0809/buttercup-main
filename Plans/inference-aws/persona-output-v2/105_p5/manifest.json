@@ -1,0 +1,33 @@
+{
+  "persona_id": "105_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/105.webp",
+  "main_image_sha256": "83424a35021866d96d683f705a55ebf0a5239adb7001b8a5156a817e35601dbc",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:32:48Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A sensual goddess is captured in a seductive, medium shot from behind, her long, auburn tresses cascading down her back as she glances over her shoulder with a coy, inviting smile. She wears a skimpy, red lace bra and matching thong, the delicate fabric barely containing her ample bosom and shapely derri\u00e8re. Her porcelain skin glows with a healthy sheen, and her emerald eyes sparkle with mischief as she leans against a weathered wooden doorframe, the soft, warm light of a candlelit chamber casting a flattering glow on her curves. The shallow depth of field blurs the background, focusing the viewer's attention on the tantalizing expanse of her back and the promise of what lies beyond.",
+      "seed": 1837400229,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/55c0ff08-2b93-4ea9-b12e-4fbe35f81195.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/105.webp",
+      "status": "ok",
+      "bytes": 1376696
+    }
+  ]
+}

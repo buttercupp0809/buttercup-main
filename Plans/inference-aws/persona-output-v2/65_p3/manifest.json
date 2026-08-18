@@ -1,0 +1,33 @@
+{
+  "persona_id": "65_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/65.webp",
+  "main_image_sha256": "b30a4466841630931fa12e0ff174b0be016110bda61fa1c70215df04bbabbe6a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:13:37Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM LIGHTING/TIME: Under the mesmerizing glow of neon lights, the dancer's emerald eyes sparkle with mischief as she struts her stuff on the darkened stage of a Barcelona nightclub. Her form-fitting red dress hugs every curve, the fabric reflecting the pulsing colors of the disco ball overhead, creating a mesmerizing display of light and shadow.",
+      "seed": 1684251547,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/ccbc67da-adaa-46eb-be5b-9734d0c2f82f.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/65.webp",
+      "status": "ok",
+      "bytes": 1186455
+    }
+  ]
+}

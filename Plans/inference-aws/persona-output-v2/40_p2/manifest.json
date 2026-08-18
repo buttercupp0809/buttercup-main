@@ -1,0 +1,33 @@
+{
+  "persona_id": "40_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/40.webp",
+  "main_image_sha256": "41fa15425f5714142413ac499c782a0e76f2c7fc76f6cf025afd9fe0bf1d45d3",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:13:37Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On a moonlit yacht deck, the captivating beauty wears a leather bodysuit in deep crimson, the glossy material hugging every curve of her lithe physique. The outfit is daringly revealing, with cut-outs at the midriff and hips, and a daringly low back that showcases her toned spine. Her wild curls are swept back, a few stray locks framing her heart-shaped face as she looks over her shoulder at the camera with a sultry, inviting gaze. A backdrop of stars twinkling above and the yacht's sleek lines create a dramatic, cinematic scene.",
+      "seed": 341213847,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/49f44bfd-bd6b-4aac-81f6-e91d3f53b0cb.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/40.webp",
+      "status": "ok",
+      "bytes": 1287298
+    }
+  ]
+}

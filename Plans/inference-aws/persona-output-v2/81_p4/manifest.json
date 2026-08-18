@@ -1,0 +1,33 @@
+{
+  "persona_id": "81_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/81.webp",
+  "main_image_sha256": "93d713739c2f6c231a3e909db4649fd04c8c3cc22894453c04f71297457b8c62",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:30:13Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A vulnerable, soft Southern belle reclines in a warm, candlelit chamber, raven tresses spilling across a plush velvet pillow. Emerald eyes, usually sparkling with vivacity, now hold a tender, exposed quality as she gazes at the camera through long lashes. A delicate lace corset clings to her curves, the champagne silk gown pooled at her hips. The intimate setting and gentle light soften her features, revealing a rare glimpse of her guarded heart.",
+      "seed": 188451095,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/a82b8386-d9d3-44c0-b0d0-537851ce6a66.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/81.webp",
+      "status": "ok",
+      "bytes": 1447117
+    }
+  ]
+}

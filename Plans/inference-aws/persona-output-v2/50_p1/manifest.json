@@ -1,0 +1,33 @@
+{
+  "persona_id": "50_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/50.webp",
+  "main_image_sha256": "711c31b334b0de5956f0746289ca8551d83bbf87d7264dee5b9b17248a8e57f1",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:38:47Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORMED SCENE/SETTING: Penthouse suite at midnight, opulent furnishings in deep crimson and gold, floor-to-ceiling windows framing the glittering city skyline. The exotic beauty reclines on a plush velvet chaise, her long dark hair cascading over the shoulders of a sheer black lace gown that clings to her curves.",
+      "seed": 1558571069,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/a9f1a4fd-8cd3-4294-b5f1-63d04e2fbc93.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/50.webp",
+      "status": "ok",
+      "bytes": 1448728
+    }
+  ]
+}

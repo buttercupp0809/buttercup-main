@@ -1,0 +1,33 @@
+{
+  "persona_id": "99_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/99.webp",
+  "main_image_sha256": "6550d02011c0fe04d297d65d98cd12d3141018ff1f3a349816fe87d9009343cd",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:16:21Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Render a striking, photorealistic portrait of the vivacious young woman in a candlelit chamber, the soft glow illuminating her fiery red locks cascading over her bare shoulders, as she lounges on a plush velvet chaise, clad only in a sheer black lace bra and matching panties, her vibrant green eyes smoldering with seductive intent, the shallow depth of field blurring the ornate furnishings behind her, conveying a sense of intimate, forbidden pleasure.",
+      "seed": 576691750,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/20fe2152-8829-412a-b62f-71d343219794.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/99.webp",
+      "status": "ok",
+      "bytes": 1508326
+    }
+  ]
+}

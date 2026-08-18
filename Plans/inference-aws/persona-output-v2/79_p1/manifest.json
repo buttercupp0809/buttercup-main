@@ -1,0 +1,33 @@
+{
+  "persona_id": "79_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/79.webp",
+  "main_image_sha256": "8de79f5879ad5cffcd3469fb2c3508ef1d0805c37de90f4e3eceab14133a37e2",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:43:21Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM SCENE/SETTING: A striking young woman stands confidently on the deck of a sleek, black yacht, the warm glow of sunset casting long shadows across her porcelain skin. The ocean stretches out behind her, its gentle waves meeting the horizon at a perfect line. In the foreground, the yacht's polished rail and the woman's scuffed combat boots create a striking contrast. A shallow depth of field blurs the background, emphasizing her bold, edgy pose.",
+      "seed": 68185402,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/648c6097-111c-4dca-aa5e-0f59ff7d7084.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/79.webp",
+      "status": "ok",
+      "bytes": 1402868
+    }
+  ]
+}

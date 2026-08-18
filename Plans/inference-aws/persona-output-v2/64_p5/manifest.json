@@ -1,0 +1,33 @@
+{
+  "persona_id": "64_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/64.webp",
+  "main_image_sha256": "9abbcfe6c678912c57c35abf49e116564974d5d9cd48e31e2a80546a01bef16d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:12:14Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a tight medium shot, the woman's profile is silhouetted against the warm glow of a golden sunset, her head turned over her shoulder to glance back at the camera with a playful, teasing smile. She wears a flowing, floor-length gown in a deep, jewel-toned blue that complements the vibrant hues of the sky, the fabric ruffled by the ocean breeze.",
+      "seed": 1911453986,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/e54dd17d-599f-4ea5-a5ec-b9a77c782d8e.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/64.webp",
+      "status": "ok",
+      "bytes": 1264051
+    }
+  ]
+}

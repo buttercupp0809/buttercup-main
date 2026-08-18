@@ -1,0 +1,33 @@
+{
+  "persona_id": "5_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/5.webp",
+  "main_image_sha256": "b4cc22ba2439c30dd4a065ac5978200afa53e8c55c1d734d85f4fbdcc226a7bb",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:10:04Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Bathed in the neon pulse of a bustling nightclub, she leans against the bar, raven tresses framing her sultry face, emerald eyes smoldering with mischief, alabaster skin glowing under the harsh lighting, the vibrant colors and thumping beat of the music enveloping her in a world of unbridled passion and decadence.",
+      "seed": 475016909,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/1047fdea-7f61-46b5-8aa3-6632ca1e0bc6.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/5.webp",
+      "status": "ok",
+      "bytes": 1283119
+    }
+  ]
+}

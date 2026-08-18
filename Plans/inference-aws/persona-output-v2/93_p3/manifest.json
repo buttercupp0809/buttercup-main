@@ -1,0 +1,33 @@
+{
+  "persona_id": "93_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/93.webp",
+  "main_image_sha256": "947f13b1e36b2fddcfc57e8ec65da96b5392ddf791a0fdc379f1563ce85f123f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:01:57Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Amidst the warm, golden glow of sunset, a captivating young woman with fiery red curls, emerald eyes, and porcelain skin, poses in a sleek, modern penthouse suite. Wearing a form-fitting, black leather bodysuit that showcases her toned physique, she leans against the railing of the expansive balcony, the city skyline shimmering in the distance. The shallow depth of field blurs the urban landscape, while the soft, warm light caresses her curves and illuminates her sultry smile.",
+      "seed": 1947338860,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/9dc01f79-62b1-479e-bd46-9b9aa14a519b.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/93.webp",
+      "status": "ok",
+      "bytes": 1227500
+    }
+  ]
+}

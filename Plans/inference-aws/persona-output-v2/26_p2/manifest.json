@@ -1,0 +1,33 @@
+{
+  "persona_id": "26_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/26.webp",
+  "main_image_sha256": "4fa58b95a837525213d2cd0a073cd993315403bd76f30908e3a788053cc5e868",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:40:20Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On the opulent deck of a luxurious yacht, a bohemian beauty struts confidently in a skintight leather bodysuit that hugs her curves like a second skin, the shiny black material contrasting with her fiery auburn locks and porcelain skin. She wears a wide-brimmed floppy hat, layered necklaces, and strappy heels, exuding a daring, provocative allure as the setting sun casts a warm, golden light that accentuates her every move. With a bold, commanding gaze and a subtle smirk, she seems to own the world as the DSLR camera captures her in a shallow focus wide shot, the blurred background only emphasizing her striking figure.",
+      "seed": 1918577156,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/0bf39339-877c-4cbf-ba1c-56632fd68069.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/26.webp",
+      "status": "ok",
+      "bytes": 1246447
+    }
+  ]
+}

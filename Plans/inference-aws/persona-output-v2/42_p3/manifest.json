@@ -1,0 +1,33 @@
+{
+  "persona_id": "42_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/42.webp",
+  "main_image_sha256": "999ce0469e413c51be6c69debc9c24e77073bab7a8bdcc042be2b3f535582ed0",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:20:10Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORMED LIGHTING/TIME: In the sultry, neon-lit confines of a trendy nightclub, the raven-haired beauty commands attention from across the crowded dance floor. Her vintage lace dress seems to shimmer and shine under the pulsating strobe lights, the intricate patterns and delicate beading catching the eye. A single spotlight washes over her as she moves to the hypnotic beat, her emerald eyes gleaming with a sultry intensity. The air is heavy with the scent of perfume and sweat, the bass thumping in time with her seductive sway, as she works the room with a confidence that borders on predatory.",
+      "seed": 590270165,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/553bd684-9566-44ab-bbaa-fa2e607ab041.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/42.webp",
+      "status": "ok",
+      "bytes": 1324759
+    }
+  ]
+}

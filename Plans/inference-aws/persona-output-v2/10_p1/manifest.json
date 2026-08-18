@@ -1,0 +1,33 @@
+{
+  "persona_id": "10_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/10.webp",
+  "main_image_sha256": "a7071bbf585029f29a5a8a796f0f0554343763e24d73b97f4fb75a8b966bee89",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:51:04Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "The raven-haired siren lounges seductively on a plush velvet chaise in a dimly lit, candlelit boudoir. Rich burgundy drapes frame the scene, while a four-poster bed dominates the background, shrouded in sheer lace curtains. She wears nothing but a lacy black bra and matching thong, her porcelain skin glowing in the soft, golden light.",
+      "seed": 830902863,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/6166b54f-ff8a-4fa2-afab-42a546f89980.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/10.webp",
+      "status": "ok",
+      "bytes": 1316546
+    }
+  ]
+}

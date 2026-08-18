@@ -1,0 +1,33 @@
+{
+  "persona_id": "109_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/109.webp",
+  "main_image_sha256": "a8112b3b5f1e972fa4bcf4a13304f42956a01839e6279117cd88d00ac8c0bbfe",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:45:38Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "From behind, the beauty's elegant off-the-shoulder gown is now a stunning silhouette against a warm, sunset-lit rooftop. Her honey-blonde curls cascade down her back as she turns to glance over her shoulder, revealing a profile that exudes confidence and poise. The DSLR camera captures her from a low angle, looking up to emphasize her tall, slender figure and the delicate lace trim of her gown. Shallow depth of field and a shallow focus on her profile isolate her captivating form against the blurred cityscape.",
+      "seed": 193759683,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/4940e52f-283d-4a19-90a6-7feb8abe9d12.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/109.webp",
+      "status": "ok",
+      "bytes": 1327056
+    }
+  ]
+}

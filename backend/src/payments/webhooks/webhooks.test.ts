@@ -49,6 +49,42 @@ describe.skipIf(!DB_UP)("processSubscriptionEvent", () => {
     expect(u2?.tokenBalance).toBe(500);
   });
 
+  it("plan: sub_monthly activation grants pro tier + 30d currentPeriodEnd, idempotent on duplicate", async () => {
+    const userId = await makeUser();
+    const eventId = `sub-mo-${crypto.randomUUID()}`;
+    const before = Date.now();
+    const first = await processSubscriptionEvent({
+      provider: "dodo",
+      eventId,
+      eventType: "subscription.activated",
+      userId,
+      plan: "sub_monthly",
+      raw: {},
+    });
+    expect(first.applied).toBe(true);
+    expect(first.effect).toBe("plan_activated");
+    const sub = await prisma.subscription.findUnique({ where: { userId } });
+    expect(sub?.plan).toBe("sub_monthly");
+    expect(sub?.tier).toBe("pro");
+    expect(sub?.status).toBe("active");
+    const deltaMs = sub!.currentPeriodEnd!.getTime() - before;
+    const thirtyDays = 30 * 24 * 60 * 60 * 1000;
+    expect(deltaMs).toBeGreaterThan(thirtyDays - 10_000);
+    expect(deltaMs).toBeLessThan(thirtyDays + 10_000);
+
+    // Same (provider, eventId): dedupe.
+    const dup = await processSubscriptionEvent({
+      provider: "dodo",
+      eventId,
+      eventType: "subscription.activated",
+      userId,
+      plan: "sub_monthly",
+      raw: {},
+    });
+    expect(dup.applied).toBe(false);
+    expect(dup.effect).toBe("duplicate");
+  });
+
   it("plan: monthly activation sets Subscription.plan and expiry ~= now + 30d", async () => {
     const userId = await makeUser();
     const before = Date.now();

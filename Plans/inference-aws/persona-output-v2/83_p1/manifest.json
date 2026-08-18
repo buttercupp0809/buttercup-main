@@ -1,0 +1,33 @@
+{
+  "persona_id": "83_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/83.webp",
+  "main_image_sha256": "6dbd9245f2f77173d831c7f948e9dfac07e14b4073cdba352b8272593bf1d047",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:33:28Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dimly lit, ornate boudoir with plush velvet furnishings and sheer silk drapes, the striking woman reclines on a oversized four-poster bed, the soft candlelight casting a warm, sensual glow on her creamy skin as she looks up from beneath long lashes with a sultry, inviting gaze.",
+      "seed": 1191278944,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/3ff9d36b-2b20-4c5c-b6ff-95b997fc2d3f.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/83.webp",
+      "status": "ok",
+      "bytes": 1390313
+    }
+  ]
+}

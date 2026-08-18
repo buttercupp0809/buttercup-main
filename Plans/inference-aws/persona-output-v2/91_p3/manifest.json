@@ -1,0 +1,33 @@
+{
+  "persona_id": "91_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/91.webp",
+  "main_image_sha256": "166fd053d2de1d38860cbfd79214bdfc6cc1e9ee82b93400e08feb3ec59ed20f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:56:22Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Recreate the scene in a neon-lit nightclub, with the character surrounded by pulsating lights and throbbing bass. Her raven-black hair is swept back in a sleek, low ponytail, and her expressive emerald eyes seem to glow with an inner fire as she wears a daring, strapless red dress that barely covers her essentials. The fitted bodice showcases her voluptuous curves, while the flared skirt flutters around her long, toned legs as she moves to the rhythm on the dance floor. A delicate gold choker rests against her olive skin, and her chunky sandals add a touch of edginess to her overall look. The camera captures her in a dynamic, shallow focus shot, with the blurred crowd and flashing lights serving as a vibrant backdrop for her striking figure.",
+      "seed": 1934680210,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/eb11f72a-e4a6-420d-aad3-14ac38771e23.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/91.webp",
+      "status": "ok",
+      "bytes": 1231430
+    }
+  ]
+}

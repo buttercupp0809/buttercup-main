@@ -16,12 +16,23 @@
 // "chat_daily" / "image_daily" / "voice_daily" and DO NOT replace them.
 
 import { UNLIMITED, isUnlimited } from "./limits";
+import { PLAN_LIMITS } from "./plan-limits";
 
 export { UNLIMITED, isUnlimited };
+export { PLAN_LIMITS } from "./plan-limits";
 
-export type Plan = "free" | "daily" | "weekly" | "monthly";
+export type Plan = "free" | "daily" | "weekly" | "monthly" | "sub_monthly" | "sub_yearly";
 
-export const PLANS_ORDER: Plan[] = ["free", "daily", "weekly", "monthly"];
+export const PLANS_ORDER: Plan[] = [
+  "free",
+  "daily",
+  "weekly",
+  "monthly",
+  "sub_monthly",
+  "sub_yearly",
+];
+
+export type BillingInterval = "month" | "year";
 
 export interface PlanConfig {
   plan: Plan;
@@ -31,46 +42,55 @@ export interface PlanConfig {
   chats: number;
   images: number;
   videos: number;
+  // True for auto-renewing subscription products (sub_monthly, sub_yearly).
+  // Undefined / false for one-time duration passes. The UI uses this flag to
+  // split "Subscriptions" from "Passes"; the webhook / grant path treats
+  // them identically (subscription.renewed already reactivates the plan).
+  recurring?: boolean;
+  // Cosmetic: lets the UI render "/mo" or "/yr" without deriving it from
+  // durationDays. Only set for recurring plans.
+  billingInterval?: BillingInterval;
 }
 
 export const PLANS: Record<Plan, PlanConfig> = {
   free: {
     plan: "free",
     label: "Free",
-    priceUsd: 0,
-    durationDays: 0,
-    chats: 10, // Lifetime free trial. Real default, NOT a TUNE placeholder.
-    images: 0,
-    videos: 0,
+    ...PLAN_LIMITS.free,
   },
   daily: {
     plan: "daily",
     label: "Daily Pass",
-    priceUsd: 1,
-    durationDays: 1,
-    // Sensible launch defaults so the billing tiles show real numbers. TUNE:
-    // adjust these to your economics; this file is the single source of truth.
-    chats: 150,
-    images: 10,
-    videos: 2,
+    ...PLAN_LIMITS.daily,
   },
   weekly: {
     plan: "weekly",
     label: "Weekly Pass",
-    priceUsd: 6,
-    durationDays: 7,
-    chats: 1200,
-    images: 80,
-    videos: 15,
+    ...PLAN_LIMITS.weekly,
   },
   monthly: {
     plan: "monthly",
     label: "Monthly Pass",
-    priceUsd: 25,
-    durationDays: 30,
-    chats: 6000,
-    images: 400,
-    videos: 75,
+    ...PLAN_LIMITS.monthly,
+  },
+  // Recurring subscription tiers. Quotas refresh every calendar month for
+  // BOTH plans (see period.planPeriodKey), so the yearly plan is priced as
+  // a discount on 12 months of the same monthly quota, not a full year of
+  // quota granted up front. durationDays pins currentPeriodEnd / the
+  // auto-renewal window; the monthly usage reset is orthogonal.
+  sub_monthly: {
+    plan: "sub_monthly",
+    label: "Monthly Subscription",
+    ...PLAN_LIMITS.sub_monthly,
+    recurring: true,
+    billingInterval: "month",
+  },
+  sub_yearly: {
+    plan: "sub_yearly",
+    label: "Yearly Subscription",
+    ...PLAN_LIMITS.sub_yearly,
+    recurring: true,
+    billingInterval: "year",
   },
 };
 

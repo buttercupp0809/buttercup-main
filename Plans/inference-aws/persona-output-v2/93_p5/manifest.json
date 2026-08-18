@@ -1,0 +1,33 @@
+{
+  "persona_id": "93_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/93.webp",
+  "main_image_sha256": "947f13b1e36b2fddcfc57e8ec65da96b5392ddf791a0fdc379f1563ce85f123f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:02:48Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "An alluring young woman with fiery red curls, emerald eyes, and porcelain skin, is framed in an extreme close-up, her face and d\u00e9colletage filling the frame. Wearing a black sweater with a silver Celtic knot brooch, she gazes directly at the camera with a playful, teasing smile, her thick lashes framing those captivating emerald eyes. The shallow depth of field blurs the background, while a slight bokeh effect softens the focus, drawing the viewer's attention to her striking features and inviting expression.",
+      "seed": 280788675,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/fa40d643-42ec-4887-807d-9d314c6adc42.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/93.webp",
+      "status": "ok",
+      "bytes": 1139739
+    }
+  ]
+}

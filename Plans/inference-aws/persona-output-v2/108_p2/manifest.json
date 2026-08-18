@@ -1,0 +1,33 @@
+{
+  "persona_id": "108_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/108.webp",
+  "main_image_sha256": "9b7ffc00333362f092bd9b04e6fc9ab47494e2fd2ce5f34bba200838dce9cdda",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:39:33Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On the sun-kissed deck of a sleek, white yacht, the dreamy beauty reclines on a wicker chaise, her porcelain skin glowing against the rich, navy-blue fabric. The character's raven locks are swept up into a messy, seductive bun, with a few loose strands framing her luminous, emerald eyes. A barely-there, red bikini clings to her curves, the delicate lace of the bandeau grazing the swell of her breasts. Gold, hoop earrings dangle from her ears, and a wide, leather belt cinches at her narrow waist. The warm sunlight and ocean breeze ruffle her long, tanned legs, while her dainty, strappy sandals rest on the polished teak deck. A DSLR camera, angled from slightly above, captures her in a dynamic, full-body shot, the blurred sea and sky providing a stunning backdrop.",
+      "seed": 893975226,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/0a25d214-1907-41e7-bffb-33c27bc4a683.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/108.webp",
+      "status": "ok",
+      "bytes": 1328430
+    }
+  ]
+}

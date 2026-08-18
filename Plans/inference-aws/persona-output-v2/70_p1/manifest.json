@@ -1,0 +1,33 @@
+{
+  "persona_id": "70_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/70.webp",
+  "main_image_sha256": "b84de962eb2833a8963fcc8fc6fe5b00d254f183f6dcbcbc91b48416cc69bb27",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:23:46Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A striking young woman lounges on a plush, crimson velvet chaise longue in a dimly lit boudoir, the scent of jasmine and champagne wafting through the air. Vibrant red hair spills over one shoulder as she reclines, wearing nothing but a lacy black demi-cup bra and matching thong, her creamy skin glowing under the soft glow of candles and string lights. Expressive green eyes, heavy with desire, meet the camera's lens as she slowly runs a stocking-clad foot up the smooth, dark wood of the chaise.",
+      "seed": 1444484063,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/4b76afd8-53b3-4f18-a6e3-11b9f8ff1b6c.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/70.webp",
+      "status": "ok",
+      "bytes": 1363364
+    }
+  ]
+}

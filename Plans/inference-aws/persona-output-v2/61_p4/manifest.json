@@ -1,0 +1,33 @@
+{
+  "persona_id": "61_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/61.webp",
+  "main_image_sha256": "d2d49cf8efc07da7e7902c21e52e584935b7da753a351d44de36cb9833cce21e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:05:20Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORMED MOOD/EXPRESSION: Leaning against a weathered brick wall in a moody blue night lit alley, she exudes a vulnerable, soft intensity. Her chestnut hair falls in loose waves, and her porcelain skin seems almost luminescent in the dim light. Her gaze, normally alight with creative fervor, is now downcast, lips parted as if lost in thought. The delicate curves of her neck and the hollows of her cheeks are emphasized by the low light.",
+      "seed": 1789993598,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/20389b3b-1b47-48fe-b905-e47029230557.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/61.webp",
+      "status": "ok",
+      "bytes": 1607310
+    }
+  ]
+}

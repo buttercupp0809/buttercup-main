@@ -42,7 +42,7 @@ export async function getPublicReels(limit = 12): Promise<PublicReel[]> {
     if (vids.length === 0) return manifestFallback(limit);
     return vids.map((v) => ({
       id: v.id,
-      src: v.url,
+      src: signIfBareKey(v.url),
       name: v.character.name,
       location: v.character.location ?? "",
       avatar: (() => {
@@ -61,10 +61,22 @@ export async function getPublicReels(limit = 12): Promise<PublicReel[]> {
 function manifestFallback(limit: number): PublicReel[] {
   return REELS.slice(0, limit).map((r) => ({
     id: r.id,
-    src: r.src,
+    src: signIfBareKey(r.src),
     name: r.name,
     location: r.location,
     avatar: r.avatar,
     characterId: r.id,
   }));
+}
+
+// Reel videos live in S3 as bare keys ("reels/<id>.mp4"). Absolute URLs
+// pass through untouched. Legacy DB rows persisted as "/reels/<id>.mp4"
+// (from before the S3 migration) are rewritten to the bare S3 key and
+// signed, so seeded rows keep working after the local mp4s are removed.
+function signIfBareKey(u: string): string {
+  if (!u) return u;
+  if (u.startsWith("http")) return u;
+  if (u.startsWith("/reels/")) return signAssetUrl(u.slice(1));
+  if (u.startsWith("/")) return u;
+  return signAssetUrl(u);
 }

@@ -1,0 +1,33 @@
+{
+  "persona_id": "90_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/90.webp",
+  "main_image_sha256": "4230720e4f512208c1c91c5eb05c6425588dc655379de2c19dd9c5ce4b4b9a1c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:53:55Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "This striking young woman exudes confidence, her fiery red tresses cascading in loose waves past her shoulders, framing alabaster skin and striking emerald eyes that flash with creative intensity, as she turns her head to glance over her shoulder, her bold, commanding gaze meeting the camera's lens head-on, her tailored black dress cinched at the waist accentuating her hourglass figure, captured in a tight medium shot that emphasizes her powerful, unapologetic presence and individuality.",
+      "seed": 382601600,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/4f9708c2-d2d1-4383-a9a3-aa8ad03cb139.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/90.webp",
+      "status": "ok",
+      "bytes": 1210194
+    }
+  ]
+}

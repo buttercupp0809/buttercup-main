@@ -1,0 +1,33 @@
+{
+  "persona_id": "40_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/40.webp",
+  "main_image_sha256": "41fa15425f5714142413ac499c782a0e76f2c7fc76f6cf025afd9fe0bf1d45d3",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:15:12Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Framed by the golden glow of a rooftop sunset, the striking young woman turns her back to the camera, her flowy crimson maxi dress fluttering in the gentle breeze. Her wild curls stream down her back as she looks over her shoulder, a bold and commanding expression on her heart-shaped face. Her emerald eyes seem to pierce the viewer, a sense of confidence and free-spiritedness exuding from every pore. The shallow focus and soft, hazy bokeh of the DSLR camera create a dreamy, ethereal effect, as if the model has stepped out of a cinematic fantasy.",
+      "seed": 116554062,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/0fa774c1-ec45-48af-b465-63d5075d8092.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/40.webp",
+      "status": "ok",
+      "bytes": 1466512
+    }
+  ]
+}

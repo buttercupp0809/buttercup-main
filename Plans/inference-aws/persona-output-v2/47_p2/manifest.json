@@ -1,0 +1,33 @@
+{
+  "persona_id": "47_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/47.webp",
+  "main_image_sha256": "9d75aba913304ecd16ce3a6fe597eadcd47d91848f1953ca8d707f7c2acefb8d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:32:02Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On the deck of a luxurious yacht, a sultry seductress models a daring leather bodysuit, the glossy black material hugging her every curve. Emerald eyes glint with confidence as she strikes a provocative pose, one stiletto-clad foot hooked on the railing. A gold cuff gleams on her wrist as the sun sets behind her, casting long shadows and illuminating the ocean's gentle waves. A shallow depth of field isolates her in a world of sleek lines and nautical blues.",
+      "seed": 1424930628,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/d0a4c4f0-3390-4903-877c-61808136b7ab.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/47.webp",
+      "status": "ok",
+      "bytes": 1300408
+    }
+  ]
+}

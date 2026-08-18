@@ -1,0 +1,33 @@
+{
+  "persona_id": "9_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/9.webp",
+  "main_image_sha256": "e5a36f4e5ed20bfa080365e0ff7787946710745d6229dff503b8b25ca99047ce",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:50:06Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a penthouse suite, the woman sits on the edge of a plush bed, her posture open and inviting. A fitted white corset, barely covering her breasts, is cinched at the waist with a delicate gold belt. Her distressed denim shorts hug her hips, and a gold choker rests at the base of her throat. Emerald eyes gaze directly at the camera, a playful, teasing smile curving her lips. The warm, soft lighting and shallow focus create a sensual, intimate ambiance, with the blurred background of the luxurious suite adding to the seductive mood.",
+      "seed": 1641055272,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/789a62a2-fea9-4eeb-a829-85cb92fc4b41.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/9.webp",
+      "status": "ok",
+      "bytes": 1235570
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "38_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/38.webp",
+  "main_image_sha256": "d188bc743c728e90672fc51763546355d0c410e2913b0109a57e5a896fe6c925",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:08:44Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Sheer black lace lingerie hugs her curves in an intimate, candlelit setting. The delicate material leaves little to the imagination, accentuating her toned figure as she reclines on a silk duvet, one hand trailing down her side. The warm, golden light casts subtle shadows across her porcelain skin and artfully tousled magenta locks.",
+      "seed": 239866265,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/6f8f75c4-d435-45e5-9348-509340bfd39f.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/38.webp",
+      "status": "ok",
+      "bytes": 1299189
+    }
+  ]
+}

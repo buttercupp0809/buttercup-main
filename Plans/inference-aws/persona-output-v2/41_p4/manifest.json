@@ -1,0 +1,33 @@
+{
+  "persona_id": "41_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/41.webp",
+  "main_image_sha256": "5341872a2fe6ea5056e2b86a456e952692f7694c274479f13548e9c302a8654e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:17:59Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a secluded candlelit chamber, the confident young woman sits on the edge of a four-poster bed, her porcelain skin illuminated by the soft, golden glow of flickering candles. She wears a lacy, corset-style bra and thong set, the delicate fabric accentuating her toned midriff and the gentle swell of her hips. A bold red lip and statement earrings add a touch of sophistication to her sultry, inviting gaze, which meets the camera with a vulnerable, soft expression. Her fiery auburn tresses frame her face, and her relaxed posture conveys a sense of intimacy and sensuality. The shallow focus of the high-end DSLR draws the viewer's eye to her captivating features and the rich textures of the candlelit environment.",
+      "seed": 213483038,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/765bc472-7554-4a86-bb31-278c704dca18.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/41.webp",
+      "status": "ok",
+      "bytes": 1348751
+    }
+  ]
+}

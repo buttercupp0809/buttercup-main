@@ -1,0 +1,33 @@
+{
+  "persona_id": "39_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/39.webp",
+  "main_image_sha256": "f2216050dba2a87c9ec662a88cc6dc7343c587459d5d96a5efd33011b0954394",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:10:35Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A free-spirited young woman with fiery red hair in loose, tousled waves lounges seductively on a plush, velvet chaise in a dimly lit, opulent boudoir. Emerald green eyes smolder with invitation as she runs a manicured finger along the curve of a champagne flute, her porcelain skin glowing under the soft candlelight. Shallow depth of field blurs the ornate furnishings behind her, focusing the viewer's attention solely on her alluring presence.",
+      "seed": 1749257143,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/daab1972-d10a-4057-a34b-6644b2b384a3.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/39.webp",
+      "status": "ok",
+      "bytes": 1447444
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "36_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/36.webp",
+  "main_image_sha256": "b1688d1be2ab5793e734199acde5453c731a58965a8a2d25690e4a528d6ca832",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:03:41Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "She lounges sensually on a plush king-sized bed in a lavish boudoir, crimson silk sheets draped around her as she props herself up on one elbow, emerald eyes glinting with mischief under arched brows as she gazes directly into the camera, the warm glow of candlelight casting a soft, golden ambiance over her sun-kissed skin and the decadent room.",
+      "seed": 225547027,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/fc60c72e-483c-4760-a2e1-a0a1d4620838.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/36.webp",
+      "status": "ok",
+      "bytes": 1131568
+    }
+  ]
+}

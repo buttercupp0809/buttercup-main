@@ -1,0 +1,33 @@
+{
+  "persona_id": "29_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/29.webp",
+  "main_image_sha256": "d275fbe74b90aba4b4034ed4feb8a3a4ae273cb70bdb4e6add51417e99a2eae6",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:48:21Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Against the backdrop of a neon cityscape, she leans against a sleek sports car, the vibrant colors of the billboards reflecting off her glossy lips and the sheen of her raven tresses. Harsh floodlights cast deep shadows, accentuating the sharp contours of her cheekbones and the daring cut of her leather bodysuit that clings to every curve.",
+      "seed": 1546719413,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/c674bd9a-297e-472d-9135-1007926970c1.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/29.webp",
+      "status": "ok",
+      "bytes": 1224384
+    }
+  ]
+}

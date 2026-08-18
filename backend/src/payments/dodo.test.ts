@@ -34,6 +34,8 @@ const BASE_ENV_KEYS = [
   "DODO_PRODUCT_PACK_100",
   "DODO_PRODUCT_PACK_500",
   "DODO_PRODUCT_PACK_2000",
+  "DODO_PRODUCT_SUB_MONTHLY",
+  "DODO_PRODUCT_SUB_YEARLY",
 ];
 
 function clearEnv(): Record<string, string | undefined> {
@@ -101,10 +103,40 @@ describe("dodo adapter", () => {
     ).rejects.toThrow(/dodo_missing_product:DODO_PRODUCT_PACK_500/);
   });
 
+  it("resolveProductId maps sub_monthly to DODO_PRODUCT_SUB_MONTHLY", async () => {
+    process.env.DODO_API_KEY = "test_key";
+    process.env.DODO_PRODUCT_SUB_MONTHLY = "prod_sub_monthly";
+    const { resolveProductId } = await loadAdapter();
+    const id = resolveProductId({
+      userId: "u",
+      intent: "subscription",
+      plan: "sub_monthly",
+      successUrl: "https://s",
+      cancelUrl: "https://c",
+    });
+    expect(id).toBe("prod_sub_monthly");
+  });
+
+  it("resolveProductId throws documented error for sub_yearly when env is missing", async () => {
+    process.env.DODO_API_KEY = "test_key";
+    const { resolveProductId } = await loadAdapter();
+    expect(() =>
+      resolveProductId({
+        userId: "u",
+        intent: "subscription",
+        plan: "sub_yearly",
+        successUrl: "https://s",
+        cancelUrl: "https://c",
+      }),
+    ).toThrow(/dodo_missing_product:DODO_PRODUCT_SUB_YEARLY/);
+  });
+
   it.each([
     ["daily", "DODO_PRODUCT_DAILY", "prod_daily_id"],
     ["weekly", "DODO_PRODUCT_WEEKLY", "prod_weekly_id"],
     ["monthly", "DODO_PRODUCT_MONTHLY", "prod_monthly_id"],
+    ["sub_monthly", "DODO_PRODUCT_SUB_MONTHLY", "prod_sub_monthly_id"],
+    ["sub_yearly", "DODO_PRODUCT_SUB_YEARLY", "prod_sub_yearly_id"],
   ])("createCheckout for plan=%s resolves %s and carries metadata", async (plan, envKey, productId) => {
     process.env.DODO_API_KEY = "test_key";
     process.env[envKey] = productId;
@@ -114,7 +146,7 @@ describe("dodo adapter", () => {
     const req: CheckoutRequest = {
       userId: "user-42",
       intent: "subscription",
-      plan: plan as "daily" | "weekly" | "monthly",
+      plan: plan as CheckoutRequest["plan"],
       successUrl: "https://s",
       cancelUrl: "https://c",
     };

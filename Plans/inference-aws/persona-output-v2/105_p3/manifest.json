@@ -1,0 +1,33 @@
+{
+  "persona_id": "105_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/105.webp",
+  "main_image_sha256": "83424a35021866d96d683f705a55ebf0a5239adb7001b8a5156a817e35601dbc",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:31:59Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A sultry temptress reclines on a plush, king-size bed in a dimly lit penthouse suite, the soft glow of candles casting a warm, intimate ambiance. Her auburn tresses cascade across the Egyptian cotton sheets, framing her heart-shaped face and the provocative curve of her cleavage, barely contained by a sheer, black lace bralette. Her emerald eyes gleam with a playful, mischievous light as she leans back against the pillows, one hand idly toying with the delicate chain of a gold pendant, the other resting high on her thigh, just above the hem of her provocative, high-cut panties.",
+      "seed": 856164867,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/9778672c-bc64-4fbe-936b-3974a255736a.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/105.webp",
+      "status": "ok",
+      "bytes": 1330712
+    }
+  ]
+}

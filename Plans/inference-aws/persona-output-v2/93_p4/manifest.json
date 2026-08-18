@@ -1,0 +1,33 @@
+{
+  "persona_id": "93_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/93.webp",
+  "main_image_sha256": "947f13b1e36b2fddcfc57e8ec65da96b5392ddf791a0fdc379f1563ce85f123f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:02:22Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A confident, striking young beauty with fiery red hair, emerald eyes, and porcelain skin, exudes a bold, commanding presence. Clad in a fitted black sweater and high-waisted distressed denim jeans, she stands with one hand on her hip, the other trailing along the edge of a pool deck as she looks out over the crystal-clear waters. Her intense gaze and slight smirk convey a sense of dominance, matched by her powerful, athletic build and the way her boots sink into the gravel beneath her feet, captured in a tight, medium shot.",
+      "seed": 182226778,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/3c67d8c7-971b-42ac-93e7-a8767139f59a.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/93.webp",
+      "status": "ok",
+      "bytes": 1495720
+    }
+  ]
+}

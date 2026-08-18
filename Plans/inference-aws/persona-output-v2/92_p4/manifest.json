@@ -1,0 +1,33 @@
+{
+  "persona_id": "92_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/92.webp",
+  "main_image_sha256": "a3addfcc1edaeb9808fb910c420aa178cb6f7dc546c207c603086dd88c215249",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:59:49Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dramatic overhead shot, the woman's silhouette is backlit by a moody blue light, her long dark hair cascading down her back like a waterfall of night. She wears nothing but a lacy black corset that hugs her curves, the delicate fabric accentuating her every contour. Her head is tilted back, exposing her throat as she gazes up at the camera with an intense, almost predatory expression. The contrast between her pale skin and the inky darkness creates an air of mystery and allure.",
+      "seed": 125066140,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/decec2f7-a04a-41e0-ba67-a249e50163b2.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/92.webp",
+      "status": "ok",
+      "bytes": 1230427
+    }
+  ]
+}

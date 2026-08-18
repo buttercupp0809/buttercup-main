@@ -1,0 +1,33 @@
+{
+  "persona_id": "39_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/39.webp",
+  "main_image_sha256": "f2216050dba2a87c9ec662a88cc6dc7343c587459d5d96a5efd33011b0954394",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:11:58Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a moody, blue-lit scene, the free-spirited redhead stands at the edge of a rooftop pool, the city lights reflecting off the still water below. Her porcelain skin seems to glow in the cool, atmospheric light as she gazes out over the urban sprawl, her expression intense and dominant. A single, chunky necklace frames her collarbone as she crosses her arms beneath her breasts, the vintage band tee clinging to her toned physique.",
+      "seed": 1023420969,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/369ccdf4-c623-42ee-b3e7-0873ddb8b446.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/39.webp",
+      "status": "ok",
+      "bytes": 1233375
+    }
+  ]
+}

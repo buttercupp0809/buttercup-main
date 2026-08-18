@@ -1,0 +1,33 @@
+{
+  "persona_id": "62_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/62.webp",
+  "main_image_sha256": "b6c2048152a1bda5d4fb4c0ab1c6a85b053974790eb8c69ad49fab5ab75ed99c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:07:28Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Seated on a grand velvet armchair in a candlelit chamber, the woman exudes an air of sultry vulnerability. The soft, golden light illuminates her delicate features and the gentle, inviting curves of her body, which is draped in a delicate lace corset that leaves much to the imagination. Her emerald eyes are soft and alluring, her gaze searching and yearning, as if seeking connection beneath the sensual veil of her expression.",
+      "seed": 562075366,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/1e772b15-37d2-4b86-a48f-d12895e22ebb.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/62.webp",
+      "status": "ok",
+      "bytes": 1451887
+    }
+  ]
+}

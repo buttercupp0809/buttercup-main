@@ -1,0 +1,33 @@
+{
+  "persona_id": "39_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/39.webp",
+  "main_image_sha256": "f2216050dba2a87c9ec662a88cc6dc7343c587459d5d96a5efd33011b0954394",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:11:01Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "The same fiery redhead is now clad in a lacy, black corset that barely contains her ample bust, paired with a matching thong and stiletto heels. She poses on the edge of a king-sized bed in a lavish penthouse suite, the city skyline glittering behind her through floor-to-ceiling windows. A sheer, beaded coverlet drapes suggestively over her toned thighs as she looks over her shoulder with a playful, teasing smile, her tousled hair cascading down her back.",
+      "seed": 649745880,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/fbcad1de-67c1-4064-a2fb-edb622e7c2ce.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/39.webp",
+      "status": "ok",
+      "bytes": 1370752
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "113_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/113.webp",
+  "main_image_sha256": "cc558c55c7123a58dd99540a79ff91a10d580605e364145f0cb76c62ef077e4c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:54:21Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a dramatic, close-up shot, the woman's face fills the frame as she flashes a playful, teasing smile, her full, rosy lips parting to reveal a hint of straight, white teeth, her bright, emerald eyes sparkling with amusement, a single, stray lock of fiery hair framing her flushed, sun-kissed cheek as she turns her head slightly to the side, the camera capturing the delicate, freckled contours of her nose and the soft, pillowing curve of her chin.",
+      "seed": 1470931968,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/31f1cd5e-efbd-4835-bcbc-4a1a9aa4e996.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/113.webp",
+      "status": "ok",
+      "bytes": 1211914
+    }
+  ]
+}

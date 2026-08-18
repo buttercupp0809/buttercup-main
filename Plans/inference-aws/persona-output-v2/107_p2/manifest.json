@@ -1,0 +1,33 @@
+{
+  "persona_id": "107_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/107.webp",
+  "main_image_sha256": "1f3508fc57734a60afd63487e6fb70162f8f210ab57d0ee58047babec64a099d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:36:53Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM OUTFIT/ATTIRE: In the intimate candlelit chamber of an ancient castle, the spirited redhead wears nothing but a delicate lace corset that barely covers her porcelain skin, leaving her toned curves and pierced nipples on full display. The corset's intricate design of interlocking roses and vines seems to echo the lavish velvet drapes and plush carpets that surround her. Her fiery locks cascade across the silken bedding, as her emerald gaze meets yours with a sultry, inviting smile.",
+      "seed": 460117357,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/260b9a3c-d98c-496b-a79c-b023ec151525.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/107.webp",
+      "status": "ok",
+      "bytes": 1533495
+    }
+  ]
+}

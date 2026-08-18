@@ -1,0 +1,33 @@
+{
+  "persona_id": "20_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/20.webp",
+  "main_image_sha256": "a7b1c460935849d74a0bd392e00bd3adc54fb5f271c8723524ae04f34ae8430a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:26:22Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM OUTFIT/ATTIRE: In the sultry candlelit chamber, the confident beauty wears a sheer, lace-trimmed babydoll nightie that clings to her curves, the delicate fabric barely concealing her rosy nipples and toned thighs. The plunging neckline frames her pert breasts, while the short, fluttering hem leaves little to the imagination as she reclines on the plush, emerald green velvet bed.",
+      "seed": 546538627,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/1e00752c-fc8e-44fb-bf97-cefd72f050d1.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/20.webp",
+      "status": "ok",
+      "bytes": 1232362
+    }
+  ]
+}

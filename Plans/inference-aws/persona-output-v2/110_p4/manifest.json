@@ -1,0 +1,33 @@
+{
+  "persona_id": "110_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/110.webp",
+  "main_image_sha256": "cbf5b8330add23a88a6d3b1b760c3fbb352aeb4c53ee9257776346716c8b840a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:47:33Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a candlelit chamber, she sits cross-legged on a plush rug, the soft glow of flickering candles casting shadows across her features. Her raven hair falls in loose waves around an angular face with high cheekbones, defined jawline, and striking emerald eyes that gaze softly, vulnerabilities laid bare. Medium olive skin glows with a subtle sheen, hinting at her love of Amsterdam's intimate, artistic side. She wears a lace corset that cinches at the waist, the delicate fabric contrasting with her bold, confident demeanor. Chunky boots and layered necklaces complete the look, as the camera captures her in a tight medium shot from behind, the shallow depth of field emphasizing the softness of her hair and the curves of her figure, her expression open and inviting.",
+      "seed": 739436499,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/74be7723-e1c2-4c5a-a1b3-1fc9628851c2.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/110.webp",
+      "status": "ok",
+      "bytes": 1509336
+    }
+  ]
+}

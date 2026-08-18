@@ -1,0 +1,33 @@
+{
+  "persona_id": "52_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/52.webp",
+  "main_image_sha256": "aef8853bbdfaa42f44c40401a776d5dd9c41d305305e913ad8f68e1293828b0e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:43:25Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A young woman with jet black, loose waves framing a heart-shaped face, expressive hazel eyes, and smooth, golden-brown skin reclines on plush crimson velvet in a dimly lit, opulent boudoir, the vibrant hues of her sari barely visible in the sultry, candlelit atmosphere, as she smolders with a sultry, inviting gaze, captured in a cinematic close-up with a DSLR, shallow depth of field emphasizing her striking features and the ornate, gold-leafed backdrop.",
+      "seed": 1625857691,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/3a708218-d4a8-4aa2-938a-8c9be48e3101.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/52.webp",
+      "status": "ok",
+      "bytes": 2141747
+    }
+  ]
+}

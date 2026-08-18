@@ -1,0 +1,33 @@
+{
+  "persona_id": "86_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/86.webp",
+  "main_image_sha256": "21a2b5c4f9c9c6fb5530c00ebaa0f2084e982bb459b8f7566ce1b94948cc3dc3",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:40:42Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the opulent penthouse suite of a luxurious LA high-rise, a striking young woman with fiery red hair and bright green eyes, clad in a black leather bodysuit that highlights her toned physique, strikes a confident pose by the floor-to-ceiling windows overlooking the glittering cityscape, the late afternoon sunlight casting dramatic shadows on her skin as the camera frames her in a full body shot with a wide aperture to create a creamy bokeh.",
+      "seed": 1645034281,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/8c122426-449f-4073-ad43-22aa269f753f.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/86.webp",
+      "status": "ok",
+      "bytes": 1235796
+    }
+  ]
+}

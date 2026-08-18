@@ -1,0 +1,33 @@
+{
+  "persona_id": "112_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/112.webp",
+  "main_image_sha256": "3b72670281dd2f252fa0bd6362d942fc8fa8489b839d42f4ad1d4842aee4aaa5",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:51:17Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Stripped down to lacy black lingerie that barely contains her full, rounded breasts, the ravishing beauty poses on a sleek, modern yacht deck at sunset. The golden light illuminates her tanned skin and casts a warm glow over her tousled raven hair. She clutches the rail, her back arched, as the sea breeze whips at her skimpy attire, hinting at the desire beneath her confident demeanor.",
+      "seed": 1746419669,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/dd9f1bdf-087b-4e9b-928c-863c64bb2328.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/112.webp",
+      "status": "ok",
+      "bytes": 1335703
+    }
+  ]
+}

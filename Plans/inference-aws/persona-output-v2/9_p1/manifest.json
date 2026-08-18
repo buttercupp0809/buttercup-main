@@ -1,0 +1,33 @@
+{
+  "persona_id": "9_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/9.webp",
+  "main_image_sha256": "e5a36f4e5ed20bfa080365e0ff7787946710745d6229dff503b8b25ca99047ce",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:48:53Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "This young woman exudes confidence lounging on a plush yacht deck at sunset, tousled chestnut hair and emerald eyes glistening in the golden hour light. A barely-there red bikini hugs her curves as she reclines on a cushion, statement gold jewelry glinting. The surrounding deck, with its sleek white railings and teak flooring, stretches out in a shallow focus with soft bokeh, capturing her relaxed yet assertive posture and the hint of vulnerability in her sparkling eyes.",
+      "seed": 1291989074,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/70e00c95-3932-4855-8464-7eae43b7c4a5.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/9.webp",
+      "status": "ok",
+      "bytes": 1336563
+    }
+  ]
+}

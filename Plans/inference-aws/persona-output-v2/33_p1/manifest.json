@@ -1,0 +1,33 @@
+{
+  "persona_id": "33_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/33.webp",
+  "main_image_sha256": "1fa01099c006e593226150626fa3e5bb910d93d9aedf46f011baa343ced605bb",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:56:48Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM SCENE/SETTING: Captured on the expansive deck of a luxurious yacht, she reclines in a plush sun lounger, the Mediterranean Sea shimmering in the background under a fiery golden sunset. The black leather jacket and tight red dress are replaced with barely-there black strings and a shimmering gold bikini, stiletto heels discarded beside her. Her striking amber eyes smolder with confidence as she props a tanned leg over the side, the DSLR camera capturing her in a shallow focus shot with the yacht's railing and seafoam in soft focus bokeh.",
+      "seed": 607544025,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/b4fcb388-9dc4-40d7-8b2b-1b0245408127.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/33.webp",
+      "status": "ok",
+      "bytes": 1388928
+    }
+  ]
+}

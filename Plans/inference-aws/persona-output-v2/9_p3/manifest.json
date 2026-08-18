@@ -1,0 +1,33 @@
+{
+  "persona_id": "9_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/9.webp",
+  "main_image_sha256": "e5a36f4e5ed20bfa080365e0ff7787946710745d6229dff503b8b25ca99047ce",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:49:43Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On a rooftop at midnight, the city skyline stretches out in a neon-lit panorama. The young woman stands at the edge, her fitted cropped top and distressed denim jeans reflecting the colorful lights. Her chestnut hair whips in the wind as she leans forward, emerald eyes fixed on the glittering horizon. A bold gold cuff adorns her wrist, and her assertive posture conveys a sense of daring. The harsh backlight and shallow depth of field create a dramatic, cinematic effect, with the blurred cityscape and bokeh adding to the moody, intense atmosphere.",
+      "seed": 1240863382,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/18ca1bc9-560d-44cf-9883-4a721ece47ab.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/9.webp",
+      "status": "ok",
+      "bytes": 1460331
+    }
+  ]
+}

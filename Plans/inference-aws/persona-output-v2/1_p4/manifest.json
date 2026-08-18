@@ -1,0 +1,33 @@
+{
+  "persona_id": "1_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/1.webp",
+  "main_image_sha256": "bb5ec4af28f30d018b7da1953cc0aaddac98bbd24ac930deba0cfcf0fef1a8d9",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:00:30Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the hushed intimacy of a candlelit chamber, she leans against a velvet-draped wall, her slender figure barely concealed by a lacy corset and delicate, gauzy panties, her vulnerable, soft expression at odds with the provocative setting as she gazes longingly into the camera's lens.",
+      "seed": 676238334,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/9d3d5296-fa16-4510-9f1b-8ba6e687b1ba.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/1.webp",
+      "status": "ok",
+      "bytes": 1671908
+    }
+  ]
+}

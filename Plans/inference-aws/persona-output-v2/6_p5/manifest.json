@@ -1,0 +1,33 @@
+{
+  "persona_id": "6_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/6.webp",
+  "main_image_sha256": "3686167379c9d24fd03bf6b395432ddb61a45d63cc58a2e01aa6504a0c420d8d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:43:51Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In an extreme close-up, her parted lips hover just inches from the lens, her emerald eyes sparkling with mischief and desire. The shallow depth of field blurs the rest of her face into a soft focus, emphasizing the plump curve of her lower lip and the delicate freckles dusting the bridge of her nose. A single strand of fiery hair falls across her cheek, the golden highlight adding warmth to the intimate, sensual shot.",
+      "seed": 1389649994,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/97a73f64-c772-462d-8c90-b042731e22e1.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/6.webp",
+      "status": "ok",
+      "bytes": 1419229
+    }
+  ]
+}

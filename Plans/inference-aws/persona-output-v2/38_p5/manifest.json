@@ -1,0 +1,33 @@
+{
+  "persona_id": "38_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/38.webp",
+  "main_image_sha256": "d188bc743c728e90672fc51763546355d0c410e2913b0109a57e5a896fe6c925",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:09:57Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "The camera frames her from behind, capturing a tantalizing glimpse of her decolletage and the swell of her breasts as she leans over the edge of a rooftop balcony, the glittering cityscape stretching out before her. The vibrant magenta strands of her hair whip in the breeze, and the warm, golden light of the setting sun casts long shadows across her porcelain skin, emphasizing her confident, statuesque pose.",
+      "seed": 180303124,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/10379c50-c87a-429c-b93e-6162057637db.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/38.webp",
+      "status": "ok",
+      "bytes": 1144886
+    }
+  ]
+}

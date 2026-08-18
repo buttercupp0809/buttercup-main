@@ -1,0 +1,33 @@
+{
+  "persona_id": "14_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/14.webp",
+  "main_image_sha256": "414fec5dd5760cc075b59648bb16384fb28a99cb48fddfe2d12deb77c6c98fc0",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:02:03Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "An extreme close-up, the camera lens nearly touching her porcelain cheek, frames her intense, dominant gaze as she leans in, her bold, silver-studded leather jacket creaking, the harsh, blue night light of an upscale hotel room illuminating her fiery, tousled curls, the shallow focus blurring everything except her piercing green eyes, her full, crimson lips parted in a commanding snarl, the raw, cinematic intimacy evoking a sense of power and unbridled desire.",
+      "seed": 344031239,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/099dfaca-42b4-480a-9d49-6daaac69c1d6.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/14.webp",
+      "status": "ok",
+      "bytes": 1436620
+    }
+  ]
+}

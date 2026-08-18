@@ -1,0 +1,33 @@
+{
+  "persona_id": "27_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/27.webp",
+  "main_image_sha256": "fe02de3bc6a7abcb0775f83cadc9507d65b76de3cfab2bf42714ba1e0fe38f42",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:43:53Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM MOOD/EXPRESSION: With an intense, commanding gaze, the alluring woman leans against the polished mahogany bar of an upscale cocktail lounge, her smoky eyes locked on the photographer. Her full, pouty lips curve into a sly, dominant smile, hinting at her bold and unapologetic nature. She wears a revealing, skin-tight leather bodysuit that emphasizes her every curve, the sleek material accentuating her toned physique as she crosses her long, shapely legs, exuding an aura of confidence and sexual power.",
+      "seed": 1655564916,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/521e3ff4-5b22-4b78-873d-703f777673f7.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/27.webp",
+      "status": "ok",
+      "bytes": 1325992
+    }
+  ]
+}

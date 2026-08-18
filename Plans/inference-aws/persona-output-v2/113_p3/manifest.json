@@ -1,0 +1,33 @@
+{
+  "persona_id": "113_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/113.webp",
+  "main_image_sha256": "cc558c55c7123a58dd99540a79ff91a10d580605e364145f0cb76c62ef077e4c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:53:57Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Captured in the pulsating, electric glow of a neon-lit nightclub, the fiery redhead sips a martini as she leans back on a sleek, black leather banquette, her emerald eyes glittering with mischief beneath the harsh, colored lights that reflect off the glossy surfaces and dance across her athletic, denim-clad form, the air thick with the hum of music and the promise of a night to remember.",
+      "seed": 728377561,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/2994127c-f6df-448f-a952-05531c7cb2d4.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/113.webp",
+      "status": "ok",
+      "bytes": 1188601
+    }
+  ]
+}

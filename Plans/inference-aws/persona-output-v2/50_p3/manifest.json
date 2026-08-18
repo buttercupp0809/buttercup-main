@@ -1,0 +1,33 @@
+{
+  "persona_id": "50_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/50.webp",
+  "main_image_sha256": "711c31b334b0de5956f0746289ca8551d83bbf87d7264dee5b9b17248a8e57f1",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:39:39Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORMED LIGHTING/TIME: Neon-lit club at 2 am, pulsating disco lights strobing across her figure. She stands in the center of the dance floor, a sheer beaded bodysuit that leaves little to the imagination, her emerald eyes glittering under the harsh glare. A sequined fedora sits atop her dark tresses, tilted at a seductive angle.",
+      "seed": 13089325,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/6a19da4e-2041-4127-9839-95e4c4dc7cfb.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/50.webp",
+      "status": "ok",
+      "bytes": 1256577
+    }
+  ]
+}

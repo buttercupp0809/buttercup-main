@@ -1,0 +1,33 @@
+{
+  "persona_id": "18_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/18.webp",
+  "main_image_sha256": "6c574572ff43fd95ebfcb5a9940acb2b14f6cbda129f4faaefd4853a24d99685",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:22:53Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Captured in a provocative, overhead shot, she reclines on a velvet-draped chaise, her emerald dress barely containing her curves. The camera's shallow focus blurs the opulent boudoir into a soft, creamy bokeh, while her raven tresses spill across the silk like a waterfall of night. Her sapphire eyes seem to pierce the lens, drawing the viewer into a world of unspoken desire.",
+      "seed": 1767571811,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/05b5c4aa-f95c-4df7-b979-42d59273987e.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/18.webp",
+      "status": "ok",
+      "bytes": 1576736
+    }
+  ]
+}

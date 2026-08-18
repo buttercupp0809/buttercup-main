@@ -1,0 +1,33 @@
+{
+  "persona_id": "93_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/93.webp",
+  "main_image_sha256": "947f13b1e36b2fddcfc57e8ec65da96b5392ddf791a0fdc379f1563ce85f123f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:00:56Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A striking young woman with fiery red curls falling in loose waves, emerald eyes sparkling with mischief under thick lashes, and porcelain skin dusted with a rosy glow, reclines on a plush, velvet chaise in a dimly lit, ornate boudoir. The fitted black sweater and high-waisted distressed denim jeans remain, but the Celtic knot brooch is replaced by a delicate diamond choker. A silver tray bearing a champagne flute and a single, crimson rose rests on the nearby nightstand, evoking an air of indulgence and seduction.",
+      "seed": 1576214403,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/7ea38db9-5a58-4bd0-85a7-200e69965da6.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/93.webp",
+      "status": "ok",
+      "bytes": 1576494
+    }
+  ]
+}

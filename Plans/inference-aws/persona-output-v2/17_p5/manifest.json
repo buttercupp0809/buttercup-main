@@ -1,0 +1,33 @@
+{
+  "persona_id": "17_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/17.webp",
+  "main_image_sha256": "27e331afe9ff5f6ad1365c9b440f4c7659165a72cabd8f4fdb0f083aa135836d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:20:36Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM CAMERA ANGLE/COMPOSITION: A tight, medium shot from behind, looking over the woman's shoulder as she glances coyly to the side, her fiery hair cascading over one eye. The camera is positioned low, emphasizing her curves and the sleek lines of her black jumpsuit. A blurred cityscape in the background adds depth and context to the provocative pose.",
+      "seed": 1147908947,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/8b77b349-fa51-4d1b-ab01-28d7454e0831.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/17.webp",
+      "status": "ok",
+      "bytes": 1095137
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "70_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/70.webp",
+  "main_image_sha256": "b84de962eb2833a8963fcc8fc6fe5b00d254f183f6dcbcbc91b48416cc69bb27",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:25:22Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Framed in an extreme close-up, the captivating young woman fills the frame, her full lips parted slightly as she looks directly into the lens with a bold, commanding expression. Her vibrant red hair is styled in a messy, asymmetrical bob that frames her striking features, while her expressive green eyes sparkle with creative energy. A subtle highlight on her pouty lips and the faint shadow on her cheekbones add depth to the tight medium shot, captured with a shallow depth of field that blurs the surrounding environment, focusing the viewer's attention solely on her captivating gaze.",
+      "seed": 566379850,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/bde82717-ab63-4bca-b1e7-43e68c860e33.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/70.webp",
+      "status": "ok",
+      "bytes": 1337365
+    }
+  ]
+}

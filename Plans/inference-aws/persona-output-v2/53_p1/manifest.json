@@ -1,0 +1,33 @@
+{
+  "persona_id": "53_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/53.webp",
+  "main_image_sha256": "5736e39c9d9cf98d8de370f5d2616766b517922e5bd0ea79251a7af39c0565a5",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:45:55Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On the sun-drenched deck of a luxury yacht, the striking woman reclines languidly on a plush lounger, her auburn tresses cascading down her back as she gazes out at the endless blue horizon. The warm golden light of late afternoon bathes her alabaster skin, casting a flattering glow across the flowing maxi dress that clings to her curves.",
+      "seed": 281050825,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/2597c534-56f0-4da5-a708-311294a79923.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/53.webp",
+      "status": "ok",
+      "bytes": 1136070
+    }
+  ]
+}

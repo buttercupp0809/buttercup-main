@@ -1,0 +1,33 @@
+{
+  "persona_id": "61_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/61.webp",
+  "main_image_sha256": "d2d49cf8efc07da7e7902c21e52e584935b7da753a351d44de36cb9833cce21e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:04:33Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORMED OUTFIT/ATTIRE: Stripped bare by the golden Oregon sun on a yacht deck, her sun-kissed skin glistens with dew as she lounges on a plush cushion, a barely-there bikini hugging her taut figure. The sheer fabric leaves little to the imagination, emphasizing the swell of her breasts and the delicate curve of her hips. A gold chain necklace and oversized sunglasses adorn her, exuding effortless sophistication.",
+      "seed": 1416069790,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/02097c30-0689-43a7-bd36-ada9552ad5a6.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/61.webp",
+      "status": "ok",
+      "bytes": 1319593
+    }
+  ]
+}

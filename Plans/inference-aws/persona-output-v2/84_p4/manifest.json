@@ -1,0 +1,33 @@
+{
+  "persona_id": "84_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/84.webp",
+  "main_image_sha256": "d3dddfd230e9db11bbdff722921e50e07d36e382de8fc020b7cb29fc27cd6a31",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:36:54Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM MOOD/EXPRESSION: With a sultry, inviting gaze, the woman reclines on a plush, cream-colored sofa in a dimly lit, luxurious hotel suite. Her evening gown has slipped off one shoulder, exposing the creamy expanse of her d\u00e9colletage and the vintage necklace that rests between her breasts. One hand trails lazily down her side as she looks directly into the camera, her full, red lips slightly parted in a hint of a seductive smile.",
+      "seed": 1910133330,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/4d340384-0958-429d-824d-11c94bc57411.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/84.webp",
+      "status": "ok",
+      "bytes": 1392827
+    }
+  ]
+}

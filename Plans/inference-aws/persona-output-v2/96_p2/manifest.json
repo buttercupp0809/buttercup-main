@@ -1,0 +1,33 @@
+{
+  "persona_id": "96_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/96.webp",
+  "main_image_sha256": "b3e71d965a1a09369f7461b4488e255c9a65a48958ac7cc77aea3f3eed759b47",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:09:44Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On the deck of a luxurious yacht, the exotic beauty wears a black leather bodysuit, the sleek material hugging every curve. The outfit is cinched at the waist by a wide, studded belt, with a daring cutout exposing her toned midriff. Raven locks cascade down her back, while emerald eyes sparkle with mischief under the golden sun. High cheekbones and full lips suggest a dancer's grace as she leans against the yacht's railing, strappy stilettos adding to her statuesque appearance. The cinematic focus remains on her captivating facial features and inviting gaze.",
+      "seed": 232897288,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/aeeab28e-2caa-42fc-90ac-d1de7586a87c.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/96.webp",
+      "status": "ok",
+      "bytes": 1207106
+    }
+  ]
+}

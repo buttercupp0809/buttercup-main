@@ -1,0 +1,33 @@
+{
+  "persona_id": "32_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/32.webp",
+  "main_image_sha256": "f79b96a88f5bb7aa54d9edc10cfeaeae4c640cb9f289a2e8cc08a711793ff447",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:54:50Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "She reclines on a plush chaise, the sheer black lace of her bra and thong barely concealing her toned physique, her leather jacket draped artfully over one shoulder, hazel eyes smoldering beneath thick lashes as she smokes a long cigarette, the deep shadows of a dimly lit penthouse suite accentuating her sensual curves.",
+      "seed": 1757923204,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/2d847f38-0559-4584-950b-97db652ae7ff.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/32.webp",
+      "status": "ok",
+      "bytes": 1161956
+    }
+  ]
+}

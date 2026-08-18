@@ -1,0 +1,33 @@
+{
+  "persona_id": "98_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/98.webp",
+  "main_image_sha256": "69a8a0156e6fce31bc4e0b691b8af46fe031767798ddacb775b1d61669193331",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:14:54Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Bathed in the moody blue light of a dimly lit boudoir, the confident beauty lounges across a sprawling four-poster bed, her midnight blue gown a tantalizing whisper of fabric against her skin. Shadows dance across her face, the soft curves of her cheeks and the gentle arch of her brows illuminated only by the flickering candlelight, casting an air of mystery and seduction.",
+      "seed": 1158620426,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/708c24fa-b08f-41b8-87a7-a563139eb8fa.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/98.webp",
+      "status": "ok",
+      "bytes": 1136679
+    }
+  ]
+}

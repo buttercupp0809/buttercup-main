@@ -1,0 +1,33 @@
+{
+  "persona_id": "47_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/47.webp",
+  "main_image_sha256": "9d75aba913304ecd16ce3a6fe597eadcd47d91848f1953ca8d707f7c2acefb8d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:33:22Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "An enigmatic beauty glances over her shoulder, her emerald eyes glinting with mischief as she saunters through a dimly lit art gallery. Raven tresses cascade down her back, and a sleek black dress with a daring thigh-high slit clings to her toned legs. A gold cuff adorns her wrist as she poses in front of an abstract modern painting, the DSLR's camera positioned at a 45-degree angle to capture the enticing curve of her hip and the subtle tension in her posture. The blurred gallery background adds a sense of mystery to her provocative pose.",
+      "seed": 996728328,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/da1b3657-9407-4f46-8e36-cb4180a1d49f.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/47.webp",
+      "status": "ok",
+      "bytes": 944083
+    }
+  ]
+}

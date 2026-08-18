@@ -1,0 +1,33 @@
+{
+  "persona_id": "106_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/106.webp",
+  "main_image_sha256": "fe716dbaa6cf2b809253a4927de57eba6b25e810f919cdfe6fa46f9cb6377069",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:33:25Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the dimly lit boudoir, the woman lounges on satin sheets, her auburn hair fanned out around her like a fiery halo. The flickering candlelight casts seductive shadows across her smooth, freckled skin as she gazes up at the camera with sultry, half-lidded eyes, a coy smile playing on her lips.",
+      "seed": 1761873361,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/593b9863-4896-44de-986d-19dd2d6500e4.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/106.webp",
+      "status": "ok",
+      "bytes": 1197608
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "16_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/16.webp",
+  "main_image_sha256": "06a120920f7765815317cf81d86ab21cec9567e403567cf15026a99336254a3c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:06:12Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the warm glow of a candlelit chamber, the confident beauty wears a form-fitting leather bodysuit that clings to her every curve. The dark, supple material contrasts stunningly with her sun-kissed skin and honey-blonde tresses, which tumble over one shoulder in soft waves. Her amber eyes smolder in the soft light, her full lips parted in a subtle, inviting smile. The intimate setting, with its plush velvet furnishings and delicate candelabras, creates a sense of opulence and sensuality. Render with a shallow depth of field to emphasize the model's alluring form, and a warm, golden color palette that evokes comfort and desire.",
+      "seed": 458658507,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/71b6019b-d0a2-4deb-a682-83b32b76172f.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/16.webp",
+      "status": "ok",
+      "bytes": 1272998
+    }
+  ]
+}

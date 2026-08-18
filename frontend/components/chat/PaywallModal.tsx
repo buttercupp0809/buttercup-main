@@ -54,8 +54,14 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
   const [dismissed, setDismissed] = React.useState(false);
   const dialogRef = React.useRef<HTMLDivElement | null>(null);
 
+  // The chat paywall promotes ONLY the two recurring subscription tiles
+  // (`sub_monthly`, `sub_yearly`). One-time passes stay on /billing so this
+  // surface stays focused on the highest-conversion offer.
   const plans = React.useMemo(
-    () => (plansFromEvent.length > 0 ? plansFromEvent : (fallbackPlans ?? [])).filter((p) => p.plan !== "free"),
+    () =>
+      (plansFromEvent.length > 0 ? plansFromEvent : (fallbackPlans ?? [])).filter(
+        (p) => p.plan === "sub_monthly" || p.plan === "sub_yearly",
+      ),
     [plansFromEvent, fallbackPlans],
   );
 
@@ -188,11 +194,12 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
 
   const showBuyTokens = kind === "image" || kind === "video";
 
-  // Recommendation heuristic: with 3 plans, mark the middle one as
-  // "Most popular" and the longest as "Best value". With 2 plans, mark the
-  // longer one as "Best value". With 1 plan or 0, no ribbon.
-  const highlightIndex = plans.length >= 3 ? 1 : -1;
-  const bestValueIndex = plans.length >= 2 ? plans.length - 1 : -1;
+  // With only the two subscription tiles on this modal, the monthly plan
+  // is the "Most popular" hero and yearly gets no secondary ribbon; the
+  // yearly savings show up on /billing where the full grid lives.
+  const monthlyIndex = plans.findIndex((p) => p.plan === "sub_monthly");
+  const highlightIndex = monthlyIndex;
+  const bestValueIndex = -1;
   const kindIcon =
     kind === "image" ? <ImageIcon className="h-6 w-6" /> : kind === "video" ? <VideoIcon className="h-6 w-6" /> : <SparkleIcon className="h-6 w-6" />;
 
@@ -299,10 +306,11 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
             </div>
           ) : null}
 
-          {/* gap-8 on mobile so the "-top-3" ribbon on each card never
-              overlaps the card stacked above it. gap-4 on md+ where the
-              three cards sit side-by-side. */}
-          <div className="mt-10 grid grid-cols-1 gap-8 md:mt-8 md:grid-cols-3 md:gap-4">
+          {/* Two subscription tiles: single column on mobile (gap-8 so the
+              "-top-3" ribbon does not overlap the card above), side-by-side
+              from md+. Constrained max-width + mx-auto keeps the pair
+              centered inside the wider modal. */}
+          <div className="mx-auto mt-10 grid w-full max-w-2xl grid-cols-1 gap-8 md:mt-8 md:grid-cols-2 md:gap-5">
             {plans.map((p, i) => {
               const highlight = i === highlightIndex;
               const bestValue = !highlight && i === bestValueIndex;
@@ -350,7 +358,15 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
                     className="mt-1 text-xs uppercase tracking-wider"
                     style={{ color: "hsl(var(--buttercupp-muted))" }}
                   >
-                    {p.durationDays === 1 ? "1 day access" : p.durationDays === 7 ? "7 days access" : `${p.durationDays} days access`}
+                    {p.plan === "sub_yearly"
+                      ? "Renews yearly"
+                      : p.plan === "sub_monthly"
+                        ? "Renews monthly"
+                        : p.durationDays === 1
+                          ? "1 day access"
+                          : p.durationDays === 7
+                            ? "7 days access"
+                            : `${p.durationDays} days access`}
                   </div>
 
                   <ul className="mt-4 space-y-2 text-sm">

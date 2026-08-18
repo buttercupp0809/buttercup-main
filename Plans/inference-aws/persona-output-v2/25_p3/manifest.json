@@ -1,0 +1,33 @@
+{
+  "persona_id": "25_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/25.webp",
+  "main_image_sha256": "e9017f0533920451bc064679f2e0b79fe697b3481b0c73eed02b5d6af501e217",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:38:24Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Under the hypnotic glow of neon lights, the sultry belle struts her stuff on the yacht's deck at night, her burgundy gown shimmering with every step. The city skyline blurs in the background as she tosses her head back, her long raven tresses whipping behind her.",
+      "seed": 1426394052,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/ae5e5561-bbb8-4783-8745-68232eb3ee20.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/25.webp",
+      "status": "ok",
+      "bytes": 1405629
+    }
+  ]
+}

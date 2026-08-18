@@ -1,0 +1,33 @@
+{
+  "persona_id": "57_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/57.webp",
+  "main_image_sha256": "e4cf8e105dd732f734ec1a5fcce8588042abac55cc5e05a186ed29441a8c12e4",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:55:47Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Captured in the moody, blue-tinged light of a late-night, exclusive club, a stunning, raven-haired woman leans against a gleaming, chrome bar, her emerald eyes flashing with mischief as she raises a crystal glass of champagne in a toast to the camera, her porcelain skin radiant under the neon glow, a tight, cream-colored bodysuit hugging her every curve, the fabric clinging to the swell of her breasts, the defined lines of her abdominal muscles, and the sensuous curve of her hips, her long, toned legs crossed, one stiletto heel resting on the bar, the blurred, pulsating dance floor and shadowy figures in the background underscoring the illicit, after-hours atmosphere, the shallow focus adding to the sense of intimacy and intrigue.",
+      "seed": 678680164,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/ed206efd-b1cb-4aa0-ab36-4fbee0b15bad.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/57.webp",
+      "status": "ok",
+      "bytes": 1532934
+    }
+  ]
+}

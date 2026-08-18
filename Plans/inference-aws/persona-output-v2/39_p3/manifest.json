@@ -1,0 +1,33 @@
+{
+  "persona_id": "39_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/39.webp",
+  "main_image_sha256": "f2216050dba2a87c9ec662a88cc6dc7343c587459d5d96a5efd33011b0954394",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:11:35Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Captured in the harsh, neon glow of a downtown club, the adventurous young woman's features are illuminated from below, accentuating the fiery hue of her hair and the emerald sparkle of her eyes. She leans against a polished chrome bar, her vintage band tee stretched taut across her chest as she sips a cocktail, her scuffed ankle boots crossed casually at the ankle. The shallow depth of field and bokeh blur the pulsating crowd, drawing the viewer's focus solely to her striking, confident demeanor.",
+      "seed": 1909731549,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/3fe417ad-0bb5-4a35-85f5-8d65da70e3ff.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/39.webp",
+      "status": "ok",
+      "bytes": 1340748
+    }
+  ]
+}

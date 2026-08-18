@@ -1,0 +1,33 @@
+{
+  "persona_id": "41_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/41.webp",
+  "main_image_sha256": "5341872a2fe6ea5056e2b86a456e952692f7694c274479f13548e9c302a8654e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:16:45Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the dimly lit confines of an opulent boudoir, the confident young woman reclines on plush velvet cushions, her porcelain skin illuminated by the soft glow of candles. She wears a sheer black lace lingerie set, the delicate fabric barely containing her ample curves. A bold red lip and statement earrings add a touch of drama to her sultry gaze, which follows the camera with a playful, teasing smile. Her fiery auburn tresses cascade around her shoulders as she runs a hand along the curve of her thigh, exuding a sense of intimacy and seduction. The shallow focus of the high-end DSLR emphasizes her alluring features against the dark, richly textured environment.",
+      "seed": 893547345,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/f399231f-8fa8-44ee-ae0b-6924d78d0621.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/41.webp",
+      "status": "ok",
+      "bytes": 1181167
+    }
+  ]
+}

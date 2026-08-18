@@ -1,0 +1,33 @@
+{
+  "persona_id": "50_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/50.webp",
+  "main_image_sha256": "711c31b334b0de5956f0746289ca8551d83bbf87d7264dee5b9b17248a8e57f1",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:40:28Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORMED CAMERA ANGLE: Rooftop at golden hour, city skyline glowing in the background. The camera shoots from behind, framing her from the hips up as she turns to glance over her shoulder, her long hair swinging with the motion. Her bold, emerald eyes meet the lens, a sly, knowing smile playing on her lips as she tilts her head, her skin glowing in the warm light.",
+      "seed": 1520848963,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/928df21d-df2a-4dd4-9c9e-24249c34ecee.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/50.webp",
+      "status": "ok",
+      "bytes": 1209784
+    }
+  ]
+}

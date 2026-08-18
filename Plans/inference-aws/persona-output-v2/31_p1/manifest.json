@@ -1,0 +1,33 @@
+{
+  "persona_id": "31_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/31.webp",
+  "main_image_sha256": "422cea2ff7c4983934712fd4c75db98bf5e6e2dc182320733fd4ebba8bf62877",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:52:08Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORMED SCENE/SETTING: In the shadows of a lavish penthouse suite, the elegant woman reclines on a plush velvet chaise, her gown riding up to reveal a tantalizing expanse of porcelain skin. The room is bathed in a moody blue night light, with city lights reflecting off the floor-to-ceiling windows. A silver tray with a single champagne flute and an unlit cigar rest on a nearby ottoman, evoking an intimate evening of indulgence.",
+      "seed": 1542667140,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/4b8fbe92-1bb9-45fa-a451-032ae2b1f2b7.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/31.webp",
+      "status": "ok",
+      "bytes": 1468078
+    }
+  ]
+}

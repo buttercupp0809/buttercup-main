@@ -1,0 +1,33 @@
+{
+  "persona_id": "85_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/85.webp",
+  "main_image_sha256": "2a9dfe1a270857e158d517b9b2f4c27941018a200451d35cba1dc2c3c32a952c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:38:25Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Stripped to her sheer lace lingerie, the adventurous redhead reclines on satin sheets in a candlelit boudoir. The intimate space is adorned with velvet drapes, a four-poster bed, and a marble fireplace. Her full lips are slightly parted, green eyes heavy-lidded with desire, as she beckons the camera with a slender finger.",
+      "seed": 1331890870,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/d701acef-ebf6-47cb-9d5a-8fb4d89d710f.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/85.webp",
+      "status": "ok",
+      "bytes": 1332604
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "2_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/2.png",
+  "main_image_sha256": "b0573f26ffe937ecc59b0b8e2f123a63635f0e4d775008ccc6808e38c78faef9",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:03:27Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Shot from behind, this seductress glances over her shoulder with a playful, inviting smile, her fiery tresses cascading down her back in loose, sensual waves. A deep, plunging neckline of her red dress frames the elegant line of her neck and shoulders, while the thigh-high slit reveals a tantalizing glimpse of toned, creamy thigh. Shallow focus blurs the opulent background of a luxurious penthouse suite, drawing the viewer's eye to her captivating, flirtatious presence.",
+      "seed": 1702091545,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/e755edfc-cf4e-4cbf-958d-094e2a0ee06e.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/2.png",
+      "status": "ok",
+      "bytes": 995732
+    }
+  ]
+}

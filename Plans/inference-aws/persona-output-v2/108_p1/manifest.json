@@ -1,0 +1,33 @@
+{
+  "persona_id": "108_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/108.webp",
+  "main_image_sha256": "9b7ffc00333362f092bd9b04e6fc9ab47494e2fd2ce5f34bba200838dce9cdda",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:39:01Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "She lounges on the plush, crimson velvet chaise in a lavish, dimly lit boudoir, the scent of jasmine and sandalwood filling the air. The character's raven tresses spill across the silk-covered pillows as she props an elbow on one knee, her luminous emerald gaze fixed on the viewer with a sultry, inviting smile. Her midnight-blue gown, now a sheer, lace-trimmed negligee, clings to her curves, held together by delicate satin ribbons. A golden, filigree headpiece rests atop her cascading hair, while dainty, ankle-strap stilettos peek from beneath the hem. A DSLR camera captures her sensual, shallow-focus portrait, the bokeh of the soft lights blurring the opulent surroundings.",
+      "seed": 1505901830,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/76041b02-21c9-42fc-b2c5-b72f39b25690.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/108.webp",
+      "status": "ok",
+      "bytes": 1492238
+    }
+  ]
+}

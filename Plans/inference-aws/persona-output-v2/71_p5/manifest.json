@@ -1,0 +1,33 @@
+{
+  "persona_id": "71_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/71.webp",
+  "main_image_sha256": "8fa038a5428cdf35c75a7e2b82f2af7c77a45e09629b6adb50f4b96f09f48499",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:27:35Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a daring, over-the-shoulder shot, the sultry beauty's striking profile is framed against the vibrant, neon lights of a pulsating nightclub. She wears a daring, red, high-cut bodysuit that leaves little to the imagination, the glossy material accentuating her toned, athletic physique. Her raven hair is pulled back into a sleek, high ponytail, exposing her elegant, caramel neck and the delicate curve of her ear. Her emerald eyes gleam with infectious energy and unbridled passion as she turns to glance over her shoulder, her full, plump lips parted in a playful, teasing smile that seems to promise untold pleasures.",
+      "seed": 1822958502,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/e6c5c4a5-0f17-47fe-8c6a-425203365856.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/71.webp",
+      "status": "ok",
+      "bytes": 1360551
+    }
+  ]
+}

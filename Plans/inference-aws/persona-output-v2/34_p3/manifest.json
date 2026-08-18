@@ -1,0 +1,33 @@
+{
+  "persona_id": "34_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/34.webp",
+  "main_image_sha256": "965804d20e9f8fbcc572fa45ed9bacbad85d7ceffcbf58a2499cd5ee7b0cc19d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:00:00Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the soft, golden light of a candlelit chamber, this statuesque beauty exudes sensuality in a sheer, black lace corset that accentuates her every curve. The delicate fabric molds to her porcelain skin, leaving little to the imagination, while her icy blonde mane spills down her back in loose, sensual waves. Her piercing emerald eyes hold a vulnerable, soft expression as she gazes into the camera, the warm, intimate glow of the candles casting a flattering, cinematic light on her flawless features and the delicate, intricate patterns of the corset in the shallow depth of field.",
+      "seed": 20885263,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/9fbfe93c-1282-4303-b035-8aa3d7c5d69d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/34.webp",
+      "status": "ok",
+      "bytes": 1187531
+    }
+  ]
+}

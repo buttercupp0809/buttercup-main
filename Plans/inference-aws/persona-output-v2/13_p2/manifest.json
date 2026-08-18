@@ -1,0 +1,33 @@
+{
+  "persona_id": "13_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/13.webp",
+  "main_image_sha256": "6f45a212916d6541ee2147854c709c997753f61df6fd4b6af7fb2d0a8ba1b32b",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:58:28Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORMED OUTFIT/ATTIRE: On the deck of a sleek, modern yacht, the woman's outfit transforms into a scintillating leather bodysuit, hugging every curve. The fitted design exposes her toned midriff and leaves little to the imagination. A plunging neckline and daring thigh-high slits create a provocative display of skin and sensuality.",
+      "seed": 1844546461,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/bf59807c-b427-48b6-b25a-4caf93203894.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/13.webp",
+      "status": "ok",
+      "bytes": 1361123
+    }
+  ]
+}

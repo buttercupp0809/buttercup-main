@@ -1,0 +1,33 @@
+{
+  "persona_id": "40_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/40.webp",
+  "main_image_sha256": "41fa15425f5714142413ac499c782a0e76f2c7fc76f6cf025afd9fe0bf1d45d3",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:13:04Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a luxurious penthouse suite, the striking young woman lounges seductively on a plush velvet chaise, her honey-blonde curls cascading over bare shoulders as she gazes directly at the camera through half-lidded emerald eyes. A sheer black teddy with delicate lace trim clings to her porcelain skin, the subtle swell of her breasts and toned stomach barely concealed. Shallow focus captures the play of city lights through floor-to-ceiling windows, the bokeh of the DSLR camera blurring the background into a soft, hazy glow.",
+      "seed": 156263832,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/742e652e-36f2-4e00-8c13-75bd46c5adba.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/40.webp",
+      "status": "ok",
+      "bytes": 1366202
+    }
+  ]
+}

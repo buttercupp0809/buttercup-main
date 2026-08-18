@@ -1,0 +1,33 @@
+{
+  "persona_id": "29_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/29.webp",
+  "main_image_sha256": "d275fbe74b90aba4b4034ed4feb8a3a4ae273cb70bdb4e6add51417e99a2eae6",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:48:45Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a soft focus of candlelight, her face is a picture of vulnerability, her full lips parted in a breathy sigh as she looks up at the camera from beneath a veil of silky auburn hair. A delicate lace camisole clings to the swells of her breasts, the soft glow illuminating the freckles dusting her shoulders.",
+      "seed": 1162709366,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/da02c9b5-0ba2-41a4-ab9d-8625908cf74c.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/29.webp",
+      "status": "ok",
+      "bytes": 1354763
+    }
+  ]
+}

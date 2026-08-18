@@ -1,0 +1,33 @@
+{
+  "persona_id": "56_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/56.webp",
+  "main_image_sha256": "a44413dcb11cba341462e5a7abc192276cefb5d65205881fc59dcd92e91b2072",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:53:31Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM LIGHTING/TIME: In a neon-lit club, the bold redhead stands out amidst the pulsating crowd. She sports a distressed denim jacket over a band tee, the black fabric absorbing the harsh light while her fiery hair glows like a beacon. High-waisted skinny jeans and scuffed ankle boots complete her outfit, which is accessorized with a chunky silver necklace. Multiple colorful tattoos adorn her arms, visible under the strobing lights. Her piercing emerald eyes seem to sparkle with mischief as she looks directly at the camera, a bold and commanding expression on her face. The shallow depth of field blurs the background, focusing attention solely on her striking features and captivating presence.",
+      "seed": 1512164995,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/c71ad0b9-ba6a-46b9-8230-b702d76eee94.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/56.webp",
+      "status": "ok",
+      "bytes": 1371765
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "63_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/63.webp",
+  "main_image_sha256": "22ac32a05ad541bcc770fba5ddd13ac0492bd88f352e793b3aeba732f03c1d24",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:09:15Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM LIGHTING/TIME: At a lavish nightclub, she reclines on a plush couch, surrounded by pulsating neon lights that cast a kaleidoscope of colors across her face and the champagne-hued dress clinging to her curves. The harsh, artificial glow accentuates her raven hair, emerald eyes, and full lips, as if she's a siren emerging from the depths of the club.",
+      "seed": 1768057204,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/b73d9239-32fc-43e0-b10d-53d304ebf6ab.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/63.webp",
+      "status": "ok",
+      "bytes": 1296625
+    }
+  ]
+}

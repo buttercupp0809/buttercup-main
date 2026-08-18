@@ -1,0 +1,33 @@
+{
+  "persona_id": "101_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/101.webp",
+  "main_image_sha256": "61c3f77ce9659974a8b2b3dc3e9e94d8164ae8bcec32bca0683d0ecd48cbb8a2",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:21:28Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Hazel reclines sultrily on a plush velvet chaise in a dimly lit, crimson-hued boudoir. The soft glow of flickering candelabras casts a warm, inviting ambiance. A crystal champagne flute rests precariously on her hip, and a trail of discarded silk lingerie leads from the bed to her outstretched legs. The DSLR captures her in a shallow focus, the blurred background a sensual blur of rich textiles and ornate furnishings.",
+      "seed": 630379685,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/64281948-a9c2-453f-8999-d5b316df5335.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/101.webp",
+      "status": "ok",
+      "bytes": 1283673
+    }
+  ]
+}

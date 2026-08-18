@@ -1,0 +1,33 @@
+{
+  "persona_id": "80_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/80.webp",
+  "main_image_sha256": "154961ea3e25385ac6f9be8687827802f7759b00e974bce3f99ca3c3b3500a0e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:26:25Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Captured on a plush yacht deck at dusk, the raven-haired beauty lounges on a crimson leather banquette, her cerulean eyes half-lidded with desire. The warm glow of sunset casts long shadows across her porcelain skin, barely visible through a sheer lace bra and matching garter belt. Her tousled raven hair cascades over one bare shoulder as she reaches for a champagne flute, the silver choker and earrings glinting in the fading light.",
+      "seed": 1262250469,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/3f20e383-8674-453e-bf2f-ede7584a841d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/80.webp",
+      "status": "ok",
+      "bytes": 1260004
+    }
+  ]
+}

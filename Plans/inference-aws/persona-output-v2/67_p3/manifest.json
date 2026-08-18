@@ -1,0 +1,33 @@
+{
+  "persona_id": "67_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/67.webp",
+  "main_image_sha256": "2e821dcdea49a575db3bb044fc6481cf4315c90f88a729bfeed7c190a487013c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:17:55Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "The raven-haired beauty struts down a dimly lit, neon-lit nightclub corridor, her porcelain skin glowing in the harsh electric light. Emerald eyes flash with bold confidence, set beneath dramatic arching brows, as she tosses her dark tresses over one shoulder. A tight, black leather bodysuit clings to her every curve, the reflective material highlighting her toned physique. A DSLR's shallow focus blurs the chaotic background as she exudes dominant, unapologetic allure.",
+      "seed": 974828147,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/7f8eaad6-4834-49c1-9cb1-a1dc1cba77b4.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/67.webp",
+      "status": "ok",
+      "bytes": 1227333
+    }
+  ]
+}

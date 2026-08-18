@@ -1,0 +1,33 @@
+{
+  "persona_id": "106_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/106.webp",
+  "main_image_sha256": "fe716dbaa6cf2b809253a4927de57eba6b25e810f919cdfe6fa46f9cb6377069",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:33:49Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Clad in a sheer black lace teddy, the woman perches on the edge of a plush leather sofa, one long leg crossed over the other. The revealing garment leaves little to the imagination, showcasing her toned physique and the tantalizing curve of her breasts. Her hazel eyes sparkle with mischief as she looks directly into the camera lens.",
+      "seed": 1545227589,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/95e8ec5f-bc14-4540-b5f5-72da32cbdc80.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/106.webp",
+      "status": "ok",
+      "bytes": 1278149
+    }
+  ]
+}

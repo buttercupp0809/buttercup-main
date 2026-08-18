@@ -1,0 +1,33 @@
+{
+  "persona_id": "74_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/74.webp",
+  "main_image_sha256": "a8d30a0d4f3b018e74982207b65f89100139f82158eecfafc39760a011d74c0b",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:32:34Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On a plush, velvet-covered bed in a dimly lit boudoir, the striking young woman reclines seductively, her auburn tresses cascading across the rich fabric like a fiery waterfall. Her emerald eyes gleam with mischief as she parts her luscious lips, revealing a hint of pouty invitation. Captured with a DSLR, the shallow depth of field blurs the ornate room decor into a soft focus, emphasizing the subject's captivating form.",
+      "seed": 1830249144,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/b2c493c4-a5c9-4749-a4b3-5e986dda3fad.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/74.webp",
+      "status": "ok",
+      "bytes": 1299208
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "42_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/42.webp",
+  "main_image_sha256": "999ce0469e413c51be6c69debc9c24e77073bab7a8bdcc042be2b3f535582ed0",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:19:17Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORMED SCENE/SETTING: Amidst the plush opulence of a penthouse suite, the raven-haired beauty reclines on a velvet chaise, her vintage lace dress hiked up to reveal long, toned legs crossed seductively. A champagne flute rests on a nearby side table, alongside a half-empty bottle of Veuve Clicquot. Floor-to-ceiling windows frame a stunning cityscape at dusk, the sky ablaze with hues of orange and pink. A single candle flickers on a nearby console, casting a warm glow on her alabaster skin as she gazes out at the breathtaking view, her emerald eyes seeming to hold a world of mystery.",
+      "seed": 1043942907,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/e11997fe-7d52-4850-a29c-68b99926c230.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/42.webp",
+      "status": "ok",
+      "bytes": 1521044
+    }
+  ]
+}

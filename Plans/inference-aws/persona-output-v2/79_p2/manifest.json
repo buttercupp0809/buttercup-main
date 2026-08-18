@@ -1,0 +1,33 @@
+{
+  "persona_id": "79_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/79.webp",
+  "main_image_sha256": "8de79f5879ad5cffcd3469fb2c3508ef1d0805c37de90f4e3eceab14133a37e2",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:43:45Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM OUTFIT/ATTIRE: The same striking young woman from the base prompt stands in a luxurious penthouse suite, her figure clad in a sheer, black lace lingerie set that leaves little to the imagination. The delicate fabric hugs her curves, emphasizing her ample cleavage and toned physique. A matching lace thong and sheer black stockings complete the sultry ensemble. Her fiery red hair tumbles down her back in loose waves, and she strikes a provocative pose, one hand on a hip, the other trailing along the balcony railing, the city skyline stretching out behind her.",
+      "seed": 524656136,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/73c5d5fb-b037-480c-9cb6-65ac75b76c3d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/79.webp",
+      "status": "ok",
+      "bytes": 1482076
+    }
+  ]
+}

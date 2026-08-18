@@ -1,0 +1,33 @@
+{
+  "persona_id": "99_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/99.webp",
+  "main_image_sha256": "6550d02011c0fe04d297d65d98cd12d3141018ff1f3a349816fe87d9009343cd",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:16:45Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Depict the charismatic redhead in a provocative pose, perched on the edge of a yacht deck at sunset, her sun-kissed skin glistening with a hint of oil, wearing a barely-there bikini top and thong bottoms, the golden light casting dramatic shadows across her toned physique, layered chain necklaces glinting against her sunburned skin, her confident smirk and relaxed posture exuding a carefree, rebellious spirit as the blurred background of the ocean and distant coastline underscores her sense of freedom.",
+      "seed": 680561704,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/e7d419ac-9dcb-43ad-ba0d-e659c6e56b58.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/99.webp",
+      "status": "ok",
+      "bytes": 1298710
+    }
+  ]
+}

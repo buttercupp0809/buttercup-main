@@ -1,0 +1,33 @@
+{
+  "persona_id": "90_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/90.webp",
+  "main_image_sha256": "4230720e4f512208c1c91c5eb05c6425588dc655379de2c19dd9c5ce4b4b9a1c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:52:30Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "This striking young woman exudes confidence, her fiery red tresses cascading in loose waves past her shoulders, framing alabaster skin and striking emerald eyes that sparkle with creative intensity, as she stands provocatively on the deck of a luxurious yacht, the warm Mediterranean sun glistening off her barely-there bikini that leaves little to the imagination, its strategic cut highlighting her toned curves, captured in a dynamic, full-body pose that radiates sensual energy and confidence.",
+      "seed": 171098577,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/bb387aeb-5921-49b8-b991-4f59cc6278dc.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/90.webp",
+      "status": "ok",
+      "bytes": 1459013
+    }
+  ]
+}

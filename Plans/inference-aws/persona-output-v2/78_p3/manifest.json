@@ -1,0 +1,33 @@
+{
+  "persona_id": "78_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/78.webp",
+  "main_image_sha256": "8e6f18d4db8b6a630b5b643841e6ef254e2ae5eed255662942a37df3322ef355",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:42:00Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM LIGHTING/TIME: Bathed in the vibrant, neon hues of a bustling city night, the subject leans against a high-rise window, her earth-toned blouse and distressed denim a striking contrast to the electric lights of the skyscrapers. Her emerald eyes seem to glow in the artificial light as she smokes a cigarette, lost in thought.",
+      "seed": 920502842,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/adecab14-3ac8-49dc-a38f-9da6946a9288.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/78.webp",
+      "status": "ok",
+      "bytes": 1264510
+    }
+  ]
+}

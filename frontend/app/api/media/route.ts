@@ -14,14 +14,21 @@ function getS3Config() {
   return {
     region: process.env.AWS_REGION ?? "eu-north-1",
     generatedBucket: process.env.POPPY_S3_BUCKET_GENERATED ?? "",
+    reelsBucket: process.env.POPPY_S3_BUCKET_REELS ?? "",
     mediaBucket: process.env.S3_BUCKET ?? "",
     // MinIO/LocalStack override for local dev, mirroring backend/src/media/storage.ts.
     endpoint: process.env.S3_ENDPOINT || undefined,
   };
 }
 
-function bucketForKey(key: string, generatedBucket: string, mediaBucket: string): string {
+function bucketForKey(
+  key: string,
+  generatedBucket: string,
+  reelsBucket: string,
+  mediaBucket: string,
+): string {
   if (key.startsWith("images/")) return generatedBucket;
+  if (key.startsWith("reels/")) return reelsBucket;
   return mediaBucket;
 }
 
@@ -33,8 +40,8 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "missing_key" }, { status: 400 });
   }
 
-  const { region, generatedBucket, mediaBucket, endpoint } = getS3Config();
-  const bucket = bucketForKey(s3Key, generatedBucket, mediaBucket);
+  const { region, generatedBucket, reelsBucket, mediaBucket, endpoint } = getS3Config();
+  const bucket = bucketForKey(s3Key, generatedBucket, reelsBucket, mediaBucket);
   if (!bucket) {
     return NextResponse.json({ error: "storage_not_configured" }, { status: 503 });
   }

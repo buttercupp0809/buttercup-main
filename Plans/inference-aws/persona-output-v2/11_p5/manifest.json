@@ -1,0 +1,33 @@
+{
+  "persona_id": "11_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/11.webp",
+  "main_image_sha256": "eac527b6539c4da73e384fcf722a42014575c2e700fdd4023c18c02e20d219a6",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:55:01Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM CAMERA ANGLE/COMPOSITION: In a lavish, opulent spa, the woman sits on a plush, golden daybed, her olive skin glowing as she gazes off-camera with a soft, vulnerable expression, the DSLR captures her from a low, intimate angle, focusing on her delicate profile and the gentle curve of her neck, the blurred background of lush greenery a soothing contrast.",
+      "seed": 927044237,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/18d9052b-c00e-44c3-98d8-0a1e54f00243.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/11.webp",
+      "status": "ok",
+      "bytes": 1401019
+    }
+  ]
+}

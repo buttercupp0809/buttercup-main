@@ -1,0 +1,33 @@
+{
+  "persona_id": "57_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/57.webp",
+  "main_image_sha256": "e4cf8e105dd732f734ec1a5fcce8588042abac55cc5e05a186ed29441a8c12e4",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:55:23Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A sultry, scantily-clad beauty lounges on a sleek, black leather sofa in a dimly lit, high-ceilinged penthouse suite, her raven tresses cascading over one shoulder, emerald eyes smoldering with desire as she appraises the viewer, porcelain skin seemingly luminous against the backdrop of the city skyline at dusk, a sheer, black lace corset barely containing her ample curves, the delicate points of her nipples visible through the translucent fabric, paired with a tiny, matching thong, her long, toned legs crossed to reveal a tantalizing glimpse of smooth, golden skin, captured in a dramatic, low-angle shot with a shallow depth of field, emphasizing her sensual allure.",
+      "seed": 1379118466,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/c5400d0a-44a5-42d7-81db-266ae32bfdff.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/57.webp",
+      "status": "ok",
+      "bytes": 1315265
+    }
+  ]
+}

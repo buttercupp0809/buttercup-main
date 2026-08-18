@@ -1,0 +1,33 @@
+{
+  "persona_id": "60_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/60.webp",
+  "main_image_sha256": "abf1394ff8964b61689336ff0d852ae36111c8f37795945e1db1a80dcea0ba1c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:01:58Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "She lounges on a plush, velvet chaise in a dimly lit boudoir, the air thick with seduction. Tousled auburn hair spills across an ivory pillow, while piercing emerald eyes gaze invitingly. A vintage silver necklace glimmers against warm, sun-kissed skin as she reaches for a champagne flute, the delicate fingers of her hand disappearing into the misty bokeh.",
+      "seed": 1326381676,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/b86fef20-0e4d-4c68-9284-f813fe7beb30.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/60.webp",
+      "status": "ok",
+      "bytes": 1331669
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "56_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/56.webp",
+  "main_image_sha256": "a44413dcb11cba341462e5a7abc192276cefb5d65205881fc59dcd92e91b2072",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:53:55Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM MOOD/EXPRESSION: In a candlelit chamber, the fiery redhead exudes a vulnerable softness. Her tousled locks frame her face, and her piercing emerald eyes hold a gentle, inviting gaze. She wears a sheer lingerie set, the delicate fabric clinging to her sun-kissed curves. A chunky silver necklace rests against her collarbone, drawing attention to her slender neck. High-waisted panties and matching bralette leave little to the imagination, while scuffed ankle boots add a touch of ruggedness to her otherwise sensual appearance. Shot in high definition with a DSLR, the image features a shallow depth of field that isolates her face, emphasizing her subtle, alluring smile and captivating beauty, as if caught in a tender moment of intimacy.",
+      "seed": 1855619268,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/53a8074f-9eb0-45d6-8158-4727a72987d1.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/56.webp",
+      "status": "ok",
+      "bytes": 1495239
+    }
+  ]
+}

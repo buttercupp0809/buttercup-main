@@ -1,0 +1,33 @@
+{
+  "persona_id": "99_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/99.webp",
+  "main_image_sha256": "6550d02011c0fe04d297d65d98cd12d3141018ff1f3a349816fe87d9009343cd",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:17:13Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Capture the striking woman in a sultry, neon-lit club scene, her vibrant green eyes seeming to pierce through the dark atmosphere, her fiery locks styled in tousled disarray, a revealing leather bodysuit clinging to her curves, studded belt and chain necklaces adding an edgy touch, the harsh lights casting bold shadows on her face, a hint of a playful smile curling her lips as she looks directly at the camera, the blurred crowd of revelers in the background pulsing with energy and desire.",
+      "seed": 122901066,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/3bb8269e-54af-473b-b000-41b620e16a67.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/99.webp",
+      "status": "ok",
+      "bytes": 1525091
+    }
+  ]
+}

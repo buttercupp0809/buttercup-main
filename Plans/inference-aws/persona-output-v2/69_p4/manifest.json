@@ -1,0 +1,33 @@
+{
+  "persona_id": "69_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/69.webp",
+  "main_image_sha256": "ec189202c44c4a5d9bd1cd6e4c9d8ad7b20615ee3375fd3319146f369ec240cc",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:22:43Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the soft, golden light of a secluded rooftop at sunset, a breathtaking young woman with vibrant auburn locks and captivating green eyes, exudes a sense of quiet confidence and inner strength. She wears a sleek, form-fitting black jumpsuit, paired with strappy heels and a statement gold cuff, her skin glowing with a subtle, sun-kissed warmth. Her expressive, soulful gaze meets the camera directly, a subtle, enigmatic smile playing on her lips as she leans against the railing, captured in a dramatic, overhead angle looking down.",
+      "seed": 1957424957,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/681e1961-74f0-455c-86dc-9d71f41d5c22.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/69.webp",
+      "status": "ok",
+      "bytes": 1199568
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "39_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/39.webp",
+  "main_image_sha256": "f2216050dba2a87c9ec662a88cc6dc7343c587459d5d96a5efd33011b0954394",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:12:22Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "The young woman's striking features fill the frame in an extreme close-up, her emerald eyes locked onto the camera with a bold, commanding stare. The shallow depth of field renders her fiery red hair and porcelain skin in exquisite detail, while the background is a soft, blurred expanse of the cityscape at sunset. A delicate gold necklace rests against the gentle curve of her neck, drawing the viewer's attention to the sensual line of her jaw and the subtle, knowing smile playing at her lips.",
+      "seed": 1853948678,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/33ff04c8-f24a-4c04-a723-45b95865a9ac.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/39.webp",
+      "status": "ok",
+      "bytes": 1074768
+    }
+  ]
+}

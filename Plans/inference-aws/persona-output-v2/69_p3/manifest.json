@@ -1,0 +1,33 @@
+{
+  "persona_id": "69_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/69.webp",
+  "main_image_sha256": "ec189202c44c4a5d9bd1cd6e4c9d8ad7b20615ee3375fd3319146f369ec240cc",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:22:20Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Amidst the pulsating neon lights of a trendy underground nightclub, a stunning young woman with fiery auburn hair and mesmerizing green eyes, wears a daringly short, shimmering red dress that clings to her every curve. Her warm, flawless skin seems to radiate an inner glow under the intense, strobing lights. Her bold, crimson lips form a playful, inviting smile as she sways to the beat, captured in a dynamic, shallow depth of field close-up, with the blurred, chaotic club scene serving as a dramatic backdrop.",
+      "seed": 797555343,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/14b83092-a404-43b9-bc29-3d8c1f85f388.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/69.webp",
+      "status": "ok",
+      "bytes": 1259516
+    }
+  ]
+}

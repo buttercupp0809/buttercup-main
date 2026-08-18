@@ -1,0 +1,33 @@
+{
+  "persona_id": "94_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/94.webp",
+  "main_image_sha256": "aabfca569500e35a278a5e9bdbb55b9ec2c331a54be80d176b2eceeac1fc812a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:05:51Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A bold, wide-angle shot captures the stunning young woman in full profile, her slender frame silhouetted against the vibrant blue of a moonlit rooftop at golden hour. The shallow depth of field blurs the city skyline behind her, focusing attention solely on the sleek, high-necked attire clinging to her toned physique and the elegant gold brooch that rests between her breasts. Her chestnut waves cascade down her back, and her captivating emerald eyes gleam with a sense of refined, dreamy sophistication in the soft, warm light.",
+      "seed": 1366753657,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/01947df1-dc7e-4e49-8e74-1acf7a4df1ff.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/94.webp",
+      "status": "ok",
+      "bytes": 1484187
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "110_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/110.webp",
+  "main_image_sha256": "cbf5b8330add23a88a6d3b1b760c3fbb352aeb4c53ee9257776346716c8b840a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:46:21Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On the yacht deck, she lounges on a plush chaise, the Mediterranean Sea glinting in the golden sunset. Her loose raven hair billows in the warm breeze, framing an angular face with high cheekbones, defined jawline, and striking emerald eyes that sparkle with curiosity. Medium olive skin glows with a subtle sheen, hinting at her love of Amsterdam's vibrant nightlife. She wears a barely-there bikini that clings to her curves, layered necklaces, and chunky boots, exuding a confident, expressive demeanor as the camera captures her in a cinematic close-up with a shallow depth of field that renders her features in crisp, photorealistic detail against the fading blue sky.",
+      "seed": 321070046,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/bd3b3ee1-2523-4f2b-8013-01ddcd6385e5.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/110.webp",
+      "status": "ok",
+      "bytes": 1374840
+    }
+  ]
+}

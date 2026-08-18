@@ -1,0 +1,33 @@
+{
+  "persona_id": "35_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/35.webp",
+  "main_image_sha256": "5e33c70ddf7bf85dd952539ad5e6bddbf397bfc9590d99f6f2153e932f03fdaa",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:02:16Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a lavish penthouse suite at dusk, the woman sits on a glass balcony, her slender legs crossed as she gazes out at the glittering cityscape. The soft, golden light of the setting sun illuminates her sun-kissed skin and the sheer, champagne-colored lingerie that clings to her curves, the delicate lace trim catching the light.",
+      "seed": 411908883,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/006e246f-e5ef-4d45-ba6e-a6ef1cb14694.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/35.webp",
+      "status": "ok",
+      "bytes": 1195213
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "48_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/48.webp",
+  "main_image_sha256": "ebb76f622743df3aa9aa6a8fc619517211816e3a7f633581ce0fa35b70cf8d3f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:34:25Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On the deck of a luxurious yacht, a stunning redhead wears a barely-there bikini, the neon lights of the city skyline reflecting off her glistening skin. High-waisted, distressed denim shorts and a sheer, strapless bra in deep red match her fiery locks, while combat boots add an edge. Emerald eyes sparkle with mischief as she leans back on one hand, the other playing with a strand of hair, the DSLR's shallow focus emphasizing her tantalizing curves against the dark hull of the boat.",
+      "seed": 979770387,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/5ee33703-de24-49c2-943e-460d04ae126e.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/48.webp",
+      "status": "ok",
+      "bytes": 1306202
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "74_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/74.webp",
+  "main_image_sha256": "a8d30a0d4f3b018e74982207b65f89100139f82158eecfafc39760a011d74c0b",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:32:59Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Strutting along a sleek, mahogany-lined yacht deck at sunset, the alluring woman flaunts her lithe physique in a barely-there, emerald green bikini. The skimpy, high-cut bottoms leave little to the imagination, while the halter top barely contains her ample, sun-kissed breasts. A delicate, diamond-encrusted chain adorns her slender neck, drawing attention to her porcelain skin. The camera zooms in tightly, capturing the subtle sheen of her skin and the play of golden light across her toned form.",
+      "seed": 924422677,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/43412aa2-ad2d-4183-b791-edff0bd0f722.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/74.webp",
+      "status": "ok",
+      "bytes": 1132976
+    }
+  ]
+}

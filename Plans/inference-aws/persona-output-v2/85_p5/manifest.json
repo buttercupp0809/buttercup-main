@@ -1,0 +1,33 @@
+{
+  "persona_id": "85_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/85.webp",
+  "main_image_sha256": "2a9dfe1a270857e158d517b9b2f4c27941018a200451d35cba1dc2c3c32a952c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:39:41Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a stunning overhead composition, the adventurous redhead reclines on a rugged rooftop, auburn locks fanning out around her like a fiery halo. The city skyline sprawls out behind her, a blurred expanse of twinkling lights and towering skyscrapers. Her denim jacket and band tee are tossed aside, revealing the smooth expanse of her sun-kissed skin, as she glances back over her shoulder with a playful, teasing smile, the camera capturing the tantalizing curve of her back and the delicate swell of her breasts.",
+      "seed": 601148341,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/eeddf656-89fc-485c-830d-6e5c2ace7d9b.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/85.webp",
+      "status": "ok",
+      "bytes": 1434565
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "32_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/32.webp",
+  "main_image_sha256": "f79b96a88f5bb7aa54d9edc10cfeaeae4c640cb9f289a2e8cc08a711793ff447",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:55:16Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Drenched in neon light, she leans against a mirrored wall in a seedy downtown club, her black dress slit high on one thigh, a glittering choker around her neck, her fiery locks illuminated by the pulsing disco ball as she drinks in the decadent atmosphere, the camera's shallow focus blurring the chaotic background.",
+      "seed": 551396775,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/86fdab8b-ae8c-4bc7-b5ea-6c11f44024a1.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/32.webp",
+      "status": "ok",
+      "bytes": 1451553
+    }
+  ]
+}

@@ -18,9 +18,20 @@ export function counterTypeFor(kind: PlanCounterKind): string {
   return kind;
 }
 
-// The expiry date pins the window. Any new purchase produces a new expiry
-// and therefore a new key, so counters start from zero for that pass.
-export function planPeriodKey(plan: Plan, currentPeriodEnd: Date | null): string {
+// Recurring subscription plans reset quotas every calendar month regardless
+// of the annual expiry, so their key is month-scoped. One-time passes keep
+// the expiry-pinned behavior: a new purchase mints a new expiry and
+// therefore a new key, so counters start from zero for that pass.
+export function planPeriodKey(
+  plan: Plan,
+  currentPeriodEnd: Date | null,
+  now: Date = new Date(),
+): string {
+  if (plan === "sub_monthly" || plan === "sub_yearly") {
+    const yyyy = now.getUTCFullYear();
+    const mm = String(now.getUTCMonth() + 1).padStart(2, "0");
+    return `${plan}:${yyyy}-${mm}`;
+  }
   const stamp = currentPeriodEnd ? currentPeriodEnd.toISOString().slice(0, 10) : "none";
   return `${plan}:${stamp}`;
 }

@@ -1,0 +1,33 @@
+{
+  "persona_id": "82_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/82.webp",
+  "main_image_sha256": "5391339d07eb1bd57c868cd7f04bd7857d5eb6265ad1e220f971d719db9feb7e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:32:04Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "At sunset, the character lounges on a plush yacht deck, the sky a kaleidoscope of oranges and pinks behind her. Her black leather jacket and denim are traded for a barely-there bikini in a deep berry shade, the material translucent against her olive skin. A wide-brimmed straw hat shades her face, but her emerald eyes sparkle beneath, and her arched brows are visible above the brim. She props her camera on the railing, the lens focused on her own reflection in the water below, as the warm light casts a golden glow on her skin.",
+      "seed": 1013929440,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/f981736f-0d59-4a68-ad70-f62027700117.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/82.webp",
+      "status": "ok",
+      "bytes": 1425986
+    }
+  ]
+}

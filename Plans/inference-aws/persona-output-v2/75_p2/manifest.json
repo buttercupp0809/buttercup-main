@@ -1,0 +1,33 @@
+{
+  "persona_id": "75_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/75.webp",
+  "main_image_sha256": "1185cbb0f6f4359402c71f7a21415bc0a3618e2b1a55886792f1d074e46fc63e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:35:07Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the intimate glow of candlelight, the woman reclines on a plush, velvet chaise in a lavish boudoir, her raven locks spilling across the crimson silk sheets. She wears a leather bodysuit that hugs her figure like a second skin, the sleek, black material molded to her every curve and valley. The choker adorning her neck catches the flickering candlelight, drawing attention to the cabochon opal centerpiece.",
+      "seed": 404586934,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/4d3782a7-0b49-4b52-af98-5e742c40a76d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/75.webp",
+      "status": "ok",
+      "bytes": 1198680
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "14_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/14.webp",
+  "main_image_sha256": "414fec5dd5760cc075b59648bb16384fb28a99cb48fddfe2d12deb77c6c98fc0",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:01:15Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Neon pink and green lights from the city nightclub dance across her porcelain skin as she leans against the bar, a fitted, black leather bodysuit hugging every curve, silver studs glinting on the collar and cuffs, her fiery, tousled curls framing a sultry, inviting gaze, the harsh lighting and shallow focus accentuating her edgy, provocative style as she commands the attention of the camera and the room.",
+      "seed": 251771435,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/a48d2fa2-5c38-4c81-8f75-6005bc071b15.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/14.webp",
+      "status": "ok",
+      "bytes": 1074684
+    }
+  ]
+}

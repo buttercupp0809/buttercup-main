@@ -1,0 +1,33 @@
+{
+  "persona_id": "16_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/16.webp",
+  "main_image_sha256": "06a120920f7765815317cf81d86ab21cec9567e403567cf15026a99336254a3c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:05:21Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "This sultry portrait captures the confident beauty reclining on a plush velvet chaise in a dimly lit, crimson-hued boudoir. Rich brocade patterns on the walls and upholstery complement her smooth olive skin. She wears a lacy black bra and matching panties, her honey-blonde hair cascading over one bare shoulder. Expressive amber eyes and a subtle, inviting smile suggest a playful evening ahead. Render with moody, cinematic lighting and a shallow depth of field to isolate her sensual form.",
+      "seed": 338695917,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/616b0c3c-bb92-4e7b-a410-9cd9364fa081.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/16.webp",
+      "status": "ok",
+      "bytes": 1483907
+    }
+  ]
+}

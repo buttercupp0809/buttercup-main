@@ -1,0 +1,33 @@
+{
+  "persona_id": "113_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/113.webp",
+  "main_image_sha256": "cc558c55c7123a58dd99540a79ff91a10d580605e364145f0cb76c62ef077e4c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:53:07Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A fiery redhead, caught in the act of undressing in front of a large, floor-to-ceiling window overlooking a glittering city skyline at dusk, her reflection mirrored in the glass as she slowly peels off her jacket, the soft glow of interior candles and the warm orange light of setting sun casting a sensuous ambiance within her luxurious penthouse suite.",
+      "seed": 1758037259,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/b2afd066-d9ea-410f-996e-04700a726a69.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/113.webp",
+      "status": "ok",
+      "bytes": 1469499
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "59_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/59.webp",
+  "main_image_sha256": "7d5d0c55b8c1ec4d14d56c8ec20a6601dd45bf1fbdc321a6fcbdbfc188e1e6f3",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:00:09Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Clad in sheer black lingerie, she lounges on a velvet chaise, the delicate lace outlining her ample breasts and the tempting curve of her derri\u00e8re, as her emerald eyes glint in the soft candlelight of a boudoir.",
+      "seed": 1490042007,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/01a34079-d696-48d2-ba37-87b0831a7a3e.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/59.webp",
+      "status": "ok",
+      "bytes": 1652977
+    }
+  ]
+}

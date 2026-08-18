@@ -1,0 +1,33 @@
+{
+  "persona_id": "37_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/37.webp",
+  "main_image_sha256": "a8044bacf8b2a521e61daccf40c8c53ac87eaefd84b970e0c1cb68134c9fe04f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:05:57Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "The sultry woman poses on a plush yacht deck at dusk, fiery auburn hair billowing in a warm breeze, as golden sunlight glints off the ocean. She wears a sheer black lace teddy, the delicate fabric barely containing her curves, paired with stiletto heels and a gold choker. Her gaze is intense, lips parted invitingly, set against a blurred background of sailboats and city skyline.",
+      "seed": 862602727,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/3eb58eb3-434f-4504-aa36-958369cf2c93.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/37.webp",
+      "status": "ok",
+      "bytes": 1356334
+    }
+  ]
+}

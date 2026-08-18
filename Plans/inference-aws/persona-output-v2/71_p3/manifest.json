@@ -1,0 +1,33 @@
+{
+  "persona_id": "71_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/71.webp",
+  "main_image_sha256": "8fa038a5428cdf35c75a7e2b82f2af7c77a45e09629b6adb50f4b96f09f48499",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:26:47Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Captured in the throes of a heated night, the vivacious beauty reclines on a plush, crimson throw against the backdrop of a sprawling penthouse suite. Soft, golden light from the setting sun cascades through floor-to-ceiling windows, casting a warm, ethereal glow across her sun-kissed skin. She wears a barely-there, silver bikini that barely contains her voluptuous curves, the metallic fabric catching the fading light and making her emerald eyes sparkle with mischief. Her raven locks are tousled, framing her face as she gazes directly into the camera with a sultry, inviting smile.",
+      "seed": 820509576,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/0d8536fc-5460-4f6b-a647-9b6bd7ea159a.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/71.webp",
+      "status": "ok",
+      "bytes": 1319658
+    }
+  ]
+}

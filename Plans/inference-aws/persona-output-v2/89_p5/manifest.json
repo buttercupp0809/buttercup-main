@@ -1,0 +1,33 @@
+{
+  "persona_id": "89_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/89.webp",
+  "main_image_sha256": "1f5bd54d9cb3234e5ecf809fafa3032c55a47de111c1e8e76374e7bfda2d1595",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:51:21Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a moody, candlelit chamber, the character reclines on a plush ottoman, her raven tresses pooling around her like a dark halo. She wears a sheer black lingerie set, the fabric translucent against her porcelain skin. Captured in an overhead shot looking down, the shallow focus highlights the delicate lace trim of her bra and the way the candlelight dances across her features, casting shadows that add to her allure.",
+      "seed": 1033611575,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/02a29550-a5cf-48e2-8a57-848385cd1101.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/89.webp",
+      "status": "ok",
+      "bytes": 1830984
+    }
+  ]
+}

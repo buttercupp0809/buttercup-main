@@ -1,0 +1,33 @@
+{
+  "persona_id": "90_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/90.webp",
+  "main_image_sha256": "4230720e4f512208c1c91c5eb05c6425588dc655379de2c19dd9c5ce4b4b9a1c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:52:55Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "This striking young woman exudes confidence, her fiery red tresses cascading in loose waves past her shoulders, framing alabaster skin and striking emerald eyes that sparkle with creative intensity under the pulsing neon lights of a trendy nightclub, her black leather bodysuit hugging her every contour as she leans back against the bar, the blurred, bokeh-filled crowd and thumping bass adding to the atmosphere of raw sensuality and hedonistic desire.",
+      "seed": 675748380,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/351bfdcd-5651-4d3b-b694-2bee4c4bcb70.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/90.webp",
+      "status": "ok",
+      "bytes": 1375990
+    }
+  ]
+}

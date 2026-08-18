@@ -1,0 +1,33 @@
+{
+  "persona_id": "102_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/102.webp",
+  "main_image_sha256": "164ea8e04692e99abb5a2ff30121094c67340b24dc8cb4b8029b3f53c5fe08de",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:23:58Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On a plush yacht deck at dusk, the striking woman stands at the railing, the golden hour light casting a warm glow across her porcelain skin. The ocean stretches out behind her, waves gently lapping at the hull. Her sleek black dress is billowing slightly in the sea breeze, the patent leather belt and bold red necklace accentuating her confident posture.",
+      "seed": 957758175,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/7120ff8d-f0d4-42eb-8955-8dc2a9a22d2f.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/102.webp",
+      "status": "ok",
+      "bytes": 1205862
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "84_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/84.webp",
+  "main_image_sha256": "d3dddfd230e9db11bbdff722921e50e07d36e382de8fc020b7cb29fc27cd6a31",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:36:04Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM OUTFIT/ATTIRE: Wearing nothing but a delicate, sheer black lace corset that barely contains her ample bust, the woman straddles the edge of a sleek leather loveseat in a high-end penthouse suite. The corset is adorned with strategically placed silver studs and has a daringly low back. Her chestnut waves cascade freely down her back, and a pair of high-heeled stilettos dangles from her fingers.",
+      "seed": 1247607131,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/6a0895bf-6f89-4106-b125-5e6680d2206f.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/84.webp",
+      "status": "ok",
+      "bytes": 1218002
+    }
+  ]
+}

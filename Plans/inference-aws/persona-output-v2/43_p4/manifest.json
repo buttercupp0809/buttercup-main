@@ -1,0 +1,33 @@
+{
+  "persona_id": "43_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/43.webp",
+  "main_image_sha256": "9fe647b99de1c5807c6190cb75fb1b282f83892ff83b027d2b0668dc79f91565",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:22:53Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "With a bold and commanding expression, the confident beauty stands at the railing of a luxurious yacht, the golden sunset casting a warm, flattering glow across her porcelain skin. Her chestnut locks are swept back, revealing a strong jawline and piercing emerald eyes that seem to dare the horizon. The elegant sweetheart neckline of her silk charmeuse gown frames her delicate neck, the subtle lace detailing adding a touch of classic sophistication to her daring, untamed stance.",
+      "seed": 465655391,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/9f961175-0dfc-4f95-a644-cf305d114ec9.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/43.webp",
+      "status": "ok",
+      "bytes": 1378778
+    }
+  ]
+}

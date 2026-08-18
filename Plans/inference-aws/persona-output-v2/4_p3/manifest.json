@@ -1,0 +1,33 @@
+{
+  "persona_id": "4_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/4.webp",
+  "main_image_sha256": "5a4ef9aeb25b8ac0c360694e3b3c4df1afe0a30587e09d1b1d6db32d6edce2b4",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:07:35Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM LIGHTING/TIME: In a lavish penthouse suite bathed in soft, golden candlelight at twilight, the confident woman reclines on a velvet chaise, her fitted leather jacket draped over one shoulder. Her porcelain skin glows in the warm, intimate illumination as she looks directly at the camera with an intense, dominant gaze, her emerald eyes flashing with a daring, unbridled spirit.",
+      "seed": 1414294853,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/534cf5fd-0cc6-4369-b3b5-c906235a9f2f.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/4.webp",
+      "status": "ok",
+      "bytes": 1186720
+    }
+  ]
+}

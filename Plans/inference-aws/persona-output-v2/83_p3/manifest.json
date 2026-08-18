@@ -1,0 +1,33 @@
+{
+  "persona_id": "83_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/83.webp",
+  "main_image_sha256": "6dbd9245f2f77173d831c7f948e9dfac07e14b4073cdba352b8272593bf1d047",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:34:17Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Posed in a luxurious penthouse suite at dusk, the confident woman is bathed in the warm, golden light of the setting sun, which filters through floor-to-ceiling windows framing the city skyline, her smoldering emerald eyes fixed intently on the viewer as she leans forward, her revealing metallic top gleaming in the soft illumination.",
+      "seed": 593897445,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/50c95cd6-c50f-4c38-93b4-a334a73bb9e6.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/83.webp",
+      "status": "ok",
+      "bytes": 1374561
+    }
+  ]
+}

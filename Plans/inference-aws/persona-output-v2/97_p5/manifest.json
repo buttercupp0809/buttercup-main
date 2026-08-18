@@ -1,0 +1,33 @@
+{
+  "persona_id": "97_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/97.webp",
+  "main_image_sha256": "89db90cc233294d0b8ff7ee27da394cc98627ac84e1090da5d684e4d8f188bac",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:13:25Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Seen from directly behind, the Berlinite's profile is sharply defined against a moody, indigo night sky, her silver barbell glinting in the moonlight as she stands at the edge of a rooftop, the city lights twinkling below, her bold, crimson lips curved into a defiant, enigmatic smile as she glances over her shoulder at the camera, her chunky combat boots planted firmly on the concrete.",
+      "seed": 1925086346,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/f590ace7-dc9b-4e84-8a0e-6d21ed73c8e5.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/97.webp",
+      "status": "ok",
+      "bytes": 1216654
+    }
+  ]
+}

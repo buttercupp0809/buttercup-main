@@ -1,0 +1,33 @@
+{
+  "persona_id": "7_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/7.webp",
+  "main_image_sha256": "9731b30e32c78a2daa3b5cfaea8fb0eb54d1f3eda7bf464be0d1d90c42c912a1",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:44:22Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A striking young woman with raven hair and emerald eyes reclines on a plush velvet chaise in a dimly lit boudoir, the scent of incense and rose petals heavy in the air, as she slowly unbuttons her silk blouse, the first hints of creamy skin revealed.",
+      "seed": 1606697725,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/5e639be9-ae50-4773-875a-edd4359ab8c9.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/7.webp",
+      "status": "ok",
+      "bytes": 1543086
+    }
+  ]
+}

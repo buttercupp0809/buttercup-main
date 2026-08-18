@@ -1,0 +1,33 @@
+{
+  "persona_id": "64_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/64.webp",
+  "main_image_sha256": "9abbcfe6c678912c57c35abf49e116564974d5d9cd48e31e2a80546a01bef16d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:11:50Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "With an intense, dominant gaze, the woman stands at the edge of a rooftop pool, her sleek, barely-there bikini glinting under the harsh sunlight. Her chestnut hair is pulled back in a tight ponytail, and her jaw is set in a bold, commanding expression. The camera frames her from the side, emphasizing her powerful physique and confident posture.",
+      "seed": 1873705971,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/365d50eb-5150-447e-b707-e183360f4b04.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/64.webp",
+      "status": "ok",
+      "bytes": 1169756
+    }
+  ]
+}

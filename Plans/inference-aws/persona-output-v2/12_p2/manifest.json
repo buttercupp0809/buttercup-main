@@ -1,0 +1,33 @@
+{
+  "persona_id": "12_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/12.webp",
+  "main_image_sha256": "68cdf58c43d8a44e526230df9f6a734a9bde3c62ae82c588a3355a633ae75f37",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:56:09Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "The young woman poses on a yacht deck at sunset, her olive skin glowing under the warm golden light as she dons a barely-there bikini in shimmering metallic silver, her toned abs and curvy hips on full display, the distant sea and sailboats framing her sensual pose.",
+      "seed": 993052525,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/14cb332d-6826-4496-b704-f8727f3e3006.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/12.webp",
+      "status": "ok",
+      "bytes": 1244212
+    }
+  ]
+}

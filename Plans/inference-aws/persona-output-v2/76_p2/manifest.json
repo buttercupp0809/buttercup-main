@@ -1,0 +1,33 @@
+{
+  "persona_id": "76_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/76.webp",
+  "main_image_sha256": "c422ac5665d370afbf23de583d84cdf39d55b11ec7df480ccd6aea9fc50b48d9",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:37:18Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM OUTFIT/ATTIRE: In a lavish penthouse suite, she wears a sheer black lace teddy, the delicate fabric barely containing her ample curves. The plunging neckline and thong back leave little to the imagination, her porcelain skin glowing against the dark lace. A choker with a diamond pendant adds a touch of luxury as she pouts invitingly for the camera.",
+      "seed": 1493393098,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/4923096d-01a1-4b47-8749-f56befd8f469.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/76.webp",
+      "status": "ok",
+      "bytes": 1320371
+    }
+  ]
+}

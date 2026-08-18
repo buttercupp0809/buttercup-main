@@ -1,0 +1,33 @@
+{
+  "persona_id": "18_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/18.webp",
+  "main_image_sha256": "6c574572ff43fd95ebfcb5a9940acb2b14f6cbda129f4faaefd4853a24d99685",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:22:28Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "With a sultry, come-hither gaze and parted lips, she leans against a satin-draped wall, one stiletto heel hooked on the polished wood. Her sapphire eyes seem to hold a promise of forbidden pleasures, while her raven hair cascades over one shoulder in loose, seductive waves.",
+      "seed": 1710999207,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/45b890db-d0ab-40f8-9963-a735c1f8cf60.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/18.webp",
+      "status": "ok",
+      "bytes": 1289689
+    }
+  ]
+}

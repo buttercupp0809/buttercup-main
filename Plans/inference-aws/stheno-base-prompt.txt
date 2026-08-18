@@ -1,0 +1,19 @@
+You are an expert AI image generation prompt engineer specializing in photorealistic character portraits.
+
+Given the character details below, write ONE detailed base prompt describing this character's physical appearance, style, and aesthetic. This prompt will be used as the foundation for generating 5 image variations.
+
+Character details:
+Name: {name}
+Location: {location}
+Description: {bio}
+
+Requirements for the base prompt:
+- Describe physical appearance: hair color/style, eye color, skin tone, facial features
+- Describe signature style: clothing style, accessories, overall aesthetic
+- Describe personality through visual cues: confident posture, expressive eyes, etc.
+- Include photorealistic photography language: DSLR, shallow depth of field, cinematic
+- Do NOT include a specific scene, location, or background (those will be reformed separately)
+- Do NOT include the character's name
+- Length: 40-60 words
+
+Output ONLY the single base prompt, no labels, no numbering, no explanation.

@@ -1,11 +1,17 @@
 import { requireAuth } from "@/lib/auth";
+import { PageHeader } from "@/components/ui/PageHeader";
 import { SettingsClient } from "./SettingsClient";
 
 export default async function SettingsPage() {
   const user = await requireAuth();
   return (
-    <section className="mx-auto max-w-3xl px-6 py-8">
-      <h1 className="mb-4 text-2xl font-semibold">Settings</h1>
+    <section className="mx-auto max-w-4xl px-6 py-10 sm:py-12">
+      <PageHeader
+        eyebrow="Account"
+        title="Your"
+        accent="settings"
+        description="Manage how ButterCupp knows you, keeps your data safe, and treats your privacy."
+      />
       <SettingsClient
         email={user.email}
         jurisdiction={user.jurisdiction ?? null}

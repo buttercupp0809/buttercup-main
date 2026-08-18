@@ -10,7 +10,7 @@
 
 ## Global Constraints
 
-- No em dash character (`—`) anywhere: code, comments, scripts, docs.
+- No em dash character (U+2014) anywhere: code, comments, scripts, docs.
 - Strict TypeScript: no `any` without comment explaining why.
 - Prisma singleton from `@buttercupp/database` only -- never `new PrismaClient()`.
 - Tests run via `npm test` (vitest) from repo root.

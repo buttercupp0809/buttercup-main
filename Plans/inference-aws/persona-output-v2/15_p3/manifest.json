@@ -1,0 +1,33 @@
+{
+  "persona_id": "15_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/15.webp",
+  "main_image_sha256": "70ac444a6500152f2c3c03c2724d27cd4c5ffffec1b2387b36de2daf44bf8549",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:03:40Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A striking, raven-haired beauty with emerald eyes, porcelain skin, and a heart-shaped face, exudes effortless French-Canadian allure in the sultry, neon-lit ambiance of a chic nightclub. She sips a cocktail at the bar, her form-fitting, red leather corset and high-waisted, black pants accentuating her toned physique under the harsh, electric glow. A DSLR captures her intense, dominating gaze as she scans the room, the shallow depth of field isolating her in the bokeh of the crowded dance floor, her confidence and vivacity radiating through the lens.",
+      "seed": 1271098734,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/9736583a-3006-458c-a460-05b7fa45261e.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/15.webp",
+      "status": "ok",
+      "bytes": 1389212
+    }
+  ]
+}

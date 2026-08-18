@@ -1,0 +1,33 @@
+{
+  "persona_id": "66_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/66.webp",
+  "main_image_sha256": "eaedb03251c257d7cbe81934c3398d3876fd24c74bdc473c0e3dddc60e076ddc",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:14:58Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "The striking platinum blonde stands on the deck of a luxurious yacht at dusk, sea spray glistening on her porcelain skin as the sun sets behind her, casting a warm golden glow on her edgy style and direct, intense emerald gaze.",
+      "seed": 1373436123,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/29f7b397-ef47-428e-a710-2bcc92ee7820.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/66.webp",
+      "status": "ok",
+      "bytes": 1191778
+    }
+  ]
+}

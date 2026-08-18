@@ -1,0 +1,33 @@
+{
+  "persona_id": "82_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/82.webp",
+  "main_image_sha256": "5391339d07eb1bd57c868cd7f04bd7857d5eb6265ad1e220f971d719db9feb7e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:31:13Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "The character stands on a moonlit rooftop, the city skyline a blur behind her. She wears only a sheer black lace babydoll, the material clinging to her curves, and thigh-high stockings held up by garters. A silver choker encircles her neck, and her long raven hair flows freely in the night breeze. Her emerald eyes gleam with mischief as she gazes into the distance, a DSLR camera slung low on her hip.",
+      "seed": 516609588,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/038be494-016e-4845-8a34-6eff17b0772b.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/82.webp",
+      "status": "ok",
+      "bytes": 1328045
+    }
+  ]
+}

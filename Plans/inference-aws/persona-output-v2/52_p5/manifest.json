@@ -1,0 +1,33 @@
+{
+  "persona_id": "52_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/52.webp",
+  "main_image_sha256": "aef8853bbdfaa42f44c40401a776d5dd9c41d305305e913ad8f68e1293828b0e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:45:18Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "The woman's silhouette is etched against the deep, indigo blue of a night sky as she stands at the edge of a rooftop, the vibrant, layered sari fluttering in the cool breeze, her smooth, golden skin glistening with a fine sheen of dew, her expressive hazel eyes narrowed against the stars, a subtle, knowing smile playing on her full, sensual lips, captured in an overhead angle looking down, the city lights twinkling below, the DSLR's shallow depth of field blurring the background into a mesmerizing bokeh.",
+      "seed": 353362015,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/26dc042e-b007-4f0d-9de5-530a32432d8e.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/52.webp",
+      "status": "ok",
+      "bytes": 1363808
+    }
+  ]
+}

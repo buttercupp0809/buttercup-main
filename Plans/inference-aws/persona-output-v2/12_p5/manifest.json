@@ -1,0 +1,33 @@
+{
+  "persona_id": "12_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/12.webp",
+  "main_image_sha256": "68cdf58c43d8a44e526230df9f6a734a9bde3c62ae82c588a3355a633ae75f37",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:57:26Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "The camera zooms in on a tight medium shot from behind the woman, capturing her profile and the subtle curves of her back and hips as she gazes over her shoulder with a bold, commanding stare, her dark auburn hair swept to one side, a fitted leather jacket framing her athletic form.",
+      "seed": 545293796,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/ed3c0eb5-9a36-49cb-9275-a33390bc4f60.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/12.webp",
+      "status": "ok",
+      "bytes": 1070525
+    }
+  ]
+}

@@ -29,6 +29,36 @@ describe("PLANS constants", () => {
     expect(PLANS.daily).toMatchObject({ priceUsd: 1, durationDays: 1 });
     expect(PLANS.weekly).toMatchObject({ priceUsd: 6, durationDays: 7 });
     expect(PLANS.monthly).toMatchObject({ priceUsd: 25, durationDays: 30 });
+    expect(PLANS.sub_monthly).toMatchObject({
+      priceUsd: 19.99,
+      durationDays: 30,
+      chats: 5000,
+      images: 300,
+      videos: 60,
+      recurring: true,
+      billingInterval: "month",
+    });
+    expect(PLANS.sub_yearly).toMatchObject({
+      priceUsd: 149,
+      durationDays: 365,
+      chats: 5000,
+      images: 300,
+      videos: 60,
+      recurring: true,
+      billingInterval: "year",
+    });
+    expect(PLANS.daily).toMatchObject({ chats: 75, images: 5, videos: 1 });
+    expect(PLANS.weekly).toMatchObject({ chats: 600, images: 40, videos: 8 });
+    expect(PLANS.monthly).toMatchObject({ chats: 3000, images: 200, videos: 38 });
+  });
+
+  it("PLANS_ORDER places the recurring subscriptions after monthly", () => {
+    const idxMonthly = PLANS_ORDER.indexOf("monthly");
+    const idxSubMonthly = PLANS_ORDER.indexOf("sub_monthly");
+    const idxSubYearly = PLANS_ORDER.indexOf("sub_yearly");
+    expect(idxMonthly).toBeGreaterThanOrEqual(0);
+    expect(idxSubMonthly).toBeGreaterThan(idxMonthly);
+    expect(idxSubYearly).toBeGreaterThan(idxSubMonthly);
   });
 
   it("FREE_MESSAGE_LIMIT is 10 and matches PLANS.free.chats", () => {
@@ -44,15 +74,19 @@ describe("PLANS constants", () => {
     }
   });
 
-  it("isPaidPlan is true for daily/weekly/monthly, false for free", () => {
+  it("isPaidPlan is true for every non-free plan", () => {
     expect(isPaidPlan("free")).toBe(false);
     expect(isPaidPlan("daily")).toBe(true);
     expect(isPaidPlan("weekly")).toBe(true);
     expect(isPaidPlan("monthly")).toBe(true);
+    expect(isPaidPlan("sub_monthly")).toBe(true);
+    expect(isPaidPlan("sub_yearly")).toBe(true);
   });
 
-  it("isPlan validates the enum", () => {
+  it("isPlan validates the enum including recurring subscriptions", () => {
     expect(isPlan("daily")).toBe(true);
+    expect(isPlan("sub_monthly")).toBe(true);
+    expect(isPlan("sub_yearly")).toBe(true);
     expect(isPlan("nope")).toBe(false);
     expect(isPlan(null)).toBe(false);
   });
@@ -87,5 +121,21 @@ describe("planPeriodKey", () => {
 
   it("free / null expiry produces a stable sentinel key", () => {
     expect(planPeriodKey("free", null)).toBe("free:none");
+  });
+
+  it("recurring subscriptions are keyed by calendar month, not by expiry", () => {
+    // Far-future expiry (365d out) must not influence the key; only the
+    // current month should.
+    const farFuture = new Date("2099-12-31T00:00:00.000Z");
+    const nowJan = new Date("2026-01-15T12:00:00.000Z");
+    const nowFeb = new Date("2026-02-01T00:00:00.000Z");
+    expect(planPeriodKey("sub_yearly", farFuture, nowJan)).toBe("sub_yearly:2026-01");
+    expect(planPeriodKey("sub_yearly", farFuture, nowFeb)).toBe("sub_yearly:2026-02");
+    expect(planPeriodKey("sub_monthly", farFuture, nowJan)).toBe("sub_monthly:2026-01");
+  });
+
+  it("monthly (one-time pass) still uses expiry-pinned behavior", () => {
+    const expiry = new Date("2026-08-31T00:00:00.000Z");
+    expect(planPeriodKey("monthly", expiry)).toBe("monthly:2026-08-31");
   });
 });

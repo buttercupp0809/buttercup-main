@@ -1,0 +1,33 @@
+{
+  "persona_id": "92_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/92.webp",
+  "main_image_sha256": "a3addfcc1edaeb9808fb910c420aa178cb6f7dc546c207c603086dd88c215249",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:00:16Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "The camera captures a tight medium shot of the woman from behind, her face turned to glance over her shoulder with a bold, commanding smile. She's in a barely-there leopard print bikini, the shiny fabric catching the warm glow of a golden sunset as it casts long shadows across her toned physique. Her green eyes sparkle with mischief as she looks directly into the lens, her tousled hair framing her face and drawing the viewer's gaze to her full lips and sculpted cheekbones.",
+      "seed": 1819788422,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/65698cfb-84dc-4bf5-a777-d44c0c287fd9.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/92.webp",
+      "status": "ok",
+      "bytes": 1064232
+    }
+  ]
+}

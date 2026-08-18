@@ -1,0 +1,33 @@
+{
+  "persona_id": "33_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/33.webp",
+  "main_image_sha256": "1fa01099c006e593226150626fa3e5bb910d93d9aedf46f011baa343ced605bb",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:58:05Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM MOOD/EXPRESSION: In a sultry, neon-lit nightclub, she sits on a plush, black velvet banquette, her olive-toned skin almost glowing under the pulsing lights. The daring black leather jacket and tight red dress are now a daring, sheer black lace corset that leaves little to the imagination. Her raven-black hair is styled in an edgy, asymmetrical bob, while her smoldering amber eyes hold an intense, dominant gaze as she looks straight into the camera lens. A DSLR captures her in a tight, shallow focus medium shot, the blurred dance floor and strobing lights creating a sense of movement and energy.",
+      "seed": 1467791607,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/e4cf8651-c7a0-4ba8-b952-b30e926bef64.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/33.webp",
+      "status": "ok",
+      "bytes": 1384107
+    }
+  ]
+}

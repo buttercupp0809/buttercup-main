@@ -1,0 +1,33 @@
+{
+  "persona_id": "51_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/51.webp",
+  "main_image_sha256": "4befbba8f3e060f4700e6bbf31e1a908fd3f0f0b25b72706c6c374e2e41b8abf",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:42:47Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Framed by a sweeping overhead angle, the raven-haired siren's angular features are illuminated from beneath, casting dramatic shadows on her alabaster skin. She stands at the edge of a rooftop pool, clad in a skimpy, metallic bikini that clings to every curve, as the vibrant hues of a golden sunset paint the cityscape behind her. With one hand on her hip and the other trailing in the water, she turns to glance over her shoulder, her intense, emerald gaze meeting the camera head-on.",
+      "seed": 288022747,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/6d2dfb5b-ce0e-4186-b0fb-04f932d291ff.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/51.webp",
+      "status": "ok",
+      "bytes": 1146153
+    }
+  ]
+}

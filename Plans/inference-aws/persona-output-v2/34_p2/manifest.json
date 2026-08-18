@@ -1,0 +1,33 @@
+{
+  "persona_id": "34_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/34.webp",
+  "main_image_sha256": "965804d20e9f8fbcc572fa45ed9bacbad85d7ceffcbf58a2499cd5ee7b0cc19d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:59:34Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On the deck of a sleek, black yacht, this statuesque beauty sizzles in a barely-there, emerald green bikini, the tiny triangles of fabric barely containing her ample curves. Her porcelain skin glows in the warm sunlight, and her long, icy blonde tresses cascade down her back in effortless waves. A glittering gold necklace and oversized, black, stiletto heels add a touch of glamour to her otherwise minimalist, provocative ensemble as she turns to face the camera, her emerald eyes flashing with a sultry, inviting gaze under the harsh midday sun's shallow depth of field.",
+      "seed": 1856980404,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/bb67bf9d-88fb-44ce-8a23-c2c486a0bca0.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/34.webp",
+      "status": "ok",
+      "bytes": 1278388
+    }
+  ]
+}

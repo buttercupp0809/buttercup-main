@@ -1,0 +1,33 @@
+{
+  "persona_id": "6_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/6.webp",
+  "main_image_sha256": "3686167379c9d24fd03bf6b395432ddb61a45d63cc58a2e01aa6504a0c420d8d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:42:08Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On the yacht deck at dusk, she stands before the railing, her fiery mane whipping in the sea breeze as she gazes out at the horizon. The warm glow of sunset casts long shadows across her porcelain skin, highlighting the delicate freckles. Her plunging top and high-waisted shorts are replaced by a lacy black teddy, the material clinging to every curve as the wind rustles the sheer fabric.",
+      "seed": 1812936776,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/ab53e096-b335-4942-b38e-1468587584ab.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/6.webp",
+      "status": "ok",
+      "bytes": 1284118
+    }
+  ]
+}

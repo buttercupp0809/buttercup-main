@@ -1,0 +1,33 @@
+{
+  "persona_id": "33_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/33.webp",
+  "main_image_sha256": "1fa01099c006e593226150626fa3e5bb910d93d9aedf46f011baa343ced605bb",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:57:13Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM OUTFIT/ATTIRE: In a dimly lit, candle-lit chamber, she stands before a velvet curtain, the black leather jacket and red dress now replaced with sheer black lace lingerie. The delicate fabric clings to her olive-toned skin, highlighting every curve as a pair of stiletto heels add height. Her raven-black hair falls in loose waves down her back, while her smoldering amber eyes hold a playful, teasing smile as she looks directly at the camera. A DSLR captures her in a cinematic, shallow focus shot with the curtain and candlelight creating a romantic, intimate ambiance.",
+      "seed": 434855870,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/794e9992-2e43-410e-882f-118f42f4098a.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/33.webp",
+      "status": "ok",
+      "bytes": 1463095
+    }
+  ]
+}

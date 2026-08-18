@@ -1,0 +1,33 @@
+{
+  "persona_id": "79_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/79.webp",
+  "main_image_sha256": "8de79f5879ad5cffcd3469fb2c3508ef1d0805c37de90f4e3eceab14133a37e2",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:44:56Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM CAMERA ANGLE/COMPOSITION: A close-up shot captures the striking features of a young woman with fiery red hair and piercing emerald green eyes. The camera focuses intently on her face, the shallow depth of field blurring the background into a soft, creamy bokeh. Her full lips are slightly parted, and a single strand of hair falls across her cheek, adding a touch of vulnerability to her otherwise bold and confident demeanor. The tight medium shot frames her from the chest up, highlighting the delicate slope of her shoulders and the subtle curves of her d\u00e9colletage, inviting the viewer to explore every detail of her captivating face.",
+      "seed": 1252378903,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/cc476612-e85c-473f-8cec-b9792fa92a80.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/79.webp",
+      "status": "ok",
+      "bytes": 1289974
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "4_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/4.webp",
+  "main_image_sha256": "5a4ef9aeb25b8ac0c360694e3b3c4df1afe0a30587e09d1b1d6db32d6edce2b4",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:06:36Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM SCENE/SETTING: In a dimly lit, velvet-draped boudoir, the striking young woman lounges on a plush four-poster bed, the black leather jacket discarded, revealing her bare shoulders and a lacy white bra peeking from the open blouse. A single candle flickers nearby, casting dancing shadows on the walls as she gazes at the camera with a sultry, inviting smile, her emerald eyes sparkling with mischief.",
+      "seed": 1750897636,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/d02a6845-f760-40e7-a4bd-7467ba671d69.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/4.webp",
+      "status": "ok",
+      "bytes": 1266953
+    }
+  ]
+}

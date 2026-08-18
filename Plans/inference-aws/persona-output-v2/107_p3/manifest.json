@@ -1,0 +1,33 @@
+{
+  "persona_id": "107_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/107.webp",
+  "main_image_sha256": "1f3508fc57734a60afd63487e6fb70162f8f210ab57d0ee58047babec64a099d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:37:17Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM LIGHTING/TIME: As the golden sun dips below the horizon, casting a warm, honeyed glow across a lavish yacht deck, the fiery redhead straddles the railing, her emerald eyes sparkling like stars in the fading light. Her fitted, emerald green blouse is unbuttoned to reveal the creamy swell of her breasts, and the distressed denim of her shorts hugs every curve. Shallow focus blurs the luxurious yacht into a soft, dreamy background, while the bright sea and sky pop with vibrant color.",
+      "seed": 1229304209,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/4081cf09-1621-4d8c-a702-94e8a901f10d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/107.webp",
+      "status": "ok",
+      "bytes": 1327154
+    }
+  ]
+}

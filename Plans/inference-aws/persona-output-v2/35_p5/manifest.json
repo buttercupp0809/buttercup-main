@@ -1,0 +1,33 @@
+{
+  "persona_id": "35_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/35.webp",
+  "main_image_sha256": "5e33c70ddf7bf85dd952539ad5e6bddbf397bfc9590d99f6f2153e932f03fdaa",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:03:04Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "From a low angle, looking up at her, the woman's body fills the frame, her chestnut hair cascading down her back as she leans against a rooftop railing, the city lights twinkling below. The DSLR camera captures every detail of her face and decolletage in crisp, high definition, the shallow depth of field blurring the urban landscape behind her, emphasizing her presence and allure.",
+      "seed": 284439029,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/db9ef22b-8289-4e4d-b3fe-81fe0a2276db.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/35.webp",
+      "status": "ok",
+      "bytes": 1309521
+    }
+  ]
+}

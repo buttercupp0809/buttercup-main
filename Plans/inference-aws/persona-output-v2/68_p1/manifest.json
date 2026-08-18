@@ -1,0 +1,33 @@
+{
+  "persona_id": "68_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/68.webp",
+  "main_image_sha256": "8ad41283ff35da66a909076f42ead274eca27af869cd2337518d8637b037c0ce",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:19:20Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A sultry, half-dressed temptress lounges on a plush, velvet chaise in a dimly lit, opulent boudoir, the scent of incense and arousal heavy in the air. Shimmering silk sheets are draped across her toned thighs, barely concealing a lacy black bra and matching garter belt. Her fiery mane tumbles over one bare shoulder as she gazes up at the viewer with a hooded, emerald-green gaze, her parted lips glistening with unspoken desire.",
+      "seed": 1995648430,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/d8b52531-994c-4980-bd18-4e44d55dd5e1.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/68.webp",
+      "status": "ok",
+      "bytes": 1454206
+    }
+  ]
+}

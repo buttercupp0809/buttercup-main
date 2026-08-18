@@ -1,0 +1,33 @@
+{
+  "persona_id": "112_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/112.webp",
+  "main_image_sha256": "3b72670281dd2f252fa0bd6362d942fc8fa8489b839d42f4ad1d4842aee4aaa5",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:50:51Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Captured on a plush, velvet-covered four-poster bed in a luxurious, candlelit boudoir, the statuesque beauty reclines against sumptuous silk pillows, her ivory gown sliding off one creamy shoulder. The air is heavy with incense, and gossamer drapes of lace and satin drape the room in sensual mystery, as she gazes at the viewer with a sultry, half-lidded gaze.",
+      "seed": 1010345341,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/550ed080-4871-414a-b67c-990d2aece6ba.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/112.webp",
+      "status": "ok",
+      "bytes": 1370356
+    }
+  ]
+}

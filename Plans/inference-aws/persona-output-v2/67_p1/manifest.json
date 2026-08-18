@@ -1,0 +1,33 @@
+{
+  "persona_id": "67_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/67.webp",
+  "main_image_sha256": "2e821dcdea49a575db3bb044fc6481cf4315c90f88a729bfeed7c190a487013c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:17:07Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A raven-haired beauty lounges provocatively on a plush king-sized bed in a lavish penthouse suite, her dark tresses spilling across crimson silk sheets. Almond-shaped emerald eyes sparkle with cultured vivacity as she gazes directly at the camera, set beneath arching brows. Her full lips, painted a subtle scarlet, curve in a confident, inviting smile. The cinematic shot captures her striking features with a DSLR's shallow focus, the bokeh of the city lights outside blurring the background.",
+      "seed": 1202352617,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/dd36b07e-3ddc-4b83-8af3-a35aaa88a207.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/67.webp",
+      "status": "ok",
+      "bytes": 1116117
+    }
+  ]
+}

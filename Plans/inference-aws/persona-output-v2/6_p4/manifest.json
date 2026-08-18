@@ -1,0 +1,33 @@
+{
+  "persona_id": "6_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/6.webp",
+  "main_image_sha256": "3686167379c9d24fd03bf6b395432ddb61a45d63cc58a2e01aa6504a0c420d8d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:43:27Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Bathed in the soft, romantic glow of a single candle, she sits cross-legged on a plush carpet, her eyes soft and inviting as she looks up at the camera. A delicate lace camisole and matching panties form a sultry yet demure ensemble, the fabric whispering against her skin as she gently bites her lower lip. The shallow depth of field focuses attention on her delicate features and the smattering of freckles across her nose.",
+      "seed": 1667082855,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/d9e6cdfb-e54c-434e-9e37-ea378a67e5dd.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/6.webp",
+      "status": "ok",
+      "bytes": 1144871
+    }
+  ]
+}

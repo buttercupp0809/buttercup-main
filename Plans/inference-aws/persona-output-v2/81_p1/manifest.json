@@ -1,0 +1,33 @@
+{
+  "persona_id": "81_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/81.webp",
+  "main_image_sha256": "93d713739c2f6c231a3e909db4649fd04c8c3cc22894453c04f71297457b8c62",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:28:59Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A stunning Southern belle lounges languidly on a plush velvet chaise in a lavish boudoir, raven locks cascading across satin sheets. Emerald eyes gleam in the soft, warm glow of candles as she holds a champagne flute, the DSLR camera capturing her in intimate, shallow focus. Vintage lingerie of delicate lace and silk clings to her curves as she exudes seductive confidence, ready to entice her admirers.",
+      "seed": 1239099409,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/4493175d-5ee9-4389-9bd2-f3f2cbaa477c.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/81.webp",
+      "status": "ok",
+      "bytes": 1416782
+    }
+  ]
+}

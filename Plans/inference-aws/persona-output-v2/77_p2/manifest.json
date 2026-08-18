@@ -1,0 +1,33 @@
+{
+  "persona_id": "77_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/77.webp",
+  "main_image_sha256": "bfb2229d6e9bf93caadee15b4fddbf0b3a695c5e70ba0587d39cad8a0b977b33",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:39:26Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Capture the confident charm of the honey-blonde beauty in a revealing ensemble. She wears a sheer, champagne-colored babydoll nightie that clings to her curves, with delicate lace trim framing her pert nipples. The flowing garment falls to mid-thigh, exposing her sun-kissed legs in high-cut, black leather shorts. She completes the look with strappy, stiletto sandals and a choker featuring a gleaming, diamond solitaire.",
+      "seed": 458898528,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/197be5cb-3b29-4a23-bccc-37c50ae11443.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/77.webp",
+      "status": "ok",
+      "bytes": 1058485
+    }
+  ]
+}

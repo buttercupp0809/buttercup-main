@@ -1,0 +1,33 @@
+{
+  "persona_id": "57_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/57.webp",
+  "main_image_sha256": "e4cf8e105dd732f734ec1a5fcce8588042abac55cc5e05a186ed29441a8c12e4",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:56:11Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A confident, alluring woman exudes raw sensuality in a provocative, close-up portrait, her raven tresses framing her striking emerald gaze, which holds the viewer's attention with an intense, dominant stare, her full, lips parted in a bold, almost imperious smile, the soft focus and shallow depth of field emphasizing the velvety smoothness of her porcelain skin, the delicate definition of her cheekbones, and the subtle, sensual curve of her jawline, a faint sheen of light catching the corner of her eye, hinting at the mischief lurking beneath her bold exterior, the blurred background of a lush, green landscape or a sleek, modern interior further underscoring her mysterious, untamed nature.",
+      "seed": 1105403435,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/83e03b9e-d94b-4bc9-aee6-34a0bda934c9.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/57.webp",
+      "status": "ok",
+      "bytes": 1079977
+    }
+  ]
+}

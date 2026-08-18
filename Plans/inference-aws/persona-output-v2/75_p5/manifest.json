@@ -1,0 +1,33 @@
+{
+  "persona_id": "75_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/75.webp",
+  "main_image_sha256": "1185cbb0f6f4359402c71f7a21415bc0a3618e2b1a55886792f1d074e46fc63e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:36:18Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a tight, medium shot from behind, the woman's cascading raven tresses frame her face as she glances over her shoulder, her emerald eyes locking onto the camera with a bold, commanding gaze. The focus is razor-sharp on her profile, from the delicate arch of her brow to the full, sensual curve of her lips, while the blurred background dissolves into a soft, creamy bokeh, drawing the viewer's eye inexorably to her captivating beauty.",
+      "seed": 1041661419,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/793a7333-ed03-4373-8053-af8812272f02.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/75.webp",
+      "status": "ok",
+      "bytes": 1532682
+    }
+  ]
+}

@@ -20,6 +20,28 @@ import { logInfo, logWarn } from "../utils/log";
 import { uploadGenerated, canUploadToS3, getGeneratedSignedUrl, getSignedUrl } from "../media/storage";
 import { createReadyAsset } from "../media/asset";
 import { resolvePoppyBaseUrl } from "../inference/poppyEndpoint";
+import { getLatestSummary } from "../llm/memory-retriever";
+
+// Number of most recent chat turns fed into the image enrichment call as
+// background context. Clamped to [10, 20]: fewer than 10 turns loses too much
+// conversational flavor; more than 20 blows past the fast-enrichment budget
+// (Stheno call needs to return in a few hundred ms so the user sees the image
+// quickly).
+const IMAGE_CONTEXT_TURNS_RAW = 15;
+export const IMAGE_CONTEXT_TURNS = Math.min(20, Math.max(10, IMAGE_CONTEXT_TURNS_RAW));
+
+// Hard cap on the recentTurns transcript character length. Keeps the
+// enrichment call fast and well under Stheno's context window even when
+// individual messages are long.
+const CONTEXT_CHAR_BUDGET = 1500;
+
+export interface ImageContext {
+  recentTurns: string;
+  summary: string;
+  // Resolved from the conversation while building context, so the caller does
+  // not have to re-query it. null when unknown (no conversation, or DB error).
+  characterId: string | null;
+}
 
 // Negative prompt: minors block (legal) + framing guards (prevent cropped
 // partial-body shots) + quality cleanup.
@@ -100,12 +122,96 @@ async function resolveCharacterReferenceBytes(characterId: string): Promise<Buff
   }
 }
 
+// Same sanitizer engine.ts uses: base64 data URLs (chat image fallback path
+// stores them directly on the message) would otherwise blow out Stheno's
+// context window. Also caps individual messages so a single pathological turn
+// cannot dominate the transcript.
+function sanitizeContextContent(content: string): string {
+  if (content.startsWith("data:")) return "[shared a photo]";
+  // Also catch data URLs embedded mid-message (defense in depth).
+  const scrubbed = content.replace(/data:image\/[a-zA-Z0-9.+-]+;base64,[A-Za-z0-9+/=]+/g, "[shared a photo]");
+  return scrubbed.length > 800 ? scrubbed.slice(0, 800) : scrubbed;
+}
+
+// Build the background context block for image enrichment: last N messages
+// from the conversation (chronological, sanitized) plus a short running
+// summary. Any DB failure is swallowed and returns an empty context so image
+// generation still proceeds. Never throws.
+export async function buildImageContext(
+  conversationId: string,
+  userId?: string,
+): Promise<ImageContext> {
+  const empty: ImageContext = { recentTurns: "", summary: "", characterId: null };
+  try {
+    const conv = await prisma.conversation.findUnique({
+      where: { id: conversationId },
+      select: {
+        characterId: true,
+        character: { select: { name: true } },
+      },
+    });
+    const characterId = conv?.characterId ?? null;
+    const characterName = conv?.character?.name ?? "Character";
+
+    const [historyRows, summary] = await Promise.all([
+      prisma.message.findMany({
+        where: { conversationId },
+        orderBy: { createdAt: "desc" },
+        take: IMAGE_CONTEXT_TURNS,
+        select: { role: true, content: true },
+      }),
+      userId && characterId
+        ? getLatestSummary(userId, characterId).catch(() => null)
+        : Promise.resolve(null),
+    ]);
+
+    const chronological = [...historyRows].reverse();
+    const lines: string[] = [];
+    for (const row of chronological) {
+      const speaker = row.role === "user" ? "User" : characterName;
+      lines.push(`${speaker}: ${sanitizeContextContent(row.content)}`);
+    }
+    let recentTurns = lines.join("\n");
+    if (recentTurns.length > CONTEXT_CHAR_BUDGET) {
+      // Keep the tail (most recent turns) since it is the most relevant.
+      recentTurns = recentTurns.slice(recentTurns.length - CONTEXT_CHAR_BUDGET);
+    }
+
+    const summaryText = summary?.summary?.trim() ?? "";
+    return { recentTurns, summary: summaryText, characterId };
+  } catch (err) {
+    logWarn("chat-image", `buildImageContext failed: ${err instanceof Error ? err.message : String(err)}`);
+    return empty;
+  }
+}
+
 // Call Stheno to transform a raw cleaned prompt into a rich Juggernaut XL prompt.
 // Returns the enriched prompt on success; falls back to rawPrompt silently on
-// any network error, non-OK response, or empty content.
-async function enrichImagePrompt(rawPrompt: string): Promise<string> {
+// any network error, non-OK response, or empty content. When context is
+// provided, its recent turns and running summary are attached as SECONDARY
+// background flavor, while the raw prompt remains the PRIMARY authoritative
+// intent.
+export async function enrichImagePrompt(
+  rawPrompt: string,
+  context?: ImageContext,
+): Promise<string> {
   const systemPrompt = IMAGE_ENRICHMENT_FILLS.imageEnrichmentPrompt.trim();
   if (!systemPrompt) return rawPrompt;
+
+  const summaryBlock = context?.summary?.trim() ?? "";
+  const recentBlock = context?.recentTurns?.trim() ?? "";
+  const userMessage = [
+    "PRIMARY IMAGE REQUEST (preserve every detail exactly, do not drop or change any element):",
+    rawPrompt,
+    "",
+    "BACKGROUND CONTEXT (secondary, use only to add consistent flavor, never to override the primary request):",
+    `Summary: ${summaryBlock || "(none)"}`,
+    "Recent conversation:",
+    recentBlock || "(none)",
+    "",
+    "Produce one vivid image-generation prompt under 150 words that fully preserves the primary request and layers in consistent background flavor where it does not conflict.",
+  ].join("\n");
+
   try {
     const base = await resolvePoppyBaseUrl("stheno");
     const res = await fetch(`${base}/v1/chat/completions`, {
@@ -115,10 +221,7 @@ async function enrichImagePrompt(rawPrompt: string): Promise<string> {
         model: "stheno",
         messages: [
           { role: "system", content: systemPrompt },
-          {
-            role: "user",
-            content: `User's image request (preserve every detail, then elaborate): ${rawPrompt}`,
-          },
+          { role: "user", content: userMessage },
         ],
         max_tokens: 250,
         temperature: 0.7,
@@ -174,23 +277,19 @@ export async function generateChatImage(
   userId?: string,
 ): Promise<ChatImageResult> {
   const prompt = cleanImagePrompt(userText);
-  const enrichedPrompt = await enrichImagePrompt(prompt);
+  const context = conversationId ? await buildImageContext(conversationId, userId) : undefined;
+  const enrichedPrompt = await enrichImagePrompt(prompt, context);
 
+  // buildImageContext already resolved the character from the conversation, so
+  // reuse it instead of issuing a second conversation.findUnique.
   let referenceBytes: Buffer | null = null;
-  let characterId: string | null = null;
-  if (conversationId) {
-    const conv = await prisma.conversation.findUnique({
-      where: { id: conversationId },
-      select: { characterId: true },
-    });
-    if (conv?.characterId) {
-      characterId = conv.characterId;
-      referenceBytes = await resolveCharacterReferenceBytes(conv.characterId);
-      if (referenceBytes) {
-        logInfo("chat-image", `reference resolved (${referenceBytes.length} bytes) char=${characterId}: consistent face path`);
-      } else {
-        logWarn("chat-image", `no reference bytes for char=${characterId}: falling back to faceless txt2img (no character consistency)`);
-      }
+  const characterId: string | null = context?.characterId ?? null;
+  if (characterId) {
+    referenceBytes = await resolveCharacterReferenceBytes(characterId);
+    if (referenceBytes) {
+      logInfo("chat-image", `reference resolved (${referenceBytes.length} bytes) char=${characterId}: consistent face path`);
+    } else {
+      logWarn("chat-image", `no reference bytes for char=${characterId}: falling back to faceless txt2img (no character consistency)`);
     }
   }
 

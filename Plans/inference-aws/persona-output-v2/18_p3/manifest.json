@@ -1,0 +1,33 @@
+{
+  "persona_id": "18_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/18.webp",
+  "main_image_sha256": "6c574572ff43fd95ebfcb5a9940acb2b14f6cbda129f4faaefd4853a24d99685",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:22:02Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Under the mesmerizing, neon-lit canopy of a chic, underground club, she poses with bold confidence, her emerald dress shimmering like a gemstone. The club's strobing lights dance across her porcelain skin, while a halo of purple haze softens the edges of the frame, immersing the viewer in a sensual, electric atmosphere.",
+      "seed": 85907704,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/cc56cf21-4c6e-4c9f-b7e9-dd7dc784ac9d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/18.webp",
+      "status": "ok",
+      "bytes": 1560119
+    }
+  ]
+}

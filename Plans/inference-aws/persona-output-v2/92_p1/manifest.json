@@ -1,0 +1,33 @@
+{
+  "persona_id": "92_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/92.webp",
+  "main_image_sha256": "a3addfcc1edaeb9808fb910c420aa178cb6f7dc546c207c603086dd88c215249",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:58:11Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "The young woman leans against the railing of a yacht deck at sunset, her tousled hair whipping in the ocean breeze. In a barely-there white bikini, she gazes out at the horizon, her piercing green eyes and creamy olive skin glowing in the golden light. A chunky chain necklace catches the fading sun's rays as the city skyline recedes into the deep blue sea.",
+      "seed": 1912994090,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/cb20ad4a-4eb0-432f-98b1-546601a67029.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/92.webp",
+      "status": "ok",
+      "bytes": 1358223
+    }
+  ]
+}

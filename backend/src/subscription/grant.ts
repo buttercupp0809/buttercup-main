@@ -34,7 +34,7 @@ export async function grantMonthlyTokens(userId: string, tier: Tier, periodKey: 
 // map to "premium" (paid); monthly maps to "pro" (highest tier, no reason
 // to withhold premium-model access from monthly subscribers).
 export function tierForPlan(plan: Plan): Tier {
-  if (plan === "monthly") return "pro";
+  if (plan === "monthly" || plan === "sub_monthly" || plan === "sub_yearly") return "pro";
   if (plan === "daily" || plan === "weekly") return "premium";
   return "free";
 }

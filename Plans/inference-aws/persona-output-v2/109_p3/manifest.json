@@ -1,0 +1,33 @@
+{
+  "persona_id": "109_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/109.webp",
+  "main_image_sha256": "a8112b3b5f1e972fa4bcf4a13304f42956a01839e6279117cd88d00ac8c0bbfe",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:44:48Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Under the neon lights of a trendy nightclub, the beauty's ivory silk gown has transformed into a daring, skin-tight leather bodysuit that clings to her every curve. Emerald eyes gleam with a sultry intensity as she poses provocatively in a dark, smoke-filled corner, the pulsating beat of the music echoing in the background. Harsh club lighting, shallow depth of field, and a wide-angle lens capture the moody, seductive atmosphere and the model's bold, dominant attitude.",
+      "seed": 895557267,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/196bd3a1-ad11-4f75-a26e-ea2ca55bc614.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/109.webp",
+      "status": "ok",
+      "bytes": 1064974
+    }
+  ]
+}

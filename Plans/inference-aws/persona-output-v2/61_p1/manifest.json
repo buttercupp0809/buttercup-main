@@ -1,0 +1,33 @@
+{
+  "persona_id": "61_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/61.webp",
+  "main_image_sha256": "d2d49cf8efc07da7e7902c21e52e584935b7da753a351d44de36cb9833cce21e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:04:09Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORMED SCENE/SETTING: In a candlelit boudoir, she reclines on a plush velvet chaise, indigo drapes billowing behind her. The room glows with soft amber light, shadows dancing across creamy porcelain skin and the curves of her body barely contained in sheer lace lingerie. A champagne flute and half-empty bottle rest on a nearby table, alongside a sketchbook and pencils.",
+      "seed": 22427691,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/c4d3e5ca-61ad-413d-a05d-60aa755fbe39.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/61.webp",
+      "status": "ok",
+      "bytes": 1676152
+    }
+  ]
+}

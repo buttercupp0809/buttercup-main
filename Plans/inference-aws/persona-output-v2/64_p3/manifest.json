@@ -1,0 +1,33 @@
+{
+  "persona_id": "64_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/64.webp",
+  "main_image_sha256": "9abbcfe6c678912c57c35abf49e116564974d5d9cd48e31e2a80546a01bef16d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:11:27Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Under the pulsating lights of a neon-lit nightclub, the woman's hazel eyes sparkle with mischief as she leans against a glossy bar, her flowing ivory gown a stark contrast to the electric atmosphere. The camera zooms in on her face, capturing the subtle play of light on her porcelain skin and the hint of a sultry smile.",
+      "seed": 1357720567,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/c816ae92-9f68-4205-8bd5-035806cebeb1.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/64.webp",
+      "status": "ok",
+      "bytes": 1233743
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "10_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/10.webp",
+  "main_image_sha256": "a7071bbf585029f29a5a8a796f0f0554343763e24d73b97f4fb75a8b966bee89",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:51:54Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a penthouse suite bathed in the soft, moody glow of a blue night light, the raven-haired beauty reclines on a sleek, black leather sofa. She wears a sheer, lace corset that leaves little to the imagination, paired with thigh-high stockings and stiletto heels. Her piercing emerald eyes gaze directly into the camera, exuding a bold, commanding presence.",
+      "seed": 1365439443,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/cc0b727a-23b2-4a92-a87b-ba59a916f39d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/10.webp",
+      "status": "ok",
+      "bytes": 1422474
+    }
+  ]
+}

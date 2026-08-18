@@ -1,0 +1,33 @@
+{
+  "persona_id": "24_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/24.webp",
+  "main_image_sha256": "d0cf23a4a23b09c7b69117b3813796218f9b250b850f180aa7f727880f24c39c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:35:36Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "The French beauty strides confidently across a sleek, black leather yacht deck at dusk. A barely-there, metallic bikini leaves little to the imagination, emphasizing her taut, sun-kissed physique. Emerald eyes sparkle under the waning sunlight as she tosses honey-blonde locks over one shoulder. The metallic fabric catches the fading light, accentuating her curves and cleavage. A delicate gold chain adorns her neck, and strappy high-heeled sandals add a touch of sophistication. The camera captures her in a tight medium shot from the side, emphasizing her toned, athletic build.",
+      "seed": 1970088673,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/a99f1d1e-0739-4da0-85b9-69a8c6ad3fd6.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/24.webp",
+      "status": "ok",
+      "bytes": 1386917
+    }
+  ]
+}

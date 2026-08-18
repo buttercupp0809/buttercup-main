@@ -1,0 +1,33 @@
+{
+  "persona_id": "56_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/56.webp",
+  "main_image_sha256": "a44413dcb11cba341462e5a7abc192276cefb5d65205881fc59dcd92e91b2072",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:52:42Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM SCENE/SETTING: In the dimly lit boudoir, the fiery redhead reclines on a plush velvet chaise, the distressed denim jacket tossed aside. The band tee clings to her sun-kissed curves, while the high-waisted skinny jeans ride low on her hips. Scuffed ankle boots dangle from her feet as she props herself up on one elbow, her piercing emerald eyes locked on the camera with a sultry, inviting gaze. Multiple colorful tattoos snake up her arms, catching the soft glow of candles scattered around the room. The shallow depth of field blurs the intimate environment, focusing attention solely on her captivating beauty.",
+      "seed": 554908362,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/162b0f0a-eba1-47ab-99fd-7d1c5dd1e359.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/56.webp",
+      "status": "ok",
+      "bytes": 1520388
+    }
+  ]
+}

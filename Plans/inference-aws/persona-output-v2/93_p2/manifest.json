@@ -1,0 +1,33 @@
+{
+  "persona_id": "93_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/93.webp",
+  "main_image_sha256": "947f13b1e36b2fddcfc57e8ec65da96b5392ddf791a0fdc379f1563ce85f123f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:01:30Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A sultry young temptress with fiery red locks cascading down her back, emerald eyes smoldering with desire, and porcelain skin glowing with a rosy sheen, wears a sheer, black lace bra and panty set, the delicate fabric clinging to her curves. A black leather corset cinches at her waist, adorned with intricate silver buckles, while her toned thighs are barely concealed by lace garter belts and sheer stockings. High-heeled ankle boots and a choker of interlocking silver hearts complete the provocative ensemble, shot in a low, sensual light with a DSLR camera.",
+      "seed": 1345612793,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/558e0bb9-5549-48be-9867-a566477aaa93.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/93.webp",
+      "status": "ok",
+      "bytes": 1078703
+    }
+  ]
+}

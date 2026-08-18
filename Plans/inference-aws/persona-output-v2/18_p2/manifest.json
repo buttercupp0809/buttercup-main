@@ -1,0 +1,33 @@
+{
+  "persona_id": "18_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/18.webp",
+  "main_image_sha256": "6c574572ff43fd95ebfcb5a9940acb2b14f6cbda129f4faaefd4853a24d99685",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:21:38Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Clad in nothing but a sheer, black lace corset and thong, she lounges on the polished deck of a luxurious yacht, gazing out at the twinkling city lights. The corset's delicate straps and intricate embroidery accentuate her toned curves, while the ocean breeze tousles her raven tresses.",
+      "seed": 1661334708,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/3cea7468-6246-4b57-8782-1f493d6b75ad.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/18.webp",
+      "status": "ok",
+      "bytes": 1506836
+    }
+  ]
+}

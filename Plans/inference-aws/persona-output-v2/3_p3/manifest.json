@@ -1,0 +1,33 @@
+{
+  "persona_id": "3_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/3.png",
+  "main_image_sha256": "dd03784089425431358ffa4cce65d1486cc4aa6f41fbd0d76ea30f0b7c571906",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:04:59Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM LIGHTING/TIME: Under the harsh neon lights of the exclusive nightclub, the woman's figure is silhouetted against the pulsing dance floor. Her rich auburn hair falls in loose waves, and her smooth skin seems to glow with an inner radiance. The fitted black dress clings to her every curve, and her statement silver jewelry sparkles like diamonds amidst the strobing lights.",
+      "seed": 1789377165,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/81383760-707a-4ec3-9ef8-6e899028aef8.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/3.png",
+      "status": "ok",
+      "bytes": 1405716
+    }
+  ]
+}

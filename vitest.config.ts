@@ -11,6 +11,10 @@ const alias = {
 
 export default defineConfig({
   resolve: { alias },
+  // Use React's automatic JSX runtime so .tsx tests (and the frontend source
+  // they import) do not require an explicit `import React from "react"`.
+  // Matches Next.js's default and frontend/tsconfig.json ("jsx": "preserve").
+  esbuild: { jsx: "automatic" },
   test: {
     setupFiles: ["./vitest.setup.ts"],
     // Force node env so tests that touch node:crypto / bcryptjs / Prisma work.

@@ -1,0 +1,33 @@
+{
+  "persona_id": "73_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/73.webp",
+  "main_image_sha256": "44d58b3ea9ab33d8acf14ba00c975e97191381c731d0f1c10f49b6f033bbb498",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:31:13Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM LIGHTING/TIME: As the warm golden hour bathes the rooftop in a soft, honeyed glow, the captivating woman poses in the center, her auburn hair tumbling down her back in loose waves. The shallow depth of field blurs the cityscape behind her, while the DSLR captures every detail of her porcelain skin, emerald eyes, and sultry, inviting gaze.",
+      "seed": 1640282180,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/db8a3581-0f1a-49c9-959b-c49d933e4760.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/73.webp",
+      "status": "ok",
+      "bytes": 1103562
+    }
+  ]
+}

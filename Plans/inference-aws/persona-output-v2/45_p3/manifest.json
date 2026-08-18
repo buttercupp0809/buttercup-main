@@ -1,0 +1,33 @@
+{
+  "persona_id": "45_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/45.png",
+  "main_image_sha256": "d52897e8c43d8412e4495d208daf5fd76bea64f184509a23f2b8be5fad018b7e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:27:45Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Under the harsh neon lights of a downtown club, the confident redhead stands at the bar, her piercing emerald gaze locked on the bartender. Her bold fashion sense is on full display in a leather mini skirt and crop top, chunky jewelry glinting in the artificial glow. With a smirk playing on her full lips, she leans forward, the camera capturing a shallow depth of field, with the blurry background emphasizing her striking features.",
+      "seed": 612991299,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/7bdb3f89-e3a7-44cc-9572-62155cd29715.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/45.png",
+      "status": "ok",
+      "bytes": 1357559
+    }
+  ]
+}

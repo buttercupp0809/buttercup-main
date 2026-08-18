@@ -1,0 +1,33 @@
+{
+  "persona_id": "40_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/40.webp",
+  "main_image_sha256": "41fa15425f5714142413ac499c782a0e76f2c7fc76f6cf025afd9fe0bf1d45d3",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:14:26Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a lavish, candlelit chamber, the alluring beauty reclines on a plush four-poster bed, her honey-blonde curls spilling across the rich satin pillows. She wears a delicate lace corset, the intricate embroidery and boning accentuating her slender waist and the gentle swell of her breasts. Her emerald eyes are soft and vulnerable as she looks up at the camera, a hint of shyness and desire playing across her heart-shaped face. The warm, golden light from the candles casts long shadows, creating a sensual, intimate atmosphere.",
+      "seed": 699110432,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/902c500b-44f1-4d95-adc7-5a7f416ccd41.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/40.webp",
+      "status": "ok",
+      "bytes": 1488980
+    }
+  ]
+}

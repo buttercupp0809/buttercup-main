@@ -1,0 +1,33 @@
+{
+  "persona_id": "66_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/66.webp",
+  "main_image_sha256": "eaedb03251c257d7cbe81934c3398d3876fd24c74bdc473c0e3dddc60e076ddc",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:16:33Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Captured in an extreme close-up from below, her face fills the frame, emerald eyes half-lidded and lips parted in a sultry whisper, porcelain skin flawless under the soft focus of the shallow depth of field, a trail of golden sunlight illuminating her d\u00e9colletage.",
+      "seed": 878027224,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/42ade751-81f2-43a1-a0cf-bb67d4cd1b45.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/66.webp",
+      "status": "ok",
+      "bytes": 1175462
+    }
+  ]
+}

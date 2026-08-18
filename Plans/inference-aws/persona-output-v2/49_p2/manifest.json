@@ -1,0 +1,33 @@
+{
+  "persona_id": "49_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/49.webp",
+  "main_image_sha256": "9014e2c5b60952ebbfdbbc8b4a7f28a9a02eddd84d4104c88a00061568d72045",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:36:47Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a lavish penthouse suite, this captivating woman is draped in a tight, black leather bodysuit that hugs her every contour, the high collar framing her striking emerald eyes and a sultry, inviting gaze. Her raven tresses cascade down her back in soft waves, and she stands poised near an expansive city skyline view, one stiletto heel hooked on a plush couch as she crosses her arms under her ample bust. A diamond choker encircles her elegant neck, drawing attention to her slender throat.",
+      "seed": 1747533851,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/40d1243f-be2d-4325-ab2b-d8888b0f009e.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/49.webp",
+      "status": "ok",
+      "bytes": 1251745
+    }
+  ]
+}

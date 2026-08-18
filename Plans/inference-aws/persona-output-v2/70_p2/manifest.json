@@ -1,0 +1,33 @@
+{
+  "persona_id": "70_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/70.webp",
+  "main_image_sha256": "b84de962eb2833a8963fcc8fc6fe5b00d254f183f6dcbcbc91b48416cc69bb27",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:24:10Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Amidst the sleek, modern lines of a penthouse suite, the artistically inclined beauty wears a black leather bodysuit that clings to every curve, the glossy material reflecting the city lights beyond the floor-to-ceiling windows. A sheer, crimson bra peeks out from the cutaway design, while a matching garter belt and thigh-high boots add to the provocative ensemble. As she poses, one hand rests on her hip, the other playing with a loose strand of fiery hair, her green eyes sparkling with confidence and creative energy.",
+      "seed": 1198967181,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/452ea5a7-7858-4d28-8d58-24ee0d58335e.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/70.webp",
+      "status": "ok",
+      "bytes": 1089083
+    }
+  ]
+}

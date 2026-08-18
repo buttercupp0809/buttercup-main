@@ -1,0 +1,33 @@
+{
+  "persona_id": "31_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/31.webp",
+  "main_image_sha256": "422cea2ff7c4983934712fd4c75db98bf5e6e2dc182320733fd4ebba8bf62877",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:53:54Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORMED CAMERA ANGLE: From a low angle looking up, the camera captures the woman's striking profile as she leans against a ornate column in a lavish boudoir. Her raven hair cascades down her back, and the delicate beading of her gown catches the light, highlighting her elegant posture. Her emerald eyes meet the lens with a playful, teasing smile, the shallow depth of field blurring the opulent surroundings into a dreamy focus on her captivating beauty.",
+      "seed": 1163363220,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/cb2bd2fb-83c1-470b-a61d-0ccb0dceb208.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/31.webp",
+      "status": "ok",
+      "bytes": 1479194
+    }
+  ]
+}

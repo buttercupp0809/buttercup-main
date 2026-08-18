@@ -1,0 +1,33 @@
+{
+  "persona_id": "5_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/5.webp",
+  "main_image_sha256": "b4cc22ba2439c30dd4a065ac5978200afa53e8c55c1d734d85f4fbdcc226a7bb",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:10:29Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "With an intense, dominant gaze, she lounges on a plush leather sofa in a penthouse suite, raven tresses cascading down her back, emerald eyes blazing with confidence and power, alabaster skin illuminated by the warm, moody light of a single blue lamp, her crossed legs and subtle smirk exuding a sense of unapologetic control.",
+      "seed": 173246810,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/48c0b4bc-077e-405a-9204-61b975dd201d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/5.webp",
+      "status": "ok",
+      "bytes": 1121928
+    }
+  ]
+}

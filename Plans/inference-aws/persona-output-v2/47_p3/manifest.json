@@ -1,0 +1,33 @@
+{
+  "persona_id": "47_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/47.webp",
+  "main_image_sha256": "9d75aba913304ecd16ce3a6fe597eadcd47d91848f1953ca8d707f7c2acefb8d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:32:26Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Amidst the pulsing neon lights of a chic nightclub, a mysterious beauty radiates allure. Her raven tresses are swept up in a messy bun, emerald eyes gleaming with a hint of danger beneath thick lashes. A barely-there silver bikini leaves little to the imagination, the fabric clinging to her every curve as she reclines on a plush velvet couch. The DSLR's wide-angle lens captures the vibrant colors and kinetic energy of the club, with the subject's figure blurred in the foreground.",
+      "seed": 1647879395,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/879d1f9b-9db0-4765-bb65-62546c292919.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/47.webp",
+      "status": "ok",
+      "bytes": 1381740
+    }
+  ]
+}

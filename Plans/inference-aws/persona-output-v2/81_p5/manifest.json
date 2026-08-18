@@ -1,0 +1,33 @@
+{
+  "persona_id": "81_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/81.webp",
+  "main_image_sha256": "93d713739c2f6c231a3e909db4649fd04c8c3cc22894453c04f71297457b8c62",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:30:38Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a provocative, extreme close-up, the captivating Southern belle's face and decolletage fill the frame, emerald eyes locking with the camera lens. Raven locks frame her porcelain complexion, and a delicate necklace glimmers against her skin. The DSLR captures the subtle, alluring curve of her lips in a subtle, teasing smile, hinting at the sensual promises hidden beneath her poised exterior.",
+      "seed": 968285521,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/fad5e52a-aac9-40d5-b8cd-d93f177dbdd9.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/81.webp",
+      "status": "ok",
+      "bytes": 1256629
+    }
+  ]
+}

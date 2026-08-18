@@ -10,7 +10,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { Search, Users, MoreVertical, Trash2, EyeOff } from "lucide-react";
+import { Search, Users, MoreVertical, Trash2, EyeOff, Image as ImageIcon, Film } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { ConversationRow } from "@/lib/chats";
 import { PanelSheet } from "@/components/chat/PanelSheet";
@@ -39,9 +39,25 @@ function shortTime(iso: string | null): string {
   return new Date(iso).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
 }
 
-function preview(text: string | null): string {
-  if (!text) return "Say hello";
-  return text.replace(/\*/g, "").trim().slice(0, 60);
+// Assistant image / video turns are historically stored with their raw
+// data-URL blob as message.content. Detect those (or a rendered attachment
+// marker) and surface a clean human label instead of leaking base64 into
+// the sidebar. Text messages fall through to the trimmed preview.
+interface PreviewContent {
+  kind: "text" | "image" | "video" | "empty";
+  text: string;
+}
+
+function preview(text: string | null): PreviewContent {
+  if (!text || !text.trim()) return { kind: "empty", text: "Say hello" };
+  const trimmed = text.trim();
+  if (/^data:image\//i.test(trimmed) || /\[image\]/i.test(trimmed)) {
+    return { kind: "image", text: "Sent a photo" };
+  }
+  if (/^data:video\//i.test(trimmed) || /\[video\]/i.test(trimmed)) {
+    return { kind: "video", text: "Sent a video" };
+  }
+  return { kind: "text", text: trimmed.replace(/\*/g, "").slice(0, 60) };
 }
 
 export interface ChatListContentProps {
@@ -255,9 +271,26 @@ function ConversationRow({
               {shortTime(conv.lastMessageAt)}
             </span>
           </div>
-          <p className="truncate text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
-            {preview(conv.lastMessage)}
-          </p>
+          {(() => {
+            const p = preview(conv.lastMessage);
+            const icon =
+              p.kind === "image" ? (
+                <ImageIcon className="h-3.5 w-3.5 shrink-0" aria-hidden />
+              ) : p.kind === "video" ? (
+                <Film className="h-3.5 w-3.5 shrink-0" aria-hidden />
+              ) : null;
+            return (
+              <p
+                className="flex items-center gap-1.5 truncate text-sm"
+                style={{ color: "hsl(var(--buttercupp-muted))" }}
+              >
+                {icon}
+                <span className={`truncate ${p.kind === "image" || p.kind === "video" ? "italic" : ""}`}>
+                  {p.text}
+                </span>
+              </p>
+            );
+          })()}
         </div>
       </Link>
 

@@ -1,0 +1,33 @@
+{
+  "persona_id": "55_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/55.webp",
+  "main_image_sha256": "3b33f91f43b99fa321b662a6f728fa28f1a5ababcf2af5be51df039fc6b774c8",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:51:37Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A striking young woman with rich chestnut hair swept into an effortless updo, bright emerald eyes smoldering with intensity, sits on the edge of a plush hotel bed in a lavish penthouse suite. Her smooth porcelain skin glows under the warm, moody blue light of a night lamp. She exudes dominance in a tight, crimson corset, the lacing emphasizing her toned physique, paired with black lace panties and stiletto heels. A silver Celtic necklace rests against her throat as she crosses her arms, her gaze commanding the space.",
+      "seed": 895786577,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/f544a48c-a5af-45f3-b29b-b540f5de29b7.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/55.webp",
+      "status": "ok",
+      "bytes": 1158767
+    }
+  ]
+}

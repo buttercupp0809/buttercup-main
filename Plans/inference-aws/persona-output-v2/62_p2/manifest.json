@@ -1,0 +1,33 @@
+{
+  "persona_id": "62_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/62.webp",
+  "main_image_sha256": "b6c2048152a1bda5d4fb4c0ab1c6a85b053974790eb8c69ad49fab5ab75ed99c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:06:40Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Clad in a sheer black lace lingerie set, the woman lounges on the edge of a yacht's deck, the moonlight casting an ethereal sheen on her supple curves. The delicate straps of her bra and the flimsy fabric of her panties leave little to the imagination, accentuating her toned physique and the tantalizing swell of her breasts. Her long legs are crossed, exposing the smooth skin of her inner thighs.",
+      "seed": 65276037,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/d0c5d57d-26c8-4adf-9b9a-7be457a83ed0.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/62.webp",
+      "status": "ok",
+      "bytes": 1205756
+    }
+  ]
+}

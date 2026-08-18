@@ -1,0 +1,33 @@
+{
+  "persona_id": "47_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/47.webp",
+  "main_image_sha256": "9d75aba913304ecd16ce3a6fe597eadcd47d91848f1953ca8d707f7c2acefb8d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:31:36Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A captivating femme fatale reclines on a plush velvet chaise in a dimly lit, opulent boudoir. Raven tresses cascade down her porcelain shoulders as emerald eyes sparkle with mischief, framed by heavy eyeliner. A sheer black lace teddy clings to her curves, the bodice plunging to reveal a tantalizing glimpse of cleavage. The DSLR captures her in a sensual close-up, with the boudoir's ornate furnishings and silk drapes blurred in the background.",
+      "seed": 629583369,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/3760bab0-c546-41fa-95d4-788e5e11f809.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/47.webp",
+      "status": "ok",
+      "bytes": 1454546
+    }
+  ]
+}

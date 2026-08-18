@@ -1,0 +1,33 @@
+{
+  "persona_id": "65_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/65.webp",
+  "main_image_sha256": "b30a4466841630931fa12e0ff174b0be016110bda61fa1c70215df04bbabbe6a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:14:24Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM CAMERA ANGLE/COMPOSITION: A tight medium shot from behind frames the dancer's toned back and the tantalizing swell of her rear, as she slowly turns to glance over her shoulder with a playful, teasing smile. Her raven hair cascades down her back like a waterfall of night, while the subtle sparkle of her jewelry catches the light, drawing the viewer's eye to her sultry, inviting gaze.",
+      "seed": 888873276,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/9d89ede7-94db-4507-9c23-629b52173985.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/65.webp",
+      "status": "ok",
+      "bytes": 1655542
+    }
+  ]
+}

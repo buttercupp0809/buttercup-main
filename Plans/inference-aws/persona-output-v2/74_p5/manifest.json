@@ -1,0 +1,33 @@
+{
+  "persona_id": "74_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/74.webp",
+  "main_image_sha256": "a8d30a0d4f3b018e74982207b65f89100139f82158eecfafc39760a011d74c0b",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:34:10Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Framed by the ornate, gilded archway of a luxurious penthouse suite, the captivating woman turns to face the camera with a bold, commanding gaze. Her vibrant auburn tresses tumble down her back in loose, sensual waves, and the fitted, scarlet dress clings to every inch of her toned physique, emphasizing her hourglass figure. The DSLR's shallow focus blurs the opulent surroundings into a soft haze, drawing the viewer's attention exclusively to the subject's striking beauty and assertive presence.",
+      "seed": 1082047821,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/3a7fb8b8-352c-419a-8022-cc167adaeeb2.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/74.webp",
+      "status": "ok",
+      "bytes": 1386396
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "88_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/88.webp",
+  "main_image_sha256": "ada0230fe0374020c9ac93189dd6b9271def1a30a0789e25c66e59b160a5bec4",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:45:49Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Clad in a sheer black lace corset that leaves little to the imagination, she poses against the backdrop of a plush velvet headboard, the soft candlelight casting shadows that dance across her alabaster skin. Her fiery tresses tumble over one shoulder, and her bold green gaze holds yours with a mix of confidence and sultry invitation. The fitted corset accentuates her ample bust and nipped waist, while her long legs are sheathed in thigh-high leather boots that add a touch of edgy sensuality to her overall ensemble.",
+      "seed": 753129132,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/35b84acc-7856-4a83-b42c-d2998ac22231.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/88.webp",
+      "status": "ok",
+      "bytes": 1330602
+    }
+  ]
+}

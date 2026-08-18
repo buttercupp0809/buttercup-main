@@ -1,0 +1,33 @@
+{
+  "persona_id": "87_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/87.webp",
+  "main_image_sha256": "6ed40b312ad249de9e01cd6cce4af96794afd706f94b903b376bef984a650336",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:42:57Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Perched on a luxurious yacht's deck at sunset, the fiery-haired beauty dons a skintight red leather bodysuit that molds to her every curve, the plunging neckline revealing the tops of her pert breasts. She lounges back on a cushioned lounger, one long leg crossed over the other, the golden hour light dancing across her porcelain skin and glistening in her emerald eyes as the sea breeze tousles her loose waves.",
+      "seed": 1004627678,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/57b4aa19-e8a3-4086-af5a-e180497d31f5.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/87.webp",
+      "status": "ok",
+      "bytes": 1270532
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "43_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/43.webp",
+  "main_image_sha256": "9fe647b99de1c5807c6190cb75fb1b282f83892ff83b027d2b0668dc79f91565",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:21:37Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "The poised beauty reclines on a plush velvet chaise in a dimly lit boudoir, the scent of jasmine and sandalwood heavy in the air. Silk ropes are loosely wrapped around the wooden posts, casting subtle shadows. Her lustrous chestnut locks cascade down her back as she languidly reaches for a crystal flute of champagne, her emerald eyes sparkling with mischief in the soft candlelight.",
+      "seed": 418549388,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/fc22bfac-c36c-4474-9d84-0ff43974a880.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/43.webp",
+      "status": "ok",
+      "bytes": 1601442
+    }
+  ]
+}

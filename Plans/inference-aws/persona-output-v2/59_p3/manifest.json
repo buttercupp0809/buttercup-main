@@ -1,0 +1,33 @@
+{
+  "persona_id": "59_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/59.webp",
+  "main_image_sha256": "7d5d0c55b8c1ec4d14d56c8ec20a6601dd45bf1fbdc321a6fcbdbfc188e1e6f3",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:00:33Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Under the harsh neon glow of a city club, she reclines on a sleek leather sofa, the deep crimson of her tunic contrasted against the icy blue of the bar lights, her raven locks a wild halo around her face as she holds a cocktail with a provocative gaze.",
+      "seed": 873573274,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/4bc428a7-c7b7-468f-98cf-148744f919d5.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/59.webp",
+      "status": "ok",
+      "bytes": 1242129
+    }
+  ]
+}

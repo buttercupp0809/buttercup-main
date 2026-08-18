@@ -1,0 +1,33 @@
+{
+  "persona_id": "109_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/109.webp",
+  "main_image_sha256": "a8112b3b5f1e972fa4bcf4a13304f42956a01839e6279117cd88d00ac8c0bbfe",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:41:40Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A poised beauty with honey-blonde curls, emerald eyes that sparkle with Southern charm, and porcelain skin kissed by the Charleston sun. She reclines on plush velvet pillows in a dimly lit boudoir, surrounded by candles, silk drapes, and a king-sized bed. The elegant off-the-shoulder gown in ivory silk, adorned with delicate lace and pearls, is now slightly disheveled, revealing a hint of cleavage. Soft focus, warm candlelight, and a shallow depth of field capture the intimacy and seductive allure of this cinematic portrait.",
+      "seed": 1469029394,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/316e106c-af59-4da4-ab9a-86d3087a7c97.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/109.webp",
+      "status": "ok",
+      "bytes": 1382540
+    }
+  ]
+}

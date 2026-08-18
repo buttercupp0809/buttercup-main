@@ -1,0 +1,33 @@
+{
+  "persona_id": "27_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/27.webp",
+  "main_image_sha256": "fe02de3bc6a7abcb0775f83cadc9507d65b76de3cfab2bf42714ba1e0fe38f42",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:43:20Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM LIGHTING/TIME: As the last rays of a sultry sunset fade, bathing the rooftop in a warm, honey-gold light, the captivating woman poses at the edge of the building, her flowing lavender dress billowing in the gentle evening breeze. The soft focus of the late afternoon light blurs the cityscape behind her, while the subtle bokeh of the camera lens draws attention to her mesmerizing green eyes and the delicate necklace resting on her sun-kissed skin.",
+      "seed": 1493973698,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/64e00f49-6308-450a-a48e-1f584f80e904.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/27.webp",
+      "status": "ok",
+      "bytes": 1359185
+    }
+  ]
+}

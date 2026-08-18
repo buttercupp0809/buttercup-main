@@ -1,0 +1,33 @@
+{
+  "persona_id": "46_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/46.webp",
+  "main_image_sha256": "96f1e3285ccd2717679fa84dd5f587fddfc2a32d830bd2a261c7e848915154ad",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:30:30Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A vivacious young woman with raven-black, curly locks and piercing emerald eyes, exudes a bold, commanding presence in a provocative full-body shot. Standing before a dramatic, moody blue backdrop, she wears a barely-there, black bikini that leaves her toned physique on full display. Her confident gaze, captured in a DSLR snapshot with a shallow depth of field, seems to pierce through the darkness, as her body language commands attention.",
+      "seed": 1488332026,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/826bf424-14ed-4b4b-9b11-dc6b08ad473a.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/46.webp",
+      "status": "ok",
+      "bytes": 1424915
+    }
+  ]
+}

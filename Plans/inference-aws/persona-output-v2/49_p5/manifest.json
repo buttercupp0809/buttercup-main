@@ -1,0 +1,33 @@
+{
+  "persona_id": "49_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/49.webp",
+  "main_image_sha256": "9014e2c5b60952ebbfdbbc8b4a7f28a9a02eddd84d4104c88a00061568d72045",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:38:11Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In an extreme close-up, this captivating woman's face fills the frame, her striking emerald eyes and full, luscious lips the focal point. Her raven tresses frame her porcelain complexion, and a single loose strand brushes against her cheek. She wears a subtle, shimmery eye shadow that complements her eye color, and a swipe of deep red lipstick accentuates her pout. The shallow depth of field blurs everything except her mesmerizing features, drawing the viewer in to her sultry, inviting gaze.",
+      "seed": 1215678052,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/d2a0e292-9c43-4fdb-b350-3c3a267f7ea3.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/49.webp",
+      "status": "ok",
+      "bytes": 1055586
+    }
+  ]
+}

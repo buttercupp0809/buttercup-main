@@ -1,0 +1,33 @@
+{
+  "persona_id": "79_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/79.webp",
+  "main_image_sha256": "8de79f5879ad5cffcd3469fb2c3508ef1d0805c37de90f4e3eceab14133a37e2",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:44:33Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM MOOD/EXPRESSION: A bold, confident woman strides down a bustling city sidewalk, her fiery red hair fluttering in the wind. Her emerald green eyes sparkle with intensity as she gazes straight ahead, her full lips curled into a commanding smile. The fit of her black leather jacket and distressed denim skirt hints at a powerful, muscular physique beneath. Her scuffed combat boots strike the pavement with purpose, and her confident stride exudes a sense of dominance and authority.",
+      "seed": 1640015465,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/ba0adbfe-9bed-4023-85ea-03275baafbcf.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/79.webp",
+      "status": "ok",
+      "bytes": 1255359
+    }
+  ]
+}

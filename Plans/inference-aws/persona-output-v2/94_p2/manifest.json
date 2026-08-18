@@ -1,0 +1,33 @@
+{
+  "persona_id": "94_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/94.webp",
+  "main_image_sha256": "aabfca569500e35a278a5e9bdbb55b9ec2c331a54be80d176b2eceeac1fc812a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:04:15Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Stripped of her formal attire, the stunning beauty now dons a black leather bodysuit, the glossy material accentuating her every contour as she lounges on a yacht deck at dusk. The setting sun casts a golden sheen on her emerald eyes and the delicate gold brooch adorning her neck, while the ocean breeze plays with her long, rich chestnut locks.",
+      "seed": 624483377,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/83b4d216-66a1-4e0c-8084-b2fdaf6fae71.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/94.webp",
+      "status": "ok",
+      "bytes": 1293781
+    }
+  ]
+}

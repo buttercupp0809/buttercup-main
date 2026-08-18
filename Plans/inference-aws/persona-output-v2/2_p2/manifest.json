@@ -1,0 +1,33 @@
+{
+  "persona_id": "2_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/2.png",
+  "main_image_sha256": "b0573f26ffe937ecc59b0b8e2f123a63635f0e4d775008ccc6808e38c78faef9",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:02:09Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a plush, dimly-lit boudoir, this temptress lounges on a silk-draped chaise, clad in black lace lingerie that barely contains her ample breasts and taut, toned midriff. A sheer, thigh-high stocking is rolled down, exposing the smooth, creamy skin of her inner thigh. Emerald eyes sparkle with sultry invitation as full lips part in a playful, teasing smile.",
+      "seed": 1943772584,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/a2622de2-de8c-4e6b-82cd-ccd9fb6d2fdb.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/2.png",
+      "status": "ok",
+      "bytes": 1363750
+    }
+  ]
+}

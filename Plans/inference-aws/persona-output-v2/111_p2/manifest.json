@@ -1,0 +1,33 @@
+{
+  "persona_id": "111_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/111.webp",
+  "main_image_sha256": "7c01d8d466cf2a072b8c84bc90ab4db52aaa22b2abd469684cd8d512b6e6b485",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:49:01Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On the deck of a luxurious, black yacht, the platinum blonde figure reclines on a sleek, white sunbed, the neon pink bodysuit now a barely-there bikini, the skimpy triangles of fabric leaving little to the imagination as the warm breeze plays with her tousled hair. Emerald eyes sparkle with mischief under the harsh sunlight, while the rich plum of her lips is painted in a sensual pout. A silver choker encircles her throat, contrasting with the golden undertones of her skin as she stretches out, the focus drawn to her statuesque figure, the shallow depth of field blurring the yacht's opulent deck.",
+      "seed": 781954999,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/42c724ec-7c14-4b4a-a61a-a07f387758eb.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/111.webp",
+      "status": "ok",
+      "bytes": 1275333
+    }
+  ]
+}

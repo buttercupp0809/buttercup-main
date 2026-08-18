@@ -1,0 +1,33 @@
+{
+  "persona_id": "48_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/48.webp",
+  "main_image_sha256": "ebb76f622743df3aa9aa6a8fc619517211816e3a7f633581ce0fa35b70cf8d3f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:35:38Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "An intimate, medium shot from behind, looking over the shoulder of a woman in a vintage band tee and black leather jacket, her fiery red hair spilling down her back. She's posed in a doorway, the warm glow of golden sunset light spilling in from the other side, casting a flattering, soft focus on her porcelain skin. Her emerald eyes meet the camera with a playful, teasing smile, and her posture is relaxed yet alluring. The DSLR lens captures every detail of her casual yet seductive demeanor as she gazes out at the viewer.",
+      "seed": 634012026,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/4af63d76-f068-4928-943c-f3758b7a3c8c.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/48.webp",
+      "status": "ok",
+      "bytes": 1260211
+    }
+  ]
+}

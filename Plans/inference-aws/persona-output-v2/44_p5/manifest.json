@@ -1,0 +1,33 @@
+{
+  "persona_id": "44_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/44.webp",
+  "main_image_sha256": "d5ed4c1d12260111758c16863aeb70c80e8ce088438b91f00b031198cbc10fea",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:26:02Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM CAMERA ANGLE: From a low, overhead angle, the camera captures the woman's profile in a tight medium shot, her chin-length auburn hair framing her heart-shaped face as she glances over her shoulder with a sultry, inviting gaze. The focus falls on her decolletage, emphasizing the subtle swell of her breasts beneath the fitted green sweater, while the blurred background and shallow depth of field draw the viewer's eye directly to her alluring, confident presence.",
+      "seed": 1305007493,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/30377470-66a2-429c-b7ba-8bcef69b4a30.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/44.webp",
+      "status": "ok",
+      "bytes": 1179695
+    }
+  ]
+}

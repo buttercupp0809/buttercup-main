@@ -1,0 +1,33 @@
+{
+  "persona_id": "52_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/52.webp",
+  "main_image_sha256": "aef8853bbdfaa42f44c40401a776d5dd9c41d305305e913ad8f68e1293828b0e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:43:51Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "The same confident beauty wears a sheer, champagne-colored lingerie set that leaves little to the imagination, the delicate lace and satin clinging to her curves as she lounges on a sleek, black leather chaise in a modern penthouse suite, the city skyline twinkling outside floor-to-ceiling windows, her knowing smile playing on full, sensual lips, captured in a tight medium shot from behind, glancing over her shoulder with an air of playful, teasing dominance.",
+      "seed": 1630192728,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/1c3a40c8-a848-4074-96bc-7f2662d9c812.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/52.webp",
+      "status": "ok",
+      "bytes": 1300504
+    }
+  ]
+}

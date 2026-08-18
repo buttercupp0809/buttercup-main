@@ -1,0 +1,33 @@
+{
+  "persona_id": "40_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/40.webp",
+  "main_image_sha256": "41fa15425f5714142413ac499c782a0e76f2c7fc76f6cf025afd9fe0bf1d45d3",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:14:02Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Under the harsh glow of neon club lighting, the provocative model struts her stuff, her porcelain skin almost glowing against the dark, industrial backdrop. A barely-there bikini leaves little to the imagination, the sheer fabric clinging to her every curve as she turns to face the camera, her emerald eyes gleaming with mischief and playfulness. The shallow depth of field blurs the chaotic dance floor into a kaleidoscope of color, the bokeh adding texture and visual interest to the image.",
+      "seed": 1179333289,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/7610ff3f-6892-4b91-96b6-9d0f58bc1a3c.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/40.webp",
+      "status": "ok",
+      "bytes": 1579734
+    }
+  ]
+}

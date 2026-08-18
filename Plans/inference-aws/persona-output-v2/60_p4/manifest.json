@@ -1,0 +1,33 @@
+{
+  "persona_id": "60_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/60.webp",
+  "main_image_sha256": "abf1394ff8964b61689336ff0d852ae36111c8f37795945e1db1a80dcea0ba1c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:03:10Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a candlelit chamber, she reclines on a four-poster bed, her emerald eyes soft and vulnerable as she gazes up at the flickering flames. A vintage lace corset hugs her curves, the delicate fabric contrasting with her tough, grunge-inspired style. A few strategically placed tattoos peek out from beneath the corset, adding to her enigmatic allure in the intimate, shallow focus shot.",
+      "seed": 772003909,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/f4b58480-dc17-4378-9fb2-ec7aae086b99.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/60.webp",
+      "status": "ok",
+      "bytes": 1334764
+    }
+  ]
+}

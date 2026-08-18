@@ -9,6 +9,7 @@
 // GET /billing/status, it never writes it.
 
 import * as React from "react";
+import { Coins } from "lucide-react";
 
 interface TokenPack {
   id: string;
@@ -68,10 +69,6 @@ export function TokenStore() {
     void fetchBalance();
   }, [fetchBalance]);
 
-  // Resume flow: after a redirect back from hosted checkout, poll the
-  // balance until it rises above the pre-purchase baseline captured in
-  // sessionStorage. Only the server-confirmed balance (via the webhook ->
-  // TokenLedger write) clears the marker; the client never assumes success.
   React.useEffect(() => {
     if (typeof window === "undefined") return;
     const raw = window.sessionStorage.getItem(PENDING_KEY);
@@ -124,57 +121,84 @@ export function TokenStore() {
   return (
     <div
       id="token-store"
-      className="mx-auto w-full max-w-4xl scroll-mt-6 rounded-2xl border p-6"
-      style={{ borderColor: "hsl(var(--buttercupp-border))", backgroundColor: "hsl(var(--buttercupp-surface))" }}
+      className="buttercupp-glass mx-auto w-full max-w-4xl scroll-mt-6 rounded-2xl p-5 sm:p-6"
       data-testid="token-store"
     >
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <h2 className="font-display text-xl font-semibold">Token Store</h2>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex items-center gap-2.5">
+          <div
+            className="flex h-8 w-8 items-center justify-center rounded-lg"
+            style={{
+              background:
+                "linear-gradient(135deg, hsl(344 84% 71% / 0.18), hsl(262 72% 68% / 0.18))",
+              color: "hsl(var(--buttercupp-accent-violet))",
+            }}
+            aria-hidden
+          >
+            <Coins className="h-4 w-4" />
+          </div>
+          <span
+            className="text-xs font-semibold uppercase tracking-[0.14em]"
+            style={{ color: "hsl(var(--buttercupp-muted))" }}
+          >
+            Current balance
+          </span>
+        </div>
         <div
-          className="rounded-full px-3 py-1 text-sm font-semibold"
+          className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-semibold"
           style={{
-            backgroundColor: "hsl(var(--buttercupp-accent-violet) / 0.18)",
+            backgroundColor: "hsl(var(--buttercupp-accent-violet) / 0.15)",
             color: "hsl(var(--buttercupp-accent-violet))",
           }}
           data-testid="token-balance"
         >
-          Balance: {balance ?? "-"} tokens
+          <Coins className="h-3.5 w-3.5" aria-hidden />
+          {balance ?? "-"} tokens
         </div>
       </div>
-      <p className="mt-1 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
-        Buy tokens for extra images and videos, on top of your plan quota.
-      </p>
 
       {error ? (
         <div
-          className="mt-3 rounded-md border p-2 text-xs"
+          className="mt-4 rounded-xl border p-2.5 text-xs"
           style={{
             borderColor: "hsl(var(--buttercupp-accent-rose) / 0.5)",
-            backgroundColor: "hsl(var(--buttercupp-accent-rose) / 0.12)",
+            backgroundColor: "hsl(var(--buttercupp-accent-rose) / 0.1)",
           }}
         >
           {error}
         </div>
       ) : null}
 
-      <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
+      <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
         {(packs ?? []).map((pack) => (
           <div
             key={pack.id}
             data-testid={`pack-${pack.id}`}
-            className="flex flex-col gap-2 rounded-xl border p-4"
-            style={{ borderColor: "hsl(var(--buttercupp-border))", backgroundColor: "hsl(var(--buttercupp-surface-2))" }}
+            className="flex flex-col gap-2 rounded-2xl border p-4 transition duration-200 hover:-translate-y-0.5 hover:border-[hsl(var(--buttercupp-accent-rose)/0.4)]"
+            style={{
+              borderColor: "hsl(var(--buttercupp-border))",
+              backgroundColor: "hsl(var(--buttercupp-surface-2) / 0.5)",
+            }}
           >
             <span className="font-display text-base font-semibold">{pack.label}</span>
-            <span className="text-2xl font-bold">${pack.priceUsd}</span>
+            <div className="flex items-baseline gap-1">
+              <span className="font-display text-3xl font-extrabold tracking-tight">${pack.priceUsd}</span>
+              <span className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+                one-time
+              </span>
+            </div>
+            <div className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+              {pack.credits.toLocaleString()} tokens
+            </div>
             <button
               type="button"
               onClick={() => buy(pack.id)}
               disabled={pending === pack.id}
               data-testid={`buy-pack-${pack.id}`}
-              className="mt-1 w-full rounded-lg py-2 text-sm font-semibold text-white disabled:opacity-60"
+              className="mt-2 w-full rounded-xl py-2.5 text-sm font-bold text-white shadow-[0_8px_24px_-12px_hsl(344_84%_60%/0.6)] transition-all duration-200 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400/70 disabled:opacity-60"
               style={{
-                background: "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
+                background:
+                  "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
               }}
             >
               {pending === pack.id ? "Redirecting..." : "Buy"}
@@ -183,7 +207,7 @@ export function TokenStore() {
         ))}
         {!packs ? (
           <div
-            className="col-span-full rounded-xl border p-4 text-center text-sm"
+            className="col-span-full rounded-2xl border p-4 text-center text-sm"
             style={{ borderColor: "hsl(var(--buttercupp-border))", color: "hsl(var(--buttercupp-muted))" }}
           >
             Loading token packs...

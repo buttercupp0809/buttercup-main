@@ -1,0 +1,33 @@
+{
+  "persona_id": "94_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/94.webp",
+  "main_image_sha256": "aabfca569500e35a278a5e9bdbb55b9ec2c331a54be80d176b2eceeac1fc812a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:04:49Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Bathed in the neon hues of a pulsating nightclub, the alluring young woman stands provocatively near the DJ booth, her flowing high-necked gown now a sultry, skin-tight red dress that clings to every curve. Her captivating emerald eyes smolder under the harsh lighting, her full lips parted in a sultry invitation as the crowd sways around her.",
+      "seed": 1197031805,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/bf6c9207-ff6c-44b3-95a0-53c6e841e663.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/94.webp",
+      "status": "ok",
+      "bytes": 1263969
+    }
+  ]
+}

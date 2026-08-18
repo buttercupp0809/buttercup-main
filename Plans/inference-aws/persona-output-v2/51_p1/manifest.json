@@ -1,0 +1,33 @@
+{
+  "persona_id": "51_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/51.webp",
+  "main_image_sha256": "4befbba8f3e060f4700e6bbf31e1a908fd3f0f0b25b72706c6c374e2e41b8abf",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:41:06Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "The striking woman lounges on a plush velvet chaise in a lavish boudoir, adorned with crimson silk sheets, gilded mirrors, and candles flickering in mercury glass holders. Her piercing emerald eyes gleam in the soft, ambient light as she props an elbow behind her, revealing a tantalizing expanse of creamy skin.",
+      "seed": 1952089908,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/e409e9eb-a6c2-4fd5-83e9-a588d1d65b71.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/51.webp",
+      "status": "ok",
+      "bytes": 1577187
+    }
+  ]
+}

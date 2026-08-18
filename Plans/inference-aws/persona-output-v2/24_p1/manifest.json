@@ -1,0 +1,33 @@
+{
+  "persona_id": "24_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/24.webp",
+  "main_image_sha256": "d0cf23a4a23b09c7b69117b3813796218f9b250b850f180aa7f727880f24c39c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:35:11Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "The ravishing French beauty reclines on plush, crimson silk sheets in a dimly lit, opulent boudoir. Honey-blonde waves cascade down her back as she gazes at the viewer with a sultry, inviting emerald stare. Fitted with delicate gold accents, a sheer, lace-trimmed teddy clings to her curves, barely concealing the porcelain skin kissed by Parisian sunbeams. Shapely legs extend towards a gilded four-poster bed, strappy heels discarded on the floor. The cinematic close-up captures her striking features, softened by the shallow depth of field and warm, golden bokeh.",
+      "seed": 1002075242,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/b0aed75d-a438-4ebb-a070-96ec5da0f7c3.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/24.webp",
+      "status": "ok",
+      "bytes": 1371663
+    }
+  ]
+}

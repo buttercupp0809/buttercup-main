@@ -1,0 +1,33 @@
+{
+  "persona_id": "113_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/113.webp",
+  "main_image_sha256": "cc558c55c7123a58dd99540a79ff91a10d580605e364145f0cb76c62ef077e4c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:53:32Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "The same dynamic woman, now clad in a lacy, crimson bra and matching thong, reclines seductively on a plush, cream-colored velvet chaise in her boudoir, the sheer, floor-length curtains drawn back to reveal a moonlit garden, the cool, ethereal light casting a spell of mystery and allure as she gazes at the camera with a sultry, come-hither expression.",
+      "seed": 135818121,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/48698b40-fe28-45bd-b8c7-53bbe9ec27ee.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/113.webp",
+      "status": "ok",
+      "bytes": 1308553
+    }
+  ]
+}

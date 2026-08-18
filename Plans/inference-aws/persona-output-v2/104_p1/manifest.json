@@ -1,0 +1,33 @@
+{
+  "persona_id": "104_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/104.webp",
+  "main_image_sha256": "712b362d9eb0cad1e5b9b4252c1af776ccfaa04d560f5abbbb8dd839df90bbad",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:28:38Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM SCENE/SETTING: On a plush, velvet-draped four-poster bed in a dimly lit, opulent boudoir, the young woman reclines languidly, her back propped against sumptuous satin pillows. Rich wood paneling and ornate, gilded mirrors surround her, while the air is heavy with the scent of expensive perfume and candle smoke. A crystal chandelier casts a warm, golden glow, illuminating her striking features and the decadent environment.",
+      "seed": 1907029641,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/86de1c49-554f-4638-a97d-19e02416c9fd.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/104.webp",
+      "status": "ok",
+      "bytes": 1908294
+    }
+  ]
+}

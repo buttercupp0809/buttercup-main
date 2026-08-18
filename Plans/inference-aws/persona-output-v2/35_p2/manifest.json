@@ -1,0 +1,33 @@
+{
+  "persona_id": "35_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/35.webp",
+  "main_image_sha256": "5e33c70ddf7bf85dd952539ad5e6bddbf397bfc9590d99f6f2153e932f03fdaa",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:01:46Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On the deck of a luxurious yacht, she wears a form-fitting, high-cut leather bodysuit in metallic gold, the fabric stretched taut over her toned physique as she reclines against a sleek, white rail, one stiletto-clad foot propped up. The sun beats down, casting a warm glow across the chrome and polished wood, and the sea breeze tousles her hair.",
+      "seed": 1291541720,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/a7c52bd5-7e86-4f5f-b31f-bf2be7bb906e.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/35.webp",
+      "status": "ok",
+      "bytes": 1171137
+    }
+  ]
+}

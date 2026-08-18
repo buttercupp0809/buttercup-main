@@ -1,0 +1,33 @@
+{
+  "persona_id": "38_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/38.webp",
+  "main_image_sha256": "d188bc743c728e90672fc51763546355d0c410e2913b0109a57e5a896fe6c925",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:09:33Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Vulnerability softens her striking features as she looks down, her long magenta hair cascading like a waterfall of color across her freckled shoulders. A delicate gold chain rests against her porcelain skin, drawing the eye to the tantalizing curves of her bare back. The warm, golden light of a sunset filters through sheer curtains, casting a dreamy, ethereal glow on her introspective pose.",
+      "seed": 1832689527,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/1bea7442-a2f3-480e-a33e-e1b8b862a1f3.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/38.webp",
+      "status": "ok",
+      "bytes": 1298636
+    }
+  ]
+}

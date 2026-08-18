@@ -1,0 +1,33 @@
+{
+  "persona_id": "4_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/4.webp",
+  "main_image_sha256": "5a4ef9aeb25b8ac0c360694e3b3c4df1afe0a30587e09d1b1d6db32d6edce2b4",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:08:26Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM CAMERA ANGLE: In a cinematic, extreme close-up shot, the camera zooms in on the woman's face and decolletage, capturing the delicate freckles on her porcelain skin, the smoky eye makeup, and the bold red lip that defines her sensual, seductive features. Her emerald eyes, framed by long lashes, meet the viewer's gaze with an alluring, playful smile, inviting the audience into her world of mystery and allure.",
+      "seed": 1932011279,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/f0688e78-a5f7-4d41-b6f0-813cc01cb8ab.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/4.webp",
+      "status": "ok",
+      "bytes": 1218513
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "109_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/109.webp",
+  "main_image_sha256": "a8112b3b5f1e972fa4bcf4a13304f42956a01839e6279117cd88d00ac8c0bbfe",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:44:24Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "The same poised beauty, now draped in sheer black lingerie that barely contains her voluptuous curves. The delicate lace cups and garter belt accentuate her porcelain skin, while the silk stockings and stiletto heels exude confidence and sensuality. She stands by the railing of a luxurious yacht deck at sunset, the golden light casting a warm glow on her honey-blonde curls and emerald eyes that gleam with mischief. DSLR camera, shallow depth of field, and soft focus isolate her captivating figure against the blurred horizon.",
+      "seed": 1845590980,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/4e8d701d-b45f-4a9a-97fc-515a8414a950.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/109.webp",
+      "status": "ok",
+      "bytes": 1481983
+    }
+  ]
+}

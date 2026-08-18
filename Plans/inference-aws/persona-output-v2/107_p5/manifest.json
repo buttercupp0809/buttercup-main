@@ -1,0 +1,33 @@
+{
+  "persona_id": "107_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/107.webp",
+  "main_image_sha256": "1f3508fc57734a60afd63487e6fb70162f8f210ab57d0ee58047babec64a099d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:38:16Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM CAMERA ANGLE: In a tight, medium shot from behind, the fiery redhead glances over her shoulder, her emerald eyes sparkling with mischief as she bites her lower lip. Her fitted, emerald green blouse stretches taut across her back, the subtle curve of her spine and the swell of her buttocks evident beneath the smooth fabric. Shallow focus blurs the background into a soft, blurred bokeh, while the highlights on her skin and the sharp definition of her features create a striking, photorealistic image that invites the viewer to step into her world.",
+      "seed": 169934732,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/9e0c7e67-82f1-4237-8919-b244e7edd260.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/107.webp",
+      "status": "ok",
+      "bytes": 1005076
+    }
+  ]
+}

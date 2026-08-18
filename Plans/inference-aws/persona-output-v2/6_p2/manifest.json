@@ -1,0 +1,33 @@
+{
+  "persona_id": "6_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/6.webp",
+  "main_image_sha256": "3686167379c9d24fd03bf6b395432ddb61a45d63cc58a2e01aa6504a0c420d8d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:42:35Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Dressed in a barely-there bikini, she reclines on a plush velvet chaise in a lavish boudoir, the soft candlelight casting a sultry glow. The golden strands of her hair cascade around her shoulders as she props herself up on one elbow, her emerald eyes smoldering with desire. A sheer black negligee drapes over the chaise, billowing in the heat from the crackling fireplace.",
+      "seed": 273319820,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/fc98288e-b319-44b1-8f07-771df137ec51.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/6.webp",
+      "status": "ok",
+      "bytes": 1357395
+    }
+  ]
+}

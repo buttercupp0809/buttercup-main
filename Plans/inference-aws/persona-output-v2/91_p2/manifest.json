@@ -1,0 +1,33 @@
+{
+  "persona_id": "91_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/91.webp",
+  "main_image_sha256": "166fd053d2de1d38860cbfd79214bdfc6cc1e9ee82b93400e08feb3ec59ed20f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:55:52Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Place the same character in a lavish penthouse suite overlooking the glittering city skyline at dusk. Her fitted, flowing black top has been replaced by a skintight leather bodysuit in glossy black, complete with a plunging neckline and strategically placed cutouts that reveal tantalizing glimpses of her toned physique. The distressed denim has given way to a barely-there micro bikini in the same dark hue, its strings barely holding together as she poses on the balcony's edge, the wind tousling her raven tresses. A chunky gold chain hangs low around her neck, drawing attention to her exposed cleavage. Her emerald eyes gleam with a bold, confident light as she looks out over the city, her full lips curled in a playful smirk.",
+      "seed": 79938413,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/a2415d08-8427-4b8a-9571-f199cbe127a8.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/91.webp",
+      "status": "ok",
+      "bytes": 1330433
+    }
+  ]
+}

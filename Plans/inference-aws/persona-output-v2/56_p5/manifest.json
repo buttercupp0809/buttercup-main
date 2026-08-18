@@ -1,0 +1,33 @@
+{
+  "persona_id": "56_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/56.webp",
+  "main_image_sha256": "a44413dcb11cba341462e5a7abc192276cefb5d65205881fc59dcd92e91b2072",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:54:19Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM CAMERA ANGLE: From an extreme close-up, the fiery redhead's face fills the frame. Her tousled locks frame her heart-shaped face, and her piercing emerald eyes seem to sparkle directly at the camera. She wears a distressed denim jacket over a band tee, the edges of the fabric visible at the edges of the shot. A chunky silver necklace rests against her sun-kissed collarbone, drawing attention to her delicate features. Her full lips are parted slightly, as if about to share a secret, and a few wisps of hair frame her flushed cheeks. The shallow depth of field blurs the rest of her body, focusing attention solely on her captivating face and expressive eyes, creating an intimate, almost voyeuristic effect.",
+      "seed": 449361441,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/69ea3b71-b10c-40d3-9ce8-b5931c54771b.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/56.webp",
+      "status": "ok",
+      "bytes": 1303426
+    }
+  ]
+}

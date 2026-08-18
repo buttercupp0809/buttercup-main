@@ -1,0 +1,33 @@
+{
+  "persona_id": "30_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/30.webp",
+  "main_image_sha256": "ffc70fff3e8998b1cb67443fc85264c89c983375eb174b587276e61cf8e222ab",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:51:06Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the smoky depths of a neon-lit nightclub, the striking woman leans in close, her smoky emerald eyes locking with the viewer's in a heated gaze. Her raven tresses frame her face like a veil of night, and her plump lips curve into a tantalizing smile, hinting at secrets yet to be revealed. She wears a tight, sheer lace corset that emphasizes her voluptuous curves, and the harsh club lights dance across her skin, creating an air of mystery and unbridled desire.",
+      "seed": 559482162,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/24856c14-6106-4916-937d-b3f901ccd01e.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/30.webp",
+      "status": "ok",
+      "bytes": 1470258
+    }
+  ]
+}

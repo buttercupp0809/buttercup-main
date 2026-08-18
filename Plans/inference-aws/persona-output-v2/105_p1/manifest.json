@@ -1,0 +1,33 @@
+{
+  "persona_id": "105_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/105.webp",
+  "main_image_sha256": "83424a35021866d96d683f705a55ebf0a5239adb7001b8a5156a817e35601dbc",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:31:07Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A statuesque beauty lounges on a plush, crimson velvet chaise in a lavish, dimly lit boudoir. Her auburn tresses spill across the rich upholstery as she props an elbow on a nearby marble pedestal, her emerald eyes smoldering with sensual intent beneath thick lashes. A sheer, black lace teddy clings to her curves, the delicate fabric barely containing her ample bosom and defined waist, as she crosses one long, tanned leg over the other, the pose both alluring and provocative.",
+      "seed": 1833362265,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/e016df56-d353-4335-a0fe-99d1056fcbe8.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/105.webp",
+      "status": "ok",
+      "bytes": 1391658
+    }
+  ]
+}

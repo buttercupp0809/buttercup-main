@@ -1,0 +1,33 @@
+{
+  "persona_id": "89_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/89.webp",
+  "main_image_sha256": "1f5bd54d9cb3234e5ecf809fafa3032c55a47de111c1e8e76374e7bfda2d1595",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:49:24Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Stripped down to barely there black lace, the character reclines on a yacht deck at dusk, the setting sun casting a warm glow on her porcelain skin. Her raven tresses cascade loose as she props herself up on one arm, the other hand idly toying with the delicate choker around her throat. Captured in a tight medium shot from the side, the shallow focus highlights the curves of her body and the enticing upturn of her lips.",
+      "seed": 984558484,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/259b9712-ac3c-4761-bdc8-5b8dfc8bfac2.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/89.webp",
+      "status": "ok",
+      "bytes": 1187589
+    }
+  ]
+}

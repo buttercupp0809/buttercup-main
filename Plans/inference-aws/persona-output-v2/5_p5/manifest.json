@@ -1,0 +1,33 @@
+{
+  "persona_id": "5_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/5.webp",
+  "main_image_sha256": "b4cc22ba2439c30dd4a065ac5978200afa53e8c55c1d734d85f4fbdcc226a7bb",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:10:59Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Seen from an extreme close-up, her face fills the frame, raven locks framing her porcelain features, emerald eyes smoldering with desire, the soft focus and shallow depth of field emphasizing the delicate curve of her cheekbone, the seductive pout of her lips, and the alluring gleam of her eyelashes, the viewer drawn in by the intimate, cinematic perspective.",
+      "seed": 666575853,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/3ef39939-ab2f-443b-b04f-d684f14ecf1b.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/5.webp",
+      "status": "ok",
+      "bytes": 1224913
+    }
+  ]
+}

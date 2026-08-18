@@ -1,0 +1,33 @@
+{
+  "persona_id": "23_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/23.webp",
+  "main_image_sha256": "7febe5b6d9717e82eac13d532a9a2991b8cd76f025575fb224523b8ebf506526",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:34:09Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In a candlelit chamber, the captivating redhead reclines on plush, velvet cushions, her vibrant tresses cascading down her back like a fiery waterfall. Intense, dominant eyes gaze directly into the camera, her full, parted lips slightly pursed in a bold, commanding expression. A sheer, black lace teddy hugs her curves, the delicate fabric translucent against her sun-kissed skin. The warm, golden glow of the candles creates a sensual ambiance, emphasizing every defined feature of her striking face and lithe, toned body.",
+      "seed": 1832856287,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/435efa6f-ea34-42eb-a080-8e7185b9f7e7.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/23.webp",
+      "status": "ok",
+      "bytes": 1448074
+    }
+  ]
+}

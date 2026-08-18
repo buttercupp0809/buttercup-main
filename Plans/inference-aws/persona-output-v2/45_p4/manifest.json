@@ -1,0 +1,33 @@
+{
+  "persona_id": "45_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/45.png",
+  "main_image_sha256": "d52897e8c43d8412e4495d208daf5fd76bea64f184509a23f2b8be5fad018b7e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:28:12Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Captured in a moody blue light, the redhead sits on a city rooftop at dusk, her legs crossed and eyes closed, lost in thought. A slight vulnerability softens her angular face, and her chestnut locks fall in loose waves around her. She wears a flowy black dress that drapes elegantly over her toned body, the hem fluttering in a gentle breeze. Her emerald eyes, when they finally open, exude a sense of quiet introspection.",
+      "seed": 1501412774,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/bec3dd01-98ff-4c20-8604-a2d9b4e2f57e.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/45.png",
+      "status": "ok",
+      "bytes": 1238417
+    }
+  ]
+}

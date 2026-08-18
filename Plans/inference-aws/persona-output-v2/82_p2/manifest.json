@@ -1,0 +1,33 @@
+{
+  "persona_id": "82_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/82.webp",
+  "main_image_sha256": "5391339d07eb1bd57c868cd7f04bd7857d5eb6265ad1e220f971d719db9feb7e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:31:38Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the dimly lit boudoir, the woman reclines on a velvet chaise, the black leather jacket and distressed denim replaced by a black lace corset that cinches her waist, and a matching thong. Her breasts spill over the top, nipples hardened in the cool air. A delicate gold chain drapes across her chest, and her raven tresses cascade down her back in loose waves. She reaches for the camera, her full lips parted in a sultry smile, as the shallow depth of field renders the room a soft blur.",
+      "seed": 1612969231,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/08ff4ff3-4a32-4c7c-bee9-154ebbd94734.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/82.webp",
+      "status": "ok",
+      "bytes": 1397391
+    }
+  ]
+}

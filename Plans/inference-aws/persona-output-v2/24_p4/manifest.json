@@ -1,0 +1,33 @@
+{
+  "persona_id": "24_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/24.webp",
+  "main_image_sha256": "d0cf23a4a23b09c7b69117b3813796218f9b250b850f180aa7f727880f24c39c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:36:29Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "The French beauty exudes raw, sensual power as she leans against a weathered wooden dock railing at sunset. A black leather corset hugs her waist and enhances her ample bust, while a flowing, sheer skirt dances in the ocean breeze. Emerald eyes blaze with intensity as she turns to face the camera, her full lips curled into a bold, commanding smile. Tousled honey-blonde hair frames her face, and strappy black heels add a touch of edginess to her overall look. The camera frames her in a dramatic overhead shot, looking down on her from above.",
+      "seed": 1042951471,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/9658a6b1-9d2c-42c7-8da2-c9599c2bde62.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/24.webp",
+      "status": "ok",
+      "bytes": 1495446
+    }
+  ]
+}

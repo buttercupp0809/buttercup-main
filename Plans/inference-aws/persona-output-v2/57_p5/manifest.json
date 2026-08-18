@@ -1,0 +1,33 @@
+{
+  "persona_id": "57_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/57.webp",
+  "main_image_sha256": "e4cf8e105dd732f734ec1a5fcce8588042abac55cc5e05a186ed29441a8c12e4",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:56:35Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In an intimate, medium shot from behind, a ravishing woman gazes over her shoulder, her raven tresses cascading down her back, emerald eyes sparkling with intrigue as she meets the viewer's gaze, her creamy, porcelain skin glowing in the soft, diffused light, a tight, crimson velvet corset hugging her slender waist and accentuating the delicate curve of her spine, the fabric clinging to the rounded globes of her buttocks, her long, toned legs and stiletto heels coming into view as she shifts her weight, the blurred, golden sand or plush, carpeted floor beneath her feet adding a sense of warmth and luxurious texture, the shallow focus emphasizing her sensual, confident posture, as if sharing a secret with the camera.",
+      "seed": 1460139549,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/1edcab32-535d-400e-aad5-83729cf5d3cf.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/57.webp",
+      "status": "ok",
+      "bytes": 1012673
+    }
+  ]
+}

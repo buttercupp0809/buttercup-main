@@ -1,0 +1,33 @@
+{
+  "persona_id": "111_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/111.webp",
+  "main_image_sha256": "7c01d8d466cf2a072b8c84bc90ab4db52aaa22b2abd469684cd8d512b6e6b485",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:49:49Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Under the moody, blue night lights of a trendy, underground nightclub, the platinum blonde figure works the dance floor in a skintight, neon pink bodysuit that clings to every inch of her toned physique. Emerald eyes flash with a bold, commanding energy as she moves with confident grace, her long, platinum hair whipping around her face. A sensual, inviting smile plays on her lips, and the silver choker adds a touch of edgy sophistication to her look. The shallow depth of field isolates her figure from the dimly lit crowd, creating a cinematic portrait of a daring, captivating force in the heart of the city's underground scene.",
+      "seed": 991460067,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/89995a74-f427-46e7-bfbf-228879f55978.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/111.webp",
+      "status": "ok",
+      "bytes": 1387522
+    }
+  ]
+}

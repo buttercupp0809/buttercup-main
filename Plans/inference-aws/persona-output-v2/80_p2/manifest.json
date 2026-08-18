@@ -1,0 +1,33 @@
+{
+  "persona_id": "80_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/80.webp",
+  "main_image_sha256": "154961ea3e25385ac6f9be8687827802f7759b00e974bce3f99ca3c3b3500a0e",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:26:54Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the intimate candlelit chamber of a luxurious penthouse suite, the ethereal beauty reclines on a velvet chaise, her raven tresses spilling over the plush cushions. A delicate black lace corset, barely containing her voluptuous curves, is adorned with intricate silver brocade and lacing that frames her ample cleavage. Her high-waisted, distressed denim is replaced with sheer, thigh-high stockings, adding to the allure of her bohemian yet seductive style.",
+      "seed": 417994791,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/870c4b76-4b45-4c5f-a58a-e0560bca6799.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/80.webp",
+      "status": "ok",
+      "bytes": 1390229
+    }
+  ]
+}

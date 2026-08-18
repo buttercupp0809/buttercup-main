@@ -1,0 +1,33 @@
+{
+  "persona_id": "53_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/53.webp",
+  "main_image_sha256": "5736e39c9d9cf98d8de370f5d2616766b517922e5bd0ea79251a7af39c0565a5",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:47:36Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "From behind, the woman's silhouette is captured in a dramatic side profile, her flowing auburn tresses and the intricate patterns of her dress blurred into a stunning bokeh by the shallow depth of field. The focal point is her face, illuminated by soft, warm light, her eyes cast downward with a playful, enigmatic smile playing on her lips.",
+      "seed": 1039371162,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/2fab835d-dc8b-435e-8659-f5d0e69ea3eb.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/53.webp",
+      "status": "ok",
+      "bytes": 1494718
+    }
+  ]
+}

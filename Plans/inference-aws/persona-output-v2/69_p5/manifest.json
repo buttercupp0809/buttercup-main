@@ -1,0 +1,33 @@
+{
+  "persona_id": "69_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/69.webp",
+  "main_image_sha256": "ec189202c44c4a5d9bd1cd6e4c9d8ad7b20615ee3375fd3319146f369ec240cc",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:23:07Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "An intimate, extreme close-up captures the stunning young woman's face and d\u00e9colletage in a sultry, dimly lit boudoir. Her fiery auburn tresses cascade around her like a fiery halo, framing her porcelain skin and deep, emerald green eyes, which seem to hold the viewer's gaze with an intense, almost magnetic allure. A bold, crimson lip and delicate gold necklace add to her allure as she rests her head on one hand, the other casually draped across her exposed midriff, the background a blurred tapestry of rich, velvety fabrics and ornate furnishings.",
+      "seed": 787737516,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/d8a5982b-d9d6-42bc-a4e3-ea4238f3f59b.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/69.webp",
+      "status": "ok",
+      "bytes": 1330695
+    }
+  ]
+}

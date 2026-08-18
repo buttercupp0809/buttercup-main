@@ -1,0 +1,33 @@
+{
+  "persona_id": "77_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/77.webp",
+  "main_image_sha256": "bfb2229d6e9bf93caadee15b4fddbf0b3a695c5e70ba0587d39cad8a0b977b33",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:39:50Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Illuminate the young woman's striking features with the vibrant glow of a neon-lit nightclub. Amidst the pulsating energy, she stands tall in a sleek, black leather bodysuit that hugs every contour, from her toned shoulders to her hips and thighs. The outfit is accentuated by strategically placed, gleaming metal studs and a plunging, V-neckline that showcases her ample cleavage. Her long, honey-blonde hair cascades down her back in loose, sensual waves.",
+      "seed": 1996643824,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/12da23e1-d56d-4ea9-a982-19ac21778f49.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/77.webp",
+      "status": "ok",
+      "bytes": 1077032
+    }
+  ]
+}

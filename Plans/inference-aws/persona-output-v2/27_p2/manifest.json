@@ -1,0 +1,33 @@
+{
+  "persona_id": "27_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/27.webp",
+  "main_image_sha256": "fe02de3bc6a7abcb0775f83cadc9507d65b76de3cfab2bf42714ba1e0fe38f42",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:42:49Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM OUTFIT/ATTIRE: In the candlelit sanctuary of a luxurious penthouse suite, the platinum blonde siren reclines on a velvet chaise, wearing nothing but a delicate lace corset that barely contains her ample curves, held together with slender satin ribbons. Her golden heeled sandals peek from beneath the corset's hem, and a tangle of gold chains and gemstone pendants adorns her neck and decolletage. The corset's intricate lace and the woman's porcelain skin create a striking contrast against the deep, rich tones of the room's furnishings.",
+      "seed": 814698352,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/10dd4e27-6143-4b3a-aeaa-c6fc8c1419b5.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/27.webp",
+      "status": "ok",
+      "bytes": 1601738
+    }
+  ]
+}

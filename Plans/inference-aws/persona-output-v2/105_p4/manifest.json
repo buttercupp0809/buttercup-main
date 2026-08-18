@@ -1,0 +1,33 @@
+{
+  "persona_id": "105_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/105.webp",
+  "main_image_sha256": "83424a35021866d96d683f705a55ebf0a5239adb7001b8a5156a817e35601dbc",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:32:24Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A statuesque beauty exudes confidence and dominance in a provocative, high-contrast shot, the harsh sunlight of a golden hour illuminating her tanned, athletic form. She stands powerfully at the edge of a shimmering infinity pool, her emerald eyes narrowed to a piercing gaze, her full lips pressed into a bold, commanding line. A sleek, black sports bra and boyshorts hug her toned physique, the fabric stretched taut over her defined muscles and curves. One hand rests on her hip, the other gripping the edge of the pool, as she looks directly into the camera with an unapologetic, take-no-prisoners attitude.",
+      "seed": 85039153,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/fdc31b0f-cd4b-4534-84da-6384eada49a8.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/105.webp",
+      "status": "ok",
+      "bytes": 1339663
+    }
+  ]
+}

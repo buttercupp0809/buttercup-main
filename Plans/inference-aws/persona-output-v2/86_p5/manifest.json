@@ -1,0 +1,33 @@
+{
+  "persona_id": "86_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/86.webp",
+  "main_image_sha256": "21a2b5c4f9c9c6fb5530c00ebaa0f2084e982bb459b8f7566ce1b94948cc3dc3",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:41:54Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "An extreme close-up shot frames the face and decolletage of a stunning young woman with fiery red hair worn in loose waves and bright green eyes, as she tilts her head back, exposing the smooth expanse of her porcelain neck, the camera's shallow depth of field blurring the background into creamy bokeh, her expressive, inviting gaze holding the viewer's attention as she wears a vintage band tee, the fabric draped across her bare shoulders, emphasizing her sensual allure.",
+      "seed": 462777649,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/8fd6e7dd-22c9-4276-b61e-b15465d41c6f.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/86.webp",
+      "status": "ok",
+      "bytes": 1171758
+    }
+  ]
+}

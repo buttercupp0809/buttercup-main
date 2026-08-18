@@ -26,11 +26,45 @@ export function ReelScroller({ items }: { items: ReelItem[] }) {
 
   if (items.length === 0) {
     return (
-      <div
-        className="flex h-full items-center justify-center text-sm"
-        style={{ color: "hsl(var(--buttercupp-muted))" }}
-      >
-        No reels yet.
+      <div className="flex h-full items-center justify-center px-6">
+        <div className="buttercupp-glass relative w-full max-w-md overflow-hidden rounded-3xl p-8 text-center">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(24rem 16rem at 50% -10%, hsl(var(--buttercupp-accent-rose) / 0.2), transparent 60%)",
+            }}
+          />
+          <div className="relative flex flex-col items-center gap-3">
+            <div
+              className="flex h-12 w-12 items-center justify-center rounded-2xl"
+              style={{
+                background:
+                  "linear-gradient(135deg, hsl(344 84% 71% / 0.2), hsl(262 72% 68% / 0.2))",
+                color: "hsl(var(--buttercupp-accent-rose))",
+              }}
+            >
+              <Play className="h-5 w-5" fill="currentColor" />
+            </div>
+            <h2 className="font-display text-xl font-semibold tracking-tight">
+              No reels yet
+            </h2>
+            <p className="text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+              New reels drop as companions come online. Check back in a bit.
+            </p>
+            <Link
+              href="/discover"
+              className="mt-2 inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-semibold text-white shadow-[0_8px_24px_-12px_hsl(344_84%_71%/0.55)] transition hover:brightness-110"
+              style={{
+                background:
+                  "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+              }}
+            >
+              Browse companions
+            </Link>
+          </div>
+        </div>
       </div>
     );
   }
@@ -163,7 +197,7 @@ function Reel({
           type="button"
           onClick={onToggleMute}
           aria-label={muted ? "Unmute" : "Mute"}
-          className="tap-target absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur transition hover:bg-black/60"
+          className="tap-target absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-black/40 text-white backdrop-blur-md transition duration-200 hover:scale-105 hover:bg-black/60"
         >
           {muted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
         </button>
@@ -172,20 +206,33 @@ function Reel({
             Wrapper is pointer-events-none so taps on empty space still
             play/pause the video; interactive children re-enable pointer events. */}
         <div className="pointer-events-none absolute inset-x-4 bottom-5 flex items-center gap-3 pb-safe text-white">
-          <div className="h-11 w-11 shrink-0 overflow-hidden rounded-full ring-2 ring-white/70 bg-black/50">
-            {item.avatar ? (
-              <img
-                src={item.avatar}
-                alt={item.name}
-                className="h-full w-full object-cover object-top"
-              />
-            ) : (
-              <div className="flex h-full w-full items-center justify-center text-sm font-bold text-white">
-                {item.name[0]?.toUpperCase()}
+          <div
+            className="h-11 w-11 shrink-0 overflow-hidden rounded-full bg-black/50 ring-2"
+            style={{ boxShadow: "0 4px 16px -6px hsl(344 84% 60% / 0.55)", borderColor: "transparent", outline: "none" }}
+          >
+            <div
+              className="h-full w-full rounded-full p-[2px]"
+              style={{
+                background: "linear-gradient(135deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+              }}
+            >
+              <div className="h-full w-full overflow-hidden rounded-full bg-black">
+                {item.avatar ? (
+                   
+                  <img
+                    src={item.avatar}
+                    alt={item.name}
+                    className="h-full w-full object-cover object-top"
+                  />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center text-sm font-bold text-white">
+                    {item.name[0]?.toUpperCase()}
+                  </div>
+                )}
               </div>
-            )}
+            </div>
           </div>
-          <div className="min-w-0 flex flex-col">
+          <div className="flex min-w-0 flex-col">
             <span className="truncate font-display text-lg font-semibold leading-tight drop-shadow">
               {item.name}
             </span>
@@ -193,7 +240,10 @@ function Reel({
           </div>
           <Link
             href={item.chatHref}
-            className="tap-target pointer-events-auto ml-1 flex shrink-0 items-center justify-center rounded-full border border-white/50 bg-white/10 px-4 py-1.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20"
+            className="tap-target pointer-events-auto ml-1 inline-flex shrink-0 items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-white shadow-[0_8px_24px_-12px_hsl(344_84%_60%/0.7)] ring-1 ring-white/20 transition-all duration-200 hover:scale-105 hover:brightness-110"
+            style={{
+              background: "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+            }}
           >
             Chat Now
           </Link>
@@ -206,11 +256,23 @@ function Reel({
             onClick={toggleLike}
             aria-pressed={liked}
             aria-label={liked ? "Unlike" : "Like"}
-            className="tap-target flex h-12 w-12 items-center justify-center rounded-full bg-black/35 backdrop-blur transition hover:bg-black/55 active:scale-90"
+            className="tap-target flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-black/40 backdrop-blur-md transition duration-200 hover:scale-110 hover:bg-black/60 active:scale-90"
+            style={
+              liked
+                ? { boxShadow: "0 6px 22px -8px hsl(var(--buttercupp-accent-rose) / 0.7)" }
+                : undefined
+            }
           >
             <Heart
               className="h-7 w-7 transition"
-              style={liked ? { color: "hsl(var(--buttercupp-accent-rose))", fill: "hsl(var(--buttercupp-accent-rose))" } : { color: "white" }}
+              style={
+                liked
+                  ? {
+                      color: "hsl(var(--buttercupp-accent-rose))",
+                      fill: "hsl(var(--buttercupp-accent-rose))",
+                    }
+                  : { color: "white" }
+              }
             />
           </button>
           <span className="text-sm font-semibold drop-shadow">{likes.toLocaleString()}</span>

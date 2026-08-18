@@ -62,6 +62,21 @@ describe.skipIf(!DB_UP)("entitlementsFor", () => {
     }
   });
 
+  it("active sub_monthly returns 5000 / 300 / 60 quotas", async () => {
+    const userId = await makeUser(0);
+    await activatePlan(userId, "sub_monthly");
+    const ent = await entitlementsFor(userId);
+    expect(ent.plan).toBe("sub_monthly");
+    expect(ent.active).toBe(true);
+    expect(ent.chats.limit).toBe(5000);
+    expect(ent.images.limit).toBe(300);
+    expect(ent.videos.limit).toBe(60);
+    // With no usage rows, remaining equals the limit.
+    expect(ent.chats.remaining).toBe(5000);
+    expect(ent.images.remaining).toBe(300);
+    expect(ent.videos.remaining).toBe(60);
+  });
+
   it("expired pass resolves back to free", async () => {
     const userId = await makeUser(0);
     await activatePlan(userId, "weekly");

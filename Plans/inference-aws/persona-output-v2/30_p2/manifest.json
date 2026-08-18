@@ -1,0 +1,33 @@
+{
+  "persona_id": "30_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/30.webp",
+  "main_image_sha256": "ffc70fff3e8998b1cb67443fc85264c89c983375eb174b587276e61cf8e222ab",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:50:14Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Amidst the opulence of a penthouse suite, the enigmatic beauty struts across the marble floor, a black leather bodysuit hugging her toned physique like a second skin. The sleek design showcases her ample cleavage and narrow waist, while the high collar frames her heart-shaped face. Her raven locks cascade down her back in loose waves, and her almond eyes flash with playful defiance as she tosses her head, the diamond studs in her ears catching the light.",
+      "seed": 487997760,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/8660d10f-2562-4d60-b1c0-ed3629b3564d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/30.webp",
+      "status": "ok",
+      "bytes": 1151450
+    }
+  ]
+}

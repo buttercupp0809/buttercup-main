@@ -1,0 +1,33 @@
+{
+  "persona_id": "32_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/32.webp",
+  "main_image_sha256": "f79b96a88f5bb7aa54d9edc10cfeaeae4c640cb9f289a2e8cc08a711793ff447",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:56:09Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "From behind, the camera captures her in a provocative wide shot, the city skyline stretching out behind her as she stands in a provocative pose, the black dress clinging to her curves, her auburn hair cascading down her back, the focus pulled tight on the outline of her derri\u00e8re and the delicate lace of her thong, the city lights blurred into a vibrant backdrop.",
+      "seed": 1768664998,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/952bd9a7-79cb-4738-bbf9-bfa2c43ab904.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/32.webp",
+      "status": "ok",
+      "bytes": 1156485
+    }
+  ]
+}

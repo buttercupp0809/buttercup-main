@@ -1,0 +1,33 @@
+{
+  "persona_id": "71_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/71.webp",
+  "main_image_sha256": "8fa038a5428cdf35c75a7e2b82f2af7c77a45e09629b6adb50f4b96f09f48499",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:26:00Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A sultry, vivacious young woman poses seductively on a plush velvet chaise in a dimly lit, crimson-hued boudoir, her rich, curly raven hair spilling across the silk cushions. She wears a sheer, black lace lingerie set, the delicate fabric clinging to her curves as she arches her back, pushing her pert breasts forward. Towering stiletto sandals, a DSLR camera's shallow focus blurs the room's opulent backdrop, emphasizing her captivating emerald gaze and the promise of uninhibited pleasure.",
+      "seed": 516240295,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/3c9cf2ac-5ce2-419e-b851-050ac0b1ce3d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/71.webp",
+      "status": "ok",
+      "bytes": 1355397
+    }
+  ]
+}

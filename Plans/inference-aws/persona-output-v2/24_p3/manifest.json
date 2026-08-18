@@ -1,0 +1,33 @@
+{
+  "persona_id": "24_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/24.webp",
+  "main_image_sha256": "d0cf23a4a23b09c7b69117b3813796218f9b250b850f180aa7f727880f24c39c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:36:00Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Bathed in the warm, soft glow of flickering candles, the ravishing French beauty reclines in a lavish, velvet-upholstered armchair. A sheer, silk robe drapes loosely over her porcelain skin, parted to reveal the tantalizing curves of a lace bra and matching panties. Honey-blonde waves spill over one shoulder, and emerald eyes gleam with a playful, teasing light. The camera captures her in an extreme close-up, with the shallow depth of field blurring the candlelit background into a warm, golden haze. Delicate gold jewelry sparkles in the candlelight.",
+      "seed": 932140023,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/e0280e80-f04c-4578-a06d-6eb0d50bcf32.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/24.webp",
+      "status": "ok",
+      "bytes": 1410391
+    }
+  ]
+}

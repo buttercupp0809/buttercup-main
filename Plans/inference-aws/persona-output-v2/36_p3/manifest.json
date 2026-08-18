@@ -1,0 +1,33 @@
+{
+  "persona_id": "36_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/36.webp",
+  "main_image_sha256": "b1688d1be2ab5793e734199acde5453c731a58965a8a2d25690e4a528d6ca832",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:04:31Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Captured in the pulsing neon glow of a chic nightclub, she leans back against the bar, a seductive half-smile playing on her rosy lips as she sips a martini, the harsh light emphasizing the dramatic lines of her face and the cleavage spilling from her low-cut silver top, the bustle of the crowded dance floor blurred into a kaleidoscope of color in the background.",
+      "seed": 614430107,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/80d12201-1a7f-4af8-8442-84d3a1f65b81.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/36.webp",
+      "status": "ok",
+      "bytes": 1455992
+    }
+  ]
+}

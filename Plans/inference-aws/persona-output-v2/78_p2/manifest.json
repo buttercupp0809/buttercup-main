@@ -1,0 +1,33 @@
+{
+  "persona_id": "78_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/78.webp",
+  "main_image_sha256": "8e6f18d4db8b6a630b5b643841e6ef254e2ae5eed255662942a37df3322ef355",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:41:36Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM OUTFIT/ATTIRE: Stripped down to a lacy, crimson corset that accentuates her curves, the young woman lounges on a sleek, black leather yacht deck, the setting sun casting a warm, golden glow on her skin. Her long, raven tresses cascade down her back as she gazes out at the ocean, one high heel kicked off carelessly.",
+      "seed": 1078203405,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/bed76841-5738-4a53-9e93-1cd9c0a91ce7.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/78.webp",
+      "status": "ok",
+      "bytes": 1460856
+    }
+  ]
+}

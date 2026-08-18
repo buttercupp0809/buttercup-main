@@ -1,0 +1,33 @@
+{
+  "persona_id": "67_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/67.webp",
+  "main_image_sha256": "2e821dcdea49a575db3bb044fc6481cf4315c90f88a729bfeed7c190a487013c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:17:30Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Sheer black lace lingerie hugs the raven-haired beauty's curves as she reclines seductively on a yacht deck at dusk, the warm glow of the setting sun casting long shadows. Emerald eyes gleam with sultry intent from beneath arching brows, while her full, scarlet-painted lips part in a playful, teasing smile. The delicate silver embroidery on her lingerie catches the fading light as the city skyline recedes into the background, a DSLR's shallow focus emphasizing her voluptuous figure.",
+      "seed": 1495135760,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/12d94396-8e12-40a5-a2db-dcf8b9fff824.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/67.webp",
+      "status": "ok",
+      "bytes": 1231251
+    }
+  ]
+}

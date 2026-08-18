@@ -1,0 +1,33 @@
+{
+  "persona_id": "76_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/76.webp",
+  "main_image_sha256": "c422ac5665d370afbf23de583d84cdf39d55b11ec7df480ccd6aea9fc50b48d9",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:36:54Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM SCENE/SETTING: A sultry night on a private yacht's deck, the warm glow of string lights and lanterns casting a seductive ambiance. A plush white daybed, draped with velvet pillows, serves as the backdrop as she lounges with one leg bent, her maxi dress riding up to reveal toned thigh, the ocean breeze tousling her honey-blonde locks.",
+      "seed": 1111022797,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/655d4649-e569-4e35-9eed-dfb3fc2afa81.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/76.webp",
+      "status": "ok",
+      "bytes": 1167017
+    }
+  ]
+}

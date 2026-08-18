@@ -1,0 +1,33 @@
+{
+  "persona_id": "42_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/42.webp",
+  "main_image_sha256": "999ce0469e413c51be6c69debc9c24e77073bab7a8bdcc042be2b3f535582ed0",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:19:43Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORMED OUTFIT/ATTIRE: On the sun-kissed deck of a luxurious yacht, the raven-haired beauty sports a barely-there bikini in shimmering metallic hues of bronze and gold. The sheer, high-cut bottoms leave little to the imagination, clinging to her curves before falling away in a dramatic V. A matching halter-neck top, held together by delicate golden clasps, barely contains her ample breasts. The wind whispers through her loose, effortless waves as she lounges on a plush white cushion, one long leg bent and resting on the railing. A pair of oversized, mirrored sunglasses perch on her nose, adding a touch of glamour to her sun-drenched repose.",
+      "seed": 1934946352,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/5a4d3c14-a85e-4d50-8cf1-963d8c236c4c.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/42.webp",
+      "status": "ok",
+      "bytes": 1300343
+    }
+  ]
+}

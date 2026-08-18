@@ -1,0 +1,33 @@
+{
+  "persona_id": "13_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/13.webp",
+  "main_image_sha256": "6f45a212916d6541ee2147854c709c997753f61df6fd4b6af7fb2d0a8ba1b32b",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:58:03Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORMED SCENE/SETTING: Captured in a dimly lit, extravagant boudoir, plush velvet curtains frame the striking young woman. Intricate gold fixtures and ornate mirrors reflect her sultry, adventurous gaze as she reclines on a silk-covered chaise, the black leather jacket cast aside, revealing the sheer lace of her lingerie. Candlelight flickers, casting shadows on her porcelain skin.",
+      "seed": 1134393211,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/457624c5-d568-409f-8de9-fd589ce2efe4.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/13.webp",
+      "status": "ok",
+      "bytes": 1540600
+    }
+  ]
+}

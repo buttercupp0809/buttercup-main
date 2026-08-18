@@ -1,0 +1,33 @@
+{
+  "persona_id": "73_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/73.webp",
+  "main_image_sha256": "44d58b3ea9ab33d8acf14ba00c975e97191381c731d0f1c10f49b6f033bbb498",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:31:57Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM CAMERA ANGLE: Captured in a tight medium shot from behind, the captivating woman's profile is silhouetted against the vibrant blue of a Norwegian night sky, the Northern Lights dancing in the background. Her auburn hair frames her angular face, and her slender nose and expressive green eyes are illuminated by the celestial display above. The camera angle creates a sense of mystery, as if she is about to embark on a secret, enchanting adventure beneath the starry heavens.",
+      "seed": 205098346,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/a1b9bb61-2d30-4e07-9c0d-13286637ff80.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/73.webp",
+      "status": "ok",
+      "bytes": 1245327
+    }
+  ]
+}

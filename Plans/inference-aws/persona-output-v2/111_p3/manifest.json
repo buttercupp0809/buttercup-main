@@ -1,0 +1,33 @@
+{
+  "persona_id": "111_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/111.webp",
+  "main_image_sha256": "7c01d8d466cf2a072b8c84bc90ab4db52aaa22b2abd469684cd8d512b6e6b485",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:49:25Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "In the soft, golden light of a candlelit chamber, the platinum blonde figure stands before a large, four-poster bed, clad in sheer, lace lingerie that leaves most of her skin bare. Emerald eyes gleam with intensity as she looks directly into the camera, her full, plum lips parted slightly, the silver choker a subtle contrast to her porcelain complexion. The shallow depth of field creates a dreamy, intimate atmosphere, emphasizing the sensual curves of her body as she leans forward, the focus drawn to the delicate lace and the promise of the scene to come.",
+      "seed": 1503502391,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/8352dade-c49b-4e22-a20e-e244ceab8c99.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/111.webp",
+      "status": "ok",
+      "bytes": 1438812
+    }
+  ]
+}

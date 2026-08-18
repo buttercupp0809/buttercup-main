@@ -1,0 +1,33 @@
+{
+  "persona_id": "91_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/91.webp",
+  "main_image_sha256": "166fd053d2de1d38860cbfd79214bdfc6cc1e9ee82b93400e08feb3ec59ed20f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:54:38Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Render a striking, photorealistic portrait of a vivacious young woman in a candlelit chamber, with raven-black hair tousled in effortless waves, expressive emerald eyes sparkling with a sultry invitation, and olive skin radiant in the soft, golden glow of flickering flames. She wears a sheer black lace lingerie set, with delicate straps framing her ample bosom and a garter belt cinching her narrow waist. A diamond choker adorns her graceful throat, while matching stiletto heels elevate her long legs. She reclines on a plush velvet chaise, one hand trailing languidly along her exposed hip as she gazes at the camera with a coy, half-lidded gaze, exuding sensuality and mystery.",
+      "seed": 47782836,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/bc7eb538-324f-4b87-9c08-f267231b0575.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/91.webp",
+      "status": "ok",
+      "bytes": 1479102
+    }
+  ]
+}

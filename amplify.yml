@@ -91,7 +91,8 @@ applications:
             #   - Prisma (DATABASE_URL), auth (JWT_SECRET)
             #   - CloudFront signed image URLs (lib/cdn.ts): CLOUDFRONT_URL +
             #     CLOUDFRONT_KEY_PAIR_ID + CLOUDFRONT_PRIVATE_KEY
-            #   - S3 fallback proxy + blur: AWS_REGION, S3_BUCKET, POPPY_S3_BUCKET_GENERATED
+            #   - S3 fallback proxy + blur: AWS_REGION, S3_BUCKET,
+            #     POPPY_S3_BUCKET_GENERATED (images/), POPPY_S3_BUCKET_REELS (reels/)
             # Values come from the Amplify console env for this branch.
             - |
               node -e "
@@ -110,6 +111,7 @@ applications:
                   'AWS_REGION',
                   'S3_BUCKET',
                   'POPPY_S3_BUCKET_GENERATED',
+                  'POPPY_S3_BUCKET_REELS',
                   'GOOGLE_CLIENT_ID',
                   'NEXT_PUBLIC_GOOGLE_CLIENT_ID',
                   'AGE_VERIFICATION_PROVIDER',

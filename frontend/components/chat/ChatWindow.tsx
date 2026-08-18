@@ -64,6 +64,10 @@ export function ChatWindow({
   const scrollAreaRef = React.useRef<HTMLDivElement | null>(null);
   const transportRef = React.useRef<ReturnType<typeof createChatTransport> | null>(null);
   const streamedRef = React.useRef("");
+  const inputRef = React.useRef<HTMLTextAreaElement | null>(null);
+  // Tracks whether the composer was in flight last render so we can refocus
+  // exactly when the assistant releases the lock (pending true -> false).
+  const wasPendingRef = React.useRef(false);
 
   React.useEffect(() => {
     const t = createChatTransport({ wsUrl });
@@ -159,8 +163,36 @@ export function ChatWindow({
     if (el) el.scrollTop = el.scrollHeight;
   }, [messages.length, streaming, pending]);
 
-  function submit(e: React.FormEvent) {
-    e.preventDefault();
+  // Auto-grow the textarea with content. Reset height to auto first so the
+  // measured scrollHeight shrinks back when the user deletes lines. CSS
+  // caps the visual height via max-h; scrolling kicks in past the cap.
+  React.useLayoutEffect(() => {
+    const el = inputRef.current;
+    if (!el) return;
+    el.style.height = "auto";
+    el.style.height = `${el.scrollHeight}px`;
+  }, [input]);
+
+  // Refocus the composer as soon as the assistant releases the input lock
+  // (pending flips true -> false). Skips the refocus when the paywall is up
+  // so we do not steal focus from the modal's focus trap.
+  React.useEffect(() => {
+    if (wasPendingRef.current && !pending && !paywall) {
+      inputRef.current?.focus();
+    }
+    wasPendingRef.current = pending;
+  }, [pending, paywall]);
+
+  // Initial mount focus so the caret is blinking in the composer as soon
+  // as the chat loads.
+  React.useEffect(() => {
+    if (!paywall) inputRef.current?.focus();
+    // Intentionally runs once on mount; the pending-driven effect above
+    // owns subsequent refocus transitions.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const submitMessage = React.useCallback(() => {
     if (!input.trim() || pending || paywall || !transportRef.current) return;
     const text = input.trim();
     setMessages((ms) => [
@@ -172,6 +204,11 @@ export function ChatWindow({
     setFirstTokenSeen(false);
     setSafety(null);
     transportRef.current.send(conversationId, text);
+  }, [input, pending, paywall, conversationId]);
+
+  function submit(e: React.FormEvent) {
+    e.preventDefault();
+    submitMessage();
   }
 
   return (
@@ -297,15 +334,29 @@ export function ChatWindow({
           borderColor: "hsl(var(--buttercupp-border))",
         }}
       >
-        <input
+        <textarea
+          ref={inputRef}
           value={input}
           onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => {
+            // Enter submits; Shift+Enter inserts a newline. Also honor
+            // any IME composition so mid-composition Enter never sends.
+            if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) {
+              e.preventDefault();
+              submitMessage();
+            }
+          }}
           placeholder={
             paywall ? "Upgrade to keep chatting" : pending ? "Waiting..." : "Write a message..."
           }
           disabled={pending || paywall !== null}
+          rows={1}
           data-testid="chat-input"
-          className="w-full bg-transparent px-1 py-1 text-sm focus:outline-none"
+          // resize-none disables the manual grab handle; the layout effect
+          // above drives height from scrollHeight. max-h caps the growth
+          // so a very long draft scrolls internally instead of pushing the
+          // send button off screen.
+          className="block w-full resize-none bg-transparent px-1 py-1 text-sm leading-6 focus:outline-none max-h-40 overflow-y-auto"
           style={{ color: "hsl(var(--buttercupp-fg))" }}
         />
         <div className="mt-2 flex items-center justify-between gap-2">

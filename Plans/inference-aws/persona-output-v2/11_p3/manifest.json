@@ -1,0 +1,33 @@
+{
+  "persona_id": "11_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/11.webp",
+  "main_image_sha256": "eac527b6539c4da73e384fcf722a42014575c2e700fdd4023c18c02e20d219a6",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:54:13Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM LIGHTING/TIME: In the neon-lit heart of Barcelona's nightlife, she strides through a crowded, pulsating club in a sheer, long-sleeved top and high-waisted, form-fitting pants, her emerald eyes flashing with energy under the strobing lights, her dark tresses whipped by the thumping bass.",
+      "seed": 208234356,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/8a4ac1f1-43c8-40f1-b44a-4716a0ca83af.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/11.webp",
+      "status": "ok",
+      "bytes": 1091218
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "65_p2",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/65.webp",
+  "main_image_sha256": "b30a4466841630931fa12e0ff174b0be016110bda61fa1c70215df04bbabbe6a",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T11:13:13Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM OUTFIT/ATTIRE: In the sultry atmosphere of a Barcelona rooftop at dusk, the raven-haired beauty wears a barely-there bikini, its intricate lace details and delicate gold chain halter drawing attention to her ample cleavage and toned midriff. The sheer fabric leaves little to the imagination, and a pair of strappy stilettos add a touch of sophisticated sex appeal.",
+      "seed": 282577347,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/a1558fda-580d-4089-a391-f59160f8f145.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/65.webp",
+      "status": "ok",
+      "bytes": 1259843
+    }
+  ]
+}

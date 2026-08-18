@@ -1,0 +1,33 @@
+{
+  "persona_id": "30_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/30.webp",
+  "main_image_sha256": "ffc70fff3e8998b1cb67443fc85264c89c983375eb174b587276e61cf8e222ab",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:49:48Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "A striking woman reclines languidly on a velvet chaise in a dimly lit boudoir, the city's distant hum a mere whisper. Her raven tresses spill across the rich fabric, while her smoky emerald eyes gleam with sultry invitation under the soft glow of candlelight. The air is heavy with the scent of jasmine and desire as she wears nothing but a sheer lace teddy, the delicate material clinging to her every curve.",
+      "seed": 342746297,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/7fdf6d47-a49f-482b-a08d-b159099ee5ff.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/30.webp",
+      "status": "ok",
+      "bytes": 1525891
+    }
+  ]
+}

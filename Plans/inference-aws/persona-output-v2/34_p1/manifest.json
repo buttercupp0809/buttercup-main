@@ -1,0 +1,33 @@
+{
+  "persona_id": "34_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/34.webp",
+  "main_image_sha256": "965804d20e9f8fbcc572fa45ed9bacbad85d7ceffcbf58a2499cd5ee7b0cc19d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:59:09Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "This statuesque beauty emerges from the shadows of a dimly lit, luxurious boudoir, the plush velvet of the four-poster bed and ornate furniture providing a rich backdrop for her sleek, form-fitting black leather bodysuit adorned with metallic studs. A minimalist silver choker and chunky combat boots add to her edgy, avant-garde aesthetic, as she stands confidently, her icy blonde mane styled in effortless waves, piercing emerald eyes sparkling with mischief under a DSLR lens's shallow depth of field.",
+      "seed": 835261192,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/323b5484-da69-44f6-b2df-494779ef156c.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/34.webp",
+      "status": "ok",
+      "bytes": 1248763
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "23_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/23.webp",
+  "main_image_sha256": "7febe5b6d9717e82eac13d532a9a2991b8cd76f025575fb224523b8ebf506526",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T09:32:48Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "On the deck of a sleek, black yacht, the striking young woman poses with confident poise against the polished railing, the warm glow of sunset casting a golden sheen on her sun-kissed skin. Her vibrant red hair billows in the ocean breeze, while bright hazel eyes sparkle with a touch of mischief. A barely-there bikini leaves little to the imagination, the sheer fabric clinging to her curves and drawing attention to every sculpted detail.",
+      "seed": 786883212,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/28dc9d75-37a4-433e-b76e-4cf9762e9d9f.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/23.webp",
+      "status": "ok",
+      "bytes": 1319583
+    }
+  ]
+}

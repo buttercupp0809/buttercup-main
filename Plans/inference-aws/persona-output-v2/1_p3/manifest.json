@@ -1,0 +1,33 @@
+{
+  "persona_id": "1_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/1.webp",
+  "main_image_sha256": "bb5ec4af28f30d018b7da1953cc0aaddac98bbd24ac930deba0cfcf0fef1a8d9",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:00:04Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Framed by the neon lights of a chic, upscale nightclub, her platinum blonde hair glimmers in the harsh, electric illumination as she struts down the catwalk in a daring, leather bodysuit, her confident posture and bold, commanding expression drawing the eye like a magnet.",
+      "seed": 1797711804,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/55f24ee9-e8f9-4a5b-bf96-b4113dee83ac.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/1.webp",
+      "status": "ok",
+      "bytes": 1049895
+    }
+  ]
+}

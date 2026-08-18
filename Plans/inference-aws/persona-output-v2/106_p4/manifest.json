@@ -1,0 +1,33 @@
+{
+  "persona_id": "106_p4",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/106.webp",
+  "main_image_sha256": "fe716dbaa6cf2b809253a4927de57eba6b25e810f919cdfe6fa46f9cb6377069",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:34:49Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "With an intense, dominant gaze, the woman leans forward, her face filling the frame. Her eyes burn with a fierce, unyielding intensity, her full lips parted slightly as if ready to whisper a provocative secret. Her posture is assertive, shoulders squared and chest forward, exuding a raw, unbridled confidence.",
+      "seed": 1543088540,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/8623018e-1a3f-43c9-b7e6-e11d05270541.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/106.webp",
+      "status": "ok",
+      "bytes": 1136627
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "persona_id": "86_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/86.webp",
+  "main_image_sha256": "21a2b5c4f9c9c6fb5530c00ebaa0f2084e982bb459b8f7566ce1b94948cc3dc3",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:41:06Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "As the last rays of golden sunset paint the rooftop in a warm, ethereal glow, a woman with fiery red hair and bright green eyes, wearing a barely-there bikini that leaves little to the imagination, leans back against a concrete ledge, her legs extended in a languid pose, the camera capturing her relaxed, playful expression and the intricate play of light on her skin from the shallow focus, the distant cityscape a soft haze in the background.",
+      "seed": 1279550137,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/6d6ce147-a883-4270-a496-74c49b5271f7.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/86.webp",
+      "status": "ok",
+      "bytes": 1124206
+    }
+  ]
+}

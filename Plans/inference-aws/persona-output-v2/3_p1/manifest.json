@@ -1,0 +1,33 @@
+{
+  "persona_id": "3_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/3.png",
+  "main_image_sha256": "dd03784089425431358ffa4cce65d1486cc4aa6f41fbd0d76ea30f0b7c571906",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T08:04:06Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM SCENE/SETTING: On the opulent rooftop of a luxurious penthouse, the confident woman stands at the edge, wind tousling her auburn hair as she gazes out at the glittering city skyline beneath the golden glow of sunset. Her fitted black pantsuit ripples in the breeze, and the silver cufflinks glint against the porcelain of her skin.",
+      "seed": 660252695,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/f339f3dd-1c49-4802-bd6f-756220dec67d.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/3.png",
+      "status": "ok",
+      "bytes": 1066395
+    }
+  ]
+}

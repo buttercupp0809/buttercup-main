@@ -1,0 +1,33 @@
+{
+  "persona_id": "37_p5",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/37.webp",
+  "main_image_sha256": "a8044bacf8b2a521e61daccf40c8c53ac87eaefd84b970e0c1cb68134c9fe04f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:07:40Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "An extreme close-up captures the woman's face, her lips parted in a sultry whisper, a single strand of fiery auburn hair caressing her flushed cheek. A bold crimson lip color and smoky eye makeup accentuate her espresso irises, which seem to draw the viewer in. The shallow depth of field blurs everything except her face, the subject isolated against a dark, moody background, creating an air of mystery and seduction.",
+      "seed": 1987137197,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/6f1d5389-3681-4d8a-904b-069e57f01830.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/37.webp",
+      "status": "ok",
+      "bytes": 1253532
+    }
+  ]
+}

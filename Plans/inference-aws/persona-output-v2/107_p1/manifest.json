@@ -1,0 +1,33 @@
+{
+  "persona_id": "107_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/107.webp",
+  "main_image_sha256": "1f3508fc57734a60afd63487e6fb70162f8f210ab57d0ee58047babec64a099d",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T14:36:29Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "REFORM SCENE/SETTING: On the moonlit rooftop deck of a sleek, modern penthouse, the fiery redhead reclines on a plush white chaise lounge, her emerald eyes glinting with mischief under the glittering city sky. The soft hum of a jazz quartet drifts from hidden speakers as the warm breeze carries the scent of exotic flowers. Shallow focus blurs the distant skyline into a swirling bokeh, drawing the viewer's gaze to the lass's alluring figure, barely concealed by sheer black lingerie.",
+      "seed": 695254165,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/dfba5922-50c1-403a-bc2a-7d4055296e36.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/107.webp",
+      "status": "ok",
+      "bytes": 1205305
+    }
+  ]
+}

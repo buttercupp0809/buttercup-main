@@ -7,12 +7,20 @@
 // per-day price, not hardcoded.
 
 import * as React from "react";
-import { Star } from "lucide-react";
+import { Star, Check } from "lucide-react";
 import { TokenStore } from "./TokenStore";
 
-type Plan = "free" | "daily" | "weekly" | "monthly";
+export type Plan =
+  | "free"
+  | "daily"
+  | "weekly"
+  | "monthly"
+  | "sub_monthly"
+  | "sub_yearly";
 
-interface PlanConfig {
+export type BillingInterval = "month" | "year";
+
+export interface PlanConfig {
   plan: Plan;
   label: string;
   priceUsd: number;
@@ -20,6 +28,10 @@ interface PlanConfig {
   chats: number;
   images: number;
   videos: number;
+  // Optional flag from the backend. True for auto-renewing subscription
+  // products; undefined / false for one-time duration passes.
+  recurring?: boolean;
+  billingInterval?: BillingInterval;
 }
 
 interface QuotaBucket {
@@ -46,23 +58,24 @@ const BENEFITS = [
   { emoji: "🎬", label: "Full live-action experience" },
   { emoji: "💬", label: "Unlimited text messages" },
   { emoji: "🪙", label: "Token packs for images and video" },
+  { emoji: "🎙️", label: "Expressive voice replies" },
 ];
 
-const REVIEWS = [
+export const REVIEWS = [
   {
-    title: "This is really a cool app",
-    body: "Pay for premium, it is worth it. Image generation is off the chain, characters are excellent, and you can make the companions yourself.",
-    who: "A***",
+    title: "Characters that feel real",
+    body: "The one I built remembers a small joke I made three weeks ago and brought it up on a slow Sunday. That is when I stopped comparing this to other apps.",
+    who: "N***",
   },
   {
-    title: "Creative chat",
-    body: "I have been using it for months and still enjoy it very much. The chat made me stick around: it is creative and gives room for different scenarios.",
-    who: "M***",
+    title: "Best image gen so far",
+    body: "I asked for a rainy noir scene and got exactly the mood I described, not a generic stock render. Being able to guide the pose and lighting through chat is the part I did not expect to love.",
+    who: "S***",
   },
   {
-    title: "Worth every token",
-    body: "The memory is what sold me. It actually remembers our conversations and the voice replies feel real. Nothing else comes close.",
-    who: "J***",
+    title: "Roleplay that respects the plot",
+    body: "Long roleplay sessions actually keep continuity here. The voice replies land the tone, and prompts do not reset the story every few turns. Feels like writing with a partner.",
+    who: "K***",
   },
 ];
 
@@ -78,16 +91,43 @@ async function post(url: string, body: unknown): Promise<{ checkoutUrl?: string;
   return res.json();
 }
 
-function formatQuota(bucket: QuotaBucket | undefined): string {
-  if (!bucket) return "-";
-  if (bucket.limit === -1) return "Unlimited";
-  return `${bucket.remaining} left`;
+function planDurationLabel(days: number): string {
+  if (days === 1) return "day";
+  if (days === 7) return "week";
+  if (days === 30) return "month";
+  return `${days} days`;
 }
 
-function formatExpiry(iso: string | null): string {
-  if (!iso) return "";
-  const d = new Date(iso);
-  return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+// Cosmetic short interval label for recurring subscriptions ("/mo", "/yr").
+function intervalShort(interval: BillingInterval | undefined, days: number): string {
+  if (interval === "month") return "mo";
+  if (interval === "year") return "yr";
+  return planDurationLabel(days);
+}
+
+// Returns a rounded percent saved on the yearly plan versus 12x monthly, or
+// null when either input is missing / non-positive. Exported for tests so
+// the badge math stays honest.
+export function yearlySavingsPercent(
+  monthlyPrice: number | undefined,
+  yearlyPrice: number | undefined,
+): number | null {
+  if (!monthlyPrice || !yearlyPrice) return null;
+  if (monthlyPrice <= 0 || yearlyPrice <= 0) return null;
+  const twelveMonths = monthlyPrice * 12;
+  if (twelveMonths <= yearlyPrice) return null;
+  return Math.round((1 - yearlyPrice / twelveMonths) * 100);
+}
+
+// Splits the plan catalog into the one-time "Passes" and the recurring
+// "Subscriptions" sections. Exported so tests can exercise the split
+// without rendering the component.
+export function splitPlans(plans: PlanConfig[]): { passes: PlanConfig[]; subs: PlanConfig[] } {
+  const paid = plans.filter((p) => p.plan !== "free");
+  return {
+    passes: paid.filter((p) => !p.recurring),
+    subs: paid.filter((p) => p.recurring),
+  };
 }
 
 export interface BillingClientProps {
@@ -138,24 +178,28 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
     }
   }
 
-  const paidPlans = (plans ?? []).filter((p) => p.plan !== "free");
-  // "Best value" = lowest price-per-day; discount badges are computed
-  // relative to the highest per-day rate among the paid plans, never
-  // hardcoded percentages.
+  const { passes: passPlans, subs: subPlans } = splitPlans(plans ?? []);
+  // "Best value" (Passes only) = lowest price-per-day among duration passes;
+  // discount badges are computed relative to the highest per-day rate in
+  // the same group, never hardcoded percentages. Subscriptions get their
+  // own "Save X%" badge derived from yearly vs 12x monthly.
   const perDay = (p: PlanConfig) => (p.durationDays > 0 ? p.priceUsd / p.durationDays : p.priceUsd);
-  const maxPerDay = paidPlans.length ? Math.max(...paidPlans.map(perDay)) : 0;
-  const bestPlan = paidPlans.length
-    ? paidPlans.reduce((best, p) => (perDay(p) < perDay(best) ? p : best), paidPlans[0])
+  const maxPassPerDay = passPlans.length ? Math.max(...passPlans.map(perDay)) : 0;
+  const bestPassPlan = passPlans.length
+    ? passPlans.reduce((best, p) => (perDay(p) < perDay(best) ? p : best), passPlans[0])
     : null;
+  const monthlySubPrice = subPlans.find((p) => p.billingInterval === "month")?.priceUsd;
+  const yearlySubPrice = subPlans.find((p) => p.billingInterval === "year")?.priceUsd;
+  const yearlySavings = yearlySavingsPercent(monthlySubPrice, yearlySubPrice);
 
   return (
-    <div className="flex flex-col gap-12" data-testid="billing-client">
+    <div className="flex flex-col gap-6 sm:gap-8" data-testid="billing-client">
       {error ? (
         <div
-          className="rounded-md border p-3 text-sm"
+          className="rounded-xl border p-3 text-sm"
           style={{
             borderColor: "hsl(var(--buttercupp-accent-rose) / 0.5)",
-            backgroundColor: "hsl(var(--buttercupp-accent-rose) / 0.12)",
+            backgroundColor: "hsl(var(--buttercupp-accent-rose) / 0.1)",
             color: "hsl(var(--buttercupp-fg))",
           }}
         >
@@ -163,64 +207,266 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
         </div>
       ) : null}
 
-      {/* Heading + social proof */}
-      <div className="flex flex-col items-center gap-4 text-center">
-        <h1 className="font-display text-4xl font-bold tracking-tight">Choose your Plan</h1>
-        <div className="flex flex-wrap items-center justify-center gap-6">
-          <div className="flex items-center gap-2">
+      {/* Compact header row: a single tight strip carrying trust
+          (Trusted by / rating) on the left and the live current-plan
+          pill on the right. Both live above the fold without eating
+          hero space, so the pricing tiles are visible on a small
+          screen without scrolling. */}
+      <div
+        className="flex flex-col items-center justify-between gap-2 rounded-2xl border px-4 py-2.5 sm:flex-row sm:gap-4"
+        style={{
+          borderColor: "hsl(var(--buttercupp-border))",
+          backgroundColor: "hsl(var(--buttercupp-surface-2) / 0.55)",
+        }}
+      >
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5">
             <Laurel />
-            <span className="text-sm font-semibold" style={{ color: "hsl(var(--buttercupp-fg))" }}>
-              Trusted by 50M Users
-            </span>
+            <span className="text-xs font-semibold">Trusted by 50M users</span>
             <Laurel flip />
           </div>
-          <div className="flex flex-col items-center">
+          <span
+            aria-hidden
+            className="hidden h-4 w-px sm:inline-block"
+            style={{ backgroundColor: "hsl(var(--buttercupp-border))" }}
+          />
+          <div className="hidden items-center gap-1.5 sm:flex">
             <Stars n={5} />
-            <span className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
-              1000+ Ratings
+            <span className="text-[11px]" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+              1000+ ratings
             </span>
           </div>
         </div>
+        <CurrentPlanPill ent={ent} plans={plans} />
       </div>
 
-      {/* Current-plan status panel: driven entirely by GET /billing/entitlements. */}
-      <CurrentPlanPanel ent={ent} plans={plans} />
+      {/* Subscriptions: recurring monthly / yearly. Rendered FIRST as the
+          promoted primary tier. Only renders when the backend catalog
+          includes recurring plans. */}
+      {subPlans.length > 0 ? (
+        <div data-testid="subscriptions-section">
+          <SectionHeading
+            title="Auto-renew"
+            accent="subscriptions"
+            chipLabel="Subscriptions"
+            chipVariant="rose"
+            subtitle="Recurring access at the highest tier. Cancel anytime."
+          />
+          <div className="mx-auto grid w-full max-w-3xl grid-cols-1 gap-5 md:grid-cols-2" data-testid="subscription-cards">
+            {subPlans.map((p) => {
+              const isCurrent = ent?.active && ent.plan === p.plan;
+              const isHighlighted = highlightPlan === p.plan;
+              const savings = p.billingInterval === "year" ? yearlySavings : null;
+              // Monthly subscription is the "Most popular" hero; yearly keeps
+              // its own "Save X%" badge computed from monthly vs 12x yearly.
+              const isMostPopular = p.billingInterval === "month";
+              const promoted = isMostPopular || isHighlighted;
+              return (
+                <div
+                  key={p.plan}
+                  data-testid={`plan-${p.plan}`}
+                  className="group relative flex min-h-[380px] flex-col overflow-hidden rounded-3xl border p-6 transition-all duration-300 hover:-translate-y-1"
+                  style={{
+                    borderColor: promoted
+                      ? "hsl(var(--buttercupp-accent-rose) / 0.7)"
+                      : "hsl(var(--buttercupp-border))",
+                    backgroundColor: "hsl(var(--buttercupp-surface) / 0.85)",
+                    backdropFilter: "blur(12px)",
+                    boxShadow: promoted
+                      ? "0 20px 60px -24px hsl(344 84% 60% / 0.5)"
+                      : "0 8px 32px rgba(0, 0, 0, 0.35)",
+                  }}
+                >
+                  {promoted ? (
+                    <>
+                      <div
+                        aria-hidden
+                        className="pointer-events-none absolute inset-0"
+                        style={{
+                          background:
+                            "radial-gradient(30rem 20rem at 50% 120%, hsl(var(--buttercupp-accent-rose) / 0.28), transparent 65%)",
+                        }}
+                      />
+                      <div
+                        aria-hidden
+                        className="pointer-events-none absolute inset-x-8 -top-px h-px"
+                        style={{
+                          background:
+                            "linear-gradient(90deg, transparent, hsl(var(--buttercupp-accent-rose) / 0.8), transparent)",
+                        }}
+                      />
+                    </>
+                  ) : null}
 
-      {/* Plan tiles, driven by GET /billing/plans */}
+                  {isMostPopular ? (
+                    <span
+                      data-testid="most-popular-badge"
+                      className="relative mb-3 inline-flex w-fit items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white shadow-[0_4px_16px_-6px_hsl(344_84%_60%/0.6)]"
+                      style={{
+                        background:
+                          "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+                      }}
+                    >
+                      <span
+                        className="h-1.5 w-1.5 rounded-full bg-white/90"
+                        aria-hidden
+                      />
+                      Most popular
+                    </span>
+                  ) : (
+                    <span
+                      className="relative mb-3 inline-flex w-fit items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider"
+                      style={{
+                        color: "hsl(var(--buttercupp-accent-rose))",
+                        backgroundColor: "hsl(var(--buttercupp-accent-rose) / 0.15)",
+                      }}
+                    >
+                      Auto-renew
+                    </span>
+                  )}
+
+                  <div className="relative flex items-start justify-between gap-3">
+                    <span className="font-display text-2xl font-bold tracking-tight">{p.label}</span>
+                    {savings != null && savings > 0 ? (
+                      <span
+                        data-testid="yearly-savings-badge"
+                        className="shrink-0 rounded-lg px-2.5 py-1 text-xs font-extrabold text-black"
+                        style={{ background: "linear-gradient(180deg, hsl(48 96% 62%), hsl(40 92% 52%))" }}
+                      >
+                        Save {savings}%
+                      </span>
+                    ) : null}
+                  </div>
+
+                  <div className="relative mt-2">
+                    <div className="flex items-baseline gap-1">
+                      <span className="font-display text-5xl font-extrabold tracking-tight">${p.priceUsd}</span>
+                      <span className="text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+                        /{intervalShort(p.billingInterval, p.durationDays)}
+                      </span>
+                    </div>
+                    {p.billingInterval === "year" && p.priceUsd > 0 ? (
+                      <div className="mt-0.5 text-[11px]" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+                        ≈ ${(p.priceUsd / 12).toFixed(2)} per month, billed yearly
+                      </div>
+                    ) : null}
+                  </div>
+
+                  <ul className="relative mt-6 space-y-2 text-sm">
+                    <FeatureLine>Chats: {p.chats === -1 ? "Unlimited" : p.chats} per month</FeatureLine>
+                    <FeatureLine>Images: {p.images === -1 ? "Unlimited" : p.images} per month</FeatureLine>
+                    <FeatureLine>Videos: {p.videos === -1 ? "Unlimited" : p.videos} per month</FeatureLine>
+                    <FeatureLine>Voice replies + memory</FeatureLine>
+                    <FeatureLine>Priority generation</FeatureLine>
+                  </ul>
+
+                  <div className="relative mt-auto pt-6">
+                    <button
+                      type="button"
+                      onClick={() => subscribe(p.plan)}
+                      disabled={pending === p.plan || isCurrent}
+                      data-testid={`buy-${p.plan}`}
+                      className="w-full rounded-2xl py-3.5 text-base font-bold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent disabled:cursor-not-allowed disabled:opacity-60"
+                      style={
+                        promoted
+                          ? {
+                              background:
+                                "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+                              color: "white",
+                              boxShadow: "0 12px 30px -12px hsl(344 84% 60% / 0.6)",
+                            }
+                          : {
+                              backgroundColor: "hsl(var(--buttercupp-surface-2))",
+                              color: "hsl(var(--buttercupp-fg))",
+                              border: "1px solid hsl(var(--buttercupp-border))",
+                            }
+                      }
+                    >
+                      {pending === p.plan ? "Redirecting..." : isCurrent ? "Current plan" : "Subscribe"}
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ) : null}
+
+      <SectionDivider />
+
+      {/* Passes: one-time duration passes */}
+      <SectionHeading
+        title="One-time"
+        accent="passes"
+        chipLabel="Passes"
+        chipVariant="amber"
+        subtitle="Buy once, use for a fixed window. No auto-renew."
+      />
       <div className="mx-auto grid w-full max-w-4xl grid-cols-1 gap-5 md:grid-cols-3" data-testid="plan-cards">
-        {paidPlans.map((p) => {
+        {passPlans.map((p) => {
           const isCurrent = ent?.active && ent.plan === p.plan;
-          const isBest = bestPlan?.plan === p.plan;
-          const discount = maxPerDay > 0 ? Math.round((1 - perDay(p) / maxPerDay) * 100) : 0;
+          const isBest = bestPassPlan?.plan === p.plan;
+          const discount = maxPassPerDay > 0 ? Math.round((1 - perDay(p) / maxPassPerDay) * 100) : 0;
           const isHighlighted = highlightPlan === p.plan;
+          const promoted = isBest || isHighlighted;
           return (
             <div
               key={p.plan}
               data-testid={`plan-${p.plan}`}
-              className="relative flex min-h-[340px] flex-col overflow-hidden rounded-3xl border p-6"
+              className="group relative flex min-h-[380px] flex-col overflow-hidden rounded-3xl border p-6 transition-all duration-300 hover:-translate-y-1"
               style={{
-                borderColor:
-                  isBest || isHighlighted
-                    ? "hsl(var(--buttercupp-accent-rose))"
-                    : "hsl(var(--buttercupp-border))",
-                backgroundColor: "hsl(var(--buttercupp-surface))",
+                borderColor: promoted
+                  ? "hsl(var(--buttercupp-accent-rose) / 0.7)"
+                  : "hsl(var(--buttercupp-border))",
+                backgroundColor: "hsl(var(--buttercupp-surface) / 0.85)",
+                backdropFilter: "blur(12px)",
+                boxShadow: promoted
+                  ? "0 20px 60px -24px hsl(344 84% 60% / 0.5)"
+                  : "0 8px 32px rgba(0, 0, 0, 0.35)",
               }}
             >
-              {isBest ? (
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2"
-                  style={{
-                    background: "linear-gradient(180deg, transparent, hsl(var(--buttercupp-accent-rose) / 0.28))",
-                  }}
-                />
+              {promoted ? (
+                <>
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0"
+                    style={{
+                      background:
+                        "radial-gradient(30rem 20rem at 50% 120%, hsl(var(--buttercupp-accent-rose) / 0.28), transparent 65%)",
+                    }}
+                  />
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-x-8 -top-px h-px"
+                    style={{
+                      background:
+                        "linear-gradient(90deg, transparent, hsl(var(--buttercupp-accent-rose) / 0.8), transparent)",
+                    }}
+                  />
+                </>
               ) : null}
 
-              <div className="relative flex items-start justify-between gap-2">
-                <span className="font-display text-2xl font-bold">{p.label}</span>
+              {isBest ? (
+                <span
+                  className="relative mb-3 inline-flex w-fit items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white shadow-[0_4px_16px_-6px_hsl(344_84%_60%/0.6)]"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+                  }}
+                >
+                  <span
+                    className="h-1.5 w-1.5 rounded-full bg-white/90"
+                    aria-hidden
+                  />
+                  Best value
+                </span>
+              ) : null}
+
+              <div className="relative flex items-start justify-between gap-3">
+                <span className="font-display text-2xl font-bold tracking-tight">{p.label}</span>
                 {discount > 0 ? (
                   <span
-                    className="rounded-lg px-2.5 py-1 text-xs font-extrabold text-black"
+                    className="shrink-0 rounded-lg px-2.5 py-1 text-xs font-extrabold text-black"
                     style={{ background: "linear-gradient(180deg, hsl(48 96% 62%), hsl(40 92% 52%))" }}
                   >
                     {discount}% OFF
@@ -228,50 +474,53 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
                 ) : null}
               </div>
 
-              {isBest ? (
-                <span
-                  className="relative mt-1 text-sm font-extrabold uppercase tracking-wide"
-                  style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
-                >
-                  Best value
-                </span>
-              ) : null}
-
-              <div className="relative mt-auto pt-8">
+              <div className="relative mt-2">
                 <div className="flex items-baseline gap-1">
                   <span className="font-display text-5xl font-extrabold tracking-tight">${p.priceUsd}</span>
-                  <span className="text-base" style={{ color: "hsl(var(--buttercupp-muted))" }}>
-                    / {p.durationDays === 1 ? "day" : p.durationDays === 7 ? "week" : `${p.durationDays} days`}
+                  <span className="text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+                    / {planDurationLabel(p.durationDays)}
                   </span>
                 </div>
-                <ul className="mt-2 space-y-0.5 text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
-                  <li>Chats: {p.chats === -1 ? "Unlimited" : p.chats}</li>
-                  <li>Images: {p.images === -1 ? "Unlimited" : p.images}</li>
-                  <li>Videos: {p.videos === -1 ? "Unlimited" : p.videos}</li>
-                </ul>
+                {p.durationDays > 1 ? (
+                  <div className="mt-0.5 text-[11px]" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+                    ≈ ${perDay(p).toFixed(2)} per day
+                  </div>
+                ) : null}
               </div>
 
-              <button
-                type="button"
-                onClick={() => subscribe(p.plan)}
-                disabled={pending === p.plan || isCurrent}
-                data-testid={`buy-${p.plan}`}
-                className="relative mt-5 w-full rounded-2xl py-3.5 text-base font-bold transition disabled:opacity-60"
-                style={
-                  isBest
-                    ? {
-                        background: "linear-gradient(180deg, hsl(344 90% 72%), hsl(344 84% 60%))",
-                        color: "white",
-                      }
-                    : {
-                        backgroundColor: "hsl(var(--buttercupp-surface-2))",
-                        color: "hsl(var(--buttercupp-fg))",
-                        border: "1px solid hsl(var(--buttercupp-border))",
-                      }
-                }
-              >
-                {pending === p.plan ? "Redirecting..." : isCurrent ? "Current plan" : "Continue"}
-              </button>
+              <ul className="relative mt-6 space-y-2 text-sm">
+                <FeatureLine>Chats: {p.chats === -1 ? "Unlimited" : p.chats}</FeatureLine>
+                <FeatureLine>Images: {p.images === -1 ? "Unlimited" : p.images}</FeatureLine>
+                <FeatureLine>Videos: {p.videos === -1 ? "Unlimited" : p.videos}</FeatureLine>
+                <FeatureLine>Voice replies + memory</FeatureLine>
+                <FeatureLine>Priority generation</FeatureLine>
+              </ul>
+
+              <div className="relative mt-auto pt-6">
+                <button
+                  type="button"
+                  onClick={() => subscribe(p.plan)}
+                  disabled={pending === p.plan || isCurrent}
+                  data-testid={`buy-${p.plan}`}
+                  className="w-full rounded-2xl py-3.5 text-base font-bold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent disabled:cursor-not-allowed disabled:opacity-60"
+                  style={
+                    promoted
+                      ? {
+                          background:
+                            "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+                          color: "white",
+                          boxShadow: "0 12px 30px -12px hsl(344 84% 60% / 0.6)",
+                        }
+                      : {
+                          backgroundColor: "hsl(var(--buttercupp-surface-2))",
+                          color: "hsl(var(--buttercupp-fg))",
+                          border: "1px solid hsl(var(--buttercupp-border))",
+                        }
+                  }
+                >
+                  {pending === p.plan ? "Redirecting..." : isCurrent ? "Current plan" : "Continue"}
+                </button>
+              </div>
             </div>
           );
         })}
@@ -285,23 +534,53 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
         ) : null}
       </div>
 
-      {/* Token store: one-time token pack purchases, separate from duration passes. */}
-      <TokenStore />
+      <SectionDivider />
+
+      <div>
+        <SectionHeading
+          title="Token"
+          accent="packs"
+          chipLabel="Tokens"
+          chipVariant="violet"
+          subtitle="Pay-as-you-go credits for extra images and videos on top of any plan."
+        />
+        <TokenStore />
+      </div>
 
       {/* Premium benefits */}
       <div>
-        <h2 className="font-display mb-4 text-xl font-semibold">Premium Benefits</h2>
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div className="mb-5 text-center">
+          <h2 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
+            Premium{" "}
+            <span
+              style={{
+                background: "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              benefits
+            </span>
+          </h2>
+          <p className="mt-1 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+            Everything unlocked on a paid plan.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {BENEFITS.map((b) => (
             <div
               key={b.label}
-              className="flex items-center gap-3 rounded-xl border px-4 py-3"
-              style={{
-                borderColor: "hsl(var(--buttercupp-border))",
-                backgroundColor: "hsl(var(--buttercupp-surface))",
-              }}
+              className="buttercupp-glass flex items-center gap-3 rounded-2xl px-4 py-3.5 transition duration-200 hover:-translate-y-0.5 hover:border-[hsl(var(--buttercupp-accent-rose)/0.35)]"
             >
-              <span className="text-lg" aria-hidden>
+              <span
+                className="flex h-9 w-9 items-center justify-center rounded-xl text-lg"
+                style={{
+                  background:
+                    "linear-gradient(135deg, hsl(344 84% 71% / 0.15), hsl(262 72% 68% / 0.15))",
+                }}
+                aria-hidden
+              >
                 {b.emoji}
               </span>
               <span className="text-sm font-medium">{b.label}</span>
@@ -312,16 +591,26 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
 
       {/* Reviews */}
       <div>
-        <h2 className="font-display mb-4 text-center text-2xl font-bold">What users are saying</h2>
+        <div className="mb-5 text-center">
+          <h2 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
+            What users are{" "}
+            <span
+              style={{
+                background: "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              saying
+            </span>
+          </h2>
+        </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           {REVIEWS.map((r) => (
             <div
               key={r.title}
-              className="flex flex-col gap-2 rounded-2xl border p-5"
-              style={{
-                borderColor: "hsl(var(--buttercupp-border))",
-                backgroundColor: "hsl(var(--buttercupp-surface))",
-              }}
+              className="buttercupp-glass flex flex-col gap-2 rounded-2xl p-5 transition duration-200 hover:-translate-y-0.5"
             >
               <div className="flex items-center justify-between">
                 <span className="font-semibold">{r.title}</span>
@@ -337,78 +626,195 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
           ))}
         </div>
       </div>
-
     </div>
   );
 }
 
-function CurrentPlanPanel({ ent, plans }: { ent: Entitlements | null; plans: PlanConfig[] | null }) {
-  if (!ent) {
-    return (
-      <div
-        className="mx-auto w-full max-w-4xl rounded-2xl border p-5 text-sm"
-        style={{ borderColor: "hsl(var(--buttercupp-border))", color: "hsl(var(--buttercupp-muted))" }}
-        data-testid="current-plan-panel"
-      >
-        Loading your plan...
-      </div>
-    );
-  }
+type ChipVariant = "rose" | "amber" | "violet";
 
-  const planLabel = plans?.find((p) => p.plan === ent.plan)?.label ?? (ent.plan === "free" ? "Free" : ent.plan);
+// Category chip colors are intentionally distinct per section so users can
+// tell at a glance whether they are looking at Subscriptions, Passes, or
+// Token packs; the background is a low-opacity tint of the same hue.
+const CHIP_STYLES: Record<ChipVariant, { color: string; background: string; border: string }> = {
+  rose: {
+    color: "hsl(var(--buttercupp-accent-rose))",
+    background: "hsl(var(--buttercupp-accent-rose) / 0.14)",
+    border: "hsl(var(--buttercupp-accent-rose) / 0.35)",
+  },
+  amber: {
+    color: "hsl(40 92% 62%)",
+    background: "hsl(40 92% 52% / 0.14)",
+    border: "hsl(40 92% 52% / 0.35)",
+  },
+  violet: {
+    color: "hsl(var(--buttercupp-accent-violet))",
+    background: "hsl(var(--buttercupp-accent-violet) / 0.14)",
+    border: "hsl(var(--buttercupp-accent-violet) / 0.35)",
+  },
+};
 
+function SectionHeading({
+  title,
+  accent,
+  subtitle,
+  chipLabel,
+  chipVariant = "rose",
+}: {
+  title: string;
+  accent: string;
+  subtitle?: string;
+  chipLabel?: string;
+  chipVariant?: ChipVariant;
+}) {
+  const chip = chipLabel ? CHIP_STYLES[chipVariant] : null;
+  return (
+    <div className="mb-5 flex flex-col items-center text-center">
+      {chip ? (
+        <span
+          className="mb-2 inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.14em]"
+          style={{
+            color: chip.color,
+            backgroundColor: chip.background,
+            borderColor: chip.border,
+          }}
+        >
+          <span
+            aria-hidden
+            className="h-1.5 w-1.5 rounded-full"
+            style={{ backgroundColor: chip.color }}
+          />
+          {chipLabel}
+        </span>
+      ) : null}
+      <h2 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
+        {title}{" "}
+        <span
+          style={{
+            background: "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}
+        >
+          {accent}
+        </span>
+      </h2>
+      {subtitle ? (
+        <p className="mt-1 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+          {subtitle}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
+function SectionDivider() {
   return (
     <div
-      className="mx-auto flex w-full max-w-4xl flex-col gap-3 rounded-2xl border p-5"
-      style={{ borderColor: "hsl(var(--buttercupp-border))", backgroundColor: "hsl(var(--buttercupp-surface))" }}
-      data-testid="current-plan-panel"
+      aria-hidden
+      className="mx-auto h-px w-full max-w-4xl"
+      style={{
+        background:
+          "linear-gradient(90deg, transparent, hsl(var(--buttercupp-border)) 30%, hsl(var(--buttercupp-border)) 70%, transparent)",
+      }}
+    />
+  );
+}
+
+function FeatureLine({ children }: { children: React.ReactNode }) {
+  return (
+    <li className="flex items-start gap-2">
+      <Check
+        className="mt-0.5 h-4 w-4 shrink-0"
+        style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
+      />
+      <span style={{ color: "hsl(var(--buttercupp-fg))" }}>{children}</span>
+    </li>
+  );
+}
+
+// Compact single-line status pill that lives on the top header row next
+// to the trust / ratings strip. It carries the live plan label plus a
+// compact remaining-quota readout ("chats N · images N · videos N") so
+// users can see what they still have without scrolling. On Free it falls
+// back to "X of 10 chats left". Kept small on purpose so the pricing
+// tiles remain the hero above the fold.
+function formatBucketRemaining(bucket: QuotaBucket): string {
+  if (bucket.limit === -1) return "unlimited";
+  return String(Math.max(0, bucket.remaining));
+}
+
+function CurrentPlanPill({ ent, plans }: { ent: Entitlements | null; plans: PlanConfig[] | null }) {
+  if (!ent) return null;
+  const planLabel =
+    plans?.find((p) => p.plan === ent.plan)?.label ?? (ent.plan === "free" ? "Free" : ent.plan);
+  const isFree = ent.plan === "free" || !ent.active;
+  const freeChatsLeft = Math.max(0, ent.chats.limit - ent.freeMessagesUsed);
+  return (
+    <div
+      className="flex flex-wrap items-center gap-2 text-xs"
+      data-testid="current-plan-pill"
     >
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <div className="flex items-center gap-2">
-          <span className="font-display text-lg font-semibold">{planLabel}</span>
-          {ent.active ? (
+      <span
+        className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 rounded-full border px-3 py-1.5"
+        style={{
+          borderColor: "hsl(var(--buttercupp-border))",
+          backgroundColor: "hsl(var(--buttercupp-surface) / 0.6)",
+          color: "hsl(var(--buttercupp-fg))",
+        }}
+      >
+        <span
+          className="text-[10px] font-semibold uppercase tracking-[0.14em]"
+          style={{ color: "hsl(var(--buttercupp-muted))" }}
+        >
+          Current plan
+        </span>
+        <span className="font-semibold">{planLabel}</span>
+        {ent.active ? (
+          <>
             <span
-              className="rounded-full px-2 py-0.5 text-xs font-semibold"
+              className="inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[10px] font-semibold"
               style={{
                 backgroundColor: "hsl(var(--buttercupp-accent-rose) / 0.18)",
                 color: "hsl(var(--buttercupp-accent-rose))",
               }}
             >
+              <span
+                className="h-1.5 w-1.5 animate-pulse rounded-full"
+                style={{ backgroundColor: "hsl(var(--buttercupp-accent-rose))" }}
+              />
               Active
             </span>
-          ) : null}
-        </div>
-        {ent.active && ent.expiresAt ? (
-          <span className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
-            Renews or expires {formatExpiry(ent.expiresAt)}
+            <span
+              aria-hidden
+              className="hidden h-3 w-px sm:inline-block"
+              style={{ backgroundColor: "hsl(var(--buttercupp-border))" }}
+            />
+            <PlanStat label="chats" value={formatBucketRemaining(ent.chats)} />
+            <PlanStat label="images" value={formatBucketRemaining(ent.images)} />
+            <PlanStat label="videos" value={formatBucketRemaining(ent.videos)} />
+          </>
+        ) : isFree ? (
+          <span style={{ color: "hsl(var(--buttercupp-muted))" }}>
+            <strong style={{ color: "hsl(var(--buttercupp-fg))" }}>{freeChatsLeft}</strong> of{" "}
+            {ent.chats.limit} chats left
           </span>
         ) : null}
-      </div>
-
-      {ent.active ? (
-        <div className="grid grid-cols-3 gap-3 text-sm">
-          <QuotaMeter label="Chats" bucket={ent.chats} />
-          <QuotaMeter label="Images" bucket={ent.images} />
-          <QuotaMeter label="Videos" bucket={ent.videos} />
-        </div>
-      ) : (
-        <div className="flex flex-wrap items-center gap-4 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
-          <span>
-            Chats left: {Math.max(0, ent.chats.limit - ent.freeMessagesUsed)} of {ent.chats.limit}
-          </span>
-          <span>No media on Free</span>
-        </div>
-      )}
+      </span>
     </div>
   );
 }
 
-function QuotaMeter({ label, bucket }: { label: string; bucket: QuotaBucket }) {
+function PlanStat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex flex-col gap-0.5">
-      <span style={{ color: "hsl(var(--buttercupp-muted))" }}>{label}</span>
-      <span className="font-semibold">{formatQuota(bucket)}</span>
-    </div>
+    <span className="inline-flex items-baseline gap-1 whitespace-nowrap">
+      <span className="font-semibold" style={{ color: "hsl(var(--buttercupp-fg))" }}>
+        {value}
+      </span>
+      <span className="text-[10px]" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+        {label}
+      </span>
+    </span>
   );
 }
 

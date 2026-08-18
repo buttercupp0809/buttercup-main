@@ -1,0 +1,33 @@
+{
+  "persona_id": "90_p1",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/90.webp",
+  "main_image_sha256": "4230720e4f512208c1c91c5eb05c6425588dc655379de2c19dd9c5ce4b4b9a1c",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T13:52:04Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "This striking young woman exudes confidence, her fiery red tresses cascading in loose waves past her shoulders, framing alabaster skin and striking emerald eyes that sparkle with creative intensity, as she reclines seductively on a plush velvet chaise in a lavish boudoir, the soft glow of candlelight flickering across her curves and the opulent silk drapes billowing behind her, captured in a cinematic pose that conveys unbridled passion and individuality.",
+      "seed": 624208817,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/df180acc-790c-4360-84fc-64d85f708715.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/90.webp",
+      "status": "ok",
+      "bytes": 1376007
+    }
+  ]
+}

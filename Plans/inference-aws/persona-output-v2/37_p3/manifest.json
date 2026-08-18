@@ -1,0 +1,33 @@
+{
+  "persona_id": "37_p3",
+  "main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/37.webp",
+  "main_image_sha256": "a8044bacf8b2a521e61daccf40c8c53ac87eaefd84b970e0c1cb68134c9fe04f",
+  "method": "instantid+facedetailer+faceswap",
+  "checkpoint": "juggernautXL_v9.safetensors",
+  "params": {
+    "ip_weight": 1.05,
+    "cn_strength": 0.0,
+    "end_at": 0.75,
+    "steps": 30,
+    "cfg": 4.5,
+    "sampler": "dpmpp_2m",
+    "scheduler": "karras",
+    "width": 768,
+    "height": 1344
+  },
+  "generated_at": "2026-08-18T10:06:48Z",
+  "variants": [
+    {
+      "index": 1,
+      "variant": 1,
+      "prompt": "Under the neon lights of a chic club, the striking woman leans against a mirrored wall, her porcelain skin almost luminescent against the electric hues. A leather bodysuit hugs her every contour, the black material accentuating her toned physique. Her dark espresso eyes smolder with desire, lips painted a deep berry red, the shallow depth of field blurring the pulsating dance floor into a colorful bokeh.",
+      "seed": 1584894063,
+      "pose": "looking directly at camera",
+      "file": "variant-p1-v1.png",
+      "s3Key": "images/d31210b8-8769-4b3c-bdc4-c5888ecf22d4.png",
+      "references_main_image": "/Users/kshitijpratap/Documents/Projects/poppy/frontend/public/personas/37.webp",
+      "status": "ok",
+      "bytes": 1870592
+    }
+  ]
+}
