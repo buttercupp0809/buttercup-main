@@ -22,7 +22,9 @@ import Link from "next/link";
 import { ChevronRight, Play, Lock, Images } from "lucide-react";
 import { UpgradeModal } from "@/components/ui/UpgradeModal";
 import { PanelSheet } from "@/components/chat/PanelSheet";
+import { MemoryVault } from "@/components/memory/MemoryVault";
 import { mediaIdentity } from "@/lib/character-media";
+import type { MemoryDTO } from "@buttercupp/shared";
 
 export interface PanelMedia {
   kind: "image" | "video";
@@ -44,12 +46,29 @@ export interface PersonaPanelProps {
   // tiles so the real S3 URL never reaches the DOM.
   imageBlurs?: string[];
   assets: PanelMedia[];
+  // Memory surface. Server-rendered first page so the panel never opens empty
+  // and then pops; omitted entirely by callers that have no user context.
+  characterId?: string;
+  memories?: MemoryDTO[];
+  memoryCursor?: string | null;
+  memoryTotal?: number;
 }
 
 // Shared primary image + name/description + gallery grid + private-content
 // CTA, reused by the desktop inline aside and the mobile PanelSheet so the
 // two never drift out of sync.
-function PersonaPanelContent({ name, description, location, images, imageBlurs = [], assets }: PersonaPanelProps) {
+function PersonaPanelContent({
+  name,
+  description,
+  location,
+  images,
+  imageBlurs = [],
+  assets,
+  characterId,
+  memories,
+  memoryCursor = null,
+  memoryTotal = 0,
+}: PersonaPanelProps) {
   const primaryImage = images[0] ?? null;
   // Gallery is everything after the hero, minus any duplicates of the hero
   // itself. Comparison is on media *identity* (last path segment of the
@@ -116,6 +135,18 @@ function PersonaPanelContent({ name, description, location, images, imageBlurs =
           {description}
         </p>
       </div>
+
+      {/* Memory sits above the gallery on purpose: the gallery is an upsell, this
+          is the thing the user was actually promised. */}
+      {characterId && memories ? (
+        <MemoryVault
+          characterId={characterId}
+          characterName={name}
+          initialItems={memories}
+          initialCursor={memoryCursor}
+          total={memoryTotal}
+        />
+      ) : null}
 
       {/* Gallery grid: 9:16 tiles, object-top. First tile free (preview), rest locked. */}
       {galleryItems.length > 0 ? (

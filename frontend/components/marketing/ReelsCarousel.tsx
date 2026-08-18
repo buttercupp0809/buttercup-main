@@ -25,40 +25,50 @@ export function ReelsCarousel({ reels }: { reels: PublicReel[] }) {
     <section className="relative mx-auto max-w-6xl px-6 py-20">
       <div className="mb-8 flex items-end justify-between gap-4">
         <div>
-          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">See them in motion</h2>
-          <p className="mt-2 max-w-xl text-slate-600 dark:text-slate-400">
+          <h2 className="font-display text-3xl font-semibold tracking-[-0.025em] text-[hsl(var(--bc-cream))] sm:text-4xl">
+            See them in motion
+          </h2>
+          <p className="mt-2 max-w-xl text-[hsl(var(--bc-muted))]">
             Scroll the reels. Every companion is 18+ and ready to chat.
           </p>
         </div>
         <div className="hidden gap-2 sm:flex">
-          <button
-            type="button"
-            onClick={() => scrollBy(-1)}
-            aria-label="Scroll left"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 bg-white/70 text-slate-700 backdrop-blur transition hover:bg-white dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-200 dark:hover:bg-slate-800"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-          <button
-            type="button"
-            onClick={() => scrollBy(1)}
-            aria-label="Scroll right"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 bg-white/70 text-slate-700 backdrop-blur transition hover:bg-white dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-200 dark:hover:bg-slate-800"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
+          <ScrollButton dir={-1} onScroll={scrollBy} />
+          <ScrollButton dir={1} onScroll={scrollBy} />
         </div>
       </div>
 
       <div
         ref={scrollerRef}
-        className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-safe pb-4 [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        // --bc-gutter:0 opts this rail out of the .px-safe gutter floor: the
+        // parent section already applies it, and doubling up would indent the
+        // reels away from the heading above them.
+        className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-safe pb-4 [--bc-gutter:0px] [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {reels.map((reel) => (
           <ReelCard key={reel.id} reel={reel} />
         ))}
       </div>
     </section>
+  );
+}
+
+function ScrollButton({
+  dir,
+  onScroll,
+}: {
+  dir: 1 | -1;
+  onScroll: (dir: 1 | -1) => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={() => onScroll(dir)}
+      aria-label={dir === -1 ? "Scroll left" : "Scroll right"}
+      className="bc-press bc-glass flex h-10 w-10 items-center justify-center rounded-full text-[hsl(var(--bc-fg))] transition-[background-color,border-color,color] duration-200 ease-[var(--ease-out)] hover:border-[hsl(var(--bc-amber)/0.45)] hover:text-[hsl(var(--bc-honey))]"
+    >
+      {dir === -1 ? <ChevronLeft className="h-5 w-5" /> : <ChevronRight className="h-5 w-5" />}
+    </button>
   );
 }
 
@@ -82,7 +92,7 @@ function ReelCard({ reel }: { reel: PublicReel }) {
   return (
     <Link
       href="/signup"
-      className="group relative aspect-[9/16] w-44 shrink-0 snap-start overflow-hidden rounded-2xl bg-black shadow-md ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-xl sm:w-52 dark:ring-slate-700"
+      className="bc-media bc-media-lift group block aspect-[9/16] w-44 shrink-0 snap-start sm:w-52"
     >
       <video
         ref={ref}

@@ -207,7 +207,7 @@ export function GoogleButton({ dest = "/dashboard", mode = "signin_with" }: Goog
           style={{
             borderColor: "hsl(var(--buttercupp-border))",
             background:
-              "linear-gradient(180deg, hsl(240 12% 13%), hsl(240 14% 10%))",
+              "linear-gradient(180deg, hsl(var(--bc-surface-2)), hsl(var(--bc-surface)))",
             boxShadow:
               "inset 0 1px 0 rgb(255 255 255 / 0.04), 0 1px 2px rgb(0 0 0 / 0.3)",
           }}

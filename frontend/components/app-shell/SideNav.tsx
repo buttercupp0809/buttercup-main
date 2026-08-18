@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { APP_NAV, type NavIcon, type NavItem } from "@/components/app-shell/nav-items";
+import { BrandMark, BrandRow } from "@/components/brand/Logo";
 import { ProfileMenu, type ProfileUser } from "@/components/app-shell/ProfileMenu";
 import { NavGradientDefs, NavItemLink } from "@/components/app-shell/NavItemLink";
 
@@ -77,16 +78,23 @@ export function SideNav({ user, recents }: SideNavProps) {
       style={{ borderColor: "hsl(var(--buttercupp-border))" }}
     >
       <NavGradientDefs />
-      <div className={cn("flex items-center px-4 py-5", collapsed ? "justify-center" : "justify-between")}>
-        {!collapsed ? (
-          <Link
-            href="/dashboard"
-            className="font-display text-2xl font-semibold tracking-tight"
-            style={{ color: "hsl(var(--buttercupp-fg))" }}
-          >
-            ButterCupp
+      {/* Collapsed rail is 64px wide, so the mark and the toggle stack rather
+          than sitting side by side and overflowing. */}
+      <div
+        className={cn(
+          "flex px-4 py-5",
+          collapsed ? "flex-col items-center gap-3" : "items-center justify-between",
+        )}
+      >
+        {collapsed ? (
+          <Link href="/dashboard" className="bc-press" aria-label="ButterCupp home">
+            <BrandMark size={26} priority />
           </Link>
-        ) : null}
+        ) : (
+          <Link href="/dashboard" className="bc-press -m-1 rounded-lg p-1" aria-label="ButterCupp home">
+            <BrandRow markSize={24} className="[&>span:last-child]:text-[1.15rem]" />
+          </Link>
+        )}
         <button
           type="button"
           onClick={toggle}

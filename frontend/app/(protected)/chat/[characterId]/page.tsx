@@ -10,6 +10,9 @@ import { ChatList, ChatListMobileTrigger } from "@/components/chat/ChatList";
 import { PersonaPanel, PersonaPanelMobileTrigger, type PanelMedia } from "@/components/chat/PersonaPanel";
 import { getRelationship } from "@/lib/relationship";
 import { listConversations } from "@/lib/chats";
+import { getCompanionBond } from "@/lib/progress";
+import { getCompanionMemories } from "@/lib/memories";
+import { freeHeadroom } from "@/lib/bond";
 import { signAssetUrl } from "@/lib/cdn";
 import { blurMany } from "@/lib/media-blur";
 import { dedupeByIdentity, excludeHeroIdentity } from "@/lib/character-media";
@@ -103,10 +106,29 @@ export default async function ChatPage({
         : undefined,
   }));
 
-  const [relationship, conversations] = await Promise.all([
+  const [relationship, conversations, bond, memories, quota] = await Promise.all([
     getRelationship(user.id, characterId),
     listConversations(user.id, 50),
+    getCompanionBond(user.id, characterId),
+    getCompanionMemories(user.id, characterId),
+    // Read-only view of the free-trial counter the backend enforces. Presentation
+    // only: the server still decides when to refuse a turn.
+    prisma.user.findUnique({
+      where: { id: user.id },
+      select: {
+        freeMessagesUsed: true,
+        subscription: { select: { plan: true, status: true, currentPeriodEnd: true } },
+      },
+    }),
   ]);
+
+  const onPaidPass =
+    quota?.subscription?.status === "active" &&
+    quota.subscription.plan !== null &&
+    quota.subscription.plan !== "free" &&
+    (quota.subscription.currentPeriodEnd === null ||
+      quota.subscription.currentPeriodEnd.getTime() > Date.now());
+  const headroom = onPaidPass ? null : freeHeadroom(quota?.freeMessagesUsed ?? 0);
 
   // Persona panel media: images -> carousel, videos -> assets strip. Local
   // paths (starting with /) are Next.js public/ static files (seed stock
@@ -148,37 +170,10 @@ export default async function ChatPage({
   return (
     <div className="flex h-full flex-col overflow-hidden">
       {/*
-        Compact mobile/tablet chat top-bar: a Back control plus the two
-        panel triggers. Hidden entirely at xl+, where both ChatList (from
-        lg) and PersonaPanel (from xl) already render inline below.
+        No separate mobile top strip. Below xl the two panel triggers and the
+        Back control are handed to ChatWindow and rendered inside its header, so
+        a phone shows one chat bar instead of three stacked ones.
       */}
-      <div
-        className="flex shrink-0 items-center justify-between gap-1 border-b px-2 py-1 pt-safe xl:hidden"
-        style={{ borderColor: "hsl(var(--buttercupp-border))" }}
-      >
-        <div className="flex items-center gap-1">
-          <Link
-            href="/chats"
-            aria-label="Back to chats"
-            className="tap-target flex items-center justify-center rounded-md text-white lg:hidden"
-          >
-            <ArrowLeft className="h-5 w-5" />
-          </Link>
-          <ChatListMobileTrigger conversations={conversations} activeCharacterId={characterId} />
-        </div>
-        <span className="min-w-0 flex-1 truncate text-center text-sm font-medium text-white/80">
-          {character.name}
-        </span>
-        <PersonaPanelMobileTrigger
-          name={character.name}
-          description={character.bio}
-          location={character.location}
-          images={carouselImages}
-          imageBlurs={imageBlurs}
-          assets={assets}
-        />
-      </div>
-
       <div className="flex flex-1 overflow-hidden">
         <ChatList conversations={conversations} activeCharacterId={characterId} />
 
@@ -190,6 +185,38 @@ export default async function ChatPage({
             wsUrl={process.env.NEXT_PUBLIC_WS_URL}
             avatarUrl={avatarUrl}
             relationship={relationship}
+            bond={bond}
+            greeting={character.currentVersion?.greeting ?? null}
+            headroom={headroom}
+            mobileLeading={
+              <>
+                <Link
+                  href="/chats"
+                  aria-label="Back to chats"
+                  className="tap-target flex items-center justify-center rounded-md text-white lg:hidden"
+                >
+                  <ArrowLeft className="h-5 w-5" />
+                </Link>
+                <ChatListMobileTrigger
+                  conversations={conversations}
+                  activeCharacterId={characterId}
+                />
+              </>
+            }
+            mobileTrailing={
+              <PersonaPanelMobileTrigger
+                name={character.name}
+                description={character.bio}
+                location={character.location}
+                images={carouselImages}
+                imageBlurs={imageBlurs}
+                assets={assets}
+                characterId={characterId}
+                memories={memories.items}
+                memoryCursor={memories.nextCursor}
+                memoryTotal={memories.total}
+              />
+            }
           />
         </div>
 
@@ -200,6 +227,10 @@ export default async function ChatPage({
           images={carouselImages}
           imageBlurs={imageBlurs}
           assets={assets}
+          characterId={characterId}
+          memories={memories.items}
+          memoryCursor={memories.nextCursor}
+          memoryTotal={memories.total}
         />
       </div>
     </div>

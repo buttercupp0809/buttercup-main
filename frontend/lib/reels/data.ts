@@ -15,6 +15,16 @@ export interface PublicReel {
   location: string;
   avatar: string; // signed URL or "" when unavailable
   characterId: string;
+  /**
+   * Displayed like total: `likesBase` plus actual ReelLike rows. Matches what
+   * /reels already shows for the same media, so the two surfaces cannot
+   * disagree.
+   *
+   * Be aware that `likesBase` is NOT real engagement: prisma/seed.ts assigns a
+   * deterministic 1k..15k number per reel. Anything rendering this value is
+   * showing seeded social proof.
+   */
+  likes: number;
 }
 
 export async function getPublicReels(limit = 12): Promise<PublicReel[]> {
@@ -40,11 +50,19 @@ export async function getPublicReels(limit = 12): Promise<PublicReel[]> {
       },
     });
     if (vids.length === 0) return manifestFallback(limit);
+    // One grouped count for the whole page rather than a query per reel.
+    const likeRows = await prisma.reelLike.groupBy({
+      by: ["reelId"],
+      where: { reelId: { in: vids.map((v) => v.id) } },
+      _count: { reelId: true },
+    });
+    const likeCount = new Map(likeRows.map((r) => [r.reelId, r._count.reelId]));
     return vids.map((v) => ({
       id: v.id,
       src: signIfBareKey(v.url),
       name: v.character.name,
       location: v.character.location ?? "",
+      likes: v.likesBase + (likeCount.get(v.id) ?? 0),
       avatar: (() => {
         const u = v.character.media[0]?.url ?? pickPersonaImage(v.characterId);
         if (!u) return "";
@@ -66,6 +84,7 @@ function manifestFallback(limit: number): PublicReel[] {
     location: r.location,
     avatar: r.avatar,
     characterId: r.id,
+    likes: r.baseLikes,
   }));
 }
 

@@ -554,14 +554,13 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
                   onClick={() => subscribe(p.plan)}
                   disabled={pending === p.plan || isCurrent}
                   data-testid={`buy-${p.plan}`}
-                  className="w-full rounded-2xl py-3.5 text-base font-bold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent disabled:cursor-not-allowed disabled:opacity-60"
+                  className="w-full rounded-2xl py-3.5 text-base font-bold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--bc-amber))] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent disabled:cursor-not-allowed disabled:opacity-60"
                   style={
                     promoted
                       ? {
-                          background:
-                            "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
-                          color: "white",
-                          boxShadow: "0 12px 30px -12px hsl(344 84% 60% / 0.6)",
+                          background: "var(--bc-gradient-brand-v)",
+                          color: "hsl(28 45% 9%)",
+                          boxShadow: "0 12px 30px -12px hsl(var(--bc-amber) / 0.6)",
                         }
                       : {
                           backgroundColor: "hsl(var(--buttercupp-surface-2))",

@@ -488,7 +488,7 @@ function Ribbon({ label, variant = "rose" }: { label: string; variant?: "rose" |
       className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white shadow-md"
       style={{
         background: isViolet
-          ? "linear-gradient(90deg, hsl(var(--buttercupp-accent-violet)), hsl(262 72% 58%))"
+          ? "var(--bc-gradient-brand-h)"
           : "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
         boxShadow: "0 6px 14px -4px hsl(var(--buttercupp-accent-rose) / 0.5)",
       }}

@@ -15,10 +15,12 @@ export function PremiumPill({ label = "70% OFF" }: { label?: string }) {
       }}
     >
       <span
-        className="flex h-9 items-center gap-1.5 rounded-full px-3.5 text-sm font-semibold"
+        className="flex h-8 items-center gap-1.5 rounded-full px-3 text-xs font-semibold sm:h-9 sm:px-3.5 sm:text-sm"
         style={{ backgroundColor: "hsl(var(--buttercupp-bg))", color: "hsl(var(--buttercupp-fg))" }}
       >
-        Premium
+        {/* "Premium" is dropped on phones: at full size this promo was the
+            largest element in the mobile header, louder than the page itself. */}
+        <span className="hidden sm:inline">Premium</span>
         <span style={{ color: "hsl(var(--buttercupp-accent-rose))" }}>{label}</span>
       </span>
     </Link>

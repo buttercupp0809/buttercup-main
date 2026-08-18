@@ -128,7 +128,7 @@ function ChatListContent({ conversations, activeCharacterId, onNavigate }: ChatL
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search for a profile..."
-            className="w-full rounded-lg border py-2 pl-9 pr-3 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
+            className="w-full rounded-lg border py-2 pl-9 pr-3 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--bc-amber))]"
             style={{
               backgroundColor: "hsl(var(--buttercupp-surface))",
               borderColor: "hsl(var(--buttercupp-border))",
@@ -140,8 +140,12 @@ function ChatListContent({ conversations, activeCharacterId, onNavigate }: ChatL
 
       <div className="flex-1 overflow-y-auto px-2 pb-3">
         {filtered.length === 0 ? (
-          <p className="px-3 py-6 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
-            No conversations yet.
+          // Two different situations were sharing one message: an empty list and
+          // a search that matched nothing need different next steps.
+          <p className="px-3 py-6 text-sm text-[hsl(var(--bc-muted))]">
+            {q.trim()
+              ? `Nobody here matches "${q.trim()}".`
+              : "No conversations yet. Pick someone in Discover."}
           </p>
         ) : (
           filtered.map((c) => (

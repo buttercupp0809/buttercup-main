@@ -126,10 +126,10 @@ function ImageModal({
           <div
             className="flex h-11 w-11 items-center justify-center rounded-full"
             style={{
-              background: "linear-gradient(135deg, hsl(344 84% 71% / 0.25), hsl(262 72% 68% / 0.25))",
+              background: "linear-gradient(135deg, hsl(var(--bc-amber) / 0.25), hsl(var(--bc-honey) / 0.25))",
             }}
           >
-            <Lock className="h-5 w-5" style={{ color: "hsl(344 84% 71%)" }} />
+            <Lock className="h-5 w-5" style={{ color: "hsl(var(--bc-amber))" }} />
           </div>
 
           <div>
@@ -139,7 +139,7 @@ function ImageModal({
             >
               Unlock unlimited images
             </h2>
-            <p className="mt-2 text-sm leading-relaxed" style={{ color: "hsl(240 6% 65%)" }}>
+            <p className="mt-2 text-sm leading-relaxed" style={{ color: "hsl(var(--bc-muted))" }}>
               Upgrade to Premium for unlimited image generation, exclusive content, and deeper connections with your companions.
             </p>
           </div>
@@ -148,14 +148,14 @@ function ImageModal({
             href="/billing"
             className="flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90"
             style={{
-              background: "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+              background: "linear-gradient(90deg, hsl(var(--bc-amber)), hsl(var(--bc-honey)))",
             }}
           >
             Upgrade to Premium
           </a>
 
           <div>
-            <p className="mb-3 text-xs font-medium uppercase tracking-wider" style={{ color: "hsl(240 6% 65%)" }}>
+            <p className="mb-3 text-xs font-medium uppercase tracking-wider" style={{ color: "hsl(var(--bc-muted))" }}>
               Or chat for free with:
             </p>
             <div className="flex flex-col gap-2">
@@ -163,23 +163,23 @@ function ImageModal({
                 href="/discover"
                 className="flex items-center gap-3 rounded-xl p-3 transition-colors"
                 style={{
-                  backgroundColor: "hsl(240 12% 13%)",
-                  border: "1px solid hsl(240 10% 18%)",
+                  backgroundColor: "hsl(var(--bc-surface-2))",
+                  border: "1px solid hsl(var(--bc-border))",
                   color: "hsl(0 0% 98%)",
                 }}
               >
                 <div
                   className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-semibold"
                   style={{
-                    background: "linear-gradient(135deg, hsl(344 84% 71% / 0.3), hsl(262 72% 68% / 0.3))",
-                    color: "hsl(344 84% 71%)",
+                    background: "linear-gradient(135deg, hsl(var(--bc-amber) / 0.3), hsl(var(--bc-honey) / 0.3))",
+                    color: "hsl(var(--bc-amber))",
                   }}
                 >
                   S
                 </div>
                 <div>
                   <p className="text-sm font-medium">Explore Free Companions</p>
-                  <p className="text-xs" style={{ color: "hsl(240 6% 65%)" }}>Browse all available characters</p>
+                  <p className="text-xs" style={{ color: "hsl(var(--bc-muted))" }}>Browse all available characters</p>
                 </div>
               </a>
 
@@ -187,23 +187,23 @@ function ImageModal({
                 href="/gallery"
                 className="flex items-center gap-3 rounded-xl p-3 transition-colors"
                 style={{
-                  backgroundColor: "hsl(240 12% 13%)",
-                  border: "1px solid hsl(240 10% 18%)",
+                  backgroundColor: "hsl(var(--bc-surface-2))",
+                  border: "1px solid hsl(var(--bc-border))",
                   color: "hsl(0 0% 98%)",
                 }}
               >
                 <div
                   className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-semibold"
                   style={{
-                    background: "linear-gradient(135deg, hsl(262 72% 68% / 0.3), hsl(344 84% 71% / 0.3))",
-                    color: "hsl(262 72% 68%)",
+                    background: "linear-gradient(135deg, hsl(var(--bc-honey) / 0.3), hsl(var(--bc-amber) / 0.3))",
+                    color: "hsl(var(--bc-honey))",
                   }}
                 >
                   G
                 </div>
                 <div>
                   <p className="text-sm font-medium">Community Gallery</p>
-                  <p className="text-xs" style={{ color: "hsl(240 6% 65%)" }}>Discover community-created companions</p>
+                  <p className="text-xs" style={{ color: "hsl(var(--bc-muted))" }}>Discover community-created companions</p>
                 </div>
               </a>
             </div>

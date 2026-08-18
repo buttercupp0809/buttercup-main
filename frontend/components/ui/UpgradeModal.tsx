@@ -119,7 +119,7 @@ export function UpgradeModal({
               <h2 className="font-display text-2xl font-semibold" style={{ color: "hsl(0 0% 98%)" }}>
                 {title}
               </h2>
-              <p className="mt-2 text-sm leading-relaxed" style={{ color: "hsl(240 6% 65%)" }}>
+              <p className="mt-2 text-sm leading-relaxed" style={{ color: "hsl(var(--bc-muted))" }}>
                 {description}
               </p>
             </div>
@@ -138,7 +138,7 @@ export function UpgradeModal({
             </Link>
 
             {footerText && (
-              <p className="text-xs" style={{ color: "hsl(240 6% 50%)" }}>
+              <p className="text-xs" style={{ color: "hsl(var(--bc-subtle))" }}>
                 {footerText}
               </p>
             )}

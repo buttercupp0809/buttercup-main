@@ -35,7 +35,7 @@ function LoginFormInner() {
   return (
     <div
       className="flex w-full md:w-1/2 flex-col items-center justify-center px-6 py-12 min-h-screen"
-      style={{ backgroundColor: "hsl(240 14% 9%)" }}
+      style={{ backgroundColor: "hsl(var(--bc-surface))" }}
     >
       {/* Mobile wordmark */}
       <div className="mb-8 md:hidden">
@@ -43,7 +43,7 @@ function LoginFormInner() {
           href="/"
           className="font-display text-2xl tracking-tight"
           style={{
-            background: "linear-gradient(135deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+            background: "var(--bc-gradient-brand)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
@@ -59,7 +59,7 @@ function LoginFormInner() {
             href="/"
             className="font-display text-xl tracking-tight cursor-pointer"
             style={{
-              background: "linear-gradient(135deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+              background: "var(--bc-gradient-brand)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",

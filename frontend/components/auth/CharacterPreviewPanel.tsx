@@ -20,9 +20,9 @@ export function CharacterPreviewPanel({ chars, tagline, subtitle }: Props) {
       className="hidden md:flex md:w-1/2 relative overflow-hidden flex-col"
       style={{
         background: `
-          radial-gradient(ellipse 80% 60% at 20% 10%, hsl(344 84% 55% / 0.25) 0%, transparent 60%),
-          radial-gradient(ellipse 60% 50% at 80% 80%, hsl(262 72% 55% / 0.2) 0%, transparent 55%),
-          hsl(240 20% 4%)
+          radial-gradient(ellipse 80% 60% at 20% 10%, hsl(var(--bc-amber) / 0.22) 0%, transparent 60%),
+          radial-gradient(ellipse 60% 50% at 80% 80%, hsl(var(--bc-honey) / 0.14) 0%, transparent 55%),
+          hsl(var(--bc-bg))
         `,
       }}
       aria-hidden="true"
@@ -51,11 +51,11 @@ export function CharacterPreviewPanel({ chars, tagline, subtitle }: Props) {
             style={{
               background: `
                 linear-gradient(to bottom,
-                  hsl(240 20% 4%) 0%,
+                  hsl(var(--bc-bg)) 0%,
                   transparent 18%,
                   transparent 55%,
-                  hsl(240 20% 4% / 0.7) 75%,
-                  hsl(240 20% 4%) 100%
+                  hsl(var(--bc-bg) / 0.7) 75%,
+                  hsl(var(--bc-bg)) 100%
                 )
               `,
               zIndex: 2,
@@ -67,11 +67,11 @@ export function CharacterPreviewPanel({ chars, tagline, subtitle }: Props) {
         <>
           <div
             className="absolute rounded-full"
-            style={{ width: "18rem", height: "18rem", top: "10%", left: "5%", background: "hsl(344 84% 71% / 0.12)", filter: "blur(60px)" }}
+            style={{ width: "18rem", height: "18rem", top: "10%", left: "5%", background: "hsl(var(--bc-amber) / 0.12)", filter: "blur(60px)" }}
           />
           <div
             className="absolute rounded-full"
-            style={{ width: "14rem", height: "14rem", bottom: "20%", right: "5%", background: "hsl(262 72% 68% / 0.12)", filter: "blur(50px)" }}
+            style={{ width: "14rem", height: "14rem", bottom: "20%", right: "5%", background: "hsl(var(--bc-honey) / 0.12)", filter: "blur(50px)" }}
           />
         </>
       )}
@@ -82,7 +82,7 @@ export function CharacterPreviewPanel({ chars, tagline, subtitle }: Props) {
           href="/"
           className="font-display text-base tracking-tight cursor-pointer"
           style={{
-            background: "linear-gradient(135deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+            background: "var(--bc-gradient-brand)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
@@ -101,7 +101,7 @@ export function CharacterPreviewPanel({ chars, tagline, subtitle }: Props) {
             fontStyle: "italic",
             fontWeight: 700,
             letterSpacing: "-0.03em",
-            background: "linear-gradient(135deg, hsl(0 0% 98% / 0.95) 0%, hsl(344 84% 75% / 0.85) 100%)",
+            background: "linear-gradient(135deg, hsl(var(--bc-cream) / 0.96) 0%, hsl(var(--bc-honey) / 0.88) 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
@@ -110,7 +110,7 @@ export function CharacterPreviewPanel({ chars, tagline, subtitle }: Props) {
         >
           {tagline}
         </p>
-        <p className="mt-2 text-sm" style={{ color: "hsl(240 6% 68% / 0.7)" }}>
+        <p className="mt-2 text-sm" style={{ color: "hsl(var(--bc-muted) / 0.9)" }}>
           {subtitle}
         </p>
       </div>

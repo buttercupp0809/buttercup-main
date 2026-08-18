@@ -51,7 +51,7 @@ export function TrustPromise({ variant = "full" }: TrustPromiseProps) {
           </h2>
           <p
             className="mx-auto mt-3 max-w-2xl text-pretty"
-            style={{ color: "hsl(240 6% 65%)" }}
+            style={{ color: "hsl(var(--bc-muted))" }}
           >
             No jargon, no fine print. Four promises we keep, one page you can
             read in a minute.
@@ -119,7 +119,7 @@ export function TrustPromise({ variant = "full" }: TrustPromiseProps) {
               </h3>
               <p
                 className={isCompact ? "text-xs leading-relaxed" : "text-sm leading-relaxed"}
-                style={{ color: "hsl(240 6% 68%)" }}
+                style={{ color: "hsl(var(--bc-muted))" }}
               >
                 {p.body}
               </p>
@@ -141,7 +141,7 @@ export function TrustPromise({ variant = "full" }: TrustPromiseProps) {
           >
             Read the full privacy promise
           </Link>
-          <span style={{ color: "hsl(240 6% 55%)" }}>
+          <span style={{ color: "hsl(var(--bc-subtle))" }}>
             Curious about the details? We spell them out.
           </span>
         </div>
@@ -163,7 +163,7 @@ function splitHeadline(text: string) {
       <span
         style={{
           background:
-            "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+            "var(--bc-gradient-brand-h)",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
           backgroundClip: "text",

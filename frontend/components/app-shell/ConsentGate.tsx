@@ -106,7 +106,7 @@ export function ConsentGate({ needsConsent, children }: Props) {
           </h1>
 
           <p className="mt-3 text-[0.95rem] leading-relaxed" style={{ color: "hsl(var(--buttercupp-muted))" }}>
-            Poppy is an 18+ platform for adult AI companionship. By selecting{" "}
+            ButterCupp is an 18+ platform for adult AI companionship. By selecting{" "}
             <span style={{ color: "hsl(var(--buttercupp-fg))" }}>&ldquo;I Agree&rdquo;</span> below, you
             confirm you are at least 18 years old and accept our{" "}
             <a
@@ -138,7 +138,7 @@ export function ConsentGate({ needsConsent, children }: Props) {
             >
               Cookie Policy
             </a>
-            . These govern how conversations, images, and payments work on Poppy.
+            . These govern how conversations, images, and payments work on ButterCupp.
           </p>
 
           {err ? (
