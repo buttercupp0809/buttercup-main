@@ -82,9 +82,3 @@ Plans/aws-automation/*.pem
 Plans/aws-automation/*-new.json
 Plans/aws-automation/.state
 Plans/inference-aws/persona-output/**/*.png
-
-# ---------------------------------------------------------------------------
-# Local persona generation output (large image dumps, never commit)
-# ---------------------------------------------------------------------------
-persona-output/
-persona-output-v2/

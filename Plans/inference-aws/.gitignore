@@ -8,3 +8,7 @@ router/__pycache__/
 # config.sh holds live secrets (ROUTER_AUTH_TOKEN, HF/CIVITAI tokens).
 # Track config.sh.example instead; copy it to config.sh locally.
 config.sh
+
+# Local persona generation output (large image dumps, never commit).
+persona-output/
+persona-output-v2/
