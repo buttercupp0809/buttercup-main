@@ -11,14 +11,20 @@ export default function OnboardingFinishStep() {
   const router = useRouter();
   const { draft, saving, submit } = useOnboardingWizard();
   const [error, setError] = React.useState<string | null>(null);
+  // Set true right before router.push and NEVER reset: the component unmounts
+  // on navigation, so this latches the button disabled for the whole (5-10s)
+  // redirect window and blocks a second submit of the now-persisted draft.
+  const [redirecting, setRedirecting] = React.useState(false);
 
   async function handleFinish() {
+    if (saving || redirecting) return;
     setError(null);
     const result = await submit();
     if (!result.ok) {
       setError(result.error);
       return;
     }
+    setRedirecting(true);
     router.push(result.firstCharacterId ? `/chat/${result.firstCharacterId}` : "/dashboard");
   }
 
@@ -160,9 +166,9 @@ export default function OnboardingFinishStep() {
         size="lg"
         data-testid="onboarding-finish"
         onClick={handleFinish}
-        disabled={saving}
+        disabled={saving || redirecting}
       >
-        {saving ? "Entering..." : "Enter ButterCupp"}
+        {saving || redirecting ? "Entering..." : "Enter ButterCupp"}
       </Button>
     </div>
   );

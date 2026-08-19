@@ -12,7 +12,7 @@ import { jwtVerify } from "jose";
 import { wsClientEventSchema, type WSClientEvent, type WSServerEvent } from "@buttercupp/shared";
 import { runChatTurn } from "../chat/engine";
 import { generateChatImage, generateImageTeaser } from "../chat/image-turn";
-import { isImageRequest } from "../media/image/decision";
+import { classifyMessageIntent } from "../chat/intent";
 import { prisma } from "@buttercupp/database";
 import { assertCanChat, recordChatConsumption, PaywallError, type PaywallInfo } from "../subscription/enforce";
 import { writeAuditLog } from "../utils/audit";
@@ -212,7 +212,7 @@ export function attachWsGateway(httpServer: HttpServer): WebSocketServer {
           //   4. Generate the image
           //   5. Save assistant image message to DB
           //   6. Send media.ready with the result
-          if (isImageRequest(parsed.text)) {
+          if ((await classifyMessageIntent(parsed.text)) === "image") {
             logInfo("ws", `image request conv=${parsed.conversationId}`, { userId: session.userId });
             try {
               // 1. Save user message

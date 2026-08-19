@@ -21,18 +21,24 @@ export interface VerifyEmailContent {
   text: string;
 }
 
+// ButterCupp brand palette, translated from the app design tokens in
+// frontend/app/globals.css to hex (email cannot use CSS variables). The app is
+// amber/honey/cream: primary amber #fc9908 with DARK ink text on amber buttons
+// (--buttercupp-primary-fg is near-black), not white. A light, warm cream email
+// keeps deliverability high while reading as the current brand.
 const BRAND = {
-  bg: "#f6f5fb",
+  bg: "#faf6ee",        // warm cream canvas
   card: "#ffffff",
-  cardBorder: "#e6e3f0",
-  ink: "#12121a",
-  muted: "#6b6b7a",
-  rose: "#ee5f89",
-  roseDark: "#e04a76",
-  violet: "#9c6ff0",
-  tileBg: "#fdeef3",
-  urlBg: "#f2f0f8",
-  urlBorder: "#e6e3f0",
+  cardBorder: "#efe7d6", // warm hairline
+  ink: "#231a10",       // warm near-black, headings + body
+  muted: "#8a7d6b",     // warm gray, secondary text
+  amber: "#fc9908",     // brand primary (--bc-amber)
+  amberHot: "#f6812a",  // gradient end (--bc-amber-hot)
+  honey: "#ffd68f",     // soft accent (--bc-honey)
+  ctaText: "#231a10",   // dark ink on the amber button, matches the app
+  tileBg: "#fdefd6",    // honey-tinted icon tile
+  urlBg: "#f7f1e6",     // warm cream copy-link box
+  urlBorder: "#efe7d6",
 } as const;
 
 // Minimal HTML escape for values interpolated into the template. We only
@@ -68,7 +74,7 @@ export function buildVerifyEmail(link: string): VerifyEmailContent {
           <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;">
             <tr>
               <td align="center" style="padding:0 0 24px 0;font-family:'Fraunces',Georgia,'Times New Roman',serif;">
-                <span style="font-size:26px;font-weight:600;letter-spacing:-0.01em;color:${BRAND.rose};">ButterCupp</span>
+                <span style="font-size:26px;font-weight:600;letter-spacing:-0.01em;color:${BRAND.amber};">ButterCupp</span>
               </td>
             </tr>
             <tr>
@@ -78,7 +84,7 @@ export function buildVerifyEmail(link: string): VerifyEmailContent {
                     <td style="padding:0 0 20px 0;">
                       <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                         <tr>
-                          <td width="44" height="44" align="center" valign="middle" style="background:${BRAND.tileBg};border-radius:12px;font-family:Arial,Helvetica,sans-serif;color:${BRAND.rose};font-size:20px;line-height:44px;">&#9993;</td>
+                          <td width="44" height="44" align="center" valign="middle" style="background:${BRAND.tileBg};border-radius:12px;font-family:Arial,Helvetica,sans-serif;color:${BRAND.amber};font-size:20px;line-height:44px;">&#9993;</td>
                         </tr>
                       </table>
                     </td>
@@ -97,8 +103,8 @@ export function buildVerifyEmail(link: string): VerifyEmailContent {
                     <td align="left" style="padding:0 0 24px 0;">
                       <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                         <tr>
-                          <td align="center" style="background:${BRAND.rose};border-radius:12px;">
-                            <a href="${safeLink}" style="display:inline-block;padding:14px 28px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:15px;font-weight:600;line-height:1;color:#ffffff;text-decoration:none;border-radius:12px;background:${BRAND.rose};background-image:linear-gradient(135deg, ${BRAND.rose} 0%, ${BRAND.violet} 100%);mso-padding-alt:14px 28px;">
+                          <td align="center" style="background:${BRAND.amber};border-radius:12px;">
+                            <a href="${safeLink}" style="display:inline-block;padding:14px 28px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-size:15px;font-weight:700;line-height:1;color:${BRAND.ctaText};text-decoration:none;border-radius:12px;background:${BRAND.amber};background-image:linear-gradient(135deg, ${BRAND.amber} 0%, ${BRAND.amberHot} 100%);mso-padding-alt:14px 28px;">
                               Verify email
                             </a>
                           </td>

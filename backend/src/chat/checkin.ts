@@ -18,6 +18,14 @@ import { buildPromptLayers } from "../llm/prompts";
 import { callLLM } from "../llm/provider";
 import { logInfo, logWarn } from "../utils/log";
 
+// The silent user-turn we hand the model so it generates the opening in
+// character. Split by mode so the copy matches the eligibility reason.
+function checkinUserMessage(mode: CheckinMode): string {
+  return mode === "first_open"
+    ? "(silent open: the user just opened this chat for the very first time. Introduce yourself in character now.)"
+    : "(silent open: the user just reopened the chat after time away. Send your in-character check-in now.)";
+}
+
 // 24h idle threshold. Environment override kept for tests and local tuning.
 export const CHECKIN_GAP_MS = (() => {
   const raw = process.env.POPPY_CHECKIN_GAP_MS;
@@ -140,11 +148,31 @@ export function buildCheckinSystemPrompt(
   return `${personaSystem}\n\n${heading}\n${buildCheckinInstruction(mode, personalization)}`;
 }
 
-export async function maybeRunCheckin(
-  input: MaybeRunCheckinInput,
-): Promise<MaybeRunCheckinResult> {
-  const { conversationId, userId } = input;
+// Everything the caller needs to generate + persist a check-in once
+// eligibility has been decided. Shared by the blocking path (maybeRunCheckin)
+// and the streaming endpoint so neither duplicates prompt/param assembly.
+export interface CheckinPlan {
+  eligible: true;
+  mode: CheckinMode;
+  systemPrompt: string;
+  userMessage: string;
+  // LLM routing hints and the static-greeting fallback material.
+  contentRating: ContentRating;
+  tier: "free" | "premium" | "pro";
+  jurisdiction: string | null;
+  name: string;
+  greeting: string;
+}
 
+export type CheckinPlanResult = CheckinPlan | { eligible: false };
+
+// Resolve the conversation/user, evaluate eligibility (see file header), and,
+// when eligible, assemble the exact system prompt + params both paths use.
+// Returns { eligible: false } for every ineligible or not-found case.
+export async function resolveCheckinPlan(
+  conversationId: string,
+  userId: string,
+): Promise<CheckinPlanResult> {
   const conv = await prisma.conversation.findFirst({
     where: { id: conversationId, userId },
     include: {
@@ -154,7 +182,7 @@ export async function maybeRunCheckin(
   });
   if (!conv) {
     logWarn("checkin", `conversation not found or not owned conv=${conversationId}`, { userId });
-    return { created: false };
+    return { eligible: false };
   }
 
   const [user, profile, latest] = await Promise.all([
@@ -167,17 +195,17 @@ export async function maybeRunCheckin(
   ]);
   if (!user) {
     logWarn("checkin", `user not found user=${userId}`);
-    return { created: false };
+    return { eligible: false };
   }
 
   // Eligibility. See file header for the full rule.
   const now = Date.now();
   let mode: CheckinMode = "first_open";
   if (latest) {
-    if (latest.role === "assistant") return { created: false };
-    if (latest.role !== "user") return { created: false };
+    if (latest.role === "assistant") return { eligible: false };
+    if (latest.role !== "user") return { eligible: false };
     const ageMs = now - latest.createdAt.getTime();
-    if (ageMs < CHECKIN_GAP_MS) return { created: false };
+    if (ageMs < CHECKIN_GAP_MS) return { eligible: false };
     mode = "reopen_after_gap";
   }
 
@@ -202,45 +230,41 @@ export async function maybeRunCheckin(
     personalization,
   );
 
-  let content = "";
-  try {
-    const result = await callLLM({
-      purpose: "chat",
-      systemPrompt,
-      messages: [
-        {
-          role: "user",
-          content:
-            mode === "first_open"
-              ? "(silent open: the user just opened this chat for the very first time. Introduce yourself in character now.)"
-              : "(silent open: the user just reopened the chat after time away. Send your in-character check-in now.)",
-        },
-      ],
-      maxTokens: 120,
-      temperature: 0.8,
-      contentRating: conv.character.contentRating,
-      tier: user.subscriptionTier,
-      jurisdiction: user.jurisdiction,
-    });
-    content = (result.text ?? "").trim();
-    if (result.provider === "hardcoded") {
-      // Hardcoded means the whole chain was unavailable; treat as fallback.
-      content = "";
-    }
-  } catch (err) {
-    logWarn("checkin", `LLM failed, using greeting fallback: ${err instanceof Error ? err.message : String(err)}`, {
-      conversationId,
-    });
-    content = "";
-  }
-  if (!content) {
-    content = personalizeGreeting(name, conv.characterVersion.greeting);
-  }
+  return {
+    eligible: true,
+    mode,
+    systemPrompt,
+    userMessage: checkinUserMessage(mode),
+    contentRating: conv.character.contentRating,
+    tier: user.subscriptionTier,
+    jurisdiction: user.jurisdiction,
+    name,
+    greeting: conv.characterVersion.greeting,
+  };
+}
 
-  // Atomic write plus idempotency re-check. Anything that would make this
-  // call ineligible now (a concurrent second open just wrote its own
-  // assistant check-in, or the user sent a message inside the gap window)
-  // aborts the write cleanly with created: false.
+// Static-greeting fallback for the given plan (used when generation yields
+// nothing). Exposed so the streaming path shares the exact same fallback copy.
+export function checkinFallbackContent(plan: CheckinPlan): string {
+  return personalizeGreeting(plan.name, plan.greeting);
+}
+
+export interface PersistedCheckinMessage {
+  id: string;
+  role: "assistant";
+  content: string;
+  createdAt: string;
+}
+
+// Atomic write plus idempotency re-check. Anything that would make the check-in
+// ineligible now (a concurrent second open just wrote its own assistant
+// check-in, or the user sent a message inside the gap window) aborts the write
+// cleanly and returns null. Shared by both the blocking and streaming paths so
+// idempotency is identical.
+export async function persistCheckinMessage(
+  conversationId: string,
+  content: string,
+): Promise<PersistedCheckinMessage | null> {
   const persisted = await prisma.$transaction(async (tx) => {
     const latestNow = await tx.message.findFirst({
       where: { conversationId },
@@ -272,17 +296,54 @@ export async function maybeRunCheckin(
 
   if (!persisted) {
     logInfo("checkin", `skipped by idempotency re-check conv=${conversationId}`);
-    return { created: false };
+    return null;
+  }
+  return {
+    id: persisted.id,
+    role: "assistant",
+    content: persisted.content,
+    createdAt: persisted.createdAt.toISOString(),
+  };
+}
+
+export async function maybeRunCheckin(
+  input: MaybeRunCheckinInput,
+): Promise<MaybeRunCheckinResult> {
+  const { conversationId, userId } = input;
+
+  const plan = await resolveCheckinPlan(conversationId, userId);
+  if (!plan.eligible) return { created: false };
+
+  let content = "";
+  try {
+    const result = await callLLM({
+      purpose: "chat",
+      systemPrompt: plan.systemPrompt,
+      messages: [{ role: "user", content: plan.userMessage }],
+      maxTokens: 120,
+      temperature: 0.8,
+      contentRating: plan.contentRating,
+      tier: plan.tier,
+      jurisdiction: plan.jurisdiction,
+    });
+    content = (result.text ?? "").trim();
+    if (result.provider === "hardcoded") {
+      // Hardcoded means the whole chain was unavailable; treat as fallback.
+      content = "";
+    }
+  } catch (err) {
+    logWarn("checkin", `LLM failed, using greeting fallback: ${err instanceof Error ? err.message : String(err)}`, {
+      conversationId,
+    });
+    content = "";
+  }
+  if (!content) {
+    content = checkinFallbackContent(plan);
   }
 
+  const persisted = await persistCheckinMessage(conversationId, content);
+  if (!persisted) return { created: false };
+
   logInfo("checkin", `created check-in conv=${conversationId} msg=${persisted.id}`);
-  return {
-    created: true,
-    message: {
-      id: persisted.id,
-      role: "assistant",
-      content: persisted.content,
-      createdAt: persisted.createdAt.toISOString(),
-    },
-  };
+  return { created: true, message: persisted };
 }

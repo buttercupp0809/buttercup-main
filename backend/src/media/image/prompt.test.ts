@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { buildImagePrompt, buildImageCaption } from "./prompt";
-import { isImageRequest, shouldSendImage } from "./decision";
+import { shouldSendImage } from "./decision";
 import { assertCharacterAdult, rejectMinorReference, ImageSafetyError } from "./safety";
 import { SAFETY_NEGATIVE } from "./constants";
 
@@ -76,17 +76,6 @@ describe("buildImageCaption", () => {
     const c = buildImageCaption("a selfie in Paris");
     expect(c.length).toBeGreaterThan(0);
     expect(c.length).toBeLessThanOrEqual(120);
-  });
-});
-
-describe("isImageRequest", () => {
-  it("matches typical selfie requests", () => {
-    expect(isImageRequest("send me a selfie please")).toBe(true);
-    expect(isImageRequest("can I see you?")).toBe(true);
-    expect(isImageRequest("show me a pic")).toBe(true);
-  });
-  it("does not match plain chat", () => {
-    expect(isImageRequest("hi there")).toBe(false);
   });
 });
 

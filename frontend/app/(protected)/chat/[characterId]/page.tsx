@@ -1,10 +1,8 @@
 import { notFound } from "next/navigation";
-import { cookies } from "next/headers";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { prisma } from "@buttercupp/database";
 import { requireAuth } from "@/lib/auth";
-import { AUTH_COOKIE } from "@/lib/constants";
 import { ChatWindow } from "@/components/chat/ChatWindow";
 import { ChatList, ChatListMobileTrigger } from "@/components/chat/ChatList";
 import { PersonaPanel, PersonaPanelMobileTrigger, type PanelMedia } from "@/components/chat/PersonaPanel";
@@ -62,29 +60,9 @@ export default async function ChatPage({
     update: {},
   });
 
-  // Best-effort active check-in. Runs server-side against the backend so the
-  // client never sees a round trip, and any error (backend down, LLM chain
-  // failing without a greeting fallback) is swallowed so the chat page still
-  // opens. maybeRunCheckin is idempotent, so racing this call with another
-  // open of the same chat cannot double-write.
-  try {
-    const backendUrl = process.env.BACKEND_URL ?? "http://localhost:4000";
-    const jar = await cookies();
-    const auth = jar.get(AUTH_COOKIE)?.value;
-    if (auth) {
-      await fetch(`${backendUrl}/chat/checkin`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          cookie: `${AUTH_COOKIE}=${encodeURIComponent(auth)}`,
-        },
-        body: JSON.stringify({ conversationId: conv.id }),
-        cache: "no-store",
-      });
-    }
-  } catch {
-    // Best effort; the chat page must always render.
-  }
+  // The check-in is no longer pre-generated server-side. It now streams live
+  // into the chat on entry (see ChatWindow's on-mount checkin call), so this
+  // page just loads DB history and never inserts a check-in itself.
 
   const historyRows = await prisma.message.findMany({
     where: { conversationId: conv.id },
@@ -180,6 +158,7 @@ export default async function ChatPage({
         <div className="min-w-0 flex-1">
           <ChatWindow
             conversationId={conv.id}
+            characterId={characterId}
             initialMessages={initialMessages}
             characterName={character.name}
             wsUrl={process.env.NEXT_PUBLIC_WS_URL}

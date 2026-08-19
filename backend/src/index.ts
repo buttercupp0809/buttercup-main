@@ -4,6 +4,7 @@ import { prisma } from "@buttercupp/database";
 import { attachWsGateway } from "./ws/gateway";
 import { handleChatStream } from "./http/chat-stream";
 import { handleChatCheckin } from "./http/chat-checkin";
+import { handleChatCheckinStream } from "./http/chat-checkin-stream";
 import { handleMediaRoute } from "./http/media";
 import { handleBillingRoute } from "./http/billing";
 import { applyCors } from "./http/cors";
@@ -65,6 +66,7 @@ const server = http.createServer(async (req, res) => {
     return;
   }
   if (await handleChatStream(req, res)) return;
+  if (await handleChatCheckinStream(req, res)) return;
   if (await handleChatCheckin(req, res)) return;
   if (await handleMediaRoute(req, res)) return;
   if (await handleBillingRoute(req, res)) return;
