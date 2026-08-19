@@ -66,34 +66,34 @@ export function ConfirmDialog({
           {destructive ? (
             <div
               className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
-              style={{ backgroundColor: "rgba(239,68,68,0.15)" }}
+              style={{ backgroundColor: "hsl(var(--bc-danger) / 0.15)" }}
             >
-              <AlertTriangle className="h-5 w-5" style={{ color: "rgb(248,113,113)" }} />
+              <AlertTriangle className="h-5 w-5" style={{ color: "hsl(2 84% 74%)" }} />
             </div>
           ) : null}
           <div className="flex flex-col gap-2">
             <h2
               id="confirm-dialog-title"
               className="font-display text-lg font-semibold"
-              style={{ color: "hsl(var(--buttercupp-fg))" }}
+              style={{ color: "hsl(var(--bc-fg))" }}
             >
               {title}
             </h2>
-            <p className="text-sm leading-relaxed" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "hsl(var(--bc-muted))" }}>
               {description}
             </p>
           </div>
         </div>
         <div
           className="flex items-center justify-end gap-2 border-t p-4"
-          style={{ borderColor: "hsl(var(--buttercupp-border))" }}
+          style={{ borderColor: "hsl(var(--bc-border))" }}
         >
           <button
             type="button"
             onClick={onCancel}
             disabled={busy}
             data-testid="confirm-dialog-cancel"
-            className="tap-target rounded-full px-4 py-2 text-sm font-medium text-slate-300 hover:bg-white/5 hover:text-white disabled:opacity-60"
+            className="tap-target rounded-full px-4 py-2 text-sm font-medium text-[hsl(var(--bc-muted))] hover:bg-[hsl(var(--bc-cream)/0.06)] hover:text-[hsl(var(--bc-fg))] disabled:opacity-60"
           >
             {cancelLabel}
           </button>
@@ -104,12 +104,13 @@ export function ConfirmDialog({
             disabled={busy}
             data-testid="confirm-dialog-confirm"
             className={cn(
-              "tap-target rounded-full px-4 py-2 text-sm font-medium text-white shadow disabled:opacity-60",
+              "tap-target rounded-full px-4 py-2 text-sm font-medium shadow disabled:opacity-60",
+              destructive ? "text-white" : "text-[hsl(28_45%_9%)]",
             )}
             style={{
               background: destructive
-                ? "linear-gradient(90deg, rgb(220,38,38), rgb(190,18,60))"
-                : "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
+                ? "linear-gradient(90deg, hsl(var(--bc-danger)), hsl(2 74% 48%))"
+                : "var(--bc-gradient-brand-v)",
             }}
           >
             {busy ? "Working..." : confirmLabel}

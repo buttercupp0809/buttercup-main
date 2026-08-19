@@ -19,6 +19,7 @@ import { APP_NAV, type NavIcon } from "@/components/app-shell/nav-items";
 import { ProfileMenu, type ProfileUser } from "@/components/app-shell/ProfileMenu";
 import type { RecentEntry } from "@/components/app-shell/SideNav";
 import { NavGradientDefs, NavItemLink } from "@/components/app-shell/NavItemLink";
+import { BrandRow } from "@/components/brand/Logo";
 
 const ICONS: Record<NavIcon, React.ComponentType<{ className?: string }>> = {
   chats: MessageCircle,
@@ -87,7 +88,7 @@ export function MobileNav({ user, recents }: DrawerProps) {
         aria-label="Open navigation"
         aria-expanded={open}
         data-testid="mobile-nav-trigger"
-        className="tap-target flex items-center justify-center rounded-md text-white md:hidden"
+        className="tap-target flex items-center justify-center rounded-md text-[hsl(var(--bc-fg))] md:hidden"
       >
         <Menu className="h-5 w-5" />
       </button>
@@ -104,17 +105,17 @@ export function MobileNav({ user, recents }: DrawerProps) {
             data-testid="mobile-nav-drawer"
             className="absolute inset-y-0 left-0 flex w-72 max-w-[85vw] flex-col border-r pt-safe pb-safe"
             style={{
-              backgroundColor: "hsl(var(--buttercupp-bg))",
-              borderColor: "hsl(var(--buttercupp-border))",
+              backgroundColor: "hsl(var(--bc-bg))",
+              borderColor: "hsl(var(--bc-border))",
             }}
           >
             <div className="flex items-center justify-between px-4 py-4">
-              <span className="font-display text-xl">ButterCupp</span>
+              <BrandRow markSize={28} />
               <button
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Close navigation"
-                className="tap-target flex items-center justify-center rounded-md text-slate-400 hover:text-white"
+                className="tap-target flex items-center justify-center rounded-md text-[hsl(var(--bc-muted))] hover:text-[hsl(var(--bc-fg))]"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -142,7 +143,7 @@ export function MobileNav({ user, recents }: DrawerProps) {
             </nav>
             {recents.length > 0 ? (
               <div className="mt-4 flex-1 overflow-y-auto px-3">
-                <div className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-slate-500">
+                <div className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-[hsl(var(--bc-subtle))]">
                   Recent
                 </div>
                 <ul className="flex flex-col gap-1">
@@ -150,11 +151,11 @@ export function MobileNav({ user, recents }: DrawerProps) {
                     <li key={r.characterId}>
                       <Link
                         href={`/chat/${r.characterId}`}
-                        className="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-slate-300 hover:bg-white/5 hover:text-white"
+                        className="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-[hsl(var(--bc-muted))] hover:bg-[hsl(var(--bc-cream)/0.06)] hover:text-[hsl(var(--bc-fg))]"
                       >
                         <div
                           className="h-6 w-6 shrink-0 overflow-hidden rounded-full"
-                          style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))" }}
+                          style={{ backgroundColor: "hsl(var(--bc-surface-2))" }}
                         >
                           {r.avatarUrl ? (
                             <img src={r.avatarUrl} alt={r.characterName} className="h-full w-full object-cover object-top" />
@@ -173,7 +174,7 @@ export function MobileNav({ user, recents }: DrawerProps) {
             ) : (
               <div className="flex-1" />
             )}
-            <div className="border-t p-2" style={{ borderColor: "hsl(var(--buttercupp-border))" }}>
+            <div className="border-t p-2" style={{ borderColor: "hsl(var(--bc-border))" }}>
               <ProfileMenu user={user} />
             </div>
           </aside>
@@ -197,8 +198,8 @@ export function MobileBottomBar() {
       aria-label="Primary mobile bottom"
       className="fixed inset-x-0 bottom-0 z-40 flex border-t pb-safe md:hidden"
       style={{
-        backgroundColor: "hsl(var(--buttercupp-bg))",
-        borderColor: "hsl(var(--buttercupp-border))",
+        backgroundColor: "hsl(var(--bc-bg))",
+        borderColor: "hsl(var(--bc-border))",
       }}
     >
       {items.map((it) => {
@@ -212,9 +213,9 @@ export function MobileBottomBar() {
             aria-current={active ? "page" : undefined}
             className={cn(
               "tap-target flex min-h-[44px] flex-1 flex-col items-center justify-center gap-1 px-2 py-2 text-[10px]",
-              active ? "text-white" : "text-slate-500",
+              active ? "text-[hsl(var(--bc-fg))]" : "text-[hsl(var(--bc-subtle))]",
             )}
-            style={active ? { color: "hsl(var(--buttercupp-accent-rose))" } : undefined}
+            style={active ? { color: "hsl(var(--bc-amber))" } : undefined}
           >
             <Icon className="h-5 w-5" />
             {it.label}

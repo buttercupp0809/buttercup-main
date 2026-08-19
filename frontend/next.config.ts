@@ -83,7 +83,13 @@ const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
-  { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+  // "same-origin" breaks Google Sign-In popup mode: the GSI gsi/transform page
+  // calls window.opener.postMessage() to send the credential back, but COOP
+  // same-origin severs window.opener for all cross-origin popups (opener is
+  // null -> TypeError). "same-origin-allow-popups" keeps the opener reference
+  // for popups we open (Google auth) while still blocking cross-origin pages
+  // from navigating into our browsing context group.
+  { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
   { key: "Permissions-Policy", value: "microphone=(self), camera=(), geolocation=()" },
   { key: "Content-Security-Policy", value: CSP_DIRECTIVES.join("; ") },
 ];

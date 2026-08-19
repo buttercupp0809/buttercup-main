@@ -95,11 +95,11 @@ export function SettingsClient(props: Props) {
   }
 
   const inputCls =
-    "w-full rounded-xl border px-3.5 py-2.5 text-sm outline-none transition placeholder:text-[hsl(var(--buttercupp-muted))] focus-visible:ring-2 focus-visible:ring-rose-400/70";
+    "tap-target w-full rounded-[var(--bc-radius-sm)] border px-3.5 py-2.5 text-sm outline-none transition-[border-color,background-color,box-shadow] duration-200 ease-[var(--ease-out)] placeholder:text-[hsl(var(--bc-muted))] hover:border-[hsl(var(--bc-border-strong))] focus-visible:border-[hsl(var(--bc-amber)/0.6)] focus-visible:ring-2 focus-visible:ring-[hsl(var(--bc-amber))]";
   const inputStyle = {
-    borderColor: "hsl(var(--buttercupp-border))",
-    backgroundColor: "hsl(var(--buttercupp-surface-2) / 0.6)",
-    color: "hsl(var(--buttercupp-fg))",
+    borderColor: "hsl(var(--bc-border))",
+    backgroundColor: "hsl(var(--bc-surface-2) / 0.6)",
+    color: "hsl(var(--bc-fg))",
   } as const;
 
   const tierLabel = props.tier.charAt(0).toUpperCase() + props.tier.slice(1);
@@ -109,6 +109,7 @@ export function SettingsClient(props: Props) {
     <div className="flex flex-col gap-6">
       {/* Profile summary */}
       <SectionCard
+        index={0}
         title="Profile"
         subtitle="What ButterCupp knows about your account."
         icon={<ShieldCheck className="h-4 w-4" />}
@@ -130,9 +131,8 @@ export function SettingsClient(props: Props) {
                   <span
                     className="rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider"
                     style={{
-                      background:
-                        "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
-                      color: "white",
+                      background: "var(--bc-gradient-brand-h)",
+                      color: "hsl(28 45% 9%)",
                     }}
                   >
                     Premium
@@ -167,15 +167,15 @@ export function SettingsClient(props: Props) {
               <span
                 className={
                   props.ageVerified
-                    ? "inline-flex items-center gap-1.5 text-[hsl(160_60%_55%)]"
+                    ? "inline-flex items-center gap-1.5 text-[hsl(var(--bc-success))]"
                     : "inline-flex items-center gap-1.5"
                 }
-                style={props.ageVerified ? undefined : { color: "hsl(var(--buttercupp-muted))" }}
+                style={props.ageVerified ? undefined : { color: "hsl(var(--bc-muted))" }}
               >
                 <span
                   className="h-1.5 w-1.5 rounded-full"
                   style={{
-                    backgroundColor: props.ageVerified ? "hsl(160 60% 55%)" : "hsl(var(--buttercupp-muted))",
+                    backgroundColor: props.ageVerified ? "hsl(var(--bc-success))" : "hsl(var(--bc-muted))",
                   }}
                 />
                 {props.ageVerified ? "Verified" : "Not verified"}
@@ -187,6 +187,7 @@ export function SettingsClient(props: Props) {
 
       {/* Change password */}
       <SectionCard
+        index={1}
         title="Change password"
         subtitle="Use a strong, unique password. We hash and salt it, never store it plain."
         icon={<KeyRound className="h-4 w-4" />}
@@ -220,8 +221,8 @@ export function SettingsClient(props: Props) {
                 style={{
                   color:
                     pwStatus.kind === "ok"
-                      ? "hsl(160 60% 55%)"
-                      : "hsl(var(--buttercupp-accent-rose))",
+                      ? "hsl(var(--bc-success))"
+                      : "hsl(var(--bc-danger))",
                 }}
               >
                 {pwStatus.text}
@@ -233,33 +234,36 @@ export function SettingsClient(props: Props) {
 
       {/* Privacy promise */}
       <div
-        className="relative overflow-hidden rounded-2xl border p-5 sm:p-6"
-        style={{
-          borderColor: "hsl(var(--buttercupp-accent-rose) / 0.35)",
-          background:
-            "linear-gradient(135deg, hsl(var(--buttercupp-accent-rose) / 0.08), hsl(var(--buttercupp-accent-violet) / 0.08))",
-        }}
+        className="bc-rise relative overflow-hidden rounded-[var(--bc-radius-lg)] border p-5 sm:p-6"
+        style={
+          {
+            "--i": 2,
+            borderColor: "hsl(var(--bc-amber) / 0.35)",
+            background:
+              "linear-gradient(135deg, hsl(var(--bc-amber) / 0.08), hsl(var(--bc-honey) / 0.08))",
+          } as React.CSSProperties
+        }
       >
         <div
           aria-hidden
           className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full opacity-40 blur-3xl"
-          style={{ backgroundColor: "hsl(var(--buttercupp-accent-rose) / 0.35)" }}
+          style={{ backgroundColor: "hsl(var(--bc-amber) / 0.35)" }}
         />
         <div className="relative flex flex-col gap-3">
           <div className="flex items-center gap-2.5">
             <div
-              className="flex h-9 w-9 items-center justify-center rounded-xl"
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--bc-radius)] ring-1 ring-[hsl(var(--bc-amber)/0.25)]"
               style={{
                 background:
-                  "linear-gradient(135deg, hsl(344 84% 71% / 0.2), hsl(262 72% 68% / 0.2))",
-                color: "hsl(var(--buttercupp-accent-rose))",
+                  "linear-gradient(135deg, hsl(var(--bc-honey) / 0.2), hsl(var(--bc-amber) / 0.2))",
+                color: "hsl(var(--bc-amber))",
               }}
             >
               <ShieldCheck className="h-4 w-4" />
             </div>
-            <h2 className="font-display text-lg font-semibold">Your privacy</h2>
+            <h2 className="font-display text-lg font-semibold tracking-tight">Your privacy</h2>
           </div>
-          <p className="text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+          <p className="max-w-prose text-pretty text-sm" style={{ color: "hsl(var(--bc-muted))" }}>
             Locked in transit, locked at rest, scoped to your account. Not sold, not used to train other AIs.
           </p>
           <div className="flex flex-wrap gap-1.5">
@@ -268,9 +272,9 @@ export function SettingsClient(props: Props) {
                 key={c.id}
                 className="inline-flex items-center rounded-full border px-2.5 py-1 text-[10px] font-medium"
                 style={{
-                  borderColor: "hsl(var(--buttercupp-border))",
-                  color: "hsl(var(--buttercupp-fg))",
-                  background: "hsl(var(--buttercupp-surface-2) / 0.65)",
+                  borderColor: "hsl(var(--bc-border))",
+                  color: "hsl(var(--bc-fg))",
+                  background: "hsl(var(--bc-surface-2) / 0.65)",
                 }}
               >
                 {c.label}
@@ -280,7 +284,7 @@ export function SettingsClient(props: Props) {
           <Link
             href="/legal/privacy-promise"
             className="inline-flex w-fit items-center gap-1 text-xs font-semibold underline-offset-2 hover:underline"
-            style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
+            style={{ color: "hsl(var(--bc-honey))" }}
           >
             Read our privacy promise <ArrowUpRight className="h-3 w-3" />
           </Link>
@@ -290,6 +294,7 @@ export function SettingsClient(props: Props) {
       {/* Data + Session (side by side on desktop) */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <SectionCard
+          index={3}
           title="Your data"
           subtitle="Download a JSON copy of your profile, messages, memories, characters, and ledger."
           icon={<Download className="h-4 w-4" />}
@@ -299,6 +304,7 @@ export function SettingsClient(props: Props) {
           </Button>
         </SectionCard>
         <SectionCard
+          index={4}
           title="Session"
           subtitle="Sign out of ButterCupp on this device. Other devices stay signed in."
           icon={<LogOut className="h-4 w-4" />}
@@ -319,35 +325,47 @@ export function SettingsClient(props: Props) {
 
       {/* Danger zone */}
       <div
-        className="rounded-2xl border p-5 sm:p-6"
-        style={{
-          borderColor: "hsl(var(--buttercupp-accent-rose) / 0.5)",
-          backgroundColor: "hsl(var(--buttercupp-accent-rose) / 0.05)",
-        }}
+        className="bc-rise relative overflow-hidden rounded-[var(--bc-radius-lg)] border p-5 sm:p-6"
+        style={
+          {
+            "--i": 5,
+            borderColor: "hsl(var(--bc-danger) / 0.5)",
+            background:
+              "linear-gradient(135deg, hsl(var(--bc-danger) / 0.07), hsl(var(--bc-danger) / 0.03))",
+          } as React.CSSProperties
+        }
       >
-        <div className="flex items-center gap-2.5">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full opacity-30 blur-3xl"
+          style={{ backgroundColor: "hsl(var(--bc-danger) / 0.35)" }}
+        />
+        <div className="relative flex items-start gap-3">
           <div
-            className="flex h-9 w-9 items-center justify-center rounded-xl"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--bc-radius)] ring-1 ring-[hsl(var(--bc-danger)/0.3)]"
             style={{
-              background: "hsl(var(--buttercupp-accent-rose) / 0.15)",
-              color: "hsl(var(--buttercupp-accent-rose))",
+              background: "hsl(var(--bc-danger) / 0.15)",
+              color: "hsl(var(--bc-danger))",
             }}
           >
             <Trash2 className="h-4 w-4" />
           </div>
-          <div>
+          <div className="min-w-0">
             <h2
-              className="font-display text-lg font-semibold"
-              style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
+              className="font-display text-lg font-semibold tracking-tight"
+              style={{ color: "hsl(var(--bc-danger))" }}
             >
               Delete account
             </h2>
-            <p className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+            <p className="mt-0.5 text-xs" style={{ color: "hsl(var(--bc-muted))" }}>
               This wipes your messages, memories, and characters. It cannot be undone.
             </p>
           </div>
         </div>
-        <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
+        <div
+          className="relative mt-4 flex flex-col gap-3 border-t pt-4 sm:flex-row sm:items-center"
+          style={{ borderColor: "hsl(var(--bc-danger) / 0.18)" }}
+        >
           <input
             value={deleteConfirm}
             onChange={(e) => setDeleteConfirm(e.target.value)}
@@ -355,19 +373,19 @@ export function SettingsClient(props: Props) {
             aria-label="Type DELETE to confirm account deletion"
             className={inputCls}
             style={{
-              borderColor: "hsl(var(--buttercupp-accent-rose) / 0.5)",
-              backgroundColor: "hsl(var(--buttercupp-surface-2) / 0.6)",
-              color: "hsl(var(--buttercupp-fg))",
+              borderColor: "hsl(var(--bc-danger) / 0.5)",
+              backgroundColor: "hsl(var(--bc-surface-2) / 0.6)",
+              color: "hsl(var(--bc-fg))",
             }}
           />
           <button
             type="button"
             onClick={deleteAccount}
             disabled={deleteConfirm !== "DELETE" || deleting}
-            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold text-white shadow-[0_8px_24px_-12px_hsl(344_84%_50%/0.55)] transition-all duration-200 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+            className="bc-press tap-target inline-flex shrink-0 items-center justify-center gap-2 rounded-[var(--bc-radius-sm)] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_1px_0_hsl(2_84%_74%/0.4)_inset,0_8px_24px_-12px_hsl(var(--bc-danger)/0.55)] transition-[transform,filter,box-shadow] duration-200 ease-[var(--ease-out)] hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
             style={{
               background:
-                "linear-gradient(180deg, hsl(344 84% 60%), hsl(344 84% 48%))",
+                "linear-gradient(180deg, hsl(var(--bc-danger)), hsl(2 74% 46%))",
             }}
           >
             <Trash2 className="h-4 w-4" />
@@ -380,26 +398,31 @@ export function SettingsClient(props: Props) {
 }
 
 function SectionCard({
+  index,
   title,
   subtitle,
   icon,
   children,
 }: {
+  index?: number;
   title: string;
   subtitle?: string;
   icon?: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
-    <section className="buttercupp-glass rounded-2xl p-5 sm:p-6">
-      <div className="mb-4 flex items-start gap-3">
+    <section
+      className="buttercupp-glass bc-rise flex h-full flex-col rounded-[var(--bc-radius-lg)] p-5 sm:p-6"
+      style={{ "--i": index ?? 0 } as React.CSSProperties}
+    >
+      <div className="mb-5 flex items-start gap-3">
         {icon ? (
           <div
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--bc-radius)] ring-1 ring-[hsl(var(--bc-amber)/0.2)]"
             style={{
               background:
-                "linear-gradient(135deg, hsl(344 84% 71% / 0.15), hsl(262 72% 68% / 0.15))",
-              color: "hsl(var(--buttercupp-accent-rose))",
+                "linear-gradient(135deg, hsl(var(--bc-honey) / 0.15), hsl(var(--bc-amber) / 0.15))",
+              color: "hsl(var(--bc-amber))",
             }}
           >
             {icon}
@@ -408,7 +431,7 @@ function SectionCard({
         <div className="min-w-0">
           <h2 className="font-display text-lg font-semibold tracking-tight">{title}</h2>
           {subtitle ? (
-            <p className="mt-0.5 text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+            <p className="mt-1 text-pretty text-xs leading-relaxed" style={{ color: "hsl(var(--bc-muted))" }}>
               {subtitle}
             </p>
           ) : null}
@@ -432,18 +455,18 @@ function InfoRow({
 }) {
   return (
     <div
-      className="flex items-center justify-between gap-3 rounded-xl border px-3.5 py-3 transition hover:border-[hsl(var(--buttercupp-accent-rose)/0.3)]"
+      className="flex items-center justify-between gap-3 rounded-[var(--bc-radius-sm)] border px-3.5 py-3 transition-[border-color,background-color] duration-200 ease-[var(--ease-out)] hover:border-[hsl(var(--bc-amber)/0.3)] hover:bg-[hsl(var(--bc-surface-2)/0.6)]"
       style={{
-        borderColor: "hsl(var(--buttercupp-border))",
-        backgroundColor: "hsl(var(--buttercupp-surface-2) / 0.4)",
+        borderColor: "hsl(var(--bc-border))",
+        backgroundColor: "hsl(var(--bc-surface-2) / 0.4)",
       }}
     >
       <div className="flex min-w-0 items-center gap-3">
         <span
-          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg"
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[var(--bc-radius-xs)]"
           style={{
-            backgroundColor: "hsl(var(--buttercupp-surface-2))",
-            color: "hsl(var(--buttercupp-muted))",
+            backgroundColor: "hsl(var(--bc-surface-2))",
+            color: "hsl(var(--bc-muted))",
           }}
         >
           {icon}
@@ -451,7 +474,7 @@ function InfoRow({
         <div className="min-w-0">
           <div
             className="text-[10px] font-semibold uppercase tracking-wider"
-            style={{ color: "hsl(var(--buttercupp-muted))" }}
+            style={{ color: "hsl(var(--bc-muted))" }}
           >
             {label}
           </div>

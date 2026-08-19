@@ -1,52 +1,33 @@
 "use client";
 
 import * as React from "react";
+import {
+  Flower2,
+  Palette,
+  Crown,
+  Gamepad2,
+  Heart,
+  Compass,
+  Sparkles,
+  Check,
+  type LucideIcon,
+} from "lucide-react";
 import { useCharacterWizard } from "../context";
 import { Chip, FieldGroup } from "../Chip";
 import { ARCHETYPES, TRAIT_OPTIONS, VOICE_OPTIONS } from "../options";
 
-// Emoji and gradient per archetype key
-const ARCHETYPE_META: Record<
-  string,
-  { emoji: string; gradient: string; accentColor: string }
-> = {
-  "girl-next-door": {
-    emoji: "🌸",
-    gradient: "linear-gradient(135deg, #1a0a1a 0%, #2e1828 40%, #3a1e30 100%)",
-    accentColor: "#f0a8c8",
-  },
-  "mysterious-artist": {
-    emoji: "🎨",
-    gradient: "linear-gradient(135deg, #0f0f1e 0%, #1a1a30 40%, #22183a 100%)",
-    accentColor: "#b090e0",
-  },
-  "confident-executive": {
-    emoji: "👑",
-    gradient: "linear-gradient(135deg, #1a1000 0%, #2e2008 40%, #3a2800 100%)",
-    accentColor: "#f0c040",
-  },
-  "playful-gamer": {
-    emoji: "🎮",
-    gradient: "linear-gradient(135deg, #001a1a 0%, #082830 40%, #103040 100%)",
-    accentColor: "#40d0b0",
-  },
-  "caring-companion": {
-    emoji: "💞",
-    gradient: "linear-gradient(135deg, #1a0a10 0%, #2e1420 40%, #3a1828 100%)",
-    accentColor: "#f080a8",
-  },
-  "adventurous-traveler": {
-    emoji: "⚡",
-    gradient: "linear-gradient(135deg, #0a1400 0%, #182200 40%, #202e00 100%)",
-    accentColor: "#a0d040",
-  },
+// Icon per archetype key. Card chrome is themed by the amber system, so the
+// only per-archetype dressing kept here is the icon.
+const ARCHETYPE_META: Record<string, { icon: LucideIcon }> = {
+  "girl-next-door": { icon: Flower2 },
+  "mysterious-artist": { icon: Palette },
+  "confident-executive": { icon: Crown },
+  "playful-gamer": { icon: Gamepad2 },
+  "caring-companion": { icon: Heart },
+  "adventurous-traveler": { icon: Compass },
 };
 
-const ARCHETYPE_FALLBACK = {
-  emoji: "✨",
-  gradient: "linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)",
-  accentColor: "#aaa",
-};
+const ARCHETYPE_FALLBACK = { icon: Sparkles };
 
 export default function PersonalityStep() {
   const { draft, updateDraft } = useCharacterWizard();
@@ -80,18 +61,18 @@ export default function PersonalityStep() {
     <div className="flex flex-col gap-8">
       <div>
         <h1 className="font-display text-2xl font-semibold">Personality</h1>
-        <p className="mt-1 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+        <p className="mt-1 text-sm" style={{ color: "hsl(var(--bc-muted))" }}>
           Pick a personality to start. One tap fills everything.
         </p>
       </div>
 
-      {/* Archetype - style-step quality cards */}
+      {/* Archetype - amber option cards */}
       <div className="flex flex-col gap-3">
         <span
           className="text-sm font-medium"
           style={{
-            color: "hsl(var(--buttercupp-fg))",
-            borderLeft: "3px solid hsl(var(--buttercupp-accent-rose))",
+            color: "hsl(var(--bc-fg))",
+            borderLeft: "3px solid hsl(var(--bc-amber))",
             paddingLeft: "10px",
           }}
         >
@@ -101,20 +82,22 @@ export default function PersonalityStep() {
           {ARCHETYPES.map((a) => {
             const selected = activeArchetype?.key === a.key;
             const meta = ARCHETYPE_META[a.key] ?? ARCHETYPE_FALLBACK;
+            const ArchetypeIcon = meta.icon;
             return (
               <button
                 key={a.key}
                 type="button"
                 onClick={() => pickArchetype(a.key)}
+                aria-pressed={selected}
                 className="group relative flex flex-col overflow-hidden rounded-2xl text-left transition-all duration-200"
                 style={{
-                  background: meta.gradient,
+                  backgroundColor: selected
+                    ? "hsl(var(--bc-amber) / 0.12)"
+                    : "hsl(var(--bc-surface-2))",
                   border: selected
-                    ? `2px solid hsl(var(--buttercupp-accent-rose))`
-                    : "2px solid rgba(255,255,255,0.08)",
-                  boxShadow: selected
-                    ? `0 0 0 1px hsl(var(--buttercupp-accent-rose) / 0.3), 0 8px 32px rgba(0,0,0,0.4)`
-                    : "0 4px 16px rgba(0,0,0,0.3)",
+                    ? "2px solid hsl(var(--bc-amber))"
+                    : "2px solid hsl(var(--bc-border))",
+                  boxShadow: selected ? "var(--bc-shadow-glow)" : "var(--bc-shadow)",
                   transform: selected ? "translateY(-2px)" : undefined,
                 }}
               >
@@ -122,20 +105,24 @@ export default function PersonalityStep() {
                 <div
                   className="relative flex h-20 w-full items-center justify-center overflow-hidden"
                   style={{
-                    backgroundImage: `radial-gradient(circle at 50% 40%, ${meta.accentColor}22 0%, transparent 70%)`,
+                    backgroundImage:
+                      "radial-gradient(circle at 50% 40%, hsl(var(--bc-amber) / 0.14) 0%, transparent 70%)",
                   }}
                 >
-                  <span className="text-3xl">{meta.emoji}</span>
+                  <ArchetypeIcon
+                    className="h-8 w-8"
+                    aria-hidden
+                    style={{ color: "hsl(var(--bc-honey))" }}
+                  />
                   {selected && (
                     <div
                       className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold"
                       style={{
-                        background:
-                          "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
-                        color: "#ffffff",
+                        background: "hsl(var(--bc-amber))",
+                        color: "hsl(28 45% 9%)",
                       }}
                     >
-                      ✓
+                      <Check className="h-4 w-4" strokeWidth={2.5} aria-hidden />
                     </div>
                   )}
                 </div>
@@ -144,11 +131,11 @@ export default function PersonalityStep() {
                 <div className="flex flex-col gap-0.5 p-4 pt-2">
                   <p
                     className="font-display text-sm font-semibold"
-                    style={{ color: selected ? meta.accentColor : "rgba(255,255,255,0.9)" }}
+                    style={{ color: selected ? "hsl(var(--bc-honey))" : "hsl(var(--bc-fg))" }}
                   >
                     {a.label}
                   </p>
-                  <p className="text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>
+                  <p className="text-xs" style={{ color: "hsl(var(--bc-muted))" }}>
                     {a.hint}
                   </p>
                 </div>
@@ -156,10 +143,7 @@ export default function PersonalityStep() {
                 {selected && (
                   <div
                     className="absolute bottom-0 left-0 right-0 h-0.5"
-                    style={{
-                      background:
-                        "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
-                    }}
+                    style={{ background: "var(--bc-gradient-brand-h)" }}
                   />
                 )}
               </button>
@@ -174,8 +158,8 @@ export default function PersonalityStep() {
           <span
             className="text-sm font-medium"
             style={{
-              color: "hsl(var(--buttercupp-fg))",
-              borderLeft: "3px solid hsl(var(--buttercupp-accent-rose))",
+              color: "hsl(var(--bc-fg))",
+              borderLeft: "3px solid hsl(var(--bc-amber))",
               paddingLeft: "10px",
             }}
           >
@@ -185,9 +169,9 @@ export default function PersonalityStep() {
             <span
               className="rounded-full px-2 py-0.5 text-xs font-medium"
               style={{
-                background: "hsl(var(--buttercupp-accent-rose) / 0.15)",
-                color: "hsl(var(--buttercupp-accent-rose))",
-                border: "1px solid hsl(var(--buttercupp-accent-rose) / 0.3)",
+                background: "hsl(var(--bc-amber) / 0.15)",
+                color: "hsl(var(--bc-amber))",
+                border: "1px solid hsl(var(--bc-amber) / 0.3)",
               }}
             >
               {tags.length} / 15
@@ -199,7 +183,7 @@ export default function PersonalityStep() {
             <Chip key={t} label={t} selected={tags.includes(t)} onClick={() => toggleTag(t)} />
           ))}
         </div>
-        <span className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+        <span className="text-xs" style={{ color: "hsl(var(--bc-muted))" }}>
           {tags.length > 0 ? `${tags.length} selected` : "Pick at least one"}
         </span>
       </div>
@@ -225,22 +209,22 @@ export default function PersonalityStep() {
         <div className="flex flex-col gap-2">
           <span
             className="text-xs font-medium uppercase tracking-wide"
-            style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
+            style={{ color: "hsl(var(--bc-amber))" }}
           >
             First message
           </span>
           <div
             className="relative rounded-2xl rounded-tl-sm px-4 py-3 text-sm"
             style={{
-              backgroundColor: "hsl(var(--buttercupp-surface-2))",
-              border: `1px solid hsl(var(--buttercupp-accent-rose) / 0.25)`,
-              color: "hsl(var(--buttercupp-fg))",
+              backgroundColor: "hsl(var(--bc-surface-2))",
+              border: `1px solid hsl(var(--bc-amber) / 0.25)`,
+              color: "hsl(var(--bc-fg))",
             }}
           >
             {/* Chat bubble tail */}
             <div
               className="absolute -left-1.5 top-3 h-3 w-3 rotate-45"
-              style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))" }}
+              style={{ backgroundColor: "hsl(var(--bc-surface-2))" }}
             />
             <span className="italic">{draft.greeting}</span>
           </div>
@@ -253,7 +237,7 @@ export default function PersonalityStep() {
           type="button"
           onClick={() => setShowDetails((v) => !v)}
           className="cursor-pointer text-xs underline"
-          style={{ color: "hsl(var(--buttercupp-muted))" }}
+          style={{ color: "hsl(var(--bc-muted))" }}
         >
           {showDetails ? "Hide details" : "Fine-tune details (optional)"}
         </button>
@@ -290,9 +274,9 @@ export default function PersonalityStep() {
 }
 
 const inputStyle = {
-  borderColor: "hsl(var(--buttercupp-border))",
-  backgroundColor: "hsl(var(--buttercupp-surface-2))",
-  color: "hsl(var(--buttercupp-fg))",
+  borderColor: "hsl(var(--bc-border))",
+  backgroundColor: "hsl(var(--bc-surface-2))",
+  color: "hsl(var(--bc-fg))",
 } as const;
 
 function DetailField({
@@ -308,7 +292,7 @@ function DetailField({
 }) {
   return (
     <label className="flex flex-col gap-1 text-sm">
-      <span style={{ color: "hsl(var(--buttercupp-muted))" }}>{label}</span>
+      <span style={{ color: "hsl(var(--bc-muted))" }}>{label}</span>
       <input
         value={value}
         maxLength={maxLength}
@@ -333,7 +317,7 @@ function DetailArea({
 }) {
   return (
     <label className="flex flex-col gap-1 text-sm">
-      <span style={{ color: "hsl(var(--buttercupp-muted))" }}>{label}</span>
+      <span style={{ color: "hsl(var(--bc-muted))" }}>{label}</span>
       <textarea
         value={value}
         rows={rows}

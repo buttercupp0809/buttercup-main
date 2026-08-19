@@ -2,15 +2,12 @@
 // INSIDE the protected dark app shell (sidebar + dark theme) so clicking
 // "Discover" in the sidenav never bounces the user out to the light public
 // shell. Auth + age gate already enforced by (protected)/layout.tsx.
-import Link from "next/link";
 import { characterListQuerySchema } from "@buttercupp/shared";
 import { listCharacters, getFacetTags } from "@/lib/characters";
 import { getViewer } from "@/lib/viewer";
 import { viewerAllowsMature } from "@buttercupp/database";
 import { GalleryToolbar } from "@/components/gallery/GalleryToolbar";
 import { CharacterGrid } from "@/components/gallery/CharacterGrid";
-import { PageHeader } from "@/components/ui/PageHeader";
-import { Button } from "@/components/ui/button";
 
 export const dynamic = "force-dynamic";
 
@@ -42,19 +39,24 @@ export default async function DiscoverPage({
   const mature = viewerAllowsMature(viewer);
 
   return (
-    <section className="mx-auto max-w-6xl px-6 py-10 sm:py-12">
-      <PageHeader
-        eyebrow="Explore"
-        title="Meet your next"
-        accent="companion"
-        description="Real personas, live characters. Sort, search, and pick who you want to talk to."
-        actions={
-          <Link href="/create">
-            <Button size="sm">Create your own</Button>
-          </Link>
-        }
-      />
-      <div className="mb-6">
+    <section className="mx-auto max-w-6xl px-5 px-safe py-5 sm:px-6 sm:py-8">
+      {/*
+        Tight on phones by design: heading, one line, then faces. The old
+        four-line header plus a wrapping filter block pushed the first portrait
+        entirely below the fold on a 390px screen.
+      */}
+      <div className="mb-4 flex items-baseline justify-between gap-3 sm:mb-6">
+        <h1 className="font-display text-[1.75rem] font-semibold tracking-tight sm:text-4xl">
+          Discover
+        </h1>
+        <span
+          className="tabular shrink-0 text-xs"
+          style={{ color: "hsl(var(--buttercupp-muted))" }}
+        >
+          {items.length} on this page
+        </span>
+      </div>
+      <div className="mb-4 sm:mb-6">
         <GalleryToolbar viewerAllowsMature={mature} availableTags={availableTags} />
       </div>
       <CharacterGrid

@@ -61,7 +61,9 @@ export default async function ProtectedLayout({ children }: { children: React.Re
       <SideNav user={profileUser} recents={recents} />
       <div className="flex h-full min-w-0 flex-1 flex-col overflow-hidden">
         <header
-          className="flex shrink-0 items-center justify-between border-b pb-3 pt-[max(0.75rem,env(safe-area-inset-top))] pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] md:pl-[max(1.5rem,env(safe-area-inset-left))] md:pr-[max(1.75rem,env(safe-area-inset-right))] lg:pr-[max(2.25rem,env(safe-area-inset-right))]"
+          // pb-2 on phones: with the notch inset added on top, pb-3 pushed this
+          // chrome past 120px before any content appeared.
+          className="flex shrink-0 items-center justify-between border-b pb-2 pt-[max(0.625rem,env(safe-area-inset-top))] pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] md:pb-3 md:pl-[max(1.5rem,env(safe-area-inset-left))] md:pr-[max(1.75rem,env(safe-area-inset-right))] md:pt-[max(0.75rem,env(safe-area-inset-top))] lg:pr-[max(2.25rem,env(safe-area-inset-right))]"
           style={{ borderColor: "hsl(var(--buttercupp-border))" }}
         >
           <MobileNav user={profileUser} recents={recents} />
@@ -90,7 +92,10 @@ export default async function ProtectedLayout({ children }: { children: React.Re
             />
           </div>
         </header>
-        <main className="min-h-0 flex-1 overflow-y-auto pb-[calc(4rem+env(safe-area-inset-bottom))] md:pb-0">
+        {/* Bottom padding must clear the fixed MobileBottomBar (its own height
+            plus the home-bar inset) or the last row of every scrolling page ends
+            up permanently underneath it. */}
+        <main className="min-h-0 flex-1 overflow-y-auto pb-[calc(4.5rem+env(safe-area-inset-bottom))] md:pb-0">
           {children}
         </main>
         <MobileBottomBar />

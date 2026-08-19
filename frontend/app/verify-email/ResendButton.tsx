@@ -61,8 +61,12 @@ export function ResendVerificationButton() {
       {state.kind === "error" ? (
         <p
           role="alert"
-          className="text-xs"
-          style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
+          className="rounded-xl border px-3 py-2 text-xs"
+          style={{
+            borderColor: "hsl(var(--bc-danger) / 0.5)",
+            backgroundColor: "hsl(var(--bc-danger) / 0.08)",
+            color: "hsl(var(--bc-danger))",
+          }}
         >
           {state.msg}
         </p>

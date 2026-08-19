@@ -21,8 +21,8 @@ export function AiDisclosure({
     "inline-flex select-none items-center gap-2 text-xs font-medium tracking-wide";
   const styles =
     variant === "banner"
-      ? "w-full justify-center border-b border-slate-200 bg-slate-50 py-2 text-slate-700 dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-300"
-      : "rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-slate-700 shadow-sm backdrop-blur dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-200";
+      ? "w-full justify-center border-b border-[hsl(var(--bc-border))] bg-[hsl(var(--bc-surface)/0.8)] py-2 text-[hsl(var(--bc-muted))]"
+      : "rounded-full border border-[hsl(var(--bc-border))] bg-[hsl(var(--bc-surface-2)/0.7)] px-3 py-1 text-[hsl(var(--bc-muted))] shadow-sm backdrop-blur";
 
   return (
     <div
@@ -33,7 +33,7 @@ export function AiDisclosure({
     >
       <span
         aria-hidden
-        className="h-1.5 w-1.5 rounded-full bg-blue-500"
+        className="h-1.5 w-1.5 rounded-full bg-[hsl(var(--bc-amber))]"
       />
       {label}
     </div>

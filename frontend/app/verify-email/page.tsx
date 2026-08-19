@@ -9,6 +9,7 @@
 import { redirect } from "next/navigation";
 import { MailCheck } from "lucide-react";
 import { getCurrentUser } from "@/lib/auth";
+import { BrandRow } from "@/components/brand/Logo";
 import { ResendVerificationButton } from "./ResendButton";
 
 export const dynamic = "force-dynamic";
@@ -34,35 +35,26 @@ export default async function VerifyEmailPage({ searchParams }: Params) {
 
   return (
     <main
-      className="flex min-h-screen flex-col items-center justify-center px-6 py-12"
-      style={{ backgroundColor: "hsl(var(--buttercupp-bg))", color: "hsl(var(--buttercupp-fg))" }}
+      className="flex min-h-screen flex-col items-center justify-center px-6 px-safe py-12 pb-safe"
+      style={{ backgroundColor: "hsl(var(--bc-surface))", color: "hsl(var(--bc-fg))" }}
     >
       <div className="mb-8">
-        <a
-          href="/"
-          className="font-display text-2xl tracking-tight"
-          style={{
-            background: "linear-gradient(135deg, hsl(344 84% 71%), hsl(262 72% 68%))",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-          }}
-        >
-          ButterCupp
+        <a href="/" className="inline-flex">
+          <BrandRow markSize={32} />
         </a>
       </div>
 
       <section
         data-testid="verify-email-card"
-        className="buttercupp-glass w-full rounded-2xl p-8"
+        className="bc-rise buttercupp-glass w-full rounded-2xl p-8"
         style={{ maxWidth: "26rem" }}
       >
         <div
           className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl"
           style={{
             background:
-              "linear-gradient(135deg, hsl(344 84% 71% / 0.2), hsl(262 72% 68% / 0.2))",
-            color: "hsl(var(--buttercupp-accent-rose))",
+              "linear-gradient(135deg, hsl(var(--bc-honey) / 0.2), hsl(var(--bc-amber) / 0.2))",
+            color: "hsl(var(--bc-amber))",
           }}
           aria-hidden
         >
@@ -77,10 +69,10 @@ export default async function VerifyEmailPage({ searchParams }: Params) {
         </h1>
         <p
           className="mt-2 text-sm"
-          style={{ color: "hsl(var(--buttercupp-muted))" }}
+          style={{ color: "hsl(var(--bc-muted))" }}
         >
           We sent a verification link to{" "}
-          <span className="font-medium" style={{ color: "hsl(var(--buttercupp-fg))" }}>
+          <span className="font-medium" style={{ color: "hsl(var(--bc-fg))" }}>
             {user.email}
           </span>
           . Click it to unlock the app. The link expires in 24 hours.
@@ -91,9 +83,9 @@ export default async function VerifyEmailPage({ searchParams }: Params) {
             role="alert"
             className="mt-5 rounded-xl border px-3.5 py-2.5 text-sm"
             style={{
-              borderColor: "hsl(var(--buttercupp-accent-rose) / 0.5)",
-              backgroundColor: "hsl(var(--buttercupp-accent-rose) / 0.08)",
-              color: "hsl(var(--buttercupp-accent-rose))",
+              borderColor: "hsl(var(--bc-danger) / 0.5)",
+              backgroundColor: "hsl(var(--bc-danger) / 0.08)",
+              color: "hsl(var(--bc-danger))",
             }}
           >
             {errorMsg}
@@ -106,13 +98,13 @@ export default async function VerifyEmailPage({ searchParams }: Params) {
 
         <p
           className="mt-6 text-xs"
-          style={{ color: "hsl(var(--buttercupp-muted))" }}
+          style={{ color: "hsl(var(--bc-muted))" }}
         >
           Wrong address or need to switch accounts?{" "}
           <a
             href="/logout"
             className="font-medium underline-offset-2 hover:underline"
-            style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
+            style={{ color: "hsl(var(--bc-amber))" }}
           >
             Sign out
           </a>

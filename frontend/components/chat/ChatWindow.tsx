@@ -2,13 +2,15 @@
 
 import * as React from "react";
 import { createChatTransport, type TransportEvent, type TransportPaywallPlan } from "@/lib/chat-transport";
-import { Image as ImageIcon, Video, Send, Settings } from "lucide-react";
+import { Image as ImageIcon, Video, Send } from "lucide-react";
 import { AffectionMeter } from "@/components/relationship/AffectionMeter";
 import { GestureText } from "@/components/chat/GestureText";
 import { TypingDots } from "@/components/chat/TypingDots";
 import { PaywallModal } from "@/components/chat/PaywallModal";
 import { ImageMessage } from "@/components/chat/ImageMessage";
 import { LockedBadge } from "@/components/trust/LockedBadge";
+import { BondPill } from "@/components/progress/BondMeter";
+import type { BondProgress, Headroom } from "@/lib/bond";
 
 interface PaywallState {
   scope: "free_trial" | "plan_quota";
@@ -40,6 +42,22 @@ export interface ChatWindowProps {
   wsUrl?: string;
   avatarUrl?: string | null;
   relationship?: RelationshipHeader | null;
+  /** Derived bond, shown in the header in place of the legacy affection meter. */
+  bond?: BondProgress | null;
+  /**
+   * The character's authored opening line. Rendered as the empty state so a
+   * fresh conversation opens with her talking instead of a blank pane.
+   */
+  greeting?: string | null;
+  /** Remaining free messages, so the wall is visible before it is hit. */
+  headroom?: Headroom | null;
+  /**
+   * Controls hosted inside the header below xl, where the side panels are
+   * hidden and their triggers have nowhere else to live. Rendering them here
+   * instead of in a second strip keeps mobile to a single chat bar.
+   */
+  mobileLeading?: React.ReactNode;
+  mobileTrailing?: React.ReactNode;
 }
 
 export function ChatWindow({
@@ -49,6 +67,11 @@ export function ChatWindow({
   wsUrl,
   avatarUrl,
   relationship,
+  bond,
+  greeting,
+  headroom,
+  mobileLeading,
+  mobileTrailing,
 }: ChatWindowProps) {
   const [messages, setMessages] = React.useState<HistoryMessage[]>(initialMessages);
   const [streaming, setStreaming] = React.useState("");
@@ -61,13 +84,13 @@ export function ChatWindow({
   const [paywall, setPaywall] = React.useState<PaywallState | null>(null);
   const [imageGenerating, setImageGenerating] = React.useState(false);
   const [input, setInput] = React.useState("");
+  // Last failed turn. Held so the user gets an explanation plus a one-tap retry
+  // instead of a message that silently goes nowhere.
+  const [failed, setFailed] = React.useState<string | null>(null);
   const scrollAreaRef = React.useRef<HTMLDivElement | null>(null);
   const transportRef = React.useRef<ReturnType<typeof createChatTransport> | null>(null);
   const streamedRef = React.useRef("");
-  const inputRef = React.useRef<HTMLTextAreaElement | null>(null);
-  // Tracks whether the composer was in flight last render so we can refocus
-  // exactly when the assistant releases the lock (pending true -> false).
-  const wasPendingRef = React.useRef(false);
+  const lastSentRef = React.useRef<string | null>(null);
 
   React.useEffect(() => {
     const t = createChatTransport({ wsUrl });
@@ -147,9 +170,12 @@ export function ChatWindow({
       } else if (evt.type === "error") {
         setPending(false);
         setImageGenerating(false);
+        // Any partial text is discarded, but remember the prompt that failed so
+        // the user can resend it without retyping.
         streamedRef.current = "";
         setStreaming("");
         setFirstTokenSeen(false);
+        setFailed(lastSentRef.current);
       }
     });
     return () => {
@@ -163,52 +189,44 @@ export function ChatWindow({
     if (el) el.scrollTop = el.scrollHeight;
   }, [messages.length, streaming, pending]);
 
-  // Auto-grow the textarea with content. Reset height to auto first so the
-  // measured scrollHeight shrinks back when the user deletes lines. CSS
-  // caps the visual height via max-h; scrolling kicks in past the cap.
-  React.useLayoutEffect(() => {
-    const el = inputRef.current;
-    if (!el) return;
-    el.style.height = "auto";
-    el.style.height = `${el.scrollHeight}px`;
-  }, [input]);
-
-  // Refocus the composer as soon as the assistant releases the input lock
-  // (pending flips true -> false). Skips the refocus when the paywall is up
-  // so we do not steal focus from the modal's focus trap.
-  React.useEffect(() => {
-    if (wasPendingRef.current && !pending && !paywall) {
-      inputRef.current?.focus();
-    }
-    wasPendingRef.current = pending;
-  }, [pending, paywall]);
-
-  // Initial mount focus so the caret is blinking in the composer as soon
-  // as the chat loads.
-  React.useEffect(() => {
-    if (!paywall) inputRef.current?.focus();
-    // Intentionally runs once on mount; the pending-driven effect above
-    // owns subsequent refocus transitions.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const submitMessage = React.useCallback(() => {
-    if (!input.trim() || pending || paywall || !transportRef.current) return;
-    const text = input.trim();
-    setMessages((ms) => [
-      ...ms,
-      { id: `local-${Date.now()}`, role: "user", content: text, createdAt: new Date().toISOString() },
-    ]);
-    setInput("");
-    setPending(true);
-    setFirstTokenSeen(false);
-    setSafety(null);
-    transportRef.current.send(conversationId, text);
-  }, [input, pending, paywall, conversationId]);
+  const send = React.useCallback(
+    (text: string, { echo = true }: { echo?: boolean } = {}) => {
+      if (!transportRef.current) return;
+      lastSentRef.current = text;
+      if (echo) {
+        setMessages((ms) => [
+          ...ms,
+          {
+            id: `local-${Date.now()}`,
+            role: "user",
+            content: text,
+            createdAt: new Date().toISOString(),
+          },
+        ]);
+      }
+      setPending(true);
+      setFirstTokenSeen(false);
+      setSafety(null);
+      setFailed(null);
+      transportRef.current.send(conversationId, text);
+    },
+    [conversationId],
+  );
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
-    submitMessage();
+    if (!input.trim() || pending || paywall || !transportRef.current) return;
+    const text = input.trim();
+    setInput("");
+    send(text);
+  }
+
+  // Retry resends the failed prompt without echoing a duplicate user bubble:
+  // the original message is still on screen.
+  function retry() {
+    const text = lastSentRef.current;
+    if (!text || pending) return;
+    send(text, { echo: false });
   }
 
   return (
@@ -247,11 +265,20 @@ export function ChatWindow({
         </div>
       ) : null}
 
+      {/*
+        One bar, not three. Below xl the page used to stack its own control strip
+        (back + panel triggers + name) above this header, on top of the app shell
+        header, which consumed roughly half a phone screen before a single
+        message. Those controls are now passed in and rendered inline here.
+      */}
       <div
-        className="flex items-center justify-between border-b pb-3"
+        className="flex items-center gap-2 border-b pb-2 sm:pb-3"
         style={{ borderColor: "hsl(var(--buttercupp-border))" }}
       >
-        <div className="flex items-center gap-3">
+        {mobileLeading ? (
+          <div className="flex shrink-0 items-center xl:hidden">{mobileLeading}</div>
+        ) : null}
+        <div className="flex min-w-0 flex-1 items-center gap-3">
           <div
             className="h-10 w-10 shrink-0 overflow-hidden rounded-full"
             style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))" }}
@@ -264,15 +291,30 @@ export function ChatWindow({
               </div>
             )}
           </div>
-          <div className="flex flex-col">
-            <div className="flex items-center gap-2">
-              <span className="font-display text-lg leading-tight">{characterName}</span>
+          <div className="flex min-w-0 flex-col">
+            <div className="flex min-w-0 items-center gap-2">
+              <span className="truncate font-display text-lg leading-tight">{characterName}</span>
               {/* Trust chip in the chat header: reassures users mid-session
                   that the conversation is private and links to the full
-                  privacy promise for anyone who wants the details. */}
-              <LockedBadge size="sm" />
+                  privacy promise for anyone who wants the details.
+                  Hidden on phones: sharing the row with the panel triggers it
+                  wrapped to two lines and truncated her name to four letters.
+                  The same promise is one tap away in the persona sheet. */}
+              <span className="hidden sm:inline-flex">
+                <LockedBadge size="sm" />
+              </span>
             </div>
-            {relationship ? (
+            {/*
+              The bond pill replaces the old AffectionMeter here. The meter read
+              RelationshipState.affectionLevel, which nothing in the product ever
+              writes, so it rendered either nothing or a permanent zero; the bond
+              is derived from the conversation itself and is always truthful.
+            */}
+            {bond ? (
+              <div className="mt-1">
+                <BondPill bond={bond} />
+              </div>
+            ) : relationship ? (
               <AffectionMeter
                 size="sm"
                 affectionLevel={relationship.affectionLevel}
@@ -282,6 +324,9 @@ export function ChatWindow({
             ) : null}
           </div>
         </div>
+        {mobileTrailing ? (
+          <div className="flex shrink-0 items-center gap-1 xl:hidden">{mobileTrailing}</div>
+        ) : null}
       </div>
 
       <div
@@ -289,6 +334,25 @@ export function ChatWindow({
         className="min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain rounded-md p-4"
         style={{ backgroundColor: "hsl(var(--buttercupp-surface) / 0.55)" }}
       >
+        {/*
+          Empty state. The character's authored greeting already exists on
+          CharacterVersion and was previously shown on the public detail page but
+          never in the chat, so a brand-new conversation opened as a blank pane
+          and left the user to break the silence. Rendering it as her bubble means
+          she always speaks first.
+        */}
+        {messages.length === 0 && !pending && !streaming ? (
+          <div className="space-y-3">
+            <MessageBubble
+              role="assistant"
+              content={greeting?.trim() || `Hi. I'm ${characterName}. Tell me something about you.`}
+            />
+            <p className="px-1 text-xs text-[hsl(var(--bc-subtle))]">
+              She remembers what you tell her. Start anywhere.
+            </p>
+          </div>
+        ) : null}
+
         {messages.map((m) =>
           m.imageUrl ? (
             <div key={m.id} className="flex justify-start" data-testid="bubble-image">
@@ -303,6 +367,21 @@ export function ChatWindow({
             the loading indicator in that phase, so the pill would be redundant. */}
         {pending && !firstTokenSeen && !imageGenerating ? <TypingDots /> : null}
         {imageGenerating ? <GeneratingImageSkeleton /> : null}
+        {failed && !pending ? (
+          <div
+            role="alert"
+            className="flex flex-wrap items-center gap-x-3 gap-y-2 rounded-[var(--bc-radius-sm)] border border-[hsl(var(--bc-danger)/0.32)] bg-[hsl(var(--bc-danger)/0.09)] px-3.5 py-3 text-sm"
+          >
+            <span className="text-[hsl(var(--bc-fg))]">She did not get that one.</span>
+            <button
+              type="button"
+              onClick={retry}
+              className="bc-press rounded-full border border-[hsl(var(--bc-danger)/0.4)] px-3 py-1 text-xs font-semibold text-[hsl(2_84%_78%)] transition-colors duration-200 hover:bg-[hsl(var(--bc-danger)/0.16)]"
+            >
+              Send again
+            </button>
+          </div>
+        ) : null}
         {safety ? (
           <div className="rounded-md border border-amber-300 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-200">
             <p className="mb-2">{safety.message}</p>
@@ -334,69 +413,72 @@ export function ChatWindow({
           borderColor: "hsl(var(--buttercupp-border))",
         }}
       >
-        <textarea
-          ref={inputRef}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => {
-            // Enter submits; Shift+Enter inserts a newline. Also honor
-            // any IME composition so mid-composition Enter never sends.
-            if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) {
-              e.preventDefault();
-              submitMessage();
+        {/*
+          Input and send share one row. Previously the input took a full row of
+          its own and the scene chips wrapped below it, which stacked the
+          composer four rows deep on a phone and pushed the conversation off
+          screen. Send sits inline; the shortcuts get one quiet row beneath.
+        */}
+        <div className="flex items-center gap-2">
+          <input
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder={
+              paywall ? "Upgrade to keep chatting" : pending ? "Waiting..." : "Write a message..."
             }
-          }}
-          placeholder={
-            paywall ? "Upgrade to keep chatting" : pending ? "Waiting..." : "Write a message..."
-          }
-          disabled={pending || paywall !== null}
-          rows={1}
-          data-testid="chat-input"
-          // resize-none disables the manual grab handle; the layout effect
-          // above drives height from scrollHeight. max-h caps the growth
-          // so a very long draft scrolls internally instead of pushing the
-          // send button off screen.
-          className="block w-full resize-none bg-transparent px-1 py-1 text-sm leading-6 focus:outline-none max-h-40 overflow-y-auto"
-          style={{ color: "hsl(var(--buttercupp-fg))" }}
-        />
-        <div className="mt-2 flex items-center justify-between gap-2">
-          <div className="flex min-h-[36px] flex-wrap items-center gap-2">
-            <span className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
-              Show me the scene:
-            </span>
-            <SceneButton
-              icon={<ImageIcon className="h-3.5 w-3.5" />}
-              label="Image"
-              onClick={() => setInput("Send me a photo of you right now")}
-              disabled={pending || paywall !== null}
-            />
-            <SceneButton
-              icon={<Video className="h-3.5 w-3.5" />}
-              label="Video"
-              onClick={() => setInput("Send me a short video of you right now")}
-              disabled={pending || paywall !== null}
-            />
+            disabled={pending || paywall !== null}
+            data-testid="chat-input"
+            className="min-w-0 flex-1 bg-transparent px-1 py-2 text-[0.9375rem] focus:outline-none"
+            style={{ color: "hsl(var(--buttercupp-fg))" }}
+          />
+          {/*
+            Free-trial headroom. The transport only reveals the limit at the
+            moment it blocks you, which makes the wall feel like a trap. Showing
+            the count once it gets close turns it into a decision.
+          */}
+          {headroom?.warn ? (
             <span
-              className="flex h-7 w-7 items-center justify-center rounded-full border"
-              style={{ borderColor: "hsl(var(--buttercupp-border))", color: "hsl(var(--buttercupp-muted))" }}
-              aria-hidden
+              className={`tabular shrink-0 text-xs font-medium ${
+                headroom.left <= 1 ? "text-[hsl(var(--bc-amber))]" : "text-[hsl(var(--bc-muted))]"
+              }`}
             >
-              <Settings className="h-3.5 w-3.5" />
+              {headroom.left} left
             </span>
-          </div>
+          ) : null}
           <button
             type="submit"
             disabled={pending || paywall !== null || !input.trim()}
             data-testid="chat-send"
             aria-label="Send"
-            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white shadow-sm transition-transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:hover:scale-100"
+            className="bc-press flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-[hsl(28_45%_9%)] transition-[transform,box-shadow,opacity] duration-200 ease-[var(--ease-out)] disabled:opacity-45"
             style={{
-              background:
-                "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
+              backgroundImage: "var(--bc-gradient-brand-h)",
+              boxShadow: "0 6px 18px -8px hsl(var(--bc-amber) / 0.55)",
             }}
           >
-            <Send className="h-3.5 w-3.5" />
+            <Send className="h-4 w-4" />
           </button>
+        </div>
+
+        <div className="mt-1.5 flex items-center gap-2">
+          <span
+            className="hidden text-xs sm:inline"
+            style={{ color: "hsl(var(--buttercupp-muted))" }}
+          >
+            Show me the scene:
+          </span>
+          <SceneButton
+            icon={<ImageIcon className="h-3.5 w-3.5" />}
+            label="Photo"
+            onClick={() => setInput("Send me a photo of you right now")}
+            disabled={pending || paywall !== null}
+          />
+          <SceneButton
+            icon={<Video className="h-3.5 w-3.5" />}
+            label="Video"
+            onClick={() => setInput("Send me a short video of you right now")}
+            disabled={pending || paywall !== null}
+          />
         </div>
       </form>
 
@@ -451,25 +533,19 @@ function MessageBubble({
   const mine = role === "user";
   return (
     <div className={`flex ${mine ? "justify-end" : "justify-start"}`} data-testid={`bubble-${role}`}>
+      {/*
+        Both sides use the shared bc-bubble material (see globals.css): a tinted
+        glass surface with a tail on the sender's corner. Her turns were pure
+        #ffffff on #111111 before, which is the one place in the product that
+        still looked like a default chat widget bolted onto a warm dark theme,
+        and at night on a phone it was the brightest thing on the screen.
+      */}
       <div
-        className="max-w-[85%] rounded-2xl px-4 py-3 shadow-sm sm:max-w-[75%]"
-        style={
+        className={`bc-bubble max-w-[85%] px-4 py-2.5 text-[0.9375rem] sm:max-w-[75%] ${
           mine
-            ? {
-                background:
-                  "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
-                color: "#ffffff",
-                fontSize: "15px",
-                fontWeight: 500,
-              }
-            : {
-                backgroundColor: "#ffffff",
-                color: "#111111",
-                fontSize: "15px",
-                fontWeight: 400,
-                lineHeight: "1.75",
-              }
-        }
+            ? "bc-bubble-me font-medium text-[hsl(var(--bc-honey))]"
+            : "bc-bubble-her leading-relaxed text-[hsl(var(--bc-cream))]"
+        }`}
       >
         {/*
           User messages render plain to prevent any content the user typed

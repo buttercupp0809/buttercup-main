@@ -75,14 +75,14 @@ function StarRow({ filled = 5, aria = "5 out of 5 stars" }: { filled?: number; a
           viewBox="0 0 20 20"
           className="h-3.5 w-3.5"
           fill={i < filled ? "url(#buttercupp-star-fill)" : "none"}
-          stroke={i < filled ? "none" : "hsl(240 6% 45%)"}
+          stroke={i < filled ? "none" : "hsl(var(--bc-subtle))"}
           strokeWidth="1.5"
           aria-hidden
         >
           <defs>
             <linearGradient id="buttercupp-star-fill" x1="0" y1="0" x2="20" y2="0">
-              <stop offset="0%" stopColor="hsl(344 84% 71%)" />
-              <stop offset="100%" stopColor="hsl(262 72% 68%)" />
+              <stop offset="0%" stopColor="hsl(var(--bc-amber))" />
+              <stop offset="100%" stopColor="hsl(var(--bc-honey))" />
             </linearGradient>
           </defs>
           <path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.2 1 5.9-5.2-2.8-5.2 2.8 1-5.9-4.3-4.2 5.9-.9z" />
@@ -98,8 +98,8 @@ export function SocialProof() {
       aria-labelledby="social-proof-heading"
       className="relative border-y py-20 backdrop-blur"
       style={{
-        borderColor: "hsl(240 10% 18%)",
-        background: "hsl(240 14% 9% / 0.6)",
+        borderColor: "hsl(var(--bc-border))",
+        background: "hsl(var(--bc-surface) / 0.6)",
       }}
     >
       {/* Faint gradient wash behind the numbers so the section reads as one
@@ -109,7 +109,7 @@ export function SocialProof() {
         className="pointer-events-none absolute inset-x-0 top-0 h-40"
         style={{
           background:
-            "radial-gradient(60% 100% at 50% 0%, hsl(344 84% 71% / 0.08), transparent 70%)",
+            "radial-gradient(60% 100% at 50% 0%, hsl(var(--bc-amber) / 0.08), transparent 70%)",
         }}
       />
       <div className="relative mx-auto max-w-6xl px-6">
@@ -117,24 +117,24 @@ export function SocialProof() {
           <div
             className="mx-auto mb-4 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium uppercase tracking-wider"
             style={{
-              borderColor: "hsl(344 84% 71% / 0.35)",
-              color: "hsl(344 84% 78%)",
-              background: "hsl(344 84% 71% / 0.08)",
+              borderColor: "hsl(var(--bc-amber) / 0.35)",
+              color: "hsl(var(--bc-honey))",
+              background: "hsl(var(--bc-amber) / 0.08)",
             }}
           >
             <span
               className="h-1.5 w-1.5 rounded-full"
-              style={{ background: "hsl(344 84% 71%)" }}
+              style={{ background: "hsl(var(--bc-amber))" }}
             />
             Loved by curious hearts
           </div>
           <h2
             id="social-proof-heading"
-            className="text-3xl font-semibold tracking-tight text-white sm:text-4xl"
+            className="font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl"
           >
             Real people, real connection.
           </h2>
-          <p className="mt-3 text-base" style={{ color: "hsl(240 6% 65%)" }}>
+          <p className="mt-3 text-base" style={{ color: "hsl(var(--bc-muted))" }}>
             Thousands of members return every week to talk, laugh, and be heard.
             Here is what the numbers, and a few of them, say.
           </p>
@@ -149,7 +149,7 @@ export function SocialProof() {
                 className="text-4xl font-semibold tracking-tight sm:text-5xl"
                 style={{
                   background:
-                    "linear-gradient(135deg, hsl(344 84% 78%), hsl(262 72% 72%))",
+                    "var(--bc-gradient-brand)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -161,7 +161,7 @@ export function SocialProof() {
               {s.hint ? (
                 <div
                   className="text-xs tracking-wide"
-                  style={{ color: "hsl(240 6% 55%)" }}
+                  style={{ color: "hsl(var(--bc-subtle))" }}
                 >
                   {s.hint}
                 </div>
@@ -179,9 +179,9 @@ export function SocialProof() {
               key={t.handle}
               className="relative overflow-hidden rounded-2xl border p-7 transition duration-300 hover:-translate-y-0.5"
               style={{
-                borderColor: "hsl(240 10% 18%)",
+                borderColor: "hsl(var(--bc-border))",
                 background:
-                  "linear-gradient(180deg, hsl(240 12% 11% / 0.9), hsl(240 14% 9% / 0.9))",
+                  "linear-gradient(180deg, hsl(var(--bc-surface-2) / 0.9), hsl(var(--bc-surface) / 0.9))",
                 boxShadow: "0 20px 60px -30px rgb(0 0 0 / 0.5)",
               }}
             >
@@ -189,9 +189,9 @@ export function SocialProof() {
                   reads as watermark, not typography. */}
               <span
                 aria-hidden
-                className="pointer-events-none absolute -right-2 -top-4 select-none font-serif text-[7rem] leading-none"
+                className="pointer-events-none absolute -right-2 -top-4 select-none font-display text-[7rem] leading-none"
                 style={{
-                  color: "hsl(344 84% 71% / 0.08)",
+                  color: "hsl(var(--bc-amber) / 0.08)",
                 }}
               >
                 &rdquo;
@@ -206,7 +206,7 @@ export function SocialProof() {
                   className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-sm font-semibold text-white"
                   style={{
                     background:
-                      "linear-gradient(135deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+                      "var(--bc-gradient-brand)",
                   }}
                   aria-hidden
                 >
@@ -217,12 +217,12 @@ export function SocialProof() {
                     {t.name}{" "}
                     <span
                       className="ml-1 text-xs font-normal"
-                      style={{ color: "hsl(240 6% 55%)" }}
+                      style={{ color: "hsl(var(--bc-subtle))" }}
                     >
                       {t.handle}
                     </span>
                   </span>
-                  <span className="text-xs" style={{ color: "hsl(240 6% 55%)" }}>
+                  <span className="text-xs" style={{ color: "hsl(var(--bc-subtle))" }}>
                     {t.role}
                   </span>
                 </div>
@@ -236,7 +236,7 @@ export function SocialProof() {
             stops being true, remove the badge here rather than rewording. */}
         <div
           className="mt-14 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs"
-          style={{ color: "hsl(240 6% 55%)" }}
+          style={{ color: "hsl(var(--bc-subtle))" }}
         >
           <TrustBadge label="18+ verified" />
           <Dot />
@@ -256,7 +256,7 @@ function Dot() {
     <span
       aria-hidden
       className="h-1 w-1 rounded-full"
-      style={{ background: "hsl(240 10% 30%)" }}
+      style={{ background: "hsl(var(--bc-border-strong))" }}
     />
   );
 }
@@ -268,7 +268,7 @@ function TrustBadge({ label }: { label: string }) {
         viewBox="0 0 20 20"
         className="h-3.5 w-3.5"
         fill="none"
-        stroke="hsl(344 84% 71%)"
+        stroke="hsl(var(--bc-amber))"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"

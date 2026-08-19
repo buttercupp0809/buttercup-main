@@ -6,7 +6,6 @@ import { describe, expect, it, vi, beforeEach } from "vitest";
 
 const userFindUnique = vi.fn();
 const userCreate = vi.fn();
-const ageVerificationCreate = vi.fn();
 const sendEmail = vi.fn();
 const issueEmailVerification = vi.fn();
 const signAuthToken = vi.fn().mockResolvedValue("jwt");
@@ -17,9 +16,6 @@ vi.mock("@buttercupp/database", () => ({
     user: {
       findUnique: (...a: unknown[]) => userFindUnique(...a),
       create: (...a: unknown[]) => userCreate(...a),
-    },
-    ageVerification: {
-      create: (...a: unknown[]) => ageVerificationCreate(...a),
     },
   },
 }));
@@ -53,8 +49,6 @@ function req(body: unknown) {
 const VALID_BODY = {
   email: "new@example.com",
   password: "Sup3rSecret!pw",
-  // 30 years ago, comfortably past MIN_AGE_YEARS.
-  dob: new Date(Date.now() - 30 * 365 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10),
   jurisdiction: "US",
   tosAccepted: true,
   privacyAccepted: true,
@@ -63,7 +57,6 @@ const VALID_BODY = {
 beforeEach(() => {
   userFindUnique.mockReset();
   userCreate.mockReset();
-  ageVerificationCreate.mockReset().mockResolvedValue({});
   sendEmail.mockReset().mockResolvedValue({ ok: true });
   issueEmailVerification.mockReset().mockResolvedValue({
     rawToken: "rawtokenabc123",

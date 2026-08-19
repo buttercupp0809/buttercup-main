@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { Check, Circle } from "lucide-react";
 import { passwordChecklist, PASSWORD_RULES } from "@buttercupp/shared";
 import { cn } from "@/lib/utils";
 
@@ -26,14 +27,17 @@ export function PasswordChecklist({ value, onValidityChange, className }: Passwo
   }, [allPass, onValidityChange]);
 
   const strengthPct = Math.round((passed / total) * 100);
+  // Strength ramp is semantic (weak to strong), tied to the amber/success tokens
+  // so it stays in-palette. The mid band is the brand amber; the strong band is
+  // the success green.
   const barColor =
     passed <= 1
-      ? "bg-red-500"
+      ? "bg-[hsl(var(--bc-danger))]"
       : passed <= 3
-      ? "bg-amber-500"
+      ? "bg-[hsl(var(--bc-amber))]"
       : passed === total - 1
-      ? "bg-lime-500"
-      : "bg-emerald-500";
+      ? "bg-[hsl(var(--bc-honey))]"
+      : "bg-[hsl(var(--bc-success))]";
   const label =
     passed <= 1 ? "Weak" : passed <= 3 ? "Fair" : passed === total ? "Strong" : "Good";
 
@@ -44,14 +48,14 @@ export function PasswordChecklist({ value, onValidityChange, className }: Passwo
       data-testid="password-checklist"
     >
       <div className="flex items-center gap-2">
-        <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
+        <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-[hsl(var(--bc-surface-3))]">
           <div
             className={cn("h-full transition-all", barColor)}
             style={{ width: `${strengthPct}%` }}
             aria-hidden
           />
         </div>
-        <span className="w-12 text-right font-medium text-slate-600 dark:text-slate-300">{label}</span>
+        <span className="w-12 text-right font-medium text-[hsl(var(--bc-muted))]">{label}</span>
       </div>
       <ul className="grid grid-cols-1 gap-1 sm:grid-cols-2">
         {results.map((r) => (
@@ -61,30 +65,14 @@ export function PasswordChecklist({ value, onValidityChange, className }: Passwo
             aria-label={`${r.label}: ${r.ok ? "passed" : "not yet"}`}
             className={cn(
               "flex items-center gap-2",
-              r.ok ? "text-emerald-700 dark:text-emerald-400" : "text-slate-500 dark:text-slate-400",
+              r.ok ? "text-[hsl(var(--bc-success))]" : "text-[hsl(var(--bc-subtle))]",
             )}
           >
-            {r.ok ? <CheckIcon /> : <DotIcon />}
+            {r.ok ? <Check className="h-4 w-4 shrink-0" strokeWidth={2.5} aria-hidden /> : <Circle className="h-4 w-4 shrink-0" aria-hidden />}
             <span>{r.label}</span>
           </li>
         ))}
       </ul>
     </div>
-  );
-}
-
-function CheckIcon() {
-  return (
-    <svg viewBox="0 0 20 20" className="h-4 w-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-      <path d="M4 10l4 4 8-8" />
-    </svg>
-  );
-}
-
-function DotIcon() {
-  return (
-    <svg viewBox="0 0 20 20" className="h-4 w-4 shrink-0" fill="currentColor" aria-hidden>
-      <circle cx="10" cy="10" r="2.5" />
-    </svg>
   );
 }

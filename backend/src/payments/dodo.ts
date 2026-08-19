@@ -10,6 +10,12 @@ import type { CheckoutRequest, CheckoutResponse } from "./types";
 
 let _client: DodoPayments | null = null;
 
+// Price cache: product_id -> { priceUsd, fetchedAt }. Kept module-level so
+// all requests share one cache per process. 5-minute TTL balances freshness
+// against Dodo API rate limits.
+const _priceCache = new Map<string, { priceUsd: number; fetchedAt: number }>();
+const PRICE_CACHE_TTL_MS = 5 * 60 * 1000;
+
 export function getClient(): DodoPayments | null {
   if (_client) return _client;
   const bearerToken = process.env.DODO_API_KEY;
@@ -29,8 +35,48 @@ export function _resetClientForTests(): void {
   _client = null;
 }
 
+// Test-only: reset the price cache.
+export function _resetPriceCacheForTests(): void {
+  _priceCache.clear();
+}
+
 export function isConfigured(): boolean {
   return Boolean(process.env.DODO_API_KEY);
+}
+
+// Fetches a product's price from Dodo in USD. Prices are in the smallest
+// currency denomination (cents for USD); we divide by 100 to get USD.
+// Returns null when: Dodo is not configured, the API call fails, or the
+// product currency is not USD (avoids silently mislabeling non-USD amounts).
+// Results are cached per product ID for PRICE_CACHE_TTL_MS.
+export async function fetchProductPrice(productId: string): Promise<number | null> {
+  const cached = _priceCache.get(productId);
+  if (cached && Date.now() - cached.fetchedAt < PRICE_CACHE_TTL_MS) {
+    return cached.priceUsd;
+  }
+  const c = getClient();
+  if (!c) return null;
+  try {
+    const product = await c.products.retrieve(productId);
+    const p = product.price;
+    if (!p) return null;
+    // Both one_time_price and recurring_price expose `price` in cents.
+    // usage_based_price uses `fixed_price`. Currency must be USD.
+    let cents: number | undefined;
+    if (p.type === "one_time_price" || p.type === "recurring_price") {
+      if (p.currency !== "USD") return null;
+      cents = p.price;
+    } else if (p.type === "usage_based_price") {
+      if (p.currency !== "USD") return null;
+      cents = p.fixed_price;
+    }
+    if (cents === undefined || cents < 0) return null;
+    const priceUsd = cents / 100;
+    _priceCache.set(productId, { priceUsd, fetchedAt: Date.now() });
+    return priceUsd;
+  } catch {
+    return null;
+  }
 }
 
 // Resolves a CheckoutRequest to a Dodo product id via env. Throws a loud

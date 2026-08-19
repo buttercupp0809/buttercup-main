@@ -36,6 +36,14 @@
         {
           "name": "NODE_ENV",
           "value": "production"
+        },
+        {
+          "name": "FRONTEND_URL",
+          "value": "https://www.buttercupp.fun"
+        },
+        {
+          "name": "CORS_ALLOWED_ORIGINS",
+          "value": "https://www.buttercupp.fun,https://buttercupp.fun"
         }
       ],
       "secrets": [

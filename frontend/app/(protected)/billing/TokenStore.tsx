@@ -130,8 +130,8 @@ export function TokenStore() {
             className="flex h-8 w-8 items-center justify-center rounded-lg"
             style={{
               background:
-                "linear-gradient(135deg, hsl(344 84% 71% / 0.18), hsl(262 72% 68% / 0.18))",
-              color: "hsl(var(--buttercupp-accent-violet))",
+                "linear-gradient(135deg, hsl(var(--bc-honey) / 0.18), hsl(var(--bc-amber) / 0.18))",
+              color: "hsl(var(--bc-amber))",
             }}
             aria-hidden
           >
@@ -139,7 +139,7 @@ export function TokenStore() {
           </div>
           <span
             className="text-xs font-semibold uppercase tracking-[0.14em]"
-            style={{ color: "hsl(var(--buttercupp-muted))" }}
+            style={{ color: "hsl(var(--bc-muted))" }}
           >
             Current balance
           </span>
@@ -147,8 +147,8 @@ export function TokenStore() {
         <div
           className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-semibold"
           style={{
-            backgroundColor: "hsl(var(--buttercupp-accent-violet) / 0.15)",
-            color: "hsl(var(--buttercupp-accent-violet))",
+            backgroundColor: "hsl(var(--bc-amber) / 0.15)",
+            color: "hsl(var(--bc-amber))",
           }}
           data-testid="token-balance"
         >
@@ -161,8 +161,8 @@ export function TokenStore() {
         <div
           className="mt-4 rounded-xl border p-2.5 text-xs"
           style={{
-            borderColor: "hsl(var(--buttercupp-accent-rose) / 0.5)",
-            backgroundColor: "hsl(var(--buttercupp-accent-rose) / 0.1)",
+            borderColor: "hsl(var(--bc-amber) / 0.5)",
+            backgroundColor: "hsl(var(--bc-amber) / 0.1)",
           }}
         >
           {error}
@@ -174,20 +174,20 @@ export function TokenStore() {
           <div
             key={pack.id}
             data-testid={`pack-${pack.id}`}
-            className="flex flex-col gap-2 rounded-2xl border p-4 transition duration-200 hover:-translate-y-0.5 hover:border-[hsl(var(--buttercupp-accent-rose)/0.4)]"
+            className="flex flex-col gap-2 rounded-2xl border p-4 transition duration-200 hover:-translate-y-0.5 hover:border-[hsl(var(--bc-amber)/0.4)]"
             style={{
-              borderColor: "hsl(var(--buttercupp-border))",
-              backgroundColor: "hsl(var(--buttercupp-surface-2) / 0.5)",
+              borderColor: "hsl(var(--bc-border))",
+              backgroundColor: "hsl(var(--bc-surface-2) / 0.5)",
             }}
           >
             <span className="font-display text-base font-semibold">{pack.label}</span>
             <div className="flex items-baseline gap-1">
               <span className="font-display text-3xl font-extrabold tracking-tight">${pack.priceUsd}</span>
-              <span className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+              <span className="text-xs" style={{ color: "hsl(var(--bc-muted))" }}>
                 one-time
               </span>
             </div>
-            <div className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+            <div className="text-xs" style={{ color: "hsl(var(--bc-muted))" }}>
               {pack.credits.toLocaleString()} tokens
             </div>
             <button
@@ -195,10 +195,10 @@ export function TokenStore() {
               onClick={() => buy(pack.id)}
               disabled={pending === pack.id}
               data-testid={`buy-pack-${pack.id}`}
-              className="mt-2 w-full rounded-xl py-2.5 text-sm font-bold text-white shadow-[0_8px_24px_-12px_hsl(344_84%_60%/0.6)] transition-all duration-200 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400/70 disabled:opacity-60"
+              className="mt-2 w-full rounded-xl py-2.5 text-sm font-bold shadow-[0_8px_24px_-12px_hsl(var(--bc-amber)/0.6)] transition-all duration-200 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--bc-amber))] disabled:opacity-60"
               style={{
-                background:
-                  "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
+                background: "var(--bc-gradient-brand-v)",
+                color: "hsl(28 45% 9%)",
               }}
             >
               {pending === pack.id ? "Redirecting..." : "Buy"}
@@ -208,7 +208,7 @@ export function TokenStore() {
         {!packs ? (
           <div
             className="col-span-full rounded-2xl border p-4 text-center text-sm"
-            style={{ borderColor: "hsl(var(--buttercupp-border))", color: "hsl(var(--buttercupp-muted))" }}
+            style={{ borderColor: "hsl(var(--bc-border))", color: "hsl(var(--bc-muted))" }}
           >
             Loading token packs...
           </div>

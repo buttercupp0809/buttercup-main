@@ -1,13 +1,10 @@
 "use client";
 
 import * as React from "react";
-import { ChevronLeft, ChevronRight, Check, Sparkles } from "lucide-react";
 import { useCharacterWizard } from "./context";
 import { CHARACTER_STEPS } from "./steps";
 import { PreviewCard } from "@/components/create/PreviewCard";
 import { GenerationStatus } from "@/components/create/GenerationStatus";
-import { PageHeader } from "@/components/ui/PageHeader";
-import { Button } from "@/components/ui/button";
 
 export function WizardShell({ children }: { children: React.ReactNode }) {
   const { currentStepKey, canContinue, saving, goNext, goBack, submit, draft, mode } =
@@ -28,200 +25,105 @@ export function WizardShell({ children }: { children: React.ReactNode }) {
     }
   }
 
-  const stepLabel = CHARACTER_STEPS[currentIndex]?.label ?? "";
-  const progressPct = ((currentIndex + 1) / CHARACTER_STEPS.length) * 100;
-  const isEdit = mode === "edit";
-
   return (
-    <section className="mx-auto max-w-6xl px-6 py-10 sm:py-12">
-      {!finishedId && (
-        <PageHeader
-          eyebrow={isEdit ? "Editing companion" : `Step ${currentIndex + 1} of ${CHARACTER_STEPS.length}`}
-          title={isEdit ? "Refine your" : "Create your"}
-          accent="companion"
-          description={
-            isEdit
-              ? "Adjust identity, appearance, personality, or publish settings."
-              : "Style, identity, appearance, personality, and publish. Under a minute, and yours."
-          }
-        />
-      )}
+    <section className="mx-auto grid max-w-6xl grid-cols-1 gap-4 px-4 py-4 md:grid-cols-[1fr_320px] md:gap-6 md:px-6 md:py-6">
+      {/*
+        Mobile: the preview is moved above the form so the user can see their
+        companion forming as they fill the wizard. On desktop it stays in the
+        right-hand sticky column as before.
+      */}
+      <aside className="order-first md:order-last">
+        <div className="sticky top-0 z-10 pb-2 md:sticky md:top-4 md:pb-0 md:pt-0">
+          <h2
+            className="mb-2 hidden font-display text-xs font-semibold uppercase tracking-wide md:block"
+            style={{ color: "hsl(var(--buttercupp-muted))" }}
+          >
+            Live preview
+          </h2>
+          <PreviewCard draft={draft} />
+        </div>
+      </aside>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-[1fr_320px]">
-        <div className="min-w-0">
-          {!finishedId && <Stepper currentIndex={currentIndex} progressPct={progressPct} />}
-
-          <div className="buttercupp-glass relative overflow-hidden rounded-2xl p-6 sm:p-8">
-            {!finishedId ? (
-              <div
-                className="pointer-events-none absolute inset-x-0 -top-px h-px"
-                aria-hidden
+      <div>
+        {!finishedId && (
+          <ol className="mb-4 flex items-center gap-1.5 overflow-x-auto text-sm md:mb-6 md:gap-2 md:overflow-visible [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {CHARACTER_STEPS.map((s, i) => (
+              <li
+                key={s.key}
+                className="flex shrink-0 items-center gap-1.5 md:gap-2"
                 style={{
-                  background:
-                    "linear-gradient(90deg, transparent, hsl(var(--buttercupp-accent-rose) / 0.6), hsl(var(--buttercupp-accent-violet) / 0.6), transparent)",
+                  color:
+                    i === currentIndex
+                      ? "hsl(var(--buttercupp-accent-rose))"
+                      : i < currentIndex
+                        ? "hsl(var(--buttercupp-fg))"
+                        : "hsl(var(--buttercupp-muted))",
+                  fontWeight: i === currentIndex ? 600 : 400,
                 }}
-              />
-            ) : null}
-            {finishedId ? <GenerationStatus characterId={finishedId} /> : children}
-          </div>
+              >
+                <span
+                  className="rounded-full px-2 py-0.5 text-xs md:border md:border-current"
+                  style={
+                    i === currentIndex
+                      ? {
+                          backgroundColor: "hsl(var(--buttercupp-accent-rose))",
+                          color: "hsl(var(--buttercupp-bg))",
+                          borderColor: "hsl(var(--buttercupp-accent-rose))",
+                        }
+                      : undefined
+                  }
+                >
+                  {i + 1}
+                </span>
+                <span className="hidden md:inline">{s.label}</span>
+                {i < CHARACTER_STEPS.length - 1 ? (
+                  <span className="hidden md:inline" style={{ color: "hsl(var(--buttercupp-border))" }}>
+                    -
+                  </span>
+                ) : null}
+              </li>
+            ))}
+          </ol>
+        )}
 
-          {!finishedId && (
-            <div
-              className="mt-6 flex flex-col-reverse items-stretch gap-3 rounded-2xl border p-3 sm:flex-row sm:items-center sm:justify-between"
-              style={{
-                borderColor: "hsl(var(--buttercupp-border))",
-                backgroundColor: "hsl(var(--buttercupp-surface) / 0.6)",
-              }}
-            >
-              <Button
+        <div
+          className="rounded-xl border p-4 md:p-6"
+          style={{
+            backgroundColor: "hsl(var(--buttercupp-surface))",
+            borderColor: "hsl(var(--buttercupp-border))",
+          }}
+        >
+          {finishedId ? <GenerationStatus characterId={finishedId} /> : children}
+        </div>
+
+        {!finishedId && (
+          <div className="mt-6 border-t border-[hsl(var(--bc-border))] pt-4 md:mt-6 md:border-transparent md:pt-0">
+            <div className="flex items-center justify-between gap-3">
+              <button
                 type="button"
-                variant="ghost"
                 onClick={goBack}
                 disabled={currentIndex === 0}
-                className="sm:w-auto"
+                className="h-11 rounded-md border px-5 text-sm disabled:opacity-50"
+                style={{ borderColor: "hsl(var(--buttercupp-border))", color: "hsl(var(--buttercupp-fg))" }}
               >
-                <ChevronLeft className="h-4 w-4" />
                 Back
-              </Button>
-              <div
-                className="hidden text-xs sm:block"
-                style={{ color: "hsl(var(--buttercupp-muted))" }}
-              >
-                {stepLabel}
-              </div>
-              <Button
+              </button>
+              <button
                 type="button"
                 onClick={isLast ? handleFinish : goNext}
                 disabled={!canContinue || (isLast && saving)}
-                className="sm:w-auto"
-              >
-                {isLast ? (
-                  <>
-                    <Sparkles className="h-4 w-4" />
-                    {saving ? "Saving..." : isEdit ? "Save changes" : "Finish"}
-                  </>
-                ) : (
-                  <>
-                    Next
-                    <ChevronRight className="h-4 w-4" />
-                  </>
-                )}
-              </Button>
-            </div>
-          )}
-        </div>
-
-        <aside>
-          <div className="sticky top-4 flex flex-col gap-3">
-            <div className="flex items-center gap-2">
-              <span
-                className="h-1.5 w-1.5 rounded-full"
+                className="h-11 rounded-md px-5 text-sm font-semibold disabled:opacity-50"
                 style={{
-                  background: "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+                  backgroundColor: "hsl(var(--buttercupp-accent-rose))",
+                  color: "hsl(var(--buttercupp-primary-fg))",
                 }}
-                aria-hidden
-              />
-              <h2
-                className="text-[11px] font-semibold uppercase tracking-[0.14em]"
-                style={{ color: "hsl(var(--buttercupp-muted))" }}
               >
-                Live preview
-              </h2>
+                {isLast ? (saving ? "Saving..." : mode === "edit" ? "Save changes" : "Finish") : "Next"}
+              </button>
             </div>
-            <PreviewCard draft={draft} />
           </div>
-        </aside>
+        )}
       </div>
     </section>
-  );
-}
-
-function Stepper({
-  currentIndex,
-  progressPct,
-}: {
-  currentIndex: number;
-  progressPct: number;
-}) {
-  return (
-    <div className="mb-6 flex flex-col gap-3">
-      <div
-        className="h-1 overflow-hidden rounded-full"
-        style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))" }}
-        aria-hidden
-      >
-        <div
-          className="h-full rounded-full transition-all duration-500 ease-out"
-          style={{
-            width: `${progressPct}%`,
-            background: "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
-          }}
-        />
-      </div>
-      <ol
-        className="flex flex-wrap items-center gap-2 text-xs sm:text-sm"
-        aria-label="Wizard progress"
-      >
-        {CHARACTER_STEPS.map((s, i) => {
-          const done = i < currentIndex;
-          const active = i === currentIndex;
-          return (
-            <li
-              key={s.key}
-              aria-current={active ? "step" : undefined}
-              className="flex items-center gap-2"
-            >
-              <span
-                className="flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-semibold transition"
-                style={
-                  active
-                    ? {
-                        background:
-                          "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
-                        color: "white",
-                        boxShadow: "0 4px 14px -6px hsl(344 84% 60% / 0.6)",
-                      }
-                    : done
-                      ? {
-                          backgroundColor: "hsl(var(--buttercupp-accent-rose) / 0.18)",
-                          color: "hsl(var(--buttercupp-accent-rose))",
-                        }
-                      : {
-                          backgroundColor: "hsl(var(--buttercupp-surface-2))",
-                          color: "hsl(var(--buttercupp-muted))",
-                          border: "1px solid hsl(var(--buttercupp-border))",
-                        }
-                }
-              >
-                {done ? <Check className="h-3 w-3" strokeWidth={3} /> : i + 1}
-              </span>
-              <span
-                className="whitespace-nowrap font-medium"
-                style={{
-                  color: active
-                    ? "hsl(var(--buttercupp-fg))"
-                    : done
-                      ? "hsl(var(--buttercupp-fg))"
-                      : "hsl(var(--buttercupp-muted))",
-                }}
-              >
-                {s.label}
-              </span>
-              {i < CHARACTER_STEPS.length - 1 ? (
-                <span
-                  className="hidden h-px w-6 sm:inline-block"
-                  aria-hidden
-                  style={{
-                    backgroundColor: done
-                      ? "hsl(var(--buttercupp-accent-rose) / 0.4)"
-                      : "hsl(var(--buttercupp-border))",
-                  }}
-                />
-              ) : null}
-            </li>
-          );
-        })}
-      </ol>
-    </div>
   );
 }

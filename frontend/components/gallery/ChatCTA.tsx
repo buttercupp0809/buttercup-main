@@ -11,8 +11,8 @@ const btnBase =
 
 const gradientStyle = {
   background:
-    "linear-gradient(135deg, hsl(344 84% 60%), hsl(262 72% 60%))",
-  boxShadow: "0 4px 24px hsl(344 84% 60% / 0.35)",
+    "var(--bc-gradient-brand)",
+  boxShadow: "0 4px 24px hsl(var(--bc-amber) / 0.35)",
 } as const;
 
 export function ChatCTA({ state }: { state: ChatCTAState }) {

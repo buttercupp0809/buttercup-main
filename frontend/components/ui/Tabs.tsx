@@ -19,8 +19,8 @@ const tabsListVariants = cva(
     variants: {
       variant: {
         default: [
-          "border-[hsl(var(--buttercupp-border))]",
-          "bg-[hsl(var(--buttercupp-surface)/0.6)]",
+          "border-[hsl(var(--bc-border))]",
+          "bg-[hsl(var(--bc-surface)/0.6)]",
           "backdrop-blur-md",
         ].join(" "),
       },
@@ -33,22 +33,22 @@ const tabsListVariants = cva(
 );
 
 const tabsTriggerVariants = cva(
-  "relative inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold tracking-tight transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent disabled:pointer-events-none disabled:opacity-50",
+  "relative inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold tracking-tight transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--bc-amber))]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       state: {
-        // Active: gradient pill that mirrors the primary Button variant, so
-        // the tab strip visually matches the rest of the surface's CTAs.
+        // Active: amber gradient pill that mirrors the primary Button variant,
+        // so the tab strip visually matches the rest of the surface's CTAs.
         active: [
-          "text-white shadow-[0_8px_24px_-12px_hsl(344_84%_71%/0.55)]",
-          "bg-[linear-gradient(90deg,hsl(344_84%_71%),hsl(262_72%_68%))]",
+          "text-[hsl(28_45%_9%)] shadow-[0_8px_24px_-12px_hsl(var(--bc-amber)/0.55)]",
+          "bg-[image:var(--bc-gradient-brand-v)]",
         ].join(" "),
         // Inactive: muted foreground that lifts on hover, so the whole strip
         // still reads as a single control instead of two disconnected buttons.
         inactive: [
-          "text-[hsl(var(--buttercupp-muted))]",
-          "hover:text-[hsl(var(--buttercupp-fg))]",
-          "hover:bg-[hsl(var(--buttercupp-surface-2)/0.8)]",
+          "text-[hsl(var(--bc-muted))]",
+          "hover:text-[hsl(var(--bc-fg))]",
+          "hover:bg-[hsl(var(--bc-surface-2)/0.8)]",
         ].join(" "),
       },
     },

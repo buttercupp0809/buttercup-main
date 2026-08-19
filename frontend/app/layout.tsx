@@ -1,13 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Fraunces } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
-// Geist (clean modern sans, matches the Candy/Nastia aesthetic) powers both
-// body and headings. Loaded ONCE and exposed as --font-geist; globals.css maps
-// --font-body and --font-display to it. Headings get character from weight +
-// tight tracking (see .font-display), not a second face, so nothing can fail
-// to load or clash.
+// Geist carries all UI and body copy: neutral, tight, excellent at small sizes.
 const geist = Geist({
   subsets: ["latin"],
   variable: "--font-geist",
@@ -15,9 +11,36 @@ const geist = Geist({
   weight: ["400", "500", "600", "700"],
 });
 
+// Fraunces carries headlines. The brand wordmark is a soft high-contrast serif,
+// so a serif display face is what makes a page look like it belongs to the
+// logo; Geist alone (the old setup used it for both) had no voice of its own.
+// SOFT rounds the terminals toward the mark's shapes, WONK keeps the single
+// storey g/y quirk that stops it reading as a stock editorial serif.
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+  display: "swap",
+  axes: ["SOFT", "WONK"],
+});
+
 export const metadata: Metadata = {
-  title: "ButterCupp",
-  description: "companions built for adults.",
+  title: {
+    default: "ButterCupp - AI GF with no limits",
+    template: "%s - ButterCupp",
+  },
+  description:
+    "Companions who remember you. Build a bond that actually grows, chat without limits, and make her yours.",
+  icons: {
+    icon: [{ url: "/brand/mark.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/brand/mark.svg" }],
+  },
+  openGraph: {
+    title: "ButterCupp - AI GF with no limits",
+    description:
+      "Companions who remember you. Build a bond that actually grows, chat without limits, and make her yours.",
+    siteName: "ButterCupp",
+    type: "website",
+  },
 };
 
 // viewportFit: "cover" lets the layout draw edge to edge on notched/home-bar
@@ -27,12 +50,14 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
+  themeColor: "#0e0c0a",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`dark ${geist.variable}`}>
-      <body className="min-h-screen antialiased">
+    <html lang="en" className={`dark ${geist.variable} ${fraunces.variable}`}>
+      {/* bc-grain lays a single fixed noise layer over the whole app. */}
+      <body className="bc-grain min-h-screen antialiased">
         {children}
         <Script id="meta-pixel" strategy="afterInteractive">{`
           !function(f,b,e,v,n,t,s)

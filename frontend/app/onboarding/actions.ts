@@ -27,7 +27,7 @@ export async function completeOnboarding(input: unknown): Promise<CompleteOnboar
       issues: parsed.error.issues.map((i) => ({ path: i.path.join("."), message: i.message })),
     };
   }
-  const { displayName, gender, vibe, interests, companionGoal, firstCharacterId } = parsed.data;
+  const { displayName, gender, vibe, interests, firstCharacterId } = parsed.data;
 
   const user = await prisma.user.findUnique({ where: { id: userId } });
   if (!user) {
@@ -42,7 +42,7 @@ export async function completeOnboarding(input: unknown): Promise<CompleteOnboar
     return { ok: true, firstCharacterId: firstCharacterId ?? preferences?.firstCharacterId ?? null };
   }
 
-  const preferences = { vibe, interests, companionGoal, firstCharacterId: firstCharacterId ?? null };
+  const preferences = { vibe, interests, firstCharacterId: firstCharacterId ?? null };
 
   // Atomic: a profile never exists without the flag flip and vice versa.
   await prisma.$transaction([

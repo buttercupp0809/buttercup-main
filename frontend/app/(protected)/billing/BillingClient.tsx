@@ -7,7 +7,17 @@
 // per-day price, not hardcoded.
 
 import * as React from "react";
-import { Star, Check } from "lucide-react";
+import {
+  Star,
+  Check,
+  Sparkles,
+  Flame,
+  Clapperboard,
+  MessageCircle,
+  Coins,
+  Mic,
+  type LucideIcon,
+} from "lucide-react";
 import { TokenStore } from "./TokenStore";
 import { Tabs, type TabItem } from "@/components/ui/Tabs";
 
@@ -83,15 +93,15 @@ interface Entitlements {
   freeMessagesUsed: number;
 }
 
-// Emoji-forward premium benefits, per the reference. Emoji are an explicit
-// design choice here (they match the Candy.ai look the product is after).
-export const BENEFITS = [
-  { emoji: "✨", label: "Create your own companions" },
-  { emoji: "🔥", label: "Generate 18+ videos" },
-  { emoji: "🎬", label: "Full live-action experience" },
-  { emoji: "💬", label: "Unlimited text messages" },
-  { emoji: "🪙", label: "Token packs for images and video" },
-  { emoji: "🎙️", label: "Expressive voice replies" },
+// Premium benefits list. Each perk renders a lucide-react icon in the warm
+// accent, matching the icon convention used across the product.
+export const BENEFITS: { icon: LucideIcon; label: string }[] = [
+  { icon: Sparkles, label: "Create your own companions" },
+  { icon: Flame, label: "Generate 18+ videos" },
+  { icon: Clapperboard, label: "Full live-action experience" },
+  { icon: MessageCircle, label: "Unlimited text messages" },
+  { icon: Coins, label: "Token packs for images and video" },
+  { icon: Mic, label: "Expressive voice replies" },
 ];
 
 const VISIBLE_BENEFITS = filterHiddenBenefits(BENEFITS);
@@ -234,9 +244,9 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
         <div
           className="rounded-xl border p-3 text-sm"
           style={{
-            borderColor: "hsl(var(--buttercupp-accent-rose) / 0.5)",
-            backgroundColor: "hsl(var(--buttercupp-accent-rose) / 0.1)",
-            color: "hsl(var(--buttercupp-fg))",
+            borderColor: "hsl(var(--bc-amber) / 0.5)",
+            backgroundColor: "hsl(var(--bc-amber) / 0.1)",
+            color: "hsl(var(--bc-fg))",
           }}
         >
           {error}
@@ -251,8 +261,8 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
       <div
         className="flex flex-col items-center justify-between gap-2 rounded-2xl border px-4 py-2.5 sm:flex-row sm:gap-4"
         style={{
-          borderColor: "hsl(var(--buttercupp-border))",
-          backgroundColor: "hsl(var(--buttercupp-surface-2) / 0.55)",
+          borderColor: "hsl(var(--bc-border))",
+          backgroundColor: "hsl(var(--bc-surface-2) / 0.55)",
         }}
       >
         <div className="flex items-center gap-3">
@@ -264,11 +274,11 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
           <span
             aria-hidden
             className="hidden h-4 w-px sm:inline-block"
-            style={{ backgroundColor: "hsl(var(--buttercupp-border))" }}
+            style={{ backgroundColor: "hsl(var(--bc-border))" }}
           />
           <div className="hidden items-center gap-1.5 sm:flex">
             <Stars n={5} />
-            <span className="text-[11px]" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+            <span className="text-[11px]" style={{ color: "hsl(var(--bc-muted))" }}>
               1000+ ratings
             </span>
           </div>
@@ -297,7 +307,7 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
             title="Auto-renew"
             accent="subscriptions"
             chipLabel="Subscriptions"
-            chipVariant="rose"
+            chipVariant="amber"
             subtitle="Recurring access at the highest tier. Cancel anytime."
           />
           <div className="mx-auto grid w-full max-w-3xl grid-cols-1 gap-5 md:grid-cols-2" data-testid="subscription-cards">
@@ -316,12 +326,12 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
                   className="group relative flex min-h-[380px] flex-col overflow-hidden rounded-3xl border p-6 transition-all duration-300 hover:-translate-y-1"
                   style={{
                     borderColor: promoted
-                      ? "hsl(var(--buttercupp-accent-rose) / 0.7)"
-                      : "hsl(var(--buttercupp-border))",
-                    backgroundColor: "hsl(var(--buttercupp-surface) / 0.85)",
+                      ? "hsl(var(--bc-amber) / 0.7)"
+                      : "hsl(var(--bc-border))",
+                    backgroundColor: "hsl(var(--bc-surface) / 0.85)",
                     backdropFilter: "blur(12px)",
                     boxShadow: promoted
-                      ? "0 20px 60px -24px hsl(344 84% 60% / 0.5)"
+                      ? "0 20px 60px -24px hsl(var(--bc-amber) / 0.5)"
                       : "0 8px 32px rgba(0, 0, 0, 0.35)",
                   }}
                 >
@@ -332,7 +342,7 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
                         className="pointer-events-none absolute inset-0"
                         style={{
                           background:
-                            "radial-gradient(30rem 20rem at 50% 120%, hsl(var(--buttercupp-accent-rose) / 0.28), transparent 65%)",
+                            "radial-gradient(30rem 20rem at 50% 120%, hsl(var(--bc-amber) / 0.28), transparent 65%)",
                         }}
                       />
                       <div
@@ -340,7 +350,7 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
                         className="pointer-events-none absolute inset-x-8 -top-px h-px"
                         style={{
                           background:
-                            "linear-gradient(90deg, transparent, hsl(var(--buttercupp-accent-rose) / 0.8), transparent)",
+                            "linear-gradient(90deg, transparent, hsl(var(--bc-amber) / 0.8), transparent)",
                         }}
                       />
                     </>
@@ -349,14 +359,15 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
                   {isMostPopular ? (
                     <span
                       data-testid="most-popular-badge"
-                      className="relative mb-3 inline-flex w-fit items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white shadow-[0_4px_16px_-6px_hsl(344_84%_60%/0.6)]"
+                      className="relative mb-3 inline-flex w-fit items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider shadow-[0_4px_16px_-6px_hsl(var(--bc-amber)/0.6)]"
                       style={{
-                        background:
-                          "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+                        background: "var(--bc-gradient-brand-v)",
+                        color: "hsl(28 45% 9%)",
                       }}
                     >
                       <span
-                        className="h-1.5 w-1.5 rounded-full bg-white/90"
+                        className="h-1.5 w-1.5 rounded-full"
+                        style={{ backgroundColor: "hsl(28 45% 9% / 0.85)" }}
                         aria-hidden
                       />
                       Most popular
@@ -365,8 +376,8 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
                     <span
                       className="relative mb-3 inline-flex w-fit items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider"
                       style={{
-                        color: "hsl(var(--buttercupp-accent-rose))",
-                        backgroundColor: "hsl(var(--buttercupp-accent-rose) / 0.15)",
+                        color: "hsl(var(--bc-amber))",
+                        backgroundColor: "hsl(var(--bc-amber) / 0.15)",
                       }}
                     >
                       Auto-renew
@@ -378,8 +389,8 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
                     {savings != null && savings > 0 ? (
                       <span
                         data-testid="yearly-savings-badge"
-                        className="shrink-0 rounded-lg px-2.5 py-1 text-xs font-extrabold text-black"
-                        style={{ background: "linear-gradient(180deg, hsl(48 96% 62%), hsl(40 92% 52%))" }}
+                        className="shrink-0 rounded-lg px-2.5 py-1 text-xs font-extrabold"
+                        style={{ background: "var(--bc-gradient-brand-v)", color: "hsl(28 45% 9%)" }}
                       >
                         Save {savings}%
                       </span>
@@ -389,12 +400,12 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
                   <div className="relative mt-2">
                     <div className="flex items-baseline gap-1">
                       <span className="font-display text-5xl font-extrabold tracking-tight">${p.priceUsd}</span>
-                      <span className="text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+                      <span className="text-sm" style={{ color: "hsl(var(--bc-muted))" }}>
                         /{intervalShort(p.billingInterval, p.durationDays)}
                       </span>
                     </div>
                     {p.billingInterval === "year" && p.priceUsd > 0 ? (
-                      <div className="mt-0.5 text-[11px]" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+                      <div className="mt-0.5 text-[11px]" style={{ color: "hsl(var(--bc-muted))" }}>
                         ≈ ${(p.priceUsd / 12).toFixed(2)} per month, billed yearly
                       </div>
                     ) : null}
@@ -416,19 +427,18 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
                       onClick={() => subscribe(p.plan)}
                       disabled={pending === p.plan || isCurrent}
                       data-testid={`buy-${p.plan}`}
-                      className="w-full rounded-2xl py-3.5 text-base font-bold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent disabled:cursor-not-allowed disabled:opacity-60"
+                      className="w-full rounded-2xl py-3.5 text-base font-bold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--bc-amber))] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent disabled:cursor-not-allowed disabled:opacity-60"
                       style={
                         promoted
                           ? {
-                              background:
-                                "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
-                              color: "white",
-                              boxShadow: "0 12px 30px -12px hsl(344 84% 60% / 0.6)",
+                              background: "var(--bc-gradient-brand-v)",
+                              color: "hsl(28 45% 9%)",
+                              boxShadow: "0 12px 30px -12px hsl(var(--bc-amber) / 0.6)",
                             }
                           : {
-                              backgroundColor: "hsl(var(--buttercupp-surface-2))",
-                              color: "hsl(var(--buttercupp-fg))",
-                              border: "1px solid hsl(var(--buttercupp-border))",
+                              backgroundColor: "hsl(var(--bc-surface-2))",
+                              color: "hsl(var(--bc-fg))",
+                              border: "1px solid hsl(var(--bc-border))",
                             }
                       }
                     >
@@ -466,12 +476,12 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
               className="group relative flex min-h-[380px] flex-col overflow-hidden rounded-3xl border p-6 transition-all duration-300 hover:-translate-y-1"
               style={{
                 borderColor: promoted
-                  ? "hsl(var(--buttercupp-accent-rose) / 0.7)"
-                  : "hsl(var(--buttercupp-border))",
-                backgroundColor: "hsl(var(--buttercupp-surface) / 0.85)",
+                  ? "hsl(var(--bc-amber) / 0.7)"
+                  : "hsl(var(--bc-border))",
+                backgroundColor: "hsl(var(--bc-surface) / 0.85)",
                 backdropFilter: "blur(12px)",
                 boxShadow: promoted
-                  ? "0 20px 60px -24px hsl(344 84% 60% / 0.5)"
+                  ? "0 20px 60px -24px hsl(var(--bc-amber) / 0.5)"
                   : "0 8px 32px rgba(0, 0, 0, 0.35)",
               }}
             >
@@ -482,7 +492,7 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
                     className="pointer-events-none absolute inset-0"
                     style={{
                       background:
-                        "radial-gradient(30rem 20rem at 50% 120%, hsl(var(--buttercupp-accent-rose) / 0.28), transparent 65%)",
+                        "radial-gradient(30rem 20rem at 50% 120%, hsl(var(--bc-amber) / 0.28), transparent 65%)",
                     }}
                   />
                   <div
@@ -490,7 +500,7 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
                     className="pointer-events-none absolute inset-x-8 -top-px h-px"
                     style={{
                       background:
-                        "linear-gradient(90deg, transparent, hsl(var(--buttercupp-accent-rose) / 0.8), transparent)",
+                        "linear-gradient(90deg, transparent, hsl(var(--bc-amber) / 0.8), transparent)",
                     }}
                   />
                 </>
@@ -498,14 +508,15 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
 
               {isBest ? (
                 <span
-                  className="relative mb-3 inline-flex w-fit items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white shadow-[0_4px_16px_-6px_hsl(344_84%_60%/0.6)]"
+                  className="relative mb-3 inline-flex w-fit items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider shadow-[0_4px_16px_-6px_hsl(var(--bc-amber)/0.6)]"
                   style={{
-                    background:
-                      "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+                    background: "var(--bc-gradient-brand-v)",
+                    color: "hsl(28 45% 9%)",
                   }}
                 >
                   <span
-                    className="h-1.5 w-1.5 rounded-full bg-white/90"
+                    className="h-1.5 w-1.5 rounded-full"
+                    style={{ backgroundColor: "hsl(28 45% 9% / 0.85)" }}
                     aria-hidden
                   />
                   Best value
@@ -516,8 +527,8 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
                 <span className="font-display text-2xl font-bold tracking-tight">{p.label}</span>
                 {discount > 0 ? (
                   <span
-                    className="shrink-0 rounded-lg px-2.5 py-1 text-xs font-extrabold text-black"
-                    style={{ background: "linear-gradient(180deg, hsl(48 96% 62%), hsl(40 92% 52%))" }}
+                    className="shrink-0 rounded-lg px-2.5 py-1 text-xs font-extrabold"
+                    style={{ background: "var(--bc-gradient-brand-v)", color: "hsl(28 45% 9%)" }}
                   >
                     {discount}% OFF
                   </span>
@@ -527,12 +538,12 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
               <div className="relative mt-2">
                 <div className="flex items-baseline gap-1">
                   <span className="font-display text-5xl font-extrabold tracking-tight">${p.priceUsd}</span>
-                  <span className="text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+                  <span className="text-sm" style={{ color: "hsl(var(--bc-muted))" }}>
                     / {planDurationLabel(p.durationDays)}
                   </span>
                 </div>
                 {p.durationDays > 1 ? (
-                  <div className="mt-0.5 text-[11px]" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+                  <div className="mt-0.5 text-[11px]" style={{ color: "hsl(var(--bc-muted))" }}>
                     ≈ ${perDay(p).toFixed(2)} per day
                   </div>
                 ) : null}
@@ -554,19 +565,18 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
                   onClick={() => subscribe(p.plan)}
                   disabled={pending === p.plan || isCurrent}
                   data-testid={`buy-${p.plan}`}
-                  className="w-full rounded-2xl py-3.5 text-base font-bold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent disabled:cursor-not-allowed disabled:opacity-60"
+                  className="w-full rounded-2xl py-3.5 text-base font-bold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--bc-amber))] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent disabled:cursor-not-allowed disabled:opacity-60"
                   style={
                     promoted
                       ? {
-                          background:
-                            "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
-                          color: "white",
-                          boxShadow: "0 12px 30px -12px hsl(344 84% 60% / 0.6)",
+                          background: "var(--bc-gradient-brand-v)",
+                          color: "hsl(28 45% 9%)",
+                          boxShadow: "0 12px 30px -12px hsl(var(--bc-amber) / 0.6)",
                         }
                       : {
-                          backgroundColor: "hsl(var(--buttercupp-surface-2))",
-                          color: "hsl(var(--buttercupp-fg))",
-                          border: "1px solid hsl(var(--buttercupp-border))",
+                          backgroundColor: "hsl(var(--bc-surface-2))",
+                          color: "hsl(var(--bc-fg))",
+                          border: "1px solid hsl(var(--bc-border))",
                         }
                   }
                 >
@@ -579,7 +589,7 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
         {!plans ? (
           <div
             className="col-span-full rounded-2xl border p-6 text-center text-sm"
-            style={{ borderColor: "hsl(var(--buttercupp-border))", color: "hsl(var(--buttercupp-muted))" }}
+            style={{ borderColor: "hsl(var(--bc-border))", color: "hsl(var(--bc-muted))" }}
           >
             Loading plans...
           </div>
@@ -596,7 +606,7 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
               title="Token"
               accent="packs"
               chipLabel="Tokens"
-              chipVariant="violet"
+              chipVariant="honey"
               subtitle={
                 HIDE_VIDEO_BENEFITS
                   ? "Pay-as-you-go credits for extra images on top of any plan."
@@ -615,7 +625,7 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
             Premium{" "}
             <span
               style={{
-                background: "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+                background: "var(--bc-gradient-brand-h)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -624,29 +634,36 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
               benefits
             </span>
           </h2>
-          <p className="mt-1 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+          <p className="mt-1 text-sm" style={{ color: "hsl(var(--bc-muted))" }}>
             Everything unlocked on a paid plan.
           </p>
         </div>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {VISIBLE_BENEFITS.map((b) => (
-            <div
-              key={b.label}
-              className="buttercupp-glass flex items-center gap-3 rounded-2xl px-4 py-3.5 transition duration-200 hover:-translate-y-0.5 hover:border-[hsl(var(--buttercupp-accent-rose)/0.35)]"
-            >
-              <span
-                className="flex h-9 w-9 items-center justify-center rounded-xl text-lg"
-                style={{
-                  background:
-                    "linear-gradient(135deg, hsl(344 84% 71% / 0.15), hsl(262 72% 68% / 0.15))",
-                }}
-                aria-hidden
+          {VISIBLE_BENEFITS.map((b) => {
+            const Icon = b.icon;
+            return (
+              <div
+                key={b.label}
+                className="buttercupp-glass flex items-center gap-3 rounded-2xl px-4 py-3.5 transition duration-200 hover:-translate-y-0.5 hover:border-[hsl(var(--bc-amber)/0.35)]"
               >
-                {b.emoji}
-              </span>
-              <span className="text-sm font-medium">{b.label}</span>
-            </div>
-          ))}
+                <span
+                  className="flex h-9 w-9 items-center justify-center rounded-xl text-lg"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, hsl(var(--bc-honey) / 0.15), hsl(var(--bc-amber) / 0.15))",
+                  }}
+                  aria-hidden
+                >
+                  <Icon
+                    className="h-5 w-5 shrink-0"
+                    aria-hidden
+                    style={{ color: "hsl(var(--bc-honey))" }}
+                  />
+                </span>
+                <span className="text-sm font-medium">{b.label}</span>
+              </div>
+            );
+          })}
         </div>
       </div>
 
@@ -657,7 +674,7 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
             What users are{" "}
             <span
               style={{
-                background: "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+                background: "var(--bc-gradient-brand-h)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -675,12 +692,12 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
             >
               <div className="flex items-center justify-between">
                 <span className="font-semibold">{r.title}</span>
-                <span className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+                <span className="text-xs" style={{ color: "hsl(var(--bc-muted))" }}>
                   {r.who}
                 </span>
               </div>
-              <Stars n={5} emerald />
-              <p className="text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+              <Stars n={5} />
+              <p className="text-sm" style={{ color: "hsl(var(--bc-muted))" }}>
                 {r.body}
               </p>
             </div>
@@ -691,26 +708,21 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
   );
 }
 
-type ChipVariant = "rose" | "amber" | "violet";
+type ChipVariant = "amber" | "honey";
 
-// Category chip colors are intentionally distinct per section so users can
-// tell at a glance whether they are looking at Subscriptions, Passes, or
-// Token packs; the background is a low-opacity tint of the same hue.
+// Category chip colors. All chrome now pulls from the amber/honey brand ramp so
+// Subscriptions, Passes, and Token packs stay within one warm family; the
+// background is a low-opacity tint of the same hue.
 const CHIP_STYLES: Record<ChipVariant, { color: string; background: string; border: string }> = {
-  rose: {
-    color: "hsl(var(--buttercupp-accent-rose))",
-    background: "hsl(var(--buttercupp-accent-rose) / 0.14)",
-    border: "hsl(var(--buttercupp-accent-rose) / 0.35)",
-  },
   amber: {
-    color: "hsl(40 92% 62%)",
-    background: "hsl(40 92% 52% / 0.14)",
-    border: "hsl(40 92% 52% / 0.35)",
+    color: "hsl(var(--bc-amber))",
+    background: "hsl(var(--bc-amber) / 0.14)",
+    border: "hsl(var(--bc-amber) / 0.35)",
   },
-  violet: {
-    color: "hsl(var(--buttercupp-accent-violet))",
-    background: "hsl(var(--buttercupp-accent-violet) / 0.14)",
-    border: "hsl(var(--buttercupp-accent-violet) / 0.35)",
+  honey: {
+    color: "hsl(var(--bc-honey))",
+    background: "hsl(var(--bc-honey) / 0.14)",
+    border: "hsl(var(--bc-honey) / 0.35)",
   },
 };
 
@@ -719,7 +731,7 @@ function SectionHeading({
   accent,
   subtitle,
   chipLabel,
-  chipVariant = "rose",
+  chipVariant = "amber",
 }: {
   title: string;
   accent: string;
@@ -751,7 +763,7 @@ function SectionHeading({
         {title}{" "}
         <span
           style={{
-            background: "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+            background: "var(--bc-gradient-brand-h)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
@@ -761,7 +773,7 @@ function SectionHeading({
         </span>
       </h2>
       {subtitle ? (
-        <p className="mt-1 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+        <p className="mt-1 text-sm" style={{ color: "hsl(var(--bc-muted))" }}>
           {subtitle}
         </p>
       ) : null}
@@ -776,7 +788,7 @@ function SectionDivider() {
       className="mx-auto h-px w-full max-w-4xl"
       style={{
         background:
-          "linear-gradient(90deg, transparent, hsl(var(--buttercupp-border)) 30%, hsl(var(--buttercupp-border)) 70%, transparent)",
+          "linear-gradient(90deg, transparent, hsl(var(--bc-border)) 30%, hsl(var(--bc-border)) 70%, transparent)",
       }}
     />
   );
@@ -787,9 +799,9 @@ function FeatureLine({ children }: { children: React.ReactNode }) {
     <li className="flex items-start gap-2">
       <Check
         className="mt-0.5 h-4 w-4 shrink-0"
-        style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
+        style={{ color: "hsl(var(--bc-amber))" }}
       />
-      <span style={{ color: "hsl(var(--buttercupp-fg))" }}>{children}</span>
+      <span style={{ color: "hsl(var(--bc-fg))" }}>{children}</span>
     </li>
   );
 }
@@ -819,14 +831,14 @@ function CurrentPlanPill({ ent, plans }: { ent: Entitlements | null; plans: Plan
       <span
         className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 rounded-full border px-3 py-1.5"
         style={{
-          borderColor: "hsl(var(--buttercupp-border))",
-          backgroundColor: "hsl(var(--buttercupp-surface) / 0.6)",
-          color: "hsl(var(--buttercupp-fg))",
+          borderColor: "hsl(var(--bc-border))",
+          backgroundColor: "hsl(var(--bc-surface) / 0.6)",
+          color: "hsl(var(--bc-fg))",
         }}
       >
         <span
           className="text-[10px] font-semibold uppercase tracking-[0.14em]"
-          style={{ color: "hsl(var(--buttercupp-muted))" }}
+          style={{ color: "hsl(var(--bc-muted))" }}
         >
           Current plan
         </span>
@@ -836,20 +848,20 @@ function CurrentPlanPill({ ent, plans }: { ent: Entitlements | null; plans: Plan
             <span
               className="inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[10px] font-semibold"
               style={{
-                backgroundColor: "hsl(var(--buttercupp-accent-rose) / 0.18)",
-                color: "hsl(var(--buttercupp-accent-rose))",
+                backgroundColor: "hsl(var(--bc-success) / 0.18)",
+                color: "hsl(var(--bc-success))",
               }}
             >
               <span
                 className="h-1.5 w-1.5 animate-pulse rounded-full"
-                style={{ backgroundColor: "hsl(var(--buttercupp-accent-rose))" }}
+                style={{ backgroundColor: "hsl(var(--bc-success))" }}
               />
               Active
             </span>
             <span
               aria-hidden
               className="hidden h-3 w-px sm:inline-block"
-              style={{ backgroundColor: "hsl(var(--buttercupp-border))" }}
+              style={{ backgroundColor: "hsl(var(--bc-border))" }}
             />
             <PlanStat label="chats" value={formatBucketRemaining(ent.chats)} />
             <PlanStat label="images" value={formatBucketRemaining(ent.images)} />
@@ -858,8 +870,8 @@ function CurrentPlanPill({ ent, plans }: { ent: Entitlements | null; plans: Plan
             )}
           </>
         ) : isFree ? (
-          <span style={{ color: "hsl(var(--buttercupp-muted))" }}>
-            <strong style={{ color: "hsl(var(--buttercupp-fg))" }}>{freeChatsLeft}</strong> of{" "}
+          <span style={{ color: "hsl(var(--bc-muted))" }}>
+            <strong style={{ color: "hsl(var(--bc-fg))" }}>{freeChatsLeft}</strong> of{" "}
             {ent.chats.limit} chats left
           </span>
         ) : null}
@@ -871,18 +883,20 @@ function CurrentPlanPill({ ent, plans }: { ent: Entitlements | null; plans: Plan
 function PlanStat({ label, value }: { label: string; value: string }) {
   return (
     <span className="inline-flex items-baseline gap-1 whitespace-nowrap">
-      <span className="font-semibold" style={{ color: "hsl(var(--buttercupp-fg))" }}>
+      <span className="font-semibold" style={{ color: "hsl(var(--bc-fg))" }}>
         {value}
       </span>
-      <span className="text-[10px]" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+      <span className="text-[10px]" style={{ color: "hsl(var(--bc-muted))" }}>
         {label}
       </span>
     </span>
   );
 }
 
-function Stars({ n, emerald }: { n: number; emerald?: boolean }) {
-  const color = emerald ? "hsl(160 60% 45%)" : "hsl(45 90% 55%)";
+function Stars({ n }: { n: number }) {
+  // Rating stars pull the brand amber so the trust bar and review cards stay
+  // inside the warm palette.
+  const color = "hsl(var(--bc-amber))";
   return (
     <div className="flex items-center gap-0.5" aria-label={`${n} out of 5 stars`}>
       {Array.from({ length: n }, (_, i) => (
@@ -899,7 +913,7 @@ function Laurel({ flip }: { flip?: boolean }) {
       height="24"
       viewBox="0 0 18 24"
       aria-hidden
-      style={{ transform: flip ? "scaleX(-1)" : undefined, color: "hsl(var(--buttercupp-muted))" }}
+      style={{ transform: flip ? "scaleX(-1)" : undefined, color: "hsl(var(--bc-muted))" }}
     >
       <path
         d="M14 2c-6 2-9 7-9 14 0 2 .3 4 1 6M11 6c-3 0-5 1-6 3M12 11c-3 0-5 1-6 3M13 16c-2 0-4 1-5 3"

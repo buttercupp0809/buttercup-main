@@ -93,19 +93,15 @@ const acceptedTrue = z.literal(true, {
   errorMap: () => ({ message: "must be accepted" }),
 });
 
-export const SignupDto = z
-  .object({
-    email: emailField,
-    password: passwordField,
-    dob: dobField,
-    jurisdiction: jurisdictionField,
-    tosAccepted: acceptedTrue,
-    privacyAccepted: acceptedTrue,
-  })
-  .refine((v) => computeAgeYears(v.dob) >= MIN_AGE_YEARS, {
-    path: ["dob"],
-    message: `must be at least ${MIN_AGE_YEARS}`,
-  });
+// dob removed from signup: age verification is collected at the age gate
+// (/age-gate) on first login, not at account creation.
+export const SignupDto = z.object({
+  email: emailField,
+  password: passwordField,
+  jurisdiction: jurisdictionField,
+  tosAccepted: acceptedTrue,
+  privacyAccepted: acceptedTrue,
+});
 export type SignupInput = z.infer<typeof SignupDto>;
 
 export const LoginDto = z.object({

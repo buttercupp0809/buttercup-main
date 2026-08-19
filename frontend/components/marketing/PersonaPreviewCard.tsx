@@ -22,7 +22,15 @@ export function PersonaPreviewCard({ character, viewerAllowsMature, priority }: 
     <Link
       href={`/characters/${character.id}`}
       data-testid="persona-preview"
-      className="group relative flex aspect-[3/4] w-full flex-col overflow-hidden rounded-2xl bg-slate-100 shadow-md ring-1 ring-slate-200 transition duration-300 hover:-translate-y-1 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:bg-slate-800 dark:ring-slate-700"
+      className={cn(
+        "group relative flex aspect-[3/4] w-full flex-col overflow-hidden",
+        "rounded-[var(--bc-radius-lg)] bg-[hsl(var(--bc-surface-2))]",
+        "shadow-[var(--bc-shadow-lg)] ring-1 ring-[hsl(var(--bc-cream)/0.08)]",
+        "transition-[transform,box-shadow,ring-color] duration-300 ease-[var(--ease-out)]",
+        "hover:ring-[hsl(var(--bc-amber)/0.35)]",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--bc-amber))]",
+        "motion-safe:hover:-translate-y-1",
+      )}
     >
       {character.avatarUrl ? (
         <img
@@ -35,26 +43,35 @@ export function PersonaPreviewCard({ character, viewerAllowsMature, priority }: 
           )}
         />
       ) : (
-        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-200 to-slate-300 text-4xl font-semibold text-slate-500 dark:from-slate-700 dark:to-slate-800 dark:text-slate-300">
+        <div className="absolute inset-0 flex items-center justify-center bg-[hsl(var(--bc-surface-3))] font-display text-4xl font-semibold text-[hsl(var(--bc-subtle))]">
           {character.name[0]?.toUpperCase() ?? "?"}
         </div>
       )}
-      <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+      {/* Warm scrim, not neutral black: keeps the amber brand temperature. */}
+      <div
+        className="absolute inset-x-0 bottom-0 h-2/3"
+        style={{
+          background:
+            "linear-gradient(to top, hsl(28 30% 4% / 0.92), hsl(28 24% 5% / 0.4) 45%, transparent)",
+        }}
+      />
       <span
         aria-hidden
-        className="absolute right-3 top-3 h-2.5 w-2.5 rounded-full bg-emerald-400 shadow ring-2 ring-black/30"
+        className="bc-pulse-ring absolute right-3 top-3 h-2 w-2 rounded-full bg-[hsl(var(--bc-success))]"
       />
       {gated ? (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-slate-900/60 text-center text-white">
-          <span className="rounded-full bg-black/60 px-3 py-1 text-xs font-medium">
-            18+ verify to view
-          </span>
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-[hsl(28_24%_4%/0.62)] text-center">
+          <span className="bc-pill text-[hsl(var(--bc-honey))]">18+ verify to view</span>
         </div>
       ) : null}
-      <div className="relative z-10 mt-auto flex flex-col gap-1 p-4 text-white">
-        <h3 className="text-lg font-semibold tracking-tight drop-shadow">{character.name}</h3>
+      <div className="relative z-10 mt-auto flex flex-col gap-1 p-4">
+        <h3 className="font-display text-xl font-semibold tracking-[-0.02em] text-[hsl(var(--bc-cream))]">
+          {character.name}
+        </h3>
         {tagline ? (
-          <p className="line-clamp-2 text-sm text-white/85 drop-shadow-sm">{tagline}</p>
+          <p className="line-clamp-2 text-pretty text-sm text-[hsl(var(--bc-cream)/0.78)]">
+            {tagline}
+          </p>
         ) : null}
       </div>
     </Link>

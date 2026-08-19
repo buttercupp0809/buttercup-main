@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { APP_NAV, type NavIcon, type NavItem } from "@/components/app-shell/nav-items";
+import { BrandMark, BrandRow } from "@/components/brand/Logo";
 import { ProfileMenu, type ProfileUser } from "@/components/app-shell/ProfileMenu";
 import { NavGradientDefs, NavItemLink } from "@/components/app-shell/NavItemLink";
 
@@ -74,26 +75,33 @@ export function SideNav({ user, recents }: SideNavProps) {
         "sticky top-0 h-screen",
         collapsed ? "w-16" : "w-48",
       )}
-      style={{ borderColor: "hsl(var(--buttercupp-border))" }}
+      style={{ borderColor: "hsl(var(--bc-border))" }}
     >
       <NavGradientDefs />
-      <div className={cn("flex items-center px-4 py-5", collapsed ? "justify-center" : "justify-between")}>
-        {!collapsed ? (
-          <Link
-            href="/dashboard"
-            className="font-display text-2xl font-semibold tracking-tight"
-            style={{ color: "hsl(var(--buttercupp-fg))" }}
-          >
-            ButterCupp
+      {/* Collapsed rail is 64px wide, so the mark and the toggle stack rather
+          than sitting side by side and overflowing. */}
+      <div
+        className={cn(
+          "flex px-4 py-5",
+          collapsed ? "flex-col items-center gap-3" : "items-center justify-between",
+        )}
+      >
+        {collapsed ? (
+          <Link href="/dashboard" className="bc-press" aria-label="ButterCupp home">
+            <BrandMark size={26} priority />
           </Link>
-        ) : null}
+        ) : (
+          <Link href="/dashboard" className="bc-press -m-1 rounded-lg p-1" aria-label="ButterCupp home">
+            <BrandRow markSize={24} className="[&>span:last-child]:text-[1.15rem]" />
+          </Link>
+        )}
         <button
           type="button"
           onClick={toggle}
           aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
           aria-pressed={collapsed}
-          className="tap-target flex items-center justify-center rounded-md text-slate-400 hover:text-white focus:outline-none focus-visible:ring-2"
-          style={{ outlineColor: "hsl(var(--buttercupp-accent-rose))" }}
+          className="tap-target flex items-center justify-center rounded-md text-[hsl(var(--bc-muted))] hover:text-[hsl(var(--bc-fg))] focus:outline-none focus-visible:ring-2"
+          style={{ outlineColor: "hsl(var(--bc-amber))" }}
         >
           {collapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
         </button>
@@ -123,27 +131,27 @@ export function SideNav({ user, recents }: SideNavProps) {
       {!collapsed ? (
         <div className="mt-6 flex-1 overflow-y-auto px-3">
           <div className="mb-2 flex items-center justify-between">
-            <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">
+            <span className="text-[10px] font-semibold uppercase tracking-wider text-[hsl(var(--bc-subtle))]">
               Recent
             </span>
             {recents.length > 0 ? (
               <Link
                 href="/chats"
-                className="text-[10px] uppercase tracking-wider text-slate-500 hover:text-white"
+                className="text-[10px] uppercase tracking-wider text-[hsl(var(--bc-subtle))] hover:text-[hsl(var(--bc-fg))]"
               >
                 See all
               </Link>
             ) : null}
           </div>
           {recents.length === 0 ? (
-            <p className="text-xs text-slate-500">No conversations yet.</p>
+            <p className="text-xs text-[hsl(var(--bc-subtle))]">No conversations yet.</p>
           ) : (
             <ul className="flex flex-col gap-1">
               {recents.slice(0, 6).map((r) => (
                 <li key={r.characterId}>
                   <Link
                     href={`/chat/${r.characterId}`}
-                    className="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-slate-300 hover:bg-white/5 hover:text-white"
+                    className="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-[hsl(var(--bc-muted))] hover:bg-[hsl(var(--bc-cream)/0.06)] hover:text-[hsl(var(--bc-fg))]"
                   >
                     <Avatar src={r.avatarUrl} name={r.characterName} />
                     <span className="truncate">{r.characterName}</span>
@@ -157,7 +165,7 @@ export function SideNav({ user, recents }: SideNavProps) {
         <div className="flex-1" />
       )}
 
-      <div className="border-t p-2.5" style={{ borderColor: "hsl(var(--buttercupp-border))" }}>
+      <div className="border-t p-2.5" style={{ borderColor: "hsl(var(--bc-border))" }}>
         <ProfileMenu user={user} collapsed={collapsed} placement="up" align="left" />
       </div>
     </aside>
@@ -168,7 +176,7 @@ function Avatar({ src, name }: { src: string | null; name: string }) {
   return (
     <div
       className="flex h-6 w-6 shrink-0 items-center justify-center overflow-hidden rounded-full text-[10px] font-semibold"
-      style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))" }}
+      style={{ backgroundColor: "hsl(var(--bc-surface-2))" }}
     >
       {src ? (
         <img src={src} alt={name} className="h-full w-full object-cover object-top" />

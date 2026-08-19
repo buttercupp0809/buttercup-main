@@ -84,116 +84,102 @@ export function GalleryToolbar({
     push({ tags: next.size > 0 ? Array.from(next).join(",") : null });
   }
 
-  const activeFilterCount = (style ? 1 : 0) + activeTags.size;
+  const controlBase =
+    "rounded-md px-3 py-2 text-sm border transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--bc-amber))]";
+  const controlStyle: React.CSSProperties = {
+    backgroundColor: "hsl(var(--buttercupp-surface-2, 210 40% 96%))",
+    borderColor: "hsl(var(--buttercupp-border, 214 32% 91%))",
+    color: "inherit",
+  };
 
   return (
-    <div className="buttercupp-glass flex flex-col gap-4 rounded-2xl p-3 sm:p-4">
-      <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-        {/* Segmented sort control */}
-        <div
-          role="tablist"
-          aria-label="Sort characters"
-          className="inline-flex items-center rounded-full border p-1"
-          style={{
-            borderColor: "hsl(var(--buttercupp-border))",
-            backgroundColor: "hsl(var(--buttercupp-surface-2) / 0.6)",
-          }}
+    <div
+      className="flex flex-wrap items-center gap-2 border-b pb-3 sm:gap-3 sm:pb-4"
+      style={{ borderColor: "hsl(var(--buttercupp-border, 214 32% 91%))" }}
+    >
+      {/* Segmented sort control: one tap per sort mode. */}
+      <div
+        role="tablist"
+        aria-label="Sort characters"
+        className="inline-flex overflow-hidden rounded-md border"
+        style={{ borderColor: "hsl(var(--buttercupp-border, 214 32% 91%))" }}
+      >
+        {SORTS.map((s) => {
+          const active = sort === s;
+          const Icon = SORT_ICON[s];
+          return (
+            <button
+              key={s}
+              type="button"
+              role="tab"
+              aria-selected={active}
+              data-testid={`sort-${s}`}
+              onClick={() => push({ sort: s })}
+              className={cn(
+                "inline-flex items-center gap-1.5 px-3.5 py-2 text-sm capitalize transition",
+                active ? "text-black" : "opacity-70 hover:opacity-100",
+              )}
+              style={{
+                backgroundColor: active
+                  ? "hsl(var(--bc-amber))"
+                  : "hsl(var(--buttercupp-surface-2, 210 40% 96%))",
+              }}
+            >
+              <Icon className="h-3.5 w-3.5" aria-hidden />
+              {s}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Style filter */}
+      <div className="relative">
+        <SlidersHorizontal
+          className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 opacity-60"
+          aria-hidden
+        />
+        <select
+          aria-label="Style"
+          data-testid="filter-style"
+          value={style}
+          onChange={(e) => push({ style: e.target.value || null })}
+          className={cn(controlBase, "appearance-none pl-8 pr-8 capitalize")}
+          style={controlStyle}
         >
-          {SORTS.map((s) => {
-            const active = sort === s;
-            const Icon = SORT_ICON[s];
-            return (
-              <button
-                key={s}
-                type="button"
-                role="tab"
-                aria-selected={active}
-                data-testid={`sort-${s}`}
-                onClick={() => push({ sort: s })}
-                className={cn(
-                  "inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold capitalize transition-all duration-200",
-                  active
-                    ? "text-white shadow-[0_6px_18px_-8px_hsl(344_84%_71%/0.55)]"
-                    : "text-[hsl(var(--buttercupp-muted))] hover:text-white",
-                )}
-                style={
-                  active
-                    ? {
-                        background:
-                          "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
-                      }
-                    : undefined
-                }
-              >
-                <Icon className="h-3.5 w-3.5" aria-hidden />
-                {s}
-              </button>
-            );
-          })}
-        </div>
+          <option value="">All styles</option>
+          {STYLES.map((s) => (
+            <option key={s} value={s}>
+              {s}
+            </option>
+          ))}
+        </select>
+      </div>
 
-        {/* Style filter */}
-        <div className="relative">
-          <SlidersHorizontal
-            className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2"
-            style={{ color: "hsl(var(--buttercupp-muted))" }}
-            aria-hidden
-          />
-          <select
-            aria-label="Style"
-            data-testid="filter-style"
-            value={style}
-            onChange={(e) => push({ style: e.target.value || null })}
-            className="appearance-none rounded-full border py-2 pl-8 pr-8 text-xs font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400/70"
-            style={{
-              borderColor: "hsl(var(--buttercupp-border))",
-              backgroundColor: "hsl(var(--buttercupp-surface-2) / 0.6)",
-              color: "hsl(var(--buttercupp-fg))",
-            }}
-          >
-            <option value="">All styles</option>
-            {STYLES.map((s) => (
-              <option key={s} value={s}>
-                {s}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {/* Search input */}
-        <div className="relative ml-auto min-w-0 flex-1">
-          <Search
-            className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2"
-            style={{ color: "hsl(var(--buttercupp-muted))" }}
-            aria-hidden
-          />
-          <input
-            aria-label="Search characters"
-            data-testid="search-input"
-            type="search"
-            placeholder="Search companions"
-            value={q}
-            onChange={(e) => setQ(e.target.value)}
-            className="w-full rounded-full border py-2 pl-9 pr-3 text-sm outline-none transition placeholder:text-[hsl(var(--buttercupp-muted))] focus-visible:ring-2 focus-visible:ring-rose-400/70"
-            style={{
-              borderColor: "hsl(var(--buttercupp-border))",
-              backgroundColor: "hsl(var(--buttercupp-surface-2) / 0.6)",
-              color: "hsl(var(--buttercupp-fg))",
-            }}
-          />
-        </div>
+      {/* Search input */}
+      <div className="relative ml-auto min-w-0 flex-1 sm:min-w-[12rem] sm:flex-none">
+        <Search
+          className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 opacity-60"
+          aria-hidden
+        />
+        <input
+          aria-label="Search characters"
+          data-testid="search-input"
+          type="search"
+          placeholder="Search companions"
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+          className={cn(controlBase, "w-full pl-9 pr-3")}
+          style={controlStyle}
+        />
       </div>
 
       {availableTags && availableTags.length > 0 ? (
-        <div className="flex flex-wrap items-center gap-2">
-          {activeFilterCount > 0 ? (
-            <span
-              className="text-[11px] font-semibold uppercase tracking-wider"
-              style={{ color: "hsl(var(--buttercupp-muted))" }}
-            >
-              {activeFilterCount} filter{activeFilterCount === 1 ? "" : "s"} ·
-            </span>
-          ) : null}
+        /*
+          One scrolling row, not a wrapping block. Wrapped, twelve tags stacked
+          into four rows on a phone and pushed every face below the fold; the
+          rail is also the pattern people already expect from this category.
+        */
+        <div className="flex w-full gap-2 overflow-x-auto pt-1 [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {availableTags.map((t) => {
             const on = activeTags.has(t);
             return (
@@ -204,24 +190,14 @@ export function GalleryToolbar({
                 aria-pressed={on}
                 onClick={() => toggleTag(t)}
                 className={cn(
-                  "rounded-full border px-3 py-1 text-xs font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400/70",
-                  on
-                    ? "text-white shadow-[0_4px_14px_-6px_hsl(344_84%_71%/0.5)]"
-                    : "hover:-translate-y-0.5 hover:border-[hsl(var(--buttercupp-accent-rose)/0.5)]",
+                  "shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 text-xs capitalize transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--bc-amber))]",
+                  on ? "text-black" : "opacity-80 hover:opacity-100",
                 )}
-                style={
-                  on
-                    ? {
-                        borderColor: "transparent",
-                        background:
-                          "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
-                      }
-                    : {
-                        borderColor: "hsl(var(--buttercupp-border))",
-                        backgroundColor: "hsl(var(--buttercupp-surface-2) / 0.6)",
-                        color: "hsl(var(--buttercupp-fg))",
-                      }
-                }
+                style={{
+                  backgroundColor: on
+                    ? "hsl(var(--bc-amber))"
+                    : "hsl(var(--buttercupp-surface-2, 210 40% 96%))",
+                }}
               >
                 {t}
               </button>

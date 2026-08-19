@@ -18,8 +18,12 @@ export async function POST(req: Request) {
   const user = await prisma.user.findUnique({ where: { email } });
   if (user && user.passwordHash) {
     const token = await signResetToken(user.id);
-    // Build the link from the request origin so it works on any port/host.
-    const origin = new URL(req.url).origin;
+    // NEXT_PUBLIC_APP_URL is the canonical public origin. req.url is the
+    // internal Lambda URL in Amplify (http://localhost:3000/...), so using
+    // it directly would embed localhost in the emailed reset link. Fall back
+    // to req.url origin only in local dev where the env var is unset.
+    const origin =
+      process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") ?? new URL(req.url).origin;
     const link = `${origin}/reset-password?token=${encodeURIComponent(token)}`;
     await sendEmail({
       to: email,

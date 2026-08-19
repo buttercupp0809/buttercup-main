@@ -74,12 +74,12 @@ export default function PrivacyPromisePage() {
           <LockGlyph className="h-3 w-3" />
           Privacy promise
         </span>
-        <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
+        <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl">
           {TRUST_HEADLINE}
         </h1>
         <p
           className="mx-auto mt-3 max-w-2xl text-pretty"
-          style={{ color: "hsl(240 6% 68%)" }}
+          style={{ color: "hsl(var(--bc-muted))" }}
         >
           This is the human version. If you want the lawyerly one, our{" "}
           <Link href="/legal/privacy" className="underline">
@@ -114,8 +114,8 @@ export default function PrivacyPromisePage() {
             >
               {p.emoji}
             </div>
-            <h2 className="text-lg font-semibold">{p.title}</h2>
-            <p className="text-sm leading-relaxed" style={{ color: "hsl(240 6% 68%)" }}>
+            <h2 className="font-display text-lg font-semibold">{p.title}</h2>
+            <p className="text-sm leading-relaxed" style={{ color: "hsl(var(--bc-muted))" }}>
               {p.body}
             </p>
           </div>
@@ -123,7 +123,7 @@ export default function PrivacyPromisePage() {
       </section>
 
       <section className="mt-14">
-        <h2 className="text-2xl font-semibold tracking-tight">Common questions</h2>
+        <h2 className="font-display text-2xl font-semibold tracking-tight">Common questions</h2>
         <div className="mt-6 divide-y" style={{ borderColor: "hsl(var(--buttercupp-border))" }}>
           {FAQ.map((f) => (
             <details
@@ -146,7 +146,7 @@ export default function PrivacyPromisePage() {
               </summary>
               <p
                 className="mt-3 text-sm leading-relaxed"
-                style={{ color: "hsl(240 6% 68%)" }}
+                style={{ color: "hsl(var(--bc-muted))" }}
               >
                 {f.a}
               </p>
@@ -160,7 +160,7 @@ export default function PrivacyPromisePage() {
         style={{
           borderColor: "hsl(var(--buttercupp-border))",
           background: "hsl(var(--buttercupp-surface) / 0.6)",
-          color: "hsl(240 6% 68%)",
+          color: "hsl(var(--bc-muted))",
         }}
       >
         <p>

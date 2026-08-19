@@ -1,5 +1,6 @@
 "use client";
 
+import { Check } from "lucide-react";
 import { useCharacterWizard } from "../context";
 import { Chip } from "../Chip";
 import {
@@ -44,8 +45,8 @@ function SectionHeader({ children }: { children: React.ReactNode }) {
     <span
       className="text-sm font-medium"
       style={{
-        color: "hsl(var(--buttercupp-fg))",
-        borderLeft: "3px solid hsl(var(--buttercupp-accent-rose))",
+        color: "hsl(var(--bc-fg))",
+        borderLeft: "3px solid hsl(var(--bc-amber))",
         paddingLeft: "10px",
       }}
     >
@@ -77,7 +78,7 @@ export default function AppearanceStep() {
     <div className="flex flex-col gap-8">
       <div>
         <h1 className="font-display text-2xl font-semibold">Appearance</h1>
-        <p className="mt-1 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+        <p className="mt-1 text-sm" style={{ color: "hsl(var(--bc-muted))" }}>
           Pick a look. These choices drive image generation later.
         </p>
       </div>
@@ -98,15 +99,16 @@ export default function AppearanceStep() {
                 key={v.value}
                 type="button"
                 onClick={() => updateDraft({ stylePrompt: v.value, traits })}
+                aria-pressed={selected}
                 className="group relative flex flex-col overflow-hidden rounded-2xl text-left transition-all duration-200"
                 style={{
-                  background: swatch.gradient,
+                  backgroundColor: selected
+                    ? "hsl(var(--bc-amber) / 0.12)"
+                    : "hsl(var(--bc-surface-2))",
                   border: selected
-                    ? `2px solid hsl(var(--buttercupp-accent-rose))`
-                    : "2px solid rgba(255,255,255,0.08)",
-                  boxShadow: selected
-                    ? `0 0 0 1px hsl(var(--buttercupp-accent-rose) / 0.3), 0 8px 32px rgba(0,0,0,0.4)`
-                    : "0 4px 16px rgba(0,0,0,0.3)",
+                    ? "2px solid hsl(var(--bc-amber))"
+                    : "2px solid hsl(var(--bc-border))",
+                  boxShadow: selected ? "var(--bc-shadow-glow)" : "var(--bc-shadow)",
                   transform: selected ? "translateY(-2px)" : undefined,
                 }}
               >
@@ -123,12 +125,11 @@ export default function AppearanceStep() {
                     <div
                       className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold"
                       style={{
-                        background:
-                          "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
-                        color: "#ffffff",
+                        background: "hsl(var(--bc-amber))",
+                        color: "hsl(28 45% 9%)",
                       }}
                     >
-                      ✓
+                      <Check className="h-4 w-4" strokeWidth={2.5} aria-hidden />
                     </div>
                   )}
                   {/* Ambient glow behind swatch */}
@@ -144,12 +145,12 @@ export default function AppearanceStep() {
                 <div className="flex flex-col gap-0.5 p-3 pt-0">
                   <p
                     className="font-display text-sm font-semibold"
-                    style={{ color: selected ? swatch.accentColor : "rgba(255,255,255,0.9)" }}
+                    style={{ color: selected ? "hsl(var(--bc-honey))" : "hsl(var(--bc-fg))" }}
                   >
                     {v.label}
                   </p>
                   {v.hint && (
-                    <p className="text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>
+                    <p className="text-xs" style={{ color: "hsl(var(--bc-muted))" }}>
                       {v.hint}
                     </p>
                   )}
@@ -158,10 +159,7 @@ export default function AppearanceStep() {
                 {selected && (
                   <div
                     className="absolute bottom-0 left-0 right-0 h-0.5"
-                    style={{
-                      background:
-                        "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
-                    }}
+                    style={{ background: "var(--bc-gradient-brand-h)" }}
                   />
                 )}
               </button>
@@ -230,18 +228,18 @@ export default function AppearanceStep() {
         </div>
       </div>
 
-      {/* Prompt preview - rose-bordered callout */}
+      {/* Prompt preview - amber-bordered callout */}
       <div
         className="rounded-xl px-4 py-3 text-sm"
         style={{
-          backgroundColor: "hsl(var(--buttercupp-surface-2))",
-          borderLeft: `3px solid hsl(var(--buttercupp-accent-rose))`,
-          color: "hsl(var(--buttercupp-muted))",
+          backgroundColor: "hsl(var(--bc-surface-2))",
+          borderLeft: `3px solid hsl(var(--bc-amber))`,
+          color: "hsl(var(--bc-muted))",
         }}
       >
         <span
           className="block text-xs font-medium uppercase tracking-wide"
-          style={{ color: "hsl(var(--buttercupp-accent-rose))", marginBottom: "4px" }}
+          style={{ color: "hsl(var(--bc-amber))", marginBottom: "4px" }}
         >
           Image prompt preview
         </span>

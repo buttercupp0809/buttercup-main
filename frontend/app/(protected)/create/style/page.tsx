@@ -1,5 +1,6 @@
 "use client";
 
+import { Check } from "lucide-react";
 import { useCharacterWizard } from "../context";
 
 const OPTIONS: {
@@ -151,7 +152,7 @@ export default function StyleStep() {
     <div className="flex flex-col gap-8">
       <div>
         <h1 className="font-display text-2xl font-semibold">Choose your style</h1>
-        <p className="mt-1 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+        <p className="mt-1 text-sm" style={{ color: "hsl(var(--bc-muted))" }}>
           This sets the visual language for every image your companion generates.
         </p>
       </div>
@@ -164,14 +165,15 @@ export default function StyleStep() {
               key={o.key}
               type="button"
               onClick={() => updateDraft({ style: o.key })}
+              aria-pressed={selected}
               className="group relative flex flex-col overflow-hidden rounded-2xl text-left transition-all duration-200"
               style={{
                 background: o.gradient,
                 border: selected
-                  ? `2px solid hsl(var(--buttercupp-accent-rose))`
+                  ? `2px solid hsl(var(--bc-amber))`
                   : "2px solid rgba(255,255,255,0.08)",
                 boxShadow: selected
-                  ? `0 0 0 1px hsl(var(--buttercupp-accent-rose) / 0.3), 0 8px 32px rgba(0,0,0,0.4)`
+                  ? `0 0 0 1px hsl(var(--bc-amber) / 0.3), 0 8px 32px rgba(0,0,0,0.4)`
                   : "0 4px 16px rgba(0,0,0,0.3)",
                 transform: selected ? "translateY(-2px)" : undefined,
               }}
@@ -185,11 +187,11 @@ export default function StyleStep() {
                   <div
                     className="absolute right-3 top-3 flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold"
                     style={{
-                      background: "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
-                      color: "#ffffff",
+                      background: "hsl(var(--bc-amber))",
+                      color: "hsl(28 45% 9%)",
                     }}
                   >
-                    ✓
+                    <Check className="h-4 w-4" strokeWidth={2.5} aria-hidden />
                   </div>
                 )}
               </div>
@@ -229,10 +231,7 @@ export default function StyleStep() {
               {selected && (
                 <div
                   className="absolute bottom-0 left-0 right-0 h-0.5"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
-                  }}
+                  style={{ background: "var(--bc-gradient-brand-h)" }}
                 />
               )}
             </button>
@@ -244,12 +243,12 @@ export default function StyleStep() {
         <div
           className="rounded-xl px-4 py-3 text-sm"
           style={{
-            backgroundColor: "hsl(var(--buttercupp-surface-2))",
-            borderLeft: `3px solid hsl(var(--buttercupp-accent-rose))`,
-            color: "hsl(var(--buttercupp-muted))",
+            backgroundColor: "hsl(var(--bc-surface-2))",
+            borderLeft: `3px solid hsl(var(--bc-amber))`,
+            color: "hsl(var(--bc-muted))",
           }}
         >
-          <span style={{ color: "hsl(var(--buttercupp-fg))", fontWeight: 500 }}>
+          <span style={{ color: "hsl(var(--bc-fg))", fontWeight: 500 }}>
             {OPTIONS.find((o) => o.key === current)?.label}
           </span>{" "}
           selected. Your companion's images will use this visual style.

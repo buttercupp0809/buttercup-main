@@ -37,14 +37,19 @@ export default async function GalleryPage({
   const mature = viewerAllowsMature(viewer);
 
   return (
-    <section className="mx-auto max-w-6xl px-6 py-8">
-      <div className="mb-6 flex flex-col gap-2">
-        <h1 className="font-display text-4xl font-semibold tracking-tight">Discover</h1>
-        <p
-          className="text-sm"
-          style={{ color: "hsl(var(--buttercupp-muted, 215 16% 47%))" }}
-        >
-          Real personas, live characters. Sort, search, and pick your companion.
+    <section className="mx-auto max-w-6xl px-6 px-safe py-10">
+      <div className="mb-8 flex flex-col items-start gap-4 md:flex-row md:items-end md:justify-between">
+        <div className="flex flex-col items-start gap-3">
+          <span className="bc-pill text-[hsl(var(--bc-honey))]">
+            <span className="bc-pulse-ring h-1.5 w-1.5 rounded-full bg-[hsl(var(--bc-success))]" />
+            {items.length > 0 ? `${items.length} awake on this page` : "Roster"}
+          </span>
+          <h1 className="font-display text-4xl font-semibold tracking-[-0.03em] text-[hsl(var(--bc-cream))] sm:text-5xl">
+            Find the one who fits.
+          </h1>
+        </div>
+        <p className="max-w-[38ch] text-pretty text-sm text-[hsl(var(--bc-muted))]">
+          Every persona here holds her own memory. Pick one, say hi, and the bond starts at Spark.
         </p>
       </div>
       <div className="mb-6">

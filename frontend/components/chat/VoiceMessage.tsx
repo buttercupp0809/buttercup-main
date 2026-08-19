@@ -54,16 +54,16 @@ export function VoiceMessage({ mediaAssetId, url, error }: Props) {
 
   if (error) {
     return (
-      <div className="rounded-md border border-red-300 bg-red-50 p-2 text-xs text-red-700">
-        Voice failed ({error}) - the text reply is still above.
+      <div className="rounded-[var(--bc-radius-sm)] border border-[hsl(var(--bc-danger)/0.35)] bg-[hsl(var(--bc-danger)/0.1)] p-2 text-xs text-[hsl(2_84%_78%)]">
+        Voice failed ({error}). The text reply is still above.
       </div>
     );
   }
 
   if (!url) {
     return (
-      <div className="flex items-center gap-2 rounded-md border border-slate-200 bg-slate-50 p-2 text-xs text-slate-600">
-        <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-blue-500" />
+      <div className="flex items-center gap-2 rounded-[var(--bc-radius-sm)] border border-[hsl(var(--bc-border))] bg-[hsl(var(--bc-surface-2))] p-2 text-xs text-[hsl(var(--bc-muted))]">
+        <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-[hsl(var(--bc-amber))]" />
         Generating voice note...
       </div>
     );
@@ -73,26 +73,26 @@ export function VoiceMessage({ mediaAssetId, url, error }: Props) {
   return (
     <div
       data-media-id={mediaAssetId}
-      className="flex items-center gap-3 rounded-md border border-slate-200 bg-white p-2 dark:border-slate-800 dark:bg-slate-900"
+      className="flex items-center gap-3 rounded-[var(--bc-radius-sm)] border border-[hsl(var(--bc-border))] bg-[hsl(var(--bc-surface-2))] p-2"
     >
       <button
         type="button"
         onClick={toggle}
-        className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-white"
+        className="flex h-8 w-8 items-center justify-center rounded-full bg-[hsl(var(--bc-amber))] text-[hsl(28_45%_9%)]"
         aria-label={playing ? "Pause" : "Play"}
       >
         {playing ? "||" : ">"}
       </button>
       <div className="flex flex-1 flex-col gap-1">
-        <div className="h-1 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
+        <div className="h-1 w-full overflow-hidden rounded-full bg-[hsl(var(--bc-surface-3))]">
           <div
-            className="h-full bg-blue-500"
+            className="h-full bg-[hsl(var(--bc-amber))]"
             style={{ width: `${pct}%` }}
             role="progressbar"
             aria-valuenow={Math.round(pct)}
           />
         </div>
-        <span className="text-[11px] text-slate-500">
+        <span className="text-[11px] text-[hsl(var(--bc-subtle))]">
           {Math.floor(progress)}s / {Math.max(1, Math.floor(duration))}s
         </span>
       </div>

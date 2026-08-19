@@ -39,7 +39,9 @@ const STATIC_PERSONAS: CharacterCardDTO[] = [
 export async function getLandingCharacters(): Promise<LandingCharactersResult> {
   try {
     const viewer = await getViewer();
-    const query = characterListQuerySchema.parse({ sort: "popular", limit: 12 });
+    // The landing page leads with the roster itself, so it needs a full grid
+    // worth of personas, not a three-card teaser.
+    const query = characterListQuerySchema.parse({ sort: "popular", limit: 24 });
     const { items } = await listCharacters(query, viewer);
     if (items.length > 0) return { items, viewerAllowsMature: viewerAllowsMature(viewer) };
     return { items: STATIC_PERSONAS, viewerAllowsMature: false };

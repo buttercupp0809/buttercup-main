@@ -33,7 +33,7 @@ export function ReelScroller({ items }: { items: ReelItem[] }) {
             className="pointer-events-none absolute inset-0"
             style={{
               background:
-                "radial-gradient(24rem 16rem at 50% -10%, hsl(var(--buttercupp-accent-rose) / 0.2), transparent 60%)",
+                "radial-gradient(24rem 16rem at 50% -10%, hsl(var(--bc-amber) / 0.2), transparent 60%)",
             }}
           />
           <div className="relative flex flex-col items-center gap-3">
@@ -41,8 +41,8 @@ export function ReelScroller({ items }: { items: ReelItem[] }) {
               className="flex h-12 w-12 items-center justify-center rounded-2xl"
               style={{
                 background:
-                  "linear-gradient(135deg, hsl(344 84% 71% / 0.2), hsl(262 72% 68% / 0.2))",
-                color: "hsl(var(--buttercupp-accent-rose))",
+                  "linear-gradient(135deg, hsl(var(--bc-honey) / 0.2), hsl(var(--bc-amber) / 0.2))",
+                color: "hsl(var(--bc-amber))",
               }}
             >
               <Play className="h-5 w-5" fill="currentColor" />
@@ -50,15 +50,14 @@ export function ReelScroller({ items }: { items: ReelItem[] }) {
             <h2 className="font-display text-xl font-semibold tracking-tight">
               No reels yet
             </h2>
-            <p className="text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+            <p className="text-sm" style={{ color: "hsl(var(--bc-muted))" }}>
               New reels drop as companions come online. Check back in a bit.
             </p>
             <Link
               href="/discover"
-              className="mt-2 inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-semibold text-white shadow-[0_8px_24px_-12px_hsl(344_84%_71%/0.55)] transition hover:brightness-110"
+              className="mt-2 inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-semibold text-[hsl(28_45%_9%)] shadow-[0_8px_24px_-12px_hsl(var(--bc-amber)/0.55)] transition hover:brightness-110"
               style={{
-                background:
-                  "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+                background: "var(--bc-gradient-brand-h)",
               }}
             >
               Browse companions
@@ -208,12 +207,12 @@ function Reel({
         <div className="pointer-events-none absolute inset-x-4 bottom-5 flex items-center gap-3 pb-safe text-white">
           <div
             className="h-11 w-11 shrink-0 overflow-hidden rounded-full bg-black/50 ring-2"
-            style={{ boxShadow: "0 4px 16px -6px hsl(344 84% 60% / 0.55)", borderColor: "transparent", outline: "none" }}
+            style={{ boxShadow: "0 4px 16px -6px hsl(var(--bc-amber) / 0.55)", borderColor: "transparent", outline: "none" }}
           >
             <div
               className="h-full w-full rounded-full p-[2px]"
               style={{
-                background: "linear-gradient(135deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+                background: "var(--bc-gradient-brand)",
               }}
             >
               <div className="h-full w-full overflow-hidden rounded-full bg-black">
@@ -240,9 +239,9 @@ function Reel({
           </div>
           <Link
             href={item.chatHref}
-            className="tap-target pointer-events-auto ml-1 inline-flex shrink-0 items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-white shadow-[0_8px_24px_-12px_hsl(344_84%_60%/0.7)] ring-1 ring-white/20 transition-all duration-200 hover:scale-105 hover:brightness-110"
+            className="tap-target pointer-events-auto ml-1 inline-flex shrink-0 items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-[hsl(28_45%_9%)] shadow-[0_8px_24px_-12px_hsl(var(--bc-amber)/0.7)] ring-1 ring-[hsl(var(--bc-honey)/0.4)] transition-all duration-200 hover:scale-105 hover:brightness-110"
             style={{
-              background: "linear-gradient(90deg, hsl(344 84% 71%), hsl(262 72% 68%))",
+              background: "var(--bc-gradient-brand-h)",
             }}
           >
             Chat Now
@@ -259,7 +258,7 @@ function Reel({
             className="tap-target flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-black/40 backdrop-blur-md transition duration-200 hover:scale-110 hover:bg-black/60 active:scale-90"
             style={
               liked
-                ? { boxShadow: "0 6px 22px -8px hsl(var(--buttercupp-accent-rose) / 0.7)" }
+                ? { boxShadow: "0 6px 22px -8px hsl(var(--bc-ember) / 0.7)" }
                 : undefined
             }
           >
@@ -268,8 +267,8 @@ function Reel({
               style={
                 liked
                   ? {
-                      color: "hsl(var(--buttercupp-accent-rose))",
-                      fill: "hsl(var(--buttercupp-accent-rose))",
+                      color: "hsl(var(--bc-ember))",
+                      fill: "hsl(var(--bc-ember))",
                     }
                   : { color: "white" }
               }

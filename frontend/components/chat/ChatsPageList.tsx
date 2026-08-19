@@ -1,16 +1,18 @@
 "use client";
 
 // Full-page chat list for /chats. Mirrors the logic in ChatList (sidebar) but
-// renders the wider, glassy card layout used on the standalone Chats page.
+// renders the wider card layout used on the standalone Chats page.
 // Remove = hide in UI + persist to localStorage.
 // Delete chat = DELETE /api/conversations/:id + hide in UI.
 
 import * as React from "react";
 import Link from "next/link";
-import { MoreVertical, EyeOff, Trash2, MessageCircle, Search, Sparkles } from "lucide-react";
-import { AffectionMeter } from "@/components/relationship/AffectionMeter";
+import { MoreVertical, EyeOff, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { BondPill } from "@/components/progress/BondMeter";
+import type { BondProgress } from "@/lib/bond";
 import type { ConversationRow } from "@/lib/chats";
+import { relativeTime } from "@/lib/text";
 
 const DISMISSED_KEY = "buttercupp:dismissed_conversations";
 
@@ -31,20 +33,21 @@ function saveDismissed(ids: Set<string>) {
   }
 }
 
-export function ChatsPageList({ rows }: { rows: ConversationRow[] }) {
+export function ChatsPageList({
+  rows,
+  bonds = {},
+}: {
+  rows: ConversationRow[];
+  /** Derived bond per characterId. Absent entries simply render no pill. */
+  bonds?: Record<string, BondProgress>;
+}) {
   const [hidden, setHidden] = React.useState<Set<string>>(() => new Set());
-  const [query, setQuery] = React.useState("");
 
   React.useEffect(() => {
     setHidden(loadDismissed());
   }, []);
 
-  const visible = React.useMemo(() => {
-    const q = query.trim().toLowerCase();
-    return rows
-      .filter((r) => !hidden.has(r.conversationId))
-      .filter((r) => (q ? r.characterName.toLowerCase().includes(q) : true));
-  }, [rows, hidden, query]);
+  const visible = rows.filter((r) => !hidden.has(r.conversationId));
 
   function handleRemove(conversationId: string) {
     setHidden((prev) => {
@@ -67,103 +70,48 @@ export function ChatsPageList({ rows }: { rows: ConversationRow[] }) {
     });
   }
 
-  const hasAnyRows = rows.length > 0;
-
-  if (!hasAnyRows) {
-    return <EmptyState />;
+  if (visible.length === 0) {
+    return (
+      <div className="flex flex-col items-center gap-3 rounded-[var(--bc-radius-lg)] border border-dashed border-[hsl(var(--bc-border-strong))] px-6 py-16 text-center">
+        <h2 className="font-display text-xl font-semibold text-[hsl(var(--bc-fg))]">
+          Nobody is waiting on you yet.
+        </h2>
+        <p className="max-w-[42ch] text-sm text-[hsl(var(--bc-muted))]">
+          Pick anyone from the roster. She opens the conversation, so there is no blank page to
+          stare at.
+        </p>
+        <Link href="/gallery" className="mt-1">
+          <Button variant="brand" size="sm">
+            Browse companions
+          </Button>
+        </Link>
+      </div>
+    );
   }
 
   return (
-    <div className="flex flex-col gap-5">
-      <div className="relative">
-        <Search
-          className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2"
-          style={{ color: "hsl(var(--buttercupp-muted))" }}
-          aria-hidden
+    <ul className="flex flex-col gap-2">
+      {visible.map((r) => (
+        <ChatsPageRow
+          key={r.conversationId}
+          row={r}
+          bond={bonds[r.characterId]}
+          onRemove={() => handleRemove(r.conversationId)}
+          onDelete={() => handleDelete(r.conversationId)}
         />
-        <input
-          type="search"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search your chats"
-          aria-label="Search your chats"
-          className="buttercupp-glass w-full rounded-xl py-2.5 pl-10 pr-3 text-sm outline-none transition placeholder:text-[hsl(var(--buttercupp-muted))] focus-visible:ring-2 focus-visible:ring-rose-400/70"
-        />
-      </div>
-
-      {visible.length === 0 ? (
-        <div
-          className="buttercupp-glass rounded-2xl p-6 text-center text-sm"
-          style={{ color: "hsl(var(--buttercupp-muted))" }}
-        >
-          No chats match “{query}”.
-        </div>
-      ) : (
-        <ul className="flex flex-col gap-2.5">
-          {visible.map((r) => (
-            <ChatsPageRow
-              key={r.conversationId}
-              row={r}
-              onRemove={() => handleRemove(r.conversationId)}
-              onDelete={() => handleDelete(r.conversationId)}
-            />
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-}
-
-function EmptyState() {
-  return (
-    <div className="buttercupp-glass relative overflow-hidden rounded-3xl px-8 py-14 text-center">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(30rem 20rem at 50% -10%, hsl(var(--buttercupp-accent-rose) / 0.18), transparent 60%), radial-gradient(30rem 20rem at 50% 110%, hsl(var(--buttercupp-accent-violet) / 0.14), transparent 60%)",
-        }}
-      />
-      <div className="relative mx-auto flex max-w-md flex-col items-center gap-4">
-        <div
-          className="flex h-14 w-14 items-center justify-center rounded-2xl"
-          style={{
-            background:
-              "linear-gradient(135deg, hsl(344 84% 71% / 0.18), hsl(262 72% 68% / 0.18))",
-            color: "hsl(var(--buttercupp-accent-rose))",
-          }}
-        >
-          <MessageCircle className="h-6 w-6" />
-        </div>
-        <h2 className="font-display text-2xl font-semibold tracking-tight">
-          No conversations yet
-        </h2>
-        <p className="text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
-          Pick a companion in Discover and say hi, or design one that is uniquely yours.
-        </p>
-        <div className="mt-2 flex flex-wrap items-center justify-center gap-2">
-          <Link href="/discover">
-            <Button>
-              <Sparkles className="h-4 w-4" aria-hidden />
-              Browse companions
-            </Button>
-          </Link>
-          <Link href="/create">
-            <Button variant="outline">Create your own</Button>
-          </Link>
-        </div>
-      </div>
-    </div>
+      ))}
+    </ul>
   );
 }
 
 function ChatsPageRow({
   row,
+  bond,
   onRemove,
   onDelete,
 }: {
   row: ConversationRow;
+  bond?: BondProgress;
   onRemove: () => void;
   onDelete: () => void;
 }) {
@@ -184,107 +132,90 @@ function ChatsPageRow({
   return (
     <li>
       <div
-        className="buttercupp-glass group relative flex items-center gap-4 rounded-2xl p-3.5 transition duration-200 ease-out hover:-translate-y-0.5 hover:border-[hsl(var(--buttercupp-accent-rose)/0.45)] hover:shadow-[0_12px_40px_-16px_hsl(344_84%_71%/0.35)]"
+        className="group relative flex items-center gap-3 rounded-[var(--bc-radius)] border border-[hsl(var(--bc-border))] bg-[hsl(var(--bc-surface))] p-3 transition-[transform,border-color,background-color] duration-200 ease-[var(--ease-out)] hover:border-[hsl(var(--bc-amber)/0.32)] hover:bg-[hsl(var(--bc-surface-2)/0.7)] motion-safe:hover:-translate-y-0.5"
         style={{ zIndex: menuOpen ? 10 : "auto" }}
       >
         {/* Avatar + name + metadata - clickable area */}
         <Link
           href={`/chat/${row.characterId}`}
-          className="flex min-w-0 flex-1 items-center gap-4"
+          className="flex min-w-0 flex-1 items-center gap-3"
           onClick={() => setMenuOpen(false)}
         >
           <div
-            className="relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl ring-1 ring-white/10"
+            className="h-12 w-12 shrink-0 overflow-hidden rounded-full"
             style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))" }}
           >
             {row.avatarUrl ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={row.avatarUrl}
-                alt={row.characterName}
-                className="h-full w-full object-cover object-top transition duration-500 ease-out group-hover:scale-105"
-              />
+              <img src={row.avatarUrl} alt={row.characterName} className="h-full w-full object-cover object-top" />
             ) : (
-              <div
-                className="flex h-full w-full items-center justify-center text-base font-semibold"
-                style={{
-                  background:
-                    "linear-gradient(135deg, hsl(344 84% 71% / 0.25), hsl(262 72% 68% / 0.25))",
-                }}
-              >
+              <div className="flex h-full w-full items-center justify-center text-sm font-semibold">
                 {row.characterName[0]?.toUpperCase()}
               </div>
             )}
           </div>
           <div className="min-w-0 flex-1">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="truncate font-semibold tracking-tight">{row.characterName}</span>
-              {row.relationship ? (
-                <AffectionMeter
-                  affectionLevel={row.relationship.affectionLevel}
-                  mood={row.relationship.mood}
-                  size="sm"
-                />
-              ) : null}
-            </div>
-            <div
-              className="mt-0.5 flex items-center gap-2 text-xs"
-              style={{ color: "hsl(var(--buttercupp-muted))" }}
-            >
-              <span className="inline-flex items-center gap-1">
-                <MessageCircle className="h-3 w-3" aria-hidden />
-                {row.messageCount} messages
+            <div className="flex items-baseline gap-2">
+              <span className="truncate font-medium text-[hsl(var(--bc-fg))]">
+                {row.characterName}
               </span>
-              {row.lastMessageAt ? (
-                <>
-                  <span aria-hidden>·</span>
-                  <span>{formatRelative(row.lastMessageAt)}</span>
-                </>
-              ) : null}
+              <span className="tabular ml-auto shrink-0 text-xs text-[hsl(var(--bc-subtle))]">
+                {relativeTime(row.lastMessageAt)}
+              </span>
+            </div>
+            {/*
+              The last line she said is the reason to tap this row. The wide
+              layout had room for it and was spending that room on a full
+              locale timestamp instead.
+            */}
+            <p className="mt-0.5 truncate text-sm text-[hsl(var(--bc-muted))]">
+              {row.lastMessage
+                ? row.lastMessage.replace(/\*/g, "").trim()
+                : "Say hello and she takes it from there."}
+            </p>
+            <div className="mt-1.5 flex flex-wrap items-center gap-2">
+              {bond ? <BondPill bond={bond} /> : null}
+              <span className="tabular text-xs text-[hsl(var(--bc-subtle))]">
+                {row.messageCount} {row.messageCount === 1 ? "message" : "messages"}
+              </span>
             </div>
           </div>
         </Link>
 
-        {/* Three-dot menu */}
+        {/* Three-dot menu button */}
         <div className="relative shrink-0" ref={menuRef}>
           <button
             type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              setMenuOpen((o) => !o);
-            }}
+            onClick={(e) => { e.preventDefault(); setMenuOpen((o) => !o); }}
             aria-label="Conversation actions"
-            className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full transition hover:bg-white/10"
-            style={{ color: "hsl(var(--buttercupp-muted))" }}
+            aria-expanded={menuOpen}
+            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-[hsl(var(--bc-muted))] transition-colors duration-200 hover:bg-[hsl(var(--bc-cream)/0.07)] hover:text-[hsl(var(--bc-fg))]"
           >
             <MoreVertical className="h-4 w-4" />
           </button>
 
           {menuOpen && (
             <div
-              className="buttercupp-glass absolute right-0 top-11 z-50 w-44 overflow-hidden rounded-xl"
+              // Scales from the trigger in the top-right, not from its own centre.
+              className="absolute right-0 top-11 z-50 w-44 origin-top-right overflow-hidden rounded-[var(--bc-radius-sm)] border border-[hsl(var(--bc-border-strong))] bg-[hsl(var(--bc-surface-2))] shadow-[var(--bc-shadow-lg)] motion-safe:animate-[buttercupp-card-in_160ms_var(--ease-out)_both]"
             >
               <button
                 type="button"
-                onClick={() => {
-                  setMenuOpen(false);
-                  onRemove();
-                }}
-                className="flex w-full cursor-pointer items-center gap-2.5 px-4 py-2.5 text-left text-sm transition hover:bg-white/5"
-                style={{ color: "hsl(var(--buttercupp-fg))" }}
+                onClick={() => { setMenuOpen(false); onRemove(); }}
+                className="flex w-full cursor-pointer items-center gap-2.5 px-4 py-2.5 text-left text-sm text-[hsl(var(--bc-fg))] transition-colors duration-150 hover:bg-[hsl(var(--bc-cream)/0.06)]"
               >
-                <EyeOff className="h-4 w-4 shrink-0" style={{ color: "hsl(var(--buttercupp-muted))" }} />
-                Hide
+                <EyeOff className="h-4 w-4 shrink-0 text-[hsl(var(--bc-muted))]" />
+                Hide from list
               </button>
-              <div className="mx-3 h-px" style={{ backgroundColor: "hsl(var(--buttercupp-border))" }} />
+              <div className="mx-3 h-px bg-[hsl(var(--bc-border))]" />
+              {/*
+                Destructive, so it reads as danger rather than brand amber. The
+                previous styling used the brand accent, which made deleting a
+                conversation look like the recommended action.
+              */}
               <button
                 type="button"
-                onClick={() => {
-                  setMenuOpen(false);
-                  onDelete();
-                }}
-                className="flex w-full cursor-pointer items-center gap-2.5 px-4 py-2.5 text-left text-sm transition hover:bg-rose-500/10"
-                style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
+                onClick={() => { setMenuOpen(false); onDelete(); }}
+                className="flex w-full cursor-pointer items-center gap-2.5 px-4 py-2.5 text-left text-sm text-[hsl(2_84%_74%)] transition-colors duration-150 hover:bg-[hsl(var(--bc-danger)/0.14)]"
               >
                 <Trash2 className="h-4 w-4 shrink-0" />
                 Delete chat
@@ -295,19 +226,4 @@ function ChatsPageRow({
       </div>
     </li>
   );
-}
-
-function formatRelative(iso: string): string {
-  const then = new Date(iso).getTime();
-  if (Number.isNaN(then)) return "";
-  const diff = Date.now() - then;
-  const s = Math.floor(diff / 1000);
-  if (s < 60) return "just now";
-  const m = Math.floor(s / 60);
-  if (m < 60) return `${m}m ago`;
-  const h = Math.floor(m / 60);
-  if (h < 24) return `${h}h ago`;
-  const d = Math.floor(h / 24);
-  if (d < 7) return `${d}d ago`;
-  return new Date(iso).toLocaleDateString(undefined, { month: "short", day: "numeric" });
 }

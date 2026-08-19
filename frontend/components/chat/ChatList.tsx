@@ -111,7 +111,7 @@ function ChatListContent({ conversations, activeCharacterId, onNavigate }: ChatL
           href="/discover"
           onClick={onNavigate}
           className="flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm font-medium"
-          style={{ borderColor: "hsl(var(--buttercupp-border))", color: "hsl(var(--buttercupp-accent-rose))" }}
+          style={{ borderColor: "hsl(var(--bc-border))", color: "hsl(var(--bc-amber))" }}
         >
           <Users className="h-4 w-4" />
           New Group
@@ -128,7 +128,7 @@ function ChatListContent({ conversations, activeCharacterId, onNavigate }: ChatL
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search for a profile..."
-            className="w-full rounded-lg border py-2 pl-9 pr-3 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
+            className="w-full rounded-lg border py-2 pl-9 pr-3 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--bc-amber))]"
             style={{
               backgroundColor: "hsl(var(--buttercupp-surface))",
               borderColor: "hsl(var(--buttercupp-border))",
@@ -140,8 +140,12 @@ function ChatListContent({ conversations, activeCharacterId, onNavigate }: ChatL
 
       <div className="flex-1 overflow-y-auto px-2 pb-3">
         {filtered.length === 0 ? (
-          <p className="px-3 py-6 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
-            No conversations yet.
+          // Two different situations were sharing one message: an empty list and
+          // a search that matched nothing need different next steps.
+          <p className="px-3 py-6 text-sm text-[hsl(var(--bc-muted))]">
+            {q.trim()
+              ? `Nobody here matches "${q.trim()}".`
+              : "No conversations yet. Pick someone in Discover."}
           </p>
         ) : (
           filtered.map((c) => (
@@ -184,7 +188,7 @@ export function ChatListMobileTrigger({ conversations, activeCharacterId }: Chat
         onClick={() => setOpen(true)}
         aria-label="Open conversation list"
         data-testid="chatlist-trigger"
-        className="tap-target flex items-center justify-center rounded-md text-white lg:hidden"
+        className="tap-target flex items-center justify-center rounded-md text-[hsl(var(--bc-fg))] lg:hidden"
       >
         <Users className="h-5 w-5" />
       </button>
@@ -229,8 +233,8 @@ function ConversationRow({
   return (
     <div
       className={cn(
-        "group relative flex items-center gap-3 rounded-xl px-3 py-2.5 transition",
-        active ? "" : "hover:bg-white/5",
+        "group relative flex items-center gap-3 rounded-[var(--bc-radius)] px-3 py-2.5 transition",
+        active ? "" : "hover:bg-[hsl(var(--bc-cream)/0.05)]",
       )}
       style={{
         ...(active ? { backgroundColor: "hsl(var(--buttercupp-surface-2))" } : undefined),
@@ -323,7 +327,7 @@ function ConversationRow({
             <button
               type="button"
               onClick={() => { setMenuOpen(false); onRemove(); }}
-              className="flex w-full cursor-pointer items-center gap-2.5 px-4 py-2.5 text-left text-sm transition hover:bg-white/5"
+              className="flex w-full cursor-pointer items-center gap-2.5 px-4 py-2.5 text-left text-sm transition hover:bg-[hsl(var(--bc-cream)/0.06)]"
               style={{ color: "hsl(var(--buttercupp-fg))" }}
             >
               <EyeOff className="h-4 w-4 shrink-0" style={{ color: "hsl(var(--buttercupp-muted))" }} />
@@ -333,8 +337,8 @@ function ConversationRow({
             <button
               type="button"
               onClick={() => { setMenuOpen(false); onDelete(); }}
-              className="flex w-full cursor-pointer items-center gap-2.5 px-4 py-2.5 text-left text-sm transition hover:bg-rose-500/10"
-              style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
+              className="flex w-full cursor-pointer items-center gap-2.5 px-4 py-2.5 text-left text-sm transition hover:bg-[hsl(var(--bc-danger)/0.14)]"
+              style={{ color: "hsl(2 84% 74%)" }}
             >
               <Trash2 className="h-4 w-4 shrink-0" />
               Delete chat

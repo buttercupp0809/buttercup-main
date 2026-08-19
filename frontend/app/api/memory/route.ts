@@ -27,8 +27,12 @@ export async function GET(req: Request) {
   });
   let nextCursor: string | null = null;
   if (rows.length > q.limit) {
-    const overflow = rows.pop();
-    nextCursor = overflow?.id ?? null;
+    // Drop the probe row, then point the cursor at the LAST ROW WE RETURNED.
+    // It has to be the last returned row, not the probe: this handler resumes
+    // with `cursor: { id }, skip: 1`, so naming the probe row would skip it and
+    // silently lose one memory at every page boundary.
+    rows.pop();
+    nextCursor = rows[rows.length - 1]?.id ?? null;
   }
   const items: MemoryDTO[] = rows.map((m) => ({
     id: m.id,

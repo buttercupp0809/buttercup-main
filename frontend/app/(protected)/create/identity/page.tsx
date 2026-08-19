@@ -1,40 +1,33 @@
 "use client";
 
+import { UserRound, User, UsersRound, Check, type LucideIcon } from "lucide-react";
 import { useCharacterWizard } from "../context";
-import { Chip, FieldGroup } from "../Chip";
-import { GENDER_OPTIONS, AGE_OPTIONS, NAME_SUGGESTIONS } from "../options";
+import { Chip } from "../Chip";
+import { AGE_OPTIONS, NAME_SUGGESTIONS } from "../options";
 
 const GENDER_CARDS: {
   value: string;
   label: string;
-  emoji: string;
+  icon: LucideIcon;
   hint: string;
-  gradient: string;
-  accentColor: string;
 }[] = [
   {
     value: "Female",
     label: "Female",
-    emoji: "👩",
+    icon: UserRound,
     hint: "Feminine identity",
-    gradient: "linear-gradient(135deg, #2a0a1e 0%, #3d1a2e 40%, #5a1a3a 100%)",
-    accentColor: "#f0a0c0",
   },
   {
     value: "Male",
     label: "Male",
-    emoji: "👨",
+    icon: User,
     hint: "Masculine identity",
-    gradient: "linear-gradient(135deg, #0a1a2e 0%, #1a2e42 40%, #1a3a5a 100%)",
-    accentColor: "#a0c4f0",
   },
   {
     value: "Non-binary",
     label: "Non-binary",
-    emoji: "🧑",
+    icon: UsersRound,
     hint: "Beyond the binary",
-    gradient: "linear-gradient(135deg, #1a1a2a 0%, #2a2a3e 40%, #3a2a4e 100%)",
-    accentColor: "#c0b0e0",
   },
 ];
 
@@ -47,40 +40,42 @@ export default function IdentityStep() {
     <div className="flex flex-col gap-8">
       <div>
         <h1 className="font-display text-2xl font-semibold">Identity</h1>
-        <p className="mt-1 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+        <p className="mt-1 text-sm" style={{ color: "hsl(var(--bc-muted))" }}>
           Tap to choose. You can tweak anything later.
         </p>
       </div>
 
-      {/* Gender - rich visual cards */}
+      {/* Gender - amber option cards */}
       <div className="flex flex-col gap-3">
         <span
           className="text-sm font-medium"
           style={{
-            color: "hsl(var(--buttercupp-fg))",
-            borderLeft: "3px solid hsl(var(--buttercupp-accent-rose))",
+            color: "hsl(var(--bc-fg))",
+            borderLeft: "3px solid hsl(var(--bc-amber))",
             paddingLeft: "10px",
           }}
         >
           Gender
         </span>
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
           {GENDER_CARDS.map((g) => {
             const selected = gender === g.value;
+            const Icon = g.icon;
             return (
               <button
                 key={g.value}
                 type="button"
                 onClick={() => updateDraft({ gender: g.value })}
+                aria-pressed={selected}
                 className="group relative flex flex-col overflow-hidden rounded-2xl text-left transition-all duration-200"
                 style={{
-                  background: g.gradient,
+                  backgroundColor: selected
+                    ? "hsl(var(--bc-amber) / 0.12)"
+                    : "hsl(var(--bc-surface-2))",
                   border: selected
-                    ? `2px solid hsl(var(--buttercupp-accent-rose))`
-                    : "2px solid rgba(255,255,255,0.08)",
-                  boxShadow: selected
-                    ? `0 0 0 1px hsl(var(--buttercupp-accent-rose) / 0.3), 0 8px 32px rgba(0,0,0,0.4)`
-                    : "0 4px 16px rgba(0,0,0,0.3)",
+                    ? "2px solid hsl(var(--bc-amber))"
+                    : "2px solid hsl(var(--bc-border))",
+                  boxShadow: selected ? "var(--bc-shadow-glow)" : "var(--bc-shadow)",
                   transform: selected ? "translateY(-2px)" : undefined,
                 }}
               >
@@ -88,20 +83,24 @@ export default function IdentityStep() {
                 <div
                   className="relative flex h-24 w-full items-center justify-center overflow-hidden"
                   style={{
-                    backgroundImage: `radial-gradient(circle at 50% 40%, ${g.accentColor}22 0%, transparent 70%)`,
+                    backgroundImage:
+                      "radial-gradient(circle at 50% 40%, hsl(var(--bc-amber) / 0.14) 0%, transparent 70%)",
                   }}
                 >
-                  <span className="text-4xl">{g.emoji}</span>
+                  <Icon
+                    className="h-8 w-8"
+                    aria-hidden
+                    style={{ color: "hsl(var(--bc-honey))" }}
+                  />
                   {selected && (
                     <div
                       className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold"
                       style={{
-                        background:
-                          "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
-                        color: "#ffffff",
+                        background: "hsl(var(--bc-amber))",
+                        color: "hsl(28 45% 9%)",
                       }}
                     >
-                      ✓
+                      <Check className="h-4 w-4" strokeWidth={2.5} aria-hidden />
                     </div>
                   )}
                 </div>
@@ -110,11 +109,11 @@ export default function IdentityStep() {
                 <div className="flex flex-col gap-0.5 p-3">
                   <p
                     className="font-display text-sm font-semibold"
-                    style={{ color: selected ? g.accentColor : "rgba(255,255,255,0.9)" }}
+                    style={{ color: selected ? "hsl(var(--bc-honey))" : "hsl(var(--bc-fg))" }}
                   >
                     {g.label}
                   </p>
-                  <p className="text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>
+                  <p className="text-xs" style={{ color: "hsl(var(--bc-muted))" }}>
                     {g.hint}
                   </p>
                 </div>
@@ -122,10 +121,7 @@ export default function IdentityStep() {
                 {selected && (
                   <div
                     className="absolute bottom-0 left-0 right-0 h-0.5"
-                    style={{
-                      background:
-                        "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
-                    }}
+                    style={{ background: "var(--bc-gradient-brand-h)" }}
                   />
                 )}
               </button>
@@ -139,8 +135,8 @@ export default function IdentityStep() {
         <span
           className="text-sm font-medium"
           style={{
-            color: "hsl(var(--buttercupp-fg))",
-            borderLeft: "3px solid hsl(var(--buttercupp-accent-rose))",
+            color: "hsl(var(--bc-fg))",
+            borderLeft: "3px solid hsl(var(--bc-amber))",
             paddingLeft: "10px",
           }}
         >
@@ -157,7 +153,9 @@ export default function IdentityStep() {
           ))}
         </div>
         {fieldErrors.age ? (
-          <span className="text-xs text-rose-400">{fieldErrors.age}</span>
+          <span className="text-xs" style={{ color: "hsl(var(--bc-danger))" }}>
+            {fieldErrors.age}
+          </span>
         ) : null}
       </div>
 
@@ -166,8 +164,8 @@ export default function IdentityStep() {
         <span
           className="text-sm font-medium"
           style={{
-            color: "hsl(var(--buttercupp-fg))",
-            borderLeft: "3px solid hsl(var(--buttercupp-accent-rose))",
+            color: "hsl(var(--bc-fg))",
+            borderLeft: "3px solid hsl(var(--bc-amber))",
             paddingLeft: "10px",
           }}
         >
@@ -180,17 +178,16 @@ export default function IdentityStep() {
           placeholder="Pick a suggestion or type your own"
           className="w-full rounded-xl border px-4 py-3 text-sm transition-all duration-150 focus:outline-none"
           style={{
-            borderColor: "hsl(var(--buttercupp-border))",
-            backgroundColor: "hsl(var(--buttercupp-surface-2))",
-            color: "hsl(var(--buttercupp-fg))",
+            borderColor: "hsl(var(--bc-border))",
+            backgroundColor: "hsl(var(--bc-surface-2))",
+            color: "hsl(var(--bc-fg))",
           }}
           onFocus={(e) => {
-            e.currentTarget.style.borderColor = "hsl(var(--buttercupp-accent-rose))";
-            e.currentTarget.style.boxShadow =
-              "0 0 0 3px hsl(var(--buttercupp-accent-rose) / 0.2)";
+            e.currentTarget.style.borderColor = "hsl(var(--bc-amber))";
+            e.currentTarget.style.boxShadow = "0 0 0 3px hsl(var(--bc-amber) / 0.2)";
           }}
           onBlur={(e) => {
-            e.currentTarget.style.borderColor = "hsl(var(--buttercupp-border))";
+            e.currentTarget.style.borderColor = "hsl(var(--bc-border))";
             e.currentTarget.style.boxShadow = "none";
           }}
         />
@@ -205,7 +202,9 @@ export default function IdentityStep() {
           ))}
         </div>
         {fieldErrors.name ? (
-          <span className="text-xs text-rose-400">{fieldErrors.name}</span>
+          <span className="text-xs" style={{ color: "hsl(var(--bc-danger))" }}>
+            {fieldErrors.name}
+          </span>
         ) : null}
       </div>
     </div>

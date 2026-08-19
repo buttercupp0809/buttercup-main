@@ -29,7 +29,6 @@ async function signupFreshUser(page: Page): Promise<void> {
   await page.goto("/signup");
   await page.getByLabel("Email").fill(uniqueEmail());
   await page.getByLabel("Password", { exact: true }).fill("Correct-horse4Battery");
-  await page.getByLabel(/Date of birth/i).fill("1995-05-05");
   await page.getByRole("button", { name: /create account/i }).click();
   await page.waitForURL(/\/(dashboard|onboarding)/);
 }

@@ -95,6 +95,8 @@ export async function GET() {
     env: {
       DATABASE_URL: process.env.DATABASE_URL ? "SET" : "MISSING",
       JWT_SECRET: process.env.JWT_SECRET ? "SET" : "MISSING",
+      RESEND_API_KEY: process.env.RESEND_API_KEY ? "SET" : "MISSING",
+      EMAIL_FROM: process.env.EMAIL_FROM ?? "MISSING",
       NODE_ENV: process.env.NODE_ENV,
       NEXT_RUNTIME: process.env.NEXT_RUNTIME,
       AWS_LAMBDA_FUNCTION_NAME: process.env.AWS_LAMBDA_FUNCTION_NAME ?? "(not set)",

@@ -17,18 +17,13 @@
 // changes auth, it only lets the browser read responses that already passed
 // the existing cookie-based authenticate() check.
 
-// Local dev origin PLUS the production frontend origins. These are baked in so
-// CORS works in prod even when CORS_ALLOWED_ORIGINS is unset on the ECS task
-// (its absence defaulted to localhost only, which blocked every credentialed
-// browser fetch from www.buttercupp.fun -> api.buttercupp.fun: /billing/plans,
-// /billing/token-packs and /billing/entitlements all showed "Could not load"
-// even though the backend answered curl fine). Setting CORS_ALLOWED_ORIGINS
-// still overrides this list entirely when a different allowlist is needed.
-const DEFAULT_ORIGINS = [
-  "http://localhost:3000",
-  "https://www.buttercupp.fun",
-  "https://buttercupp.fun",
-];
+// Local dev fallback only. Production deployments MUST set CORS_ALLOWED_ORIGINS
+// (e.g. "https://www.buttercupp.fun,https://buttercupp.fun") via the ECS task
+// definition environment block. Hardcoding prod domains in source couples every
+// branch/environment to a single deployment target and was the root cause of
+// staging/preview environments being inadvertently allowed cross-origin access
+// to production API responses.
+const DEFAULT_ORIGINS = ["http://localhost:3000"];
 
 function allowedOrigins(): string[] {
   const raw = process.env.CORS_ALLOWED_ORIGINS;
