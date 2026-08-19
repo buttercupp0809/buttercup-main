@@ -22,14 +22,16 @@ describe("buildVerifyEmail", () => {
   });
 
   it("uses inline hex brand colors, not CSS variables or Tailwind classes", () => {
-    expect(html).toContain("#ee5f89");
-    expect(html).toContain("#9c6ff0");
+    // Current ButterCupp brand: amber #fc9908 with the amber-hot #f6812a
+    // gradient partner (translated from the --bc-* tokens in globals.css).
+    expect(html).toContain("#fc9908");
+    expect(html).toContain("#f6812a");
     expect(html).not.toContain("var(--buttercupp");
     expect(html).not.toMatch(/class="[^"]*bg-/);
   });
 
   it("includes a gradient CTA button styled inline", () => {
-    expect(html).toMatch(/linear-gradient\(135deg,\s*#ee5f89/);
+    expect(html).toMatch(/linear-gradient\(135deg,\s*#fc9908/);
     expect(html).toMatch(/>\s*Verify email\s*</);
   });
 
