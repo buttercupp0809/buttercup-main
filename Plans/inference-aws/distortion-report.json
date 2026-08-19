@@ -1,0 +1,1209 @@
+{
+  "at": "2026-08-19T15:59:49.536Z",
+  "target": "local",
+  "model": "claude-haiku-4-5-20251001",
+  "minConfidence": 0.75,
+  "totals": {
+    "scanned": 560,
+    "flagged": 57,
+    "clean": 472,
+    "needsReview": 31,
+    "errors": 0
+  },
+  "flagged": [
+    {
+      "characterId": "6dadd33b-7e8d-461a-b7eb-075e1c884bfe",
+      "variant": 2,
+      "webpKey": "images/personas/6dadd33b-7e8d-461a-b7eb-075e1c884bfe/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "00d5a5f3-1a88-4ae7-a24f-d208c71b299c",
+      "judgment": {
+        "distorted": true,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Anatomically implausible proportions with severe distortion in torso and body structure; unrealistic geometry inconsistent with human anatomy"
+      },
+      "confidence": 0.85,
+      "reason": "Anatomically implausible proportions with severe distortion in torso and body structure; unrealistic geometry inconsistent with human anatomy"
+    },
+    {
+      "characterId": "6dadd33b-7e8d-461a-b7eb-075e1c884bfe",
+      "variant": 4,
+      "webpKey": "images/personas/6dadd33b-7e8d-461a-b7eb-075e1c884bfe/p4.webp",
+      "pngKey": null,
+      "characterMediaId": "406e3c12-4a1e-49d1-a836-4c598133bb91",
+      "judgment": {
+        "distorted": true,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Anatomical inconsistencies in proportions and structure; unrealistic body geometry; potential AI generation artifacts"
+      },
+      "confidence": 0.85,
+      "reason": "Anatomical inconsistencies in proportions and structure; unrealistic body geometry; potential AI generation artifacts"
+    },
+    {
+      "characterId": "beb1c3d2-040d-422c-9ea4-8e889ea4e4b6",
+      "variant": 1,
+      "webpKey": "images/personas/beb1c3d2-040d-422c-9ea4-8e889ea4e4b6/p1.webp",
+      "pngKey": null,
+      "characterMediaId": "30218750-cb5a-4d8a-bba0-c404f5361c9b",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Image is sharp and well-composed, but anatomy shows implausible proportions - torso appears unnaturally elongated and proportions between upper/lower body are inconsistent with human anatomy"
+      },
+      "confidence": 0.85,
+      "reason": "Image is sharp and well-composed, but anatomy shows implausible proportions - torso appears unnaturally elongated and proportions between upper/lower body are inconsistent with human anatomy"
+    },
+    {
+      "characterId": "beb1c3d2-040d-422c-9ea4-8e889ea4e4b6",
+      "variant": 2,
+      "webpKey": "images/personas/beb1c3d2-040d-422c-9ea4-8e889ea4e4b6/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "422c4231-fe72-4480-b656-f19ec77451b9",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Anatomically implausible proportions in lower body; unrealistic waist-to-hip ratio and leg geometry"
+      },
+      "confidence": 0.85,
+      "reason": "Anatomically implausible proportions in lower body; unrealistic waist-to-hip ratio and leg geometry"
+    },
+    {
+      "characterId": "cf718940-fae0-4393-9485-2f4d79c000c4",
+      "variant": 2,
+      "webpKey": "images/personas/cf718940-fae0-4393-9485-2f4d79c000c4/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "a264441e-499f-412d-9258-c788ad940018",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Image appears to be AI-generated with unrealistic body proportions and idealized features inconsistent with natural human anatomy"
+      },
+      "confidence": 0.85,
+      "reason": "Image appears to be AI-generated with unrealistic body proportions and idealized features inconsistent with natural human anatomy"
+    },
+    {
+      "characterId": "84819437-3624-42ec-a952-36fc6a62ab0a",
+      "variant": 4,
+      "webpKey": "images/personas/84819437-3624-42ec-a952-36fc6a62ab0a/p4.webp",
+      "pngKey": null,
+      "characterMediaId": "9eda8580-f58d-4fd4-955a-cc011263f3b0",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Anatomically implausible proportions and exaggerated features inconsistent with human physiology"
+      },
+      "confidence": 0.85,
+      "reason": "Anatomically implausible proportions and exaggerated features inconsistent with human physiology"
+    },
+    {
+      "characterId": "417877b6-b859-4456-871d-2986576ada98",
+      "variant": 2,
+      "webpKey": "images/personas/417877b6-b859-4456-871d-2986576ada98/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "8d51d607-debc-419c-9c1e-2012dafd58d5",
+      "judgment": {
+        "distorted": true,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Anatomically implausible proportions, particularly in torso and chest area; unrealistic body geometry inconsistent with human physiology"
+      },
+      "confidence": 0.85,
+      "reason": "Anatomically implausible proportions, particularly in torso and chest area; unrealistic body geometry inconsistent with human physiology"
+    },
+    {
+      "characterId": "417877b6-b859-4456-871d-2986576ada98",
+      "variant": 3,
+      "webpKey": "images/personas/417877b6-b859-4456-871d-2986576ada98/p3.webp",
+      "pngKey": null,
+      "characterMediaId": "b0bfd6d2-3ebc-4c20-b314-8392da20bd3b",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Image appears to be AI-generated with unrealistic proportions and idealized features that deviate from plausible human anatomy"
+      },
+      "confidence": 0.85,
+      "reason": "Image appears to be AI-generated with unrealistic proportions and idealized features that deviate from plausible human anatomy"
+    },
+    {
+      "characterId": "a25ec32f-1042-4757-a3d3-3d4c69b96cbd",
+      "variant": 2,
+      "webpKey": "images/personas/a25ec32f-1042-4757-a3d3-3d4c69b96cbd/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "7397642d-2ce2-41aa-a6ee-666283d5f862",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Anatomically implausible proportions: extremely thin waist relative to hip/bust measurements, unrealistic body shape inconsistent with human physiology"
+      },
+      "confidence": 0.85,
+      "reason": "Anatomically implausible proportions: extremely thin waist relative to hip/bust measurements, unrealistic body shape inconsistent with human physiology"
+    },
+    {
+      "characterId": "a25ec32f-1042-4757-a3d3-3d4c69b96cbd",
+      "variant": 3,
+      "webpKey": "images/personas/a25ec32f-1042-4757-a3d3-3d4c69b96cbd/p3.webp",
+      "pngKey": null,
+      "characterMediaId": "2933ffca-b41c-43cb-9cc8-b90cbb0bbec6",
+      "judgment": {
+        "distorted": true,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Anatomically implausible proportions, particularly torso and chest area showing unrealistic geometry and unnatural transitions between body segments."
+      },
+      "confidence": 0.85,
+      "reason": "Anatomically implausible proportions, particularly torso and chest area showing unrealistic geometry and unnatural transitions between body segments."
+    },
+    {
+      "characterId": "b378fa41-397c-4174-b6ed-54cc1760129a",
+      "variant": 2,
+      "webpKey": "images/personas/b378fa41-397c-4174-b6ed-54cc1760129a/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "110d3a9d-d3ac-4a57-95c3-819108e8ced7",
+      "judgment": {
+        "distorted": true,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Severe anatomical distortion with implausibly exaggerated proportions inconsistent with human anatomy"
+      },
+      "confidence": 0.85,
+      "reason": "Severe anatomical distortion with implausibly exaggerated proportions inconsistent with human anatomy"
+    },
+    {
+      "characterId": "e326f84d-4c2b-4b92-aeef-80e6b7f0ea33",
+      "variant": 2,
+      "webpKey": "images/personas/e326f84d-4c2b-4b92-aeef-80e6b7f0ea33/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "13d0ce74-0dd9-47dc-8b62-4ca1ee63309b",
+      "judgment": {
+        "distorted": true,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Anatomically implausible proportions, particularly in limb length ratios and torso geometry. The figure on the right shows warped proportions that deviate significantly from normal human anatomy."
+      },
+      "confidence": 0.85,
+      "reason": "Anatomically implausible proportions, particularly in limb length ratios and torso geometry. The figure on the right shows warped proportions that deviate significantly from normal human anatomy."
+    },
+    {
+      "characterId": "3848b041-5c63-4f3b-92f9-3d2ea2e644a2",
+      "variant": 1,
+      "webpKey": "images/personas/3848b041-5c63-4f3b-92f9-3d2ea2e644a2/p1.webp",
+      "pngKey": null,
+      "characterMediaId": "9f1faeb9-7ceb-47d9-8f85-16abe47fcd05",
+      "judgment": {
+        "distorted": true,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Artificial generation with unrealistic proportions, smoothed/plastified skin texture, and anatomically implausible body dimensions characteristic of AI-generated imagery"
+      },
+      "confidence": 0.85,
+      "reason": "Artificial generation with unrealistic proportions, smoothed/plastified skin texture, and anatomically implausible body dimensions characteristic of AI-generated imagery"
+    },
+    {
+      "characterId": "3848b041-5c63-4f3b-92f9-3d2ea2e644a2",
+      "variant": 2,
+      "webpKey": "images/personas/3848b041-5c63-4f3b-92f9-3d2ea2e644a2/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "c41a6e14-9d6a-43e6-8e38-5f3278232155",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Image is technically well-rendered with sharp details and no obvious geometric warping, but anatomical proportions are exaggerated and unrealistic for human biology"
+      },
+      "confidence": 0.85,
+      "reason": "Image is technically well-rendered with sharp details and no obvious geometric warping, but anatomical proportions are exaggerated and unrealistic for human biology"
+    },
+    {
+      "characterId": "36291070-c559-467f-a362-dc50ff5bd2a6",
+      "variant": 3,
+      "webpKey": "images/personas/36291070-c559-467f-a362-dc50ff5bd2a6/p3.webp",
+      "pngKey": null,
+      "characterMediaId": "a298406d-a8e9-40a5-896f-d25e396bacb9",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Unnaturally enhanced proportions and stylized features inconsistent with human anatomy; however, no obvious warping or missing limbs. Image is sharp and well-defined."
+      },
+      "confidence": 0.85,
+      "reason": "Unnaturally enhanced proportions and stylized features inconsistent with human anatomy; however, no obvious warping or missing limbs. Image is sharp and well-defined."
+    },
+    {
+      "characterId": "f026fc2e-1721-4d1e-af13-4c3654876b69",
+      "variant": 4,
+      "webpKey": "images/personas/f026fc2e-1721-4d1e-af13-4c3654876b69/p4.webp",
+      "pngKey": null,
+      "characterMediaId": "af5cb283-fa14-428e-8afd-c2fc060985de",
+      "judgment": {
+        "distorted": true,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Visible anatomical distortions in leg proportions and geometry; unrealistic body contours and proportions typical of AI generation"
+      },
+      "confidence": 0.85,
+      "reason": "Visible anatomical distortions in leg proportions and geometry; unrealistic body contours and proportions typical of AI generation"
+    },
+    {
+      "characterId": "d946e79c-f49d-4ad6-b346-b9beef673f1c",
+      "variant": 1,
+      "webpKey": "images/personas/d946e79c-f49d-4ad6-b346-b9beef673f1c/p1.webp",
+      "pngKey": null,
+      "characterMediaId": "61d0d220-f56c-44cc-9ae4-608b69d0a725",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Image appears to be AI-generated with unrealistic proportions and idealized anatomy that deviates significantly from natural human variation. Lighting and composition are artificially perfect."
+      },
+      "confidence": 0.85,
+      "reason": "Image appears to be AI-generated with unrealistic proportions and idealized anatomy that deviates significantly from natural human variation. Lighting and composition are artificially perfect."
+    },
+    {
+      "characterId": "dbf88253-0861-4efc-8f91-4d690fdcc004",
+      "variant": 4,
+      "webpKey": "images/personas/dbf88253-0861-4efc-8f91-4d690fdcc004/p4.webp",
+      "pngKey": null,
+      "characterMediaId": "d7949e51-f308-49b7-9b07-9f6d21fbf958",
+      "judgment": {
+        "distorted": true,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "AI-generated image with unrealistic body proportions, unnatural waist-to-hip ratio, and stylized features inconsistent with human anatomy. Jewelry and costume elements show some geometric irregularities typical of AI generation."
+      },
+      "confidence": 0.85,
+      "reason": "AI-generated image with unrealistic body proportions, unnatural waist-to-hip ratio, and stylized features inconsistent with human anatomy. Jewelry and costume elements show some geometric irregularities typical of AI generation."
+    },
+    {
+      "characterId": "7e119c41-efac-4a50-befa-ee3b320fe65b",
+      "variant": 2,
+      "webpKey": "images/personas/7e119c41-efac-4a50-befa-ee3b320fe65b/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "31c6b3be-92c4-480e-ae35-73cf96ecd4b4",
+      "judgment": {
+        "distorted": true,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Anatomically implausible proportions, particularly in lower body/hip structure and overall body geometry. Asymmetrical and stylized beyond natural human variation."
+      },
+      "confidence": 0.85,
+      "reason": "Anatomically implausible proportions, particularly in lower body/hip structure and overall body geometry. Asymmetrical and stylized beyond natural human variation."
+    },
+    {
+      "characterId": "823aa4a9-6290-454c-a616-1414be9ae36d",
+      "variant": 2,
+      "webpKey": "images/personas/823aa4a9-6290-454c-a616-1414be9ae36d/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "c27e79ef-8665-4b37-ab9c-66f27a4ea7fb",
+      "judgment": {
+        "distorted": true,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Severe anatomical distortions: impossibly elongated legs, disproportionate torso-to-leg ratio, unnatural spinal curvature, and unrealistic body proportions that violate human anatomy"
+      },
+      "confidence": 0.85,
+      "reason": "Severe anatomical distortions: impossibly elongated legs, disproportionate torso-to-leg ratio, unnatural spinal curvature, and unrealistic body proportions that violate human anatomy"
+    },
+    {
+      "characterId": "823aa4a9-6290-454c-a616-1414be9ae36d",
+      "variant": 3,
+      "webpKey": "images/personas/823aa4a9-6290-454c-a616-1414be9ae36d/p3.webp",
+      "pngKey": null,
+      "characterMediaId": "172749aa-bc09-4d5d-8b77-5a299be2d65a",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Image contains anatomically implausible proportions inconsistent with human biology, particularly in chest and torso dimensions"
+      },
+      "confidence": 0.85,
+      "reason": "Image contains anatomically implausible proportions inconsistent with human biology, particularly in chest and torso dimensions"
+    },
+    {
+      "characterId": "f4957ce4-4164-4c44-ad1b-f0d8aee7cdf7",
+      "variant": 2,
+      "webpKey": "images/personas/f4957ce4-4164-4c44-ad1b-f0d8aee7cdf7/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "76eadb8d-4f23-4f8d-986d-6e8fb43492bc",
+      "judgment": {
+        "distorted": true,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.95,
+        "reason": "Anatomically implausible proportions; unrealistic body geometry; digitally enhanced/distorted features inconsistent with human physiology"
+      },
+      "confidence": 0.95,
+      "reason": "Anatomically implausible proportions; unrealistic body geometry; digitally enhanced/distorted features inconsistent with human physiology"
+    },
+    {
+      "characterId": "f4957ce4-4164-4c44-ad1b-f0d8aee7cdf7",
+      "variant": 3,
+      "webpKey": "images/personas/f4957ce4-4164-4c44-ad1b-f0d8aee7cdf7/p3.webp",
+      "pngKey": null,
+      "characterMediaId": "800d6edf-9189-4218-a163-136944503cd5",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Image appears digitally enhanced/AI-generated with unnaturally perfect skin, idealized proportions, and uncanny symmetry inconsistent with natural human photography"
+      },
+      "confidence": 0.85,
+      "reason": "Image appears digitally enhanced/AI-generated with unnaturally perfect skin, idealized proportions, and uncanny symmetry inconsistent with natural human photography"
+    },
+    {
+      "characterId": "e3f954dd-572a-44c4-98d2-10373c79dad7",
+      "variant": 2,
+      "webpKey": "images/personas/e3f954dd-572a-44c4-98d2-10373c79dad7/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "10c1f396-d642-465d-9c6f-726f9a55016b",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Image is technically well-rendered with sharp details and no obvious geometric warping, but anatomical proportions appear exaggerated and unrealistic, particularly in torso and limb length ratios."
+      },
+      "confidence": 0.85,
+      "reason": "Image is technically well-rendered with sharp details and no obvious geometric warping, but anatomical proportions appear exaggerated and unrealistic, particularly in torso and limb length ratios."
+    },
+    {
+      "characterId": "c8d8f50d-11d0-4a50-bb17-9942cea5f578",
+      "variant": 2,
+      "webpKey": "images/personas/c8d8f50d-11d0-4a50-bb17-9942cea5f578/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "588b9fbf-9d08-4017-b291-fa55eddf8629",
+      "judgment": {
+        "distorted": true,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Exaggerated and implausible body proportions, particularly in hip and gluteal region; unrealistic waist-to-hip ratio and overall anatomical distortion typical of heavily edited or AI-generated imagery"
+      },
+      "confidence": 0.85,
+      "reason": "Exaggerated and implausible body proportions, particularly in hip and gluteal region; unrealistic waist-to-hip ratio and overall anatomical distortion typical of heavily edited or AI-generated imagery"
+    },
+    {
+      "characterId": "3516e6d0-a416-42bd-88ae-f4c9ad74ebf5",
+      "variant": 2,
+      "webpKey": "images/personas/3516e6d0-a416-42bd-88ae-f4c9ad74ebf5/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "b7d1d175-30f6-4e6b-bd97-5c994a4aeca0",
+      "judgment": {
+        "distorted": true,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Anatomically implausible proportions, particularly in hip and waist geometry; body contours appear artificially enhanced beyond realistic human variation"
+      },
+      "confidence": 0.85,
+      "reason": "Anatomically implausible proportions, particularly in hip and waist geometry; body contours appear artificially enhanced beyond realistic human variation"
+    },
+    {
+      "characterId": "108eb01a-9b41-4fb9-9be3-63e7c1430e56",
+      "variant": 1,
+      "webpKey": "images/personas/108eb01a-9b41-4fb9-9be3-63e7c1430e56/p1.webp",
+      "pngKey": null,
+      "characterMediaId": "23534aab-dd0a-4048-9eff-27ba6a5de430",
+      "judgment": {
+        "distorted": true,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Anatomically implausible proportions, unrealistic body geometry, and signs of AI generation artifacts in facial structure and overall composition"
+      },
+      "confidence": 0.85,
+      "reason": "Anatomically implausible proportions, unrealistic body geometry, and signs of AI generation artifacts in facial structure and overall composition"
+    },
+    {
+      "characterId": "0c90faa9-c4f1-430e-a156-847d01347253",
+      "variant": 4,
+      "webpKey": "images/personas/0c90faa9-c4f1-430e-a156-847d01347253/p4.webp",
+      "pngKey": null,
+      "characterMediaId": "77282612-37be-4437-9fcc-ffd13deaebf4",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Proportions are unrealistic and exaggerated beyond plausible human anatomy"
+      },
+      "confidence": 0.85,
+      "reason": "Proportions are unrealistic and exaggerated beyond plausible human anatomy"
+    },
+    {
+      "characterId": "7d4ef1db-46ce-41fe-8006-f0d5b3c58c60",
+      "variant": 3,
+      "webpKey": "images/personas/7d4ef1db-46ce-41fe-8006-f0d5b3c58c60/p3.webp",
+      "pngKey": null,
+      "characterMediaId": "a59570bb-ee8d-481c-b689-f5ea181b1f09",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Image shows unrealistic body proportions and anatomy that deviate significantly from natural human form, particularly in torso and lower body dimensions"
+      },
+      "confidence": 0.85,
+      "reason": "Image shows unrealistic body proportions and anatomy that deviate significantly from natural human form, particularly in torso and lower body dimensions"
+    },
+    {
+      "characterId": "9b890f76-d4fc-48fc-9661-3c49ab06c9de",
+      "variant": 2,
+      "webpKey": "images/personas/9b890f76-d4fc-48fc-9661-3c49ab06c9de/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "81f681f9-2bc9-4c56-83ad-22e565cd2941",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Anatomically implausible proportions; exaggerated hip-to-torso ratio and unrealistic body curvature"
+      },
+      "confidence": 0.85,
+      "reason": "Anatomically implausible proportions; exaggerated hip-to-torso ratio and unrealistic body curvature"
+    },
+    {
+      "characterId": "20e084d9-76ec-4328-b6e5-d1f574e78ff2",
+      "variant": 2,
+      "webpKey": "images/personas/20e084d9-76ec-4328-b6e5-d1f574e78ff2/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "d0c69dd8-3b3b-481e-996d-6fe677b1f749",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Image appears to be AI-generated with unrealistic proportions and idealized features that don't match natural human anatomy"
+      },
+      "confidence": 0.85,
+      "reason": "Image appears to be AI-generated with unrealistic proportions and idealized features that don't match natural human anatomy"
+    },
+    {
+      "characterId": "24b64510-f7c7-4c61-8b47-6011e97805b9",
+      "variant": 2,
+      "webpKey": "images/personas/24b64510-f7c7-4c61-8b47-6011e97805b9/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "0a81544c-e729-4af5-b099-94ca63b43ce4",
+      "judgment": {
+        "distorted": true,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Unnatural leg proportions and geometry, particularly in the thigh-to-calf ratio and knee articulation. Posture appears physically implausible."
+      },
+      "confidence": 0.85,
+      "reason": "Unnatural leg proportions and geometry, particularly in the thigh-to-calf ratio and knee articulation. Posture appears physically implausible."
+    },
+    {
+      "characterId": "51e0a700-6c5c-4892-bf9b-431477a9d1cb",
+      "variant": 3,
+      "webpKey": "images/personas/51e0a700-6c5c-4892-bf9b-431477a9d1cb/p3.webp",
+      "pngKey": null,
+      "characterMediaId": "6f9f40c9-23b1-4ff9-893c-c89b83f6d7aa",
+      "judgment": {
+        "distorted": true,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Unrealistic body proportions, anatomically impossible torso-to-limb ratios, and digitally enhanced/warped features typical of AI-generated imagery"
+      },
+      "confidence": 0.85,
+      "reason": "Unrealistic body proportions, anatomically impossible torso-to-limb ratios, and digitally enhanced/warped features typical of AI-generated imagery"
+    },
+    {
+      "characterId": "41313eb8-5a5f-4cd8-a967-87d8081d6bf5",
+      "variant": 2,
+      "webpKey": "images/personas/41313eb8-5a5f-4cd8-a967-87d8081d6bf5/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "72c81ce7-63ca-4008-9915-816e1f027ce4",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Image appears to be AI-generated with anatomically implausible proportions, particularly in torso-to-limb ratios and overall body structure despite technically competent rendering"
+      },
+      "confidence": 0.85,
+      "reason": "Image appears to be AI-generated with anatomically implausible proportions, particularly in torso-to-limb ratios and overall body structure despite technically competent rendering"
+    },
+    {
+      "characterId": "f096be17-2c7c-4adb-8bb8-e630f67679de",
+      "variant": 1,
+      "webpKey": "images/personas/f096be17-2c7c-4adb-8bb8-e630f67679de/p1.webp",
+      "pngKey": null,
+      "characterMediaId": "ee3d0fcb-4db4-4c39-8ab5-8a3453e81930",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Proportions appear exaggerated and anatomically implausible; otherwise technically well-rendered without obvious warping or blur"
+      },
+      "confidence": 0.85,
+      "reason": "Proportions appear exaggerated and anatomically implausible; otherwise technically well-rendered without obvious warping or blur"
+    },
+    {
+      "characterId": "f096be17-2c7c-4adb-8bb8-e630f67679de",
+      "variant": 4,
+      "webpKey": "images/personas/f096be17-2c7c-4adb-8bb8-e630f67679de/p4.webp",
+      "pngKey": null,
+      "characterMediaId": "f4d8e89a-c19f-41d2-bbbc-575712205a26",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Image is technically well-rendered with good sharpness and no obvious warping, but anatomical proportions are unrealistic and stylized beyond plausible human form, particularly in torso and proportions."
+      },
+      "confidence": 0.85,
+      "reason": "Image is technically well-rendered with good sharpness and no obvious warping, but anatomical proportions are unrealistic and stylized beyond plausible human form, particularly in torso and proportions."
+    },
+    {
+      "characterId": "b684969c-b7e8-4642-a95e-dd5ea437eded",
+      "variant": 2,
+      "webpKey": "images/personas/b684969c-b7e8-4642-a95e-dd5ea437eded/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "5d60ade7-5ef1-48f0-9f49-f29fb9a4958e",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Anatomically implausible proportions; lower body dimensions appear exaggerated relative to upper body and head size, creating unrealistic human geometry"
+      },
+      "confidence": 0.85,
+      "reason": "Anatomically implausible proportions; lower body dimensions appear exaggerated relative to upper body and head size, creating unrealistic human geometry"
+    },
+    {
+      "characterId": "bc4a2b75-7cd0-4767-a10e-4cce18098954",
+      "variant": 3,
+      "webpKey": "images/personas/bc4a2b75-7cd0-4767-a10e-4cce18098954/p3.webp",
+      "pngKey": null,
+      "characterMediaId": "f28063f5-fb7d-4342-aebc-e80d3543fa81",
+      "judgment": {
+        "distorted": true,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Anatomically implausible proportions, unrealistic body geometry, and evident digital manipulation artifacts"
+      },
+      "confidence": 0.85,
+      "reason": "Anatomically implausible proportions, unrealistic body geometry, and evident digital manipulation artifacts"
+    },
+    {
+      "characterId": "7b8892e3-282c-4700-bce1-50c42498f80a",
+      "variant": 4,
+      "webpKey": "images/personas/7b8892e3-282c-4700-bce1-50c42498f80a/p4.webp",
+      "pngKey": null,
+      "characterMediaId": "c284460c-b430-4aa6-9b59-ebd0324bed26",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Anatomically implausible proportions - exaggerated curves and unrealistic body shape suggesting digital enhancement or manipulation"
+      },
+      "confidence": 0.85,
+      "reason": "Anatomically implausible proportions - exaggerated curves and unrealistic body shape suggesting digital enhancement or manipulation"
+    },
+    {
+      "characterId": "ffcfebd7-c81d-40fc-8f58-b7d9961567d7",
+      "variant": 2,
+      "webpKey": "images/personas/ffcfebd7-c81d-40fc-8f58-b7d9961567d7/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "b3f215a4-119a-4153-9b3f-19aedf95e42c",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Anatomically implausible proportions; unrealistic breast size and shape relative to body frame; stylized/idealized human form rather than plausible anatomy"
+      },
+      "confidence": 0.85,
+      "reason": "Anatomically implausible proportions; unrealistic breast size and shape relative to body frame; stylized/idealized human form rather than plausible anatomy"
+    },
+    {
+      "characterId": "a246dea3-f208-4994-8636-b6bdd1c83cb0",
+      "variant": 2,
+      "webpKey": "images/personas/a246dea3-f208-4994-8636-b6bdd1c83cb0/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "c0baf711-1fae-45ec-9c30-086121d50d2e",
+      "judgment": {
+        "distorted": true,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Significant anatomical distortions visible in body proportions and muscle definition; unnatural geometry in torso and limb relationships"
+      },
+      "confidence": 0.85,
+      "reason": "Significant anatomical distortions visible in body proportions and muscle definition; unnatural geometry in torso and limb relationships"
+    },
+    {
+      "characterId": "8923c01a-82e5-4bd3-8a54-438062b573a9",
+      "variant": 4,
+      "webpKey": "images/personas/8923c01a-82e5-4bd3-8a54-438062b573a9/p4.webp",
+      "pngKey": null,
+      "characterMediaId": "9ff70452-7edf-4c9b-9bab-9bc12111e0b9",
+      "judgment": {
+        "distorted": true,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Significant anatomical distortions: elongated/warped torso proportions, unnatural spinal curvature, disproportionate limb lengths, and implausible body geometry inconsistent with human anatomy"
+      },
+      "confidence": 0.85,
+      "reason": "Significant anatomical distortions: elongated/warped torso proportions, unnatural spinal curvature, disproportionate limb lengths, and implausible body geometry inconsistent with human anatomy"
+    },
+    {
+      "characterId": "dd307fb2-7bef-4413-8e78-83c1d22e0d28",
+      "variant": 3,
+      "webpKey": "images/personas/dd307fb2-7bef-4413-8e78-83c1d22e0d28/p3.webp",
+      "pngKey": null,
+      "characterMediaId": "51937838-60d5-416f-961d-74e61e7149a5",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Image shows anatomically implausible proportions with disproportionately enlarged breast size relative to body frame and unrealistic symmetry inconsistent with human variation"
+      },
+      "confidence": 0.85,
+      "reason": "Image shows anatomically implausible proportions with disproportionately enlarged breast size relative to body frame and unrealistic symmetry inconsistent with human variation"
+    },
+    {
+      "characterId": "155740eb-6cb6-4cb4-af83-e723d2205beb",
+      "variant": 1,
+      "webpKey": "images/personas/155740eb-6cb6-4cb4-af83-e723d2205beb/p1.webp",
+      "pngKey": null,
+      "characterMediaId": "cffe364c-a8c5-45dd-aa1a-a26a5ae1d92c",
+      "judgment": {
+        "distorted": true,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "AI-generated image with smoothed/artificial skin texture, unnatural anatomical proportions, and characteristic digital artifacts typical of synthetic imagery"
+      },
+      "confidence": 0.85,
+      "reason": "AI-generated image with smoothed/artificial skin texture, unnatural anatomical proportions, and characteristic digital artifacts typical of synthetic imagery"
+    },
+    {
+      "characterId": "001a358d-d1dd-4758-abd2-b39399f37c5a",
+      "variant": 2,
+      "webpKey": "images/personas/001a358d-d1dd-4758-abd2-b39399f37c5a/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "a8873fbe-32da-45c9-a8d8-4f6e74696e7e",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Image shows unrealistic body proportions (extremely thin waist, elongated legs) that deviate significantly from typical human anatomy, though individual features are rendered without obvious distortion artifacts."
+      },
+      "confidence": 0.85,
+      "reason": "Image shows unrealistic body proportions (extremely thin waist, elongated legs) that deviate significantly from typical human anatomy, though individual features are rendered without obvious distortion artifacts."
+    },
+    {
+      "characterId": "c4ea72d4-045c-48da-9acc-f3a83d062bbb",
+      "variant": 4,
+      "webpKey": "images/personas/c4ea72d4-045c-48da-9acc-f3a83d062bbb/p4.webp",
+      "pngKey": null,
+      "characterMediaId": "7f04bea2-256a-42f9-930f-0f2c94047009",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Image appears to be AI-generated or heavily modified with unrealistic proportions and perfect symmetry inconsistent with natural human anatomy"
+      },
+      "confidence": 0.85,
+      "reason": "Image appears to be AI-generated or heavily modified with unrealistic proportions and perfect symmetry inconsistent with natural human anatomy"
+    },
+    {
+      "characterId": "6a0a0532-754b-475d-b326-84c053bcdd54",
+      "variant": 2,
+      "webpKey": "images/personas/6a0a0532-754b-475d-b326-84c053bcdd54/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "c202adb5-04ae-4c45-afd9-eb37fdc45553",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Proportions unnaturally exaggerated in chest/torso area; otherwise well-rendered with good focus and no obvious geometric warping"
+      },
+      "confidence": 0.85,
+      "reason": "Proportions unnaturally exaggerated in chest/torso area; otherwise well-rendered with good focus and no obvious geometric warping"
+    },
+    {
+      "characterId": "ccf1300c-37ef-43a3-ab6a-da07a0d0238c",
+      "variant": 2,
+      "webpKey": "images/personas/ccf1300c-37ef-43a3-ab6a-da07a0d0238c/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "ccc516bb-2f79-4dba-9a9e-13f82003d4ca",
+      "judgment": {
+        "distorted": true,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Anatomically implausible proportions with exaggerated curves and unnatural body geometry that violates normal human biomechanics"
+      },
+      "confidence": 0.85,
+      "reason": "Anatomically implausible proportions with exaggerated curves and unnatural body geometry that violates normal human biomechanics"
+    },
+    {
+      "characterId": "e69fbfc1-c0d2-4f76-a6b2-1300eb2febfd",
+      "variant": 3,
+      "webpKey": "images/personas/e69fbfc1-c0d2-4f76-a6b2-1300eb2febfd/p3.webp",
+      "pngKey": null,
+      "characterMediaId": "890df690-877c-4364-a9a5-96ab9f6ae4ec",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Extremely exaggerated and implausible body proportions; unrealistic gluteal and thigh geometry inconsistent with human anatomy"
+      },
+      "confidence": 0.85,
+      "reason": "Extremely exaggerated and implausible body proportions; unrealistic gluteal and thigh geometry inconsistent with human anatomy"
+    },
+    {
+      "characterId": "3065ed1d-6c82-4001-9a9a-68833fed5327",
+      "variant": 2,
+      "webpKey": "images/personas/3065ed1d-6c82-4001-9a9a-68833fed5327/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "9ac4a06f-d268-4477-8055-a2934acb3520",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Anatomically implausible proportions and posture; exaggerated features inconsistent with realistic human anatomy"
+      },
+      "confidence": 0.85,
+      "reason": "Anatomically implausible proportions and posture; exaggerated features inconsistent with realistic human anatomy"
+    },
+    {
+      "characterId": "5f46574f-7463-4af5-abb6-1e913a79c25f",
+      "variant": 4,
+      "webpKey": "images/personas/5f46574f-7463-4af5-abb6-1e913a79c25f/p4.webp",
+      "pngKey": null,
+      "characterMediaId": "2ff57a02-bffb-4add-b9e3-c47eba23aafe",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Image contains anatomically implausible proportions with exaggerated features that deviate significantly from natural human anatomy."
+      },
+      "confidence": 0.85,
+      "reason": "Image contains anatomically implausible proportions with exaggerated features that deviate significantly from natural human anatomy."
+    },
+    {
+      "characterId": "ec0d36fc-606c-4ebe-9f2a-5e68ed5cf36c",
+      "variant": 4,
+      "webpKey": "images/personas/ec0d36fc-606c-4ebe-9f2a-5e68ed5cf36c/p4.webp",
+      "pngKey": null,
+      "characterMediaId": "0d4833b7-b1d6-497a-ae0e-9af1f8a3f53e",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Image shows unrealistic anatomical proportions inconsistent with human biology; however, no obvious warping, geometry issues, or missing limbs present. Sharpness is good throughout."
+      },
+      "confidence": 0.85,
+      "reason": "Image shows unrealistic anatomical proportions inconsistent with human biology; however, no obvious warping, geometry issues, or missing limbs present. Sharpness is good throughout."
+    },
+    {
+      "characterId": "e255b1fd-7ea1-4676-a4c8-fc72a6f848c3",
+      "variant": 2,
+      "webpKey": "images/personas/e255b1fd-7ea1-4676-a4c8-fc72a6f848c3/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "8f3460da-39ab-4127-bb27-ac6f6d4a96f3",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Image shows anatomically implausible proportions inconsistent with human physiology"
+      },
+      "confidence": 0.85,
+      "reason": "Image shows anatomically implausible proportions inconsistent with human physiology"
+    },
+    {
+      "characterId": "686a6fa6-81f1-4bbf-a87d-a5814af0527f",
+      "variant": 2,
+      "webpKey": "images/personas/686a6fa6-81f1-4bbf-a87d-a5814af0527f/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "66d7df65-b853-4018-8d7c-bf161c3fedc8",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Image shows unrealistic anatomical proportions inconsistent with human physiology, particularly in breast size relative to body frame"
+      },
+      "confidence": 0.85,
+      "reason": "Image shows unrealistic anatomical proportions inconsistent with human physiology, particularly in breast size relative to body frame"
+    },
+    {
+      "characterId": "686a6fa6-81f1-4bbf-a87d-a5814af0527f",
+      "variant": 3,
+      "webpKey": "images/personas/686a6fa6-81f1-4bbf-a87d-a5814af0527f/p3.webp",
+      "pngKey": null,
+      "characterMediaId": "9e5b4ba1-57c5-4c5a-a40a-b7822e5a84a1",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Image appears to be AI-generated with unnaturally perfect proportions and inconsistent anatomical details typical of synthetic imagery"
+      },
+      "confidence": 0.85,
+      "reason": "Image appears to be AI-generated with unnaturally perfect proportions and inconsistent anatomical details typical of synthetic imagery"
+    },
+    {
+      "characterId": "63bcb3ea-c3aa-445d-84c6-0a620deb5d79",
+      "variant": 2,
+      "webpKey": "images/personas/63bcb3ea-c3aa-445d-84c6-0a620deb5d79/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "b821821e-1187-4f87-bf8c-d3c3c0ecf908",
+      "judgment": {
+        "distorted": true,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Anatomically implausible proportions: extremely elongated legs relative to torso, unnaturally thin limbs, distorted body geometry inconsistent with human anatomy"
+      },
+      "confidence": 0.85,
+      "reason": "Anatomically implausible proportions: extremely elongated legs relative to torso, unnaturally thin limbs, distorted body geometry inconsistent with human anatomy"
+    },
+    {
+      "characterId": "e055d7e2-2b6a-4102-b664-a167c5516e8e",
+      "variant": 1,
+      "webpKey": "images/personas/e055d7e2-2b6a-4102-b664-a167c5516e8e/p1.webp",
+      "pngKey": null,
+      "characterMediaId": "8750f8a0-038d-42fd-804b-92250807249d",
+      "judgment": {
+        "distorted": false,
+        "blurry": false,
+        "anatomy_ok": false,
+        "confidence": 0.85,
+        "reason": "Image appears AI-generated with unnaturally perfect proportions, overly smooth skin texture, and idealized features that deviate from typical human variation. The anatomical proportions, while not technically broken, display unrealistic enhancement."
+      },
+      "confidence": 0.85,
+      "reason": "Image appears AI-generated with unnaturally perfect proportions, overly smooth skin texture, and idealized features that deviate from typical human variation. The anatomical proportions, while not technically broken, display unrealistic enhancement."
+    }
+  ],
+  "needsReview": [
+    {
+      "characterId": "a8480d51-ed11-47ef-a4e6-f6fd2b6bdfa7",
+      "variant": 2,
+      "webpKey": "images/personas/a8480d51-ed11-47ef-a4e6-f6fd2b6bdfa7/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "9cb81937-bc8d-4f4e-824a-08c9ffd87d99",
+      "rawResponse": "I can't provide this analysis. I'm not able to review, analyze, or engage with sexually explicit images.\n\nIf you have other image quality review requests for non-explicit content, I'd be happy to help.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "78c14323-d559-452a-89fb-e6ce3e35bdec",
+      "variant": 1,
+      "webpKey": "images/personas/78c14323-d559-452a-89fb-e6ce3e35bdec/p1.webp",
+      "pngKey": null,
+      "characterMediaId": "640ed163-bf5e-4f3d-aebc-3bb4fadfe7ab",
+      "rawResponse": "I can't provide a review of this image. It contains explicit sexual content that I'm not able to analyze or evaluate.\n\nIf you have other images you'd like me to review for technical quality, I'm happy to help with those.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "8b687ada-8c9a-4956-97fe-dae485436f7a",
+      "variant": 3,
+      "webpKey": "images/personas/8b687ada-8c9a-4956-97fe-dae485436f7a/p3.webp",
+      "pngKey": null,
+      "characterMediaId": "0f2a2be1-cb9e-4b87-a38e-9846ed9c1bf0",
+      "rawResponse": "I can't analyze this image as it contains explicit sexual content. I'd be happy to help evaluate other images or assist with different tasks.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "a6b4bce4-ad81-4cea-8de6-3bf2422ef5fa",
+      "variant": 2,
+      "webpKey": "images/personas/a6b4bce4-ad81-4cea-8de6-3bf2422ef5fa/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "cf29f830-46e9-4649-892a-c2dd9069d46d",
+      "rawResponse": "I can't help with reviewing or evaluating this image.\n\nIf you have other image quality assessment tasks I can assist with, please feel free to ask.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "46f45c51-195a-44a5-869d-39ea0dd8bbbb",
+      "variant": 2,
+      "webpKey": "images/personas/46f45c51-195a-44a5-869d-39ea0dd8bbbb/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "6f4aeeeb-1afa-4421-a578-6351c170420c",
+      "rawResponse": "I can't help with reviewing this image. This appears to be adult/NSFW content, which I'm not able to analyze or engage with.\n\nIf you have other images you'd like me to review for technical quality (composition, focus, exposure, etc.), I'm happy to help with those.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "792146d7-a197-4813-845a-54f28bdd0885",
+      "variant": 4,
+      "webpKey": "images/personas/792146d7-a197-4813-845a-54f28bdd0885/p4.webp",
+      "pngKey": null,
+      "characterMediaId": "0e60adcc-74bd-4c73-9c8b-12125e36f246",
+      "rawResponse": "I can't analyze this image as it contains explicit sexual content. I'd be happy to help review other images for quality metrics.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "dbf88253-0861-4efc-8f91-4d690fdcc004",
+      "variant": 2,
+      "webpKey": "images/personas/dbf88253-0861-4efc-8f91-4d690fdcc004/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "daa757ee-74b8-444b-a1c4-6b4199528fbf",
+      "rawResponse": "I can't provide feedback on sexually explicit images. \n\nIf you have other images you'd like me to evaluate for technical quality, I'm happy to help with those instead.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "c390d8f8-adfc-4edd-b195-61238c23faab",
+      "variant": 2,
+      "webpKey": "images/personas/c390d8f8-adfc-4edd-b195-61238c23faab/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "b688e970-2d3a-46b2-8357-cb4ae6eb3213",
+      "rawResponse": "I can't provide feedback on this image. I'm not able to analyze or rate sexually explicit or nude imagery.\n\nIf you have other images you'd like me to review for technical quality (distortion, blur, anatomy), I'm happy to help with those instead.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "c390d8f8-adfc-4edd-b195-61238c23faab",
+      "variant": 3,
+      "webpKey": "images/personas/c390d8f8-adfc-4edd-b195-61238c23faab/p3.webp",
+      "pngKey": null,
+      "characterMediaId": "153cd5f1-ebc1-4adc-bb04-42f99e38256e",
+      "rawResponse": "I can't analyze nude or sexually explicit images. I'd be happy to help review other types of images instead.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "74445703-1b01-4698-9214-642e7f2222a1",
+      "variant": 1,
+      "webpKey": "images/personas/74445703-1b01-4698-9214-642e7f2222a1/p1.webp",
+      "pngKey": null,
+      "characterMediaId": "126ba5a6-3a54-4261-8819-6dcaaf8daf25",
+      "rawResponse": "I can't provide analysis of this image. I'm not able to review, analyze, or engage with sexually explicit or nude imagery.\n\nIf you have other images you'd like reviewed for quality metrics, I'd be happy to help with those instead.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "cad7d86f-3837-4962-ba7d-717efa176244",
+      "variant": 2,
+      "webpKey": "images/personas/cad7d86f-3837-4962-ba7d-717efa176244/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "aa8d5b03-ee2c-42f7-8588-4e73894e2b61",
+      "rawResponse": "I can't help with reviewing or analyzing this type of image. \n\nIf you have other image quality assessment tasks I can help with, please feel free to ask.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "1d76aef0-2c04-4bce-85d4-17a479f3fbdb",
+      "variant": 3,
+      "webpKey": "images/personas/1d76aef0-2c04-4bce-85d4-17a479f3fbdb/p3.webp",
+      "pngKey": null,
+      "characterMediaId": "33a739d8-c584-44fa-be3a-4fd6ca8057b3",
+      "rawResponse": "I can't provide this analysis. This is adult content, and I'm not able to review, analyze, or engage with sexually explicit images.\n\nIf you have other image quality review requests for non-adult content, I'd be happy to help with those.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "1d76aef0-2c04-4bce-85d4-17a479f3fbdb",
+      "variant": 4,
+      "webpKey": "images/personas/1d76aef0-2c04-4bce-85d4-17a479f3fbdb/p4.webp",
+      "pngKey": null,
+      "characterMediaId": "4e9eed1a-4618-4934-b4e1-9f12e93423cb",
+      "rawResponse": "I can't provide a review of this image as it contains explicit adult content. I'd be happy to help review other images that don't contain nude or sexually explicit material.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "7c1dd1a4-9058-4348-a151-2e3fae651c4f",
+      "variant": 4,
+      "webpKey": "images/personas/7c1dd1a4-9058-4348-a151-2e3fae651c4f/p4.webp",
+      "pngKey": null,
+      "characterMediaId": "614c2d98-ef9c-4bb5-b7a6-a400cafc63a2",
+      "rawResponse": "I can't help with this request. I'm not able to analyze, rate, or provide feedback on nude or sexually explicit images.\n\nIf you have other image quality review tasks that don't involve explicit content, I'd be happy to help with those.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "92f7dfae-4a24-4e4f-8fd5-a7814db64bfb",
+      "variant": 2,
+      "webpKey": "images/personas/92f7dfae-4a24-4e4f-8fd5-a7814db64bfb/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "b2590b86-a835-4136-9de2-3abae3bfd713",
+      "rawResponse": "I can't assist with reviewing or analyzing nude or sexually explicit images.\n\nIf you have other image review needs, I'm happy to help with those instead.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "cd6e8079-1bd9-4c24-a82d-8859a6e4db1e",
+      "variant": 2,
+      "webpKey": "images/personas/cd6e8079-1bd9-4c24-a82d-8859a6e4db1e/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "5ea1f7b5-7cff-49b3-a86e-805a2d3b8f04",
+      "rawResponse": "I can't analyze or rate this image. It contains explicit sexual content, which I'm not able to process or evaluate.\n\nIf you have other images you'd like me to review for technical quality metrics, I'd be happy to help with those instead.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "3740da46-c333-471d-a228-338367f817c3",
+      "variant": 2,
+      "webpKey": "images/personas/3740da46-c333-471d-a228-338367f817c3/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "d5e3ef43-29fe-4199-a955-a20d2cf53e27",
+      "rawResponse": "I can't analyze this image. It contains sexually explicit content that I'm not able to review or assess.\n\nIf you have other images you'd like me to evaluate for technical quality criteria, I'm happy to help with those.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "d26ebeaf-7284-4832-a600-190544478193",
+      "variant": 1,
+      "webpKey": "images/personas/d26ebeaf-7284-4832-a600-190544478193/p1.webp",
+      "pngKey": null,
+      "characterMediaId": "c3d68cbd-3832-4b34-a2b8-6f490b0457bf",
+      "rawResponse": "I can't provide this analysis. I don't evaluate, rate, or provide detailed commentary on sexually explicit images.\n\nIf you have other image quality assessment needs for different types of content, I'm happy to help with those.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "bc4a2b75-7cd0-4767-a10e-4cce18098954",
+      "variant": 2,
+      "webpKey": "images/personas/bc4a2b75-7cd0-4767-a10e-4cce18098954/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "51320628-2ea1-455c-91eb-00d0cc1a467f",
+      "rawResponse": "I can't analyze or provide feedback on this image. It contains explicit sexual content.\n\nIf you have other images you'd like reviewed for technical quality, I'd be happy to help with those instead.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "b07081be-a341-425b-ab8d-4fa641da7f8b",
+      "variant": 4,
+      "webpKey": "images/personas/b07081be-a341-425b-ab8d-4fa641da7f8b/p4.webp",
+      "pngKey": null,
+      "characterMediaId": "050485f3-5c01-4116-82ff-ed2daa8cc533",
+      "rawResponse": "I can't analyze or provide feedback on this image. If you have other images you'd like me to review for technical quality metrics, I'm happy to help with those.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "001a358d-d1dd-4758-abd2-b39399f37c5a",
+      "variant": 1,
+      "webpKey": "images/personas/001a358d-d1dd-4758-abd2-b39399f37c5a/p1.webp",
+      "pngKey": null,
+      "characterMediaId": "455a01b8-016e-470a-a57e-535fe7b0748f",
+      "rawResponse": "I can't provide analysis of this image. The image contains explicit sexual content that I'm not able to evaluate or process.\n\nIf you have other images you'd like me to review for technical quality metrics, I'd be happy to help with those instead.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "cb489e04-3f68-4b41-ba20-70d761cd0090",
+      "variant": 3,
+      "webpKey": "images/personas/cb489e04-3f68-4b41-ba20-70d761cd0090/p3.webp",
+      "pngKey": null,
+      "characterMediaId": "ee5d39b6-9eda-4358-8501-6092bb8a5f8b",
+      "rawResponse": "I can't provide this analysis. I'm not able to review, analyze, or provide feedback on sexually explicit or nude imagery.\n\nIf you have other images you'd like me to review for technical quality, I'd be happy to help with those.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "91b0bc55-22fe-474b-bb08-47d1dff216de",
+      "variant": 2,
+      "webpKey": "images/personas/91b0bc55-22fe-474b-bb08-47d1dff216de/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "b639ef01-bd60-41d0-91bb-db567d9ca0d8",
+      "rawResponse": "I can't provide this assessment. The image contains explicit sexual content, and I'm not able to analyze or review such material regardless of the framing or context.\n\nIf you have other images you'd like me to review for technical quality (distortion, blur, anatomy), I'm happy to help with those.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "ccf1300c-37ef-43a3-ab6a-da07a0d0238c",
+      "variant": 3,
+      "webpKey": "images/personas/ccf1300c-37ef-43a3-ab6a-da07a0d0238c/p3.webp",
+      "pngKey": null,
+      "characterMediaId": "9206d9d0-b742-4f97-aa41-82901a308c2e",
+      "rawResponse": "I can't help with this request. I'm not able to analyze, describe, or provide feedback on nude or sexually explicit images.\n\nIf you have other image quality review tasks I can assist with, I'd be happy to help.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "ec0d36fc-606c-4ebe-9f2a-5e68ed5cf36c",
+      "variant": 2,
+      "webpKey": "images/personas/ec0d36fc-606c-4ebe-9f2a-5e68ed5cf36c/p2.webp",
+      "pngKey": null,
+      "characterMediaId": "dd3fc279-64af-46f0-b6e6-296c987dcf17",
+      "rawResponse": "I can't help with this request. I'm not able to analyze, evaluate, or provide detailed descriptions of nude or sexually explicit images.\n\nIf you need image quality assessment for other types of content, I'd be happy to help with that instead.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "c7a143f3-de40-4322-9109-ea92b2e829e8",
+      "variant": 1,
+      "webpKey": "images/personas/c7a143f3-de40-4322-9109-ea92b2e829e8/p1.webp",
+      "pngKey": null,
+      "characterMediaId": "685cb54f-d525-4248-b51c-b05182fe95a6",
+      "rawResponse": "I can't analyze this image. I'm not able to review, evaluate, or provide assessments of nude or sexually explicit imagery.\n\nIf you have other images you'd like me to review for quality metrics, I'm happy to help with those instead.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "35fabac8-0818-4b5d-83da-2a2a2f7f1a55",
+      "variant": 1,
+      "webpKey": "images/personas/35fabac8-0818-4b5d-83da-2a2a2f7f1a55/p1.webp",
+      "pngKey": null,
+      "characterMediaId": "1db0028b-667e-4a94-b070-d32f31565704",
+      "rawResponse": "I can't analyze or provide feedback on sexually explicit images. \n\nIf you have other images you'd like me to review for technical quality metrics, I'd be happy to help with those instead.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "35fabac8-0818-4b5d-83da-2a2a2f7f1a55",
+      "variant": 4,
+      "webpKey": "images/personas/35fabac8-0818-4b5d-83da-2a2a2f7f1a55/p4.webp",
+      "pngKey": null,
+      "characterMediaId": "43b0d0bb-9683-4a53-b68f-19460ca2049e",
+      "rawResponse": "I can't help with this request. This appears to be an adult/NSFW image, and I'm not able to provide analysis, ratings, or other engagement with sexually explicit content.\n\nIf you have other image quality review tasks involving appropriate content, I'd be happy to help.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "fd346d86-128c-44c3-a17e-220ab3319c92",
+      "variant": 4,
+      "webpKey": "images/personas/fd346d86-128c-44c3-a17e-220ab3319c92/p4.webp",
+      "pngKey": null,
+      "characterMediaId": "cc21f048-2933-4baf-87e2-b15dd80fa7d9",
+      "rawResponse": "I can't analyze or provide feedback on this image. This appears to be adult content, and I'm not able to process, analyze, or provide evaluations of such images.\n\nIf you have other images you'd like reviewed for technical quality purposes, I'd be happy to help with those.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "1df52b9b-bb11-4cb6-9f70-3aff6954cd55",
+      "variant": 3,
+      "webpKey": "images/personas/1df52b9b-bb11-4cb6-9f70-3aff6954cd55/p3.webp",
+      "pngKey": null,
+      "characterMediaId": "eb12b28e-616b-4637-bf4b-fe7aba785297",
+      "rawResponse": "I can't assist with reviewing or analyzing this image as it contains explicit adult content.",
+      "errorMessage": "response did not parse as strict JSON"
+    },
+    {
+      "characterId": "e055d7e2-2b6a-4102-b664-a167c5516e8e",
+      "variant": 4,
+      "webpKey": "images/personas/e055d7e2-2b6a-4102-b664-a167c5516e8e/p4.webp",
+      "pngKey": null,
+      "characterMediaId": "4227a5f8-f1f5-45b9-a863-39b401c5d60b",
+      "rawResponse": "I can't help with evaluating or analyzing this image. \n\nIf you have questions about image quality assessment, photography techniques, or other topics, I'd be happy to help with those instead.",
+      "errorMessage": "response did not parse as strict JSON"
+    }
+  ],
+  "errors": []
+}

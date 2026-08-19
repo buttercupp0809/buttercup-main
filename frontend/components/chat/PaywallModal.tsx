@@ -19,6 +19,13 @@ import { ModalOverlay, ModalCard, ModalCloseButton } from "@/components/ui/Modal
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:4000";
 
+// Mirror of BillingClient's HIDE_VIDEO_BENEFITS flag. Hides every "video"
+// claim from the paywall modal: perk rows on each plan tile, the kind-based
+// headline / subhead copy, and the video icon fallback. Server events with
+// kind="video" still work, we simply render them as a generic media paywall
+// so no "video" promise ever appears in the UI. Flip to false to restore.
+const HIDE_VIDEO_BENEFITS = true;
+
 export interface PaywallModalProps {
   scope: "free_trial" | "plan_quota";
   kind: "chat" | "image" | "video";
@@ -173,6 +180,13 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
   // Split the headline into a body + emphasized token so the token can
   // wear the rose to violet gradient without hardcoding brittle string
   // slicing on every branch.
+  // When HIDE_VIDEO_BENEFITS is on, a kind="video" event still triggers the
+  // paywall (backend contract unchanged) but we render neutral media copy so
+  // the word "video" never appears. When the flag is off, the historic
+  // video-specific copy is used as-is.
+  const kindLabelPlural = HIDE_VIDEO_BENEFITS && kind === "video" ? "media" : kind === "image" ? "images" : "videos";
+  const kindLabelCap = HIDE_VIDEO_BENEFITS && kind === "video" ? "Media" : kind === "image" ? "Images" : "Videos";
+
   const headlineParts: { body: string; token?: string } =
     scope === "free_trial"
       ? {
@@ -182,14 +196,16 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
       : kind === "chat"
       ? { body: "You have used all", token: "your plan messages" }
       : mediaRequiresPlan
-      ? { body: kind === "image" ? "Images" : "Videos", token: "require a plan" }
-      : { body: `Your plan ${kind === "image" ? "images" : "videos"}`, token: "are used up" };
+      ? { body: kindLabelCap, token: "require a plan" }
+      : { body: `Your plan ${kindLabelPlural}`, token: "are used up" };
 
   const sub =
     scope === "free_trial"
       ? "Pick a pass and keep the story going. Cancel any time, no drama."
       : mediaRequiresPlan
-      ? "Grab a pass, or buy a token pack for one-off images and videos."
+      ? HIDE_VIDEO_BENEFITS
+        ? "Grab a pass, or buy a token pack for one-off images."
+        : "Grab a pass, or buy a token pack for one-off images and videos."
       : `You used ${used} of ${limit === -1 ? "unlimited" : limit}. One more pass and you are back in the moment.`;
 
   const showBuyTokens = kind === "image" || kind === "video";
@@ -201,7 +217,13 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
   const highlightIndex = monthlyIndex;
   const bestValueIndex = -1;
   const kindIcon =
-    kind === "image" ? <ImageIcon className="h-6 w-6" /> : kind === "video" ? <VideoIcon className="h-6 w-6" /> : <SparkleIcon className="h-6 w-6" />;
+    kind === "image"
+      ? <ImageIcon className="h-6 w-6" />
+      : kind === "video"
+        ? HIDE_VIDEO_BENEFITS
+          ? <SparkleIcon className="h-6 w-6" />
+          : <VideoIcon className="h-6 w-6" />
+        : <SparkleIcon className="h-6 w-6" />;
 
   if (dismissed) {
     return (
@@ -380,11 +402,13 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
                       label="Images"
                       value={p.images === -1 ? "Unlimited" : p.images.toLocaleString()}
                     />
-                    <PerkRow
-                      icon={<VideoIcon className="h-3.5 w-3.5" />}
-                      label="Videos"
-                      value={p.videos === -1 ? "Unlimited" : p.videos.toLocaleString()}
-                    />
+                    {HIDE_VIDEO_BENEFITS ? null : (
+                      <PerkRow
+                        icon={<VideoIcon className="h-3.5 w-3.5" />}
+                        label="Videos"
+                        value={p.videos === -1 ? "Unlimited" : p.videos.toLocaleString()}
+                      />
+                    )}
                   </ul>
 
                   <button

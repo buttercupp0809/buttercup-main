@@ -7,6 +7,9 @@
 
 import { describe, expect, it } from "vitest";
 import {
+  BENEFITS,
+  filterHiddenBenefits,
+  HIDDEN_BENEFIT_PATTERN,
   REVIEWS,
   splitPlans,
   yearlySavingsPercent,
@@ -79,6 +82,31 @@ describe("yearlySavingsPercent", () => {
   it("returns null when the yearly price is not actually a saving", () => {
     expect(yearlySavingsPercent(10, 120)).toBeNull();
     expect(yearlySavingsPercent(10, 200)).toBeNull();
+  });
+});
+
+describe("HIDE_VIDEO_BENEFITS filter", () => {
+  it("drops every video / clip benefit from the Premium benefits grid", () => {
+    const visible = filterHiddenBenefits(BENEFITS);
+    for (const b of visible) {
+      expect(HIDDEN_BENEFIT_PATTERN.test(b.label)).toBe(false);
+    }
+    // At least the "companions" and "voice replies" survivors should remain
+    // so the grid never renders empty when the flag is on.
+    expect(visible.length).toBeGreaterThan(0);
+    expect(visible.some((b) => /companions/i.test(b.label))).toBe(true);
+  });
+
+  it("HIDDEN_BENEFIT_PATTERN matches video, videos, clip, clips (case-insensitive)", () => {
+    for (const s of ["video", "Video", "videos", "clip", "Clips"]) {
+      expect(HIDDEN_BENEFIT_PATTERN.test(s)).toBe(true);
+    }
+    expect(HIDDEN_BENEFIT_PATTERN.test("companions")).toBe(false);
+    expect(HIDDEN_BENEFIT_PATTERN.test("images")).toBe(false);
+  });
+
+  it("BENEFITS source array still carries the historical video entries so the flag can be flipped back", () => {
+    expect(BENEFITS.some((b) => /video/i.test(b.label))).toBe(true);
   });
 });
 

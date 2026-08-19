@@ -9,6 +9,39 @@
 import * as React from "react";
 import { Star, Check } from "lucide-react";
 import { TokenStore } from "./TokenStore";
+import { Tabs, type TabItem } from "@/components/ui/Tabs";
+
+// Feature flag: hide the pay-as-you-go token packs section for now. Kept as
+// a trivially flippable constant (and TokenStore.tsx is preserved) so the
+// section can be re-enabled with a one-line change once the pricing story
+// for packs is finalized.
+const SHOW_TOKEN_PACKS = false;
+
+// Feature flag: hide every "video" / "clip" claim from the billing surface
+// (subscription tiles, pass tiles, paywall promo copy, premium benefits, and
+// the live current-plan quota pill). Kept as a single constant so the promise
+// of video features can be re-enabled with a one-line flip once the
+// generation quality bar is met. The backend contract is unchanged: the
+// server still returns video quotas from /billing/plans and /billing/entitlements;
+// we simply filter them out of the render layer here.
+const HIDE_VIDEO_BENEFITS = true;
+
+// Any benefit label matching this pattern is dropped from the "Premium
+// benefits" grid while HIDE_VIDEO_BENEFITS is on. Also applied to the token
+// packs subtitle. Exported for tests.
+export const HIDDEN_BENEFIT_PATTERN = /video|clips?/i;
+
+export function filterHiddenBenefits<T extends { label: string }>(items: readonly T[]): T[] {
+  if (!HIDE_VIDEO_BENEFITS) return [...items];
+  return items.filter((b) => !HIDDEN_BENEFIT_PATTERN.test(b.label));
+}
+
+type BillingTab = "subscription" | "passes";
+
+const BILLING_TABS: ReadonlyArray<TabItem<BillingTab>> = [
+  { value: "subscription", label: "Subscription", testId: "billing-tab-subscription" },
+  { value: "passes", label: "Passes", testId: "billing-tab-passes" },
+];
 
 export type Plan =
   | "free"
@@ -52,7 +85,7 @@ interface Entitlements {
 
 // Emoji-forward premium benefits, per the reference. Emoji are an explicit
 // design choice here (they match the Candy.ai look the product is after).
-const BENEFITS = [
+export const BENEFITS = [
   { emoji: "✨", label: "Create your own companions" },
   { emoji: "🔥", label: "Generate 18+ videos" },
   { emoji: "🎬", label: "Full live-action experience" },
@@ -60,6 +93,8 @@ const BENEFITS = [
   { emoji: "🪙", label: "Token packs for images and video" },
   { emoji: "🎙️", label: "Expressive voice replies" },
 ];
+
+const VISIBLE_BENEFITS = filterHiddenBenefits(BENEFITS);
 
 export const REVIEWS = [
   {
@@ -141,6 +176,7 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
   const [ent, setEnt] = React.useState<Entitlements | null>(null);
   const [pending, setPending] = React.useState<string | null>(null);
   const [error, setError] = React.useState<string | null>(null);
+  const [activeTab, setActiveTab] = React.useState<BillingTab>("subscription");
 
   const refreshEntitlements = React.useCallback(async () => {
     try {
@@ -240,10 +276,22 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
         <CurrentPlanPill ent={ent} plans={plans} />
       </div>
 
+      {/* Tab strip: Subscription (default) shows the two recurring tiles,
+          Passes shows the one-time duration passes. Premium benefits and
+          reviews live below and render regardless of the active tab. */}
+      <div className="flex justify-center">
+        <Tabs<BillingTab>
+          value={activeTab}
+          onValueChange={setActiveTab}
+          items={BILLING_TABS}
+          ariaLabel="Billing options"
+        />
+      </div>
+
       {/* Subscriptions: recurring monthly / yearly. Rendered FIRST as the
           promoted primary tier. Only renders when the backend catalog
           includes recurring plans. */}
-      {subPlans.length > 0 ? (
+      {activeTab === "subscription" && subPlans.length > 0 ? (
         <div data-testid="subscriptions-section">
           <SectionHeading
             title="Auto-renew"
@@ -355,7 +403,9 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
                   <ul className="relative mt-6 space-y-2 text-sm">
                     <FeatureLine>Chats: {p.chats === -1 ? "Unlimited" : p.chats} per month</FeatureLine>
                     <FeatureLine>Images: {p.images === -1 ? "Unlimited" : p.images} per month</FeatureLine>
-                    <FeatureLine>Videos: {p.videos === -1 ? "Unlimited" : p.videos} per month</FeatureLine>
+                    {HIDE_VIDEO_BENEFITS ? null : (
+                      <FeatureLine>Videos: {p.videos === -1 ? "Unlimited" : p.videos} per month</FeatureLine>
+                    )}
                     <FeatureLine>Voice replies + memory</FeatureLine>
                     <FeatureLine>Priority generation</FeatureLine>
                   </ul>
@@ -392,9 +442,9 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
         </div>
       ) : null}
 
-      <SectionDivider />
-
       {/* Passes: one-time duration passes */}
+      {activeTab === "passes" ? (
+        <div data-testid="passes-section">
       <SectionHeading
         title="One-time"
         accent="passes"
@@ -491,7 +541,9 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
               <ul className="relative mt-6 space-y-2 text-sm">
                 <FeatureLine>Chats: {p.chats === -1 ? "Unlimited" : p.chats}</FeatureLine>
                 <FeatureLine>Images: {p.images === -1 ? "Unlimited" : p.images}</FeatureLine>
-                <FeatureLine>Videos: {p.videos === -1 ? "Unlimited" : p.videos}</FeatureLine>
+                {HIDE_VIDEO_BENEFITS ? null : (
+                  <FeatureLine>Videos: {p.videos === -1 ? "Unlimited" : p.videos}</FeatureLine>
+                )}
                 <FeatureLine>Voice replies + memory</FeatureLine>
                 <FeatureLine>Priority generation</FeatureLine>
               </ul>
@@ -533,19 +585,28 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
           </div>
         ) : null}
       </div>
+        </div>
+      ) : null}
 
-      <SectionDivider />
-
-      <div>
-        <SectionHeading
-          title="Token"
-          accent="packs"
-          chipLabel="Tokens"
-          chipVariant="violet"
-          subtitle="Pay-as-you-go credits for extra images and videos on top of any plan."
-        />
-        <TokenStore />
-      </div>
+      {SHOW_TOKEN_PACKS ? (
+        <>
+          <SectionDivider />
+          <div>
+            <SectionHeading
+              title="Token"
+              accent="packs"
+              chipLabel="Tokens"
+              chipVariant="violet"
+              subtitle={
+                HIDE_VIDEO_BENEFITS
+                  ? "Pay-as-you-go credits for extra images on top of any plan."
+                  : "Pay-as-you-go credits for extra images and videos on top of any plan."
+              }
+            />
+            <TokenStore />
+          </div>
+        </>
+      ) : null}
 
       {/* Premium benefits */}
       <div>
@@ -568,7 +629,7 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
           </p>
         </div>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {BENEFITS.map((b) => (
+          {VISIBLE_BENEFITS.map((b) => (
             <div
               key={b.label}
               className="buttercupp-glass flex items-center gap-3 rounded-2xl px-4 py-3.5 transition duration-200 hover:-translate-y-0.5 hover:border-[hsl(var(--buttercupp-accent-rose)/0.35)]"
@@ -792,7 +853,9 @@ function CurrentPlanPill({ ent, plans }: { ent: Entitlements | null; plans: Plan
             />
             <PlanStat label="chats" value={formatBucketRemaining(ent.chats)} />
             <PlanStat label="images" value={formatBucketRemaining(ent.images)} />
-            <PlanStat label="videos" value={formatBucketRemaining(ent.videos)} />
+            {HIDE_VIDEO_BENEFITS ? null : (
+              <PlanStat label="videos" value={formatBucketRemaining(ent.videos)} />
+            )}
           </>
         ) : isFree ? (
           <span style={{ color: "hsl(var(--buttercupp-muted))" }}>

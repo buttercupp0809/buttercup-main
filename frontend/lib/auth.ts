@@ -193,6 +193,23 @@ export async function requireAuth(): Promise<User> {
   return user;
 }
 
+// Phase 34 Feature C: hard-block unverified password signups. Google OAuth
+// users are exempt because Google already asserts email_verified at the token
+// verification step (see api/auth/oauth/google/route.ts) and the OAuth route
+// stamps emailVerifiedAt on both create and link paths. Detected here via
+// oauthProvider === "google" || googleId != null so a Google user with a
+// missing emailVerifiedAt (e.g. an older row not yet backfilled) is never
+// bounced to /verify-email (they have no password to log back in with).
+// Must be called AFTER requireAuth in the layout chain.
+export async function requireEmailVerified(): Promise<User> {
+  const user = await requireAuth();
+  const isGoogleUser = user.oauthProvider === "google" || user.googleId !== null;
+  if (!user.emailVerifiedAt && !isGoogleUser) {
+    redirect("/verify-email");
+  }
+  return user;
+}
+
 // Redirects to /age-gate when the user has not passed the age & compliance
 // gate. Must be called AFTER requireAuth in the layout chain.
 export async function requireAgeVerified(): Promise<User> {

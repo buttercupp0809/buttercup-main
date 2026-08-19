@@ -199,7 +199,7 @@ function getOpenAIClient(): OpenAILike | null {
   return _openai;
 }
 
-function getAnthropicClient(): AnthropicLike | null {
+export function getAnthropicClient(): AnthropicLike | null {
   if (!process.env.ANTHROPIC_API_KEY) return null;
   if (_anthropic) return _anthropic;
   const Ctor = tryLoadAnthropic();

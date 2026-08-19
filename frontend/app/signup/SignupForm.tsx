@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { PasswordField } from "@/components/auth/PasswordField";
 import { GoogleButton } from "@/components/auth/GoogleButton";
 import { TrustStrip } from "@/components/trust/TrustStrip";
+import { metaTrack } from "@/lib/marketing/meta-pixel";
 
 function errorMessage(body: Record<string, unknown>): string {
   const issues = body?.issues as { path?: unknown[]; message?: string }[] | undefined;
@@ -55,6 +56,9 @@ export function SignupForm() {
       setErr(errorMessage(body));
       return;
     }
+    // A completed email plus password account creation is a Meta "Lead".
+    // Fire-and-forget; fbq queues and sends async, so it survives the redirect.
+    metaTrack("Lead", { content_name: "signup" });
     router.push("/dashboard");
   }
 

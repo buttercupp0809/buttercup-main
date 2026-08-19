@@ -4,7 +4,9 @@ import { SignupDto, computeAgeYears, MIN_AGE_YEARS } from "@buttercupp/shared";
 import { hashPassword } from "@/lib/password";
 import { signAuthToken, setAuthCookie } from "@/lib/auth";
 import { jsonError, jsonOk, parseJson } from "@/lib/api-helpers";
-import { sendEmail, emailShell } from "@/lib/email";
+import { sendEmail } from "@/lib/email";
+import { issueEmailVerification } from "@/lib/email-verify";
+import { buildVerifyEmail } from "@/lib/emails/verify-email";
 
 export const runtime = "nodejs";
 
@@ -56,17 +58,20 @@ export async function POST(req: Request) {
       },
     });
 
-    // Welcome email, best-effort: never block or fail signup on email issues.
-    void sendEmail({
-      to: email,
-      subject: "Welcome to ButterCupp",
-      html: emailShell(
-        "Welcome to ButterCupp",
-        `<p style="color:#c9c9d4;font-size:14px">Your account is ready. Pick a companion, start chatting, and make it yours.</p>
-         <p style="margin:20px 0"><a href="${new URL(req.url).origin}/dashboard" style="background:#f2668b;color:#0b0b0f;text-decoration:none;font-weight:600;padding:10px 18px;border-radius:8px;display:inline-block">Open ButterCupp</a></p>`,
-      ),
-      text: "Welcome to ButterCupp. Your account is ready.",
-    }).catch(() => null);
+    // Phase 34 Feature C: email verification. The user is created WITHOUT
+    // emailVerifiedAt; the (protected) layout gate keeps them on /verify-email
+    // until they click the link. We still issue the auth cookie below so they
+    // can reach /verify-email and hit the resend endpoint. Replaces the old
+    // welcome email; verification IS the welcome now.
+    try {
+      const { rawToken } = await issueEmailVerification(user.id, email);
+      const origin = new URL(req.url).origin;
+      const link = `${origin}/api/auth/verify-email?token=${encodeURIComponent(rawToken)}`;
+      const { subject, html, text } = buildVerifyEmail(link);
+      await sendEmail({ to: email, subject, html, text });
+    } catch {
+      // Best-effort: never block signup on email issues; the user can resend.
+    }
 
     const token = await signAuthToken(user.id);
     const res = jsonOk({ userId: user.id });
