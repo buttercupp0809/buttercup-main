@@ -2,6 +2,7 @@ import { prisma } from "@buttercupp/database";
 import { MagicLinkRequestDto } from "@buttercupp/shared";
 import { issueMagicLink } from "@/lib/magic-link";
 import { jsonOk, parseJson } from "@/lib/api-helpers";
+import { publicUrl } from "@/lib/public-url";
 
 export const runtime = "nodejs";
 
@@ -16,8 +17,7 @@ export async function POST(req: Request) {
   const user = await prisma.user.findUnique({ where: { email } });
   if (user) {
     const { rawToken } = await issueMagicLink(user.id, "login");
-    const base = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
-    const url = `${base}/api/auth/magic-link/consume?token=${encodeURIComponent(rawToken)}`;
+    const url = publicUrl(req, `/api/auth/magic-link/consume?token=${encodeURIComponent(rawToken)}`);
     // Phase 01: log to console. Phase 13 wires an email provider.
     console.log(`[magic-link] to=${email} url=${url}`);
   }

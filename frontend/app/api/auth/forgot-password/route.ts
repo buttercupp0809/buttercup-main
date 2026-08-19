@@ -7,6 +7,7 @@ import { ForgotPasswordDto } from "@buttercupp/shared";
 import { signResetToken } from "@/lib/auth";
 import { jsonOk, parseJson } from "@/lib/api-helpers";
 import { sendEmail, emailShell } from "@/lib/email";
+import { publicUrl } from "@/lib/public-url";
 
 export const runtime = "nodejs";
 
@@ -18,13 +19,9 @@ export async function POST(req: Request) {
   const user = await prisma.user.findUnique({ where: { email } });
   if (user && user.passwordHash) {
     const token = await signResetToken(user.id);
-    // NEXT_PUBLIC_APP_URL is the canonical public origin. req.url is the
-    // internal Lambda URL in Amplify (http://localhost:3000/...), so using
-    // it directly would embed localhost in the emailed reset link. Fall back
-    // to req.url origin only in local dev where the env var is unset.
-    const origin =
-      process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") ?? new URL(req.url).origin;
-    const link = `${origin}/reset-password?token=${encodeURIComponent(token)}`;
+    // Build the reset link on the PUBLIC origin so it never embeds the
+    // container-internal localhost in prod. See lib/public-url.ts.
+    const link = publicUrl(req, `/reset-password?token=${encodeURIComponent(token)}`);
     await sendEmail({
       to: email,
       subject: "Reset your ButterCupp password",

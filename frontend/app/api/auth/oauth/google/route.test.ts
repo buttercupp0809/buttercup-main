@@ -1,15 +1,20 @@
-// Google OAuth route tests (Phase 32 Part B). Covers the three linking cases:
-// brand-new Google user, existing email that signed up with password (link
-// googleId), and a returning Google user (found by googleId). Also verifies
-// that the route returns 501 when GOOGLE_CLIENT_ID is unset, and that
-// needsAgeGate is true for a fresh Google user (they have no dob/jurisdiction
-// yet, so they must pass the age gate before reaching mature content).
+// Google OAuth route tests. Covers the linking cases (brand-new Google user,
+// existing password user linking googleId, returning Google user found by
+// googleId) plus the 501/401 guards.
+//
+// Google users skip the /age-gate screen entirely: the route auto-accepts the
+// age/consent gate on their behalf (self-declared age + ToS/Privacy + current
+// policy version + a default jurisdiction) and writes an AgeVerification audit
+// row, so needsAgeGate is ALWAYS false. An already-cleared returning user is
+// left untouched (idempotent, no second audit row).
 
 import { describe, expect, it, vi, beforeEach, afterEach } from "vitest";
+import { POLICY_VERSION } from "@/lib/consent";
 
 const findUnique = vi.fn();
 const create = vi.fn();
 const update = vi.fn();
+const ageVerificationCreate = vi.fn();
 const signAuthToken = vi.fn().mockResolvedValue("signed-jwt");
 const setAuthCookie = vi.fn();
 const jwtVerify = vi.fn();
@@ -20,6 +25,9 @@ vi.mock("@buttercupp/database", () => ({
       findUnique: (...args: unknown[]) => findUnique(...args),
       create: (...args: unknown[]) => create(...args),
       update: (...args: unknown[]) => update(...args),
+    },
+    ageVerification: {
+      create: (...args: unknown[]) => ageVerificationCreate(...args),
     },
   },
 }));
@@ -40,6 +48,17 @@ vi.mock("jose", async () => {
 
 const VALID_ID_TOKEN = "x".repeat(64);
 
+// A user who has already fully cleared the age/consent gate (the same five
+// fields needsConsent() checks). Used to prove the returning-user path is
+// idempotent: no update, no second audit row.
+const CLEARED = {
+  ageVerifiedAt: new Date(),
+  ageVerificationLevel: "self_declared",
+  tosAcceptedAt: new Date(),
+  privacyAcceptedAt: new Date(),
+  acceptedPolicyVersion: POLICY_VERSION,
+};
+
 function req(body: unknown) {
   return new Request("http://localhost/api/auth/oauth/google", {
     method: "POST",
@@ -52,6 +71,7 @@ beforeEach(() => {
   findUnique.mockReset();
   create.mockReset();
   update.mockReset();
+  ageVerificationCreate.mockReset().mockResolvedValue({ id: "av-1" });
   signAuthToken.mockClear();
   setAuthCookie.mockClear();
   jwtVerify.mockReset();
@@ -81,14 +101,12 @@ describe("POST /api/auth/oauth/google", () => {
     expect(res.status).toBe(401);
   });
 
-  it("returning Google user (found by googleId) signs in without linking", async () => {
+  it("already-cleared returning Google user signs in untouched (no update, no second audit)", async () => {
     jwtVerify.mockResolvedValue({
       payload: { sub: "goog-1", email: "u@example.com", email_verified: true, iss: "https://accounts.google.com" },
     });
     findUnique.mockImplementation((args: { where: { googleId?: string; email?: string } }) => {
-      if (args.where.googleId === "goog-1") {
-        return Promise.resolve({ id: "user-1", ageVerifiedAt: new Date(), ageVerificationLevel: "self_declared" });
-      }
+      if (args.where.googleId === "goog-1") return Promise.resolve({ id: "user-1", ...CLEARED });
       return Promise.resolve(null);
     });
 
@@ -97,6 +115,7 @@ describe("POST /api/auth/oauth/google", () => {
     expect(res.status).toBe(200);
     expect(create).not.toHaveBeenCalled();
     expect(update).not.toHaveBeenCalled();
+    expect(ageVerificationCreate).not.toHaveBeenCalled();
     const body = await res.json();
     expect(body.userId).toBe("user-1");
     expect(body.needsAgeGate).toBe(false);
@@ -104,18 +123,62 @@ describe("POST /api/auth/oauth/google", () => {
     expect(setAuthCookie).toHaveBeenCalledTimes(1);
   });
 
-  it("existing email/password user is LINKED (googleId set) and gets a session", async () => {
+  it("returning Google user not yet cleared (older row) is auto-cleared and audited", async () => {
+    jwtVerify.mockResolvedValue({
+      payload: { sub: "goog-1", email: "u@example.com", email_verified: true, iss: "https://accounts.google.com" },
+    });
+    findUnique.mockImplementation((args: { where: { googleId?: string; email?: string } }) => {
+      if (args.where.googleId === "goog-1") {
+        return Promise.resolve({
+          id: "user-1",
+          ageVerifiedAt: null,
+          ageVerificationLevel: "none",
+          tosAcceptedAt: null,
+          privacyAcceptedAt: null,
+          acceptedPolicyVersion: null,
+          emailVerifiedAt: new Date(),
+        });
+      }
+      return Promise.resolve(null);
+    });
+    update.mockResolvedValue({ id: "user-1" });
+
+    const { POST } = await import("./route");
+    const res = await POST(req({ idToken: VALID_ID_TOKEN }));
+    expect(res.status).toBe(200);
+    expect(update).toHaveBeenCalledTimes(1);
+    const [[callArgs]] = update.mock.calls;
+    expect(callArgs.where).toEqual({ id: "user-1" });
+    expect(callArgs.data).toMatchObject({
+      ageVerificationLevel: "self_declared",
+      acceptedPolicyVersion: POLICY_VERSION,
+      jurisdiction: "US",
+    });
+    expect(ageVerificationCreate).toHaveBeenCalledTimes(1);
+    const body = await res.json();
+    expect(body.needsAgeGate).toBe(false);
+  });
+
+  it("existing password user is LINKED, auto-cleared, and no longer needs the age gate", async () => {
     jwtVerify.mockResolvedValue({
       payload: { sub: "goog-2", email: "PW@example.com", email_verified: true, iss: "accounts.google.com" },
     });
     findUnique.mockImplementation((args: { where: { googleId?: string; email?: string } }) => {
       if (args.where.googleId === "goog-2") return Promise.resolve(null);
       if (args.where.email === "pw@example.com") {
-        return Promise.resolve({ id: "user-2", ageVerifiedAt: null, ageVerificationLevel: "none" });
+        return Promise.resolve({
+          id: "user-2",
+          ageVerifiedAt: null,
+          ageVerificationLevel: "none",
+          tosAcceptedAt: null,
+          privacyAcceptedAt: null,
+          acceptedPolicyVersion: null,
+          emailVerifiedAt: null,
+        });
       }
       return Promise.resolve(null);
     });
-    update.mockResolvedValue({ id: "user-2", ageVerifiedAt: null, ageVerificationLevel: "none" });
+    update.mockResolvedValue({ id: "user-2" });
 
     const { POST } = await import("./route");
     const res = await POST(req({ idToken: VALID_ID_TOKEN }));
@@ -123,22 +186,30 @@ describe("POST /api/auth/oauth/google", () => {
     expect(update).toHaveBeenCalledTimes(1);
     const [[callArgs]] = update.mock.calls;
     expect(callArgs.where).toEqual({ id: "user-2" });
-    expect(callArgs.data).toMatchObject({ googleId: "goog-2", oauthProvider: "google" });
-    // Phase 34 Feature C: linking Google to an existing password user must
-    // stamp emailVerifiedAt (Google already asserted email_verified above).
+    expect(callArgs.data).toMatchObject({
+      googleId: "goog-2",
+      oauthProvider: "google",
+      ageVerificationLevel: "self_declared",
+      acceptedPolicyVersion: POLICY_VERSION,
+      jurisdiction: "US",
+    });
+    // Linking Google to a password user stamps emailVerifiedAt (Google already
+    // asserted email_verified above) and the consent timestamps.
     expect(callArgs.data.emailVerifiedAt).toBeInstanceOf(Date);
+    expect(callArgs.data.tosAcceptedAt).toBeInstanceOf(Date);
+    expect(callArgs.data.privacyAcceptedAt).toBeInstanceOf(Date);
+    expect(ageVerificationCreate).toHaveBeenCalledTimes(1);
     expect(create).not.toHaveBeenCalled();
     const body = await res.json();
-    // Fresh (unverified) user must be routed through the age gate.
-    expect(body.needsAgeGate).toBe(true);
+    expect(body.needsAgeGate).toBe(false);
   });
 
-  it("brand-new Google user is CREATED and needsAgeGate=true (dob/jurisdiction still unknown)", async () => {
+  it("brand-new Google user is CREATED, auto-cleared, and needsAgeGate=false", async () => {
     jwtVerify.mockResolvedValue({
       payload: { sub: "goog-3", email: "new@example.com", email_verified: true, iss: "https://accounts.google.com" },
     });
     findUnique.mockResolvedValue(null);
-    create.mockResolvedValue({ id: "user-3", ageVerifiedAt: null, ageVerificationLevel: "none" });
+    create.mockResolvedValue({ id: "user-3" });
 
     const { POST } = await import("./route");
     const res = await POST(req({ idToken: VALID_ID_TOKEN }));
@@ -149,14 +220,20 @@ describe("POST /api/auth/oauth/google", () => {
       email: "new@example.com",
       googleId: "goog-3",
       oauthProvider: "google",
+      ageVerificationLevel: "self_declared",
+      acceptedPolicyVersion: POLICY_VERSION,
+      // Google users skip the age gate, so the jurisdiction is defaulted here
+      // (no cf-ipcountry header on the test request), not captured on a screen.
+      jurisdiction: "US",
     });
-    // No dob / no jurisdiction set at creation: the age gate captures those.
+    // DOB is still not set (nullable; no gate reads it), but the consent + age
+    // timestamps and email verification are stamped at creation.
     expect(createArgs.data.dob).toBeUndefined();
-    expect(createArgs.data.jurisdiction).toBeUndefined();
-    // Phase 34 Feature C: a brand-new Google signup must be auto-verified.
+    expect(createArgs.data.ageVerifiedAt).toBeInstanceOf(Date);
     expect(createArgs.data.emailVerifiedAt).toBeInstanceOf(Date);
+    expect(ageVerificationCreate).toHaveBeenCalledTimes(1);
     const body = await res.json();
     expect(body.userId).toBe("user-3");
-    expect(body.needsAgeGate).toBe(true);
+    expect(body.needsAgeGate).toBe(false);
   });
 });

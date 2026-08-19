@@ -7,6 +7,7 @@
 
 import { NextResponse } from "next/server";
 import { consumeEmailVerification } from "@/lib/email-verify";
+import { publicUrl } from "@/lib/public-url";
 
 export const runtime = "nodejs";
 
@@ -14,12 +15,16 @@ export async function GET(req: Request) {
   const url = new URL(req.url);
   const token = url.searchParams.get("token") ?? "";
   const result = await consumeEmailVerification(token);
+  // Redirect targets are built on the PUBLIC origin, not req.url: behind the
+  // Amplify proxy req.url is the container-internal http://localhost:3000, so
+  // basing the redirect on it sends the just-verified user to localhost. See
+  // lib/public-url.ts.
   if (!result.ok) {
     const code = result.reason ?? "invalid";
-    return NextResponse.redirect(new URL(`/verify-email?error=${code}`, url), 302);
+    return NextResponse.redirect(publicUrl(req, `/verify-email?error=${code}`), 302);
   }
   // Post-consent onboarding wizard is the app default landing (the
   // (protected) layout will bounce a verified but un-onboarded user to
   // /onboarding anyway; see frontend/app/(protected)/layout.tsx).
-  return NextResponse.redirect(new URL("/dashboard", url), 302);
+  return NextResponse.redirect(publicUrl(req, "/dashboard"), 302);
 }
