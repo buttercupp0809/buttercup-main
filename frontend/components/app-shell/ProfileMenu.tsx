@@ -37,7 +37,6 @@ export function ProfileMenu({
 }: ProfileMenuProps) {
   const [open, setOpen] = React.useState(false);
   const [busy, setBusy] = React.useState(false);
-  const [error, setError] = React.useState<string | null>(null);
   const ref = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
@@ -56,28 +55,12 @@ export function ProfileMenu({
     };
   }, []);
 
-  async function logout() {
+  function logout() {
     setBusy(true);
-    setError(null);
-    try {
-      // Middleware rejects POSTs without a JSON content-type (415), which
-      // silently broke logout. Send the header (and an empty JSON body).
-      const res = await fetch("/api/auth/logout", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: "{}",
-      });
-      if (!res.ok) {
-        setError("Logout failed. Try again.");
-        setBusy(false);
-        return;
-      }
-      // Hard nav so the server re-reads the cleared cookie before rendering.
-      window.location.assign("/");
-    } catch {
-      setError("Logout failed. Try again.");
-      setBusy(false);
-    }
+    // Full-navigation to the canonical /logout endpoint. It clears the auth
+    // cookie server-side and 303-redirects to /login, so no client-side
+    // state can survive (React unmounts on the hard nav).
+    window.location.assign("/logout");
   }
 
   const name = user.displayName || user.email.split("@")[0];
@@ -158,7 +141,6 @@ export function ProfileMenu({
               {busy ? "Signing out..." : "Sign out"}
             </button>
           </div>
-          {error ? <p className="px-3 pb-2 text-xs text-red-400">{error}</p> : null}
         </div>
       ) : null}
     </div>

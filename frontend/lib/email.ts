@@ -14,7 +14,28 @@ interface SendArgs {
   text?: string;
 }
 
-const FROM = process.env.EMAIL_FROM ?? "ButterCupp <onboarding@resend.dev>";
+// Harden against shells/dotenv variants that preserve outer double quotes when
+// a value contains angle brackets. Some email clients (and some MTAs) will pass
+// the quotes straight through so the recipient sees `"ButterCupp" <...>` in the
+// sender chip. Strip a single pair of surrounding quotes so both
+//   EMAIL_FROM=ButterCupp <a@b>
+// and
+//   EMAIL_FROM="ButterCupp <a@b>"
+// end up identical by the time we hand the string to Resend. The display name
+// used in production is simple ASCII, so no RFC 2047 encoding is needed.
+export function sanitizeEmailFrom(value: string | undefined): string {
+  const raw = (value ?? "").trim();
+  if (raw.length >= 2) {
+    const first = raw[0];
+    const last = raw[raw.length - 1];
+    if ((first === '"' && last === '"') || (first === "'" && last === "'")) {
+      return raw.slice(1, -1).trim();
+    }
+  }
+  return raw;
+}
+
+const FROM = sanitizeEmailFrom(process.env.EMAIL_FROM) || "ButterCupp <onboarding@resend.dev>";
 
 export async function sendEmail({ to, subject, html, text }: SendArgs): Promise<{ ok: boolean }> {
   const key = process.env.RESEND_API_KEY;
@@ -34,12 +55,34 @@ export async function sendEmail({ to, subject, html, text }: SendArgs): Promise<
       body: JSON.stringify({ from: FROM, to, subject, html, text: text ?? undefined }),
     });
     if (!res.ok) {
-      console.error("[email] resend send failed", res.status, await res.text().catch(() => ""));
+      // Surface the failure without leaking the API key or message body. We
+      // pull the Resend request id + a compact {name,message} from the JSON
+      // error envelope so a user hitting e.g. "from address is invalid" or
+      // "domain not verified" sees it in the server log immediately.
+      const requestId =
+        res.headers.get("x-resend-request-id") ?? res.headers.get("x-request-id") ?? null;
+      let errName: string | null = null;
+      let errMessage: string | null = null;
+      try {
+        const body = (await res.json()) as { name?: unknown; message?: unknown };
+        if (typeof body?.name === "string") errName = body.name;
+        if (typeof body?.message === "string") errMessage = body.message.slice(0, 300);
+      } catch {
+        // non-JSON body; skip
+      }
+      console.error("[email] resend send failed", {
+        status: res.status,
+        requestId,
+        errName,
+        errMessage,
+        fromConfigured: FROM,
+      });
       return { ok: false };
     }
     return { ok: true };
   } catch (err) {
-    console.error("[email] send error", err);
+    const e = err as { name?: string; message?: string };
+    console.error("[email] send error", { name: e?.name, message: e?.message });
     return { ok: false };
   }
 }

@@ -117,6 +117,12 @@ model User {
   freeMessagesUsed       Int                  @default(0)
   ageVerifiedAt          DateTime?
   ageVerificationLevel   AgeVerificationLevel @default(none)
+  // Phase 34: email verification (Feature C). Null = unverified; password
+  // signups start null and are gated by the (protected) layout via
+  // requireEmailVerified(). Google OAuth users are auto-verified at both
+  // create and link time. Additive/nullable so pre-existing rows are safe;
+  // the prod backfill (Manual step) treats existing users as verified.
+  emailVerifiedAt        DateTime?
   tosAcceptedAt          DateTime?
   privacyAcceptedAt      DateTime?
   // Phase 29: versioned consent gate. consentAcceptedAt is the timestamp of

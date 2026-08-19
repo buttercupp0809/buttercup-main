@@ -50,16 +50,22 @@ export async function POST(req: Request) {
   let user = await prisma.user.findUnique({ where: { googleId } });
   if (!user) {
     // Link on existing email OR create fresh. Do NOT set dob/jurisdiction; the
-    // age gate captures those on the next hop.
+    // age gate captures those on the next hop. Phase 34 Feature C: Google has
+    // already asserted email_verified at the token verification step above, so
+    // stamp emailVerifiedAt on both create and link paths. An existing password
+    // user who links Google becomes verified without ever seeing the email
+    // verification flow, and requireEmailVerified() also treats any Google user
+    // as exempt as a belt-and-braces guard.
+    const now = new Date();
     user = await prisma.user.findUnique({ where: { email } });
     if (user) {
       user = await prisma.user.update({
         where: { id: user.id },
-        data: { googleId, oauthProvider: "google" },
+        data: { googleId, oauthProvider: "google", emailVerifiedAt: now },
       });
     } else {
       user = await prisma.user.create({
-        data: { email, googleId, oauthProvider: "google" },
+        data: { email, googleId, oauthProvider: "google", emailVerifiedAt: now },
       });
     }
   }

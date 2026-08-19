@@ -18,6 +18,9 @@ export const MODELS = {
 
   ANTHROPIC_CHAT: "claude-3-7-sonnet-latest",
   ANTHROPIC_EXTRACT: "claude-3-5-haiku-latest",
+  // Vision-capable Haiku used by scripts that score images (Feature E:
+  // distortion scan). Pinned to a dated snapshot so a swap is deliberate.
+  ANTHROPIC_VISION: "claude-haiku-4-5-20251001",
 
   OPENAI_CHAT: "gpt-4o-mini",
   OPENAI_EXTRACT: "gpt-4o-mini",

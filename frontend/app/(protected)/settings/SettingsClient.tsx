@@ -39,15 +39,12 @@ export function SettingsClient(props: Props) {
   const [deleting, setDeleting] = React.useState(false);
   const [loggingOut, setLoggingOut] = React.useState(false);
 
-  async function logout() {
+  function logout() {
     setLoggingOut(true);
-    const res = await fetch("/api/auth/logout", { method: "POST" });
-    if (!res.ok) {
-      setLoggingOut(false);
-      alert("Logout failed. Try again.");
-      return;
-    }
-    window.location.assign("/");
+    // Full-navigation to the canonical /logout endpoint (clears the auth
+    // cookie server-side and 303-redirects to /login). See
+    // frontend/app/logout/route.ts.
+    window.location.assign("/logout");
   }
 
   async function changePassword(e: React.FormEvent) {

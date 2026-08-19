@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { prisma } from "@buttercupp/database";
-import { requireAuth } from "@/lib/auth";
+import { requireEmailVerified } from "@/lib/auth";
 import { needsConsent as computeNeedsConsent } from "@/lib/consent";
 import { listConversations } from "@/lib/chats";
 import { SideNav } from "@/components/app-shell/SideNav";
@@ -15,7 +15,12 @@ import { ConsentGate } from "@/components/app-shell/ConsentGate";
 // has agreed to age + ToS + Privacy (versioned; see frontend/lib/consent.ts)
 // on first login; middleware has already checked the auth cookie.
 export default async function ProtectedLayout({ children }: { children: React.ReactNode }) {
-  const user = await requireAuth();
+  // Phase 34 Feature C: requireEmailVerified() calls requireAuth() internally
+  // (single User row read) and hard-blocks unverified password signups before
+  // the consent gate runs. Google OAuth users are exempt inside the helper.
+  // Must precede ConsentGate so an unverified user cannot even see the
+  // consent modal on top of the app shell; they get bounced to /verify-email.
+  const user = await requireEmailVerified();
   // Server-authoritative: decided from the fresh User row on every protected
   // navigation, never trusted from a client cookie. See frontend/lib/consent.ts.
   const needsConsent = computeNeedsConsent(user);

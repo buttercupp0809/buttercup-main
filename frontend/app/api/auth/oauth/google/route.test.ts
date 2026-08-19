@@ -124,6 +124,9 @@ describe("POST /api/auth/oauth/google", () => {
     const [[callArgs]] = update.mock.calls;
     expect(callArgs.where).toEqual({ id: "user-2" });
     expect(callArgs.data).toMatchObject({ googleId: "goog-2", oauthProvider: "google" });
+    // Phase 34 Feature C: linking Google to an existing password user must
+    // stamp emailVerifiedAt (Google already asserted email_verified above).
+    expect(callArgs.data.emailVerifiedAt).toBeInstanceOf(Date);
     expect(create).not.toHaveBeenCalled();
     const body = await res.json();
     // Fresh (unverified) user must be routed through the age gate.
@@ -150,6 +153,8 @@ describe("POST /api/auth/oauth/google", () => {
     // No dob / no jurisdiction set at creation: the age gate captures those.
     expect(createArgs.data.dob).toBeUndefined();
     expect(createArgs.data.jurisdiction).toBeUndefined();
+    // Phase 34 Feature C: a brand-new Google signup must be auto-verified.
+    expect(createArgs.data.emailVerifiedAt).toBeInstanceOf(Date);
     const body = await res.json();
     expect(body.userId).toBe("user-3");
     expect(body.needsAgeGate).toBe(true);

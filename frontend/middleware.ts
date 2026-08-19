@@ -78,8 +78,8 @@ function isPublicApi(pathname: string): boolean {
 function contentTypeOk(req: NextRequest): boolean {
   const m = req.method.toUpperCase();
   if (m !== "POST" && m !== "PUT" && m !== "PATCH") return true;
-  // A genuinely bodyless write (e.g. POST /api/consent/decline, POST
-  // /api/auth/logout) has no Content-Length (or "0") and no Transfer-Encoding,
+  // A genuinely bodyless write (e.g. POST /api/consent/decline) has no
+  // Content-Length (or "0") and no Transfer-Encoding,
   // so there is nothing for a content-type sniff to protect against. Without
   // this carve-out, `fetch(url, { method: "POST" })` (no body, no headers,
   // exactly what the browser sends) gets rejected here before it ever reaches
