@@ -441,6 +441,30 @@ textarea:focus-visible {
 }
 
 /*
+ * Chat composer input opt-out. The global amber focus ring above reads as an
+ * error/warning color inside the chat bar and clashes with the brand pill.
+ * We drop the ring on the textarea itself and move a soft, brand-neutral
+ * focus affordance to the composer wrapper (.bc-composer-field) via
+ * focus-within, so the field still reads as focused without the amber flash.
+ * Scoped to these two classes only: every other input keeps the a11y ring.
+ */
+.bc-chat-input:focus-visible {
+  outline: none;
+  outline-offset: 0;
+}
+.bc-composer-field {
+  border: 1px solid transparent;
+  border-radius: var(--bc-radius-sm);
+  transition:
+    border-color var(--dur-press) var(--ease-out),
+    box-shadow var(--dur-press) var(--ease-out);
+}
+.bc-composer-field:focus-within {
+  border-color: hsl(var(--buttercupp-border));
+  box-shadow: 0 0 0 3px hsl(var(--bc-honey) / 0.18);
+}
+
+/*
  * Mobile-responsive pass (Phase 25): safe-area + touch-target utilities.
  * Requires viewport-fit=cover (see app/layout.tsx viewport export) or
  * env(safe-area-inset-*) resolves to 0 everywhere, which keeps these no-ops

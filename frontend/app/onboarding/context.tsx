@@ -40,6 +40,10 @@ export function OnboardingProvider({ children }: { children: React.ReactNode }) 
   const [draft, setDraft] = React.useState<OnboardingDraft>({});
   const [hydrated, setHydrated] = React.useState(false);
   const [saving, setSaving] = React.useState(false);
+  // Synchronous mirror of `saving` used by submit()'s re-entry guard. A state
+  // read inside the callback can be stale across rapid double-clicks; a ref is
+  // updated and read synchronously so the second call sees the in-flight flag.
+  const savingRef = React.useRef(false);
 
   React.useEffect(() => {
     try {
@@ -84,20 +88,34 @@ export function OnboardingProvider({ children }: { children: React.ReactNode }) 
   const submit = React.useCallback(async (): Promise<
     { ok: true; firstCharacterId: string | null } | { ok: false; error: string }
   > => {
+    // Re-entry guard: if a submit is already in flight, no-op. Without this a
+    // second click during the (5-10s) post-success redirect window could fire
+    // completeOnboarding again against a partially-cleared local draft.
+    if (savingRef.current) {
+      return { ok: false, error: "already_submitting" };
+    }
+    savingRef.current = true;
     setSaving(true);
     try {
       const result = await completeOnboarding(draft);
       if (!result.ok) {
         return { ok: false, error: result.error };
       }
+      // The server has persisted onboarding, so the localStorage draft is no
+      // longer needed. We remove the persisted copy but deliberately do NOT
+      // clear the in-memory `draft`: clearing it here would re-render the
+      // finish page's summary as empty while router.push() is still pending
+      // (the finish page keeps showing until navigation completes), and a
+      // second click would then submit an empty draft that fails Zod. The
+      // component unmounts on navigation, so the stale draft is harmless.
       try {
         window.localStorage.removeItem(ONBOARDING_DRAFT_STORAGE_KEY);
       } catch {
         // ignore
       }
-      setDraft({});
       return { ok: true, firstCharacterId: result.firstCharacterId ?? null };
     } finally {
+      savingRef.current = false;
       setSaving(false);
     }
   }, [draft]);

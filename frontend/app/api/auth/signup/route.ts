@@ -48,7 +48,12 @@ export async function POST(req: Request) {
     // welcome email; verification IS the welcome now.
     try {
       const { rawToken } = await issueEmailVerification(user.id, email);
-      const origin = new URL(req.url).origin;
+      // NEXT_PUBLIC_APP_URL is the canonical public origin. Behind the prod
+      // proxy req.url resolves to an internal/localhost origin, which would bake
+      // localhost into the verify button + copy-link. Fall back to req.url only
+      // in local dev where the env var is unset.
+      const origin =
+        process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") ?? new URL(req.url).origin;
       const link = `${origin}/api/auth/verify-email?token=${encodeURIComponent(rawToken)}`;
       const { subject, html, text } = buildVerifyEmail(link);
       await sendEmail({ to: email, subject, html, text });

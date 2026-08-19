@@ -37,6 +37,11 @@ interface HistoryMessage {
 
 export interface ChatWindowProps {
   conversationId: string;
+  /**
+   * The character this chat is with. Needed to request the on-entry check-in
+   * stream, which mirrors the reply stream's identifying body fields.
+   */
+  characterId: string;
   initialMessages: HistoryMessage[];
   characterName: string;
   wsUrl?: string;
@@ -62,6 +67,7 @@ export interface ChatWindowProps {
 
 export function ChatWindow({
   conversationId,
+  characterId,
   initialMessages,
   characterName,
   wsUrl,
@@ -91,6 +97,28 @@ export function ChatWindow({
   const transportRef = React.useRef<ReturnType<typeof createChatTransport> | null>(null);
   const streamedRef = React.useRef("");
   const lastSentRef = React.useRef<string | null>(null);
+  const inputRef = React.useRef<HTMLTextAreaElement | null>(null);
+  // Guards the on-mount check-in stream so React strict-mode's double invoke
+  // (and any re-render) cannot fire it more than once per mount.
+  const checkinStartedRef = React.useRef(false);
+
+  // Composer auto-grow. The textarea starts one line tall, grows to fit its
+  // content up to a cap (~6 lines), then scrolls internally. Kept in a helper
+  // so both onInput and the post-send reset share the same clamp.
+  const MAX_INPUT_HEIGHT = 160;
+  const resizeInput = React.useCallback(() => {
+    const el = inputRef.current;
+    if (!el) return;
+    el.style.height = "auto";
+    el.style.height = `${Math.min(el.scrollHeight, MAX_INPUT_HEIGHT)}px`;
+    el.style.overflowY = el.scrollHeight > MAX_INPUT_HEIGHT ? "auto" : "hidden";
+  }, []);
+  const resetInputHeight = React.useCallback(() => {
+    const el = inputRef.current;
+    if (!el) return;
+    el.style.height = "auto";
+    el.style.overflowY = "hidden";
+  }, []);
 
   React.useEffect(() => {
     const t = createChatTransport({ wsUrl });
@@ -167,6 +195,12 @@ export function ChatWindow({
                 },
               ],
         );
+      } else if (evt.type === "skip") {
+        // Check-in stream: conversation not eligible. Clear any transient
+        // streaming state and leave the chat exactly as it was (no bubble).
+        streamedRef.current = "";
+        setStreaming("");
+        setFirstTokenSeen(false);
       } else if (evt.type === "error") {
         setPending(false);
         setImageGenerating(false);
@@ -189,10 +223,36 @@ export function ChatWindow({
     if (el) el.scrollTop = el.scrollHeight;
   }, [messages.length, streaming, pending]);
 
+  // Live check-in on entry. Fires once per mount (checkinStartedRef guards
+  // React strict-mode's double invoke) and streams through the SAME transport
+  // SSE path as a normal reply, so the streaming bubble renders identically.
+  // The backend decides eligibility and answers with a `skip` frame when there
+  // is nothing to say; on `done` the finalized message lands in `messages` via
+  // the shared listener above. It never blocks initial render, and if the user
+  // starts typing immediately the two share the dedupe-by-messageId `done`
+  // path, so nothing duplicates or crashes.
+  React.useEffect(() => {
+    if (checkinStartedRef.current) return;
+    checkinStartedRef.current = true;
+    const t = transportRef.current;
+    if (!t) return;
+    // Let the backend be the sole authority on eligibility: it streams a
+    // greeting for a fresh conversation (first_open) or a reopen after a long
+    // idle gap, and answers with a `skip` frame otherwise. A user send resets
+    // the shared streaming buffer (see `send`), so an early send cannot
+    // interleave with an in-flight check-in stream.
+    t.checkin(conversationId, characterId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const send = React.useCallback(
     (text: string, { echo = true }: { echo?: boolean } = {}) => {
       if (!transportRef.current) return;
       lastSentRef.current = text;
+      // Discard any in-flight check-in stream so its partial tokens cannot
+      // interleave with this reply in the shared streaming buffer.
+      streamedRef.current = "";
+      setStreaming("");
       if (echo) {
         setMessages((ms) => [
           ...ms,
@@ -213,12 +273,29 @@ export function ChatWindow({
     [conversationId],
   );
 
-  function submit(e: React.FormEvent) {
-    e.preventDefault();
+  // Core submit path shared by the form onSubmit and the textarea Enter key.
+  function submitMessage() {
     if (!input.trim() || pending || paywall || !transportRef.current) return;
     const text = input.trim();
     setInput("");
+    // Collapse the composer back to a single line now that it is empty.
+    resetInputHeight();
     send(text);
+  }
+
+  function submit(e: React.FormEvent) {
+    e.preventDefault();
+    submitMessage();
+  }
+
+  function onInputKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
+    // Enter submits; Shift+Enter inserts a newline (default textarea behavior).
+    // isComposing guards IME candidate selection so Enter does not send
+    // mid-composition for CJK input.
+    if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) {
+      e.preventDefault();
+      submitMessage();
+    }
   }
 
   // Retry resends the failed prompt without echoing a duplicate user bubble:
@@ -419,17 +496,21 @@ export function ChatWindow({
           composer four rows deep on a phone and pushed the conversation off
           screen. Send sits inline; the shortcuts get one quiet row beneath.
         */}
-        <div className="flex items-center gap-2">
-          <input
+        <div className="bc-composer-field flex items-end gap-2 px-1">
+          <textarea
+            ref={inputRef}
+            rows={1}
             value={input}
             onChange={(e) => setInput(e.target.value)}
+            onInput={resizeInput}
+            onKeyDown={onInputKeyDown}
             placeholder={
               paywall ? "Upgrade to keep chatting" : pending ? "Waiting..." : "Write a message..."
             }
             disabled={pending || paywall !== null}
             data-testid="chat-input"
-            className="min-w-0 flex-1 bg-transparent px-1 py-2 text-[0.9375rem] focus:outline-none"
-            style={{ color: "hsl(var(--buttercupp-fg))" }}
+            className="bc-chat-input min-w-0 flex-1 resize-none overflow-y-hidden bg-transparent px-1 py-2 text-[0.9375rem] leading-relaxed focus:outline-none"
+            style={{ color: "hsl(var(--buttercupp-fg))", maxHeight: "160px" }}
           />
           {/*
             Free-trial headroom. The transport only reveals the limit at the

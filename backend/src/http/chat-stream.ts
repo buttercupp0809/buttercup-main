@@ -17,7 +17,7 @@ import { z } from "zod";
 import { prisma } from "@buttercupp/database";
 import { runChatTurn } from "../chat/engine";
 import { generateChatImage, generateImageTeaser } from "../chat/image-turn";
-import { isImageRequest } from "../media/image/decision";
+import { classifyMessageIntent } from "../chat/intent";
 import { assertCanChat, recordChatConsumption, PaywallError, type PaywallInfo } from "../subscription/enforce";
 import { writeAuditLog } from "../utils/audit";
 import { logInfo, logWarn, logError } from "../utils/log";
@@ -111,7 +111,7 @@ export async function handleChatStream(req: IncomingMessage, res: ServerResponse
   //   4. Generate the image (Stheno-enriched prompt + character reference)
   //   5. Save the assistant image message (linked to its MediaAsset)
   //   6. Emit the `image` event
-  if (isImageRequest(body.text)) {
+  if ((await classifyMessageIntent(body.text)) === "image") {
     try {
       // 1. Persist the user message.
       await prisma.message.create({
