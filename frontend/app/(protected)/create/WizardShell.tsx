@@ -35,7 +35,7 @@ export function WizardShell({ children }: { children: React.ReactNode }) {
       <aside className="order-first md:order-last">
         <div className="sticky top-0 z-10 pb-2 md:sticky md:top-4 md:pb-0 md:pt-0">
           <h2
-            className="mb-2 hidden text-xs font-semibold uppercase tracking-wide md:block"
+            className="mb-2 hidden font-display text-xs font-semibold uppercase tracking-wide md:block"
             style={{ color: "hsl(var(--buttercupp-muted))" }}
           >
             Live preview

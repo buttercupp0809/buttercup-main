@@ -130,7 +130,7 @@ export function SocialProof() {
           </div>
           <h2
             id="social-proof-heading"
-            className="text-3xl font-semibold tracking-tight text-white sm:text-4xl"
+            className="font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl"
           >
             Real people, real connection.
           </h2>
@@ -189,7 +189,7 @@ export function SocialProof() {
                   reads as watermark, not typography. */}
               <span
                 aria-hidden
-                className="pointer-events-none absolute -right-2 -top-4 select-none font-serif text-[7rem] leading-none"
+                className="pointer-events-none absolute -right-2 -top-4 select-none font-display text-[7rem] leading-none"
                 style={{
                   color: "hsl(var(--bc-amber) / 0.08)",
                 }}

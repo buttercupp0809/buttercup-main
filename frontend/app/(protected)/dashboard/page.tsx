@@ -58,7 +58,7 @@ export default async function DashboardPage() {
 
           <div className="buttercupp-glass rounded-[var(--bc-radius-xl)] p-6">
             <div className="flex items-baseline justify-between gap-4">
-              <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-[hsl(var(--bc-subtle))]">
+              <h2 className="font-display text-xs font-semibold uppercase tracking-[0.14em] text-[hsl(var(--bc-subtle))]">
                 Your bond
               </h2>
               <span className="tabular text-xs text-[hsl(var(--bc-subtle))]">

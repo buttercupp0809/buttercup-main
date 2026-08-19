@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
+import { BrandRow } from "@/components/brand/Logo";
 
 // Public server layout for /legal/*. No requireAuth(); every legal page is
 // readable by a logged-out visitor by design. Header carries a minimal
@@ -13,9 +14,9 @@ export default function LegalLayout({ children }: { children: React.ReactNode })
         <div className="mx-auto flex max-w-6xl items-center justify-between px-safe py-4">
           <Link
             href="/"
-            className="bc-focus rounded-[var(--bc-radius-xs)] font-display text-base font-semibold tracking-tight text-[hsl(var(--bc-fg))] transition-colors hover:text-[hsl(var(--bc-amber))]"
+            className="bc-focus rounded-[var(--bc-radius-xs)] transition-opacity hover:opacity-90"
           >
-            ButterCupp
+            <BrandRow markSize={28} />
           </Link>
           <Link
             href="/"

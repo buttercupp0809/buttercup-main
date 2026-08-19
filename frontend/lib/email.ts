@@ -40,8 +40,17 @@ const FROM = sanitizeEmailFrom(process.env.EMAIL_FROM) || "ButterCupp <onboardin
 export async function sendEmail({ to, subject, html, text }: SendArgs): Promise<{ ok: boolean }> {
   const key = process.env.RESEND_API_KEY;
 
-  // Dev fallback: no provider configured -> log and succeed so the flow works.
+  // No provider configured. In production this is a misconfiguration: the email
+  // is silently dropped, so make it LOUD in the logs and fail the send. In dev
+  // we keep the quiet log + success so local flows work without credentials.
   if (!key) {
+    if (process.env.NODE_ENV === "production") {
+      console.error(
+        "[email] RESEND_API_KEY missing at runtime; email NOT sent. Check Amplify console env for this branch + rebuild so it bakes into .next/server-env.json.",
+        { to, subject },
+      );
+      return { ok: false };
+    }
     console.log(
       `[email:dev] (no RESEND_API_KEY set)\n  to: ${to}\n  subject: ${subject}\n  ${text ?? html}`,
     );

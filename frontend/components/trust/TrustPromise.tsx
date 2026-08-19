@@ -45,7 +45,7 @@ export function TrustPromise({ variant = "full" }: TrustPromiseProps) {
           </span>
           <h2
             id="trust-promise-heading"
-            className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl"
+            className="mt-3 font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl"
           >
             {splitHeadline(TRUST_HEADLINE)}
           </h2>
@@ -111,8 +111,8 @@ export function TrustPromise({ variant = "full" }: TrustPromiseProps) {
               <h3
                 className={
                   isCompact
-                    ? "text-sm font-semibold text-white"
-                    : "text-base font-semibold text-white"
+                    ? "font-display text-sm font-semibold text-white"
+                    : "font-display text-base font-semibold text-white"
                 }
               >
                 {p.title}

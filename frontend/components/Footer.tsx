@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { LEGAL_PAGES } from "@/lib/legal/config";
+import { BrandRow } from "@/components/brand/Logo";
 
 // Site-wide footer for public + legal routes. Legal + Company links source
 // from LEGAL_PAGES so the routing table and the footer never drift; add or
@@ -34,8 +35,8 @@ export function Footer() {
     >
       <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-6 py-12 sm:grid-cols-4">
         <div className="col-span-2 flex flex-col gap-3 sm:col-span-1">
-          <Link href="/" className="font-display text-base font-semibold text-[hsl(var(--bc-fg))]">
-            ButterCupp
+          <Link href="/" className="w-fit transition-opacity hover:opacity-90">
+            <BrandRow markSize={28} />
           </Link>
           <p className="max-w-xs text-xs">
             Unfiltered companions built for grown-ups.

@@ -159,7 +159,7 @@ export function CompanionCard({ companion }: CompanionCardProps) {
       <div
         data-testid="companion-card"
         data-companion-id={companion.id}
-        className="group relative flex aspect-[9/16] flex-col overflow-hidden rounded-2xl shadow-md ring-1"
+        className="group relative flex aspect-[9/16] flex-col overflow-hidden rounded-3xl shadow-md ring-1"
         style={{
           backgroundColor: "hsl(var(--buttercupp-surface))",
           borderColor: "hsl(var(--buttercupp-border))",

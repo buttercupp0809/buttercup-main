@@ -9,6 +9,7 @@
 import { redirect } from "next/navigation";
 import { MailCheck } from "lucide-react";
 import { getCurrentUser } from "@/lib/auth";
+import { BrandRow } from "@/components/brand/Logo";
 import { ResendVerificationButton } from "./ResendButton";
 
 export const dynamic = "force-dynamic";
@@ -38,17 +39,8 @@ export default async function VerifyEmailPage({ searchParams }: Params) {
       style={{ backgroundColor: "hsl(var(--bc-surface))", color: "hsl(var(--bc-fg))" }}
     >
       <div className="mb-8">
-        <a
-          href="/"
-          className="font-display text-2xl tracking-tight"
-          style={{
-            background: "var(--bc-gradient-brand)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-          }}
-        >
-          ButterCupp
+        <a href="/" className="inline-flex">
+          <BrandRow markSize={32} />
         </a>
       </div>
 

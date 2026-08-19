@@ -19,6 +19,7 @@ import { APP_NAV, type NavIcon } from "@/components/app-shell/nav-items";
 import { ProfileMenu, type ProfileUser } from "@/components/app-shell/ProfileMenu";
 import type { RecentEntry } from "@/components/app-shell/SideNav";
 import { NavGradientDefs, NavItemLink } from "@/components/app-shell/NavItemLink";
+import { BrandRow } from "@/components/brand/Logo";
 
 const ICONS: Record<NavIcon, React.ComponentType<{ className?: string }>> = {
   chats: MessageCircle,
@@ -109,7 +110,7 @@ export function MobileNav({ user, recents }: DrawerProps) {
             }}
           >
             <div className="flex items-center justify-between px-4 py-4">
-              <span className="font-display text-xl">ButterCupp</span>
+              <BrandRow markSize={28} />
               <button
                 type="button"
                 onClick={() => setOpen(false)}

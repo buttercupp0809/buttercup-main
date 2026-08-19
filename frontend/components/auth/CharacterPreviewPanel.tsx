@@ -1,3 +1,5 @@
+import { BrandRow } from "@/components/brand/Logo";
+
 export interface PreviewChar {
   name: string;
   avatarUrl: string;
@@ -76,19 +78,10 @@ export function CharacterPreviewPanel({ chars, tagline, subtitle }: Props) {
         </>
       )}
 
-      {/* Wordmark */}
+      {/* Brand lockup */}
       <div className="absolute top-7 left-8 z-10">
-        <a
-          href="/"
-          className="font-display text-base tracking-tight cursor-pointer"
-          style={{
-            background: "var(--bc-gradient-brand)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-          }}
-        >
-          ButterCupp
+        <a href="/" className="inline-flex cursor-pointer">
+          <BrandRow markSize={28} />
         </a>
       </div>
 

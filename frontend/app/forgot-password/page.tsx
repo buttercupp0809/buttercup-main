@@ -2,6 +2,7 @@
 import * as React from "react";
 import { KeyRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { BrandRow } from "@/components/brand/Logo";
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = React.useState("");
@@ -26,19 +27,10 @@ export default function ForgotPasswordPage() {
       className="flex min-h-screen flex-col items-center justify-center px-6 px-safe py-12 pb-safe"
       style={{ backgroundColor: "hsl(var(--bc-surface))", color: "hsl(var(--bc-fg))" }}
     >
-      {/* Wordmark above the card */}
+      {/* Brand lockup above the card */}
       <div className="mb-8">
-        <a
-          href="/"
-          className="font-display text-2xl tracking-tight"
-          style={{
-            background: "var(--bc-gradient-brand)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-          }}
-        >
-          ButterCupp
+        <a href="/" className="inline-flex">
+          <BrandRow markSize={32} />
         </a>
       </div>
 

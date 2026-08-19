@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { PasswordField } from "@/components/auth/PasswordField";
 import { GoogleButton } from "@/components/auth/GoogleButton";
 import { TrustStrip } from "@/components/trust/TrustStrip";
+import { BrandRow } from "@/components/brand/Logo";
 
 function LoginFormInner() {
   const router = useRouter();
@@ -37,35 +38,17 @@ function LoginFormInner() {
       className="flex w-full md:w-1/2 flex-col items-center justify-center px-6 py-12 min-h-screen"
       style={{ backgroundColor: "hsl(var(--bc-surface))" }}
     >
-      {/* Mobile wordmark */}
+      {/* Mobile brand lockup */}
       <div className="mb-8 md:hidden">
-        <a
-          href="/"
-          className="font-display text-2xl tracking-tight"
-          style={{
-            background: "var(--bc-gradient-brand)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-          }}
-        >
-          ButterCupp
+        <a href="/" className="inline-flex">
+          <BrandRow markSize={32} />
         </a>
       </div>
 
       <div className="buttercupp-glass rounded-2xl p-8 w-full" style={{ maxWidth: "26rem" }}>
         <div className="hidden md:block mb-6">
-          <a
-            href="/"
-            className="font-display text-xl tracking-tight cursor-pointer"
-            style={{
-              background: "var(--bc-gradient-brand)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
-            ButterCupp
+          <a href="/" className="inline-flex cursor-pointer">
+            <BrandRow markSize={28} />
           </a>
         </div>
 

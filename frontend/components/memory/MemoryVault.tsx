@@ -96,7 +96,7 @@ export function MemoryVault({
   return (
     <section className="px-5 pt-6">
       <header className="mb-3 flex items-baseline justify-between gap-3">
-        <h3 className="inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--bc-fg))]">
+        <h3 className="inline-flex items-center gap-2 font-display text-sm font-semibold text-[hsl(var(--bc-fg))]">
           <Brain className="h-4 w-4 text-[hsl(var(--bc-amber))]" />
           What she remembers
         </h3>
