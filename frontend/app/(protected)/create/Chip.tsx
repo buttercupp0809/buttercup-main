@@ -27,13 +27,13 @@ export function Chip({
       style={
         selected
           ? {
-              borderColor: "hsl(var(--buttercupp-accent-rose))",
-              backgroundColor: "hsl(var(--buttercupp-accent-rose) / 0.15)",
-              color: "hsl(var(--buttercupp-fg))",
+              borderColor: "hsl(var(--bc-amber))",
+              backgroundColor: "hsl(var(--bc-amber) / 0.15)",
+              color: "hsl(var(--bc-fg))",
             }
           : {
-              borderColor: "hsl(var(--buttercupp-border))",
-              color: "hsl(var(--buttercupp-muted))",
+              borderColor: "hsl(var(--bc-border))",
+              color: "hsl(var(--bc-muted))",
             }
       }
     >
@@ -65,17 +65,17 @@ export function OptionCard({
       style={
         selected
           ? {
-              borderColor: "hsl(var(--buttercupp-accent-rose))",
-              backgroundColor: "hsl(var(--buttercupp-accent-rose) / 0.12)",
+              borderColor: "hsl(var(--bc-amber))",
+              backgroundColor: "hsl(var(--bc-amber) / 0.12)",
             }
-          : { borderColor: "hsl(var(--buttercupp-border))" }
+          : { borderColor: "hsl(var(--bc-border))" }
       }
     >
-      <span className="text-sm font-medium" style={{ color: "hsl(var(--buttercupp-fg))" }}>
+      <span className="text-sm font-medium" style={{ color: "hsl(var(--bc-fg))" }}>
         {label}
       </span>
       {hint ? (
-        <span className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+        <span className="text-xs" style={{ color: "hsl(var(--bc-muted))" }}>
           {hint}
         </span>
       ) : null}
@@ -93,7 +93,7 @@ export function FieldGroup({
 }) {
   return (
     <div className="flex flex-col gap-2">
-      <span className="text-sm font-medium" style={{ color: "hsl(var(--buttercupp-fg))" }}>
+      <span className="text-sm font-medium" style={{ color: "hsl(var(--bc-fg))" }}>
         {title}
       </span>
       {children}

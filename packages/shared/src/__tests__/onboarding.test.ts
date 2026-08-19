@@ -33,11 +33,7 @@ describe("onboardingIdentitySchema", () => {
 
 describe("onboardingTasteSchema", () => {
   it("requires at least one interest", () => {
-    const r = onboardingTasteSchema.safeParse({
-      vibe: "cozy",
-      interests: [],
-      companionGoal: "someone to talk to",
-    });
+    const r = onboardingTasteSchema.safeParse({ vibe: "cozy", interests: [] });
     expect(r.success).toBe(false);
   });
 
@@ -45,26 +41,17 @@ describe("onboardingTasteSchema", () => {
     const r = onboardingTasteSchema.safeParse({
       vibe: "cozy",
       interests: Array.from({ length: 9 }, (_, i) => `interest-${i}`),
-      companionGoal: "someone to talk to",
     });
     expect(r.success).toBe(false);
   });
 
   it("rejects an out-of-enum vibe", () => {
-    const r = onboardingTasteSchema.safeParse({
-      vibe: "chaotic",
-      interests: ["hiking"],
-      companionGoal: "someone to talk to",
-    });
+    const r = onboardingTasteSchema.safeParse({ vibe: "chaotic", interests: ["hiking"] });
     expect(r.success).toBe(false);
   });
 
   it("accepts a valid taste slice", () => {
-    const r = onboardingTasteSchema.safeParse({
-      vibe: "supportive",
-      interests: ["hiking", "sci-fi"],
-      companionGoal: "someone to talk to at the end of the day",
-    });
+    const r = onboardingTasteSchema.safeParse({ vibe: "supportive", interests: ["hiking", "sci-fi"] });
     expect(r.success).toBe(true);
   });
 });
@@ -96,7 +83,6 @@ describe("onboardingInputSchema", () => {
     gender: "woman" as const,
     vibe: "flirty" as const,
     interests: ["music", "travel"],
-    companionGoal: "some fun conversation",
     firstCharacterId: "550e8400-e29b-41d4-a716-446655440000",
   };
 

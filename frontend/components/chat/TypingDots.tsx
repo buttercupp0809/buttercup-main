@@ -23,7 +23,7 @@ export function TypingDots() {
             aria-hidden
             className="motion-safe:animate-bounce inline-block h-1.5 w-1.5 rounded-full"
             style={{
-              backgroundColor: "hsl(var(--buttercupp-accent-rose))",
+              backgroundColor: "hsl(var(--bc-amber))",
               animationDelay: `${i * 120}ms`,
               animationDuration: "900ms",
             }}

@@ -6,6 +6,7 @@
 // records null and advances immediately.
 
 import type { CharacterCardDTO } from "@buttercupp/shared";
+import { Check } from "lucide-react";
 import { useOnboardingWizard } from "../context";
 import { Button } from "@/components/ui/button";
 
@@ -27,14 +28,14 @@ export function Recommendations({ items, viewerAllowsMature }: RecommendationsPr
     <div className="flex flex-col gap-6">
       <div>
         <h1 className="font-display text-2xl font-semibold">Meet your first companion</h1>
-        <p className="mt-1 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
-          Optional. Tap one to start there, or skip and browse later.
+        <p className="mt-1 text-sm" style={{ color: "hsl(var(--bc-muted))" }}>
+          Someone caught your eye? Tap to start there. No rush, you can always meet the others later.
         </p>
       </div>
 
       {items.length > 0 ? (
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-          {items.map((c) => {
+          {items.map((c, index) => {
             const selected = selectedId === c.id;
             const gated = c.contentRating === "mature" && !viewerAllowsMature;
             return (
@@ -44,27 +45,31 @@ export function Recommendations({ items, viewerAllowsMature }: RecommendationsPr
                 data-testid="onboarding-pick-card"
                 onClick={() => updateDraft({ firstCharacterId: c.id })}
                 aria-pressed={selected}
-                className="group relative flex aspect-[3/4] flex-col overflow-hidden rounded-xl text-left transition-all duration-200"
+                // CSS-var index feeds the staggered bc-rise entrance; the cast is
+                // the documented pattern for typing custom properties on style.
                 style={{
+                  ["--i" as unknown as string]: index,
                   border: selected
-                    ? "2px solid hsl(var(--buttercupp-accent-rose))"
-                    : "2px solid rgba(255,255,255,0.08)",
+                    ? "2px solid hsl(var(--bc-amber))"
+                    : "2px solid hsl(var(--bc-cream) / 0.08)",
                   boxShadow: selected
-                    ? "0 0 0 1px hsl(var(--buttercupp-accent-rose) / 0.3), 0 8px 24px rgba(0,0,0,0.4)"
-                    : "0 4px 12px rgba(0,0,0,0.25)",
-                  backgroundColor: "hsl(var(--buttercupp-surface-2))",
+                    ? "0 0 0 1px hsl(var(--bc-amber) / 0.35), 0 0 24px hsl(var(--bc-amber) / 0.35), 0 8px 24px hsl(28 40% 2% / 0.5)"
+                    : "0 4px 12px hsl(28 40% 2% / 0.4)",
+                  backgroundColor: "hsl(var(--bc-surface-2))",
+                  transform: selected ? "scale(1.03)" : undefined,
                 }}
+                className="group bc-press motion-safe:bc-rise relative flex aspect-[3/4] flex-col overflow-hidden rounded-xl text-left transition-all duration-200"
               >
                 {c.avatarUrl ? (
                   <img
                     src={c.avatarUrl}
                     alt={c.name}
-                    className={`absolute inset-0 h-full w-full object-cover object-top ${gated ? "scale-110 blur-lg" : ""}`}
+                    className={`absolute inset-0 h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105 ${gated ? "scale-110 blur-lg group-hover:scale-110" : ""}`}
                   />
                 ) : (
                   <div
-                    className="absolute inset-0 flex items-center justify-center text-2xl font-semibold"
-                    style={{ color: "hsl(var(--buttercupp-muted))" }}
+                    className="absolute inset-0 flex items-center justify-center font-display text-2xl font-semibold transition-transform duration-300 group-hover:scale-105"
+                    style={{ color: "hsl(var(--bc-muted))" }}
                   >
                     {c.name[0]?.toUpperCase() ?? "?"}
                   </div>
@@ -72,14 +77,13 @@ export function Recommendations({ items, viewerAllowsMature }: RecommendationsPr
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/85 to-transparent" />
                 {selected ? (
                   <div
-                    className="absolute right-2 top-2 flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold"
+                    className="motion-safe:bc-pop absolute right-2 top-2 flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold"
                     style={{
-                      background:
-                        "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
-                      color: "#ffffff",
+                      background: "hsl(var(--bc-amber))",
+                      color: "hsl(28 45% 9%)",
                     }}
                   >
-                    ✓
+                    <Check className="h-3.5 w-3.5" strokeWidth={2.5} aria-hidden />
                   </div>
                 ) : null}
                 {gated ? (
@@ -95,13 +99,20 @@ export function Recommendations({ items, viewerAllowsMature }: RecommendationsPr
           })}
         </div>
       ) : (
-        <p className="text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+        <p className="text-sm" style={{ color: "hsl(var(--bc-muted))" }}>
           No recommendations available right now. You can browse the gallery any time.
         </p>
       )}
 
-      <Button type="button" variant="outline" size="lg" data-testid="onboarding-skip" onClick={skip}>
-        Skip for now
+      <Button
+        type="button"
+        variant="outline"
+        size="lg"
+        data-testid="onboarding-skip"
+        onClick={skip}
+        className="bc-press"
+      >
+        Skip for now, I will browse later
       </Button>
     </div>
   );

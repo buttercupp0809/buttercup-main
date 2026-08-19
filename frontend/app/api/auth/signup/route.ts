@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@buttercupp/database";
-import { SignupDto, computeAgeYears, MIN_AGE_YEARS } from "@buttercupp/shared";
+import { SignupDto } from "@buttercupp/shared";
 import { hashPassword } from "@/lib/password";
 import { signAuthToken, setAuthCookie } from "@/lib/auth";
 import { jsonError, jsonOk, parseJson } from "@/lib/api-helpers";
@@ -13,14 +13,8 @@ export const runtime = "nodejs";
 export async function POST(req: Request) {
   const parsed = await parseJson(req, SignupDto);
   if (!parsed.ok) return parsed.response;
-  const { email, password, dob, jurisdiction, tosAccepted, privacyAccepted } = parsed.data;
+  const { email, password, jurisdiction, tosAccepted, privacyAccepted } = parsed.data;
 
-  // Second server-side recompute so a client-tampered payload cannot slip
-  // through. The Zod refine already caught this; belt-and-braces here because
-  // the age gate is the entire compliance surface.
-  if (computeAgeYears(dob) < MIN_AGE_YEARS) {
-    return jsonError(400, "under_min_age");
-  }
   if (!tosAccepted || !privacyAccepted) {
     return jsonError(400, "must_accept_tos_and_privacy");
   }
@@ -39,22 +33,11 @@ export async function POST(req: Request) {
       data: {
         email,
         passwordHash,
-        dob,
         jurisdiction,
         tosAcceptedAt: now,
         privacyAcceptedAt: now,
-        ageVerifiedAt: now,
-        ageVerificationLevel: "self_declared",
-      },
-    });
-
-    await prisma.ageVerification.create({
-      data: {
-        userId: user.id,
-        provider: "self_declared",
-        level: "self_declared",
-        status: "verified",
-        verifiedAt: now,
+        // dob, ageVerifiedAt, ageVerificationLevel are set by the age gate
+        // on first login, not at account creation.
       },
     });
 

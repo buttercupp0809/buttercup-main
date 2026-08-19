@@ -32,7 +32,6 @@ export function SignupForm() {
   const [form, setForm] = React.useState({
     email: "",
     password: "",
-    dob: "",
     jurisdiction: "US",
     tosAccepted: true,
     privacyAccepted: true,
@@ -48,7 +47,7 @@ export function SignupForm() {
     const res = await fetch("/api/auth/signup", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ ...form, dob: new Date(form.dob).toISOString() }),
+      body: JSON.stringify(form),
     });
     setBusy(false);
     if (!res.ok) {
@@ -63,11 +62,11 @@ export function SignupForm() {
   }
 
   const inputStyle = {
-    borderColor: "hsl(var(--buttercupp-border))",
-    backgroundColor: "hsl(var(--buttercupp-surface))",
-    color: "hsl(var(--buttercupp-fg))",
+    borderColor: "hsl(var(--bc-border))",
+    backgroundColor: "hsl(var(--bc-surface-2))",
+    color: "hsl(var(--bc-fg))",
   } as const;
-  const inputCls = "rounded-md border px-3 py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400";
+  const inputCls = "rounded-md border px-3 py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--bc-amber))]";
 
   return (
     <div
@@ -109,7 +108,7 @@ export function SignupForm() {
         <h1 className="font-display text-3xl font-semibold tracking-tight" style={{ textWrap: "balance" } as React.CSSProperties}>
           Join ButterCupp
         </h1>
-        <p className="mb-6 mt-1.5 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+        <p className="mb-6 mt-1.5 text-sm" style={{ color: "hsl(var(--bc-muted))" }}>
           Create your account and meet your companion.
         </p>
 
@@ -133,22 +132,11 @@ export function SignupForm() {
             showChecklist
             onValidityChange={setPasswordValid}
           />
-          <label className="flex flex-col gap-1 text-sm">
-            Date of birth (must be 18+)
-            <input
-              type="date"
-              required
-              className={inputCls}
-              style={inputStyle}
-              value={form.dob}
-              onChange={(e) => setForm({ ...form, dob: e.target.value })}
-            />
-          </label>
-          {err ? <p className="text-sm text-rose-400">{err}</p> : null}
+          {err ? <p className="text-sm" style={{ color: "hsl(var(--bc-danger))" }}>{err}</p> : null}
           <Button type="submit" disabled={busy || !passwordValid}>
             {busy ? "Creating account..." : "Create account"}
           </Button>
-          <p className="text-center text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+          <p className="text-center text-xs" style={{ color: "hsl(var(--bc-muted))" }}>
             By creating an account you agree to our{" "}
             <a href="/legal/terms" target="_blank" rel="noopener noreferrer" className="underline">
               Terms of Service
@@ -163,21 +151,21 @@ export function SignupForm() {
 
         <div
           className="my-6 flex items-center gap-3 text-xs"
-          style={{ color: "hsl(var(--buttercupp-muted))" }}
+          style={{ color: "hsl(var(--bc-muted))" }}
         >
-          <div className="h-px flex-1" style={{ backgroundColor: "hsl(var(--buttercupp-border))" }} />
+          <div className="h-px flex-1" style={{ backgroundColor: "hsl(var(--bc-border))" }} />
           <span>or</span>
-          <div className="h-px flex-1" style={{ backgroundColor: "hsl(var(--buttercupp-border))" }} />
+          <div className="h-px flex-1" style={{ backgroundColor: "hsl(var(--bc-border))" }} />
         </div>
 
         <GoogleButton mode="signup_with" />
 
-        <p className="mt-6 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+        <p className="mt-6 text-sm" style={{ color: "hsl(var(--bc-muted))" }}>
           Already have an account?{" "}
           <a
             href="/login"
             className="font-medium underline"
-            style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
+            style={{ color: "hsl(var(--bc-amber))" }}
           >
             Sign in
           </a>

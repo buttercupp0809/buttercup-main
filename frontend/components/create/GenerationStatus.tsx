@@ -7,6 +7,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { Check } from "lucide-react";
 import type { GenerationStatusResponse } from "@buttercupp/shared";
 import { CREATION_IMAGE_COUNT } from "@buttercupp/shared";
 
@@ -33,12 +34,14 @@ function SlotTile({ state }: { state: SlotState }) {
       <div
         className={base}
         style={{
-          borderColor: "hsl(var(--buttercupp-accent-rose) / 0.4)",
+          borderColor: "hsl(var(--bc-amber) / 0.4)",
           background:
-            "linear-gradient(135deg, hsl(var(--buttercupp-accent-rose) / 0.25), hsl(var(--buttercupp-accent-violet) / 0.25))",
+            "linear-gradient(135deg, hsl(var(--bc-amber) / 0.25), hsl(var(--bc-honey) / 0.25))",
         }}
       >
-        <div className="flex h-full w-full items-center justify-center text-lg">✓</div>
+        <div className="flex h-full w-full items-center justify-center text-lg">
+          <Check className="h-5 w-5" strokeWidth={2.5} aria-hidden />
+        </div>
       </div>
     );
   }
@@ -46,9 +49,15 @@ function SlotTile({ state }: { state: SlotState }) {
     return (
       <div
         className={base}
-        style={{ borderColor: "hsl(0 70% 50% / 0.4)", backgroundColor: "hsl(0 70% 50% / 0.08)" }}
+        style={{
+          borderColor: "hsl(var(--bc-danger) / 0.4)",
+          backgroundColor: "hsl(var(--bc-danger) / 0.08)",
+        }}
       >
-        <div className="flex h-full w-full items-center justify-center text-xs" style={{ color: "hsl(0 70% 65%)" }}>
+        <div
+          className="flex h-full w-full items-center justify-center text-xs"
+          style={{ color: "hsl(var(--bc-danger))" }}
+        >
           Failed
         </div>
       </div>
@@ -58,7 +67,7 @@ function SlotTile({ state }: { state: SlotState }) {
   return (
     <div
       className={`${base} ${pulsing ? "animate-pulse" : ""}`}
-      style={{ borderColor: "hsl(var(--buttercupp-border))", backgroundColor: "hsl(var(--buttercupp-surface-2))" }}
+      style={{ borderColor: "hsl(var(--bc-border))", backgroundColor: "hsl(var(--bc-surface-2))" }}
     />
   );
 }
@@ -123,7 +132,7 @@ export function GenerationStatus({ characterId }: GenerationStatusProps) {
     <div className="flex flex-col gap-6">
       <div>
         <h1 className="font-display text-2xl font-semibold">Bringing your companion to life</h1>
-        <p className="mt-1 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+        <p className="mt-1 text-sm" style={{ color: "hsl(var(--bc-muted))" }}>
           {unavailable
             ? "Generation is unavailable in this environment right now, but your companion is saved and ready to chat."
             : "Generating a first set of photos. You can start chatting right away, they will fill in as they finish."}
@@ -133,7 +142,7 @@ export function GenerationStatus({ characterId }: GenerationStatusProps) {
       {primaryImageUrl && (
         <div
           className="mx-auto w-40 overflow-hidden rounded-xl border"
-          style={{ borderColor: "hsl(var(--buttercupp-border))", aspectRatio: "9 / 16" }}
+          style={{ borderColor: "hsl(var(--bc-border))", aspectRatio: "9 / 16" }}
         >
           <img src={primaryImageUrl} alt="" className="h-full w-full object-cover object-top" />
         </div>
@@ -151,8 +160,8 @@ export function GenerationStatus({ characterId }: GenerationStatusProps) {
         href={`/chat/${characterId}`}
         className="rounded-md px-4 py-2 text-center text-sm font-semibold"
         style={{
-          backgroundColor: "hsl(var(--buttercupp-accent-rose))",
-          color: "hsl(var(--buttercupp-primary-fg))",
+          backgroundColor: "hsl(var(--bc-amber))",
+          color: "hsl(28 45% 9%)",
         }}
       >
         Start chatting

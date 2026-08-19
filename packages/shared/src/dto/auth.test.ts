@@ -34,17 +34,8 @@ describe("SignupDto", () => {
     privacyAccepted: true as const,
   };
 
-  it("rejects under-18 dob", () => {
-    const res = SignupDto.safeParse({ ...base, dob: dobForAge(MIN_AGE_YEARS - 1) });
-    expect(res.success).toBe(false);
-  });
-
-  it("accepts 18+ dob and normalizes email + jurisdiction", () => {
-    const res = SignupDto.safeParse({
-      ...base,
-      email: "  USER@Example.COM  ",
-      dob: dobForAge(MIN_AGE_YEARS + 1),
-    });
+  it("normalizes email and jurisdiction", () => {
+    const res = SignupDto.safeParse({ ...base, email: "  USER@Example.COM  " });
     expect(res.success).toBe(true);
     if (res.success) {
       expect(res.data.email).toBe("user@example.com");
@@ -53,7 +44,7 @@ describe("SignupDto", () => {
   });
 
   it("rejects short/weak passwords", () => {
-    const res = SignupDto.safeParse({ ...base, password: "short1", dob: dobForAge(30) });
+    const res = SignupDto.safeParse({ ...base, password: "short1" });
     expect(res.success).toBe(false);
   });
 
@@ -64,22 +55,18 @@ describe("SignupDto", () => {
     ["missing digit", "Correct-horse!battery"],
     ["missing symbol", "Correcthorse4battery"],
   ])("rejects password: %s", (_label, pw) => {
-    const res = SignupDto.safeParse({ ...base, password: pw, dob: dobForAge(30) });
+    const res = SignupDto.safeParse({ ...base, password: pw });
     expect(res.success).toBe(false);
   });
 
   it("accepts a strong password (>=12, upper+lower+digit+symbol)", () => {
-    const res = SignupDto.safeParse({
-      ...base,
-      password: "Correct-horse4Battery",
-      dob: dobForAge(30),
-    });
+    const res = SignupDto.safeParse({ ...base, password: "Correct-horse4Battery" });
     expect(res.success).toBe(true);
   });
 
   it("rejects when tos or privacy not accepted", () => {
-    const missingTos = SignupDto.safeParse({ ...base, tosAccepted: false as unknown as true, dob: dobForAge(30) });
-    const missingPriv = SignupDto.safeParse({ ...base, privacyAccepted: false as unknown as true, dob: dobForAge(30) });
+    const missingTos = SignupDto.safeParse({ ...base, tosAccepted: false as unknown as true });
+    const missingPriv = SignupDto.safeParse({ ...base, privacyAccepted: false as unknown as true });
     expect(missingTos.success).toBe(false);
     expect(missingPriv.success).toBe(false);
   });

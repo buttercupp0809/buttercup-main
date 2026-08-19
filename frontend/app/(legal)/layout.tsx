@@ -8,16 +8,31 @@ import { Footer } from "@/components/Footer";
 // nested legal cross-links keep working.
 export default function LegalLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex min-h-screen flex-col bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100">
-      <header className="border-b border-slate-200 dark:border-slate-800">
-        <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
-          <Link href="/" className="text-sm font-semibold tracking-tight">
+    <div className="flex min-h-screen flex-col bg-[hsl(var(--bc-bg))] text-[hsl(var(--bc-fg))]">
+      <header className="sticky top-0 z-40 border-b border-[hsl(var(--bc-border))] bg-[hsl(var(--bc-bg)/0.8)] backdrop-blur-md">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-safe py-4">
+          <Link
+            href="/"
+            className="bc-focus rounded-[var(--bc-radius-xs)] font-display text-base font-semibold tracking-tight text-[hsl(var(--bc-fg))] transition-colors hover:text-[hsl(var(--bc-amber))]"
+          >
             ButterCupp
           </Link>
           <Link
             href="/"
-            className="text-xs text-slate-600 hover:text-slate-900 hover:underline dark:text-slate-400 dark:hover:text-white"
+            className="bc-focus inline-flex items-center gap-1.5 rounded-full border border-[hsl(var(--bc-border))] px-3 py-1.5 text-xs font-medium text-[hsl(var(--bc-muted))] transition-colors hover:border-[hsl(var(--bc-amber)/0.4)] hover:text-[hsl(var(--bc-amber))]"
           >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-3.5 w-3.5"
+              aria-hidden
+            >
+              <path d="m15 18-6-6 6-6" />
+            </svg>
             Back to ButterCupp
           </Link>
         </div>

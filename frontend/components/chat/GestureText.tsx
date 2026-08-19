@@ -18,7 +18,7 @@ export const GestureText = React.memo(function GestureText({ content }: GestureT
         seg.kind === "gesture" ? (
           <span
             key={i}
-            className="italic text-rose-400"
+            className="italic text-[hsl(var(--bc-honey))]"
             data-testid="gesture"
             style={{ fontWeight: 400 }}
           >

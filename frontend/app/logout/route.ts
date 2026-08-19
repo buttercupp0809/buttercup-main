@@ -19,7 +19,13 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 function buildLogoutRedirect(req: NextRequest): NextResponse {
-  const url = new URL("/login", req.url);
+  // req.url is the internal Lambda/container URL in Amplify WEB_COMPUTE and
+  // similar serverless runtimes (e.g. http://localhost:3000/logout), NOT the
+  // public-facing origin. Using it as the base would redirect users to
+  // localhost in production. NEXT_PUBLIC_APP_URL is the canonical public
+  // origin; fall back to req.url only in local dev where the var is unset.
+  const base = process.env.NEXT_PUBLIC_APP_URL ?? req.url;
+  const url = new URL("/login", base);
   // 303 forces the follow-up to be a GET even when the trigger was a POST
   // (form submit), which is the correct semantic for "action completed, now
   // go read this page".

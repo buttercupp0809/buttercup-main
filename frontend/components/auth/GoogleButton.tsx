@@ -179,7 +179,7 @@ export function GoogleButton({ dest = "/dashboard", mode = "signin_with" }: Goog
 
   if (!clientId) {
     return (
-      <p className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }} data-testid="google-button-disabled">
+      <p className="text-xs" style={{ color: "hsl(var(--bc-muted))" }} data-testid="google-button-disabled">
         Google sign-in is not configured on this environment.
       </p>
     );
@@ -205,7 +205,7 @@ export function GoogleButton({ dest = "/dashboard", mode = "signin_with" }: Goog
             ready ? "opacity-100" : "opacity-70"
           }`}
           style={{
-            borderColor: "hsl(var(--buttercupp-border))",
+            borderColor: "hsl(var(--bc-border))",
             background:
               "linear-gradient(180deg, hsl(var(--bc-surface-2)), hsl(var(--bc-surface)))",
             boxShadow:
@@ -213,7 +213,7 @@ export function GoogleButton({ dest = "/dashboard", mode = "signin_with" }: Goog
           }}
         >
           <GoogleGlyph />
-          <span className="text-sm font-semibold text-white">{label}</span>
+          <span className="text-sm font-semibold" style={{ color: "hsl(var(--bc-fg))" }}>{label}</span>
         </div>
 
         {/* Google's real widget. Absolutely positioned to fully cover our
@@ -228,11 +228,11 @@ export function GoogleButton({ dest = "/dashboard", mode = "signin_with" }: Goog
         />
       </div>
       {status === "loading" ? (
-        <p className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+        <p className="text-xs" style={{ color: "hsl(var(--bc-muted))" }}>
           Signing you in...
         </p>
       ) : null}
-      {message ? <p className="text-xs text-rose-400">{message}</p> : null}
+      {message ? <p className="text-xs" style={{ color: "hsl(var(--bc-danger))" }}>{message}</p> : null}
     </div>
   );
 }

@@ -4,18 +4,18 @@ import * as React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-// Shared sidebar/mobile-drawer primary nav item. Uses the rose -> violet
-// gradient tokens already exposed by `ProfileMenu`'s avatar ring and the
+// Shared sidebar/mobile-drawer primary nav item. Uses the honey -> amber
+// brand gradient already exposed by `ProfileMenu`'s avatar ring and the
 // `PremiumPill`. The gradient border is a genuine stroke (mask-composite trick
 // on a positioned pseudo-layer), not a solid line, so it reads as one designed
-// system rather than a rose outline.
+// system rather than a flat outline.
 //
 // State model:
 //  - active   : gradient border at full opacity, low-opacity gradient wash
-//               inside, icon+label tinted toward the accent
+//               inside, icon+label tinted toward the amber accent
 //  - hover    : gradient border fades in at ~55% opacity, glass-style surface
-//               wash fades in, icon shifts toward rose
-//  - resting  : transparent, plain slate text
+//               wash fades in, icon shifts toward amber
+//  - resting  : transparent, muted foreground text
 //  - collapsed: same treatment compressed into a 40x40 tile
 //
 // The gradient-border technique mirrors `PremiumPill` (outer gradient layer
@@ -55,8 +55,8 @@ export function NavGradientDefs({ id = "buttercupp-nav-gradient" }: { id?: strin
     >
       <defs>
         <linearGradient id={id} x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="hsl(var(--buttercupp-accent-rose))" />
-          <stop offset="100%" stopColor="hsl(var(--buttercupp-accent-violet))" />
+          <stop offset="0%" stopColor="hsl(var(--bc-honey))" />
+          <stop offset="100%" stopColor="hsl(var(--bc-amber))" />
         </linearGradient>
       </defs>
     </svg>
@@ -66,11 +66,11 @@ export function NavGradientDefs({ id = "buttercupp-nav-gradient" }: { id?: strin
 // Shared style objects so hover transitions on the border / wash layers stay
 // in sync and we do not allocate fresh objects per render just for CSS vars.
 const GRADIENT_BG =
-  "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))";
+  "linear-gradient(90deg, hsl(var(--bc-honey)), hsl(var(--bc-amber)))";
 const GRADIENT_WASH =
-  "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose) / 0.14), hsl(var(--buttercupp-accent-violet) / 0.14))";
+  "linear-gradient(90deg, hsl(var(--bc-honey) / 0.14), hsl(var(--bc-amber) / 0.14))";
 const GRADIENT_WASH_HOVER =
-  "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose) / 0.08), hsl(var(--buttercupp-accent-violet) / 0.08))";
+  "linear-gradient(90deg, hsl(var(--bc-honey) / 0.08), hsl(var(--bc-amber) / 0.08))";
 
 // mask-composite: exclude paints only where the outer mask (full box) and the
 // inner mask (content-box, i.e. inside the 1.5px padding) do NOT overlap.
@@ -112,11 +112,11 @@ export function NavItemLink({
           ? "h-10 w-10 justify-center rounded-xl"
           : "gap-3 rounded-xl px-3 py-2",
         active
-          ? "text-white"
-          : "text-slate-300 hover:text-white",
+          ? "text-[hsl(var(--bc-fg))]"
+          : "text-[hsl(var(--bc-muted))] hover:text-[hsl(var(--bc-fg))]",
       )}
       style={{
-        outlineColor: "hsl(var(--buttercupp-accent-rose))",
+        outlineColor: "hsl(var(--bc-amber))",
       }}
     >
       <span
@@ -149,7 +149,7 @@ export function NavItemLink({
       <Icon
         className={cn(
           "relative h-5 w-5 shrink-0 transition-colors duration-200",
-          active ? "" : "group-hover:text-[hsl(var(--buttercupp-accent-rose))]",
+          active ? "" : "group-hover:text-[hsl(var(--bc-amber))]",
         )}
         style={iconGradientStyle}
       />

@@ -18,7 +18,6 @@ test.describe("magical onboarding", () => {
     await page.goto("/signup");
     await page.getByLabel("Email").fill(email);
     await page.getByLabel("Password", { exact: true }).fill("Correct-horse4Battery");
-    await page.getByLabel(/Date of birth/i).fill("1995-05-05");
     await page.getByRole("button", { name: /create account/i }).click();
 
     // --- Age gate ---------------------------------------------------------
@@ -60,7 +59,6 @@ test.describe("magical onboarding", () => {
     await page.getByTestId("onboarding-vibe-cozy").click();
     await page.getByTestId("onboarding-interest-Music").click();
     await page.getByTestId("onboarding-interest-Travel").click();
-    await page.getByTestId("onboarding-companion-goal").fill("Someone to unwind with");
     await page.getByTestId("onboarding-continue").click();
 
     // --- Step 3: optional pick (skip) -----------------------------------
@@ -87,7 +85,6 @@ test.describe("magical onboarding", () => {
     await page.goto("/signup");
     await page.getByLabel("Email").fill(email);
     await page.getByLabel("Password", { exact: true }).fill("Correct-horse4Battery");
-    await page.getByLabel(/Date of birth/i).fill("1995-05-05");
     await page.getByRole("button", { name: /create account/i }).click();
 
     if (/age-gate/.test(page.url())) {
@@ -116,7 +113,6 @@ test.describe("magical onboarding", () => {
 
     await page.getByTestId("onboarding-vibe-adventurous").click();
     await page.getByTestId("onboarding-interest-Gaming").click();
-    await page.getByTestId("onboarding-companion-goal").fill("A bit of fun");
     await page.getByTestId("onboarding-continue").click();
 
     await expect(page).toHaveURL(/\/onboarding\/pick/);

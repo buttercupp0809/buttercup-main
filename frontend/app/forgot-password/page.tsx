@@ -1,5 +1,6 @@
 "use client";
 import * as React from "react";
+import { KeyRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function ForgotPasswordPage() {
@@ -21,29 +22,68 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center px-6 py-10">
-      <div className="buttercupp-glass rounded-2xl p-8">
-        <a href="/" className="font-display text-2xl font-semibold tracking-tight">
+    <main
+      className="flex min-h-screen flex-col items-center justify-center px-6 px-safe py-12 pb-safe"
+      style={{ backgroundColor: "hsl(var(--bc-surface))", color: "hsl(var(--bc-fg))" }}
+    >
+      {/* Wordmark above the card */}
+      <div className="mb-8">
+        <a
+          href="/"
+          className="font-display text-2xl tracking-tight"
+          style={{
+            background: "var(--bc-gradient-brand)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}
+        >
           ButterCupp
         </a>
-        <h1 className="font-display mt-6 text-3xl font-semibold tracking-tight">Reset password</h1>
+      </div>
+
+      <div className="bc-rise buttercupp-glass w-full rounded-2xl p-8" style={{ maxWidth: "26rem" }}>
+        <div
+          className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl"
+          style={{
+            background:
+              "linear-gradient(135deg, hsl(var(--bc-honey) / 0.2), hsl(var(--bc-amber) / 0.2))",
+            color: "hsl(var(--bc-amber))",
+          }}
+          aria-hidden
+        >
+          <KeyRound className="h-5 w-5" />
+        </div>
+        <h1
+          className="font-display text-3xl font-semibold tracking-tight"
+          style={{ textWrap: "balance" } as React.CSSProperties}
+        >
+          Reset password
+        </h1>
         {sent ? (
-          <div className="mt-4 flex flex-col gap-3">
-            <p className="text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
-              If an account exists for <strong>{email}</strong>, a reset link is on its way. Check
+          <div className="mt-5 flex flex-col gap-4">
+            <p
+              className="rounded-xl border px-3.5 py-3 text-sm"
+              style={{
+                borderColor: "hsl(var(--bc-success) / 0.4)",
+                backgroundColor: "hsl(var(--bc-success) / 0.08)",
+                color: "hsl(var(--bc-muted))",
+              }}
+            >
+              If an account exists for <strong style={{ color: "hsl(var(--bc-fg))" }}>{email}</strong>, a reset link is on its way. Check
               your inbox (and spam). The link expires shortly.
             </p>
             <a
               href="/login"
               className="text-sm font-medium underline"
-              style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
+              style={{ color: "hsl(var(--bc-amber))" }}
             >
               Back to sign in
             </a>
           </div>
         ) : (
           <>
-            <p className="mb-6 mt-1 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+            <p className="mb-6 mt-1.5 text-sm" style={{ color: "hsl(var(--bc-muted))" }}>
               Enter your email and we will send you a link to choose a new password.
             </p>
             <form onSubmit={submit} className="flex flex-col gap-4">
@@ -53,11 +93,11 @@ export default function ForgotPasswordPage() {
                   type="email"
                   required
                   autoComplete="email"
-                  className="rounded-md border px-3 py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
+                  className="rounded-md border px-3 py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--bc-amber))]"
                   style={{
-                    borderColor: "hsl(var(--buttercupp-border))",
-                    backgroundColor: "hsl(var(--buttercupp-surface))",
-                    color: "hsl(var(--buttercupp-fg))",
+                    borderColor: "hsl(var(--bc-border))",
+                    backgroundColor: "hsl(var(--bc-surface-2))",
+                    color: "hsl(var(--bc-fg))",
                   }}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -67,12 +107,12 @@ export default function ForgotPasswordPage() {
                 {busy ? "Sending..." : "Send reset link"}
               </Button>
             </form>
-            <p className="mt-6 text-sm" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+            <p className="mt-6 text-sm" style={{ color: "hsl(var(--bc-muted))" }}>
               Remembered it?{" "}
               <a
                 href="/login"
                 className="font-medium underline"
-                style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
+                style={{ color: "hsl(var(--bc-amber))" }}
               >
                 Sign in
               </a>

@@ -23,7 +23,6 @@ test.describe("auth polish", () => {
     await page.goto("/signup");
     await page.getByLabel("Email").fill("user@example.com");
     await page.getByLabel("Password", { exact: true }).fill(WEAK);
-    await page.getByLabel(/Date of birth/i).fill("1990-01-01");
     await page.getByLabel(/Country/i).fill("US");
     await page.getByLabel(/Terms of Service/i).check();
     await page.getByLabel(/Privacy Policy/i).check();
@@ -39,16 +38,14 @@ test.describe("auth polish", () => {
     await page.goto("/signup");
     await page.getByLabel("Email").fill("user@example.com");
     await page.getByLabel("Password", { exact: true }).fill(STRONG);
-    await page.getByLabel(/Date of birth/i).fill("1990-01-01");
     await page.getByLabel(/Country/i).fill("US");
     await page.getByLabel(/Terms of Service/i).check();
     await page.getByLabel(/Privacy Policy/i).check();
     await expect(page.getByRole("button", { name: /create account/i })).toBeEnabled();
   });
 
-  test("signup: compliance capture (DOB + jurisdiction + ToS + Privacy) is present", async ({ page }) => {
+  test("signup: compliance capture (jurisdiction + ToS + Privacy) is present", async ({ page }) => {
     await page.goto("/signup");
-    await expect(page.getByLabel(/Date of birth/i)).toBeVisible();
     await expect(page.getByLabel(/Country/i)).toBeVisible();
     await expect(page.getByLabel(/Terms of Service/i)).toBeVisible();
     await expect(page.getByLabel(/Privacy Policy/i)).toBeVisible();

@@ -5,7 +5,7 @@ import { SettingsClient } from "./SettingsClient";
 export default async function SettingsPage() {
   const user = await requireAuth();
   return (
-    <section className="mx-auto max-w-4xl px-6 py-10 sm:py-12">
+    <section className="mx-auto max-w-4xl px-6 px-safe py-10 pb-safe sm:py-12">
       <PageHeader
         eyebrow="Account"
         title="Your"

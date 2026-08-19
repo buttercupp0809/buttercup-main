@@ -6,6 +6,7 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { jwtVerify } from "jose";
 import { createCheckoutSession, resetProviderHealth } from "../payments/provider";
+import { fetchProductPrice } from "../payments/dodo";
 import { processSubscriptionEvent, TOKEN_PACKS } from "../payments/webhooks/shared";
 import * as ccbillHook from "../payments/webhooks/ccbill";
 import * as verotelHook from "../payments/webhooks/verotel";
@@ -141,17 +142,40 @@ async function handleEntitlements(req: IncomingMessage, res: ServerResponse) {
 }
 
 async function handleListPlans(_req: IncomingMessage, res: ServerResponse) {
-  // Public: the plan catalog is not secret. Return in canonical order so
-  // the UI does not have to sort.
-  const items = PLANS_ORDER.map((k) => PLANS[k]);
+  // Fetch live prices from Dodo in parallel. Each plan's product ID comes from
+  // the same env var that resolveProductId uses at checkout (DODO_PRODUCT_<PLAN>).
+  // On fetch failure the hardcoded fallback in PLAN_LIMITS stays in effect so
+  // the UI never shows a broken pricing page.
+  const items = await Promise.all(
+    PLANS_ORDER.map(async (k) => {
+      const plan = { ...PLANS[k] };
+      if (k !== "free") {
+        const productId = process.env[`DODO_PRODUCT_${k.toUpperCase()}`];
+        if (productId) {
+          const livePrice = await fetchProductPrice(productId);
+          if (livePrice !== null) plan.priceUsd = livePrice;
+        }
+      }
+      return plan;
+    }),
+  );
   return send(res, 200, { plans: items });
 }
 
 async function handleTokenPacks(_req: IncomingMessage, res: ServerResponse) {
-  // Public: the token pack catalog is not secret. The UI reads this instead
-  // of hardcoding credits/price so TOKEN_PACKS in webhooks/shared.ts stays
-  // the single source of truth.
-  const items = Object.entries(TOKEN_PACKS).map(([id, pack]) => ({ id, ...pack }));
+  // Same pattern as handleListPlans: overlay live Dodo price, fall back to
+  // TOKEN_PACKS constant if Dodo is unreachable or not configured.
+  const items = await Promise.all(
+    Object.entries(TOKEN_PACKS).map(async ([id, pack]) => {
+      let priceUsd = pack.priceUsd;
+      const productId = process.env[`DODO_PRODUCT_${id.toUpperCase()}`];
+      if (productId) {
+        const livePrice = await fetchProductPrice(productId);
+        if (livePrice !== null) priceUsd = livePrice;
+      }
+      return { id, ...pack, priceUsd };
+    }),
+  );
   return send(res, 200, { packs: items });
 }
 

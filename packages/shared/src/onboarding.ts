@@ -20,7 +20,6 @@ export const onboardingIdentitySchema = z.object({
 export const onboardingTasteSchema = z.object({
   vibe: z.enum(["cozy", "flirty", "adventurous", "intellectual", "supportive"]),
   interests: z.array(z.string().trim().min(1).max(32)).min(1, "Pick at least one").max(8),
-  companionGoal: z.string().trim().min(1).max(280),
 });
 
 // Step 3: optional first-companion pick (may be skipped)

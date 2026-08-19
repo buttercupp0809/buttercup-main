@@ -560,6 +560,48 @@ textarea:focus-visible {
   }
 }
 
+/*
+ * Selection pop. Consumed by onboarding option cards / chips / check badges the
+ * moment they become selected, and by any element that should spring in with a
+ * small overshoot. Scoped through motion-safe by callers.
+ */
+@keyframes bc-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  60% {
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.bc-pop {
+  animation: bc-pop var(--dur-fast) var(--ease-out) both;
+}
+
+/*
+ * Celebratory breathing glow for the onboarding finish hero (the sparkle tile).
+ * Gentle scale + amber halo that loops slowly so the final screen feels alive
+ * without being noisy.
+ */
+@keyframes bc-celebrate {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 hsl(var(--bc-amber) / 0);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 34px 6px hsl(var(--bc-amber) / 0.28);
+  }
+}
+.bc-celebrate {
+  animation: bc-celebrate 3s var(--ease-in-out) infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   /*
    * Reduced motion means less movement, not zero feedback: opacity and colour
@@ -568,8 +610,15 @@ textarea:focus-visible {
    */
   .bc-rise,
   .bc-skeleton,
-  .bc-pulse-ring {
+  .bc-pulse-ring,
+  .bc-pop,
+  .bc-celebrate {
     animation: none;
+  }
+  .bc-pop,
+  .bc-celebrate {
+    opacity: 1;
+    transform: none;
   }
   .bc-rise {
     opacity: 1;

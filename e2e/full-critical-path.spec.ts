@@ -48,11 +48,10 @@ test.describe("full new-user critical path", () => {
     const email = uniqueEmail();
     const displayName = "Aurora";
 
-    // --- Signup (age gate is the dob field on this form) -----------------
+    // --- Signup ----------------------------------------------------------
     await page.goto("/signup");
     await page.getByLabel("Email").fill(email);
     await page.getByLabel("Password", { exact: true }).fill("Correct-horse4Battery");
-    await page.getByLabel(/Date of birth/i).fill("1995-05-05");
     await page.getByRole("button", { name: /create account/i }).click();
     await expect(page).toHaveURL(/\/(dashboard|onboarding)/);
 
@@ -68,7 +67,6 @@ test.describe("full new-user critical path", () => {
     await expect(page).toHaveURL(/\/onboarding\/taste/);
     await page.getByTestId("onboarding-vibe-cozy").click();
     await page.getByTestId("onboarding-interest-Music").click();
-    await page.getByTestId("onboarding-companion-goal").fill("Someone to unwind with");
     await page.getByTestId("onboarding-continue").click();
 
     await expect(page).toHaveURL(/\/onboarding\/pick/);

@@ -178,7 +178,7 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
   const mediaRequiresPlan = scope === "plan_quota" && kind !== "chat" && used === 0;
 
   // Split the headline into a body + emphasized token so the token can
-  // wear the rose to violet gradient without hardcoding brittle string
+  // wear the honey to amber brand gradient without hardcoding brittle string
   // slicing on every branch.
   // When HIDE_VIDEO_BENEFITS is on, a kind="video" event still triggers the
   // paywall (backend contract unchanged) but we render neutral media copy so
@@ -232,23 +232,22 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
         role="status"
         className="fixed inset-x-0 bottom-4 z-50 mx-auto flex w-fit max-w-sm items-center gap-3 rounded-full px-4 py-2 text-sm shadow-lg backdrop-blur"
         style={{
-          backgroundColor: "hsl(var(--buttercupp-surface) / 0.85)",
-          border: "1px solid hsl(var(--buttercupp-accent-rose) / 0.35)",
-          color: "hsl(var(--buttercupp-fg))",
+          backgroundColor: "hsl(var(--bc-surface) / 0.85)",
+          border: "1px solid hsl(var(--bc-amber) / 0.35)",
+          color: "hsl(var(--bc-fg))",
         }}
       >
         <span className="flex items-center gap-1.5">
-          <SparkleIcon className="h-3.5 w-3.5" style={{ color: "hsl(var(--buttercupp-accent-rose))" }} />
+          <SparkleIcon className="h-3.5 w-3.5" style={{ color: "hsl(var(--bc-amber))" }} />
           Upgrade to keep chatting
         </span>
         <button
           type="button"
           onClick={() => setDismissed(false)}
           data-testid="paywall-reopen"
-          className="rounded-full px-3 py-1 text-xs font-semibold text-white shadow-sm"
+          className="rounded-full px-3 py-1 text-xs font-semibold text-[hsl(28_45%_9%)] shadow-sm"
           style={{
-            background:
-              "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
+            backgroundImage: "var(--bc-gradient-brand-h)",
           }}
         >
           View plans
@@ -273,17 +272,17 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
               className="relative flex h-14 w-14 items-center justify-center rounded-2xl"
               style={{
                 background:
-                  "linear-gradient(135deg, hsl(var(--buttercupp-accent-rose) / 0.25), hsl(var(--buttercupp-accent-violet) / 0.25))",
-                border: "1px solid hsl(var(--buttercupp-accent-rose) / 0.4)",
-                color: "hsl(var(--buttercupp-accent-rose))",
-                boxShadow: "0 8px 24px -6px hsl(var(--buttercupp-accent-rose) / 0.45)",
+                  "linear-gradient(135deg, hsl(var(--bc-amber) / 0.25), hsl(var(--bc-honey) / 0.25))",
+                border: "1px solid hsl(var(--bc-amber) / 0.4)",
+                color: "hsl(var(--bc-amber))",
+                boxShadow: "0 8px 24px -6px hsl(var(--bc-amber) / 0.45)",
               }}
             >
               {kindIcon}
               <span
                 aria-hidden
                 className="absolute inset-0 -z-10 animate-pulse rounded-2xl"
-                style={{ background: "hsl(var(--buttercupp-accent-rose) / 0.2)", filter: "blur(14px)" }}
+                style={{ background: "hsl(var(--bc-amber) / 0.2)", filter: "blur(14px)" }}
               />
             </div>
 
@@ -296,8 +295,7 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
               {headlineParts.token ? (
                 <span
                   style={{
-                    background:
-                      "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
+                    backgroundImage: "var(--bc-gradient-brand-h)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -319,9 +317,9 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
             <div
               className="mt-5 rounded-xl border px-3 py-2 text-xs"
               style={{
-                borderColor: "hsl(38 92% 58% / 0.4)",
-                background: "hsl(38 92% 58% / 0.08)",
-                color: "hsl(38 92% 78%)",
+                borderColor: "hsl(var(--bc-warning) / 0.4)",
+                background: "hsl(var(--bc-warning) / 0.08)",
+                color: "hsl(36 98% 78%)",
               }}
             >
               {error}
@@ -348,18 +346,18 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
                   }`}
                   style={{
                     background: highlight
-                      ? "linear-gradient(160deg, hsl(var(--buttercupp-accent-rose) / 0.12), hsl(var(--buttercupp-accent-violet) / 0.12))"
-                      : "hsl(var(--buttercupp-surface-2) / 0.7)",
+                      ? "linear-gradient(160deg, hsl(var(--bc-amber) / 0.12), hsl(var(--bc-honey) / 0.12))"
+                      : "hsl(var(--bc-surface-2) / 0.7)",
                     border: highlight
-                      ? "1px solid hsl(var(--buttercupp-accent-rose) / 0.55)"
-                      : "1px solid hsl(var(--buttercupp-border))",
+                      ? "1px solid hsl(var(--bc-amber) / 0.55)"
+                      : "1px solid hsl(var(--bc-border))",
                     boxShadow: highlight
-                      ? "0 20px 40px -12px hsl(var(--buttercupp-accent-rose) / 0.35)"
+                      ? "0 20px 40px -12px hsl(var(--bc-amber) / 0.35)"
                       : "none",
                   }}
                 >
                   {highlight ? <Ribbon label="Most popular" /> : null}
-                  {bestValue ? <Ribbon label="Best value" variant="violet" /> : null}
+                  {bestValue ? <Ribbon label="Best value" variant="honey" /> : null}
 
                   <div className="flex items-baseline justify-between gap-3">
                     <div className="font-display text-lg font-semibold" style={{ color: "hsl(var(--buttercupp-fg))" }}>
@@ -416,13 +414,12 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
                     onClick={() => subscribe(p.plan)}
                     disabled={pending === p.plan}
                     data-testid={`paywall-buy-${p.plan}`}
-                    className="group mt-5 flex w-full items-center justify-center gap-1.5 rounded-xl py-3 text-sm font-semibold text-white shadow-sm transition hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60 disabled:hover:scale-100"
+                    className="group mt-5 flex w-full items-center justify-center gap-1.5 rounded-[var(--bc-radius)] py-3 text-sm font-semibold text-[hsl(28_45%_9%)] shadow-sm transition hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60 disabled:hover:scale-100"
                     style={{
-                      background:
-                        "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
+                      backgroundImage: "var(--bc-gradient-brand-h)",
                       boxShadow: highlight
-                        ? "0 10px 24px -6px hsl(var(--buttercupp-accent-rose) / 0.55)"
-                        : "0 6px 16px -6px hsl(var(--buttercupp-accent-rose) / 0.4)",
+                        ? "0 10px 24px -6px hsl(var(--bc-amber) / 0.55)"
+                        : "0 6px 16px -6px hsl(var(--bc-amber) / 0.4)",
                     }}
                   >
                     {pending === p.plan ? (
@@ -449,9 +446,9 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
                 data-testid="paywall-buy-tokens-instead"
                 className="inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-xs font-medium transition hover:opacity-80"
                 style={{
-                  borderColor: "hsl(var(--buttercupp-accent-violet) / 0.5)",
-                  color: "hsl(var(--buttercupp-accent-violet))",
-                  background: "hsl(var(--buttercupp-accent-violet) / 0.08)",
+                  borderColor: "hsl(var(--bc-amber) / 0.5)",
+                  color: "hsl(var(--bc-honey))",
+                  background: "hsl(var(--bc-amber) / 0.08)",
                 }}
               >
                 <CoinIcon className="h-3.5 w-3.5" />
@@ -481,16 +478,16 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
   );
 }
 
-function Ribbon({ label, variant = "rose" }: { label: string; variant?: "rose" | "violet" }) {
-  const isViolet = variant === "violet";
+function Ribbon({ label, variant = "amber" }: { label: string; variant?: "amber" | "honey" }) {
   return (
     <div
-      className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white shadow-md"
+      className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[hsl(28_45%_9%)] shadow-md"
       style={{
-        background: isViolet
-          ? "var(--bc-gradient-brand-h)"
-          : "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
-        boxShadow: "0 6px 14px -4px hsl(var(--buttercupp-accent-rose) / 0.5)",
+        backgroundImage:
+          variant === "honey"
+            ? "linear-gradient(90deg, hsl(var(--bc-honey)), hsl(36 100% 63%))"
+            : "var(--bc-gradient-brand-h)",
+        boxShadow: "0 6px 14px -4px hsl(var(--bc-amber) / 0.5)",
       }}
     >
       {label}
@@ -505,8 +502,8 @@ function PerkRow({ icon, label, value }: { icon: React.ReactNode; label: string;
         <span
           className="flex h-5 w-5 items-center justify-center rounded-md"
           style={{
-            background: "hsl(var(--buttercupp-accent-rose) / 0.15)",
-            color: "hsl(var(--buttercupp-accent-rose))",
+            background: "hsl(var(--bc-amber) / 0.15)",
+            color: "hsl(var(--bc-amber))",
           }}
           aria-hidden
         >
@@ -530,7 +527,7 @@ function TrustPill({ icon, label }: { icon: React.ReactNode; label: string }) {
         background: "hsl(var(--buttercupp-surface-2) / 0.6)",
       }}
     >
-      <span style={{ color: "hsl(var(--buttercupp-accent-rose))" }}>{icon}</span>
+      <span style={{ color: "hsl(var(--bc-amber))" }}>{icon}</span>
       {label}
     </span>
   );

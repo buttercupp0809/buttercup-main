@@ -87,14 +87,14 @@ export function ConsentGate({ needsConsent, children }: Props) {
             className="flex h-12 w-12 items-center justify-center rounded-full p-[1.5px]"
             style={{
               background:
-                "linear-gradient(135deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
+                "linear-gradient(135deg, hsl(var(--bc-honey)), hsl(var(--bc-amber)))",
             }}
           >
             <div
               className="flex h-full w-full items-center justify-center rounded-full"
-              style={{ backgroundColor: "hsl(var(--buttercupp-surface-2))" }}
+              style={{ backgroundColor: "hsl(var(--bc-surface-2))" }}
             >
-              <ShieldCheck className="h-6 w-6" style={{ color: "hsl(var(--buttercupp-accent-rose))" }} />
+              <ShieldCheck className="h-6 w-6" style={{ color: "hsl(var(--bc-amber))" }} />
             </div>
           </div>
 
@@ -105,16 +105,16 @@ export function ConsentGate({ needsConsent, children }: Props) {
             Before you continue
           </h1>
 
-          <p className="mt-3 text-[0.95rem] leading-relaxed" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+          <p className="mt-3 text-[0.95rem] leading-relaxed" style={{ color: "hsl(var(--bc-muted))" }}>
             ButterCupp is an 18+ platform for adult AI companionship. By selecting{" "}
-            <span style={{ color: "hsl(var(--buttercupp-fg))" }}>&ldquo;I Agree&rdquo;</span> below, you
+            <span style={{ color: "hsl(var(--bc-fg))" }}>&ldquo;I Agree&rdquo;</span> below, you
             confirm you are at least 18 years old and accept our{" "}
             <a
               href="/legal/terms"
               target="_blank"
               rel="noopener noreferrer"
               className="underline underline-offset-2"
-              style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
+              style={{ color: "hsl(var(--bc-amber))" }}
             >
               Terms of Service
             </a>
@@ -124,7 +124,7 @@ export function ConsentGate({ needsConsent, children }: Props) {
               target="_blank"
               rel="noopener noreferrer"
               className="underline underline-offset-2"
-              style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
+              style={{ color: "hsl(var(--bc-amber))" }}
             >
               Privacy Policy
             </a>
@@ -134,7 +134,7 @@ export function ConsentGate({ needsConsent, children }: Props) {
               target="_blank"
               rel="noopener noreferrer"
               className="underline underline-offset-2"
-              style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
+              style={{ color: "hsl(var(--bc-amber))" }}
             >
               Cookie Policy
             </a>
@@ -142,7 +142,7 @@ export function ConsentGate({ needsConsent, children }: Props) {
           </p>
 
           {err ? (
-            <p className="mt-4 text-sm" style={{ color: "hsl(var(--buttercupp-accent-rose))" }}>
+            <p className="mt-4 text-sm" style={{ color: "hsl(var(--bc-danger))" }}>
               {err}
             </p>
           ) : null}
@@ -153,10 +153,10 @@ export function ConsentGate({ needsConsent, children }: Props) {
               data-testid="consent-decline"
               onClick={decline}
               disabled={busy !== null}
-              className="rounded-lg border px-5 py-3 text-sm font-semibold transition hover:bg-white/5 disabled:opacity-50 sm:flex-1"
+              className="rounded-lg border px-5 py-3 text-sm font-semibold transition hover:bg-[hsl(var(--bc-cream)/0.06)] disabled:opacity-50 sm:flex-1"
               style={{
-                borderColor: "hsl(var(--buttercupp-border))",
-                color: "hsl(var(--buttercupp-muted))",
+                borderColor: "hsl(var(--bc-border))",
+                color: "hsl(var(--bc-muted))",
               }}
             >
               {busy === "decline" ? "Signing out..." : "Decline"}
@@ -166,11 +166,10 @@ export function ConsentGate({ needsConsent, children }: Props) {
               data-testid="consent-accept"
               onClick={agree}
               disabled={busy !== null}
-              className="rounded-lg px-5 py-3 text-sm font-semibold text-white transition hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 sm:flex-[1.4]"
+              className="rounded-lg px-5 py-3 text-sm font-semibold text-[hsl(28_45%_9%)] transition hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 sm:flex-[1.4]"
               style={{
-                background:
-                  "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
-                boxShadow: "0 10px 24px -6px hsl(var(--buttercupp-accent-rose) / 0.55)",
+                background: "var(--bc-gradient-brand-v)",
+                boxShadow: "0 10px 24px -6px hsl(var(--bc-amber) / 0.55)",
               }}
             >
               {busy === "accept" ? "Confirming..." : "I Agree, continue"}

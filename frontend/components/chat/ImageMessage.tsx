@@ -20,7 +20,7 @@ export function ImageMessage({ mediaAssetId, url, caption, error }: Props) {
 
   if (error) {
     return (
-      <div className="rounded-md border border-red-300 bg-red-50 p-2 text-xs text-red-700">
+      <div className="rounded-[var(--bc-radius-sm)] border border-[hsl(var(--bc-danger)/0.35)] bg-[hsl(var(--bc-danger)/0.1)] p-2 text-xs text-[hsl(2_84%_78%)]">
         Image failed ({error}).
       </div>
     );
@@ -30,7 +30,7 @@ export function ImageMessage({ mediaAssetId, url, caption, error }: Props) {
     return (
       <div
         data-media-id={mediaAssetId}
-        className="flex w-48 animate-pulse items-center justify-center rounded-lg bg-slate-200 text-xs text-slate-500 dark:bg-slate-800"
+        className="bc-skeleton flex w-48 items-center justify-center rounded-[var(--bc-radius-lg)] text-xs text-[hsl(var(--bc-muted))]"
         style={{ aspectRatio: "9 / 16", minHeight: "12rem" }}
       >
         Generating image...
@@ -44,7 +44,7 @@ export function ImageMessage({ mediaAssetId, url, caption, error }: Props) {
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 hover:opacity-90 transition-opacity"
+          className="overflow-hidden rounded-[var(--bc-radius)] border border-[hsl(var(--bc-border))] hover:opacity-90 transition-opacity"
           style={{ maxWidth: "200px" }}
           aria-label="View image"
         >
@@ -63,7 +63,7 @@ export function ImageMessage({ mediaAssetId, url, caption, error }: Props) {
             style={{ maxHeight: "320px", objectFit: "cover" }}
           />
         </button>
-        {caption ? <span className="text-xs text-slate-500">{caption}</span> : null}
+        {caption ? <span className="text-xs text-[hsl(var(--bc-subtle))]">{caption}</span> : null}
       </div>
 
       {open ? (
@@ -146,9 +146,9 @@ function ImageModal({
 
           <a
             href="/billing"
-            className="flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90"
+            className="flex items-center justify-center rounded-[var(--bc-radius)] px-5 py-3 text-sm font-semibold text-[hsl(28_45%_9%)] shadow-sm transition-opacity hover:opacity-90"
             style={{
-              background: "linear-gradient(90deg, hsl(var(--bc-amber)), hsl(var(--bc-honey)))",
+              backgroundImage: "var(--bc-gradient-brand-h)",
             }}
           >
             Upgrade to Premium

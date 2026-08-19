@@ -243,14 +243,14 @@ function PersonaPanelContent({
       <div className="p-5">
         <Link
           href="/billing"
-          className="flex items-center gap-3 rounded-xl border p-3 transition hover:bg-white/5"
+          className="flex items-center gap-3 rounded-[var(--bc-radius)] border p-3 transition hover:bg-[hsl(var(--bc-cream)/0.05)]"
           style={{ borderColor: "hsl(var(--buttercupp-border))" }}
         >
           <span
             className="flex h-9 w-9 items-center justify-center rounded-full"
-            style={{ backgroundColor: "hsl(var(--buttercupp-accent-rose))" }}
+            style={{ backgroundColor: "hsl(var(--bc-amber))" }}
           >
-            <Lock className="h-4 w-4 text-black" />
+            <Lock className="h-4 w-4 text-[hsl(28_45%_9%)]" />
           </span>
           <span className="min-w-0 flex-1">
             <span className="block text-sm font-semibold">My Private Content</span>
@@ -310,7 +310,7 @@ export function PersonaPanelMobileTrigger(props: PersonaPanelProps) {
         onClick={() => setOpen(true)}
         aria-label={`Open ${props.name}'s gallery`}
         data-testid="persona-trigger"
-        className="tap-target flex items-center justify-center rounded-md text-white xl:hidden"
+        className="tap-target flex items-center justify-center rounded-md text-[hsl(var(--bc-fg))] xl:hidden"
       >
         <Images className="h-5 w-5" />
       </button>

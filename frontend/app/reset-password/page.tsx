@@ -2,6 +2,7 @@
 import * as React from "react";
 import { Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { LockKeyhole } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PasswordField } from "@/components/auth/PasswordField";
 
@@ -46,12 +47,42 @@ function ResetPasswordInner() {
   }
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center px-6 py-10">
-      <div className="buttercupp-glass rounded-2xl p-8">
-        <a href="/" className="font-display text-2xl font-semibold tracking-tight">
+    <main
+      className="flex min-h-screen flex-col items-center justify-center px-6 px-safe py-12 pb-safe"
+      style={{ backgroundColor: "hsl(var(--bc-surface))", color: "hsl(var(--bc-fg))" }}
+    >
+      {/* Wordmark above the card */}
+      <div className="mb-8">
+        <a
+          href="/"
+          className="font-display text-2xl tracking-tight"
+          style={{
+            background: "var(--bc-gradient-brand)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}
+        >
           ButterCupp
         </a>
-        <h1 className="font-display mt-6 mb-6 text-3xl font-semibold tracking-tight">
+      </div>
+
+      <div className="bc-rise buttercupp-glass w-full rounded-2xl p-8" style={{ maxWidth: "26rem" }}>
+        <div
+          className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl"
+          style={{
+            background:
+              "linear-gradient(135deg, hsl(var(--bc-honey) / 0.2), hsl(var(--bc-amber) / 0.2))",
+            color: "hsl(var(--bc-amber))",
+          }}
+          aria-hidden
+        >
+          <LockKeyhole className="h-5 w-5" />
+        </div>
+        <h1
+          className="font-display mb-6 text-3xl font-semibold tracking-tight"
+          style={{ textWrap: "balance" } as React.CSSProperties}
+        >
           Choose a new password
         </h1>
         {token ? (
@@ -64,18 +95,26 @@ function ResetPasswordInner() {
               showChecklist
               onValidityChange={setValid}
             />
-            {err ? <p className="text-sm text-rose-400">{err}</p> : null}
+            {err ? <p className="text-sm" style={{ color: "hsl(var(--bc-danger))" }}>{err}</p> : null}
             <Button type="submit" disabled={busy || !valid}>
               {busy ? "Saving..." : "Set new password"}
             </Button>
           </form>
         ) : (
-          <p className="text-sm text-rose-400">
+          <p
+            role="alert"
+            className="rounded-xl border px-3.5 py-3 text-sm"
+            style={{
+              borderColor: "hsl(var(--bc-danger) / 0.5)",
+              backgroundColor: "hsl(var(--bc-danger) / 0.08)",
+              color: "hsl(var(--bc-danger))",
+            }}
+          >
             Missing reset token. Please use the link from your email, or{" "}
             <a
               href="/forgot-password"
               className="font-medium underline"
-              style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
+              style={{ color: "hsl(var(--bc-amber))" }}
             >
               request a new one
             </a>
