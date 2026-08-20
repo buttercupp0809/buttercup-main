@@ -6,7 +6,14 @@ dist
 **/dist
 .env
 .env.*
-!.env.example
+# Nested env files must NEVER ship in the image. backend/.env carries local-dev
+# settings (e.g. POPPY_DISABLE_S3_UPLOAD="true") that were being baked into the
+# prod container via `COPY backend/ ./backend/`, forcing canUploadToS3()=false
+# so chat images fell back to base64 and vanished on reload. Prod gets its real
+# env from ECS Secrets Manager, never from a bundled .env.
+**/.env
+**/.env.*
+!**/.env.example
 .git
 .gitignore
 coverage

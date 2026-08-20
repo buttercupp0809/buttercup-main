@@ -34,6 +34,10 @@
         {
           "name": "MEDIA_WORKER_CONCURRENCY",
           "value": "4"
+        },
+        {
+          "name": "POPPY_DISABLE_S3_UPLOAD",
+          "value": "false"
         }
       ],
       "secrets": [
