@@ -3,7 +3,7 @@
 // Falls back to the static REELS manifest when the DB has no video rows (e.g.
 // fresh deploy, not yet seeded).
 
-import { prisma } from "@buttercupp/database";
+import { prisma, CHARACTER_MEDIA_ORDER_BY } from "@buttercupp/database";
 import { signAssetUrl } from "@/lib/cdn";
 import { pickPersonaImage } from "@/lib/persona-images";
 import { REELS } from "@/lib/reels/manifest";
@@ -40,9 +40,11 @@ export async function getPublicReels(limit = 12): Promise<PublicReel[]> {
           include: {
             media: {
               where: { kind: "image", hidden: false },
-              // isDisplay first: the free/public image must win over the
-              // isPrimary hero, exactly like lib/feed.ts and lib/characters.ts.
-              orderBy: [{ isDisplay: "desc" }, { isPrimary: "desc" }, { sort: "asc" }],
+              // isMain-first, shared ordering (see media-order.ts): the pinned
+              // main wins, then the free/public display image over the hero.
+              // Same constant as lib/feed.ts and lib/characters.ts so the
+              // marketing carousel avatar cannot drift from the app.
+              orderBy: CHARACTER_MEDIA_ORDER_BY,
               take: 1,
             },
           },

@@ -232,6 +232,13 @@ model Character {
   popularityScore   Float             @default(0)
   // Free-text home/city shown on cards and reels (e.g. "Lisbon, Portugal").
   location          String?
+  // Stable natural key for system-owned personas (ownerUserId IS NULL). Set
+  // by sync-personas.ts to "persona-<index>" derived from the seed image URL
+  // /personas/<index>.webp so re-seeding is idempotent regardless of any
+  // canonical-name rename. NULL for user-created characters. Enforced as a
+  // partial unique index (see migration add_character_seed_key). Locked
+  // decision, see Plans/cursor-prompt/35-major-fixes-batch.md #A.
+  seedKey           String?           @unique
   createdAt         DateTime          @default(now())
   updatedAt         DateTime          @updatedAt
 
@@ -623,6 +630,12 @@ model CharacterMedia {
   // isPrimary). Decoupled from isPrimary so the hero/paywalled asset and the
   // free/display asset can be different rows.
   isDisplay   Boolean            @default(false)
+  // Weekly-curated lead image. Exactly one per character (writer-enforced by
+  // packages/database/prisma/promote-main-images.ts). When set, this row
+  // wins over isDisplay/isPrimary/sort in every read site's ordering so the
+  // lead never re-elects when new chat-generated images arrive. Locked
+  // decision, see Plans/cursor-prompt/35-major-fixes-batch.md #B/#9.
+  isMain      Boolean            @default(false)
   // Retired-but-preserved flag. See the HIDDEN MEDIA CONVENTION block above
   // the model: hidden rows stay in the database (and their backing file stays
   // in S3/disk) forever for audit/history, but must never be read by any
@@ -640,6 +653,7 @@ model CharacterMedia {
   @@index([characterId, kind])
   @@index([kind])
   @@index([characterId, isDisplay])
+  @@index([characterId, isMain])
   @@index([characterId, hidden])
 }
 

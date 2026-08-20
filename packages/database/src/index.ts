@@ -4,3 +4,4 @@ export * from "@prisma/client";
 export * from "./types";
 export * from "./queries/characters";
 export * from "./queries/backfill-display";
+export * from "./queries/media-order";

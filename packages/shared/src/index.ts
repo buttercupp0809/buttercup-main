@@ -8,3 +8,4 @@ export * from "./character-create";
 export * from "./media";
 export * from "./analytics";
 export * from "./onboarding";
+export * from "./tier-label";

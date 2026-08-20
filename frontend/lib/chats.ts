@@ -2,7 +2,7 @@
 // sidebar recents rail. Adds an optional relationship snapshot for badging plus
 // a last-message preview for the chat list.
 
-import { prisma } from "@buttercupp/database";
+import { prisma, CHARACTER_MEDIA_ORDER_BY } from "@buttercupp/database";
 import { pickPersonaImage } from "@/lib/persona-images";
 import { signAssetUrl } from "@/lib/cdn";
 
@@ -41,11 +41,11 @@ export async function listConversations(userId: string, take = 50): Promise<Conv
           currentVersion: { include: { appearanceSheet: true } },
           media: {
             // hidden: false is load-bearing: see the HIDDEN MEDIA CONVENTION
-            // in schema.prisma. isDisplay first: the free/public image must
-            // win over the isPrimary hero, exactly like lib/feed.ts and
-            // lib/characters.ts.
+            // in schema.prisma. Ordering imported from the canonical
+            // constant so this and lib/feed.ts / lib/characters.ts /
+            // chat/[id]/page.tsx / reels/page.tsx can never drift.
             where: { kind: "image", hidden: false },
-            orderBy: [{ isDisplay: "desc" }, { isPrimary: "desc" }, { sort: "asc" }],
+            orderBy: CHARACTER_MEDIA_ORDER_BY,
             take: 1,
           },
         },

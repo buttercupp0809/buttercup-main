@@ -185,24 +185,79 @@ export async function buildImageContext(
   }
 }
 
-// Call Stheno to transform a raw cleaned prompt into a rich Juggernaut XL prompt.
-// Returns the enriched prompt on success; falls back to rawPrompt silently on
-// any network error, non-OK response, or empty content. When context is
-// provided, its recent turns and running summary are attached as SECONDARY
-// background flavor, while the raw prompt remains the PRIMARY authoritative
-// intent.
+// Small stoplist: common English words we do NOT want to force-preserve in
+// the enriched prompt because they carry no visual signal.
+const TOKEN_GUARD_STOPLIST = new Set([
+  "a", "an", "the", "of", "on", "in", "at", "to", "for", "with",
+  "and", "or", "but", "so", "she", "he", "her", "his", "him", "you",
+  "me", "my", "your", "our", "we", "they", "them", "it", "its",
+  "is", "are", "was", "were", "be", "been", "being", "am",
+  "this", "that", "these", "those", "then", "than", "there", "here",
+  "please", "just", "really", "very", "some", "any", "one", "two",
+  "now", "yes", "no", "not", "do", "does", "did", "have", "has", "had",
+]);
+
+// Extract concrete tokens (nouns/adjectives) from the user's prompt fragment
+// that we want to guarantee survive the enrichment rewrite. Case-preserving
+// unique output. Only alphabetical words 3+ chars.
+export function extractGuardTokens(userFragment: string): string[] {
+  if (!userFragment) return [];
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const raw of userFragment.split(/[^A-Za-z']+/)) {
+    if (raw.length < 3) continue;
+    const key = raw.toLowerCase();
+    if (TOKEN_GUARD_STOPLIST.has(key)) continue;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(raw);
+  }
+  return out;
+}
+
+// Append any missing guard tokens verbatim to the enriched prompt so the
+// downstream image model literally receives them. Only appends tokens that
+// are absent (case-insensitive), so tokens the LLM did keep are not
+// duplicated. See Plans/cursor-prompt/35-major-fixes-batch.md #D.2 step 4.
+export function ensureGuardTokens(enriched: string, guardTokens: string[]): string {
+  if (guardTokens.length === 0) return enriched;
+  const lower = enriched.toLowerCase();
+  const missing = guardTokens.filter((t) => !lower.includes(t.toLowerCase()));
+  if (missing.length === 0) return enriched;
+  return `${enriched}, ${missing.join(", ")}`;
+}
+
+// Call the LLM to transform a raw cleaned prompt into a rich Juggernaut XL
+// prompt. When context is provided, its recent turns and running summary
+// are attached as SECONDARY background flavor, while the raw prompt remains
+// the PRIMARY authoritative intent.
+//
+// Two robustness changes (see Plans/cursor-prompt/35-major-fixes-batch.md #D.2/#D.3):
+//   1. Route through callLLM (the mature provider chain: local Stheno ->
+//      OpenRouter/anthropic fallback) instead of a direct Stheno fetch,
+//      so enrichment still runs when the GPU box is down (matches how
+//      generateImageTeaser already works).
+//   2. Lower temperature (0.15) and a post-guard step: any high-signal
+//      user token that the rewrite dropped is appended back verbatim.
+//      Locks the user's concrete words (outfit, place, pose, colors) into
+//      the final prompt regardless of model behavior.
 export async function enrichImagePrompt(
   rawPrompt: string,
   context?: ImageContext,
+  guardTokens?: string[],
 ): Promise<string> {
   const systemPrompt = IMAGE_ENRICHMENT_FILLS.imageEnrichmentPrompt.trim();
   if (!systemPrompt) return rawPrompt;
 
   const summaryBlock = context?.summary?.trim() ?? "";
   const recentBlock = context?.recentTurns?.trim() ?? "";
+  const tokens = guardTokens ?? extractGuardTokens(rawPrompt);
+  const quotedTokens = tokens.length > 0 ? tokens.map((t) => `"${t}"`).join(", ") : "(none)";
   const userMessage = [
     "PRIMARY IMAGE REQUEST (preserve every detail exactly, do not drop or change any element):",
     rawPrompt,
+    "",
+    `MUST-PRESERVE TOKENS (these exact words MUST appear verbatim in the output): ${quotedTokens}`,
     "",
     "BACKGROUND CONTEXT (secondary, use only to add consistent flavor, never to override the primary request):",
     `Summary: ${summaryBlock || "(none)"}`,
@@ -212,29 +267,54 @@ export async function enrichImagePrompt(
     "Produce one vivid image-generation prompt under 150 words that fully preserves the primary request and layers in consistent background flavor where it does not conflict.",
   ].join("\n");
 
+  if (!summaryBlock && !recentBlock && context) {
+    logWarn("chat-image", `enrichImagePrompt: context provided but both summary and recent turns empty`);
+  }
+
   try {
-    const base = await resolvePoppyBaseUrl("stheno");
-    const res = await fetch(`${base}/v1/chat/completions`, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        model: "stheno",
-        messages: [
-          { role: "system", content: systemPrompt },
-          { role: "user", content: userMessage },
-        ],
-        max_tokens: 250,
-        temperature: 0.7,
-        stream: false,
-      }),
-      signal: AbortSignal.timeout(15_000),
+    const result = await callLLM({
+      purpose: "extract",
+      systemPrompt,
+      messages: [{ role: "user", content: userMessage }],
+      // Enrichment is prompt-shaping, not creative writing. Low temperature
+      // stops Stheno from paraphrasing away concrete user tokens.
+      temperature: 0.15,
+      maxTokens: 300,
+      timeoutMs: 15_000,
+      contentRating: "mature",
     });
-    if (!res.ok) return rawPrompt;
-    const data = await res.json() as { choices?: { message?: { content?: string } }[] };
-    const enriched = data.choices?.[0]?.message?.content?.trim();
-    return enriched || rawPrompt;
+    if (result.provider === "hardcoded") return ensureGuardTokens(rawPrompt, tokens);
+    const enriched = result.text?.trim();
+    if (!enriched) return ensureGuardTokens(rawPrompt, tokens);
+    return ensureGuardTokens(enriched, tokens);
   } catch {
-    return rawPrompt;
+    // Keep the direct-Stheno path as a last resort in case callLLM refuses
+    // (unknown purpose etc.). Best-effort; on any failure return the raw
+    // prompt with guard tokens re-appended, exactly like the fast path.
+    try {
+      const base = await resolvePoppyBaseUrl("stheno");
+      const res = await fetch(`${base}/v1/chat/completions`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          model: "stheno",
+          messages: [
+            { role: "system", content: systemPrompt },
+            { role: "user", content: userMessage },
+          ],
+          max_tokens: 300,
+          temperature: 0.15,
+          stream: false,
+        }),
+        signal: AbortSignal.timeout(15_000),
+      });
+      if (!res.ok) return ensureGuardTokens(rawPrompt, tokens);
+      const data = (await res.json()) as { choices?: { message?: { content?: string } }[] };
+      const enriched = data.choices?.[0]?.message?.content?.trim();
+      return ensureGuardTokens(enriched || rawPrompt, tokens);
+    } catch {
+      return ensureGuardTokens(rawPrompt, tokens);
+    }
   }
 }
 

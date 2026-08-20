@@ -66,16 +66,18 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
   // surface stays focused on the highest-conversion offer.
   const plans = React.useMemo(
     () =>
-      (plansFromEvent.length > 0 ? plansFromEvent : (fallbackPlans ?? [])).filter(
+      (fallbackPlans ?? plansFromEvent).filter(
         (p) => p.plan === "sub_monthly" || p.plan === "sub_yearly",
       ),
     [plansFromEvent, fallbackPlans],
   );
 
-  // Fallback catalog fetch: the paywall frame should carry `plans`, but if
-  // it ever arrives empty, fetch the public plan list directly.
+  // Always fetch live prices from /billing/plans on mount. The paywall event
+  // carries plan data but its prices come from the hardcoded PLANS constant,
+  // not from the live Dodo API overlay that /billing/plans uses. We use the
+  // event plans for the initial render (no loading flash) then replace with
+  // fresh prices as soon as the fetch completes.
   React.useEffect(() => {
-    if (plansFromEvent.length > 0) return;
     let cancelled = false;
     (async () => {
       try {
@@ -91,7 +93,7 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
     return () => {
       cancelled = true;
     };
-  }, [plansFromEvent]);
+  }, []);
 
   // Poll entitlements every 5s while the modal is open. Bounded implicitly
   // by the component lifetime (unmounts when parent resumes). Server-side

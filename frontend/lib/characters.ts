@@ -2,7 +2,13 @@
 // wire DTOs. Anything that produces a card also produces the joined
 // avatar/greeting fields; the query builder handles filtering + ordering.
 
-import { prisma, buildCharacterWhere, buildCharacterOrderBy, type CharacterViewer } from "@buttercupp/database";
+import {
+  prisma,
+  buildCharacterWhere,
+  buildCharacterOrderBy,
+  CHARACTER_MEDIA_ORDER_BY,
+  type CharacterViewer,
+} from "@buttercupp/database";
 import type { Character, CharacterVersion, AppearanceSheet, Prisma } from "@buttercupp/database";
 import {
   styleEnumToWire,
@@ -31,15 +37,17 @@ export type CharacterWithCurrent = Character & {
   currentVersion:
     | (CharacterVersion & { appearanceSheet: AppearanceSheet | null })
     | null;
-  media?: { url: string; kind: string; isPrimary: boolean; isDisplay: boolean }[];
+  media?: { url: string; kind: string; isPrimary: boolean; isDisplay: boolean; isMain?: boolean }[];
 };
 
-// The free/public image is the DISPLAY image (isDisplay = true), not the
-// isPrimary hero (which stays behind the upgrade nag). Falls back to the old
-// "first image" behavior for pre-backfill / single-image rows where isDisplay
-// may not yet be set.
+// Free/public image resolution order (see Plans/cursor-prompt/35-major-fixes-batch.md #B):
+//   1. isMain: the weekly-curated lead image wins unconditionally.
+//   2. isDisplay: the free/public asset.
+//   3. First image at all: pre-backfill / single-image fallback.
+// The isPrimary hero (paywalled) never wins the free card avatar slot.
 export function primaryImageFrom(media: CharacterWithCurrent["media"]): string | null {
   const img =
+    media?.find((m) => m.kind === "image" && m.isMain === true) ??
     media?.find((m) => m.kind === "image" && m.isDisplay === true) ??
     media?.find((m) => m.kind === "image");
   if (!img) return null;
@@ -98,7 +106,7 @@ export async function listCharacters(
         // schema.prisma. A hidden row (e.g. a retired external reference
         // image) must never be selected here.
         where: { kind: "image", hidden: false },
-        orderBy: [{ isDisplay: "desc" }, { isPrimary: "desc" }, { sort: "asc" }],
+        orderBy: CHARACTER_MEDIA_ORDER_BY,
       },
     },
   };
@@ -130,7 +138,7 @@ export async function getCharacterDetail(
         // hidden: false is load-bearing: see the HIDDEN MEDIA CONVENTION in
         // schema.prisma.
         where: { kind: "image", hidden: false },
-        orderBy: [{ isDisplay: "desc" }, { isPrimary: "desc" }, { sort: "asc" }],
+        orderBy: CHARACTER_MEDIA_ORDER_BY,
       },
     },
   });

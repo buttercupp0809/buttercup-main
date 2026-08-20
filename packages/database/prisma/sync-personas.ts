@@ -1,6 +1,10 @@
 // Syncs the 144 personas from Plans/persona-list.md into the database.
-// Matches existing characters by their primary image URL (/personas/N.webp),
-// then updates name/location/bio. Creates new records for any missing ones.
+// Owns persona identity via the new `seedKey` natural key (see Plans/cursor-prompt/
+// 35-major-fixes-batch.md #A). seedKey = "persona-<index>" derived from the
+// canonical seed image URL /personas/<index>.webp. This is what stops the
+// duplicate-Character regressions: re-seeding is idempotent regardless of
+// any canonical-name rename that used to make the old seed.ts create a
+// second Character per persona.
 //
 // Run from repo root: npx tsx packages/database/prisma/sync-personas.ts
 
@@ -40,6 +44,10 @@ function parsePersonaList(content: string): ParsedPersona[] {
   return result;
 }
 
+export function seedKeyForIndex(index: number): string {
+  return `persona-${index}`;
+}
+
 async function main() {
   // Uses the @buttercupp/database singleton (CLAUDE.md hard rule: never new
   // PrismaClient() outside packages/database/src/client.ts). ./load-env is
@@ -56,11 +64,13 @@ async function main() {
 
   let updated = 0;
   let created = 0;
+  let backfilled = 0;
   let skipped = 0;
 
   for (const p of personas) {
     const imageUrl = `/personas/${p.index}.webp`;
     const imagePath = path.join(PUBLIC_PERSONAS, `${p.index}.webp`);
+    const seedKey = seedKeyForIndex(p.index);
 
     if (!existsSync(imagePath)) {
       console.log(`  [skip] ${p.index}. ${p.name} - image file not found`);
@@ -68,18 +78,47 @@ async function main() {
       continue;
     }
 
-    const media = await prisma.characterMedia.findFirst({
-      where: { url: imageUrl, isPrimary: true },
-      select: { characterId: true },
+    // Prefer the new stable seedKey. Fall back to matching by the legacy
+    // primary /personas/N.webp media row so we can BACKFILL seedKey on
+    // characters that predate the migration without creating a duplicate.
+    // Only system-owned rows (ownerUserId = null) are candidates; a
+    // user-created character with an accidental persona URL must never be
+    // touched here.
+    let existing = await prisma.character.findUnique({
+      where: { seedKey },
+      select: { id: true },
     });
+    if (!existing) {
+      const legacyMedia = await prisma.characterMedia.findFirst({
+        where: {
+          url: imageUrl,
+          isPrimary: true,
+          character: { ownerUserId: null },
+        },
+        select: { characterId: true },
+      });
+      if (legacyMedia) {
+        existing = { id: legacyMedia.characterId };
+        // Backfill seedKey on the pre-existing row. Guarded by the unique
+        // index: if two legacy Characters somehow share this seed URL,
+        // dedupe-characters.ts must run first to collapse them; this
+        // update would otherwise throw P2002.
+        await prisma.character.update({
+          where: { id: legacyMedia.characterId },
+          data: { seedKey },
+        });
+        backfilled++;
+      }
+    }
 
-    if (media) {
+    if (existing) {
       await prisma.character.update({
-        where: { id: media.characterId },
+        where: { id: existing.id },
         data: {
           name: p.name,
           location: p.location,
           bio: p.bio,
+          seedKey,
         },
       });
       updated++;
@@ -97,6 +136,7 @@ async function main() {
           visibility: "public",
           moderationStatus: "approved",
           popularityScore: 0,
+          seedKey,
         },
       });
       // Single seeded image: both hero (isPrimary) and free/public (isDisplay),
@@ -119,11 +159,17 @@ async function main() {
     }
   }
 
-  console.log(`[sync] done: ${updated} updated, ${created} created, ${skipped} skipped`);
+  console.log(
+    `[sync] done: ${updated} updated, ${created} created, ${backfilled} seedKey backfilled, ${skipped} skipped`,
+  );
   await prisma.$disconnect();
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+// Only run when invoked directly. seedKeyForIndex is exported for other
+// scripts (bulk_generate_main.py's TS promoter, tests).
+if (require.main === module) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}

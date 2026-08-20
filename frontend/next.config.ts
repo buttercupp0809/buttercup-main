@@ -30,6 +30,10 @@ const CSP_DIRECTIVES = [
     "https://*.s3.amazonaws.com",
     "https://*.s3.eu-north-1.amazonaws.com",
     "https://*.fal.media",
+    // Meta Pixel: fbevents.js emits a 1x1 <img> beacon to
+    // www.facebook.com/tr for browsers that block fetch(), and the noscript
+    // fallback is an <img> tag. Without img-src, CSP silently drops both.
+    "https://www.facebook.com",
     ...DEV_LOCAL_MEDIA_ORIGINS,
   ].join(" "),
   [
@@ -44,7 +48,11 @@ const CSP_DIRECTIVES = [
   // (CSP blocks https://accounts.google.com/gsi/client). The button also draws
   // in an accounts.google.com iframe (frame-src) and pulls an external GIS
   // stylesheet (style-src) that 'unsafe-inline' does NOT cover.
-  `script-src 'self' 'unsafe-inline' https://accounts.google.com${isDev ? " 'unsafe-eval'" : ""}`,
+  // Meta Pixel: `fbevents.js` is loaded from connect.facebook.net. Without
+  // it here, CSP blocks the load, `fbq` stays a stub, and the `Lead` event
+  // fired on signup is silently dropped. See
+  // Plans/cursor-prompt/35-major-fixes-batch.md #H.
+  `script-src 'self' 'unsafe-inline' https://accounts.google.com https://connect.facebook.net${isDev ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline' https://accounts.google.com",
   [
     "connect-src 'self' https: wss:",
@@ -58,6 +66,11 @@ const CSP_DIRECTIVES = [
     // entirely in production, where the backend is HTTPS/WSS and already
     // covered by the wildcards above.
     ...(isDev ? ["http://localhost:4000", "ws://localhost:4000"] : []),
+    // Meta Pixel XHR endpoint. The wildcard `https:` above already permits
+    // it, but list it explicitly so future tightening (removing the
+    // wildcard) does not silently break Pixel again.
+    "https://connect.facebook.net",
+    "https://www.facebook.com",
     "https://openrouter.ai",
     "https://api.anthropic.com",
     "https://api.openai.com",

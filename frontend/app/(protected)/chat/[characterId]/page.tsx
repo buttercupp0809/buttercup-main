@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { prisma } from "@buttercupp/database";
+import { prisma, CHARACTER_MEDIA_ORDER_BY } from "@buttercupp/database";
 import { requireAuth } from "@/lib/auth";
 import { ChatWindow } from "@/components/chat/ChatWindow";
 import { ChatList, ChatListMobileTrigger } from "@/components/chat/ChatList";
@@ -31,11 +31,11 @@ export default async function ChatPage({
       currentVersion: { include: { appearanceSheet: true } },
       media: {
         // hidden: false is load-bearing: see the HIDDEN MEDIA CONVENTION in
-        // schema.prisma. Without this, the now-retired external reference
-        // image (never hidden from this query before) could still win the
-        // images[0]/avatarUrl slot below.
+        // schema.prisma. Ordering imported from the canonical constant so
+        // this and all other read sites (lib/characters.ts, lib/feed.ts,
+        // lib/chats.ts, reels/page.tsx) can never drift.
         where: { hidden: false },
-        orderBy: [{ isDisplay: "desc" }, { isPrimary: "desc" }, { sort: "asc" }],
+        orderBy: CHARACTER_MEDIA_ORDER_BY,
       },
     },
   });
@@ -64,29 +64,56 @@ export default async function ChatPage({
   // into the chat on entry (see ChatWindow's on-mount checkin call), so this
   // page just loads DB history and never inserts a check-in itself.
 
+  // History window shrunk from 50 to 25 (see Plans/cursor-prompt/35-major-fixes-batch.md #I.3).
+  // ChatWindow's client-side lazy loader picks up older turns on scroll-up.
+  // This roughly halves the chat page's initial history payload, and once
+  // input-image storage moves to MediaAsset (#E step 5), payloads shrink
+  // further because content no longer carries multi-MB base64.
+  const CHAT_INITIAL_HISTORY = 25;
   const historyRows = await prisma.message.findMany({
     where: { conversationId: conv.id },
     orderBy: { createdAt: "desc" },
-    take: 50,
+    take: CHAT_INITIAL_HISTORY,
     include: { mediaAsset: { select: { s3Key: true } } },
   });
-  const initialMessages = historyRows.reverse().map((m) => ({
-    id: m.id,
-    role: m.role,
-    content: m.content,
-    createdAt: m.createdAt.toISOString(),
-    // Production: sign the S3 key from the linked MediaAsset.
-    // Local dev fallback: if content is a data URL (no S3), use it directly.
-    imageUrl: m.mediaAsset?.s3Key
-      ? signAssetUrl(m.mediaAsset.s3Key)
-      : m.content.startsWith("data:")
-        ? m.content
-        : undefined,
-  }));
+  const initialMessages = historyRows.reverse().map((m) => {
+    // Null-guard: Message.content is String (not-null) in schema, but a
+    // legacy row could hold an empty string, and being defensive here is
+    // load-bearing: a `.startsWith` on undefined would throw during SSR and
+    // 500 the whole /chat/<id> route (the observed "chat is broken" symptom
+    // from #E). Coerce first, then match strictly on data:image/ so a
+    // message that literally contains the substring "data:" (e.g. a
+    // conversation about MIME types) is not misread as an inline image.
+    const content = m.content ?? "";
+    const isInlineImage = content.startsWith("data:image/");
+    return {
+      id: m.id,
+      role: m.role,
+      // Never send a multi-MB base64 blob through as `content` for a message
+      // whose imageUrl is set: the ChatWindow renderer only reads `content`
+      // when `imageUrl` is missing, but a defensive empty string prevents
+      // future refactors from accidentally rendering the raw data URL as
+      // text.
+      content: isInlineImage ? "" : content,
+      createdAt: m.createdAt.toISOString(),
+      // Production: sign the S3 key from the linked MediaAsset.
+      // Local dev fallback: legacy rows persisted the base64 data URL in
+      // Message.content itself; keep rendering them until they age out.
+      imageUrl: m.mediaAsset?.s3Key
+        ? signAssetUrl(m.mediaAsset.s3Key)
+        : isInlineImage
+          ? content
+          : undefined,
+    };
+  });
 
+  // Sidebar conversation list previously fetched 50; the mobile drawer and
+  // desktop rail only render ~12 at a time before scrolling, so shrinking
+  // this take cuts DB work substantially per chat load. See #I.2.
+  const CHAT_SIDEBAR_LIMIT = 12;
   const [relationship, conversations, bond, memories, quota] = await Promise.all([
     getRelationship(user.id, characterId),
-    listConversations(user.id, 50),
+    listConversations(user.id, CHAT_SIDEBAR_LIMIT),
     getCompanionBond(user.id, characterId),
     getCompanionMemories(user.id, characterId),
     // Read-only view of the free-trial counter the backend enforces. Presentation
@@ -143,7 +170,22 @@ export default async function ChatPage({
   // Pre-blur gallery images server-side so locked persona-panel tiles never
   // expose a real URL. Index 0 (the free/display image) is free; the rest
   // (including the isPrimary hero, now at index 1+) render blurred.
-  const imageBlurs = carouselImages.length > 1 ? await blurMany(carouselImages) : [];
+  //
+  // Perf guard (Plans/cursor-prompt/35-major-fixes-batch.md #I step 1): the
+  // blur pipeline fetches from S3 and runs sharp resize+blur+webp per
+  // carousel image, which could scale linearly with image count and push
+  // chat TTFB into seconds. Cap total blur work at 1500ms with a race, and
+  // fall back to empty (client renders the safe blur-lg CSS shim already
+  // used for missing entries). Long-term fix: precompute blur placeholders
+  // at image-creation time so the read path is free.
+  const BLUR_TIMEOUT_MS = 1500;
+  const imageBlurs: string[] =
+    carouselImages.length > 1
+      ? await Promise.race([
+          blurMany(carouselImages),
+          new Promise<string[]>((resolve) => setTimeout(() => resolve([]), BLUR_TIMEOUT_MS)),
+        ])
+      : [];
 
   return (
     <div className="flex h-full flex-col overflow-hidden">

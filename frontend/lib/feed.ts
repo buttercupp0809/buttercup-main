@@ -2,7 +2,7 @@
 // small set of curated feeds. Each section reuses listCharacters (via the
 // same query builder) so the mature gating logic stays in one place.
 
-import { prisma } from "@buttercupp/database";
+import { prisma, CHARACTER_MEDIA_ORDER_BY } from "@buttercupp/database";
 import type { CharacterViewer } from "@buttercupp/database";
 import type { CharacterCardDTO } from "@buttercupp/shared";
 import { listCharacters } from "@/lib/characters";
@@ -39,7 +39,9 @@ export async function getDashboardFeed(viewer: CharacterViewer): Promise<Dashboa
 
   // TODO(personalization): "For you" currently mirrors popular. Swap this
   // for a tag-affinity or embeddings-based query once we track per-user
-  // preference signals.
+  // preference signals. Until then we intentionally reuse the SAME popular
+  // result object for both sections so we do not send two identical
+  // queries (see Plans/cursor-prompt/35-major-fixes-batch.md #I step 7).
   return {
     recents,
     sections: [
@@ -71,11 +73,7 @@ async function loadRecents(userId: string): Promise<RecentChat[]> {
             // hidden: false is load-bearing: see the HIDDEN MEDIA CONVENTION
             // in schema.prisma.
             where: { kind: "image" as const, hidden: false },
-            orderBy: [
-              { isDisplay: "desc" as const },
-              { isPrimary: "desc" as const },
-              { sort: "asc" as const },
-            ],
+            orderBy: CHARACTER_MEDIA_ORDER_BY,
             take: 1,
           },
         },

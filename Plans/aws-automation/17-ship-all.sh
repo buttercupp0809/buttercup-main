@@ -268,10 +268,14 @@ phase_frontend() {
     # only exists live (e.g. APP_AWS_REGION, OPENROUTER_API_KEY, REDIS_URL,
     # POPPY_S3_BUCKET_REELS are live-only), which a blind --environment-variables
     # replace would wipe and break prod.
+    # Empty values in the file are skipped so that secrets set manually in the
+    # Amplify console (e.g. RESEND_API_KEY) are never overwritten with "".
     local live_json merged_json
     live_json="$(aws amplify get-app --app-id "$AMPLIFY_APP_ID" --region "$AMPLIFY_REGION" \
       --query 'app.environmentVariables' --output json)"
-    merged_json="$(jq -s '.[0] * .[1]' <(printf '%s' "$live_json") <(printf '%s' "$file_json"))"
+    local file_json_nonempty
+    file_json_nonempty="$(jq 'with_entries(select(.value != null and .value != ""))' <<<"$file_json")"
+    merged_json="$(jq -s '.[0] * .[1]' <(printf '%s' "$live_json") <(printf '%s' "$file_json_nonempty"))"
 
     local before after
     before="$(jq 'length' <<<"$live_json")"; after="$(jq 'length' <<<"$merged_json")"

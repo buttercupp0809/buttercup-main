@@ -59,13 +59,90 @@ interface CharacterCandidate {
   versionCount: number;
 }
 
-function assertLocalDb(): void {
+// Prod-safe escape hatch: --i-understand-this-is-prod bypasses the localhost
+// guard AFTER a series of hard safety checks. Introduced by
+// Plans/cursor-prompt/35-major-fixes-batch.md #A step 4. Every check below
+// is load-bearing and must not be skipped without human approval:
+//   1. A pg_dump backup of Character, CharacterVersion, CharacterMedia to
+//      a timestamped file MUST exist and be at least 1KiB (empty dumps
+//      mean pg_dump silently failed).
+//   2. Interactive TTY confirmation of the exact winner/loser counts. Any
+//      non-TTY (CI, cron, background job) MUST re-invoke with the
+//      confirmation baked in via --confirm-dedupe=YES-I-CHECKED-THE-DUMP.
+//
+// See the prod runbook step 3 at the bottom of the plan for the intended
+// operator flow. This function ONLY validates flags/env; the dump and
+// confirmation logic run in main().
+
+const PROD_FLAG = "--i-understand-this-is-prod";
+const CI_CONFIRM_FLAG = "--confirm-dedupe=YES-I-CHECKED-THE-DUMP";
+
+interface RunFlags {
+  isProdRun: boolean;
+  ciConfirm: boolean;
+  dumpPath: string | null;
+}
+
+function parseFlags(argv: string[]): RunFlags {
+  const isProdRun = argv.includes(PROD_FLAG);
+  const ciConfirm = argv.includes(CI_CONFIRM_FLAG);
+  const dumpArg = argv.find((a) => a.startsWith("--dump-path="));
+  return {
+    isProdRun,
+    ciConfirm,
+    dumpPath: dumpArg ? dumpArg.slice("--dump-path=".length) : null,
+  };
+}
+
+function assertLocalOrProdApproved(flags: RunFlags): void {
   const url = process.env.DATABASE_URL ?? "";
-  if (!/@(localhost|127\.0\.0\.1)/.test(url)) {
+  const isLocal = /@(localhost|127\.0\.0\.1)/.test(url);
+  if (isLocal) return;
+  if (!flags.isProdRun) {
     throw new Error(
-      `dedupe:characters refuses to run against non-local DATABASE_URL (${url.slice(0, 40)}...). Local Postgres only.`,
+      `dedupe:characters refuses to run against non-local DATABASE_URL (${url.slice(0, 40)}...). ` +
+        `Pass ${PROD_FLAG} plus --dump-path=<file> after taking a pg_dump.`,
     );
   }
+  if (!flags.dumpPath) {
+    throw new Error(
+      `dedupe:characters ${PROD_FLAG} requires --dump-path=<file> pointing at a pg_dump backup ` +
+        `of Character, CharacterVersion, CharacterMedia (see Plans/cursor-prompt/35-major-fixes-batch.md prod runbook step 3).`,
+    );
+  }
+  // Import inside the function so the local path (no --dump-path passed)
+  // does not need node:fs at module load.
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { existsSync, statSync } = require("node:fs");
+  if (!existsSync(flags.dumpPath)) {
+    throw new Error(`dedupe:characters dump file not found at ${flags.dumpPath}`);
+  }
+  const size = statSync(flags.dumpPath).size;
+  if (size < 1024) {
+    throw new Error(
+      `dedupe:characters dump file ${flags.dumpPath} is suspiciously small (${size} bytes). ` +
+        `pg_dump likely failed; refusing to run.`,
+    );
+  }
+}
+
+// Non-TTY runs require the explicit CI confirm flag so cron/CI cannot
+// accidentally rewrite prod. Interactive runs prompt on stdin.
+async function confirmInteractive(prompt: string, ciConfirm: boolean): Promise<boolean> {
+  if (ciConfirm) return true;
+  if (!process.stdin.isTTY) {
+    throw new Error(
+      `dedupe:characters cannot prompt: stdin is not a TTY. Re-run with ${CI_CONFIRM_FLAG} ` +
+        `after verifying the dry-run plan.`,
+    );
+  }
+  process.stdout.write(prompt);
+  return new Promise<boolean>((resolve) => {
+    process.stdin.once("data", (chunk) => {
+      const answer = chunk.toString().trim().toLowerCase();
+      resolve(answer === "yes" || answer === "y");
+    });
+  });
 }
 
 function chooseWinner(cands: CharacterCandidate[]): CharacterCandidate {
@@ -390,7 +467,20 @@ async function enforceInvariants(characterId: string): Promise<void> {
 }
 
 async function main(): Promise<void> {
-  assertLocalDb();
+  const flags = parseFlags(process.argv.slice(2));
+  assertLocalOrProdApproved(flags);
+  if (flags.isProdRun) {
+    console.log("=== dedupe:characters PROD RUN ===");
+    console.log(`Dump verified at: ${flags.dumpPath}`);
+    const ok = await confirmInteractive(
+      "Type 'yes' to proceed with prod dedupe (this rewrites Character rows in prod): ",
+      flags.ciConfirm,
+    );
+    if (!ok) {
+      console.log("Aborted by user.");
+      process.exit(0);
+    }
+  }
   try {
     await prisma.$queryRaw`SELECT 1`;
   } catch (err) {

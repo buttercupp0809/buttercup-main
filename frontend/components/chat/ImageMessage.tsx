@@ -17,6 +17,13 @@ interface Props {
 
 export function ImageMessage({ mediaAssetId, url, caption, error }: Props) {
   const [open, setOpen] = React.useState(false);
+  // Tracks a load failure so a broken/expired signed URL renders as a
+  // retryable placeholder instead of the browser's default broken-image
+  // glyph. `retryKey` forces the <img> to re-request the URL when the user
+  // taps retry (a fresh signature is more likely for the second attempt).
+  // See Plans/cursor-prompt/35-major-fixes-batch.md #E.
+  const [broken, setBroken] = React.useState(false);
+  const [retryKey, setRetryKey] = React.useState(0);
 
   if (error) {
     return (
@@ -38,6 +45,24 @@ export function ImageMessage({ mediaAssetId, url, caption, error }: Props) {
     );
   }
 
+  if (broken) {
+    return (
+      <button
+        type="button"
+        data-media-id={mediaAssetId}
+        onClick={() => {
+          setBroken(false);
+          setRetryKey((k) => k + 1);
+        }}
+        className="flex w-48 flex-col items-center justify-center gap-1 rounded-[var(--bc-radius-lg)] border border-[hsl(var(--bc-border))] bg-[hsl(var(--bc-surface-2))] p-3 text-xs text-[hsl(var(--bc-muted))] hover:bg-[hsl(var(--bc-cream)/0.06)]"
+        style={{ aspectRatio: "9 / 16", minHeight: "12rem" }}
+      >
+        <span className="font-medium text-[hsl(var(--bc-fg))]">Image unavailable</span>
+        <span>Tap to retry</span>
+      </button>
+    );
+  }
+
   return (
     <>
       <div className="flex flex-col gap-1" data-media-id={mediaAssetId}>
@@ -56,9 +81,12 @@ export function ImageMessage({ mediaAssetId, url, caption, error }: Props) {
             (the surrounding message says the character sent a photo).
           */}
           <img
+            key={retryKey}
             src={url}
             alt={caption ?? ""}
             loading="lazy"
+            decoding="async"
+            onError={() => setBroken(true)}
             className="w-full h-auto block"
             style={{ maxHeight: "320px", objectFit: "cover" }}
           />

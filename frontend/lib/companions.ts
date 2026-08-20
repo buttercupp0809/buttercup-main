@@ -10,7 +10,7 @@
 // authenticated user's id (see requireAuth()); no client-supplied value is
 // accepted. System personas (ownerUserId = null) are excluded by the where
 // clause.
-import { prisma } from "@buttercupp/database";
+import { prisma, CHARACTER_MEDIA_ORDER_BY } from "@buttercupp/database";
 import { signAssetUrl } from "@/lib/cdn";
 import {
   summarizeAssetGroups,
@@ -57,7 +57,10 @@ export async function listCompanions(userId: string): Promise<CompanionCardVM[]>
     include: {
       media: {
         where: { kind: "image", hidden: false },
-        orderBy: [{ isDisplay: "desc" }, { isPrimary: "desc" }, { sort: "asc" }],
+        // isMain-first, shared ordering (see media-order.ts). A pinned main
+        // image must win here too, or a user-owned companion's lead would
+        // silently rotate as chat-generated images arrive.
+        orderBy: CHARACTER_MEDIA_ORDER_BY,
         select: { url: true, isPrimary: true, isDisplay: true },
       },
     },

@@ -51,8 +51,13 @@ vi.mock("../../media/asset", () => ({
   createReadyAsset: vi.fn().mockResolvedValue({ id: "asset-1" }),
 }));
 
+// enrichImagePrompt now routes through callLLM (the provider chain), not a
+// direct Stheno fetch, so enrichment survives a GPU-box outage (see
+// Plans/cursor-prompt/35-major-fixes-batch.md #D.3). Expose a handle so each
+// test can drive the enrichment result.
+const callLLMMock = vi.fn();
 vi.mock("../../llm/provider", () => ({
-  callLLM: vi.fn().mockResolvedValue({ text: "teaser", provider: "openrouter" }),
+  callLLM: (...a: unknown[]) => callLLMMock(...a),
 }));
 
 // Import after mocks so the module resolves against the stubs above.
@@ -72,6 +77,8 @@ beforeEach(() => {
   getLatestSummaryMock.mockReset().mockResolvedValue(null);
   generateImageMock.mockReset();
   generateConsistentMock.mockReset();
+  // Default: a successful non-hardcoded enrichment. Individual tests override.
+  callLLMMock.mockReset().mockResolvedValue({ text: "teaser", provider: "openrouter" });
 });
 
 afterEach(() => {
@@ -152,24 +159,26 @@ describe("buildImageContext", () => {
 describe("enrichImagePrompt", () => {
   const RAW = "a woman on a beach at sunset, red dress, arms raised";
 
-  it("sends PRIMARY == raw prompt verbatim and BACKGROUND with summary + turns", async () => {
-    const fetchMock = vi.fn().mockResolvedValue({
-      ok: true,
-      json: async () => ({ choices: [{ message: { content: "ENRICHED" } }] }),
-    });
-    vi.stubGlobal("fetch", fetchMock);
+  it("sends PRIMARY == raw prompt verbatim and BACKGROUND with summary + turns via callLLM", async () => {
+    callLLMMock.mockResolvedValueOnce({ text: "ENRICHED", provider: "openrouter" });
 
     const result = await enrichImagePrompt(RAW, {
       summary: "Rooftop meetup, playful mood.",
       recentTurns: "User: hey\nAria: hi there",
     });
 
-    expect(result).toBe("ENRICHED");
-    expect(fetchMock).toHaveBeenCalledTimes(1);
-    const body = JSON.parse(fetchMock.mock.calls[0][1].body);
-    expect(body.temperature).toBeCloseTo(0.7, 5);
-    expect(body.max_tokens).toBe(250);
-    const userMsg = body.messages.find((m: { role: string }) => m.role === "user");
+    // The enriched text is returned, with any dropped user tokens re-appended
+    // by the guard. "ENRICHED" contains none of them, so all survive.
+    expect(result.startsWith("ENRICHED")).toBe(true);
+    expect(result.toLowerCase()).toContain("beach");
+
+    expect(callLLMMock).toHaveBeenCalledTimes(1);
+    const arg = callLLMMock.mock.calls[0][0];
+    // Prompt-shaping, not creative writing: low temperature locks user tokens.
+    expect(arg.temperature).toBeCloseTo(0.15, 5);
+    expect(arg.purpose).toBe("extract");
+    expect(typeof arg.systemPrompt).toBe("string");
+    const userMsg = arg.messages.find((m: { role: string }) => m.role === "user");
     expect(userMsg).toBeDefined();
     const content: string = userMsg.content;
 
@@ -181,6 +190,9 @@ describe("enrichImagePrompt", () => {
     const primaryBlock = content.slice(primaryIdx, bgIdx);
     expect(primaryBlock).toContain(RAW);
 
+    // MUST-PRESERVE tokens are listed for the model.
+    expect(content).toContain("MUST-PRESERVE TOKENS");
+
     // BACKGROUND block contains the summary and the recent turns.
     const backgroundBlock = content.slice(bgIdx);
     expect(backgroundBlock).toContain("Rooftop meetup, playful mood.");
@@ -188,23 +200,15 @@ describe("enrichImagePrompt", () => {
     expect(backgroundBlock).toContain("Aria: hi there");
   });
 
-  it("returns raw cleaned prompt when Stheno returns non-OK", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue({ ok: false, json: async () => ({}) }),
-    );
+  it("returns raw prompt (guard tokens already present) when the chain falls back to hardcoded", async () => {
+    callLLMMock.mockResolvedValueOnce({ text: "ignored canned line", provider: "hardcoded" });
     const out = await enrichImagePrompt(RAW, { summary: "", recentTurns: "" });
+    // RAW already contains all its own guard tokens, so nothing is appended.
     expect(out).toBe(RAW);
   });
 
-  it("returns raw cleaned prompt when Stheno returns empty content", async () => {
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue({
-        ok: true,
-        json: async () => ({ choices: [{ message: { content: "   " } }] }),
-      }),
-    );
+  it("returns raw prompt when callLLM yields empty content", async () => {
+    callLLMMock.mockResolvedValueOnce({ text: "   ", provider: "openrouter" });
     const out = await enrichImagePrompt(RAW);
     expect(out).toBe(RAW);
   });
@@ -221,23 +225,19 @@ describe("generateChatImage", () => {
       meta: { seed: 42 },
     });
 
-    // Enrichment must return a distinctive string so we can prove the provider
-    // received THAT string and not the raw userText.
+    // Enrichment (via callLLM) must return a distinctive string so we can prove
+    // the provider received THAT string and not the raw userText.
     const ENRICHED = "ENRICHED_PROMPT_MARKER_XYZ";
-    vi.stubGlobal(
-      "fetch",
-      vi.fn().mockResolvedValue({
-        ok: true,
-        json: async () => ({ choices: [{ message: { content: ENRICHED } }] }),
-      }),
-    );
+    callLLMMock.mockResolvedValueOnce({ text: ENRICHED, provider: "openrouter" });
 
     const USER_TEXT = "send me a photo of you in a garden";
     await generateChatImage(USER_TEXT);
 
     expect(generateImageMock).toHaveBeenCalledTimes(1);
     const args = generateImageMock.mock.calls[0][0];
-    expect(args.prompt).toBe(ENRICHED);
+    // The enriched marker reaches the provider (guard may append user tokens
+    // like "garden", so assert containment rather than exact equality).
+    expect(args.prompt).toContain(ENRICHED);
     expect(args.prompt).not.toBe(USER_TEXT);
     // Also assert the cleaned prompt (which would be the fallback) is not what
     // we sent, guarding against a regression where enrichment gets bypassed.

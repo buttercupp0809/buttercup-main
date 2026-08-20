@@ -3,8 +3,18 @@ import { describe, expect, it, vi, beforeEach } from "vitest";
 const findManyConversation = vi.fn();
 const listCharacters = vi.fn();
 
+// feed.ts imports CHARACTER_MEDIA_ORDER_BY from @buttercupp/database, so the
+// mock must provide it (mirror the real isMain-first ordering) or loadRecents
+// throws on the missing export.
+const CHARACTER_MEDIA_ORDER_BY = [
+  { isMain: "desc" },
+  { isDisplay: "desc" },
+  { isPrimary: "desc" },
+  { sort: "asc" },
+];
 vi.mock("@buttercupp/database", () => ({
   prisma: { conversation: { findMany: (...args: unknown[]) => findManyConversation(...args) } },
+  CHARACTER_MEDIA_ORDER_BY,
 }));
 vi.mock("@/lib/characters", () => ({ listCharacters: (...args: unknown[]) => listCharacters(...args) }));
 vi.mock("@/lib/persona-images", () => ({ pickPersonaImage: () => "/personas/1.webp" }));
@@ -18,7 +28,7 @@ beforeEach(() => {
 });
 
 describe("getDashboardFeed recents (display image ordering)", () => {
-  it("orders recents media with isDisplay first, so avatarUrl resolves to the display image", async () => {
+  it("orders recents media with the shared isMain-first ordering, so avatarUrl resolves to the pinned/display image", async () => {
     findManyConversation.mockResolvedValue([
       {
         characterId: "char-1",
@@ -36,10 +46,6 @@ describe("getDashboardFeed recents (display image ordering)", () => {
 
     expect(feed.recents[0].avatarUrl).toBe("https://cdn.example.com/secondary.jpg");
     const [callArgs] = findManyConversation.mock.calls[0];
-    expect(callArgs.include.character.include.media.orderBy).toEqual([
-      { isDisplay: "desc" },
-      { isPrimary: "desc" },
-      { sort: "asc" },
-    ]);
+    expect(callArgs.include.character.include.media.orderBy).toEqual(CHARACTER_MEDIA_ORDER_BY);
   });
 });

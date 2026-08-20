@@ -442,10 +442,11 @@ textarea:focus-visible {
 
 /*
  * Chat composer input opt-out. The global amber focus ring above reads as an
- * error/warning color inside the chat bar and clashes with the brand pill.
- * We drop the ring on the textarea itself and move a soft, brand-neutral
- * focus affordance to the composer wrapper (.bc-composer-field) via
- * focus-within, so the field still reads as focused without the amber flash.
+ * error/warning color inside the chat bar and clashes with the brand pill, so
+ * we drop the ring on the textarea itself. We intentionally render NO
+ * focus-within affordance on the wrapper either: with auto-focus on load the
+ * ring showed permanently and read as a stray outline around the bar. The
+ * outer composer <form> border is the only frame the field needs.
  * Scoped to these two classes only: every other input keeps the a11y ring.
  */
 .bc-chat-input:focus-visible {
@@ -455,13 +456,6 @@ textarea:focus-visible {
 .bc-composer-field {
   border: 1px solid transparent;
   border-radius: var(--bc-radius-sm);
-  transition:
-    border-color var(--dur-press) var(--ease-out),
-    box-shadow var(--dur-press) var(--ease-out);
-}
-.bc-composer-field:focus-within {
-  border-color: hsl(var(--buttercupp-border));
-  box-shadow: 0 0 0 3px hsl(var(--bc-honey) / 0.18);
 }
 
 /*

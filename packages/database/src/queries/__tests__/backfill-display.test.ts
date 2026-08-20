@@ -45,6 +45,27 @@ describe("pickDisplayMediaId (pure)", () => {
     ];
     expect(pickDisplayMediaId(images)).toBe("a");
   });
+
+  // Regression guard for Plans/cursor-prompt/35-major-fixes-batch.md #B:
+  // once a weekly main is promoted, no other row (even one with a lower
+  // sort or isPrimary) can out-rank it. This is what stops the "lead image
+  // rotates over time" symptom.
+  it("isMain wins unconditionally, even against a lower-sort primary", () => {
+    const images = [
+      { id: "hero", isPrimary: true, isMain: false },
+      { id: "sec", isPrimary: false, isMain: false },
+      { id: "main", isPrimary: false, isMain: true },
+    ];
+    expect(pickDisplayMediaId(images)).toBe("main");
+  });
+
+  it("isMain wins even when it is the only isPrimary row", () => {
+    const images = [
+      { id: "main-and-primary", isPrimary: true, isMain: true },
+      { id: "sec", isPrimary: false, isMain: false },
+    ];
+    expect(pickDisplayMediaId(images)).toBe("main-and-primary");
+  });
 });
 
 async function dbReachable(): Promise<boolean> {

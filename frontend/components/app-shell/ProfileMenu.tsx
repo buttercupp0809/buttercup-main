@@ -3,6 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { LogOut, Settings as SettingsIcon, Gem, ChevronsUpDown } from "lucide-react";
+import { tierLabel, isPaidTier } from "@buttercupp/shared";
 import { cn } from "@/lib/utils";
 
 export interface ProfileUser {
@@ -196,9 +197,13 @@ function Avatar({ src, name }: { src: string | null; name: string }) {
   );
 }
 
+// Display-only: `pro` and `premium` both render as "Premium". Capability
+// gating (e.g. `premiumModel = tier === "pro"` in the LLM provider) still
+// keys on the raw stored tier and is intentionally untouched. See
+// packages/shared/src/tier-label.ts.
 function TierBadge({ tier }: { tier: string }) {
-  const key = tier.toLowerCase();
-  const isPaid = key !== "free";
+  const isPaid = isPaidTier(tier);
+  const label = tierLabel(tier);
   return (
     <span
       className="inline-flex w-fit items-center gap-1 rounded-full px-1.5 py-[1px] text-[10px] font-bold uppercase tracking-wider"
@@ -225,7 +230,7 @@ function TierBadge({ tier }: { tier: string }) {
             : "hsl(var(--bc-muted))",
         }}
       />
-      {tier}
+      {label}
     </span>
   );
 }

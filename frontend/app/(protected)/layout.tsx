@@ -8,6 +8,7 @@ import { MobileNav, MobileBottomBar } from "@/components/app-shell/MobileNav";
 import { ProfileMenu } from "@/components/app-shell/ProfileMenu";
 import { PremiumPill } from "@/components/app-shell/PremiumPill";
 import { ConsentGate } from "@/components/app-shell/ConsentGate";
+import { isPaidTier } from "@buttercupp/shared";
 
 // Dark cinematic in-app shell (PRD §2.3 + §1). The `.buttercupp-app` wrapper
 // scopes the dark theme + rose/violet accents to authenticated surfaces so
@@ -68,7 +69,14 @@ export default async function ProtectedLayout({ children }: { children: React.Re
         >
           <MobileNav user={profileUser} recents={recents} />
           <div className="ml-auto flex items-center gap-3">
-            <PremiumPill />
+            {/*
+              Locked product decision (Plans/cursor-prompt/35-major-fixes-batch.md #G):
+              the 70% OFF upsell pill is a conversion surface for free users
+              only. Paid users (premium OR pro) already upgraded, so showing
+              it to them is noise and looks like a bug. isPaidTier is display
+              logic; billing capability gating still keys on the raw enum.
+            */}
+            {!isPaidTier(profileUser.tier) ? <PremiumPill /> : null}
             {/* Top-right user avatar + dropdown (account/subscription/sign
                 out). Renders on every viewport: on mobile it sits next to the
                 hamburger trigger, on desktop it mirrors the sidebar footer's

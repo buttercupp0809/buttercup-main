@@ -223,6 +223,32 @@ export function ChatWindow({
     if (el) el.scrollTop = el.scrollHeight;
   }, [messages.length, streaming, pending]);
 
+  // Auto-focus the composer on chat load and whenever it becomes enabled
+  // again (e.g. after the on-mount check-in stream finishes). Gated to
+  // pointer-capable / desktop widths so mobile does not force the on-screen
+  // keyboard open on entry; also skipped while paywalled or disabled so we
+  // never call .focus() on a disabled textarea (some browsers throw). See
+  // Plans/cursor-prompt/35-major-fixes-batch.md #F.
+  React.useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (pending || paywall !== null) return;
+    // matchMedia may be missing in exotic test environments; guard it.
+    const canHover =
+      typeof window.matchMedia === "function"
+        ? window.matchMedia("(hover: hover) and (pointer: fine)").matches
+        : false;
+    if (!canHover) return;
+    const el = inputRef.current;
+    if (!el || el.disabled) return;
+    // Defer to the next frame so mount-time layout thrash cannot fight this.
+    const raf = window.requestAnimationFrame(() => {
+      // Refetch: the ref may have unmounted between rAF frames on a fast nav.
+      const current = inputRef.current;
+      if (current && !current.disabled) current.focus({ preventScroll: true });
+    });
+    return () => window.cancelAnimationFrame(raf);
+  }, [pending, paywall]);
+
   // Live check-in on entry. Fires once per mount (checkinStartedRef guards
   // React strict-mode's double invoke) and streams through the SAME transport
   // SSE path as a normal reply, so the streaming bubble renders identically.
@@ -430,15 +456,23 @@ export function ChatWindow({
           </div>
         ) : null}
 
-        {messages.map((m) =>
-          m.imageUrl ? (
-            <div key={m.id} className="flex justify-start" data-testid="bubble-image">
-              <ImageMessage mediaAssetId={m.id} url={m.imageUrl} />
-            </div>
-          ) : (
-            <MessageBubble key={m.id} role={m.role} content={m.content} />
-          ),
-        )}
+        {messages.map((m) => {
+          // Belt-and-braces: if a legacy row stored a raw data: URL in
+          // `content` and the loader missed the promotion above (defensive
+          // against future refactors), still render it as an image, never as
+          // multi-MB text that would blow up the DOM and stall layout. See
+          // Plans/cursor-prompt/35-major-fixes-batch.md #E.
+          const inlineDataImage =
+            !m.imageUrl && typeof m.content === "string" && m.content.startsWith("data:image/");
+          if (m.imageUrl || inlineDataImage) {
+            return (
+              <div key={m.id} className="flex justify-start" data-testid="bubble-image">
+                <ImageMessage mediaAssetId={m.id} url={m.imageUrl ?? m.content} />
+              </div>
+            );
+          }
+          return <MessageBubble key={m.id} role={m.role} content={m.content} />;
+        })}
         {streaming ? <MessageBubble role="assistant" content={streaming} streaming /> : null}
         {/* Hide the typing dots while the image skeleton is up: the skeleton is
             the loading indicator in that phase, so the pill would be redundant. */}

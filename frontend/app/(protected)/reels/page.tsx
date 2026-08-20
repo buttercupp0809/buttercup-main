@@ -1,4 +1,4 @@
-import { prisma } from "@buttercupp/database";
+import { prisma, CHARACTER_MEDIA_ORDER_BY } from "@buttercupp/database";
 import { requireAuth, getCurrentUser } from "@/lib/auth";
 import { REELS } from "@/lib/reels/manifest";
 import { ReelScroller, type ReelItem } from "@/components/reels/ReelScroller";
@@ -31,9 +31,7 @@ async function dbReels(userId: string | null): Promise<ReelItem[]> {
         include: {
           media: {
             where: { kind: "image" as const, hidden: false },
-            // isDisplay first: the free/public image must win over the
-            // isPrimary hero, exactly like lib/feed.ts and lib/characters.ts.
-            orderBy: [{ isDisplay: "desc" as const }, { isPrimary: "desc" as const }, { sort: "asc" as const }],
+            orderBy: CHARACTER_MEDIA_ORDER_BY,
             take: 1,
           },
         },

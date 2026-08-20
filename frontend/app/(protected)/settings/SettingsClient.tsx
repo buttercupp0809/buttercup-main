@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { TRUST_CHIPS } from "@/components/trust/copy";
 import { Button } from "@/components/ui/button";
+import { tierLabel as tierLabelFn, isPaidTier } from "@buttercupp/shared";
 
 interface Props {
   email: string;
@@ -102,8 +103,8 @@ export function SettingsClient(props: Props) {
     color: "hsl(var(--bc-fg))",
   } as const;
 
-  const tierLabel = props.tier.charAt(0).toUpperCase() + props.tier.slice(1);
-  const isPremium = props.tier !== "free";
+  const tierLabel = tierLabelFn(props.tier);
+  const isPremium = isPaidTier(props.tier);
 
   return (
     <div className="flex flex-col gap-6">
@@ -291,18 +292,21 @@ export function SettingsClient(props: Props) {
         </div>
       </div>
 
-      {/* Data + Session (side by side on desktop) */}
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        <SectionCard
-          index={3}
-          title="Your data"
-          subtitle="Download a JSON copy of your profile, messages, memories, characters, and ledger."
-          icon={<Download className="h-4 w-4" />}
-        >
-          <Button variant="outline" size="sm" type="button" onClick={exportData}>
-            <Download className="h-4 w-4" /> Export my data
-          </Button>
-        </SectionCard>
+      {/* Data + Session */}
+      <div className="grid grid-cols-1 gap-6">
+        {/* Hidden: export data card (functionality preserved, UI hidden) */}
+        {false && (
+          <SectionCard
+            index={3}
+            title="Your data"
+            subtitle="Download a JSON copy of your profile, messages, memories, characters, and ledger."
+            icon={<Download className="h-4 w-4" />}
+          >
+            <Button variant="outline" size="sm" type="button" onClick={exportData}>
+              <Download className="h-4 w-4" /> Export my data
+            </Button>
+          </SectionCard>
+        )}
         <SectionCard
           index={4}
           title="Session"
@@ -323,8 +327,8 @@ export function SettingsClient(props: Props) {
         </SectionCard>
       </div>
 
-      {/* Danger zone */}
-      <div
+      {/* Hidden: delete account danger zone (functionality preserved, UI hidden) */}
+      {false && <div
         className="bc-rise relative overflow-hidden rounded-[var(--bc-radius-lg)] border p-5 sm:p-6"
         style={
           {
@@ -392,7 +396,7 @@ export function SettingsClient(props: Props) {
             {deleting ? "Deleting..." : "Delete permanently"}
           </button>
         </div>
-      </div>
+      </div>}
     </div>
   );
 }

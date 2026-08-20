@@ -8,6 +8,14 @@ vi.mock("@buttercupp/database", () => ({
     character: { findMany: (...a: unknown[]) => findManyCharacter(...a) },
     mediaAsset: { groupBy: (...a: unknown[]) => groupByMediaAsset(...a) },
   },
+  // listCompanions now imports the shared media ordering; the mock must expose
+  // it or the module throws on the missing export.
+  CHARACTER_MEDIA_ORDER_BY: [
+    { isMain: "desc" },
+    { isDisplay: "desc" },
+    { isPrimary: "desc" },
+    { sort: "asc" },
+  ],
 }));
 
 // signAssetUrl reads env inside; stub it out so tests are hermetic.

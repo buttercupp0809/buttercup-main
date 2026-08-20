@@ -10,6 +10,13 @@ vi.mock("@buttercupp/database", () => ({
   },
   buildCharacterWhere: vi.fn(),
   buildCharacterOrderBy: vi.fn(),
+  // getCharacterDetail imports the shared media ordering; expose it in the mock.
+  CHARACTER_MEDIA_ORDER_BY: [
+    { isMain: "desc" },
+    { isDisplay: "desc" },
+    { isPrimary: "desc" },
+    { sort: "asc" },
+  ],
 }));
 
 const { topTagsFrom, primaryImageFrom, toCard, getCharacterDetail, nextVersionNo } =
