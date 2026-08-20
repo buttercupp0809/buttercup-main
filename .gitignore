@@ -83,3 +83,7 @@ Plans/aws-automation/*-new.json
 Plans/aws-automation/.state
 Plans/inference-aws/persona-output/**/*.png
 Plans/inference-aws/persona-output-v2/**/*.png
+backend/prod-persona-backup-*.json
+backend/backup-*.sql
+__pycache__/
+*.pyc
