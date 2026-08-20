@@ -89,10 +89,16 @@ async function main() {
       select: { id: true },
     });
     if (!existing) {
+      // Identity of a system persona is the seed image itself, NOT its
+      // isPrimary flag. Earlier this required isPrimary:true, but seeded rows
+      // store the persona image as isDisplay:true / isPrimary:false (and
+      // backfill-display can flip isPrimary as generated images arrive), so
+      // the filter missed every existing row and sync created a DUPLICATE set
+      // on every run. Match any /personas/N.webp media on a system-owned
+      // character instead. (Bug fixed: Plans/cursor-prompt/35-major-fixes-batch.md #A.)
       const legacyMedia = await prisma.characterMedia.findFirst({
         where: {
           url: imageUrl,
-          isPrimary: true,
           character: { ownerUserId: null },
         },
         select: { characterId: true },
