@@ -385,45 +385,62 @@ export async function generateChatImage(
     seed?: number,
   ): Promise<ChatImageResult> {
     const { buffer, contentType } = await toWebP(rawBuffer);
-    if (userId && canUploadToS3()) {
-      const s3Key = await uploadGenerated(buffer, {
-        userId,
-        kind: "image",
-        contentType,
-      });
-      const asset = await createReadyAsset({
-        userId,
-        characterId,
-        kind: "image",
-        s3Key,
-      });
-      // Link the generated image into CharacterMedia so it appears in the
-      // character's gallery and can be reused in future persona pipelines.
-      if (characterId) {
-        await prisma.characterMedia.create({
-          data: {
-            characterId,
-            kind: "image",
-            url: s3Key,
-            isPrimary: false,
-            // Seconds (not ms) so the value fits INT4; still monotonically
-            // increasing, so generated images sort to the end of the gallery.
-            sort: Math.floor(Date.now() / 1000),
-          },
+    const canUpload = canUploadToS3();
+    // A base64 fallback here is a production bug, not "local dev": the message
+    // then persists without a MediaAsset (S3 key), so it vanishes on reload
+    // (shows the "[shared a photo]" marker) and, before that, the base64
+    // bloated SSR responses into HTTP 413. Instrument the decision so we can
+    // see the exact runtime reason, and try/catch the upload so a transient S3
+    // error does not silently drop us to base64.
+    if (userId && canUpload) {
+      try {
+        const s3Key = await uploadGenerated(buffer, {
+          userId,
+          kind: "image",
+          contentType,
         });
+        const asset = await createReadyAsset({
+          userId,
+          characterId,
+          kind: "image",
+          s3Key,
+        });
+        // Link the generated image into CharacterMedia so it appears in the
+        // character's gallery and can be reused in future persona pipelines.
+        if (characterId) {
+          await prisma.characterMedia.create({
+            data: {
+              characterId,
+              kind: "image",
+              url: s3Key,
+              isPrimary: false,
+              // Seconds (not ms) so the value fits INT4; still monotonically
+              // increasing, so generated images sort to the end of the gallery.
+              sort: Math.floor(Date.now() / 1000),
+            },
+          });
+        }
+        // Same-origin /api/media proxy URL so the browser hits the app's own
+        // domain and the proxy handles endpoint / bucket / CDN selection.
+        const proxyUrl = `/api/media?k=${encodeURIComponent(s3Key)}`;
+        return { url: proxyUrl, mediaAssetId: asset.id, provider, consistent, seed };
+      } catch (err) {
+        logWarn(
+          "chat-image",
+          `S3 persist FAILED, falling back to base64 (image will not survive reload): ${
+            err instanceof Error ? err.message : String(err)
+          }`,
+        );
       }
-      // Emit the same-origin /api/media proxy URL (not a raw S3/MinIO
-      // presigned URL) so the browser hits a URL under the app's own
-      // domain and the proxy handles endpoint / bucket / CDN selection.
-      // A raw presigned URL against S3_ENDPOINT (local MinIO) only
-      // resolves when the browser can reach that hostname directly; on a
-      // mobile viewport or a different network host it 404s and the
-      // <img> falls back to alt text ("generated"). Mirror how
-      // frontend/lib/cdn.ts::signAssetUrl already builds gallery URLs.
-      const proxyUrl = `/api/media?k=${encodeURIComponent(s3Key)}`;
-      return { url: proxyUrl, mediaAssetId: asset.id, provider, consistent, seed };
+    } else {
+      logWarn(
+        "chat-image",
+        `S3 persist SKIPPED (image will not survive reload): userId=${Boolean(userId)} ` +
+          `canUploadToS3=${canUpload} genBucket=${Boolean(process.env.POPPY_S3_BUCKET_GENERATED)} ` +
+          `bucket=${Boolean(process.env.S3_BUCKET)} disableFlag=${process.env.POPPY_DISABLE_S3_UPLOAD ?? "unset"}`,
+      );
     }
-    // Local dev fallback: return base64 data URL, nothing persisted.
+    // Fallback: return a base64 data URL. Nothing durable is persisted.
     const dataUrl = `data:${contentType};base64,${buffer.toString("base64")}`;
     return { url: dataUrl, provider, consistent, seed };
   }
