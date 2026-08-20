@@ -274,12 +274,18 @@ export function attachWsGateway(httpServer: HttpServer): WebSocketServer {
                   },
                 });
               } else {
+                // Fallback (no S3 mediaAsset): NEVER persist a base64 data URL
+                // in content. A 2MB+ data URL here gets pulled into the chat
+                // sidebar preview (listConversations) and SSR history, blowing
+                // the Amplify/Lambda 6MB response limit -> HTTP 413 on every
+                // chat page. The live image was already delivered over the
+                // socket above; persist only a small marker.
                 await prisma.message.create({
                   data: {
                     id: imgMsgId,
                     conversationId: parsed.conversationId,
                     role: "assistant",
-                    content: img.url,
+                    content: img.url.startsWith("data:") ? "[shared a photo]" : img.url,
                   },
                 });
               }

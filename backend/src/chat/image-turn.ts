@@ -89,12 +89,17 @@ export function cleanImagePrompt(text: string): string {
 // from frontend/public). Returns null if none is resolvable (caller falls back).
 async function resolveCharacterReferenceBytes(characterId: string): Promise<Buffer | null> {
   try {
-    const media = await prisma.characterMedia.findFirst({
+    // The backend (ECS) cannot read the frontend's local /personas/*.webp
+    // files, so a local-path reference yields no bytes and InstantID falls back
+    // to a random face. Fetch candidates in priority order and prefer the first
+    // S3/remote-readable one; only use a local "/" path as a last resort.
+    const candidates = await prisma.characterMedia.findMany({
       where: { characterId, kind: "image" },
       orderBy: [{ isPrimary: "desc" }, { sort: "asc" }],
       select: { url: true },
+      take: 20,
     });
-    const url = media?.url;
+    const url = candidates.find((m) => !m.url.startsWith("/"))?.url ?? candidates[0]?.url;
     if (!url) return null;
     if (/^https?:\/\//i.test(url)) {
       const r = await fetch(url);

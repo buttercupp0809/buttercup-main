@@ -30,6 +30,17 @@ function signMediaUrl(url: string | undefined | null): string | null {
   return signAssetUrl(url);
 }
 
+// Sidebar preview must never carry a base64 data URL (or any large blob):
+// listConversations is rendered on every chat page, and a 2MB+ preview blows
+// the Amplify/Lambda 6MB SSR response limit -> HTTP 413. Collapse data URLs to
+// a marker and hard-cap the length.
+function previewOf(content: string | null): string | null {
+  if (content == null) return null;
+  if (content.startsWith("data:")) return "[shared a photo]";
+  const scrubbed = content.replace(/data:[a-z0-9.+-]+\/[a-z0-9.+-]+;base64,[A-Za-z0-9+/=]+/gi, "[shared a photo]");
+  return scrubbed.length > 200 ? scrubbed.slice(0, 200) : scrubbed;
+}
+
 export async function listConversations(userId: string, take = 50): Promise<ConversationRow[]> {
   const rows = await prisma.conversation.findMany({
     where: { userId },
@@ -72,7 +83,7 @@ export async function listConversations(userId: string, take = 50): Promise<Conv
         signMediaUrl(c.character.media[0]?.url) ??
         avatarUrlFrom(c.character.currentVersion?.appearanceSheet?.referenceImageKeys) ??
         pickPersonaImage(c.characterId),
-      lastMessage: c.messages[0]?.content ?? null,
+      lastMessage: previewOf(c.messages[0]?.content ?? null),
       lastMessageAt: c.lastMessageAt?.toISOString() ?? null,
       messageCount: c.messageCount,
       relationship: rel ? { affectionLevel: rel.affectionLevel, mood: rel.mood } : null,

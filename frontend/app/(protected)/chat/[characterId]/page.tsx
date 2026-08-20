@@ -94,16 +94,16 @@ export default async function ChatPage({
       // when `imageUrl` is missing, but a defensive empty string prevents
       // future refactors from accidentally rendering the raw data URL as
       // text.
-      content: isInlineImage ? "" : content,
+      // Never let a base64 data URL reach the client. Inlining a 2MB+ blob
+      // (via content OR imageUrl) bloats the SSR response past Amplify's 6MB
+      // Lambda limit -> HTTP 413 on the whole /chat/<id> route (the observed
+      // "page isn't working" symptom). Legacy inline-image rows render as a
+      // small marker instead of the raw data URL.
+      content: isInlineImage ? "[shared a photo]" : content,
       createdAt: m.createdAt.toISOString(),
-      // Production: sign the S3 key from the linked MediaAsset.
-      // Local dev fallback: legacy rows persisted the base64 data URL in
-      // Message.content itself; keep rendering them until they age out.
-      imageUrl: m.mediaAsset?.s3Key
-        ? signAssetUrl(m.mediaAsset.s3Key)
-        : isInlineImage
-          ? content
-          : undefined,
+      // Only S3-backed images (via MediaAsset) produce a real imageUrl; a
+      // base64 data URL in content is intentionally NOT surfaced.
+      imageUrl: m.mediaAsset?.s3Key ? signAssetUrl(m.mediaAsset.s3Key) : undefined,
     };
   });
 

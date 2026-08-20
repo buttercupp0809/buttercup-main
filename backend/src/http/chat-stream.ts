@@ -149,8 +149,17 @@ export async function handleChatStream(req: IncomingMessage, res: ServerResponse
           },
         });
       } else {
+        // Fallback (no S3 mediaAsset): never persist a base64 data URL in
+        // content. It gets pulled into the sidebar preview + SSR history and
+        // blows the Lambda 6MB response limit -> HTTP 413 on chat pages. The
+        // live image was already delivered over SSE below; store only a marker.
         await prisma.message.create({
-          data: { id, conversationId: body.conversationId, role: "assistant", content: img.url },
+          data: {
+            id,
+            conversationId: body.conversationId,
+            role: "assistant",
+            content: img.url.startsWith("data:") ? "[shared a photo]" : img.url,
+          },
         });
       }
       await prisma.conversation.update({
