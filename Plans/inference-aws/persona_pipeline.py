@@ -101,18 +101,33 @@ def get_s3():
 
 
 def upload_image_to_s3(local_path: str) -> str:
-    """Upload a PNG to S3 and return the s3Key."""
+    """Convert the generated image to WebP and upload it to S3, returning the
+    s3Key. Every platform image must be WebP (much smaller than PNG); this is
+    the pipeline side of the PNG->WebP migration. Falls back to PNG only if the
+    WebP encode is unavailable, so generation never hard-fails on encoding."""
     s3 = get_s3()
     if not s3 or not S3_BUCKET:
         return ""
-    key = f"images/{uuid.uuid4()}.png"
     try:
-        with open(local_path, "rb") as fh:
-            s3.put_object(Bucket=S3_BUCKET, Key=key, Body=fh.read(), ContentType="image/png")
+        from io import BytesIO
+        from PIL import Image
+
+        buf = BytesIO()
+        with Image.open(local_path) as im:
+            im.save(buf, format="WEBP", quality=82, method=6)
+        key = f"images/{uuid.uuid4()}.webp"
+        s3.put_object(Bucket=S3_BUCKET, Key=key, Body=buf.getvalue(), ContentType="image/webp")
         return key
     except Exception as exc:
-        print(f"  [warn] S3 upload failed: {exc}")
-        return ""
+        print(f"  [warn] WebP encode failed ({exc}); falling back to PNG upload")
+        try:
+            key = f"images/{uuid.uuid4()}.png"
+            with open(local_path, "rb") as fh:
+                s3.put_object(Bucket=S3_BUCKET, Key=key, Body=fh.read(), ContentType="image/png")
+            return key
+        except Exception as exc2:
+            print(f"  [warn] S3 upload failed: {exc2}")
+            return ""
 
 
 def save_to_db(s3_key: str, is_primary: bool) -> bool:
