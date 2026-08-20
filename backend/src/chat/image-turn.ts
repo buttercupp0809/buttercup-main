@@ -420,10 +420,16 @@ export async function generateChatImage(
             },
           });
         }
-        // Same-origin /api/media proxy URL so the browser hits the app's own
-        // domain and the proxy handles endpoint / bucket / CDN selection.
-        const proxyUrl = `/api/media?k=${encodeURIComponent(s3Key)}`;
-        return { url: proxyUrl, mediaAssetId: asset.id, provider, consistent, seed };
+        // Emit the SAME URL the page uses on reload: a CloudFront signed URL
+        // (getGeneratedSignedUrl -> CloudFront when configured). The old
+        // /api/media proxy presigned a DIRECT S3 URL, which the OAC bucket
+        // policy denies (the generated bucket is locked to CloudFront-only),
+        // so the LIVE image 403'd ("Image unavailable / Tap to retry") while
+        // the reloaded image (CloudFront via signAssetUrl) worked. Using the
+        // same signer makes live and reload one identical flow. Falls back to
+        // an S3 presigned URL only when CloudFront is unconfigured (local dev).
+        const signedUrl = await getGeneratedSignedUrl(s3Key);
+        return { url: signedUrl, mediaAssetId: asset.id, provider, consistent, seed };
       } catch (err) {
         logWarn(
           "chat-image",
