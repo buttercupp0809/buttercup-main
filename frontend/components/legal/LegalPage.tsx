@@ -76,7 +76,7 @@ export function LegalPage({ title, children }: LegalPageProps) {
   return (
     <div className="mx-auto max-w-6xl px-safe py-12 sm:py-16">
       {/* Header / hero block. Eyebrow kicker, display title, quiet metadata. */}
-      <header className="bc-rise mx-auto max-w-3xl">
+      <header className="bc-rise max-w-3xl">
         <span
           className="inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em]"
           style={{
@@ -113,38 +113,7 @@ export function LegalPage({ title, children }: LegalPageProps) {
           data-testid="legal-page"
           className="min-w-0 text-[hsl(var(--bc-fg))]"
         >
-          <div
-            role="note"
-            className="bc-rise flex gap-3 rounded-[var(--bc-radius)] border border-[hsl(var(--bc-amber)/0.35)] bg-[hsl(var(--bc-amber)/0.08)] px-4 py-3.5 text-sm text-[hsl(var(--bc-honey))] shadow-[var(--bc-shadow-sm)]"
-          >
-            <span
-              className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[hsl(var(--bc-amber)/0.2)] text-[hsl(var(--bc-amber))]"
-              aria-hidden
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-3 w-3"
-              >
-                <path d="M12 9v4" />
-                <path d="M12 17h.01" />
-                <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z" />
-              </svg>
-            </span>
-            <span className="leading-6">
-              <strong className="font-semibold text-[hsl(var(--bc-honey))]">
-                Draft template pending legal review.
-              </strong>{" "}
-              This page is a placeholder for counsel. It is not legal advice and
-              must not ship as-is.
-            </span>
-          </div>
-
-          <div className="mt-9 max-w-[68ch] space-y-6 text-[0.9375rem] leading-7 text-[hsl(var(--bc-muted))] [&_h2]:mt-12 [&_h2]:scroll-mt-28 [&_h2]:border-t [&_h2]:border-[hsl(var(--bc-border))] [&_h2]:pt-9 [&_h2]:font-display [&_h2]:text-2xl [&_h2]:tracking-tight [&_h2]:text-[hsl(var(--bc-fg))] [&_h2:first-child]:mt-0 [&_h2:first-child]:border-t-0 [&_h2:first-child]:pt-0 [&_h3]:mt-7 [&_h3]:font-display [&_h3]:text-xl [&_h3]:text-[hsl(var(--bc-fg))] [&_ul]:list-disc [&_ul]:space-y-1.5 [&_ul]:pl-6 [&_ul]:marker:text-[hsl(var(--bc-amber)/0.6)] [&_ol]:list-decimal [&_ol]:space-y-1.5 [&_ol]:pl-6 [&_ol]:marker:text-[hsl(var(--bc-subtle))] [&_p]:leading-7 [&_a]:font-medium [&_a]:text-[hsl(var(--bc-amber))] [&_a]:underline [&_a]:decoration-[hsl(var(--bc-amber)/0.5)] [&_a]:underline-offset-2 [&_a]:transition-colors hover:[&_a]:text-[hsl(var(--bc-honey))] hover:[&_a]:decoration-[hsl(var(--bc-honey)/0.7)] [&_strong]:font-semibold [&_strong]:text-[hsl(var(--bc-fg))]">
+          <div className="max-w-[68ch] space-y-6 text-[0.9375rem] leading-7 text-[hsl(var(--bc-muted))] [&_h2]:mt-12 [&_h2]:scroll-mt-28 [&_h2]:border-t [&_h2]:border-[hsl(var(--bc-border))] [&_h2]:pt-9 [&_h2]:font-display [&_h2]:text-2xl [&_h2]:tracking-tight [&_h2]:text-[hsl(var(--bc-fg))] [&_h2:first-child]:mt-0 [&_h2:first-child]:border-t-0 [&_h2:first-child]:pt-0 [&_h3]:mt-7 [&_h3]:font-display [&_h3]:text-xl [&_h3]:text-[hsl(var(--bc-fg))] [&_ul]:list-disc [&_ul]:space-y-1.5 [&_ul]:pl-6 [&_ul]:marker:text-[hsl(var(--bc-amber)/0.6)] [&_ol]:list-decimal [&_ol]:space-y-1.5 [&_ol]:pl-6 [&_ol]:marker:text-[hsl(var(--bc-subtle))] [&_p]:leading-7 [&_a]:font-medium [&_a]:text-[hsl(var(--bc-amber))] [&_a]:underline [&_a]:decoration-[hsl(var(--bc-amber)/0.5)] [&_a]:underline-offset-2 [&_a]:transition-colors hover:[&_a]:text-[hsl(var(--bc-honey))] hover:[&_a]:decoration-[hsl(var(--bc-honey)/0.7)] [&_strong]:font-semibold [&_strong]:text-[hsl(var(--bc-fg))]">
             {decorated}
           </div>
         </article>

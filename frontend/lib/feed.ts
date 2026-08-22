@@ -37,18 +37,21 @@ export async function getDashboardFeed(viewer: CharacterViewer): Promise<Dashboa
     listCharacters({ sort: "trending", limit: 8 } as never, viewer),
   ]);
 
-  // TODO(personalization): "For you" currently mirrors popular. Swap this
-  // for a tag-affinity or embeddings-based query once we track per-user
-  // preference signals. Until then we intentionally reuse the SAME popular
-  // result object for both sections so we do not send two identical
-  // queries (see Plans/cursor-prompt/35-major-fixes-batch.md #I step 7).
+  // "For you" and "Popular" are backed by the SAME popular query on purpose:
+  // there is no per-user preference signal yet, so a second DB round-trip would
+  // return identical rows. We reuse the one result object here rather than
+  // issuing a duplicate query (see Plans/cursor-prompt/35-major-fixes-batch.md
+  // #I step 7). Each section still gets its OWN array (a shallow copy) so a
+  // later mutation of one section's list cannot silently alter the other.
+  // TODO(personalization): swap "For you" for a tag-affinity or embeddings
+  // query once per-user preference signals exist.
   return {
     recents,
     sections: [
-      { title: "For you", items: popular.items },
+      { title: "For you", items: [...popular.items] },
       { title: "New this week", items: fresh.items },
       { title: "Trending", items: trending.items },
-      { title: "Popular", items: popular.items },
+      { title: "Popular", items: [...popular.items] },
     ],
   };
 }

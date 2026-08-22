@@ -8,6 +8,7 @@ import { MobileNav, MobileBottomBar } from "@/components/app-shell/MobileNav";
 import { ProfileMenu } from "@/components/app-shell/ProfileMenu";
 import { PremiumPill } from "@/components/app-shell/PremiumPill";
 import { ConsentGate } from "@/components/app-shell/ConsentGate";
+import { UpgradeModalProvider } from "@/components/app-shell/UpgradeModalProvider";
 import { isPaidTier } from "@buttercupp/shared";
 
 // Dark cinematic in-app shell (PRD §2.3 + §1). The `.buttercupp-app` wrapper
@@ -111,5 +112,14 @@ export default async function ProtectedLayout({ children }: { children: React.Re
     </div>
   );
 
-  return <ConsentGate needsConsent={needsConsent}>{shell}</ConsentGate>;
+  // UpgradeModalProvider wraps the protected shell so the recurring upgrade
+  // nudge (free users with no active plan/pass, every 30 min) is available on
+  // every authenticated surface. It is a thin client wrapper: cadence + billing
+  // check + the un-talked-to character pick happen client-side; SSR renders
+  // only {children}.
+  return (
+    <ConsentGate needsConsent={needsConsent}>
+      <UpgradeModalProvider>{shell}</UpgradeModalProvider>
+    </ConsentGate>
+  );
 }

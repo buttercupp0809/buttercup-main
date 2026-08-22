@@ -14,7 +14,14 @@ import { runChatTurn } from "../chat/engine";
 import { generateChatImage, generateImageTeaser } from "../chat/image-turn";
 import { classifyMessageIntent } from "../chat/intent";
 import { prisma } from "@buttercupp/database";
-import { assertCanChat, recordChatConsumption, PaywallError, type PaywallInfo } from "../subscription/enforce";
+import {
+  assertCanChat,
+  assertCanImage,
+  recordChatConsumption,
+  recordImageConsumption,
+  PaywallError,
+  type PaywallInfo,
+} from "../subscription/enforce";
 import { writeAuditLog } from "../utils/audit";
 import { createWorkerConnection } from "../queue/connection";
 import { userChannel, type WsBridgeMessage } from "../queue/ws-notify";
@@ -215,6 +222,12 @@ export function attachWsGateway(httpServer: HttpServer): WebSocketServer {
           if ((await classifyMessageIntent(parsed.text)) === "image") {
             logInfo("ws", `image request conv=${parsed.conversationId}`, { userId: session.userId });
             try {
+              // 0. Paywall gate. Runs BEFORE any persistence or GPU work so a
+              //    blocked user never generates and does not accrue a stray
+              //    message. A thrown PaywallError becomes the same `paywall`
+              //    frame the text path emits (see the catch below).
+              await assertCanImage(session.userId);
+
               // 1. Save user message
               await prisma.message.create({
                 data: {
@@ -304,10 +317,38 @@ export function attachWsGateway(httpServer: HttpServer): WebSocketServer {
                 url: img.url,
                 kind: "image",
               });
+
+              // 10. Meter the image (image turns consume an IMAGE, not a chat;
+              //     text and image are separate counters). Best-effort, mirrors
+              //     the chat path.
+              void recordImageConsumption(session.userId);
             } catch (err) {
-              const msg = err instanceof Error ? err.message : "image_failed";
-              logError("ws", err, { conversationId: parsed.conversationId, userId: session.userId });
-              sendError(ws, "image_failed", msg);
+              // A paywall block emits the SAME `paywall` frame the text path
+              // uses so the client's existing handler renders the upgrade
+              // sheet. Everything else stays an image_failed error.
+              if (err instanceof PaywallError) {
+                const body = err.body as unknown as PaywallInfo;
+                send(ws, {
+                  type: "paywall",
+                  conversationId: parsed.conversationId,
+                  reason: body.reason,
+                  scope: body.scope,
+                  kind: body.kind,
+                  used: body.used,
+                  limit: body.limit,
+                  plans: body.plans,
+                  upgradeUrl: body.upgradeUrl,
+                });
+                writeAuditLog({
+                  userId: session.userId,
+                  action: "chat.paywall_block",
+                  resource: `conversation:${parsed.conversationId}`,
+                });
+              } else {
+                const msg = err instanceof Error ? err.message : "image_failed";
+                logError("ws", err, { conversationId: parsed.conversationId, userId: session.userId });
+                sendError(ws, "image_failed", msg);
+              }
             }
             return;
           }

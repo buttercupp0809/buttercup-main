@@ -90,10 +90,14 @@ function PersonaPanelContent({
     seenIdentities.add(id);
     galleryPairs.push({ url, blur: tailBlurs[idx] });
   });
+  // Cap the gallery to a single row of 3 tiles: index 0 is the free teaser
+  // image (hero already sits above), indexes 1 and 2 are locked. Anything
+  // beyond that lived below the fold as extra rows and only added upsell noise;
+  // the full set is available on the private-content page linked below.
   const galleryItems: GalleryItem[] = [
     ...galleryPairs.map((p) => ({ kind: "image" as const, url: p.url, blur: p.blur })),
     ...assets.map((a) => ({ ...a })),
-  ];
+  ].slice(0, 3);
 
   // freeItem: clicked free tile -> preview lightbox (clear image + upgrade nudge)
   const [freeItem, setFreeItem] = React.useState<PanelMedia | null>(null);
@@ -239,28 +243,32 @@ function PersonaPanelContent({
         </div>
       ) : null}
 
-      {/* Private content CTA */}
-      <div className="p-5">
-        <Link
-          href="/billing"
-          className="flex items-center gap-3 rounded-[var(--bc-radius)] border p-3 transition hover:bg-[hsl(var(--bc-cream)/0.05)]"
-          style={{ borderColor: "hsl(var(--buttercupp-border))" }}
-        >
-          <span
-            className="flex h-9 w-9 items-center justify-center rounded-full"
-            style={{ backgroundColor: "hsl(var(--bc-amber))" }}
+      {/* Private content CTA. Links to this character's private-content page
+          (built by a separate surface). Gated on characterId so callers with no
+          user/character context never render a /private-content/undefined link. */}
+      {characterId ? (
+        <div className="p-5">
+          <Link
+            href={`/private-content/${characterId}`}
+            className="flex items-center gap-3 rounded-[var(--bc-radius)] border p-3 transition hover:bg-[hsl(var(--bc-cream)/0.05)]"
+            style={{ borderColor: "hsl(var(--buttercupp-border))" }}
           >
-            <Lock className="h-4 w-4 text-[hsl(28_45%_9%)]" />
-          </span>
-          <span className="min-w-0 flex-1">
-            <span className="block text-sm font-semibold">My Private Content</span>
-            <span className="block text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
-              Exclusive photos &amp; videos
+            <span
+              className="flex h-9 w-9 items-center justify-center rounded-full"
+              style={{ backgroundColor: "hsl(var(--bc-amber))" }}
+            >
+              <Lock className="h-4 w-4 text-[hsl(28_45%_9%)]" />
             </span>
-          </span>
-          <ChevronRight className="h-4 w-4" style={{ color: "hsl(var(--buttercupp-muted))" }} />
-        </Link>
-      </div>
+            <span className="min-w-0 flex-1">
+              <span className="block text-sm font-semibold">My Private Content</span>
+              <span className="block text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+                Exclusive photos &amp; videos
+              </span>
+            </span>
+            <ChevronRight className="h-4 w-4" style={{ color: "hsl(var(--buttercupp-muted))" }} />
+          </Link>
+        </div>
+      ) : null}
 
       {/* Free-tile lightbox: full clear image + upgrade nudge */}
       {freeItem && (

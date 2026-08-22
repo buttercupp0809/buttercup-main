@@ -23,6 +23,12 @@ export interface ReelItem {
 
 export function ReelScroller({ items }: { items: ReelItem[] }) {
   const [muted, setMuted] = React.useState(true);
+  // Which reel is centered in the viewport. The active reel and its immediate
+  // neighbors (activeIndex -1, activeIndex, +1) mount a real <video>; every
+  // other reel renders a same-size placeholder so scroll offsets and snap
+  // points stay identical, but no far-away <video> is ever created. This keeps
+  // a long feed from spinning up dozens of simultaneous media elements.
+  const [activeIndex, setActiveIndex] = React.useState(0);
 
   if (items.length === 0) {
     return (
@@ -74,7 +80,17 @@ export function ReelScroller({ items }: { items: ReelItem[] }) {
       className="mx-auto h-full w-full max-w-[460px] snap-y snap-mandatory overflow-y-scroll overscroll-contain [-webkit-overflow-scrolling:touch]"
     >
       {items.map((item, i) => (
-        <Reel key={item.id} item={item} index={i} muted={muted} onToggleMute={() => setMuted((m) => !m)} />
+        <Reel
+          key={item.id}
+          item={item}
+          muted={muted}
+          onToggleMute={() => setMuted((m) => !m)}
+          // A reel mounts a real <video> only inside the +/-1 window around
+          // the active reel; the active one is the only one that autoplays.
+          windowed={Math.abs(i - activeIndex) <= 1}
+          active={i === activeIndex}
+          onActivate={() => setActiveIndex(i)}
+        />
       ))}
     </div>
   );
@@ -82,38 +98,54 @@ export function ReelScroller({ items }: { items: ReelItem[] }) {
 
 function Reel({
   item,
-  index,
   muted,
   onToggleMute,
+  windowed,
+  active,
+  onActivate,
 }: {
   item: ReelItem;
-  index: number;
   muted: boolean;
   onToggleMute: () => void;
+  windowed: boolean;
+  active: boolean;
+  onActivate: () => void;
 }) {
   const router = useRouter();
+  const containerRef = React.useRef<HTMLDivElement>(null);
   const ref = React.useRef<HTMLVideoElement>(null);
   const [paused, setPaused] = React.useState(false);
   const [liked, setLiked] = React.useState(item.liked);
   const [likes, setLikes] = React.useState(item.likes);
   const [busy, setBusy] = React.useState(false);
 
+  // Observe the stable wrapper (always mounted, fixed height) rather than the
+  // <video>, which only exists inside the window. Crossing the 0.6 threshold
+  // marks this reel active in the parent, which recomputes the +/-1 window.
   React.useEffect(() => {
-    const v = ref.current;
-    if (!v) return;
+    const el = containerRef.current;
+    if (!el) return;
     const io = new IntersectionObserver(
       ([entry]) => {
-        if (entry.intersectionRatio >= 0.6) {
-          v.play().then(() => setPaused(false)).catch(() => {});
-        } else {
-          v.pause();
-        }
+        if (entry.intersectionRatio >= 0.6) onActivate();
       },
       { threshold: [0, 0.6, 1] },
     );
-    io.observe(v);
+    io.observe(el);
     return () => io.disconnect();
-  }, []);
+  }, [onActivate]);
+
+  // Only the active reel plays; neighbors stay loaded but paused. This runs
+  // whenever active flips or the <video> (re)mounts as the window slides.
+  React.useEffect(() => {
+    const v = ref.current;
+    if (!v) return;
+    if (active) {
+      v.play().then(() => setPaused(false)).catch(() => {});
+    } else {
+      v.pause();
+    }
+  }, [active, windowed]);
 
   function togglePlay() {
     const v = ref.current;
@@ -161,24 +193,43 @@ function Reel({
   }
 
   return (
-    <div className="h-full w-full snap-start snap-always p-3">
+    <div ref={containerRef} className="h-full w-full snap-start snap-always p-3">
       <div className="relative h-full w-full overflow-hidden rounded-3xl bg-black shadow-xl">
-        <video
-          ref={ref}
-          src={item.src}
-          muted={muted}
-          loop
-          playsInline
-          preload={index < 2 ? "auto" : "metadata"}
-          onClick={togglePlay}
-          className="h-full w-full object-cover"
-        />
+        {windowed ? (
+          <video
+            ref={ref}
+            src={item.src}
+            muted={muted}
+            loop
+            playsInline
+            // Only the active reel eagerly buffers; neighbors fetch metadata so
+            // they can start quickly once scrolled to.
+            preload={active ? "auto" : "metadata"}
+            poster={item.avatar ?? undefined}
+            onClick={togglePlay}
+            className="h-full w-full object-cover"
+          />
+        ) : (
+          // Out-of-window placeholder: same footprint as the video (so scroll
+          // position and snap points are preserved) but no <video> element.
+          // Shows the avatar poster when available, otherwise a solid box.
+          item.avatar ? (
+            <img
+              src={item.avatar}
+              alt={item.name}
+              loading="lazy"
+              className="h-full w-full object-cover"
+            />
+          ) : (
+            <div className="h-full w-full bg-black" aria-hidden />
+          )
+        )}
 
         {/* Legibility scrim for the bottom overlay */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 rounded-b-3xl bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
 
-        {/* Tap-to-play affordance */}
-        {paused ? (
+        {/* Tap-to-play affordance (only when a real video is mounted) */}
+        {windowed && paused ? (
           <button
             type="button"
             onClick={togglePlay}
@@ -217,10 +268,10 @@ function Reel({
             >
               <div className="h-full w-full overflow-hidden rounded-full bg-black">
                 {item.avatar ? (
-                   
                   <img
                     src={item.avatar}
                     alt={item.name}
+                    loading="lazy"
                     className="h-full w-full object-cover object-top"
                   />
                 ) : (

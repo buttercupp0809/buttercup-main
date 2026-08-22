@@ -22,9 +22,6 @@ test.describe("legal pages", () => {
       expect(res?.status()).toBeLessThan(400);
       await expect(page).toHaveURL(new RegExp(`/legal/${slug}$`));
       await expect(page.getByTestId("legal-page")).toBeVisible();
-      await expect(
-        page.getByText(/draft template pending legal review/i),
-      ).toBeVisible();
       await expect(page.getByText(/last updated:/i)).toBeVisible();
     });
   }

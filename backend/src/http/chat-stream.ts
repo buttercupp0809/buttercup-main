@@ -18,7 +18,14 @@ import { prisma } from "@buttercupp/database";
 import { runChatTurn } from "../chat/engine";
 import { generateChatImage, generateImageTeaser } from "../chat/image-turn";
 import { classifyMessageIntent } from "../chat/intent";
-import { assertCanChat, recordChatConsumption, PaywallError, type PaywallInfo } from "../subscription/enforce";
+import {
+  assertCanChat,
+  assertCanImage,
+  recordChatConsumption,
+  recordImageConsumption,
+  PaywallError,
+  type PaywallInfo,
+} from "../subscription/enforce";
 import { writeAuditLog } from "../utils/audit";
 import { logInfo, logWarn, logError } from "../utils/log";
 
@@ -113,6 +120,12 @@ export async function handleChatStream(req: IncomingMessage, res: ServerResponse
   //   6. Emit the `image` event
   if ((await classifyMessageIntent(body.text)) === "image") {
     try {
+      // 0. Paywall gate. Runs BEFORE any persistence or GPU work so a blocked
+      //    user never generates an image and does not accrue a stray message.
+      //    A thrown PaywallError is turned into the same `paywall` SSE frame
+      //    the client already handles (see the catch below).
+      await assertCanImage(userId);
+
       // 1. Persist the user message.
       await prisma.message.create({
         data: { conversationId: body.conversationId, role: "user", content: body.text },
@@ -169,9 +182,29 @@ export async function handleChatStream(req: IncomingMessage, res: ServerResponse
 
       // 6. Deliver the image.
       sseWrite(res, "image", { url: img.url, mediaAssetId: id, provider: img.provider });
+
+      // 7. Meter the image (image turns consume an IMAGE, not a chat; text and
+      //    image are separate counters). Best-effort, mirrors the chat path.
+      void recordImageConsumption(userId);
     } catch (err) {
-      logError("sse", err, { conversationId: body.conversationId });
-      sseWrite(res, "error", { message: err instanceof Error ? err.message : "image_failed" });
+      // A paywall block emits the SAME `paywall` frame the text path uses so
+      // the client's existing handler renders the upgrade sheet. Everything
+      // else stays an `error` frame.
+      if (err instanceof PaywallError) {
+        const payload = err.body as unknown as PaywallInfo;
+        sseWrite(res, "paywall", {
+          conversationId: body.conversationId,
+          ...payload,
+        });
+        writeAuditLog({
+          userId,
+          action: "chat.paywall_block",
+          resource: `conversation:${body.conversationId}`,
+        });
+      } else {
+        logError("sse", err, { conversationId: body.conversationId });
+        sseWrite(res, "error", { message: err instanceof Error ? err.message : "image_failed" });
+      }
     }
     res.end();
     return true;

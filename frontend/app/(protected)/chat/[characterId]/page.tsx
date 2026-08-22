@@ -12,7 +12,6 @@ import { getCompanionBond } from "@/lib/progress";
 import { getCompanionMemories } from "@/lib/memories";
 import { freeHeadroom } from "@/lib/bond";
 import { signAssetUrl } from "@/lib/cdn";
-import { blurMany } from "@/lib/media-blur";
 import { dedupeByIdentity, excludeHeroIdentity } from "@/lib/character-media";
 
 export const dynamic = "force-dynamic";
@@ -167,25 +166,20 @@ export default async function ChatPage({
     .map((m) => ({ kind: "video" as const, url: m.url }));
   const avatarUrl = carouselImages[0] ?? null;
 
-  // Pre-blur gallery images server-side so locked persona-panel tiles never
-  // expose a real URL. Index 0 (the free/display image) is free; the rest
-  // (including the isPrimary hero, now at index 1+) render blurred.
+  // Locked persona-panel tiles never expose a real URL. They previously used a
+  // server-computed blur (sharp resize+blur+webp per image, fetched from S3),
+  // raced against a 1500ms timeout on EVERY navigation. Even when it won the
+  // race, awaiting it sat directly on the critical SSR path and was a prime
+  // cause of the dashboard->chat lag (up to 1.5s added to first render).
   //
-  // Perf guard (Plans/cursor-prompt/35-major-fixes-batch.md #I step 1): the
-  // blur pipeline fetches from S3 and runs sharp resize+blur+webp per
-  // carousel image, which could scale linearly with image count and push
-  // chat TTFB into seconds. Cap total blur work at 1500ms with a race, and
-  // fall back to empty (client renders the safe blur-lg CSS shim already
-  // used for missing entries). Long-term fix: precompute blur placeholders
-  // at image-creation time so the read path is free.
-  const BLUR_TIMEOUT_MS = 1500;
-  const imageBlurs: string[] =
-    carouselImages.length > 1
-      ? await Promise.race([
-          blurMany(carouselImages),
-          new Promise<string[]>((resolve) => setTimeout(() => resolve([]), BLUR_TIMEOUT_MS)),
-        ])
-      : [];
+  // The await is removed. The persona panel already renders a safe CSS shim
+  // (gradient placeholder under the lock) whenever a blur entry is missing, so
+  // passing empty blurs keeps locked tiles just as opaque without blocking the
+  // render. The mobile backdrop wallpaper (see ChatWindow) uses the plain
+  // character image with CSS blur, so no server blur is needed there either.
+  // Long-term fix: precompute blur placeholders at image-creation time so the
+  // read path can surface them for free.
+  const imageBlurs: string[] = [];
 
   return (
     <div className="flex h-full flex-col overflow-hidden">

@@ -93,6 +93,16 @@ export function ChatWindow({
   // Last failed turn. Held so the user gets an explanation plus a one-tap retry
   // instead of a message that silently goes nowhere.
   const [failed, setFailed] = React.useState<string | null>(null);
+  // Lazy history (scroll-up pagination). The oldest loaded message id is the
+  // cursor for the next older page; `null` cursor from the API means the top of
+  // history has been reached and we stop fetching. `loadingOlder` guards
+  // against duplicate concurrent fetches while one is in flight.
+  const [loadingOlder, setLoadingOlder] = React.useState(false);
+  const olderCursorRef = React.useRef<string | null>(null);
+  const olderExhaustedRef = React.useRef(false);
+  // Set true after an older page is prepended so the auto-scroll-to-bottom
+  // effect can skip that one render (prepending must NOT yank the view down).
+  const skipAutoScrollRef = React.useRef(false);
   const scrollAreaRef = React.useRef<HTMLDivElement | null>(null);
   const transportRef = React.useRef<ReturnType<typeof createChatTransport> | null>(null);
   const streamedRef = React.useRef("");
@@ -219,6 +229,14 @@ export function ChatWindow({
   }, [wsUrl]);
 
   React.useEffect(() => {
+    // Skip exactly one run right after an older page was prepended: that render
+    // grows the list at the TOP, and loadOlder already restores the visual
+    // position, so forcing scrollTop to the bottom here would fight it and yank
+    // the user away from where they were reading.
+    if (skipAutoScrollRef.current) {
+      skipAutoScrollRef.current = false;
+      return;
+    }
     const el = scrollAreaRef.current;
     if (el) el.scrollTop = el.scrollHeight;
   }, [messages.length, streaming, pending]);
@@ -270,6 +288,88 @@ export function ChatWindow({
     t.checkin(conversationId, characterId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Seed the pagination cursor from the SSR history: the OLDEST initial message
+  // id is where the next-older page begins. If SSR sent no history at all, there
+  // is nothing older to load, so mark it exhausted. Runs once on mount only.
+  React.useEffect(() => {
+    if (initialMessages.length > 0) {
+      olderCursorRef.current = initialMessages[0].id;
+    } else {
+      olderExhaustedRef.current = true;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Fetch the next older page and PREPEND it, preserving the on-screen scroll
+  // position. Guarded so concurrent scroll events cannot fire overlapping
+  // fetches, and short-circuits once the API reports no more pages.
+  const loadOlder = React.useCallback(async () => {
+    if (loadingOlder || olderExhaustedRef.current) return;
+    const cursor = olderCursorRef.current;
+    if (!cursor) return;
+    const el = scrollAreaRef.current;
+    setLoadingOlder(true);
+    try {
+      const res = await fetch(
+        `/api/conversations/${conversationId}/messages?cursor=${encodeURIComponent(cursor)}`,
+        { credentials: "include" },
+      );
+      if (!res.ok) return;
+      const data: {
+        items: { id: string; role: "user" | "assistant" | "system"; content: string; createdAt: string }[];
+        nextCursor: string | null;
+      } = await res.json();
+      const older = data.items ?? [];
+      // Measure BEFORE the DOM grows so we can restore the visual position:
+      // after prepending, scrollTop is bumped by exactly the added height.
+      const prevHeight = el?.scrollHeight ?? 0;
+      const prevTop = el?.scrollTop ?? 0;
+      if (older.length > 0) {
+        // Older page begins where the next fetch continues from.
+        olderCursorRef.current = older[0].id;
+        skipAutoScrollRef.current = true;
+        setMessages((ms) => {
+          // Dedupe by id in case a page boundary overlaps an already-loaded
+          // message (defensive; the API's skip:1 should prevent it).
+          const have = new Set(ms.map((m) => m.id));
+          const fresh = older.filter((m) => !have.has(m.id));
+          if (fresh.length === 0) return ms;
+          return [...fresh, ...ms];
+        });
+        // Restore scroll position on the next frame, after React has painted
+        // the prepended rows and scrollHeight reflects them.
+        if (el) {
+          window.requestAnimationFrame(() => {
+            const node = scrollAreaRef.current;
+            if (!node) return;
+            node.scrollTop = node.scrollHeight - prevHeight + prevTop;
+          });
+        }
+      }
+      if (!data.nextCursor) {
+        // Top of history reached: stop future fetches.
+        olderExhaustedRef.current = true;
+      }
+    } catch {
+      // Network/parse failure: leave state untouched so a later scroll retries.
+    } finally {
+      setLoadingOlder(false);
+    }
+  }, [conversationId, loadingOlder]);
+
+  // Scroll handler: when the user nears the TOP of the pane, pull the next
+  // older page. A small threshold triggers slightly before the very top so the
+  // fetch feels seamless rather than snapping at scrollTop 0.
+  const onScroll = React.useCallback(
+    (e: React.UIEvent<HTMLDivElement>) => {
+      const NEAR_TOP_PX = 80;
+      if (e.currentTarget.scrollTop <= NEAR_TOP_PX) {
+        void loadOlder();
+      }
+    },
+    [loadOlder],
+  );
 
   const send = React.useCallback(
     (text: string, { echo = true }: { echo?: boolean } = {}) => {
@@ -341,31 +441,61 @@ export function ChatWindow({
     // under it. `h-full min-h-0` keeps the pane bounded by its actual parent
     // so the flex-1 message list and shrink-0 composer lay out without any
     // sticky/absolute overlap.
-    <div className="relative flex h-full min-h-0 flex-col gap-3 p-4">
+    <div className="relative isolate flex h-full min-h-0 flex-col gap-3 p-4">
       {/*
         Immersive backdrop (PRD §1): a subtle blurred character image behind
-        the message list. `pointer-events-none` so it never intercepts
-        clicks, and a heavy dark scrim guarantees message legibility on the
-        dark theme.
+        the message list. `pointer-events-none` so it never intercepts clicks.
+
+        Two variants, split by breakpoint:
+        - DESKTOP (xl and up): the original heavy-blur wash. The character is
+          intentionally unrecognizable here; the persona panel to the right
+          already shows her clearly, so the backdrop is pure ambient texture.
+        - MOBILE (below xl): there is no persona panel, so the backdrop doubles
+          as a character wallpaper. Light blur + very low opacity keeps her
+          recognizable but faint, with a bottom scrim so chat text stays
+          readable over her.
       */}
       {avatarUrl ? (
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 -z-10 overflow-hidden rounded-2xl"
-        >
-          <img
-            src={avatarUrl}
-            alt=""
-            className="h-full w-full object-cover opacity-30 blur-2xl saturate-125"
-          />
+        <>
+          {/* Desktop: heavy-blur ambient wash (unchanged). */}
           <div
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(180deg, hsl(var(--buttercupp-bg) / 0.6), hsl(var(--buttercupp-bg) / 0.9))",
-            }}
-          />
-        </div>
+            aria-hidden
+            className="pointer-events-none absolute inset-0 -z-10 hidden overflow-hidden rounded-2xl xl:block"
+          >
+            <img
+              src={avatarUrl}
+              alt=""
+              className="h-full w-full object-cover opacity-30 blur-2xl saturate-125"
+            />
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(180deg, hsl(var(--buttercupp-bg) / 0.6), hsl(var(--buttercupp-bg) / 0.9))",
+              }}
+            />
+          </div>
+
+          {/* Mobile: faint but recognizable character wallpaper. No rounded
+              corners: it is a full-bleed wallpaper, not a card. */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 -z-10 overflow-hidden xl:hidden"
+          >
+            <img
+              src={avatarUrl}
+              alt=""
+              className="h-full w-full object-cover object-top opacity-80 blur-[2px]"
+            />
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(180deg, hsl(var(--buttercupp-bg) / 0.1), hsl(var(--buttercupp-bg) / 0.6))",
+              }}
+            />
+          </div>
+        </>
       ) : null}
 
       {/*
@@ -434,9 +564,24 @@ export function ChatWindow({
 
       <div
         ref={scrollAreaRef}
-        className="min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain rounded-md p-4"
-        style={{ backgroundColor: "hsl(var(--buttercupp-surface) / 0.55)" }}
+        onScroll={onScroll}
+        // Surface alpha is responsive: on mobile it drops to 0.4 so the faint
+        // character wallpaper behind it stays visible, while desktop keeps the
+        // original 0.55 (its backdrop is a heavy blur that never needs to show
+        // through). Both use the same surface hue; text over either stays
+        // readable thanks to the bottom scrim on each backdrop.
+        className="min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain rounded-md bg-transparent p-4 xl:bg-[hsl(var(--buttercupp-surface)/0.55)]"
       >
+        {/* Older-history spinner: shown at the top while a scroll-up page is
+            in flight so the fetch is not silent. */}
+        {loadingOlder ? (
+          <div className="flex justify-center py-2" aria-live="polite">
+            <span className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+              Loading earlier messages...
+            </span>
+          </div>
+        ) : null}
+
         {/*
           Empty state. The character's authored greeting already exists on
           CharacterVersion and was previously shown on the public detail page but

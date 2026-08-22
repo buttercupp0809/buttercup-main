@@ -102,14 +102,18 @@ export async function entitlementsFor(userId: string, now: Date = new Date()): P
     };
   }
 
-  // Free plan: chats use the lifetime counter on User; media is 0.
+  // Free plan: chats use the lifetime counter on User. Images use a small
+  // metered allowance tracked in UsageCounter under the stable free-plan
+  // period key (planPeriodKey("free", null) === "free:none"), so free image
+  // usage accrues and paywalls once the allowance is spent. Video stays 0.
   const freeCfg = PLANS.free;
+  const freeUsage = await usageForPlan(userId, "free", null);
   return {
     plan: "free",
     active: false,
     expiresAt: null,
     chats: bucket(FREE_MESSAGE_LIMIT, freeMessagesUsed),
-    images: bucket(freeCfg.images, 0),
+    images: bucket(freeCfg.images, freeUsage.image),
     videos: bucket(freeCfg.videos, 0),
     freeMessagesUsed,
   };

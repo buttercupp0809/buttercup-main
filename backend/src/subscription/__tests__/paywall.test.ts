@@ -4,9 +4,11 @@ import { prisma } from "@buttercupp/database";
 import {
   PaywallError,
   assertCanChat,
+  assertCanImage,
   assertCanConsumeMedia,
   consumeFreeMessage,
   recordChatConsumption,
+  recordImageConsumption,
   FREE_MESSAGE_LIMIT,
 } from "../enforce";
 import { activatePlan } from "../grant";
@@ -116,6 +118,54 @@ describe.skipIf(!DB_UP)("assertCanConsumeMedia", () => {
     await expect(assertCanConsumeMedia(userId, "image")).rejects.toMatchObject({
       body: expect.objectContaining({ scope: "plan_quota", kind: "image" }),
     });
+  });
+});
+
+describe.skipIf(!DB_UP)("assertCanImage + recordImageConsumption", () => {
+  it("free user: allows up to the free image allowance, blocks the next", async () => {
+    const userId = await makeUser(0);
+    const freeImages = PLANS.free.images;
+    expect(freeImages).toBeGreaterThan(0);
+    for (let i = 0; i < freeImages; i++) {
+      await assertCanImage(userId);
+      await recordImageConsumption(userId);
+    }
+    // Allowance spent -> next check paywalls with the free_trial scope.
+    await expect(assertCanImage(userId)).rejects.toMatchObject({
+      name: "PaywallError",
+      body: expect.objectContaining({ scope: "free_trial", kind: "image" }),
+    });
+  });
+
+  it("recordImageConsumption increments the image counter (free user)", async () => {
+    const userId = await makeUser(0);
+    let ent = await entitlementsFor(userId);
+    expect(ent.images.used).toBe(0);
+    await recordImageConsumption(userId);
+    ent = await entitlementsFor(userId);
+    expect(ent.images.used).toBe(1);
+    expect(ent.images.remaining).toBe(PLANS.free.images - 1);
+  });
+
+  it("active plan: blocks when the image quota is exhausted, passes under limit", async () => {
+    const userId = await makeUser(0);
+    await activatePlan(userId, "daily");
+    // Under the limit -> passes.
+    await assertCanImage(userId);
+    // Exhaust the real daily image quota -> next check paywalls.
+    await setPlanUsage(userId, "daily", "image", PLANS.daily.images);
+    await expect(assertCanImage(userId)).rejects.toMatchObject({
+      name: "PaywallError",
+      body: expect.objectContaining({ scope: "plan_quota", kind: "image" }),
+    });
+  });
+
+  it("active plan: recordImageConsumption increments the plan image counter", async () => {
+    const userId = await makeUser(0);
+    await activatePlan(userId, "daily");
+    await recordImageConsumption(userId);
+    const ent = await entitlementsFor(userId);
+    expect(ent.images.used).toBe(1);
   });
 });
 

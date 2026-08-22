@@ -172,6 +172,29 @@ export async function assertCanChat(userId: string): Promise<void> {
   }
 }
 
+// In-chat image gate. Mirrors assertCanChat but for the "image" counter.
+// Unlike assertCanConsumeMedia (which hard-blocks free users), free users get
+// a small metered image allowance (PLANS.free.images), so this gate treats
+// free and paid the same way: check limit vs used and paywall when the bucket
+// is empty. Called BEFORE generateChatImage so a blocked user never burns GPU
+// and the thrown PaywallError becomes the SSE `paywall` frame.
+export async function assertCanImage(userId: string): Promise<void> {
+  const ent = await entitlementsFor(userId);
+  if (!isUnlimited(ent.images.limit) && ent.images.remaining <= 0) {
+    incrementMetric("paywall_hit");
+    if (ent.active) {
+      incrementMetric("plan_quota_exhausted");
+    } else {
+      incrementMetric("free_trial_exhausted");
+    }
+    throw new PaywallError(
+      ent.active ? "plan_image_quota_exhausted" : "free_trial_exhausted",
+      402,
+      paywallBody(ent.active ? "plan_quota" : "free_trial", "image", ent) as unknown as Record<string, unknown>,
+    );
+  }
+}
+
 // Media plan gate. Runs on top of the existing token-balance check in
 // http/media.ts; the token debit stays separate so we do not double-charge.
 export async function assertCanConsumeMedia(
@@ -246,6 +269,23 @@ export async function recordChatConsumption(userId: string): Promise<void> {
   } catch {
     // Swallow: we do not want a counter failure to look like a chat failure
     // to the user. Logs surface the error via prisma.
+  }
+}
+
+// Success-path helper for the in-chat image path. Mirrors
+// recordChatConsumption but always increments the "image" UsageCounter via
+// consumePlanQuota. For paid users the increment lands under the plan's
+// period key; for free users it lands under the stable "free:none" key that
+// entitlementsFor reads back for the free image allowance. Best-effort: never
+// throws, so a counter blip cannot look like an image failure to the user.
+export async function recordImageConsumption(userId: string): Promise<void> {
+  try {
+    const ent = await entitlementsFor(userId);
+    const expires = ent.expiresAt ? new Date(ent.expiresAt) : null;
+    await consumePlanQuota(userId, "image", ent.plan, expires);
+  } catch {
+    // Swallow: a counter failure must not surface as an image failure.
+    // Prisma logs surface the underlying error.
   }
 }
 
