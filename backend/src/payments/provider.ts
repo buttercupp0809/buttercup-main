@@ -31,12 +31,23 @@ const ADAPTERS: Record<PaymentProvider, Adapter> = {
   dodo,
 };
 
-// Session-scoped health tracker (simple circuit breaker). A failing
-// adapter is skipped for the rest of the process's uptime, or until
-// resetProviderHealth() is called (tests).
-const unhealthy = new Set<PaymentProvider>();
+// Time-based circuit breaker. A failing adapter is skipped for
+// COOLDOWN_MS, then automatically retried. Permanent-unhealthy was the
+// previous behaviour but it caused ALL payments to fail for the rest of
+// the process lifetime when only one provider is configured.
+const COOLDOWN_MS = 30_000;
+const cooldowns = new Map<PaymentProvider, number>();
+
+function isUnhealthy(p: PaymentProvider): boolean {
+  const t = cooldowns.get(p);
+  if (t === undefined) return false;
+  if (Date.now() - t < COOLDOWN_MS) return true;
+  cooldowns.delete(p);
+  return false;
+}
+
 export function resetProviderHealth(): void {
-  unhealthy.clear();
+  cooldowns.clear();
 }
 
 export function getProviderOrder(): PaymentProvider[] {
@@ -61,7 +72,7 @@ export async function createCheckoutSession(req: CheckoutRequest): Promise<Check
   const order = getProviderOrder();
   let lastError: unknown;
   for (const p of order) {
-    if (unhealthy.has(p)) continue;
+    if (isUnhealthy(p)) continue;
     const adapter = ADAPTERS[p];
     if (!adapter.isConfigured()) continue;
     try {
@@ -69,12 +80,26 @@ export async function createCheckoutSession(req: CheckoutRequest): Promise<Check
       assertMatureCompatibleProvider(resp.provider);
       return resp;
     } catch (err) {
-      logWarn("payments", `provider ${p} failed`, { message: (err as Error).message });
-      unhealthy.add(p);
+      const extra: Record<string, unknown> = { message: (err as Error).message };
+      if (err && typeof err === "object") {
+        if ("status" in err) extra.httpStatus = (err as { status: unknown }).status;
+        if ("error" in err) extra.dodoError = (err as { error: unknown }).error;
+      }
+      logWarn("payments", `provider ${p} failed`, extra);
+      cooldowns.set(p, Date.now());
       lastError = err;
     }
   }
-  throw new PaymentProviderUnavailableError(
-    lastError instanceof Error ? lastError.message : "no_provider_available",
-  );
+
+  // Build a diagnostic message that includes the actual provider error body
+  // so the frontend can surface it rather than just showing "no_provider".
+  let reason = "no_provider_available";
+  if (lastError instanceof Error) {
+    reason = lastError.message;
+    if (lastError && typeof lastError === "object" && "error" in lastError) {
+      const body = (lastError as { error: unknown }).error;
+      if (body) reason += ` | ${JSON.stringify(body)}`;
+    }
+  }
+  throw new PaymentProviderUnavailableError(reason);
 }

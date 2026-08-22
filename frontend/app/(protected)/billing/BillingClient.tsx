@@ -126,7 +126,7 @@ export const REVIEWS = [
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:4000";
 
-async function post(url: string, body: unknown): Promise<{ checkoutUrl?: string; error?: string }> {
+async function post(url: string, body: unknown): Promise<{ checkoutUrl?: string; error?: string; message?: string }> {
   const res = await fetch(url, {
     method: "POST",
     headers: { "content-type": "application/json" },
@@ -218,7 +218,7 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
     try {
       const r = await post(`${BACKEND_URL}/billing/subscribe`, { plan });
       if (r.checkoutUrl) window.location.href = r.checkoutUrl;
-      else setError(`Checkout unavailable: ${r.error ?? "unknown"}`);
+      else setError(`Checkout unavailable: ${r.error ?? "unknown"}${r.message ? ` — ${r.message}` : ""}`);
     } finally {
       setPending(null);
     }
