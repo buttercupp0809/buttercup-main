@@ -60,33 +60,47 @@ export function assertMatureCompatibleProvider(provider: string): void {
 export async function createCheckoutSession(req: CheckoutRequest): Promise<CheckoutResponse> {
   const order = getProviderOrder();
   let lastError: unknown;
+  let attempted = false;
+
   for (const p of order) {
     const adapter = ADAPTERS[p];
-    if (!adapter.isConfigured()) continue;
+    if (!adapter.isConfigured()) {
+      logWarn("payments", `provider ${p} skipped: not configured`);
+      continue;
+    }
+    attempted = true;
     try {
       const resp = await adapter.createCheckout(req);
       assertMatureCompatibleProvider(resp.provider);
       return resp;
     } catch (err) {
-      const extra: Record<string, unknown> = { message: (err as Error).message };
+      const extra: Record<string, unknown> = {};
       if (err && typeof err === "object") {
-        if ("status" in err) extra.httpStatus = (err as { status: unknown }).status;
-        if ("error" in err) extra.dodoError = (err as { error: unknown }).error;
+        const e = err as Record<string, unknown>;
+        if (typeof e.message === "string") extra.message = e.message;
+        if (e.status !== undefined) extra.httpStatus = e.status;
+        if (e.error !== undefined) extra.dodoError = e.error;
+      } else {
+        extra.message = String(err);
       }
       logWarn("payments", `provider ${p} failed`, extra);
       lastError = err;
     }
   }
 
-  // Build a diagnostic message that includes the actual provider error body
-  // so the frontend can surface it rather than just showing "no_provider".
-  let reason = "no_provider_available";
-  if (lastError instanceof Error) {
-    reason = lastError.message;
-    if (lastError && typeof lastError === "object" && "error" in lastError) {
-      const body = (lastError as { error: unknown }).error;
-      if (body) reason += ` | ${JSON.stringify(body)}`;
-    }
+  // Build the most specific error reason possible for the frontend.
+  // Avoid relying on instanceof Error — the SDK may bundle its own Error class.
+  let reason: string;
+  if (!attempted) {
+    reason = "no_provider_configured";
+  } else if (lastError === undefined) {
+    reason = "no_provider_available";
+  } else {
+    const e = lastError as Record<string, unknown>;
+    const msg = typeof e?.message === "string" ? e.message : String(lastError);
+    const status = typeof e?.status === "number" ? `[HTTP ${e.status}] ` : "";
+    const body = e?.error ? ` | ${JSON.stringify(e.error)}` : "";
+    reason = `${status}${msg}${body}`;
   }
   throw new PaymentProviderUnavailableError(reason);
 }

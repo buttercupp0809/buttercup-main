@@ -293,5 +293,22 @@ export async function handleBillingRoute(
     send(res, 200, { ok: true });
     return true;
   }
+  // Unauthenticated diagnostic endpoint. Returns which env vars are present
+  // (never their values) so we can confirm secrets reached the container.
+  if (req.url === "/billing/provider-status" && req.method === "GET") {
+    send(res, 200, {
+      dodoConfigured: Boolean(process.env.DODO_API_KEY),
+      dodoEnvironment: process.env.DODO_ENVIRONMENT ?? "unset",
+      primaryProvider: process.env.PAYMENT_PRIMARY_PROVIDER ?? "unset",
+      products: {
+        daily: Boolean(process.env.DODO_PRODUCT_DAILY),
+        weekly: Boolean(process.env.DODO_PRODUCT_WEEKLY),
+        monthly: Boolean(process.env.DODO_PRODUCT_MONTHLY),
+        sub_monthly: Boolean(process.env.DODO_PRODUCT_SUB_MONTHLY),
+        sub_yearly: Boolean(process.env.DODO_PRODUCT_SUB_YEARLY),
+      },
+    });
+    return true;
+  }
   return false;
 }

@@ -384,8 +384,8 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
                     ) : null}
                   </div>
 
-                  {/* Custom bullets */}
-                  <ul className="mt-4 space-y-1.5 text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+                  {/* Custom bullets — pb-4 guarantees space above the mt-auto button */}
+                  <ul className="mt-4 space-y-1.5 pb-4 text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
                     {(copy?.bullets ?? []).map((line) => (
                       <li key={line} className="flex items-start gap-1.5">
                         <span className="mt-0.5 shrink-0" style={{ color: "hsl(var(--bc-amber))" }}>✓</span>
@@ -399,7 +399,7 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
                     onClick={() => subscribe(p.plan)}
                     disabled={pending === p.plan}
                     data-testid={`paywall-buy-${p.plan}`}
-                    className="group mt-5 flex w-full items-center justify-center gap-1.5 rounded-[var(--bc-radius)] py-3 text-sm font-semibold text-[hsl(28_45%_9%)] shadow-sm transition hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60 disabled:hover:scale-100"
+                    className="group mt-auto flex w-full items-center justify-center gap-1.5 rounded-[var(--bc-radius)] py-3 text-sm font-semibold text-[hsl(28_45%_9%)] shadow-sm transition hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60 disabled:hover:scale-100"
                     style={{
                       backgroundImage: "var(--bc-gradient-brand-h)",
                       boxShadow: bestValue
