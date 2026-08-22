@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { TokenStore } from "./TokenStore";
 import { Tabs, type TabItem } from "@/components/ui/Tabs";
+import { PASS_COPY, type PassCopy } from "@/lib/pass-copy";
 
 // Feature flag: hide the pay-as-you-go token packs section for now. Kept as
 // a trivially flippable constant (and TokenStore.tsx is preserved) so the
@@ -49,9 +50,14 @@ export function filterHiddenBenefits<T extends { label: string }>(items: readonl
 type BillingTab = "subscription" | "passes";
 
 const BILLING_TABS: ReadonlyArray<TabItem<BillingTab>> = [
-  { value: "subscription", label: "Subscription", testId: "billing-tab-subscription" },
   { value: "passes", label: "Passes", testId: "billing-tab-passes" },
+  { value: "subscription", label: "Subscription", testId: "billing-tab-subscription" },
 ];
+
+// Subscription plans that should land the user on the subscription tab
+// when arriving via a highlighted plan link (e.g. /upgrade?plan=sub_monthly).
+const SUB_PLAN_SET: ReadonlySet<Plan> = new Set(["sub_monthly", "sub_yearly"]);
+
 
 export type Plan =
   | "free"
@@ -186,7 +192,9 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
   const [ent, setEnt] = React.useState<Entitlements | null>(null);
   const [pending, setPending] = React.useState<string | null>(null);
   const [error, setError] = React.useState<string | null>(null);
-  const [activeTab, setActiveTab] = React.useState<BillingTab>("subscription");
+  const [activeTab, setActiveTab] = React.useState<BillingTab>(
+    highlightPlan && SUB_PLAN_SET.has(highlightPlan) ? "subscription" : "passes",
+  );
 
   const refreshEntitlements = React.useCallback(async () => {
     try {
@@ -298,9 +306,155 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
         />
       </div>
 
-      {/* Subscriptions: recurring monthly / yearly. Rendered FIRST as the
-          promoted primary tier. Only renders when the backend catalog
-          includes recurring plans. */}
+      {/* Passes: one-time duration passes — shown first (default tab). */}
+      {activeTab === "passes" ? (
+        <div data-testid="passes-section">
+          <SectionHeading
+            title="One-time"
+            accent="passes"
+            chipLabel="Passes"
+            chipVariant="amber"
+            subtitle="Buy once, use for a fixed window. No auto-renew."
+          />
+          <div className="mx-auto grid w-full max-w-4xl grid-cols-1 gap-5 md:grid-cols-3" data-testid="plan-cards">
+            {passPlans.map((p) => {
+              const copy = PASS_COPY[p.plan];
+              const isCurrent = ent?.active && ent.plan === p.plan;
+              const isBest = bestPassPlan?.plan === p.plan;
+              const isHighlighted = highlightPlan === p.plan;
+              const promoted = isBest || isHighlighted;
+              return (
+                <div
+                  key={p.plan}
+                  data-testid={`plan-${p.plan}`}
+                  className="group relative flex min-h-[380px] flex-col overflow-hidden rounded-3xl border p-6 transition-all duration-300 hover:-translate-y-1"
+                  style={{
+                    borderColor: promoted
+                      ? "hsl(var(--bc-amber) / 0.7)"
+                      : "hsl(var(--bc-border))",
+                    backgroundColor: "hsl(var(--bc-surface) / 0.85)",
+                    backdropFilter: "blur(12px)",
+                    boxShadow: promoted
+                      ? "0 20px 60px -24px hsl(var(--bc-amber) / 0.5)"
+                      : "0 8px 32px rgba(0, 0, 0, 0.35)",
+                  }}
+                >
+                  {promoted ? (
+                    <>
+                      <div
+                        aria-hidden
+                        className="pointer-events-none absolute inset-0"
+                        style={{
+                          background:
+                            "radial-gradient(30rem 20rem at 50% 120%, hsl(var(--bc-amber) / 0.28), transparent 65%)",
+                        }}
+                      />
+                      <div
+                        aria-hidden
+                        className="pointer-events-none absolute inset-x-8 -top-px h-px"
+                        style={{
+                          background:
+                            "linear-gradient(90deg, transparent, hsl(var(--bc-amber) / 0.8), transparent)",
+                        }}
+                      />
+                    </>
+                  ) : null}
+
+                  {isBest ? (
+                    <span
+                      className="relative mb-3 inline-flex w-fit items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider shadow-[0_4px_16px_-6px_hsl(var(--bc-amber)/0.6)]"
+                      style={{
+                        background: "var(--bc-gradient-brand-v)",
+                        color: "hsl(28 45% 9%)",
+                      }}
+                    >
+                      <span
+                        className="h-1.5 w-1.5 rounded-full"
+                        style={{ backgroundColor: "hsl(28 45% 9% / 0.85)" }}
+                        aria-hidden
+                      />
+                      Best value
+                    </span>
+                  ) : null}
+
+                  {/* Tagline */}
+                  <div className="relative">
+                    <p
+                      className="text-lg font-semibold leading-snug"
+                      style={{ color: "hsl(var(--bc-fg))" }}
+                    >
+                      {copy?.tagline ?? p.label}
+                    </p>
+                  </div>
+
+                  {/* Price */}
+                  <div className="relative mt-3">
+                    <div className="flex items-baseline gap-1">
+                      <span className="font-display text-5xl font-extrabold tracking-tight">${p.priceUsd}</span>
+                      <span className="text-sm" style={{ color: "hsl(var(--bc-muted))" }}>
+                        / {planDurationLabel(p.durationDays)}
+                      </span>
+                    </div>
+                    {copy?.perDayLabel ? (
+                      <div className="mt-0.5 text-[11px]" style={{ color: "hsl(var(--bc-muted))" }}>
+                        {copy.perDayLabel}
+                      </div>
+                    ) : null}
+                  </div>
+
+                  {/* Custom bullets */}
+                  <ul className="relative mt-6 space-y-2 text-sm">
+                    {copy
+                      ? copy.bullets.map((line) => (
+                          <FeatureLine key={line}>{line}</FeatureLine>
+                        ))
+                      : null}
+                  </ul>
+
+                  <div className="relative mt-auto pt-6">
+                    <button
+                      type="button"
+                      onClick={() => subscribe(p.plan)}
+                      disabled={pending === p.plan || isCurrent}
+                      data-testid={`buy-${p.plan}`}
+                      className="w-full rounded-2xl py-3.5 text-base font-bold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--bc-amber))] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent disabled:cursor-not-allowed disabled:opacity-60"
+                      style={
+                        promoted
+                          ? {
+                              background: "var(--bc-gradient-brand-v)",
+                              color: "hsl(28 45% 9%)",
+                              boxShadow: "0 12px 30px -12px hsl(var(--bc-amber) / 0.6)",
+                            }
+                          : {
+                              backgroundColor: "hsl(var(--bc-surface-2))",
+                              color: "hsl(var(--bc-fg))",
+                              border: "1px solid hsl(var(--bc-border))",
+                            }
+                      }
+                    >
+                      {pending === p.plan
+                        ? "Redirecting..."
+                        : isCurrent
+                          ? "Current plan"
+                          : (copy?.buttonText ?? "Continue")}
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+            {!plans ? (
+              <div
+                className="col-span-full rounded-2xl border p-6 text-center text-sm"
+                style={{ borderColor: "hsl(var(--bc-border))", color: "hsl(var(--bc-muted))" }}
+              >
+                Loading plans...
+              </div>
+            ) : null}
+          </div>
+        </div>
+      ) : null}
+
+      {/* Subscriptions: recurring monthly / yearly. Second tab. */}
       {activeTab === "subscription" && subPlans.length > 0 ? (
         <div data-testid="subscriptions-section">
           <SectionHeading
@@ -315,8 +469,6 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
               const isCurrent = ent?.active && ent.plan === p.plan;
               const isHighlighted = highlightPlan === p.plan;
               const savings = p.billingInterval === "year" ? yearlySavings : null;
-              // Monthly subscription is the "Most popular" hero; yearly keeps
-              // its own "Save X%" badge computed from monthly vs 12x yearly.
               const isMostPopular = p.billingInterval === "month";
               const promoted = isMostPopular || isHighlighted;
               return (
@@ -449,152 +601,6 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
               );
             })}
           </div>
-        </div>
-      ) : null}
-
-      {/* Passes: one-time duration passes */}
-      {activeTab === "passes" ? (
-        <div data-testid="passes-section">
-      <SectionHeading
-        title="One-time"
-        accent="passes"
-        chipLabel="Passes"
-        chipVariant="amber"
-        subtitle="Buy once, use for a fixed window. No auto-renew."
-      />
-      <div className="mx-auto grid w-full max-w-4xl grid-cols-1 gap-5 md:grid-cols-3" data-testid="plan-cards">
-        {passPlans.map((p) => {
-          const isCurrent = ent?.active && ent.plan === p.plan;
-          const isBest = bestPassPlan?.plan === p.plan;
-          const discount = maxPassPerDay > 0 ? Math.round((1 - perDay(p) / maxPassPerDay) * 100) : 0;
-          const isHighlighted = highlightPlan === p.plan;
-          const promoted = isBest || isHighlighted;
-          return (
-            <div
-              key={p.plan}
-              data-testid={`plan-${p.plan}`}
-              className="group relative flex min-h-[380px] flex-col overflow-hidden rounded-3xl border p-6 transition-all duration-300 hover:-translate-y-1"
-              style={{
-                borderColor: promoted
-                  ? "hsl(var(--bc-amber) / 0.7)"
-                  : "hsl(var(--bc-border))",
-                backgroundColor: "hsl(var(--bc-surface) / 0.85)",
-                backdropFilter: "blur(12px)",
-                boxShadow: promoted
-                  ? "0 20px 60px -24px hsl(var(--bc-amber) / 0.5)"
-                  : "0 8px 32px rgba(0, 0, 0, 0.35)",
-              }}
-            >
-              {promoted ? (
-                <>
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute inset-0"
-                    style={{
-                      background:
-                        "radial-gradient(30rem 20rem at 50% 120%, hsl(var(--bc-amber) / 0.28), transparent 65%)",
-                    }}
-                  />
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute inset-x-8 -top-px h-px"
-                    style={{
-                      background:
-                        "linear-gradient(90deg, transparent, hsl(var(--bc-amber) / 0.8), transparent)",
-                    }}
-                  />
-                </>
-              ) : null}
-
-              {isBest ? (
-                <span
-                  className="relative mb-3 inline-flex w-fit items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider shadow-[0_4px_16px_-6px_hsl(var(--bc-amber)/0.6)]"
-                  style={{
-                    background: "var(--bc-gradient-brand-v)",
-                    color: "hsl(28 45% 9%)",
-                  }}
-                >
-                  <span
-                    className="h-1.5 w-1.5 rounded-full"
-                    style={{ backgroundColor: "hsl(28 45% 9% / 0.85)" }}
-                    aria-hidden
-                  />
-                  Best value
-                </span>
-              ) : null}
-
-              <div className="relative flex items-start justify-between gap-3">
-                <span className="font-display text-2xl font-bold tracking-tight">{p.label}</span>
-                {discount > 0 ? (
-                  <span
-                    className="shrink-0 rounded-lg px-2.5 py-1 text-xs font-extrabold"
-                    style={{ background: "var(--bc-gradient-brand-v)", color: "hsl(28 45% 9%)" }}
-                  >
-                    {discount}% OFF
-                  </span>
-                ) : null}
-              </div>
-
-              <div className="relative mt-2">
-                <div className="flex items-baseline gap-1">
-                  <span className="font-display text-5xl font-extrabold tracking-tight">${p.priceUsd}</span>
-                  <span className="text-sm" style={{ color: "hsl(var(--bc-muted))" }}>
-                    / {planDurationLabel(p.durationDays)}
-                  </span>
-                </div>
-                {p.durationDays > 1 ? (
-                  <div className="mt-0.5 text-[11px]" style={{ color: "hsl(var(--bc-muted))" }}>
-                    ≈ ${perDay(p).toFixed(2)} per day
-                  </div>
-                ) : null}
-              </div>
-
-              <ul className="relative mt-6 space-y-2 text-sm">
-                <FeatureLine>Chats: {p.chats === -1 ? "Unlimited" : p.chats}</FeatureLine>
-                <FeatureLine>Images: {p.images === -1 ? "Unlimited" : p.images}</FeatureLine>
-                {HIDE_VIDEO_BENEFITS ? null : (
-                  <FeatureLine>Videos: {p.videos === -1 ? "Unlimited" : p.videos}</FeatureLine>
-                )}
-                <FeatureLine>Voice replies + memory</FeatureLine>
-                <FeatureLine>Priority generation</FeatureLine>
-              </ul>
-
-              <div className="relative mt-auto pt-6">
-                <button
-                  type="button"
-                  onClick={() => subscribe(p.plan)}
-                  disabled={pending === p.plan || isCurrent}
-                  data-testid={`buy-${p.plan}`}
-                  className="w-full rounded-2xl py-3.5 text-base font-bold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--bc-amber))] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent disabled:cursor-not-allowed disabled:opacity-60"
-                  style={
-                    promoted
-                      ? {
-                          background: "var(--bc-gradient-brand-v)",
-                          color: "hsl(28 45% 9%)",
-                          boxShadow: "0 12px 30px -12px hsl(var(--bc-amber) / 0.6)",
-                        }
-                      : {
-                          backgroundColor: "hsl(var(--bc-surface-2))",
-                          color: "hsl(var(--bc-fg))",
-                          border: "1px solid hsl(var(--bc-border))",
-                        }
-                  }
-                >
-                  {pending === p.plan ? "Redirecting..." : isCurrent ? "Current plan" : "Continue"}
-                </button>
-              </div>
-            </div>
-          );
-        })}
-        {!plans ? (
-          <div
-            className="col-span-full rounded-2xl border p-6 text-center text-sm"
-            style={{ borderColor: "hsl(var(--bc-border))", color: "hsl(var(--bc-muted))" }}
-          >
-            Loading plans...
-          </div>
-        ) : null}
-      </div>
         </div>
       ) : null}
 

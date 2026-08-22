@@ -31,23 +31,12 @@ const ADAPTERS: Record<PaymentProvider, Adapter> = {
   dodo,
 };
 
-// Time-based circuit breaker. A failing adapter is skipped for
-// COOLDOWN_MS, then automatically retried. Permanent-unhealthy was the
-// previous behaviour but it caused ALL payments to fail for the rest of
-// the process lifetime when only one provider is configured.
-const COOLDOWN_MS = 30_000;
-const cooldowns = new Map<PaymentProvider, number>();
-
-function isUnhealthy(p: PaymentProvider): boolean {
-  const t = cooldowns.get(p);
-  if (t === undefined) return false;
-  if (Date.now() - t < COOLDOWN_MS) return true;
-  cooldowns.delete(p);
-  return false;
-}
-
+// No circuit breaker: with only one configured provider (Dodo), a
+// circuit breaker causes 100% payment failure for the entire process
+// lifetime. Every request retries the provider directly so the real
+// error is always visible and payments recover as soon as Dodo does.
 export function resetProviderHealth(): void {
-  cooldowns.clear();
+  // no-op; kept so the /billing/reset-provider-health route compiles
 }
 
 export function getProviderOrder(): PaymentProvider[] {
@@ -72,7 +61,6 @@ export async function createCheckoutSession(req: CheckoutRequest): Promise<Check
   const order = getProviderOrder();
   let lastError: unknown;
   for (const p of order) {
-    if (isUnhealthy(p)) continue;
     const adapter = ADAPTERS[p];
     if (!adapter.isConfigured()) continue;
     try {
@@ -86,7 +74,6 @@ export async function createCheckoutSession(req: CheckoutRequest): Promise<Check
         if ("error" in err) extra.dodoError = (err as { error: unknown }).error;
       }
       logWarn("payments", `provider ${p} failed`, extra);
-      cooldowns.set(p, Date.now());
       lastError = err;
     }
   }

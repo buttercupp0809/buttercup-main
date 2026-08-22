@@ -16,6 +16,7 @@
 import * as React from "react";
 import type { TransportPaywallPlan } from "@/lib/chat-transport";
 import { ModalOverlay, ModalCard, ModalCloseButton } from "@/components/ui/Modal";
+import { PASS_COPY } from "@/lib/pass-copy";
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:4000";
 
@@ -37,7 +38,7 @@ export interface PaywallModalProps {
   onResumed: () => void;
 }
 
-async function post(url: string, body: unknown): Promise<{ checkoutUrl?: string; error?: string }> {
+async function post(url: string, body: unknown): Promise<{ checkoutUrl?: string; error?: string; message?: string }> {
   const res = await fetch(url, {
     method: "POST",
     headers: { "content-type": "application/json" },
@@ -61,13 +62,13 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
   const [dismissed, setDismissed] = React.useState(false);
   const dialogRef = React.useRef<HTMLDivElement | null>(null);
 
-  // The chat paywall promotes ONLY the two recurring subscription tiles
-  // (`sub_monthly`, `sub_yearly`). One-time passes stay on /billing so this
-  // surface stays focused on the highest-conversion offer.
+  // Show the three one-time passes (daily / weekly / monthly) in the paywall
+  // modal. Subscriptions live on /billing; the modal stays focused on the
+  // lowest-friction entry point.
   const plans = React.useMemo(
     () =>
       (fallbackPlans ?? plansFromEvent).filter(
-        (p) => p.plan === "sub_monthly" || p.plan === "sub_yearly",
+        (p) => p.plan === "daily" || p.plan === "weekly" || p.plan === "monthly",
       ),
     [plansFromEvent, fallbackPlans],
   );
@@ -164,7 +165,7 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
     try {
       const r = await post(`${BACKEND_URL}/billing/subscribe`, { plan });
       if (r.checkoutUrl) window.location.href = r.checkoutUrl;
-      else setError(`Checkout unavailable: ${r.error ?? "unknown"}`);
+      else setError(`Checkout unavailable: ${r.error ?? "unknown"}${r.message ? ` — ${r.message}` : ""}`);
     } finally {
       setPending(null);
     }
@@ -212,12 +213,10 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
 
   const showBuyTokens = kind === "image" || kind === "video";
 
-  // With only the two subscription tiles on this modal, the monthly plan
-  // is the "Most popular" hero and yearly gets no secondary ribbon; the
-  // yearly savings show up on /billing where the full grid lives.
-  const monthlyIndex = plans.findIndex((p) => p.plan === "sub_monthly");
-  const highlightIndex = monthlyIndex;
-  const bestValueIndex = -1;
+  // Monthly pass has the lowest per-day cost → "Best value" ribbon.
+  // No "Most popular" ribbon for passes; best-value is the only badge.
+  const highlightIndex = -1;
+  const bestValueIndex = plans.findIndex((p) => p.plan === "monthly");
   const kindIcon =
     kind === "image"
       ? <ImageIcon className="h-6 w-6" />
@@ -264,11 +263,15 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
       aria-modal="true"
       aria-labelledby="paywall-title"
       data-testid="paywall-modal"
+      style={{
+        paddingTop: "max(1.5rem, env(safe-area-inset-top))",
+        paddingBottom: "max(1.5rem, env(safe-area-inset-bottom))",
+      }}
     >
-      <ModalCard ref={dialogRef} size="xl">
+      <ModalCard ref={dialogRef} size="xl" style={{ maxWidth: "56rem" }}>
         <ModalCloseButton onClick={() => setDismissed(true)} ariaLabel="Minimize" />
 
-        <div className="relative px-6 pb-6 pt-8 sm:px-10 sm:pb-8 sm:pt-10">
+        <div className="relative px-5 pb-6 pt-8 sm:px-8 sm:pb-8 sm:pt-10">
           <div className="flex flex-col items-center text-center">
             <div
               className="relative flex h-14 w-14 items-center justify-center rounded-2xl"
@@ -328,14 +331,12 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
             </div>
           ) : null}
 
-          {/* Two subscription tiles: single column on mobile (gap-8 so the
-              "-top-3" ribbon does not overlap the card above), side-by-side
-              from md+. Constrained max-width + mx-auto keeps the pair
-              centered inside the wider modal. */}
-          <div className="mx-auto mt-10 grid w-full max-w-2xl grid-cols-1 gap-8 md:mt-8 md:grid-cols-2 md:gap-5">
+          {/* Three pass tiles: single column on mobile, 3-column from md+. */}
+          <div className="mx-auto mt-10 grid w-full max-w-3xl grid-cols-1 gap-8 md:mt-8 md:grid-cols-3 md:gap-4">
             {plans.map((p, i) => {
+              const copy = PASS_COPY[p.plan];
               const highlight = i === highlightIndex;
-              const bestValue = !highlight && i === bestValueIndex;
+              const bestValue = i === bestValueIndex;
               const perDay = p.priceUsd / p.durationDays;
               const perDayText = p.durationDays > 1 ? `~$${perDay.toFixed(2)}/day` : null;
 
@@ -343,9 +344,7 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
                 <div
                   key={p.plan}
                   data-testid={`paywall-plan-${p.plan}`}
-                  className={`relative flex flex-col rounded-2xl p-5 transition ${
-                    highlight ? "md:-translate-y-2" : ""
-                  }`}
+                  className="relative flex flex-col rounded-2xl p-4 transition"
                   style={{
                     background: highlight
                       ? "linear-gradient(160deg, hsl(var(--bc-amber) / 0.12), hsl(var(--bc-honey) / 0.12))"
@@ -361,54 +360,38 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
                   {highlight ? <Ribbon label="Most popular" /> : null}
                   {bestValue ? <Ribbon label="Best value" variant="honey" /> : null}
 
-                  <div className="flex items-baseline justify-between gap-3">
-                    <div className="font-display text-lg font-semibold" style={{ color: "hsl(var(--buttercupp-fg))" }}>
-                      {p.label}
-                    </div>
-                    <div className="flex flex-col items-end">
-                      <div className="font-display text-2xl font-semibold" style={{ color: "hsl(var(--buttercupp-fg))" }}>
+                  {/* Tagline + price */}
+                  <div>
+                    <p className="text-sm font-semibold leading-snug" style={{ color: "hsl(var(--buttercupp-fg))" }}>
+                      {copy?.tagline ?? p.label}
+                    </p>
+                    <div className="mt-2 flex items-baseline gap-1">
+                      <span className="font-display text-2xl font-semibold" style={{ color: "hsl(var(--buttercupp-fg))" }}>
                         ${p.priceUsd}
-                      </div>
-                      {perDayText ? (
-                        <div className="text-[10px]" style={{ color: "hsl(var(--buttercupp-muted))" }}>
-                          {perDayText}
-                        </div>
-                      ) : null}
+                      </span>
+                      <span className="text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+                        / {p.durationDays === 1 ? "day" : p.durationDays === 7 ? "week" : "month"}
+                      </span>
                     </div>
-                  </div>
-                  <div
-                    className="mt-1 text-xs uppercase tracking-wider"
-                    style={{ color: "hsl(var(--buttercupp-muted))" }}
-                  >
-                    {p.plan === "sub_yearly"
-                      ? "Renews yearly"
-                      : p.plan === "sub_monthly"
-                        ? "Renews monthly"
-                        : p.durationDays === 1
-                          ? "1 day access"
-                          : p.durationDays === 7
-                            ? "7 days access"
-                            : `${p.durationDays} days access`}
+                    {copy?.perDayLabel ? (
+                      <div className="mt-0.5 text-[10px]" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+                        {copy.perDayLabel}
+                      </div>
+                    ) : perDayText ? (
+                      <div className="mt-0.5 text-[10px]" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+                        {perDayText}
+                      </div>
+                    ) : null}
                   </div>
 
-                  <ul className="mt-4 space-y-2 text-sm">
-                    <PerkRow
-                      icon={<ChatIcon className="h-3.5 w-3.5" />}
-                      label="Chats"
-                      value={p.chats === -1 ? "Unlimited" : p.chats.toLocaleString()}
-                    />
-                    <PerkRow
-                      icon={<ImageIcon className="h-3.5 w-3.5" />}
-                      label="Images"
-                      value={p.images === -1 ? "Unlimited" : p.images.toLocaleString()}
-                    />
-                    {HIDE_VIDEO_BENEFITS ? null : (
-                      <PerkRow
-                        icon={<VideoIcon className="h-3.5 w-3.5" />}
-                        label="Videos"
-                        value={p.videos === -1 ? "Unlimited" : p.videos.toLocaleString()}
-                      />
-                    )}
+                  {/* Custom bullets */}
+                  <ul className="mt-4 space-y-1.5 text-xs" style={{ color: "hsl(var(--buttercupp-muted))" }}>
+                    {(copy?.bullets ?? []).map((line) => (
+                      <li key={line} className="flex items-start gap-1.5">
+                        <span className="mt-0.5 shrink-0" style={{ color: "hsl(var(--bc-amber))" }}>✓</span>
+                        {line}
+                      </li>
+                    ))}
                   </ul>
 
                   <button
@@ -419,7 +402,7 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
                     className="group mt-5 flex w-full items-center justify-center gap-1.5 rounded-[var(--bc-radius)] py-3 text-sm font-semibold text-[hsl(28_45%_9%)] shadow-sm transition hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60 disabled:hover:scale-100"
                     style={{
                       backgroundImage: "var(--bc-gradient-brand-h)",
-                      boxShadow: highlight
+                      boxShadow: bestValue
                         ? "0 10px 24px -6px hsl(var(--bc-amber) / 0.55)"
                         : "0 6px 16px -6px hsl(var(--bc-amber) / 0.4)",
                     }}
@@ -431,7 +414,7 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
                       </>
                     ) : (
                       <>
-                        Continue for ${p.priceUsd}
+                        {copy?.buttonText ?? `Continue for $${p.priceUsd}`}
                         <ArrowRightIcon className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
                       </>
                     )}
