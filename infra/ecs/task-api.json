@@ -154,6 +154,14 @@
         {
           "name": "DODO_PRODUCT_PACK_2000",
           "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/DODO_PRODUCT_PACK_2000"
+        },
+        {
+          "name": "DODO_PRODUCT_SUB_MONTHLY",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/DODO_PRODUCT_SUB_MONTHLY"
+        },
+        {
+          "name": "DODO_PRODUCT_SUB_YEARLY",
+          "valueFrom": "arn:aws:secretsmanager:REGION:ACCT_ID:secret:buttercupp/DODO_PRODUCT_SUB_YEARLY"
         }
       ],
       "healthCheck": {
