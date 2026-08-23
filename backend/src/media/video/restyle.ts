@@ -68,14 +68,18 @@ export async function restyleFirstFrame(args: RestyleFirstFrameArgs): Promise<Bu
       userRequest: args.userRequest,
     });
 
+    // Keep the inswapper faceswap so the video frame has the EXACT reference
+    // face, then blend the rectangular paste seam with a light full-frame
+    // refiner (refineBlend). Denoise stays low so the exact face survives;
+    // tune via VIDEO_REFINE_DENOISE (default 0.25) if the seam or the face
+    // needs more/less blending.
+    const refineDenoiseRaw = Number(process.env.VIDEO_REFINE_DENOISE);
     const res = await generateWithComfyUIConsistent({
       prompt,
       negativePrompt,
       referenceBytes,
-      // Drop the inswapper faceswap paste for video: its rectangular seam is very
-      // visible against flat backgrounds and would propagate through every frame.
-      // InstantID (+ FaceDetailer) keeps the face on-model without the seam.
-      skipFaceSwap: true,
+      refineBlend: true,
+      refineDenoise: Number.isFinite(refineDenoiseRaw) && refineDenoiseRaw > 0 ? refineDenoiseRaw : undefined,
     });
 
     return res.buffer;

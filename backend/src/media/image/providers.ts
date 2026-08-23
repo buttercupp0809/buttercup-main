@@ -277,6 +277,8 @@ function buildInstantIdWorkflow(a: {
   poseHint: string;
   scene: string;
   skipFaceSwap?: boolean;
+  refineBlend?: boolean;
+  refineDenoise?: number;
 }): Record<string, unknown> {
   const flags = a.flags ?? resolveImageFlags();
   return assembleConsistentWorkflow({
@@ -287,6 +289,8 @@ function buildInstantIdWorkflow(a: {
     seed: a.seed,
     flags,
     skipFaceSwap: a.skipFaceSwap,
+    refineBlend: a.refineBlend,
+    refineDenoise: a.refineDenoise,
     // Yaw is inferred from the head descriptor; the body pose skeleton (if any)
     // is matched against the user's scene request.
     yawDeg: estimateYawFromPoseHint(a.poseHint),
@@ -321,9 +325,12 @@ export async function generateWithComfyUIConsistent(p: {
   referenceBytes: Buffer;
   seed?: number;
   poseHint?: string;
-  // Video restyle sets this to drop the inswapper faceswap paste (avoids the
-  // rectangular seam that otherwise propagates through every video frame).
+  // Video restyle can drop the inswapper faceswap paste (skipFaceSwap) OR keep it
+  // for the exact face and blend the paste seam with a low-denoise refiner
+  // (refineBlend + optional refineDenoise). The video path uses refineBlend.
   skipFaceSwap?: boolean;
+  refineBlend?: boolean;
+  refineDenoise?: number;
 }): Promise<GenerateResult> {
   const base = await resolvePoppyBaseUrl("juggernaut");
   const start = performance.now();
@@ -349,6 +356,8 @@ export async function generateWithComfyUIConsistent(p: {
     poseHint: pose,
     scene: p.prompt,
     skipFaceSwap: p.skipFaceSwap,
+    refineBlend: p.refineBlend,
+    refineDenoise: p.refineDenoise,
   });
   const q = await fetch(`${base}/prompt`, {
     method: "POST",

@@ -44,6 +44,31 @@ describe("assembleConsistentWorkflow (all flags off = current graph)", () => {
     expect((g["50"] as { class_type: string }).class_type).toBe("PoppyFaceSwap");
   });
 
+  it("refineBlend keeps the exact-face swap AND appends a low-denoise full-frame refiner", () => {
+    const g = assembleConsistentWorkflow({ ...base, flags: resolveImageFlags(), refineBlend: true });
+    // The exact-face swap is still present.
+    expect((g["50"] as { class_type: string }).class_type).toBe("PoppyFaceSwap");
+    // Refiner chain: VAEEncode -> KSampler (low denoise) -> VAEDecode.
+    expect((g["100"] as { class_type: string }).class_type).toBe("VAEEncode");
+    expect((g["101"] as { class_type: string }).class_type).toBe("KSampler");
+    expect((g["101"] as { inputs: { denoise: number } }).inputs.denoise).toBe(0.25);
+    expect((g["102"] as { class_type: string }).class_type).toBe("VAEDecode");
+    // SaveImage consumes the refiner output, not the raw swap.
+    expect((g["9"] as { inputs: { images: [string, number] } }).inputs.images).toEqual(["102", 0]);
+  });
+
+  it("refineDenoise overrides the default blend strength", () => {
+    const g = assembleConsistentWorkflow({ ...base, flags: resolveImageFlags(), refineBlend: true, refineDenoise: 0.4 });
+    expect((g["101"] as { inputs: { denoise: number } }).inputs.denoise).toBe(0.4);
+  });
+
+  it("no refiner nodes when refineBlend is off (chat images unchanged)", () => {
+    const g = assembleConsistentWorkflow({ ...base, flags: resolveImageFlags() });
+    expect(g["100"]).toBeUndefined();
+    expect(g["101"]).toBeUndefined();
+    expect(g["102"]).toBeUndefined();
+  });
+
   it("falls back to the current graph when a capability is marked unavailable", () => {
     const g = assembleConsistentWorkflow({
       ...base,

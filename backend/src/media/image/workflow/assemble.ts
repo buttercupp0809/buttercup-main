@@ -30,13 +30,17 @@ export interface AssembleArgs {
   // enabled block whose key node is missing is SKIPPED so the job still renders
   // on the current graph instead of failing. Undefined => trust the flags.
   availableNodes?: Set<string>;
-  // Forces the inswapper faceswap paste off regardless of the yaw gate. Used by
-  // the video first-frame restyle path: the inswapper hard-paste leaves a
-  // rectangular seam around the face that is very visible against flat
-  // backgrounds and then propagates through every video frame. InstantID (plus
-  // FaceDetailer) carries identity without the seam. Chat images do not set
-  // this, so they keep the swap unchanged.
+  // Forces the inswapper faceswap paste off regardless of the yaw gate. NOTE:
+  // skipping the swap loses the EXACT reference face (InstantID alone is close,
+  // not exact). The video path therefore keeps the swap and uses refineBlend.
   skipFaceSwap?: boolean;
+  // Video restyle path: keep the exact-face inswapper result, then run a light
+  // full-frame low-denoise refiner pass over the whole image. This harmonizes
+  // (blends) the rectangular inswapper paste seam into the background WITHOUT
+  // dropping the swapped face. Denoise is intentionally low so the exact face
+  // survives; raise refineDenoise to blend harder, lower it to stay more exact.
+  refineBlend?: boolean;
+  refineDenoise?: number;
 }
 
 export function assembleConsistentWorkflow(a: AssembleArgs): Record<string, unknown> {
@@ -114,6 +118,34 @@ export function assembleConsistentWorkflow(a: AssembleArgs): Record<string, unkn
     const hd = handDetailerNodes({ inputImage: lastImage });
     Object.assign(g, hd.nodes);
     lastImage = [hd.outId, 0];
+  }
+
+  // Video restyle: light full-frame img2img refiner over the swapped image. The
+  // inswapper gives the exact face but leaves a hard rectangular paste seam; a
+  // low-denoise pass over the WHOLE frame repaints the seam boundary into the
+  // background while keeping the swapped face (denoise stays low so identity is
+  // preserved). Uses the raw checkpoint model (no InstantID re-conditioning, so
+  // it cannot pull the exact face back toward a generic one).
+  if (a.refineBlend) {
+    const denoise = typeof a.refineDenoise === "number" ? a.refineDenoise : 0.25;
+    g["100"] = { class_type: "VAEEncode", inputs: { pixels: lastImage, vae: ["4", 2] } };
+    g["101"] = {
+      class_type: "KSampler",
+      inputs: {
+        model: ["4", 0],
+        positive: ["6", 0],
+        negative: ["7", 0],
+        latent_image: ["100", 0],
+        seed: a.seed,
+        steps: 20,
+        cfg: 5,
+        sampler_name: "dpmpp_2m",
+        scheduler: "karras",
+        denoise,
+      },
+    };
+    g["102"] = { class_type: "VAEDecode", inputs: { samples: ["101", 0], vae: ["4", 2] } };
+    lastImage = ["102", 0];
   }
 
   g["9"] = { class_type: "SaveImage", inputs: { filename_prefix: "poppy-chat", images: lastImage } };
