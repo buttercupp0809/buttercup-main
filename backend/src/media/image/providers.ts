@@ -4,6 +4,10 @@
 
 import { FAL_MODELS, REPLICATE_MODELS, IMAGE_SIZE, COMFY } from "./constants";
 import { resolvePoppyBaseUrl, poppyConfigured } from "../../inference/poppyEndpoint";
+import { resolveImageFlags, type ImageWorkflowFlags } from "./flags";
+import { assembleConsistentWorkflow } from "./workflow/assemble";
+import { estimateYawFromPoseHint } from "./yaw";
+import { matchPoseSkeleton } from "./pose-library";
 
 interface GenerateParams {
   prompt: string;
@@ -258,46 +262,36 @@ const POSE_DESCRIPTORS = [
   "glancing over shoulder",
 ] as const;
 
+// Build the consistent-face workflow. Delegates to the composable, flag-gated
+// assembler (backend/src/media/image/workflow/). With all flags off the graph is
+// byte-identical to the historical hand-written node map (nodes 4,5,6,7,10,
+// 20-23,3,8,50,9). Flags enable additive refinement blocks (FaceDetailer, hand
+// detailer, pose ControlNet, yaw-gated PuLID) without disturbing the identity lock.
 function buildInstantIdWorkflow(a: {
   ckpt: string;
   positive: string;
   negative: string;
   refName: string;
   seed: number;
+  flags?: ImageWorkflowFlags;
+  poseHint: string;
+  scene: string;
+  skipFaceSwap?: boolean;
 }): Record<string, unknown> {
-  return {
-    "4": { class_type: "CheckpointLoaderSimple", inputs: { ckpt_name: a.ckpt } },
-    "5": { class_type: "EmptyLatentImage", inputs: { width: CONSISTENT.width, height: CONSISTENT.height, batch_size: 1 } },
-    "6": { class_type: "CLIPTextEncode", inputs: { text: a.positive, clip: ["4", 1] } },
-    "7": { class_type: "CLIPTextEncode", inputs: { text: a.negative, clip: ["4", 1] } },
-    "10": { class_type: "LoadImage", inputs: { image: a.refName } },
-    "20": { class_type: "InstantIDModelLoader", inputs: { instantid_file: CONSISTENT.instantidFile } },
-    "21": { class_type: "InstantIDFaceAnalysis", inputs: { provider: "CPU" } },
-    "22": { class_type: "ControlNetLoader", inputs: { control_net_name: CONSISTENT.controlnetFile } },
-    "23": {
-      class_type: "ApplyInstantIDAdvanced",
-      inputs: {
-        instantid: ["20", 0], insightface: ["21", 0], control_net: ["22", 0],
-        image: ["10", 0], model: ["4", 0], positive: ["6", 0], negative: ["7", 0],
-        ip_weight: CONSISTENT.ipWeight, cn_strength: CONSISTENT.cnStrength,
-        start_at: 0.0, end_at: CONSISTENT.endAt, noise: 0.0, combine_embeds: "average",
-      },
-    },
-    "3": {
-      class_type: "KSampler",
-      inputs: {
-        seed: a.seed, steps: CONSISTENT.steps, cfg: CONSISTENT.cfg,
-        sampler_name: CONSISTENT.sampler, scheduler: CONSISTENT.scheduler, denoise: 1,
-        model: ["23", 0], positive: ["23", 1], negative: ["23", 2], latent_image: ["5", 0],
-      },
-    },
-    "8": { class_type: "VAEDecode", inputs: { samples: ["3", 0], vae: ["4", 2] } },
-    // Face swap + high-res restore: inswapper copies the EXACT reference face,
-    // then GPEN-BFR-512 (inside the node) restores it to a crisp 512px face so
-    // it matches the sharpness of the rest of the image.
-    "50": { class_type: "PoppyFaceSwap", inputs: { target_image: ["8", 0], source_image: ["10", 0] } },
-    "9": { class_type: "SaveImage", inputs: { filename_prefix: "poppy-chat", images: ["50", 0] } },
-  };
+  const flags = a.flags ?? resolveImageFlags();
+  return assembleConsistentWorkflow({
+    ckpt: a.ckpt,
+    positive: a.positive,
+    negative: a.negative,
+    refName: a.refName,
+    seed: a.seed,
+    flags,
+    skipFaceSwap: a.skipFaceSwap,
+    // Yaw is inferred from the head descriptor; the body pose skeleton (if any)
+    // is matched against the user's scene request.
+    yawDeg: estimateYawFromPoseHint(a.poseHint),
+    poseSkeletonName: matchPoseSkeleton(a.scene) ?? undefined,
+  });
 }
 
 async function pollComfyImage(base: string, promptId: string): Promise<ComfyImageRef> {
@@ -327,6 +321,9 @@ export async function generateWithComfyUIConsistent(p: {
   referenceBytes: Buffer;
   seed?: number;
   poseHint?: string;
+  // Video restyle sets this to drop the inswapper faceswap paste (avoids the
+  // rectangular seam that otherwise propagates through every video frame).
+  skipFaceSwap?: boolean;
 }): Promise<GenerateResult> {
   const base = await resolvePoppyBaseUrl("juggernaut");
   const start = performance.now();
@@ -349,6 +346,9 @@ export async function generateWithComfyUIConsistent(p: {
     negative: p.negativePrompt,
     refName,
     seed,
+    poseHint: pose,
+    scene: p.prompt,
+    skipFaceSwap: p.skipFaceSwap,
   });
   const q = await fetch(`${base}/prompt`, {
     method: "POST",

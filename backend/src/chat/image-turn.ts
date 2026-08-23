@@ -8,8 +8,7 @@
 // If there is no reference, we fall back to plain txt2img. Result is a base64
 // data URL so it renders inline in chat (no S3 / queue / worker involved).
 
-import path from "node:path";
-import { readFile } from "node:fs/promises";
+import { resolveCharacterReferenceBytes } from "../media/reference";
 import { prisma } from "@buttercupp/database";
 import { generateImage, generateWithComfyUIConsistent } from "../media/image/providers";
 import { callLLM } from "../llm/provider";
@@ -17,7 +16,7 @@ import { SAFETY_NEGATIVE } from "../media/image/constants";
 import { IMAGE_ENRICHMENT_FILLS } from "../media/image/enrichment-fills";
 import { toWebP } from "../media/image/convert";
 import { logInfo, logWarn } from "../utils/log";
-import { uploadGenerated, canUploadToS3, getGeneratedSignedUrl, getSignedUrl } from "../media/storage";
+import { uploadGenerated, canUploadToS3, getGeneratedSignedUrl } from "../media/storage";
 import { createReadyAsset } from "../media/asset";
 import { resolvePoppyBaseUrl } from "../inference/poppyEndpoint";
 import { getLatestSummary } from "../llm/memory-retriever";
@@ -84,48 +83,8 @@ export function cleanImagePrompt(text: string): string {
   return stripped.length > 0 ? stripped : text.trim();
 }
 
-// Load the character's reference face image bytes. CharacterMedia.url is either
-// an absolute http(s) URL or a public asset path (e.g. /personas/x.jpg served
-// from frontend/public). Returns null if none is resolvable (caller falls back).
-async function resolveCharacterReferenceBytes(characterId: string): Promise<Buffer | null> {
-  try {
-    // The backend (ECS) cannot read the frontend's local /personas/*.webp
-    // files, so a local-path reference yields no bytes and InstantID falls back
-    // to a random face. Fetch candidates in priority order and prefer the first
-    // S3/remote-readable one; only use a local "/" path as a last resort.
-    const candidates = await prisma.characterMedia.findMany({
-      where: { characterId, kind: "image" },
-      orderBy: [{ isPrimary: "desc" }, { sort: "asc" }],
-      select: { url: true },
-      take: 20,
-    });
-    const url = candidates.find((m) => !m.url.startsWith("/"))?.url ?? candidates[0]?.url;
-    if (!url) return null;
-    if (/^https?:\/\//i.test(url)) {
-      const r = await fetch(url);
-      if (!r.ok) return null;
-      return Buffer.from(await r.arrayBuffer());
-    }
-    if (url.startsWith("/")) {
-      const publicDir = process.env.POPPY_PUBLIC_DIR ?? path.resolve(process.cwd(), "../frontend/public");
-      return await readFile(path.join(publicDir, url));
-    }
-    // Bare S3 key. Route to the correct bucket by prefix, matching the frontend
-    // /api/media proxy: "images/" keys live in the generated bucket
-    // (POPPY_S3_BUCKET_GENERATED, where the persona pipeline wrote them), all
-    // other keys live in the character-media bucket (S3_BUCKET). Signing against
-    // the wrong bucket 404s, which used to silently drop face consistency.
-    const signed = url.startsWith("images/")
-      ? await getGeneratedSignedUrl(url, 60)
-      : await getSignedUrl(url, 60);
-    const r = await fetch(signed);
-    if (!r.ok) return null;
-    return Buffer.from(await r.arrayBuffer());
-  } catch (err) {
-    logWarn("chat-image", `reference resolve failed: ${err instanceof Error ? err.message : String(err)}`);
-    return null;
-  }
-}
+// Reference-face byte resolution moved to media/reference.ts so the Wan i2v
+// video handler can reuse the exact same logic (see resolveCharacterReferenceBytes).
 
 // Same sanitizer engine.ts uses: base64 data URLs (chat image fallback path
 // stores them directly on the message) would otherwise blow out Stheno's

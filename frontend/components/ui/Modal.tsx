@@ -21,6 +21,7 @@
 // Callers pass their own role/aria/testids/onClick and their own content.
 
 import * as React from "react";
+import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
 
 export interface ModalOverlayProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -51,7 +52,16 @@ export const ModalOverlay = React.forwardRef<HTMLDivElement, ModalOverlayProps>(
   const blurClass =
     backdropBlur === "sm" ? "backdrop-blur-sm" : backdropBlur === "lg" ? "backdrop-blur-xl" : "backdrop-blur-md";
 
-  return (
+  // Portal to <body> so the fixed overlay is positioned against the viewport,
+  // not trapped inside an ancestor that establishes a containing block via
+  // transform / filter / backdrop-filter (e.g. a hover-lifted card). Without
+  // this, opening a modal from inside such a card clips the overlay to the
+  // card's box. Mount-gate so SSR does not touch document.
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
+
+  return createPortal(
     <div
       ref={ref}
       className={cn(
@@ -84,7 +94,8 @@ export const ModalOverlay = React.forwardRef<HTMLDivElement, ModalOverlayProps>(
         />
       ) : null}
       {children}
-    </div>
+    </div>,
+    document.body,
   );
 });
 

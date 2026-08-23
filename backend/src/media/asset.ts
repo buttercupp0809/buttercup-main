@@ -133,6 +133,34 @@ export async function attachCreationCharacterMedia(
   return { characterMediaId: media.id };
 }
 
+export interface AttachVideoCharacterMediaParams {
+  characterId: string;
+  // Raw storable S3 key (not a pre-signed expiring URL; signing happens at
+  // read time), matching the shape MediaAsset.s3Key and CharacterMedia.url hold.
+  url: string;
+  title?: string;
+}
+
+// Phase 28 video dual-write. Mirrors attachCreationCharacterMedia but for
+// video kind. No sort (defaults to 0 via DB) and no backfillCharacterDisplay
+// call (that helper is image-display logic only).
+export async function attachVideoCharacterMedia(
+  params: AttachVideoCharacterMediaParams,
+): Promise<{ characterMediaId: string }> {
+  const media = await prisma.characterMedia.create({
+    data: {
+      characterId: params.characterId,
+      kind: "video",
+      url: params.url,
+      isPrimary: false,
+      isDisplay: false,
+      ...(params.title !== undefined ? { title: params.title } : {}),
+    },
+    select: { id: true },
+  });
+  return { characterMediaId: media.id };
+}
+
 // Observability-only: records which CharacterMedia row a ready MediaAsset
 // produced. Not a status transition (the asset is already `ready`), so it
 // goes through a plain update rather than the transition() state machine.

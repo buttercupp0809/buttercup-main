@@ -88,6 +88,25 @@ export function parseCreationImagePayload(
   return parsed.success ? parsed.data : null;
 }
 
+// ============================================================================
+// Create-Video: the payload the frontend puts in POST /media/video's `payload`
+// slot. The generic enqueue route (POST /media/:kind) treats payload as opaque;
+// the video handler validates it against this schema at the trust boundary.
+// `mode` is i2v-only for now (image-to-video off the character reference set);
+// `quality` maps to a Wan sampling preset and `aspectRatio` to a Wan size.
+// ============================================================================
+export const createVideoPayloadSchema = z.object({
+  userRequest: z.string().max(2000),
+  mode: z.enum(["i2v"]).default("i2v"),
+  seconds: z.number().int().min(1).max(10).default(5),
+  aspectRatio: z.enum(["portrait", "landscape", "square"]).default("portrait"),
+  quality: z.enum(["fast", "balanced", "max"]).default("balanced"),
+  // "transform" restyles a new first frame from the prompt (outfit/scene change);
+  // "keep" animates the character's real photo (motion-only).
+  sceneMode: z.enum(["transform", "keep"]).default("transform"),
+});
+export type CreateVideoPayload = z.infer<typeof createVideoPayloadSchema>;
+
 // Polled by the wizard finish screen (and available to any owner-only
 // status UI) while creation images are in flight. `primaryReady` reflects
 // the character's free-display asset (CharacterMedia.isDisplay when that

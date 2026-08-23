@@ -49,6 +49,14 @@ export function filterHiddenBenefits<T extends { label: string }>(items: readonl
 
 type BillingTab = "subscription" | "passes";
 
+// Heading shown on each one-time pass tile, keyed by plan. Falls back to the
+// plan's own label for any plan not listed here.
+const PASS_TITLE: Record<string, string> = {
+  daily: "Daily pass",
+  weekly: "Weekly pass",
+  monthly: "Monthly pass",
+};
+
 const BILLING_TABS: ReadonlyArray<TabItem<BillingTab>> = [
   { value: "passes", label: "Passes", testId: "billing-tab-passes" },
   { value: "subscription", label: "Subscription", testId: "billing-tab-subscription" },
@@ -377,14 +385,22 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
                     </span>
                   ) : null}
 
-                  {/* Tagline */}
+                  {/* Pass name heading + tagline */}
                   <div className="relative">
                     <p
-                      className="text-lg font-semibold leading-snug"
+                      className="font-display text-2xl font-bold leading-tight tracking-tight"
                       style={{ color: "hsl(var(--bc-fg))" }}
                     >
-                      {copy?.tagline ?? p.label}
+                      {PASS_TITLE[p.plan] ?? p.label}
                     </p>
+                    {copy?.tagline ? (
+                      <p
+                        className="mt-1 text-sm font-medium leading-snug"
+                        style={{ color: "hsl(var(--bc-muted))" }}
+                      >
+                        {copy.tagline}
+                      </p>
+                    ) : null}
                   </div>
 
                   {/* Price */}

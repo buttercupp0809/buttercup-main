@@ -11,6 +11,7 @@ import {
   markReady,
   markFailed,
   attachCreationCharacterMedia,
+  attachVideoCharacterMedia,
   attachCharacterMediaMeta,
 } from "../media/asset";
 import { debitTokens, refundTokens, InsufficientTokensError } from "../media/token-ledger";
@@ -108,6 +109,25 @@ export async function processJob(job: JobLike): Promise<{ ok: boolean; s3Key?: s
             err: err instanceof Error ? err.message : String(err),
           });
         }
+      }
+    }
+
+    // Phase 28: creation-time video dual-write. Mirrors the image block above
+    // for video kind. Best-effort: a failure must not undo the committed
+    // `ready` MediaAsset; it is logged for manual backfill.
+    if (data.kind === "video" && data.characterId) {
+      try {
+        const { characterMediaId } = await attachVideoCharacterMedia({
+          characterId: data.characterId,
+          url: s3Key,
+        });
+        await attachCharacterMediaMeta(data.mediaAssetId, characterMediaId);
+      } catch (err) {
+        logWarn("media", `video dual-write failed for job ${job.id}`, {
+          mediaAssetId: data.mediaAssetId,
+          characterId: data.characterId,
+          err: err instanceof Error ? err.message : String(err),
+        });
       }
     }
 

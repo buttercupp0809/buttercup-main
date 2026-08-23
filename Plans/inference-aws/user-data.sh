@@ -81,6 +81,30 @@ dl "https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/inswapp
 dl "https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/facerestore_models/GPEN-BFR-512.onnx" "$MODELS/comfyui/insightface/GPEN-BFR-512.onnx" ""
 chmod -R 777 "$MODELS/comfyui/ultralytics" "$MODELS/comfyui/insightface"
 
+# ---- Image-quality refinement models (2026-08-23) --------------------------
+# Additive only; does not touch the InstantID + inswapper identity lock above.
+# Each is gated behind a backend A/B flag (IMG_HAND_DETAILER / IMG_POSE_CONTROLNET
+# / IMG_PULID) and the workflow builder falls back to the current graph when a
+# node/model is missing, so a failed download here never breaks generation.
+#
+# Fix 3 (hands): hand bbox detector for the hands-only DetailerForEach pass. The
+# DetailerForEach + UltralyticsDetectorProvider nodes ship in Impact Pack/Subpack
+# (already installed below), so only the model file is new.
+dl "https://huggingface.co/Bingsu/adetailer/resolve/main/hand_yolov9c.pt" "$YOLO_DIR/hand_yolov9c.pt" ""
+# Fallback hand model if yolov9c is unavailable at build time.
+dl "https://huggingface.co/Bingsu/adetailer/resolve/main/hand_yolov8s.pt" "$YOLO_DIR/hand_yolov8s.pt" ""
+# Fix 4 (poses): xinsir OpenPose SDXL ControlNet (body pose; head keypoints are
+# stripped in the workflow so the head stays free to rotate).
+dl "https://huggingface.co/xinsir/controlnet-openpose-sdxl-1.0/resolve/main/diffusion_pytorch_model.safetensors" "$CN_DIR/controlnet-openpose-sdxl-1.0.safetensors" ""
+# Fix 2 (angled faces): PuLID-SDXL identity weights for the yaw-gated branch.
+# VERIFY at the Fix 4/5 node-rebuild: guozinan/PuLID hosts the FLUX PuLID weights,
+# not SDXL. The SDXL weights are under huchenlei/ipadapter_pulid. Confirm the exact
+# filename PuLID_ComfyUI expects before enabling IMG_PULID.
+PULID_DIR="$MODELS/comfyui/pulid"
+mkdir -p "$PULID_DIR"
+dl "https://huggingface.co/huchenlei/ipadapter_pulid/resolve/main/ip-adapter_pulid_sdxl_fp16.safetensors" "$PULID_DIR/ip-adapter_pulid_sdxl_fp16.safetensors" ""
+chmod -R 777 "$MODELS/comfyui/ultralytics" "$MODELS/comfyui/insightface" "$MODELS/comfyui/controlnet" "$PULID_DIR"
+
 # ---- filter-free face swap custom node (no NSFW blocking) -------------------
 mkdir -p "$ROOT/custom_nodes/PoppyFaceSwap"
 cat >"$ROOT/custom_nodes/PoppyFaceSwap/__init__.py" <<'PYEOF'
@@ -240,6 +264,20 @@ RUN git clone https://github.com/ltdrdata/ComfyUI-Impact-Pack /opt/ComfyUI/custo
 RUN git clone --depth 1 https://github.com/ltdrdata/ComfyUI-Impact-Subpack /opt/ComfyUI/custom_nodes/ComfyUI-Impact-Subpack \\
  && grep -viE 'sam2|^torch|^torchvision|^torchaudio' /opt/ComfyUI/custom_nodes/ComfyUI-Impact-Subpack/requirements.txt > /tmp/spreq.txt \\
  && /opt/environments/python/comfyui/bin/pip install --no-cache-dir -r /tmp/spreq.txt || true
+# ---- Image-quality refinement custom nodes (2026-08-23, additive) ----------
+# torch lines stripped from each requirements file so the CUDA torch is never
+# replaced (same guard as Impact Pack above). All best-effort (|| true): a node
+# that fails to build is simply absent, and the backend workflow builder gates
+# each fix on node availability and falls back to the current graph.
+# Fix 4 (poses): DWPose preprocessor + the OpenPose skeleton editor (show_face=false).
+RUN git clone --depth 1 https://github.com/Fannovel16/comfyui_controlnet_aux /opt/ComfyUI/custom_nodes/comfyui_controlnet_aux \\
+ && grep -viE '^torch|^torchvision|^torchaudio' /opt/ComfyUI/custom_nodes/comfyui_controlnet_aux/requirements.txt > /tmp/cnaux.txt \\
+ && /opt/environments/python/comfyui/bin/pip install --no-cache-dir -r /tmp/cnaux.txt || true
+RUN git clone --depth 1 https://github.com/badjeff/comfyui-ultimate-openpose-editor /opt/ComfyUI/custom_nodes/comfyui-ultimate-openpose-editor || true
+# Fix 2 (angled faces): PuLID-SDXL identity conditioning for the yaw-gated branch.
+RUN git clone --depth 1 https://github.com/cubiq/PuLID_ComfyUI /opt/ComfyUI/custom_nodes/PuLID_ComfyUI \\
+ && grep -viE '^torch|^torchvision|^torchaudio' /opt/ComfyUI/custom_nodes/PuLID_ComfyUI/requirements.txt > /tmp/pulidreq.txt \\
+ && /opt/environments/python/comfyui/bin/pip install --no-cache-dir -r /tmp/pulidreq.txt || true
 DOCKER
 docker build -t poppy-comfyui-full:local -f /opt/poppy/comfyui.Dockerfile /opt/poppy || true
 
@@ -261,6 +299,7 @@ ExecStart=/usr/bin/docker run --rm --name poppy-juggernaut --gpus all \\
   -v $MODELS/comfyui/controlnet:/opt/ComfyUI/models/controlnet \\
   -v $MODELS/comfyui/insightface:/opt/ComfyUI/models/insightface \\
   -v $MODELS/comfyui/ultralytics:/opt/ComfyUI/models/ultralytics \\
+  -v $MODELS/comfyui/pulid:/opt/ComfyUI/models/pulid \\
   -v $ROOT/custom_nodes/PoppyFaceSwap:/opt/ComfyUI/custom_nodes/PoppyFaceSwap \\
   -v $ROOT/comfyui-data:/opt/ComfyUI/output \\
   poppy-comfyui-full:local
