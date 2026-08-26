@@ -20,7 +20,9 @@ export type AnalyticsEventName =
   | "ethical_ai_reminder_sent"
   // Phase 30: memory graph / rulebook events.
   | "emotional_pattern_detected"
-  | "user_rule_created";
+  | "user_rule_created"
+  // CTA click tracking: upgrade/payment button clicks across the app.
+  | "cta_click";
 
 export interface AnalyticsEventPayload {
   name: AnalyticsEventName;

@@ -19,7 +19,23 @@
 import { callLLM } from "../llm/provider";
 import { logWarn } from "../utils/log";
 
-export type MessageIntent = "image" | "text";
+export type MessageIntent = "image" | "text" | "video_request";
+
+// Video keyword patterns. Checked BEFORE the image patterns so video
+// requests are intercepted at the chat-stream layer and returned as a
+// gentle in-character redirect rather than falling into image generation.
+const VIDEO_KEYWORD_PATTERNS: RegExp[] = [
+  /\b(send|show|share|give|drop|make|film|shoot|create|generate|record)\s+(me\s+)?(a\s+|an\s+|the\s+|your\s+)?(video|clip|vid|movie|reel|short)\b/i,
+  /\b(i\s+want|i'?d\s+like|i\s+would\s+like|can\s+i\s+see|could\s+you)\s+(a\s+|an\s+)?(video|clip|vid|movie|reel)\b/i,
+  /\bfilm\s+(me|you|yourself|us)\b/i,
+  /\bshort\s+film\b/i,
+];
+
+export function matchVideoKeyword(text: string): boolean {
+  const t = (text ?? "").trim();
+  if (!t) return false;
+  return VIDEO_KEYWORD_PATTERNS.some((re) => re.test(t));
+}
 
 // High-precision keyword matcher. Each pattern must match an unambiguous
 // image REQUEST. Avoid patterns that trip on casual conversation

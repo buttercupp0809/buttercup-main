@@ -17,7 +17,8 @@ import { z } from "zod";
 import { prisma } from "@buttercupp/database";
 import { runChatTurn } from "../chat/engine";
 import { generateChatImage, generateImageTeaser } from "../chat/image-turn";
-import { classifyMessageIntent } from "../chat/intent";
+import { classifyMessageIntent, matchVideoKeyword } from "../chat/intent";
+import { callLLM } from "../llm/provider";
 import {
   assertCanChat,
   assertCanImage,
@@ -109,6 +110,49 @@ export async function handleChatStream(req: IncomingMessage, res: ServerResponse
   });
 
   logInfo("sse", `chat.stream conv=${body.conversationId}`, { userId });
+
+  // Video request: intercept BEFORE the image path so video keywords don't
+  // fall into image generation. Returns a warm in-character redirect with no
+  // quota spend.
+  if (matchVideoKeyword(body.text)) {
+    try {
+      await prisma.message.create({
+        data: { conversationId: body.conversationId, role: "user", content: body.text },
+      });
+      const convRow = await prisma.conversation.findUnique({
+        where: { id: body.conversationId },
+        select: { character: { select: { name: true } } },
+      });
+      const charName = convRow?.character?.name ?? "companion";
+      const videoFallback = "Videos aren't my thing just yet, but I'd love to send you a photo instead. Just ask!";
+      let redirectText = videoFallback;
+      try {
+        const llmResult = await callLLM({
+          purpose: "chat",
+          systemPrompt: `You are ${charName}. The user asked for a video. Warmly and charmingly let them know you can't do videos right now, but you'd love to send them photos and keep chatting. 1-2 sentences, flirtatious and in-character. No hashtags, no emojis, no stage directions.`,
+          messages: [{ role: "user", content: body.text }],
+          maxTokens: 80,
+          temperature: 0.9,
+          contentRating: "mature",
+        });
+        if (llmResult.text && llmResult.provider !== "hardcoded") {
+          redirectText = llmResult.text.trim();
+        }
+      } catch {
+        // use videoFallback
+      }
+      sseWrite(res, "token", { delta: redirectText });
+      const redirectMsg = await prisma.message.create({
+        data: { conversationId: body.conversationId, role: "assistant", content: redirectText },
+      });
+      sseWrite(res, "done", { messageId: redirectMsg.id, provider: "stheno", model: "video-redirect" });
+    } catch (err) {
+      logError("sse", err, { conversationId: body.conversationId });
+      sseWrite(res, "error", { message: err instanceof Error ? err.message : "video_redirect_failed" });
+    }
+    res.end();
+    return true;
+  }
 
   // Image request. Full flow, identical to the WS gateway so the experience
   // is transport-independent and everything persists across refreshes:

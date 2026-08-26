@@ -7,8 +7,13 @@ import { prisma, backfillCharacterDisplay } from "@buttercupp/database";
 import type { MediaAsset, MediaKind, MediaStatus, Prisma } from "@buttercupp/database";
 
 const ALLOWED: Record<MediaStatus, MediaStatus[]> = {
+  // "processing -> processing" is allowed so a BullMQ RETRY (or a re-delivery)
+  // can re-enter processing and re-run the render. Without it, any job whose
+  // first attempt failed after markProcessing was permanently poisoned: every
+  // retry threw invalid_transition at the status guard before reaching the
+  // render, so the job could never succeed.
   queued: ["processing", "failed"],
-  processing: ["ready", "failed"],
+  processing: ["processing", "ready", "failed"],
   ready: [],
   failed: [],
 };

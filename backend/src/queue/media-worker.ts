@@ -20,10 +20,96 @@ import { handlers } from "../media/handlers";
 import { consumePlanQuota } from "../subscription/enforce";
 import { entitlementsFor } from "../subscription/entitlements";
 import { notifyMediaReady, notifyMediaError } from "./ws-notify";
-import { createWorkerConnection } from "./connection";
+import { createWorkerConnection, getRedisConnection } from "./connection";
 import { MEDIA_QUEUE_NAME } from "@buttercupp/shared";
+import { prisma } from "@buttercupp/database";
 import { logInfo, logWarn, logError } from "../utils/log";
 import { recordMediaJobOutcome } from "../metrics";
+
+// ---------------------------------------------------------------------------
+// Self-healing guardrails (added after repeated prod-drift incidents):
+//  1. SINGLE-WORKER LOCK: two worker processes on the same queue steal each
+//     other's BullMQ job locks ("could not renew lock") and freeze every job.
+//     A Redis lock with a heartbeat TTL makes a second worker refuse to start.
+//  2. STUCK-JOB REAPER: if a worker is killed mid-render, its MediaAsset is
+//     stranded in `processing` forever and the UI spins with no signal. A
+//     periodic sweep fails orphaned assets (refund + notify) so the UI settles.
+// ---------------------------------------------------------------------------
+
+const WORKER_LOCK_KEY = "poppy:media-worker:lock";
+const WORKER_LOCK_TTL_MS = 60_000; // lock expires if the holder dies
+const WORKER_LOCK_RENEW_MS = 20_000; // renew well before expiry
+// A render can legitimately take up to the comfywan poll cap (~20 min). Only an
+// asset older than this with no progress is truly orphaned (its worker died).
+const STUCK_ASSET_TIMEOUT_MS = 35 * 60 * 1000;
+const REAPER_INTERVAL_MS = 60_000;
+
+// Unique id for THIS process so the lock owner is identifiable in logs.
+const WORKER_INSTANCE_ID = `${process.pid}-${Date.now()}`;
+
+// Try to become the one true worker. Returns a renew timer on success, or null
+// when another live worker already holds the lock (caller must not start).
+async function acquireWorkerLock(): Promise<NodeJS.Timeout | null> {
+  const redis = getRedisConnection();
+  if (!redis) return null; // no Redis => single-process dev; nothing to guard
+  // SET NX PX: atomically claim the lock only if free (or previously expired).
+  const ok = await redis.set(WORKER_LOCK_KEY, WORKER_INSTANCE_ID, "PX", WORKER_LOCK_TTL_MS, "NX");
+  if (ok !== "OK") {
+    const holder = await redis.get(WORKER_LOCK_KEY).catch(() => "unknown");
+    logError(
+      "media-worker",
+      new Error(
+        `another media worker is already running (lock held by ${holder}). ` +
+          `Refusing to start a second worker: two workers steal each other's ` +
+          `BullMQ locks and freeze all jobs. Stop the other worker first.`,
+      ),
+      { instance: WORKER_INSTANCE_ID },
+    );
+    return null;
+  }
+  logInfo("media-worker", "acquired single-worker lock", { instance: WORKER_INSTANCE_ID });
+  // Renew the TTL while we live; only refresh if WE still own it.
+  const timer = setInterval(() => {
+    redis
+      .set(WORKER_LOCK_KEY, WORKER_INSTANCE_ID, "PX", WORKER_LOCK_TTL_MS, "XX")
+      .catch((err) => logWarn("media-worker", "lock renew failed", { err: String(err) }));
+  }, WORKER_LOCK_RENEW_MS);
+  if (typeof timer.unref === "function") timer.unref();
+  return timer;
+}
+
+async function releaseWorkerLock(): Promise<void> {
+  const redis = getRedisConnection();
+  if (!redis) return;
+  // Only delete if we still own it (avoid clobbering a successor's lock).
+  const holder = await redis.get(WORKER_LOCK_KEY).catch(() => null);
+  if (holder === WORKER_INSTANCE_ID) await redis.del(WORKER_LOCK_KEY).catch(() => null);
+}
+
+// Sweep MediaAssets stranded in `processing` past the timeout and settle them.
+// Runs only in the single live worker, so it will not race a healthy render.
+async function reapStuckAssets(): Promise<void> {
+  const cutoff = new Date(Date.now() - STUCK_ASSET_TIMEOUT_MS);
+  let stuck: Array<{ id: string; userId: string; kind: string }> = [];
+  try {
+    stuck = await prisma.mediaAsset.findMany({
+      where: { status: "processing", updatedAt: { lt: cutoff } },
+      select: { id: true, userId: true, kind: true },
+      take: 50,
+    });
+  } catch (err) {
+    logWarn("media-worker", "reaper query failed", { err: String(err) });
+    return;
+  }
+  for (const a of stuck) {
+    logWarn("media-worker", "reaping orphaned asset (worker likely died mid-job)", {
+      mediaAssetId: a.id,
+      kind: a.kind,
+    });
+    await markFailed(a.id, "orphaned_timeout").catch(() => null);
+    await notifyMediaError(a.userId, a.id, "handler_failed").catch(() => null);
+  }
+}
 
 function loadBullMq(): { Worker: unknown } | null {
   try {
@@ -180,7 +266,11 @@ export async function processJob(job: JobLike): Promise<{ ok: boolean; s3Key?: s
       await markFailed(data.mediaAssetId, err instanceof Error ? err.message : "handler_failed").catch(() => null);
       await notifyMediaError(data.userId, data.mediaAssetId, "handler_failed").catch(() => null);
     } else {
-      logWarn("media", `job ${job.id} attempt ${job.attemptsMade + 1} failed, will retry`, { kind: data.kind });
+      logWarn("media", `job ${job.id} attempt ${job.attemptsMade + 1} failed, will retry`, {
+        kind: data.kind,
+        error: err instanceof Error ? err.message : String(err),
+        stack: err instanceof Error ? err.stack?.split("\n").slice(0, 4).join(" | ") : undefined,
+      });
     }
     throw err;
   }
@@ -188,8 +278,10 @@ export async function processJob(job: JobLike): Promise<{ ok: boolean; s3Key?: s
 
 const HEARTBEAT_INTERVAL_MS = 30_000;
 
-// Boot a real BullMQ worker. Called from backend/src/worker.ts.
-export function startMediaWorker(): { close: () => Promise<void> } | null {
+// Boot a real BullMQ worker. Called from backend/src/worker.ts. Async because
+// it must first win the single-worker lock; returns null when another worker
+// already holds it (the caller fails fast) or when Redis/BullMQ are absent.
+export async function startMediaWorker(): Promise<{ close: () => Promise<void> } | null> {
   const connection = createWorkerConnection();
   if (!connection) {
     logWarn("media-worker", "REDIS_URL not set; worker not started");
@@ -199,6 +291,12 @@ export function startMediaWorker(): { close: () => Promise<void> } | null {
   if (!mod) {
     logWarn("media-worker", "bullmq not installed; worker not started");
     return null;
+  }
+  // Single-worker guarantee: refuse to start if another live worker holds the
+  // lock. This is the fix for the recurring double-worker lock-contention hang.
+  const lockTimer = await acquireWorkerLock();
+  if (!lockTimer && getRedisConnection()) {
+    return null; // another worker owns the lock; do not start a second one
   }
   const concurrency = Number(process.env.MEDIA_WORKER_CONCURRENCY ?? 4);
   // Backpressure for the single self-hosted GPU. Juggernaut/ComfyUI serves one
@@ -240,11 +338,20 @@ export function startMediaWorker(): { close: () => Promise<void> } | null {
   // Unref so the timer never blocks graceful shutdown.
   if (typeof timer.unref === "function") timer.unref();
 
+  // Stuck-job reaper: settle assets stranded by a dead worker so the UI never
+  // spins forever. Runs immediately, then on an interval.
+  void reapStuckAssets();
+  const reaperTimer = setInterval(() => void reapStuckAssets(), REAPER_INTERVAL_MS);
+  if (typeof reaperTimer.unref === "function") reaperTimer.unref();
+
   const close = worker.close.bind(worker);
   logInfo("media-worker", `started (concurrency ${concurrency}, limiter ${rateMax}/${rateDurationMs}ms)`);
   return {
     close: async () => {
       clearInterval(timer);
+      clearInterval(reaperTimer);
+      if (lockTimer) clearInterval(lockTimer);
+      await releaseWorkerLock().catch(() => null);
       await close();
     },
   };

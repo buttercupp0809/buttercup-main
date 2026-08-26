@@ -17,6 +17,7 @@ import * as React from "react";
 import type { TransportPaywallPlan } from "@/lib/chat-transport";
 import { ModalOverlay, ModalCard, ModalCloseButton } from "@/components/ui/Modal";
 import { PASS_COPY } from "@/lib/pass-copy";
+import { trackCta } from "@/lib/track-cta";
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:4000";
 
@@ -36,6 +37,9 @@ export interface PaywallModalProps {
   // Called when the server-side entitlement flips active. Parent should
   // clear its `paywalled` state and re-enable the input.
   onResumed: () => void;
+  // Optional character avatar shown at the top of the modal for context.
+  avatarUrl?: string | null;
+  characterName?: string;
 }
 
 async function post(url: string, body: unknown): Promise<{ checkoutUrl?: string; error?: string; message?: string }> {
@@ -55,7 +59,7 @@ interface EntitlementsShape {
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
 
-export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, onResumed }: PaywallModalProps) {
+export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, onResumed, avatarUrl, characterName }: PaywallModalProps) {
   const [pending, setPending] = React.useState<string | null>(null);
   const [error, setError] = React.useState<string | null>(null);
   const [fallbackPlans, setFallbackPlans] = React.useState<TransportPaywallPlan[] | null>(null);
@@ -161,6 +165,7 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
   }, [dismissed]);
 
   async function subscribe(plan: string) {
+    trackCta(`paywall_${plan}_pass`, "paywall_modal");
     setPending(plan);
     try {
       const r = await post(`${BACKEND_URL}/billing/subscribe`, { plan });
@@ -272,6 +277,16 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
         <ModalCloseButton onClick={() => setDismissed(true)} ariaLabel="Minimize" />
 
         <div className="relative px-5 pb-6 pt-8 sm:px-8 sm:pb-8 sm:pt-10">
+          {avatarUrl && (
+            <div className="mb-4 flex justify-center">
+              <img
+                src={avatarUrl}
+                alt={characterName ?? "Character"}
+                className="h-16 w-16 rounded-full object-cover object-top shadow-lg"
+                style={{ border: "2px solid hsl(var(--bc-amber) / 0.5)" }}
+              />
+            </div>
+          )}
           <div className="flex flex-col items-center text-center">
             <div
               className="relative flex h-14 w-14 items-center justify-center rounded-2xl"
@@ -429,6 +444,7 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
               <a
                 href="/billing#token-store"
                 data-testid="paywall-buy-tokens-instead"
+                onClick={() => trackCta("paywall_buy_tokens", "paywall_modal")}
                 className="inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-xs font-medium transition hover:opacity-80"
                 style={{
                   borderColor: "hsl(var(--bc-amber) / 0.5)",

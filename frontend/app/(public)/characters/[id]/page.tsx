@@ -8,6 +8,7 @@ import { AffectionMeter } from "@/components/relationship/AffectionMeter";
 import { GalleryPaywall } from "@/components/gallery/GalleryPaywall";
 import { blurMany } from "@/lib/media-blur";
 import { taglineFrom } from "@/lib/marketing";
+import { prisma } from "@buttercupp/database";
 
 export const dynamic = "force-dynamic";
 
@@ -40,6 +41,26 @@ export default async function CharacterDetailPage({
   // these worthless thumbnails so the real S3 URL never reaches the browser.
   const galleryBlurs =
     detail.galleryImages.length > 0 && !gated ? await blurMany(detail.galleryImages) : [];
+
+  // Check subscription status and already-unlocked gallery images for the
+  // logged-in viewer so GalleryPaywall can show per-image unlock.
+  const galleryMediaIds = detail.galleryMediaIds ?? [];
+  let hasActivePlan = false;
+  let unlockedMediaIds: string[] = [];
+  if (viewer.id && galleryMediaIds.length > 0) {
+    const [sub, unlocked] = await Promise.all([
+      prisma.subscription.findUnique({
+        where: { userId: viewer.id },
+        select: { status: true },
+      }),
+      prisma.userUnlockedMedia.findMany({
+        where: { userId: viewer.id, characterMediaId: { in: galleryMediaIds } },
+        select: { characterMediaId: true },
+      }),
+    ]);
+    hasActivePlan = sub?.status === "active";
+    unlockedMediaIds = unlocked.map((u) => u.characterMediaId);
+  }
 
   return (
     <section
@@ -224,7 +245,14 @@ export default async function CharacterDetailPage({
               <div>
                 <SectionLabel>Photos</SectionLabel>
                 <div className="mt-3">
-                  <GalleryPaywall images={detail.galleryImages} blurs={galleryBlurs} characterName={detail.name} />
+                  <GalleryPaywall
+                    images={detail.galleryImages}
+                    blurs={galleryBlurs}
+                    characterName={detail.name}
+                    mediaIds={galleryMediaIds}
+                    unlockedMediaIds={unlockedMediaIds}
+                    hasActivePlan={hasActivePlan}
+                  />
                 </div>
               </div>
             )}

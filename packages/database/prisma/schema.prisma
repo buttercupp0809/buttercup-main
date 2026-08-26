@@ -85,6 +85,7 @@ enum TokenReason {
   voice_gen
   premium_msg
   grant
+  gallery_unlock
 }
 
 enum MessageRole {
@@ -158,6 +159,7 @@ model User {
   memoryEdges            MemoryEdge[]
   // Phase 30: user-set conversational rulebook (see model UserRule below).
   userRules              UserRule[]
+  unlockedMedia          UserUnlockedMedia[]
 }
 
 // Phase 24: additive 1:1 onboarding profile. Kept separate from User because
@@ -726,6 +728,26 @@ model MemoryEdge {
   @@index([userId, characterId, sourceId])
   @@index([userId, characterId, targetId])
   @@index([entityId])
+}
+
+// =============================================================================
+// Gallery unlock: permanent per-user unlock of a locked CharacterMedia row.
+// Spending 1 image token permanently unlocks the image for that user.
+// Idempotent: a second unlock attempt on the same row is a no-op (no second
+// token deducted). Referenced by the private content gallery page and the
+// gallery unlock API route.
+// =============================================================================
+
+model UserUnlockedMedia {
+  id              String   @id @default(uuid())
+  userId          String
+  characterMediaId String
+  unlockedAt      DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, characterMediaId])
+  @@index([userId])
 }
 
 // Phase 30: user-set conversational rulebook, ported from Pellow's

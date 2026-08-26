@@ -69,6 +69,9 @@ export interface CharacterDetailDTO extends CharacterCardDTO {
   };
   requiresAgeVerification?: boolean;
   galleryImages: string[];
+  // Stable CharacterMedia row IDs parallel to galleryImages. Used for
+  // per-image unlock (gallery_unlock) on subscribed plans.
+  galleryMediaIds?: string[];
   // True only when the requesting viewer owns this character. Drives the
   // "Edit" entry point on the detail page.
   isOwner: boolean;

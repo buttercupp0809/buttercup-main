@@ -81,6 +81,78 @@ for i in $(seq 1 60); do
   sleep 10
 done
 
+# --- Pin ComfyUI to a Wan-2.2-capable tag on EVERY boot ---------------------
+# The aidockorg/comfyui-cuda:latest image ships an OLD ComfyUI (v0.2.2, Sept
+# 2024) that lacks the Wan 2.2 core nodes (WanImageToVideo,
+# Wan22ImageToVideoLatent, SaveWEBM). Because poppy-wan.service runs
+# `docker run --rm`, /opt/ComfyUI lives in the container's writable layer and is
+# recreated from that old image on every start, silently reverting any upgrade.
+# This installs a systemd oneshot that re-applies the pin after the container
+# comes up, so a stop/start (which also changes the public IP) never loses the
+# Wan nodes. torch is deliberately NOT reinstalled: the image ships a
+# CUDA-matched torch 2.4.1 and ComfyUI master needs torch >= 2.5, so we pin the
+# newest v0.3.x tag (has Wan 2.2 + SaveWEBM, still runs on torch 2.4).
+WAN_COMFY_TAG="v0.3.77"
+cat >/opt/poppy/pin-comfyui.sh <<PINEOF
+#!/usr/bin/env bash
+set -uxo pipefail
+TAG="$WAN_COMFY_TAG"
+VENV_PY=/opt/environments/python/comfyui/bin/python
+# Wait for the container to be running.
+for i in \$(seq 1 60); do
+  [ "\$(docker inspect -f '{{.State.Running}}' poppy-wan 2>/dev/null)" = "true" ] && break
+  sleep 5
+done
+# Pin ComfyUI to the Wan-capable tag (skip the reinstall if already pinned).
+cur="\$(docker exec poppy-wan bash -lc 'git -C /opt/ComfyUI describe --tags 2>/dev/null' || true)"
+if [ "\$cur" != "\$TAG" ]; then
+  docker exec poppy-wan supervisorctl stop comfyui || true
+  docker exec poppy-wan bash -lc "cd /opt/ComfyUI && git fetch --depth 1 origin tag \$TAG && git checkout -f \$TAG"
+  docker exec poppy-wan bash -lc "cd /opt/ComfyUI && grep -vE '^(torch|torchvision|torchaudio|torchsde)' requirements.txt > /tmp/comfy-req.txt && \$VENV_PY -m pip install -q -r /tmp/comfy-req.txt"
+  docker exec poppy-wan supervisorctl start comfyui
+else
+  echo "comfyui already at \$TAG"
+fi
+# RIFE frame-interpolation node. custom_nodes is NOT a mounted volume, so a
+# container recreate wipes it - re-add on every boot (idempotent). numpy
+# conflict warnings from its requirements are harmless. Enable via
+# WAN_INTERPOLATION=1 in the backend env.
+RIFE_D=/opt/ComfyUI/custom_nodes/ComfyUI-Frame-Interpolation
+if ! docker exec poppy-wan test -d "\$RIFE_D/.git"; then
+  docker exec poppy-wan git clone --depth 1 https://github.com/Fannovel16/ComfyUI-Frame-Interpolation "\$RIFE_D" || true
+  docker exec poppy-wan bash -lc "R=\$RIFE_D/requirements-no-cupy.txt; [ -f \$RIFE_D/requirements.txt ] && R=\$RIFE_D/requirements.txt; \$VENV_PY -m pip install -q --no-warn-script-location -r \\\$R" || true
+  # Clone runs as root but ComfyUI runs as 'user'; without this it cannot create
+  # ckpts/ to download rife49.pth and every RIFE render fails with PermissionError.
+  docker exec poppy-wan chmod -R 777 "\$RIFE_D" || true
+  docker exec poppy-wan supervisorctl restart comfyui || true
+fi
+# Restart Caddy AFTER comfyui so the 8188 -> 18188 proxy rebinds. On a cold
+# reboot Caddy races ahead of ComfyUI and fails to bind 8188 (the box answers on
+# SSH but not on :8188 until Caddy is bounced).
+sleep 5
+docker exec poppy-wan supervisorctl restart caddy || true
+for i in \$(seq 1 60); do
+  curl -fsS --max-time 5 http://127.0.0.1:8188/system_stats >/dev/null 2>&1 && { echo "comfyui reachable on 8188 at \$TAG"; break; }
+  sleep 5
+done
+PINEOF
+chmod +x /opt/poppy/pin-comfyui.sh
+
+cat >/etc/systemd/system/poppy-wan-upgrade.service <<'UNIT'
+[Unit]
+Description=Pin ComfyUI to a Wan 2.2 capable tag inside poppy-wan
+After=poppy-wan.service
+Requires=poppy-wan.service
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/opt/poppy/pin-comfyui.sh
+[Install]
+WantedBy=multi-user.target
+UNIT
+systemctl daemon-reload
+systemctl enable --now poppy-wan-upgrade.service || echo "!! pin-comfyui first run failed (check journalctl -u poppy-wan-upgrade)"
+
 # Install RIFE pip requirements inside the container now that it is running.
 # The node directory is already present via the volume mount. pip install is
 # idempotent: re-running on a reprovisioned box with cached packages is fast.

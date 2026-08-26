@@ -38,5 +38,17 @@ for i in $(seq 1 30); do
   sleep 10; [ "$i" -eq 30 ] && echo "not up yet - check: ssh ubuntu@$IP 'journalctl -u poppy-wan'"
 done
 echo
+# Auto-patch backend/.env so the worker uses the new IP (the box gets a new
+# public IP on every start; a stale POPPY_WAN_URL silently hangs every render).
+# cwd is already the script dir (cd on line 9), so the backend is ../../backend
+# relative to here. Do NOT re-use the relative BASH_SOURCE path: after the
+# earlier cd it no longer resolves from the original invocation directory.
+ENV_FILE="$(cd ../../backend && pwd)/.env"
+if [ -f "$ENV_FILE" ] && grep -q '^POPPY_WAN_URL=' "$ENV_FILE"; then
+  sed -i.bak -E "s#^POPPY_WAN_URL=.*#POPPY_WAN_URL=http://$IP:8188#" "$ENV_FILE" && rm -f "$ENV_FILE.bak"
+  echo "Patched POPPY_WAN_URL in backend/.env -> http://$IP:8188"
+fi
 echo "Set this in the backend to route video to the box:"
 echo "  POPPY_WAN_URL=http://$IP:8188"
+echo "IMPORTANT: FULLY restart the worker (kill the process, then npm run worker)."
+echo "  env is read only at process start; a tsx-watch reload keeps the OLD IP."

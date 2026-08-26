@@ -248,22 +248,50 @@ export function videoProvidersConfigured(): boolean {
   return fal || replicate;
 }
 
+// Individual cloud-provider readiness. Used so we NEVER add an unconfigured
+// provider to the attempt chain: doing so made its "_not_configured" throw the
+// last error, MASKING the real self-hosted (comfywan) failure and turning every
+// box problem into a misleading "replicate_video_not_configured". A provider
+// that can't run is not a fallback; it is noise.
+function falConfigured(): boolean {
+  return Boolean(process.env.FAL_KEY && FAL_VIDEO_MODEL);
+}
+function replicateConfigured(): boolean {
+  return Boolean(process.env.REPLICATE_API_TOKEN && REPLICATE_VIDEO_MODEL);
+}
+
 export async function generateVideo(
   p: Omit<GenerateParams, "seconds"> & { seconds?: number },
 ): Promise<GenerateResult> {
   const params: GenerateParams = { ...p, seconds: p.seconds ?? VIDEO_DEFAULT_SECONDS };
   if (!videoSelfHostConfigured() && !videoProvidersConfigured()) throw new VideoNotConfiguredError();
-  const attempts: Array<() => Promise<GenerateResult>> = [];
-  // Self-hosted Wan box is primary when configured; cloud providers back it up.
-  if (videoSelfHostConfigured() && videoConfigured()) attempts.push(() => generateWithComfyWan(params));
-  if (!disabled.fal) attempts.push(() => generateWithFal(params));
-  if (!disabled.replicate) attempts.push(() => generateWithReplicate(params));
+  // Build the attempt chain from providers that can ACTUALLY run. Skipping
+  // unconfigured cloud providers means that when the self-hosted box is the
+  // only real provider (the normal dev/prod setup), its true error surfaces to
+  // the worker and the UI instead of being swallowed by a cloud stub throw.
+  const attempts: Array<{ name: string; run: () => Promise<GenerateResult> }> = [];
+  if (videoSelfHostConfigured() && videoConfigured()) {
+    attempts.push({ name: "comfywan", run: () => generateWithComfyWan(params) });
+  }
+  if (falConfigured() && !disabled.fal) {
+    attempts.push({ name: "fal", run: () => generateWithFal(params) });
+  }
+  if (replicateConfigured() && !disabled.replicate) {
+    attempts.push({ name: "replicate", run: () => generateWithReplicate(params) });
+  }
+  if (attempts.length === 0) throw new VideoNotConfiguredError();
+
   let lastErr: unknown = new VideoNotConfiguredError();
   for (const attempt of attempts) {
     try {
-      return await attempt();
+      return await attempt.run();
     } catch (err) {
-      lastErr = err;
+      // Tag the error with which provider produced it so logs and the reaper
+      // show the real cause (e.g. "comfywan: comfywan_timeout") rather than an
+      // anonymous throw from whichever provider happened to run last.
+      const msg = err instanceof Error ? err.message : String(err);
+      lastErr = err instanceof Error ? err : new Error(msg);
+      (lastErr as Error).message = `${attempt.name}: ${msg}`;
     }
   }
   throw lastErr;

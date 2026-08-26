@@ -35,11 +35,11 @@ describe("video constants (Wan additive)", () => {
     expect(WAN_STEPS.balanced.low.cfg).toBe(1.0);
     expect(WAN_STEPS.balanced.low.loraStrength).toBe(1.0);
   });
-  it("max runs both experts with no LoRA at higher cfg", () => {
-    expect(WAN_STEPS.max.high.cfg).toBe(4.0);
-    expect(WAN_STEPS.max.low.cfg).toBe(3.5);
-    expect(WAN_STEPS.max.high.loraStrength).toBe(0);
-    expect(WAN_STEPS.max.low.loraStrength).toBe(0);
+  it("max is 720p HD with a weakened high-expert LoRA (fast enough to be practical)", () => {
+    expect(WAN_STEPS.max.hq).toBe(true);
+    expect(WAN_STEPS.max.high.loraStrength).toBeGreaterThan(0);
+    expect(WAN_STEPS.max.high.loraStrength).toBeLessThan(1);
+    expect(WAN_STEPS.max.low.loraStrength).toBe(1.0);
   });
   it("self-host is configured when POPPY_WAN_URL is set", () => {
     process.env.POPPY_WAN_URL = "http://1.2.3.4:8188";
@@ -48,10 +48,11 @@ describe("video constants (Wan additive)", () => {
 });
 
 describe("wan presets v2", () => {
-  it("high-noise expert weakens (balanced) or drops (max) the Lightning LoRA; fast keeps it full", () => {
+  it("high-noise expert weakens the Lightning LoRA on balanced and max; fast keeps it full", () => {
     expect(WAN_STEPS.balanced.high.loraStrength).toBeGreaterThan(0);
     expect(WAN_STEPS.balanced.high.loraStrength).toBeLessThan(1);
-    expect(WAN_STEPS.max.high.loraStrength).toBe(0);
+    expect(WAN_STEPS.max.high.loraStrength).toBeGreaterThan(0);
+    expect(WAN_STEPS.max.high.loraStrength).toBeLessThan(1);
     expect(WAN_STEPS.fast.high.loraStrength).toBe(1.0);
   });
   it("interpolation on for balanced/max, off for fast", () => {

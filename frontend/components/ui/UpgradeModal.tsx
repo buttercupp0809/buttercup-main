@@ -10,6 +10,7 @@ import * as React from "react";
 import Link from "next/link";
 import { Lock } from "lucide-react";
 import { ModalOverlay, ModalCard, ModalCloseButton } from "@/components/ui/Modal";
+import { trackCta } from "@/lib/track-cta";
 
 export interface UpgradeModalProps {
   title: string;
@@ -126,7 +127,7 @@ export function UpgradeModal({
 
             <Link
               href={ctaHref}
-              onClick={onClose}
+              onClick={() => { trackCta("upgrade_modal_subscribe", "upgrade_modal"); onClose(); }}
               className="flex w-full items-center justify-center rounded-xl py-3.5 text-sm font-semibold text-white shadow-sm transition hover:scale-[1.02] active:scale-[0.98]"
               style={{
                 background:

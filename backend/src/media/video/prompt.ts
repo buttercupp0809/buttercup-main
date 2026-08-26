@@ -48,11 +48,16 @@ export function buildVideoPrompt(input: BuildVideoPromptInput): {
   const traits = serializeTraits(input.appearanceSheet.traits);
   const flavor = styleFlavor(input.style);
   const scene = input.userRequest.trim();
+  // Lead with the ACTION/motion. For i2v the still already fixes identity, so
+  // the model's remaining job is motion; front-loading it (rather than burying
+  // it after the identity/style fragment as before) makes Wan actually follow
+  // what the user asked for. Identity traits follow as a light anchor, then
+  // style, then the motion/quality tags.
   const positive = [
+    scene && `${scene}`,
     input.appearanceSheet.stylePrompt.trim(),
     traits,
     flavor,
-    scene && `scene: ${scene}`,
     VIDEO_PROMPT_FILLS.motionTags.trim(),
     VIDEO_PROMPT_FILLS.qualityTags.trim(),
   ]

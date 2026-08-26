@@ -37,9 +37,9 @@ function buildPayload(i: number): CreateVideoPayload {
   return {
     userRequest: scenario.prompt,
     mode: "i2v",
-    seconds: 8,
+    seconds: 5,
     aspectRatio: "portrait",
-    quality: "max",
+    quality: "balanced",
     sceneMode: "transform",
   };
 }

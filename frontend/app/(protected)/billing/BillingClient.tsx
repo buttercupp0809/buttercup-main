@@ -21,6 +21,7 @@ import {
 import { TokenStore } from "./TokenStore";
 import { Tabs, type TabItem } from "@/components/ui/Tabs";
 import { PASS_COPY, type PassCopy } from "@/lib/pass-copy";
+import { trackCta } from "@/lib/track-cta";
 
 // Feature flag: hide the pay-as-you-go token packs section for now. Kept as
 // a trivially flippable constant (and TokenStore.tsx is preserved) so the
@@ -229,6 +230,7 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
   }, [refreshEntitlements]);
 
   async function subscribe(plan: Plan) {
+    trackCta(`billing_${plan}`, "billing_page");
     setPending(plan);
     setError(null);
     try {

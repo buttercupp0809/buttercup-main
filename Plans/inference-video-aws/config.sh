@@ -7,7 +7,10 @@
 # ============================================================
 export AWS_REGION="eu-north-1"
 export PROJECT="poppy-video"
-export INSTANCE_TYPE="g6e.xlarge"          # 1x L40S 45GB
+export INSTANCE_TYPE="g6e.2xlarge"         # 1x L40S 48GB + 64GB RAM. RAM (not
+                                           # VRAM) is the bottleneck for 8-10s
+                                           # Wan renders: 32GB g6e.xlarge OOMs
+                                           # during VAE decode and hangs.
 export AMI_ID="ami-0c529ddfae5d7771b"      # DLAMI base OSS NVIDIA driver, Ubuntu 22.04 (docker preinstalled)
 
 # Reused network (from Plans/inference-aws/.state).

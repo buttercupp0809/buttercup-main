@@ -9,6 +9,7 @@ import { blurMany } from "@/lib/media-blur";
 import {
   PrivateContentGallery,
   type PrivateLockedTile,
+  type PrivateUnlockedTile,
 } from "@/components/gallery/PrivateContentGallery";
 
 export const dynamic = "force-dynamic";
@@ -75,14 +76,45 @@ export default async function PrivateContentPage({
   // Everything except the free asset is locked. We blur their real URLs
   // server-side and expose ONLY the resulting data URIs, never the real URL.
   const lockedMedia = character.media.filter((m) => m.id !== freeMedia?.id);
-  const lockedBlurs = await blurMany(lockedMedia.map((m) => m.url));
-  const lockedTiles: PrivateLockedTile[] = lockedMedia.map((m, i) => ({
+
+  // Check which locked media this user has already unlocked.
+  const lockedMediaIds = lockedMedia.map((m) => m.id);
+  const [sub, alreadyUnlocked] = await Promise.all([
+    prisma.subscription.findUnique({
+      where: { userId: user.id },
+      select: { status: true },
+    }),
+    lockedMediaIds.length > 0
+      ? prisma.userUnlockedMedia.findMany({
+          where: { userId: user.id, characterMediaId: { in: lockedMediaIds } },
+          select: { characterMediaId: true },
+        })
+      : Promise.resolve([]),
+  ]);
+  const hasActivePlan = sub?.status === "active";
+  const unlockedIdSet = new Set(alreadyUnlocked.map((u) => u.characterMediaId));
+
+  // Build unlocked tiles with signed URLs and locked tiles with blurred data URIs.
+  const stillLockedMedia = lockedMedia.filter((m) => !unlockedIdSet.has(m.id));
+  const unlockedMedia = lockedMedia.filter((m) => unlockedIdSet.has(m.id));
+
+  const lockedBlurs = await blurMany(stillLockedMedia.map((m) => m.url));
+  const lockedTiles: PrivateLockedTile[] = stillLockedMedia.map((m, i) => ({
     id: m.id,
     kind: m.kind === "video" ? "video" : "image",
     blur: lockedBlurs[i],
   }));
 
-  const hasAnything = Boolean(freeImageUrl) || lockedTiles.length > 0;
+  const unlockedTiles: PrivateUnlockedTile[] = unlockedMedia.map((m) => ({
+    id: m.id,
+    kind: m.kind === "video" ? "video" : "image",
+    url:
+      m.url.startsWith("/") || m.url.startsWith("http")
+        ? m.url
+        : signAssetUrl(m.url),
+  }));
+
+  const hasAnything = Boolean(freeImageUrl) || lockedTiles.length > 0 || unlockedTiles.length > 0;
 
   return (
     <section className="mx-auto max-w-5xl px-6 py-6 sm:py-8">
@@ -99,14 +131,17 @@ export default async function PrivateContentPage({
       <PageHeader
         eyebrow="Private content"
         title={character.name}
-        description="One preview is on the house. Unlock everything else with a subscription."
+        description={hasActivePlan ? "Tap any locked image to unlock it for 1 image token." : "One preview is on the house. Unlock everything else with a subscription."}
       />
 
       {hasAnything ? (
         <PrivateContentGallery
           characterName={character.name}
+          characterId={characterId}
           freeImageUrl={freeImageUrl}
           lockedTiles={lockedTiles}
+          unlockedTiles={unlockedTiles}
+          hasActivePlan={hasActivePlan}
         />
       ) : (
         <p className="text-sm text-[hsl(var(--bc-muted))]">

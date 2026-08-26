@@ -40,30 +40,45 @@ export const VIDEO_ASPECTS = {
 export type VideoAspect = keyof typeof VIDEO_ASPECTS;
 export const VIDEO_DEFAULT_ASPECT: VideoAspect = "portrait";
 
-// Per-expert sampling + post-processing per preset. The high-noise expert is the
-// "motion director"; the Lightning LoRA at FULL strength there flattens motion
-// into a slideshow. `loraStrength` (0 = LoRA off) tunes this: balanced weakens it
-// to 0.7 (restores motion while staying near Lightning speed, the community
-// "3-sampler" recommendation), max drops it entirely to 0 for full-quality (slow)
-// diffusion. `interpolate` adds RIFE 2x (Stage C, gated by WAN_INTERPOLATION).
-// `hq` renders at the 576p-class VIDEO_ASPECTS_HQ. hq + loraStrength 0 + 8s is the
-// heaviest combination (minutes per step); it lives in max only, never balanced.
+// Per-expert sampling + post-processing per preset.
+//
+// KEY FIX (2026-08-26): the old balanced/max presets ran the high-noise expert
+// at cfg 3.5 WHILE applying the Lightning LoRA (loraStrength 0.7/0.6). Lightning
+// is a distilled LoRA trained for cfg approximately 1.0; driving cfg to 3.5
+// fights the distillation and produces brightness pulsing / face "flashes" (the
+// reported flicker), worst at only 4+4 steps. The recipe now obeys one rule:
+//   - Lightning ON  (loraStrength > 0) => cfg MUST be ~1.0 (fast tier).
+//   - Full cfg (>1) => Lightning OFF (loraStrength 0), with more steps.
+// The quality tiers (balanced/max) therefore drop the LoRA and run real
+// diffusion: stable lighting AND actual prompt adherence.
+//
+// `interpolate` adds RIFE 2x (Stage C, gated by WAN_INTERPOLATION=1) for smoother
+// motion. `hq` renders at 720p via VIDEO_ASPECTS_HQ; fast/balanced use 480p.
+//
+// NOTE: step/cfg values are quality-first STARTING points, tuned via the
+// video-quality bench (backend/scripts/video-quality-bench.ts) on the box.
 export const WAN_STEPS = {
+  // Speed tier: Lightning at its CORRECT cfg (1.0). Fast + stable (no flicker),
+  // but lower prompt adherence than the quality tiers. 480p, no interpolation.
   fast: {
     high: { steps: 4, cfg: 1.0, loraStrength: 1.0 },
     low: { steps: 4, cfg: 1.0, loraStrength: 1.0 },
     interpolate: false,
     hq: false,
   },
+  // Quality DEFAULT (UI default). No Lightning; full cfg + 6+6 steps for stable
+  // lighting and strong adherence. 480p + RIFE smoothing.
   balanced: {
-    high: { steps: 4, cfg: 3.5, loraStrength: 0.7 },
-    low: { steps: 4, cfg: 1.0, loraStrength: 1.0 },
+    high: { steps: 6, cfg: 3.5, loraStrength: 0.0 },
+    low: { steps: 6, cfg: 3.5, loraStrength: 0.0 },
     interpolate: true,
     hq: false,
   },
+  // Max quality: no Lightning, 10+10 steps, slightly higher high-noise cfg for
+  // motion fidelity, 720p + RIFE. Heaviest render (needs the 64GB box).
   max: {
-    high: { steps: 8, cfg: 4.0, loraStrength: 0.0 },
-    low: { steps: 6, cfg: 3.5, loraStrength: 0.0 },
+    high: { steps: 10, cfg: 4.0, loraStrength: 0.0 },
+    low: { steps: 10, cfg: 3.5, loraStrength: 0.0 },
     interpolate: true,
     hq: true,
   },
@@ -97,4 +112,15 @@ export function videoInterpolationEnabled(): boolean {
 // True when the self-hosted Wan box is reachable (static URL or router).
 export function videoSelfHostConfigured(): boolean {
   return Boolean(process.env.POPPY_WAN_URL || process.env.POPPY_VIDEO_ROUTER_URL);
+}
+
+// Max frame budget the self-hosted box can render WITHOUT running out of host
+// RAM. A clip past this OOMs the box during VAE decode and hangs it (proven on
+// g6e.xlarge / 32GB RAM: 49 frames / 3s is safe, 129 frames / 8s OOMs). The
+// handler fails an over-budget job FAST with a clear message instead of letting
+// it wedge the box. Tunable per box: raise WAN_MAX_FRAMES after moving to a
+// larger-RAM instance (e.g. g6e.2xlarge / 64GB). Default 81 (~5s at 16fps).
+export function videoMaxFrames(): number {
+  const n = Number(process.env.WAN_MAX_FRAMES);
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 81;
 }

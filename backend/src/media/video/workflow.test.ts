@@ -40,10 +40,13 @@ describe("buildWanWorkflow", () => {
     expect(() => buildWanWorkflow({ ...base, mode: "i2v", preset: "fast", interpolate: false })).toThrow();
   });
 
-  it("max preset applies no Lightning LoRAs", () => {
+  it("max preset applies the weakened high + full low Lightning LoRAs (720p, practical speed)", () => {
     const g = buildWanWorkflow({ ...base, mode: "t2v", preset: "max", interpolate: true });
     const classes = Object.values(g).map((n) => (n as { class_type: string }).class_type);
-    expect(classes.filter((c) => c === "LoraLoaderModelOnly")).toHaveLength(0);
+    expect(classes.filter((c) => c === "LoraLoaderModelOnly")).toHaveLength(2);
+    // High-expert LoRA is weakened (< 1), low-expert stays full.
+    expect((g["30"] as { inputs: { strength_model: number } }).inputs.strength_model).toBeLessThan(1);
+    expect((g["31"] as { inputs: { strength_model: number } }).inputs.strength_model).toBe(1.0);
   });
 
   it("balanced weakens the high-expert LoRA to 0.7 (cfg 3.5), keeps the low LoRA full at cfg 1.0", () => {

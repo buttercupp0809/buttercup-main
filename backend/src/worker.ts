@@ -21,7 +21,7 @@ async function main() {
     redisConfigured: isRedisConfigured(),
     concurrency: Number(process.env.MEDIA_WORKER_CONCURRENCY ?? 4),
   });
-  const worker = startMediaWorker();
+  const worker = await startMediaWorker();
   if (!worker) {
     // Fail-fast is correct for a dedicated worker container: ECS will
     // restart the task and the logs point straight at the cause.
@@ -31,8 +31,11 @@ async function main() {
         hint: "set REDIS_URL and restart",
       });
     } else {
-      logError("worker", "FATAL: bullmq not available; media worker cannot start", {
+      // Most common cause now: a second worker was started while one is already
+      // running. The single-worker lock refuses it (see media-worker logs).
+      logError("worker", "worker not started (another worker holds the lock, or bullmq is unavailable)", {
         fatal: true,
+        hint: "a media worker is likely already running; do NOT start a second one",
       });
     }
     process.exit(1);

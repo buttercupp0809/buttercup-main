@@ -37,7 +37,7 @@ export type CharacterWithCurrent = Character & {
   currentVersion:
     | (CharacterVersion & { appearanceSheet: AppearanceSheet | null })
     | null;
-  media?: { url: string; kind: string; isPrimary: boolean; isDisplay: boolean; isMain?: boolean }[];
+  media?: { id: string; url: string; kind: string; isPrimary: boolean; isDisplay: boolean; isMain?: boolean }[];
 };
 
 // Free/public image resolution order (see Plans/cursor-prompt/35-major-fixes-batch.md #B):
@@ -171,14 +171,19 @@ export async function getCharacterDetail(
   // `mediaIdentity` (via excludeHeroIdentity/dedupeByIdentity) normalizes to
   // the last path segment of the underlying key, which is stable across
   // both cases. See frontend/lib/character-media.ts.
-  const rawGallery = viewer.id !== null
+  const rawGalleryItems = viewer.id !== null
     ? ((row as CharacterWithCurrent).media ?? [])
         .filter((m) => m.kind === "image" && !m.isDisplay && !m.url.startsWith("/"))
-        .map((m) => (m.url.startsWith("http") ? m.url : signAssetUrl(m.url)))
+        .map((m) => ({ id: m.id, url: m.url.startsWith("http") ? m.url : signAssetUrl(m.url) }))
     : [];
-  const galleryImages = dedupeByIdentity(
-    excludeHeroIdentity(card.avatarUrl, rawGallery),
-  );
+  const rawGalleryUrls = rawGalleryItems.map((m) => m.url);
+  const rawGalleryIds = rawGalleryItems.map((m) => m.id);
+  // dedupeByIdentity and excludeHeroIdentity support aligned arrays so media
+  // IDs stay in lock-step with URLs through deduplication.
+  const afterHeroExclude = excludeHeroIdentity(card.avatarUrl, rawGalleryUrls, rawGalleryIds);
+  const afterDedup = dedupeByIdentity(afterHeroExclude.urls, afterHeroExclude.aligned);
+  const galleryImages = afterDedup.urls;
+  const galleryMediaIds = afterDedup.aligned;
 
   const detail: CharacterDetailDTO = {
     ...card,
@@ -194,6 +199,7 @@ export async function getCharacterDetail(
     },
     requiresAgeVerification: gatedMature || undefined,
     galleryImages,
+    galleryMediaIds,
     isOwner,
     editDraft: isOwner ? buildEditDraft(row) : undefined,
   };

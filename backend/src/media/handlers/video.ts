@@ -12,8 +12,10 @@ import { prisma } from "@buttercupp/database";
 import { createVideoPayloadSchema, type MediaJobData } from "@buttercupp/shared";
 import type { HandlerOutput } from "./index";
 import { buildVideoPrompt } from "../video/prompt";
+import { expandVideoMotionPrompt } from "../video/prompt-expand";
 import { generateVideo, videoProvidersConfigured } from "../video/providers";
-import { videoSelfHostConfigured, type VideoAspect, type WanPreset } from "../video/constants";
+import { videoSelfHostConfigured, videoMaxFrames, WAN_FPS, type VideoAspect, type WanPreset } from "../video/constants";
+import { secondsToFrames } from "../video/frames";
 import { assertCharacterAdult, rejectMinorReference } from "../image/safety";
 import { resolveCharacterReferenceBytes } from "../reference";
 import { restyleFirstFrame } from "../video/restyle";
@@ -58,6 +60,13 @@ export const videoHandler = async (job: MediaJobData): Promise<HandlerOutput> =>
   const preset = QUALITY_TO_PRESET[input.quality];
   const aspect = ASPECT_MAP[input.aspectRatio];
 
+  // Intent layer: expand the terse request into a concrete MOTION description so
+  // Wan actually follows the requested action. Non-fatal (falls back to a
+  // template). The raw userRequest still drives Stage-A restyle (outfit/scene of
+  // the first frame); the expanded motion drives the VIDEO prompt (what moves).
+  const motionPrompt = await expandVideoMotionPrompt(userRequest);
+  rejectMinorReference(motionPrompt);
+
   const sheet = character.currentVersion.appearanceSheet;
   const style = character.style === "threeD" ? "3d" : (character.style as "realistic" | "anime");
   const { prompt, negativePrompt } = buildVideoPrompt({
@@ -73,7 +82,7 @@ export const videoHandler = async (job: MediaJobData): Promise<HandlerOutput> =>
       },
     },
     style,
-    userRequest,
+    userRequest: motionPrompt,
   });
 
   // Resolve the reference face bytes, optionally running Stage A (restyle) first.
@@ -104,6 +113,23 @@ export const videoHandler = async (job: MediaJobData): Promise<HandlerOutput> =>
       ? (job.payload.seed as number)
       : Math.floor(Math.random() * 1_000_000_000);
   const seconds = input.seconds;
+
+  // Frame-budget guard. A clip longer than the box can decode OOMs it during
+  // VAE decode and hangs the whole box (see videoMaxFrames). When the
+  // self-hosted box is the render target, fail an over-budget clip FAST with a
+  // clear, actionable message instead of submitting a job that wedges the box.
+  // Cloud providers have no such limit, so only guard when the box is primary.
+  if (videoSelfHostConfigured() && !videoProvidersConfigured()) {
+    const frames = secondsToFrames(seconds, WAN_FPS);
+    const maxFrames = videoMaxFrames();
+    if (frames > maxFrames) {
+      throw new Error(
+        `video_clip_too_long: ${seconds}s (${frames} frames) exceeds this box's ` +
+          `safe budget of ${maxFrames} frames (~${Math.round(maxFrames / WAN_FPS)}s). ` +
+          `Choose a shorter clip, or move to a larger-RAM GPU box and raise WAN_MAX_FRAMES.`,
+      );
+    }
+  }
 
   // Dev stub path: no provider wired at all (neither the self-hosted Wan box nor
   // a cloud provider). Return a placeholder so the pipeline completes; swap in

@@ -19,6 +19,9 @@ describe("MediaAsset state machine", () => {
   it("processing -> ready is allowed", () => {
     expect(() => assertTransition("processing", "ready")).not.toThrow();
   });
+  it("processing -> processing is allowed (BullMQ retry re-entry)", () => {
+    expect(() => assertTransition("processing", "processing")).not.toThrow();
+  });
   it("queued -> failed is allowed", () => {
     expect(() => assertTransition("queued", "failed")).not.toThrow();
   });

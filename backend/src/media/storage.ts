@@ -18,6 +18,7 @@ function extensionFor(contentType: string): string {
   if (contentType.includes("mpeg")) return "mp3";
   if (contentType.includes("wav")) return "wav";
   if (contentType.includes("ogg")) return "ogg";
+  if (contentType.includes("webm")) return "webm";
   if (contentType.includes("mp4")) return "mp4";
   return "bin";
 }

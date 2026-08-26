@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { createChatTransport, type TransportEvent, type TransportPaywallPlan } from "@/lib/chat-transport";
-import { Image as ImageIcon, Video, Send } from "lucide-react";
+import { Image as ImageIcon, Send } from "lucide-react";
 import { AffectionMeter } from "@/components/relationship/AffectionMeter";
 import { GestureText } from "@/components/chat/GestureText";
 import { TypingDots } from "@/components/chat/TypingDots";
@@ -111,6 +111,28 @@ export function ChatWindow({
   // Guards the on-mount check-in stream so React strict-mode's double invoke
   // (and any re-render) cannot fire it more than once per mount.
   const checkinStartedRef = React.useRef(false);
+
+  // Pre-check quota on mount so the paywall appears immediately when a user
+  // switches characters with an exhausted quota, rather than after a failed send.
+  React.useEffect(() => {
+    void fetch("/api/billing/status")
+      .then((r) => r.json())
+      .then((data: { status?: string; entitlements?: { chats?: { remaining?: number; used?: number; limit?: number } } }) => {
+        const ent = data?.entitlements;
+        if (!ent) return;
+        if ((ent.chats?.remaining ?? 1) === 0) {
+          const active = data.status === "active";
+          setPaywall({
+            scope: active ? "plan_quota" : "free_trial",
+            kind: "chat",
+            used: ent.chats?.used ?? 0,
+            limit: ent.chats?.limit ?? 0,
+            plans: [],
+          });
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   // Composer auto-grow. The textarea starts one line tall, grows to fit its
   // content up to a cap (~6 lines), then scrolls internally. Kept in a helper
@@ -733,12 +755,6 @@ export function ChatWindow({
             onClick={() => setInput("Send me a photo of you right now")}
             disabled={pending || paywall !== null}
           />
-          <SceneButton
-            icon={<Video className="h-3.5 w-3.5" />}
-            label="Video"
-            onClick={() => setInput("Send me a short video of you right now")}
-            disabled={pending || paywall !== null}
-          />
         </div>
       </form>
 
@@ -749,6 +765,8 @@ export function ChatWindow({
           used={paywall.used}
           limit={paywall.limit}
           plans={paywall.plans}
+          avatarUrl={avatarUrl}
+          characterName={characterName}
           onResumed={() => setPaywall(null)}
         />
       ) : null}

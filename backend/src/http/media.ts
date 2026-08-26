@@ -83,11 +83,16 @@ async function handleEnqueue(req: IncomingMessage, res: ServerResponse, kind: Me
     return send(res, 400, { error: "invalid_body", message: String(e) });
   }
 
+  // POPPY_DEV_BYPASS_PAYWALL skips the subscription gate and token check for
+  // local development. Never set in prod. Allows video/image generation without
+  // a paid subscription; tokenCost becomes 0 so the worker debit is a no-op.
+  const devBypass = process.env.POPPY_DEV_BYPASS_PAYWALL === "true";
+
   // Phase 21 plan gate. Runs BEFORE the token-balance check so a user
   // without an active plan sees a paywall (upgrade prompt) rather than an
   // "insufficient tokens" error that suggests buying a token pack. Voice
   // is not plan-quota-gated; only image/video are.
-  if (kind === "image" || kind === "video") {
+  if ((kind === "image" || kind === "video") && !devBypass) {
     try {
       await assertCanConsumeMedia(userId, kind);
     } catch (err) {
@@ -103,19 +108,21 @@ async function handleEnqueue(req: IncomingMessage, res: ServerResponse, kind: Me
     }
   }
 
-  const cost = MEDIA_TOKEN_COSTS[kind];
-  const user = await prisma.user.findUnique({
-    where: { id: userId },
-    select: { tokenBalance: true },
-  });
-  if (!user) return send(res, 401, { error: "unauthorized" });
-  if (user.tokenBalance < cost) {
-    return send(res, 402, {
-      error: "insufficient_tokens",
-      required: cost,
-      balance: user.tokenBalance,
-      buyTokensUrl: "/billing/tokens",
+  const cost = devBypass ? 0 : MEDIA_TOKEN_COSTS[kind];
+  if (!devBypass) {
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+      select: { tokenBalance: true },
     });
+    if (!user) return send(res, 401, { error: "unauthorized" });
+    if (user.tokenBalance < cost) {
+      return send(res, 402, {
+        error: "insufficient_tokens",
+        required: cost,
+        balance: user.tokenBalance,
+        buyTokensUrl: "/billing/tokens",
+      });
+    }
   }
 
   const characterId = body.characterId ? assertSafeId(body.characterId, "characterId") : null;

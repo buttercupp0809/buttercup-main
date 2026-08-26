@@ -161,7 +161,23 @@ export function buildWanWorkflow(a: WanWorkflowArgs): Record<string, unknown> {
     },
   };
 
-  g["60"] = { class_type: "VAEDecode", inputs: { samples: ["53", 0], vae: ["13", 0] } };
+  // Memory-bounded VAE decode. A plain VAEDecode of a long clip (e.g. 8s = 128
+  // frames) decodes every frame at once and spikes host RAM hard enough to OOM
+  // the g6e.xlarge (32GB RAM + swap) and hang the whole box. VAEDecodeTiled
+  // decodes in spatial + TEMPORAL tiles so peak memory stays bounded regardless
+  // of clip length, with negligible quality loss for video. temporal_size caps
+  // how many frames decode at once; this is what makes 5s/8s clips safe.
+  g["60"] = {
+    class_type: "VAEDecodeTiled",
+    inputs: {
+      samples: ["53", 0],
+      vae: ["13", 0],
+      tile_size: 256,
+      overlap: 64,
+      temporal_size: 32,
+      temporal_overlap: 8,
+    },
+  };
 
   // Stage C: RIFE 2x frame interpolation. Inserted when a.interpolate is true.
   // NOTE: RIFE VFI class_type must be confirmed on the box (see top-of-file NOTE).
@@ -176,6 +192,13 @@ export function buildWanWorkflow(a: WanWorkflowArgs): Record<string, unknown> {
         fast_mode: true,
         ensemble: true,
         scale_factor: 1.0,
+        // These three are REQUIRED by the installed ComfyUI-Frame-Interpolation
+        // RIFE VFI node; omitting them makes ComfyUI reject the graph with a 400.
+        // fp16 keeps the interpolation light; torch_compile off avoids first-run
+        // compile stalls; batch_size 1 matches our single-clip renders.
+        dtype: "float16",
+        torch_compile: false,
+        batch_size: 1,
       },
     };
   }

@@ -7,6 +7,8 @@ import { handleChatCheckin } from "./http/chat-checkin";
 import { handleChatCheckinStream } from "./http/chat-checkin-stream";
 import { handleMediaRoute } from "./http/media";
 import { handleBillingRoute } from "./http/billing";
+import { handleGalleryRoute } from "./http/gallery";
+import { handleAnalyticsRoute } from "./http/analytics";
 import { applyCors } from "./http/cors";
 import { getHealthSnapshot } from "./metrics";
 import { getQueueHealth } from "./queue/queue-health";
@@ -70,6 +72,8 @@ const server = http.createServer(async (req, res) => {
   if (await handleChatCheckin(req, res)) return;
   if (await handleMediaRoute(req, res)) return;
   if (await handleBillingRoute(req, res)) return;
+  if (await handleGalleryRoute(req, res)) return;
+  if (await handleAnalyticsRoute(req, res)) return;
   res.writeHead(404, { "Content-Type": "application/json" });
   res.end(JSON.stringify({ error: "not_found" }));
 });

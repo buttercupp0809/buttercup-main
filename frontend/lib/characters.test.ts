@@ -63,15 +63,15 @@ describe("topTagsFrom", () => {
 describe("primaryImageFrom (display image resolution)", () => {
   it("returns the isDisplay image, not the isPrimary hero, given a two-image row set", () => {
     const media = [
-      { url: "https://cdn.example.com/hero.jpg", kind: "image", isPrimary: true, isDisplay: false },
-      { url: "https://cdn.example.com/secondary.jpg", kind: "image", isPrimary: false, isDisplay: true },
+      { id: "m1", url: "https://cdn.example.com/hero.jpg", kind: "image", isPrimary: true, isDisplay: false },
+      { id: "m2", url: "https://cdn.example.com/secondary.jpg", kind: "image", isPrimary: false, isDisplay: true },
     ];
     expect(primaryImageFrom(media)).toBe("https://cdn.example.com/secondary.jpg");
   });
 
   it("falls back to the first image when no row is isDisplay (pre-backfill data)", () => {
     const media = [
-      { url: "https://cdn.example.com/only.jpg", kind: "image", isPrimary: true, isDisplay: false },
+      { id: "m1", url: "https://cdn.example.com/only.jpg", kind: "image", isPrimary: true, isDisplay: false },
     ];
     expect(primaryImageFrom(media)).toBe("https://cdn.example.com/only.jpg");
   });
@@ -100,8 +100,8 @@ describe("toCard (avatarUrl resolution)", () => {
 
   it("avatarUrl resolves to the isDisplay image, not the isPrimary hero", () => {
     const row = fixtureRow([
-      { url: "https://cdn.example.com/hero.jpg", kind: "image", isPrimary: true, isDisplay: false },
-      { url: "https://cdn.example.com/secondary.jpg", kind: "image", isPrimary: false, isDisplay: true },
+      { id: "m1", url: "https://cdn.example.com/hero.jpg", kind: "image", isPrimary: true, isDisplay: false },
+      { id: "m2", url: "https://cdn.example.com/secondary.jpg", kind: "image", isPrimary: false, isDisplay: true },
     ]);
     expect(toCard(row).avatarUrl).toBe("https://cdn.example.com/secondary.jpg");
   });

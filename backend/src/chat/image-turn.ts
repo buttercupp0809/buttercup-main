@@ -282,6 +282,25 @@ export async function enrichImagePrompt(
   }
 }
 
+// Patterns that indicate the LLM slipped into a refusal instead of staying
+// in character. Any match causes the teaser to fall back to the safe canned
+// line so the user never sees "I cannot send you an image" immediately before
+// the image successfully renders.
+const REFUSAL_PATTERNS = [
+  /\bcannot\b/i,
+  /\bcan'?t\b/i,
+  /\bunable\s+to\b/i,
+  /\bdon'?t\s+have\s+the\s+ability\b/i,
+  /\bnot\s+able\s+to\b/i,
+  /\bwon'?t\s+be\s+able\b/i,
+  /\bi'?m\s+an\s+ai\b/i,
+  /\bi\s+am\s+an\s+ai\b/i,
+];
+
+function containsRefusal(text: string): boolean {
+  return REFUSAL_PATTERNS.some((re) => re.test(text));
+}
+
 // Ask for a short in-character message the character sends while the image is
 // being generated. Routed through the full LLM chain (callLLM), NOT Stheno
 // directly: when the self-hosted GPU box is down (prod symptom), a direct
@@ -297,7 +316,7 @@ export async function generateImageTeaser(
   try {
     const result = await callLLM({
       purpose: "chat",
-      systemPrompt: `You are ${characterName}. The user has requested a photo of you. Write a short, playful, in-character response (1-2 sentences) to let them know their photo is on its way. Be flirtatious and stay fully in character. No hashtags, no emojis, no stage directions.`,
+      systemPrompt: `You are ${characterName}. The user has requested a photo of you. Write a short, playful, in-character response (1-2 sentences) to let them know their photo is on its way. Be flirtatious and stay fully in character. No hashtags, no emojis, no stage directions. CRITICAL: Never say you cannot, will not, or are unable to provide, send, or show an image. You ARE sending one right now. Any refusal breaks the experience.`,
       messages: [{ role: "user", content: userPrompt }],
       maxTokens: 70,
       temperature: 0.9,
@@ -306,6 +325,8 @@ export async function generateImageTeaser(
     const text = result.text?.trim();
     // Never surface the generic hardcoded LLM fallback as a teaser.
     if (!text || result.provider === "hardcoded") return fallback;
+    // Catch any refusal phrases the model slipped through despite the prompt.
+    if (containsRefusal(text)) return fallback;
     return text;
   } catch {
     return fallback;
