@@ -273,42 +273,40 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
 
       {/* Single-row header that fuses three previously separate strips:
           trust badge (left), Passes / Subscription tab strip (center),
-          and the live current-plan pill (right). Anchored inside a soft
-          bordered strip so the three cells read as one unit rather than
-          three floating chrome bits. The tabs sit inside a truly
-          centered layer (`absolute inset-x-0 mx-auto`) so their horizon-
-          tal center matches the container's, regardless of how much
-          space the trust badge or plan pill actually consume. Falls
-          back to a stack on very narrow screens. */}
+          and the live current-plan pill (right). Symmetric
+          `grid-cols-[1fr_auto_1fr]` gives both side cells equal width
+          so the tabs (auto-sized middle cell) sit perfectly centered
+          regardless of how much content the trust badge or plan pill
+          carry — the wide "Monthly Subscription · Active · 4985 chats"
+          pill in the premium state and the empty state both keep the
+          tabs on the exact viewport center. Falls back to a stack on
+          very narrow screens where each cell wraps to its own row. */}
       <div
-        className="relative flex flex-col items-center gap-3 rounded-2xl border px-4 py-2.5 sm:flex-row sm:justify-between sm:gap-4"
+        className="grid grid-cols-1 items-center gap-3 rounded-2xl border px-4 py-2.5 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] sm:gap-4"
         style={{
           borderColor: "hsl(var(--bc-border))",
           backgroundColor: "hsl(var(--bc-surface-2) / 0.55)",
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/brand/high-rated.svg"
-          alt="Highly rated by over 1000 users"
-          className="h-9 w-auto sm:h-11"
-        />
-        {/* Absolutely-positioned tab layer keeps the tabs perfectly
-            viewport-centered even when the two side chrome elements have
-            different widths (trust logo vs current-plan pill). Only
-            enabled from sm+ where the row is a real single line; below
-            sm the tabs stack normally. */}
-        <div className="sm:pointer-events-none sm:absolute sm:inset-x-0 sm:top-1/2 sm:flex sm:-translate-y-1/2 sm:justify-center">
-          <div className="pointer-events-auto">
-            <Tabs<BillingTab>
-              value={activeTab}
-              onValueChange={setActiveTab}
-              items={BILLING_TABS}
-              ariaLabel="Billing options"
-            />
-          </div>
+        <div className="flex justify-center sm:justify-start">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/brand/high-rated.svg"
+            alt="Highly rated by over 1000 users"
+            className="h-9 w-auto sm:h-11"
+          />
         </div>
-        <CurrentPlanPill ent={ent} plans={plans} />
+        <div className="flex justify-center">
+          <Tabs<BillingTab>
+            value={activeTab}
+            onValueChange={setActiveTab}
+            items={BILLING_TABS}
+            ariaLabel="Billing options"
+          />
+        </div>
+        <div className="flex min-w-0 justify-center sm:justify-end">
+          <CurrentPlanPill ent={ent} plans={plans} />
+        </div>
       </div>
 
       {/* Passes: one-time duration passes. Section heading intentionally
