@@ -15,7 +15,7 @@ import * as React from "react";
 import { UpgradeModal } from "@/components/ui/UpgradeModal";
 
 const LAST_SHOWN_KEY = "bc:upgradeNagLastShown";
-const CADENCE_MS = 30 * 60 * 1000; // 30 minutes
+const CADENCE_MS = 10 * 60 * 1000; // 10 minutes
 const POLL_MS = 60 * 1000; // check due-ness every ~60s
 
 interface UntalkedCharacter {
@@ -51,13 +51,6 @@ export function UpgradeModalProvider({ children }: { children: React.ReactNode }
 
   React.useEffect(() => {
     let cancelled = false;
-
-    // On first mount seed lastShown so a fresh session does not nag
-    // immediately; a returning user already has a stored timestamp and is
-    // respected. Either way the first real check happens one cadence later.
-    if (readLastShown() === 0) {
-      writeLastShown(Date.now());
-    }
 
     async function maybeShow() {
       if (cancelled || busyRef.current) return;

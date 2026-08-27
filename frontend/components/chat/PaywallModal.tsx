@@ -224,19 +224,19 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
   const bestValueIndex = plans.findIndex((p) => p.plan === "monthly");
   const kindIcon =
     kind === "image"
-      ? <ImageIcon className="h-6 w-6" />
+      ? <ImageIcon className="h-4 w-4" />
       : kind === "video"
         ? HIDE_VIDEO_BENEFITS
-          ? <SparkleIcon className="h-6 w-6" />
-          : <VideoIcon className="h-6 w-6" />
-        : <SparkleIcon className="h-6 w-6" />;
+          ? <SparkleIcon className="h-4 w-4" />
+          : <VideoIcon className="h-4 w-4" />
+        : <SparkleIcon className="h-4 w-4" />;
 
   if (dismissed) {
     return (
       <div
         data-testid="paywall-modal-dismissed-banner"
         role="status"
-        className="fixed inset-x-0 bottom-4 z-50 mx-auto flex w-fit max-w-sm items-center gap-3 rounded-full px-4 py-2 text-sm shadow-lg backdrop-blur"
+        className="fixed inset-x-0 bottom-20 z-50 mx-auto flex w-fit max-w-sm items-center gap-3 rounded-full px-4 py-2 text-sm shadow-lg backdrop-blur md:bottom-4"
         style={{
           backgroundColor: "hsl(var(--bc-surface) / 0.85)",
           border: "1px solid hsl(var(--bc-amber) / 0.35)",
@@ -277,8 +277,29 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
         <ModalCloseButton onClick={() => setDismissed(true)} ariaLabel="Minimize" />
 
         <div className="relative px-5 pb-6 pt-8 sm:px-8 sm:pb-8 sm:pt-10">
+          {/* Mobile portrait banner: full-width, shown only below sm breakpoint */}
           {avatarUrl && (
-            <div className="mb-4 flex justify-center">
+            <div className="block sm:hidden">
+              <div className="relative mb-0 h-48 w-full overflow-hidden rounded-t-xl">
+                <img
+                  src={avatarUrl}
+                  alt={characterName ?? "Character"}
+                  className="h-full w-full object-cover object-top"
+                />
+                {/* Bottom gradient fade into modal background */}
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent" />
+                {characterName && (
+                  <span className="absolute bottom-2 left-3 text-sm font-semibold text-white drop-shadow">
+                    {characterName}
+                  </span>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Desktop avatar circle: small circle, shown only at sm and above */}
+          {avatarUrl && (
+            <div className="mb-4 hidden sm:flex sm:justify-center">
               <img
                 src={avatarUrl}
                 alt={characterName ?? "Character"}
@@ -289,7 +310,7 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
           )}
           <div className="flex flex-col items-center text-center">
             <div
-              className="relative flex h-14 w-14 items-center justify-center rounded-2xl"
+              className="relative flex h-14 w-14 items-center justify-center rounded-2xl mt-5"
               style={{
                 background:
                   "linear-gradient(135deg, hsl(var(--bc-amber) / 0.25), hsl(var(--bc-honey) / 0.25))",
@@ -331,6 +352,14 @@ export function PaywallModal({ scope, kind, used, limit, plans: plansFromEvent, 
             >
               {sub}
             </p>
+            {scope === "free_trial" ? (
+              <p
+                className="mt-1 text-xs font-medium"
+                style={{ color: "hsl(var(--bc-amber))" }}
+              >
+                Passes start from $1. No subscription required.
+              </p>
+            ) : null}
           </div>
 
           {error ? (

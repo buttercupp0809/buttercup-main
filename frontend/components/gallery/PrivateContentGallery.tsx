@@ -76,6 +76,7 @@ export function PrivateContentGallery({
   }
 
   return (
+    <div>
     <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
       {freeImageUrl ? (
         <div
@@ -205,6 +206,28 @@ export function PrivateContentGallery({
           </Link>
         );
       })}
+    </div>
+
+      {!hasActivePlan && lockedTiles.length > 0 ? (
+        <div
+          className="sticky bottom-20 mt-4 flex items-center justify-between gap-3 rounded-2xl px-5 py-3.5 shadow-xl md:bottom-4"
+          style={{
+            background: "linear-gradient(90deg, hsl(var(--buttercupp-accent-rose)), hsl(var(--buttercupp-accent-violet)))",
+          }}
+        >
+          <span className="text-sm font-semibold text-white">
+            Unlock all {lockedTiles.length} photo{lockedTiles.length !== 1 ? "s" : ""} from {characterName}
+          </span>
+          <a
+            href="/billing"
+            onClick={() => trackCta("gallery_sticky_cta", "private_gallery")}
+            className="shrink-0 rounded-full bg-white px-4 py-1.5 text-xs font-bold"
+            style={{ color: "hsl(var(--buttercupp-accent-rose))" }}
+          >
+            Upgrade
+          </a>
+        </div>
+      ) : null}
     </div>
   );
 }

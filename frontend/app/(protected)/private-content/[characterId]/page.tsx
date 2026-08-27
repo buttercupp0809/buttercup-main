@@ -75,7 +75,7 @@ export default async function PrivateContentPage({
 
   // Everything except the free asset is locked. We blur their real URLs
   // server-side and expose ONLY the resulting data URIs, never the real URL.
-  const lockedMedia = character.media.filter((m) => m.id !== freeMedia?.id);
+  const lockedMedia = character.media.filter((m) => m.id !== freeMedia?.id && m.kind === "image");
 
   // Check which locked media this user has already unlocked.
   const lockedMediaIds = lockedMedia.map((m) => m.id);
@@ -117,7 +117,7 @@ export default async function PrivateContentPage({
   const hasAnything = Boolean(freeImageUrl) || lockedTiles.length > 0 || unlockedTiles.length > 0;
 
   return (
-    <section className="mx-auto max-w-5xl px-6 py-6 sm:py-8">
+    <section className="mx-auto max-w-5xl px-6 py-6 pb-28 sm:py-8 md:pb-8">
       <div className="mb-4">
         <Link
           href={`/chat/${characterId}`}

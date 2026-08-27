@@ -2,7 +2,7 @@
 // and per-plan pricing / duration. plans.ts assembles PlanConfig entries from
 // these constants; nothing else should hardcode plan numbers.
 //
-// Free is the lifetime free trial (10 chats total, 1 image allowance, no
+// Free is the lifetime free trial (5 chats total, 1 image allowance, no
 // video). All other rows are the halved launch defaults; adjust here (and
 // only here) to retune.
 
@@ -23,7 +23,7 @@ export const PLAN_LIMITS = {
   free: {
     priceUsd: 0,
     durationDays: 0,
-    chats: 10,
+    chats: 5,
     images: 1,
     videos: 0,
   },

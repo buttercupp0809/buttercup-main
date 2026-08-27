@@ -25,8 +25,13 @@ const quotaBucketSchema = z.object({
 // Mirrors backend/src/subscription/entitlements.ts `Entitlements`. Parsed
 // before use so an upstream shape drift fails loudly instead of silently
 // passing through `unknown` fields to the client.
+//
+// All six Plan values must be listed here. sub_monthly and sub_yearly are
+// recurring subscription tiers (see backend/src/subscription/plans.ts); the
+// previous enum omitted them, causing a Zod parse failure for those users and
+// returning a 502 instead of proper billing data.
 const entitlementsResponseSchema = z.object({
-  plan: z.enum(["free", "daily", "weekly", "monthly"]),
+  plan: z.enum(["free", "daily", "weekly", "monthly", "sub_monthly", "sub_yearly"]),
   active: z.boolean(),
   expiresAt: z.string().nullable(),
   chats: quotaBucketSchema,

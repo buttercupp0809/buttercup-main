@@ -54,7 +54,7 @@ export function UpgradeModal({
       backdropOpacity={0.85}
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
-      <ModalCard size={hasImage ? "lg" : "sm"} className="max-h-[90vh]">
+      <ModalCard size={hasImage ? "lg" : "sm"} className="sm:max-h-[90vh]">
         <ModalCloseButton onClick={onClose} />
 
         <div className="relative flex flex-col sm:flex-row">

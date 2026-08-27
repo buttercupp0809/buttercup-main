@@ -10,7 +10,7 @@ import { PaywallModal } from "@/components/chat/PaywallModal";
 import { ImageMessage } from "@/components/chat/ImageMessage";
 import { LockedBadge } from "@/components/trust/LockedBadge";
 import { BondPill } from "@/components/progress/BondMeter";
-import type { BondProgress, Headroom } from "@/lib/bond";
+import { freeHeadroom, type BondProgress, type Headroom } from "@/lib/bond";
 
 interface PaywallState {
   scope: "free_trial" | "plan_quota";
@@ -88,11 +88,16 @@ export function ChatWindow({
   // terminal transport event so a subsequent turn re-shows dots.
   const [firstTokenSeen, setFirstTokenSeen] = React.useState(false);
   const [paywall, setPaywall] = React.useState<PaywallState | null>(null);
+  const [showPostImageNudge, setShowPostImageNudge] = React.useState(false);
   const [imageGenerating, setImageGenerating] = React.useState(false);
   const [input, setInput] = React.useState("");
   // Last failed turn. Held so the user gets an explanation plus a one-tap retry
   // instead of a message that silently goes nowhere.
   const [failed, setFailed] = React.useState<string | null>(null);
+  // Client-side headroom counter. Incremented on each completed chat turn so
+  // the "X left" badge decrements in real time without a server round-trip.
+  const [localUsed, setLocalUsed] = React.useState(headroom?.used ?? 0);
+  const localHeadroom = headroom ? freeHeadroom(localUsed, headroom.limit) : null;
   // Lazy history (scroll-up pagination). The oldest loaded message id is the
   // cursor for the next older page; `null` cursor from the API means the top of
   // history has been reached and we stop fetching. `loadingOlder` guards
@@ -173,6 +178,7 @@ export function ChatWindow({
         }
         setPending(false);
         setFirstTokenSeen(false);
+        if (headroom !== null) setLocalUsed((prev) => prev + 1);
       } else if (evt.type === "safety") {
         setSafety({ message: evt.message, resources: evt.resources });
         setPending(false);
@@ -227,6 +233,12 @@ export function ChatWindow({
                 },
               ],
         );
+        // Show a post-image upgrade nudge for free-trial users who are not yet
+        // paywalled (headroom not null and not exhausted means they still have
+        // messages left but have not upgraded).
+        if (paywall === null && headroom !== null && headroom !== undefined && !headroom.exhausted) {
+          setShowPostImageNudge(true);
+        }
       } else if (evt.type === "skip") {
         // Check-in stream: conversation not eligible. Clear any transient
         // streaming state and leave the chat exactly as it was (no bubble).
@@ -463,7 +475,7 @@ export function ChatWindow({
     // under it. `h-full min-h-0` keeps the pane bounded by its actual parent
     // so the flex-1 message list and shrink-0 composer lay out without any
     // sticky/absolute overlap.
-    <div className="relative isolate flex h-full min-h-0 flex-col gap-3 p-4">
+    <div className="relative isolate flex h-full min-h-0 flex-col gap-3 p-4 pb-[calc(4.5rem+max(env(safe-area-inset-bottom),0px))] md:pb-4">
       {/*
         Immersive backdrop (PRD §1): a subtle blurred character image behind
         the message list. `pointer-events-none` so it never intercepts clicks.
@@ -677,6 +689,38 @@ export function ChatWindow({
         <div />
       </div>
 
+      {showPostImageNudge && !paywall ? (
+        <div
+          className="flex items-center justify-between gap-3 rounded-xl border px-4 py-2.5 text-xs"
+          style={{
+            borderColor: "hsl(var(--bc-amber) / 0.4)",
+            background: "hsl(var(--bc-amber) / 0.1)",
+          }}
+        >
+          <span style={{ color: "hsl(var(--bc-fg))" }}>
+            Want more photos? Get unlimited with a pass.
+          </span>
+          <div className="flex items-center gap-2">
+            <a
+              href="/billing"
+              className="rounded-full px-3 py-1 text-xs font-semibold text-[hsl(28_45%_9%)]"
+              style={{ backgroundImage: "var(--bc-gradient-brand-h)" }}
+              onClick={() => setShowPostImageNudge(false)}
+            >
+              Upgrade
+            </a>
+            <button
+              type="button"
+              onClick={() => setShowPostImageNudge(false)}
+              className="text-[hsl(var(--bc-muted))] hover:text-[hsl(var(--bc-fg))]"
+              aria-label="Dismiss"
+            >
+              &#x2715;
+            </button>
+          </div>
+        </div>
+      ) : null}
+
       <form
         onSubmit={submit}
         // shrink-0 so the composer keeps its intrinsic height and never
@@ -718,13 +762,13 @@ export function ChatWindow({
             moment it blocks you, which makes the wall feel like a trap. Showing
             the count once it gets close turns it into a decision.
           */}
-          {headroom?.warn ? (
+          {localHeadroom?.warn ? (
             <span
               className={`tabular shrink-0 text-xs font-medium ${
-                headroom.left <= 1 ? "text-[hsl(var(--bc-amber))]" : "text-[hsl(var(--bc-muted))]"
+                localHeadroom.left <= 1 ? "text-[hsl(var(--bc-amber))]" : "text-[hsl(var(--bc-muted))]"
               }`}
             >
-              {headroom.left} left
+              {localHeadroom.left} left
             </span>
           ) : null}
           <button

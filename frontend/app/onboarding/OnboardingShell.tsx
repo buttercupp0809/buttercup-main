@@ -110,12 +110,7 @@ export function OnboardingShell({ children }: { children: React.ReactNode }) {
             );
           })}
         </ol>
-        <p
-          className="text-center text-[10px] font-medium uppercase tracking-wider sm:text-xs"
-          style={{ color: "hsl(var(--bc-subtle))" }}
-        >
-          Step {currentIndex + 1} of {ONBOARDING_STEPS.length}
-        </p>
+
       </div>
 
       <div>{children}</div>

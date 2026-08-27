@@ -138,7 +138,7 @@ export default function OnboardingFinishStep() {
           Welcome, {draft.displayName || "friend"}
         </h1>
         <p className="text-sm" style={{ color: "hsl(var(--bc-muted))" }}>
-          Everything is set. Here is what we will remember about you.
+          Here is what your companion will know about you.
         </p>
       </div>
 

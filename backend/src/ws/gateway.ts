@@ -12,7 +12,8 @@ import { jwtVerify } from "jose";
 import { wsClientEventSchema, type WSClientEvent, type WSServerEvent } from "@buttercupp/shared";
 import { runChatTurn } from "../chat/engine";
 import { generateChatImage, generateImageTeaser } from "../chat/image-turn";
-import { classifyMessageIntent } from "../chat/intent";
+import { classifyMessageIntent, matchVideoKeyword } from "../chat/intent";
+import { callLLM } from "../llm/provider";
 import { prisma } from "@buttercupp/database";
 import {
   assertCanChat,
@@ -208,6 +209,51 @@ export function attachWsGateway(httpServer: HttpServer): WebSocketServer {
               action: "chat.rate_limited",
               resource: `conversation:${parsed.conversationId}`,
             });
+            return;
+          }
+
+          if (matchVideoKeyword(parsed.text)) {
+            try {
+              await prisma.message.create({
+                data: { conversationId: parsed.conversationId, role: "user", content: parsed.text },
+              });
+              const videoConvRow = await prisma.conversation.findUnique({
+                where: { id: parsed.conversationId },
+                select: { character: { select: { name: true } } },
+              });
+              const videoCharName = videoConvRow?.character?.name ?? "companion";
+              const videoFallback = "Videos aren't my thing just yet, but I'd love to send you a photo instead. Just ask!";
+              let redirectText = videoFallback;
+              try {
+                const llmResult = await callLLM({
+                  purpose: "chat",
+                  systemPrompt: `You are ${videoCharName}. The user asked for a video. Warmly and charmingly let them know you can't do videos right now, but you'd love to send them photos and keep chatting. 1-2 sentences, flirtatious and in-character. No hashtags, no emojis, no stage directions.`,
+                  messages: [{ role: "user", content: parsed.text }],
+                  maxTokens: 80,
+                  temperature: 0.9,
+                  contentRating: "mature",
+                });
+                if (llmResult.text && llmResult.provider !== "hardcoded") {
+                  redirectText = llmResult.text.trim();
+                }
+              } catch {
+                // use videoFallback
+              }
+              send(ws, { type: "chat.token", conversationId: parsed.conversationId, delta: redirectText });
+              const redirectMsg = await prisma.message.create({
+                data: { conversationId: parsed.conversationId, role: "assistant", content: redirectText },
+              });
+              send(ws, {
+                type: "chat.done",
+                conversationId: parsed.conversationId,
+                messageId: redirectMsg.id,
+                provider: "stheno",
+                model: "video-redirect",
+              });
+            } catch (err) {
+              logError("ws", err, { conversationId: parsed.conversationId, userId: session.userId });
+              sendError(ws, "chat_failed", err instanceof Error ? err.message : "video_redirect_failed");
+            }
             return;
           }
 

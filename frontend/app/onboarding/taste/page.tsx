@@ -67,7 +67,7 @@ export default function OnboardingTasteStep() {
       <div>
         <h1 className="font-display text-2xl font-semibold">What are you into?</h1>
         <p className="mt-1 text-sm" style={{ color: "hsl(var(--bc-muted))" }}>
-          A few taps and your companion starts to feel like yours.
+          Pick what feels like you.
         </p>
       </div>
 

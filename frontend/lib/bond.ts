@@ -209,12 +209,12 @@ function longestRun(days: Set<string>): number {
 // ---------------------------------------------------------------------------
 
 /**
- * The free tier allows 10 chats (backend `PLANS.free.chats`). The backend owns
+ * The free tier allows 5 chats (backend `PLANS.free.chats`). The backend owns
  * enforcement; this is presentation only, so the user sees the wall coming
- * instead of hitting it mid-sentence on message ten. Duplicated as a constant
+ * instead of hitting it mid-sentence on message five. Duplicated as a constant
  * rather than imported because frontend must not reach into backend/.
  */
-export const FREE_CHAT_ALLOWANCE = 10;
+export const FREE_CHAT_ALLOWANCE = 5;
 
 export interface Headroom {
   used: number;
@@ -228,5 +228,5 @@ export interface Headroom {
 export function freeHeadroom(used: number, limit = FREE_CHAT_ALLOWANCE): Headroom {
   const u = Math.max(0, Math.floor(used || 0));
   const left = Math.max(0, limit - u);
-  return { used: u, limit, left, warn: left > 0 && left <= 3, exhausted: left === 0 };
+  return { used: u, limit, left, warn: left > 0 && left <= 5, exhausted: left === 0 };
 }
