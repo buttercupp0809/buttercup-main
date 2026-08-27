@@ -1,11 +1,14 @@
+import { redirect } from "next/navigation";
 import { requireAuth } from "@/lib/auth";
-import { BillingClient } from "../billing/BillingClient";
+import { PaywallHero } from "@/components/paywall/PaywallHero";
+import type { BillingInterval } from "../billing/BillingClient";
 
-// Thin entry point so paywallBody.upgradeUrl ("/billing?upgrade=1") and
-// direct "/upgrade" CTAs both resolve to a real page. Renders the same
-// BillingClient surface as /billing (imported, not duplicated); the optional
-// ?plan= query pre-highlights a card. Server component shell + the existing
-// client island, matching the /billing page's shape.
+// Hero paywall entry point. Renders the Figma "iPhone 17 - 2" pricing surface
+// (PaywallHero) as the primary conversion moment. One-time-pass CTAs still
+// exist elsewhere in the product; when a caller deep-links to /upgrade with a
+// non-subscription plan we forward straight to /billing?plan=... so the
+// existing detailed catalog handles the highlight, keeping this route
+// subscription-focused (which is what the hero design supports).
 export default async function UpgradePage({
   searchParams,
 }: {
@@ -13,10 +16,12 @@ export default async function UpgradePage({
 }) {
   await requireAuth();
   const { plan } = await searchParams;
-  const highlightPlan = plan === "daily" || plan === "weekly" || plan === "monthly" ? plan : undefined;
-  return (
-    <section className="mx-auto max-w-5xl px-6 py-10">
-      <BillingClient highlightPlan={highlightPlan} />
-    </section>
-  );
+
+  if (plan === "daily" || plan === "weekly" || plan === "monthly") {
+    redirect(`/billing?plan=${plan}`);
+  }
+
+  const initialInterval: BillingInterval = plan === "sub_monthly" ? "month" : "year";
+
+  return <PaywallHero initialInterval={initialInterval} />;
 }

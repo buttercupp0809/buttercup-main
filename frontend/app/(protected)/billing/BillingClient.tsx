@@ -257,7 +257,7 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
   const yearlySavings = yearlySavingsPercent(monthlySubPrice, yearlySubPrice);
 
   return (
-    <div className="flex flex-col gap-6 sm:gap-8" data-testid="billing-client">
+    <div className="flex flex-col gap-5 sm:gap-6" data-testid="billing-client">
       {error ? (
         <div
           className="rounded-xl border p-3 text-sm"
@@ -271,61 +271,51 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
         </div>
       ) : null}
 
-      {/* Compact header row: a single tight strip carrying trust
-          (Trusted by / rating) on the left and the live current-plan
-          pill on the right. Both live above the fold without eating
-          hero space, so the pricing tiles are visible on a small
-          screen without scrolling. */}
+      {/* Single-row header that fuses three previously separate strips:
+          trust badge (left), Passes / Subscription tab strip (center),
+          and the live current-plan pill (right). Anchored inside a soft
+          bordered strip so the three cells read as one unit rather than
+          three floating chrome bits. The tabs sit inside a truly
+          centered layer (`absolute inset-x-0 mx-auto`) so their horizon-
+          tal center matches the container's, regardless of how much
+          space the trust badge or plan pill actually consume. Falls
+          back to a stack on very narrow screens. */}
       <div
-        className="flex flex-col items-center justify-between gap-2 rounded-2xl border px-4 py-2.5 sm:flex-row sm:gap-4"
+        className="relative flex flex-col items-center gap-3 rounded-2xl border px-4 py-2.5 sm:flex-row sm:justify-between sm:gap-4"
         style={{
           borderColor: "hsl(var(--bc-border))",
           backgroundColor: "hsl(var(--bc-surface-2) / 0.55)",
         }}
       >
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5">
-            <Laurel />
-            <span className="text-xs font-semibold">Trusted by 50M users</span>
-            <Laurel flip />
-          </div>
-          <span
-            aria-hidden
-            className="hidden h-4 w-px sm:inline-block"
-            style={{ backgroundColor: "hsl(var(--bc-border))" }}
-          />
-          <div className="hidden items-center gap-1.5 sm:flex">
-            <Stars n={5} />
-            <span className="text-[11px]" style={{ color: "hsl(var(--bc-muted))" }}>
-              1000+ ratings
-            </span>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/brand/high-rated.svg"
+          alt="Highly rated by over 1000 users"
+          className="h-9 w-auto sm:h-11"
+        />
+        {/* Absolutely-positioned tab layer keeps the tabs perfectly
+            viewport-centered even when the two side chrome elements have
+            different widths (trust logo vs current-plan pill). Only
+            enabled from sm+ where the row is a real single line; below
+            sm the tabs stack normally. */}
+        <div className="sm:pointer-events-none sm:absolute sm:inset-x-0 sm:top-1/2 sm:flex sm:-translate-y-1/2 sm:justify-center">
+          <div className="pointer-events-auto">
+            <Tabs<BillingTab>
+              value={activeTab}
+              onValueChange={setActiveTab}
+              items={BILLING_TABS}
+              ariaLabel="Billing options"
+            />
           </div>
         </div>
         <CurrentPlanPill ent={ent} plans={plans} />
       </div>
 
-      {/* Tab strip: Subscription (default) shows the two recurring tiles,
-          Passes shows the one-time duration passes. Premium benefits and
-          reviews live below and render regardless of the active tab. */}
-      <div className="flex justify-center">
-        <Tabs<BillingTab>
-          value={activeTab}
-          onValueChange={setActiveTab}
-          items={BILLING_TABS}
-          ariaLabel="Billing options"
-        />
-      </div>
-
-      {/* Passes: one-time duration passes — shown first (default tab). */}
+      {/* Passes: one-time duration passes. Section heading intentionally
+          omitted; the tab strip already carries the "Passes" label so a
+          second title/subtitle only added noise. */}
       {activeTab === "passes" ? (
         <div data-testid="passes-section">
-          <SectionHeading
-            title="One-time"
-            accent="passes"
-            chipLabel="Passes"
-            chipVariant="amber"
-            subtitle="Buy once, use for a fixed window. No auto-renew."
-          />
           <div className="mx-auto grid w-full max-w-4xl grid-cols-1 gap-5 md:grid-cols-3" data-testid="plan-cards">
             {passPlans.map((p) => {
               const copy = PASS_COPY[p.plan];
@@ -472,16 +462,11 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
         </div>
       ) : null}
 
-      {/* Subscriptions: recurring monthly / yearly. Second tab. */}
+      {/* Subscriptions: recurring monthly / yearly. Second tab. Section
+          heading intentionally omitted; the tab strip already carries the
+          "Subscription" label so a second title/subtitle only added noise. */}
       {activeTab === "subscription" && subPlans.length > 0 ? (
         <div data-testid="subscriptions-section">
-          <SectionHeading
-            title="Auto-renew"
-            accent="subscriptions"
-            chipLabel="Subscriptions"
-            chipVariant="amber"
-            subtitle="Recurring access at the highest tier. Cancel anytime."
-          />
           <div className="mx-auto grid w-full max-w-3xl grid-cols-1 gap-5 md:grid-cols-2" data-testid="subscription-cards">
             {subPlans.map((p) => {
               const isCurrent = ent?.active && ent.plan === p.plan;
@@ -930,22 +915,3 @@ function Stars({ n }: { n: number }) {
   );
 }
 
-function Laurel({ flip }: { flip?: boolean }) {
-  return (
-    <svg
-      width="18"
-      height="24"
-      viewBox="0 0 18 24"
-      aria-hidden
-      style={{ transform: flip ? "scaleX(-1)" : undefined, color: "hsl(var(--bc-muted))" }}
-    >
-      <path
-        d="M14 2c-6 2-9 7-9 14 0 2 .3 4 1 6M11 6c-3 0-5 1-6 3M12 11c-3 0-5 1-6 3M13 16c-2 0-4 1-5 3"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.3"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
