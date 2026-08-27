@@ -475,7 +475,22 @@ export function ChatWindow({
     // under it. `h-full min-h-0` keeps the pane bounded by its actual parent
     // so the flex-1 message list and shrink-0 composer lay out without any
     // sticky/absolute overlap.
-    <div className="relative isolate flex h-full min-h-0 flex-col gap-3 p-4 pb-[calc(4.5rem+max(env(safe-area-inset-bottom),0px))] md:pb-4">
+    <div className="relative isolate flex h-full min-h-0 flex-col gap-3 p-4">
+      {/*
+        Bottom padding intentionally uses the shared p-4 above rather than
+        stacking another 4.5rem here on mobile. The (protected) layout's
+        <main> already reserves `pb-[calc(4.5rem+env(safe-area-inset-bottom))]`
+        so the fixed MobileBottomBar (h ~= 4.5rem) plus the home-bar inset
+        never overlap the composer. Historically this pane added a SECOND
+        4.5rem to make room for a free-tier upgrade CTA under the composer,
+        but that CTA has been removed (the free-tier "Want more photos"
+        nudge now renders ABOVE the composer, and the paywall is a full
+        modal). Keeping the double padding after the CTA left behind a
+        visible ~4.5rem dead zone between the input and the nav bar on
+        every plan tier - most obvious on paid users where no CTA ever
+        appeared. Dropping it snaps the composer right above the nav bar
+        without cropping anything.
+      */}
       {/*
         Immersive backdrop (PRD §1): a subtle blurred character image behind
         the message list. `pointer-events-none` so it never intercepts clicks.
