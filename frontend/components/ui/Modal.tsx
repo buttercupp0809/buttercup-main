@@ -69,7 +69,7 @@ export const ModalOverlay = React.forwardRef<HTMLDivElement, ModalOverlayProps>(
         // items-center once we have room. overflow-y-auto so the whole
         // overlay scrolls rather than trapping content behind the fold on
         // short viewports. Safe-area padding respects iOS notch/home-bar.
-        "fixed inset-0 z-50 flex items-start justify-center overflow-y-auto p-4 pb-safe pt-safe px-safe sm:items-center",
+        "fixed inset-0 z-50 flex items-start justify-center overflow-y-auto px-4 pt-[max(1.25rem,env(safe-area-inset-top))] pb-[max(1.25rem,env(safe-area-inset-bottom))] sm:items-center sm:py-8",
         blurClass,
         className,
       )}
