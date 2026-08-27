@@ -22,6 +22,7 @@ import {
   JWT_AUD_RESET,
   JWT_AUD_MAGIC,
 } from "@/lib/constants";
+import { classifyDevice, truncateUserAgent } from "@/lib/device";
 
 // SECURITY (F10): reject weak signing keys. A short HS256 secret is
 // brute-forceable. Accept >=32 chars, or a base64-decoded value >=32 bytes.
@@ -166,6 +167,37 @@ export function clearAuthCookie(res: CookieAwareResponse) {
     maxAge: 0,
     ...(domain ? { domain } : {}),
   });
+}
+
+// ============================================================================
+// Login-device tracking (see packages/database/prisma/schema.prisma:User)
+// ============================================================================
+
+// Best-effort snapshot of "what device did this user just sign in from?".
+// Written by every auth surface that mints a fresh session cookie:
+// password login, signup, Google OAuth, magic-link consume, reset-password.
+// Errors are swallowed and only logged: a DB blip here MUST NOT block a
+// user from signing in - the fresh JWT and cookie have already been minted
+// by the caller by the time this runs. The write is not awaited by any
+// caller that returns a redirect (fire-and-forget), so the login redirect
+// stays snappy even under DB latency.
+export async function recordLogin(
+  userId: string,
+  req: Pick<Request, "headers">,
+): Promise<void> {
+  try {
+    const ua = req.headers.get("user-agent");
+    await prisma.user.update({
+      where: { id: userId },
+      data: {
+        lastLoginAt: new Date(),
+        lastLoginDeviceType: classifyDevice(ua),
+        lastLoginUserAgent: truncateUserAgent(ua),
+      },
+    });
+  } catch (err) {
+    console.warn("[auth.recordLogin] failed:", err);
+  }
 }
 
 // ============================================================================

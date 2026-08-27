@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@buttercupp/database";
 import { consumeMagicLink } from "@/lib/magic-link";
-import { signAuthToken, setAuthCookie } from "@/lib/auth";
+import { signAuthToken, setAuthCookie, recordLogin } from "@/lib/auth";
 import { publicUrl } from "@/lib/public-url";
 
 export const runtime = "nodejs";
@@ -31,5 +31,6 @@ export async function GET(req: Request) {
   const dest = needsGate ? "/age-gate" : "/dashboard";
   const res = NextResponse.redirect(publicUrl(req, dest), 302);
   setAuthCookie(res, authToken);
+  void recordLogin(user.id, req);
   return res;
 }

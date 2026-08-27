@@ -1,7 +1,7 @@
 import type { NextResponse } from "next/server";
 import { prisma } from "@buttercupp/database";
 import { GoogleOAuthDto } from "@buttercupp/shared";
-import { signAuthToken, setAuthCookie } from "@/lib/auth";
+import { signAuthToken, setAuthCookie, recordLogin } from "@/lib/auth";
 import { jsonError, jsonOk, parseJson } from "@/lib/api-helpers";
 import { POLICY_VERSION } from "@/lib/consent";
 import { jwtVerify, createRemoteJWKSet } from "jose";
@@ -167,5 +167,6 @@ export async function POST(req: Request) {
     needsAgeGate: false,
   });
   setAuthCookie(res as unknown as { cookies: NextResponse["cookies"] }, token);
+  void recordLogin(user.id, req);
   return res;
 }

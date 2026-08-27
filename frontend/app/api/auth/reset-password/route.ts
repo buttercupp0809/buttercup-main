@@ -3,7 +3,7 @@
 import type { NextResponse } from "next/server";
 import { prisma } from "@buttercupp/database";
 import { ResetPasswordDto } from "@buttercupp/shared";
-import { verifyResetToken, signAuthToken, setAuthCookie } from "@/lib/auth";
+import { verifyResetToken, signAuthToken, setAuthCookie, recordLogin } from "@/lib/auth";
 import { hashPassword } from "@/lib/password";
 import { jsonOk, jsonError, parseJson } from "@/lib/api-helpers";
 
@@ -27,5 +27,6 @@ export async function POST(req: Request) {
   const authToken = await signAuthToken(userId);
   const res = jsonOk({ ok: true });
   setAuthCookie(res as unknown as { cookies: NextResponse["cookies"] }, authToken);
+  void recordLogin(userId, req);
   return res;
 }

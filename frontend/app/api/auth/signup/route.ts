@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@buttercupp/database";
 import { SignupDto } from "@buttercupp/shared";
 import { hashPassword } from "@/lib/password";
-import { signAuthToken, setAuthCookie } from "@/lib/auth";
+import { signAuthToken, setAuthCookie, recordLogin } from "@/lib/auth";
 import { jsonError, jsonOk, parseJson } from "@/lib/api-helpers";
 import { sendEmail } from "@/lib/email";
 import { issueEmailVerification } from "@/lib/email-verify";
@@ -62,6 +62,9 @@ export async function POST(req: Request) {
     const token = await signAuthToken(user.id);
     const res = jsonOk({ userId: user.id });
     setAuthCookie(res as unknown as { cookies: NextResponse["cookies"] }, token);
+    // Signup issues a session cookie -> counts as the first login for
+    // device-tracking purposes. Fire-and-forget to keep signup snappy.
+    void recordLogin(user.id, req);
     return res;
   } catch (err) {
     return jsonError(500, "db_error", { detail: String(err).slice(0, 300) });

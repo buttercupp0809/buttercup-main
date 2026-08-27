@@ -1,7 +1,7 @@
 import { prisma } from "@buttercupp/database";
 import { LoginDto } from "@buttercupp/shared";
 import { verifyPassword } from "@/lib/password";
-import { signAuthToken, setAuthCookie } from "@/lib/auth";
+import { signAuthToken, setAuthCookie, recordLogin } from "@/lib/auth";
 import { jsonError, jsonOk, parseJson } from "@/lib/api-helpers";
 import type { NextResponse } from "next/server";
 
@@ -27,6 +27,8 @@ export async function POST(req: Request) {
     const token = await signAuthToken(user.id);
     const res = jsonOk({ userId: user.id });
     setAuthCookie(res as unknown as { cookies: NextResponse["cookies"] }, token);
+    // Fire-and-forget: the login response must not wait on this write.
+    void recordLogin(user.id, req);
     return res;
   } catch (err) {
     return jsonError(500, "db_error", { detail: String(err).slice(0, 300) });

@@ -137,6 +137,24 @@ model User {
   // (not in JSON) because the (protected) layout reads it on every request;
   // it must stay a single cheap column read. Null means "run the wizard".
   completedOnboardingAt  DateTime?
+  // Login-device tracking. Denormalized last-login snapshot (no per-event
+  // history table on purpose - the admin only needs to answer "what device
+  // did this user last sign in from?" in a single row read alongside the
+  // existing User list query). Populated by every auth surface that mints a
+  // fresh session cookie (password login, signup, Google OAuth,
+  // magic-link consume, reset-password). All three columns are additive and
+  // nullable so pre-existing rows and any auth code path that fails to pass
+  // a request context stay safe.
+  //   - lastLoginDeviceType: coarse bucket for the admin table column, one
+  //     of "mobile" | "tablet" | "desktop" | "unknown". Kept as a plain
+  //     String (not an enum) so the classifier can grow without a migration.
+  //   - lastLoginUserAgent: raw UA string retained for the admin detail page
+  //     (support debugging). Truncated to 512 chars at write time.
+  //   - lastLoginAt: session-issue timestamp; distinct from updatedAt (which
+  //     bumps on any User row write).
+  lastLoginAt            DateTime?
+  lastLoginDeviceType    String?
+  lastLoginUserAgent     String?
   createdAt              DateTime             @default(now())
   updatedAt              DateTime             @updatedAt
 

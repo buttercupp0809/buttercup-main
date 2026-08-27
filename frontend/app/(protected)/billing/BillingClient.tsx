@@ -832,11 +832,11 @@ function CurrentPlanPill({ ent, plans }: { ent: Entitlements | null; plans: Plan
   const freeChatsLeft = Math.max(0, ent.chats.limit - ent.freeMessagesUsed);
   return (
     <div
-      className="flex flex-wrap items-center gap-2 text-xs"
+      className="flex flex-wrap items-center justify-center gap-2 text-xs"
       data-testid="current-plan-pill"
     >
       <span
-        className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 rounded-full border px-3 py-1.5"
+        className="inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full border px-3 py-1.5 text-center"
         style={{
           borderColor: "hsl(var(--bc-border))",
           backgroundColor: "hsl(var(--bc-surface) / 0.6)",
