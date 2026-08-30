@@ -17,13 +17,13 @@ import {
 } from "../image/safety";
 import { getSignedUrl } from "../storage";
 import { resolveImageFlags } from "../image/flags";
-import { resolveCharacterLora } from "../lora/resolve";
+import { resolveCharacterLora, resolveCheckpointForBaseModel } from "../lora/resolve";
 
 export const imageHandler = async (job: MediaJobData): Promise<HandlerOutput> => {
   if (!job.characterId) throw new Error("image_missing_character");
   const characterId = job.characterId;
 
-  const [character, loraResolution] = await Promise.all([
+  const [character, loraLookup] = await Promise.all([
     prisma.character.findUnique({
       where: { id: characterId },
       include: {
@@ -35,6 +35,11 @@ export const imageHandler = async (job: MediaJobData): Promise<HandlerOutput> =>
     // Resolve the newest ready trained LoRA for this character (if any).
     resolveCharacterLora(characterId),
   ]);
+  // row: a ready ROW existed (regardless of s3Key). Its existence alone overrides
+  // the appearance sheet's loraRef/checkpoint for cloud providers.
+  // resolution: derived generation inputs, present only when s3Key exists. Gates
+  // ComfyUI LoRA-node activation.
+  const { row: loraRow, resolution: loraResolution } = loraLookup;
 
   if (!character || !character.currentVersion?.appearanceSheet) {
     throw new Error("image_character_or_sheet_missing");
@@ -48,9 +53,11 @@ export const imageHandler = async (job: MediaJobData): Promise<HandlerOutput> =>
   const sheet = character.currentVersion.appearanceSheet;
   const style = character.style === "threeD" ? "3d" : (character.style as "realistic" | "anime");
 
-  // Inject the LoRA trigger token into the prompt when a ready LoRA exists so
-  // the identity token is active across all providers.
-  const triggerToken = loraResolution?.triggerToken ?? null;
+  // Inject the LoRA trigger token into the prompt when a ready LoRA ROW exists so
+  // the identity token is active across all providers (matches pre-refactor
+  // behavior: the token was injected whenever a ready row existed, independent of
+  // s3Key or the IMG_LORA flag; cloud providers rely on it via loraRef).
+  const triggerToken = loraRow?.triggerToken ?? null;
 
   const { prompt: basePrompt, negativePrompt } = buildImagePrompt({
     appearanceSheet: {
@@ -86,14 +93,16 @@ export const imageHandler = async (job: MediaJobData): Promise<HandlerOutput> =>
   const seed =
     typeof job.payload.seed === "number" ? (job.payload.seed as number) : Math.floor(Math.random() * 1_000_000_000);
 
-  // When a ready CharacterLora exists AND the IMG_LORA kill-switch is on, wire
-  // the LoRA into the ComfyUI basic workflow (loraName) and override the
-  // checkpoint to match the training base model. Without the flag the basic path
-  // emits no LoRA node (byte-identical to today). Cloud providers (fal/replicate)
-  // continue using loraRef regardless of this flag.
+  // When a ready CharacterLora with usable weights exists AND the IMG_LORA
+  // kill-switch is on, wire the LoRA into the ComfyUI basic workflow (loraName).
+  // Without the flag (or without a usable s3Key) the basic path emits no LoRA
+  // node (byte-identical to today). The checkpoint override and loraRef are
+  // driven by the ROW existing, not by s3Key, so a ready row overrides the
+  // sheet's checkpoint/loraRef exactly as before this refactor. Cloud providers
+  // (fal/replicate) use loraRef regardless of the IMG_LORA flag.
   const loraFlag = resolveImageFlags().lora;
   const loraName = loraFlag && loraResolution ? loraResolution.loraName : undefined;
-  const ckptOverride = loraResolution?.ckptOverride;
+  const ckptOverride = loraRow ? resolveCheckpointForBaseModel(loraRow.baseModel) : undefined;
 
   const out = await generateImage({
     prompt,
@@ -101,8 +110,9 @@ export const imageHandler = async (job: MediaJobData): Promise<HandlerOutput> =>
     style,
     referenceImageUrls,
     // Cloud providers still use the legacy loraRef from the appearance sheet.
-    // When a CharacterLora exists, it takes precedence.
-    loraRef: loraResolution ? loraResolution.s3Key : (sheet.loraRef ?? null),
+    // When a CharacterLora row exists, it takes precedence (even with a null
+    // s3Key, which yields loraRef: null and suppresses the sheet ref).
+    loraRef: loraRow ? (loraRow.s3Key ?? null) : (sheet.loraRef ?? null),
     seed,
     loraName,
     ckptOverride,
@@ -110,7 +120,7 @@ export const imageHandler = async (job: MediaJobData): Promise<HandlerOutput> =>
 
   const { buffer, contentType } = await toWebP(out.buffer);
 
-  const conditioning = loraResolution
+  const conditioning = loraRow
     ? "character_lora"
     : sheet.loraRef
       ? "lora"
@@ -126,7 +136,7 @@ export const imageHandler = async (job: MediaJobData): Promise<HandlerOutput> =>
       latencyMs: out.latencyMs,
       seed,
       conditioning,
-      ...(loraName ? { loraName, loraBaseModel: loraResolution?.baseModel } : {}),
+      ...(loraName ? { loraName, loraBaseModel: loraRow?.baseModel } : {}),
       ...out.meta,
     },
   };

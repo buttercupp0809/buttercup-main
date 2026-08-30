@@ -32,17 +32,17 @@ describe("resolveCheckpointForBaseModel", () => {
 });
 
 describe("resolveCharacterLora", () => {
-  it("returns null when no ready LoRA exists", async () => {
+  it("returns { row: null, resolution: null } when no ready LoRA exists", async () => {
     characterLoraFindFirst.mockResolvedValueOnce(null);
     const result = await resolveCharacterLora("char-1");
-    expect(result).toBeNull();
+    expect(result).toEqual({ row: null, resolution: null });
     expect(characterLoraFindFirst).toHaveBeenCalledWith({
       where: { characterId: "char-1", status: "ready" },
       orderBy: { createdAt: "desc" },
     });
   });
 
-  it("returns null when LoRA exists but s3Key is missing", async () => {
+  it("returns the row but resolution: null when a ready row exists with missing s3Key", async () => {
     characterLoraFindFirst.mockResolvedValueOnce({
       id: "lora-1",
       characterId: "char-1",
@@ -52,10 +52,18 @@ describe("resolveCharacterLora", () => {
       baseModel: "realvisxl_v5",
     });
     const result = await resolveCharacterLora("char-1");
-    expect(result).toBeNull();
+    // Resolution is null (no generation activation without weights) ...
+    expect(result.resolution).toBeNull();
+    // ... but the row is surfaced so the handler can still override the sheet's
+    // loraRef/checkpoint (loraRef = null, ckpt = realvisxl).
+    expect(result.row).toEqual({
+      s3Key: null,
+      triggerToken: "aria_v1",
+      baseModel: "realvisxl_v5",
+    });
   });
 
-  it("returns resolution with loraName as basename of s3Key", async () => {
+  it("returns row + resolution with loraName as basename of s3Key", async () => {
     characterLoraFindFirst.mockResolvedValueOnce({
       id: "lora-2",
       characterId: "char-1",
@@ -64,13 +72,18 @@ describe("resolveCharacterLora", () => {
       triggerToken: "aria_v1",
       baseModel: "realvisxl_v5",
     });
-    const result = await resolveCharacterLora("char-1");
-    expect(result).not.toBeNull();
-    expect(result!.loraName).toBe("lora-abc123.safetensors");
-    expect(result!.triggerToken).toBe("aria_v1");
-    expect(result!.ckptOverride).toBe("realvisxlV50.safetensors");
-    expect(result!.s3Key).toBe("loras/characters/char-1/lora-abc123.safetensors");
-    expect(result!.baseModel).toBe("realvisxl_v5");
+    const { row, resolution } = await resolveCharacterLora("char-1");
+    expect(resolution).not.toBeNull();
+    expect(resolution!.loraName).toBe("lora-abc123.safetensors");
+    expect(resolution!.triggerToken).toBe("aria_v1");
+    expect(resolution!.ckptOverride).toBe("realvisxlV50.safetensors");
+    expect(resolution!.s3Key).toBe("loras/characters/char-1/lora-abc123.safetensors");
+    expect(resolution!.baseModel).toBe("realvisxl_v5");
+    expect(row).toEqual({
+      s3Key: "loras/characters/char-1/lora-abc123.safetensors",
+      triggerToken: "aria_v1",
+      baseModel: "realvisxl_v5",
+    });
   });
 
   it("sets triggerToken to null when the DB field is null", async () => {
@@ -82,9 +95,9 @@ describe("resolveCharacterLora", () => {
       triggerToken: null,
       baseModel: "juggernaut_xl_v9",
     });
-    const result = await resolveCharacterLora("char-1");
-    expect(result!.triggerToken).toBeNull();
-    expect(result!.ckptOverride).toBe("juggernautXL_v9.safetensors");
+    const { resolution } = await resolveCharacterLora("char-1");
+    expect(resolution!.triggerToken).toBeNull();
+    expect(resolution!.ckptOverride).toBe("juggernautXL_v9.safetensors");
   });
 
   it("queries the newest (desc by createdAt) ready LoRA", async () => {

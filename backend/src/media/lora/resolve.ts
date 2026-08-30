@@ -19,6 +19,9 @@ export function resolveCheckpointForBaseModel(baseModel: string): string {
   return JUGGERNAUT_CHECKPOINT;
 }
 
+// Derived generation inputs. Present only when the ready row has a usable s3Key
+// (weights actually exist on the box). Absent (null) when the row exists but the
+// weights key is missing, so generation activation stays gated on s3Key.
 export interface CharacterLoraResolution {
   // Filename of the .safetensors LoRA on the ComfyUI box (e.g. "lora-abc.safetensors").
   loraName: string;
@@ -34,25 +37,54 @@ export interface CharacterLoraResolution {
   baseModel: string;
 }
 
-// Resolve the newest ready CharacterLora for the given character. Returns null
-// when no READY LoRA exists (character has no trained weights) or when the
-// s3Key is missing (incomplete record). The caller decides whether to activate
-// the LoRA based on the IMG_LORA flag.
+// The two facts callers need about a ready CharacterLora, kept distinct so the
+// handler can preserve its exact pre-refactor behavior:
+//   - row: the newest ready CharacterLora ROW (or null when none exists). Its
+//     existence alone (regardless of s3Key) makes it OVERRIDE the appearance
+//     sheet's loraRef/checkpoint for cloud providers.
+//   - resolution: the derived generation inputs, or null when s3Key is missing.
+//     Generation activation (loraName + lora flag + trigger injection) is gated
+//     on this being non-null.
+export interface CharacterLoraLookup {
+  row: {
+    s3Key: string | null;
+    triggerToken: string | null;
+    baseModel: string;
+  } | null;
+  resolution: CharacterLoraResolution | null;
+}
+
+// Resolve the newest ready CharacterLora for the given character. Never throws
+// on a missing row; returns { row: null, resolution: null } when the character
+// has no ready LoRA. When a ready row exists but its s3Key is missing, returns
+// the row (so the handler can still override the sheet's loraRef/checkpoint) with
+// resolution: null (so generation is not activated).
 export async function resolveCharacterLora(
   characterId: string,
-): Promise<CharacterLoraResolution | null> {
+): Promise<CharacterLoraLookup> {
   const characterLora = await prisma.characterLora.findFirst({
     where: { characterId, status: "ready" },
     orderBy: { createdAt: "desc" },
   });
 
-  if (!characterLora?.s3Key) return null;
+  if (!characterLora) return { row: null, resolution: null };
+
+  const row = {
+    s3Key: characterLora.s3Key ?? null,
+    triggerToken: characterLora.triggerToken ?? null,
+    baseModel: characterLora.baseModel,
+  };
+
+  if (!characterLora.s3Key) return { row, resolution: null };
 
   return {
-    loraName: path.basename(characterLora.s3Key),
-    triggerToken: characterLora.triggerToken ?? null,
-    ckptOverride: resolveCheckpointForBaseModel(characterLora.baseModel),
-    s3Key: characterLora.s3Key,
-    baseModel: characterLora.baseModel,
+    row,
+    resolution: {
+      loraName: path.basename(characterLora.s3Key),
+      triggerToken: characterLora.triggerToken ?? null,
+      ckptOverride: resolveCheckpointForBaseModel(characterLora.baseModel),
+      s3Key: characterLora.s3Key,
+      baseModel: characterLora.baseModel,
+    },
   };
 }

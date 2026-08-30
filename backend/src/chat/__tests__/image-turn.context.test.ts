@@ -99,7 +99,7 @@ beforeEach(() => {
   // Default: a successful non-hardcoded enrichment. Individual tests override.
   callLLMMock.mockReset().mockResolvedValue({ text: "teaser", provider: "openrouter" });
   // Default: no ready LoRA (flag tests override). IMG_LORA off by default.
-  resolveCharacterLoraMock.mockReset().mockResolvedValue(null);
+  resolveCharacterLoraMock.mockReset().mockResolvedValue({ row: null, resolution: null });
   resolveImageFlagsMock.mockReset().mockReturnValue({ lora: false });
   // Default: no reference bytes (consistent path inactive). Tests that need
   // the consistent path must override this.
@@ -277,12 +277,21 @@ describe("generateChatImage", () => {
 // ---------------------------------------------------------------------------
 describe("generateChatImage - LoRA activation", () => {
   const REF_BYTES = Buffer.from("fake-reference-face-bytes");
-  const LORA_RESOLUTION = {
-    loraName: "lora-abc123.safetensors",
-    triggerToken: "aria_v1",
-    ckptOverride: "realvisxlV50.safetensors",
-    s3Key: "loras/chars/char-1/lora-abc123.safetensors",
-    baseModel: "realvisxl_v5",
+  // resolveCharacterLora now returns { row, resolution }. The chat path reads
+  // only .resolution (no cloud loraRef fallback).
+  const LORA_LOOKUP = {
+    row: {
+      s3Key: "loras/chars/char-1/lora-abc123.safetensors",
+      triggerToken: "aria_v1",
+      baseModel: "realvisxl_v5",
+    },
+    resolution: {
+      loraName: "lora-abc123.safetensors",
+      triggerToken: "aria_v1",
+      ckptOverride: "realvisxlV50.safetensors",
+      s3Key: "loras/chars/char-1/lora-abc123.safetensors",
+      baseModel: "realvisxl_v5",
+    },
   };
 
   function mockConvWithChar(characterId: string) {
@@ -296,7 +305,7 @@ describe("generateChatImage - LoRA activation", () => {
   it("passes loraName, flagOverrides {lora:true}, and trigger token in prompt when ready LoRA + flag on", async () => {
     mockConvWithChar("char-1");
     resolveCharacterReferenceBytesMock.mockResolvedValue(REF_BYTES);
-    resolveCharacterLoraMock.mockResolvedValue(LORA_RESOLUTION);
+    resolveCharacterLoraMock.mockResolvedValue(LORA_LOOKUP);
     resolveImageFlagsMock.mockReturnValue({ lora: true });
     // Enrichment returns a stable string so we can assert trigger token prepend.
     callLLMMock.mockResolvedValue({ text: "a woman on a beach", provider: "openrouter" });
@@ -324,7 +333,7 @@ describe("generateChatImage - LoRA activation", () => {
   it("does NOT pass loraName or flagOverrides when IMG_LORA flag is off (even with a ready LoRA)", async () => {
     mockConvWithChar("char-1");
     resolveCharacterReferenceBytesMock.mockResolvedValue(REF_BYTES);
-    resolveCharacterLoraMock.mockResolvedValue(LORA_RESOLUTION);
+    resolveCharacterLoraMock.mockResolvedValue(LORA_LOOKUP);
     // Flag is off.
     resolveImageFlagsMock.mockReturnValue({ lora: false });
     callLLMMock.mockResolvedValue({ text: "a woman on a beach", provider: "openrouter" });
@@ -350,7 +359,7 @@ describe("generateChatImage - LoRA activation", () => {
     mockConvWithChar("char-1");
     resolveCharacterReferenceBytesMock.mockResolvedValue(REF_BYTES);
     // No ready LoRA.
-    resolveCharacterLoraMock.mockResolvedValue(null);
+    resolveCharacterLoraMock.mockResolvedValue({ row: null, resolution: null });
     resolveImageFlagsMock.mockReturnValue({ lora: true });
     const ENRICHED = "a woman laughing at a cafe";
     callLLMMock.mockResolvedValue({ text: ENRICHED, provider: "openrouter" });

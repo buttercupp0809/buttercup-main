@@ -360,10 +360,12 @@ export async function generateChatImage(
     }
   }
 
-  // Resolve the newest ready CharacterLora for this character (if any). The
-  // IMG_LORA kill-switch must be on for the LoRA to be activated; without it the
-  // consistent-face path is byte-identical to the pre-LoRA behavior.
-  const loraResolution = characterId ? await resolveCharacterLora(characterId) : null;
+  // Resolve the newest ready CharacterLora for this character (if any). The chat
+  // consistent path has no cloud loraRef fallback, so it only needs the derived
+  // resolution (present only when the ready row has usable weights / s3Key). The
+  // IMG_LORA kill-switch must also be on for the LoRA to be activated; without it
+  // the consistent-face path is byte-identical to the pre-LoRA behavior.
+  const loraResolution = characterId ? (await resolveCharacterLora(characterId)).resolution : null;
   const loraFlag = resolveImageFlags().lora;
   // Both the LoRA node activation and the trigger token injection are gated on
   // IMG_LORA so flag-off behavior is byte-identical to today (invariant). The
