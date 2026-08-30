@@ -6,6 +6,19 @@
 
 import { SAFETY_NEGATIVE } from "./constants";
 import { IMAGE_PROMPT_FILLS } from "./prompt-fills";
+import type { Expression, Pose } from "@buttercupp/shared";
+
+// Map from Expression enum values to positive-prompt fragment text. Appended
+// after the scene so the deterministic trait/style prefix is never disturbed.
+const EXPRESSION_FRAGMENTS: Record<Expression, string> = {
+  neutral: "neutral expression",
+  smiling: "warm smile",
+  happy: "happy, bright smile",
+  sad: "sad, wistful expression",
+  seductive: "seductive expression, bedroom eyes, parted lips",
+  laughing: "laughing, joyful",
+  surprised: "surprised expression, wide eyes",
+};
 
 interface AppearanceInput {
   stylePrompt: string;
@@ -23,6 +36,9 @@ export interface BuildImagePromptInput {
   appearanceSheet: AppearanceInput;
   style: "realistic" | "3d" | "anime";
   userRequest: string;
+  // Optional expression and pose. When absent, behavior is unchanged.
+  expression?: Expression;
+  pose?: Pose;
 }
 
 // Serialize traits in a fixed key order so the same sheet always yields the
@@ -49,15 +65,20 @@ function styleFlavor(style: BuildImagePromptInput["style"]): string {
 export function buildImagePrompt(input: BuildImagePromptInput): {
   prompt: string;
   negativePrompt: string;
+  // Pass through so callers (providers) can map Pose to a skeleton name without
+  // re-parsing the assembled prompt string.
+  pose?: Pose;
 } {
   const traits = serializeTraits(input.appearanceSheet.traits);
   const flavor = styleFlavor(input.style);
   const scene = input.userRequest.trim();
+  const expressionFragment = input.expression ? EXPRESSION_FRAGMENTS[input.expression] : undefined;
   const positive = [
     input.appearanceSheet.stylePrompt.trim(),
     traits,
     flavor,
     scene && `scene: ${scene}`,
+    expressionFragment,
     // Fillable quality tags land last so they never shift the deterministic
     // trait/style prefix that drives character consistency.
     IMAGE_PROMPT_FILLS.qualityTags.trim(),
@@ -71,7 +92,7 @@ export function buildImagePrompt(input: BuildImagePromptInput): {
   ]
     .filter(Boolean)
     .join(", ");
-  return { prompt: positive, negativePrompt: negative };
+  return { prompt: positive, negativePrompt: negative, pose: input.pose };
 }
 
 // A tiny in-character caption for the image bubble. Kept intentionally

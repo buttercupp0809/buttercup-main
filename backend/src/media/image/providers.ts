@@ -7,7 +7,8 @@ import { resolvePoppyBaseUrl, poppyConfigured } from "../../inference/poppyEndpo
 import { resolveImageFlags, type ImageWorkflowFlags } from "./flags";
 import { assembleConsistentWorkflow } from "./workflow/assemble";
 import { estimateYawFromPoseHint } from "./yaw";
-import { matchPoseSkeleton } from "./pose-library";
+import { matchPoseSkeleton, poseSchemaToSkeleton } from "./pose-library";
+import type { Pose } from "@buttercupp/shared";
 
 interface GenerateParams {
   prompt: string;
@@ -16,6 +17,12 @@ interface GenerateParams {
   referenceImageUrls: string[];
   loraRef: string | null;
   seed?: number;
+  // ComfyUI LoRA: filename of the .safetensors LoRA on the box (e.g. "lora-abc.safetensors").
+  // When present, a LoraLoader node is injected into the basic ComfyUI workflow.
+  loraName?: string;
+  // Override the checkpoint filename (e.g. when the trained LoRA was built against
+  // RealVisXL instead of Juggernaut).
+  ckptOverride?: string;
 }
 
 interface GenerateResult {
@@ -119,9 +126,8 @@ async function generateWithReplicate(p: GenerateParams): Promise<GenerateResult>
 
 // Self-hosted Juggernaut XL (photorealistic SDXL) via ComfyUI on the GPU box. Builds a minimal
 // SDXL txt2img graph, queues it on /prompt, polls /history until the image is
-// ready, then downloads it from /view. Base URL is resolved (and the box woken)
-// via the router. Reference images / LoRA are not wired into this basic graph
-// yet (would need IPAdapter / LoraLoader nodes); prompt + negative + size + seed.
+// ready, then downloads it from /view. When loraName is provided, a LoraLoader
+// node (30) is injected between the checkpoint and the CLIP/model consumers.
 function buildComfyWorkflow(a: {
   ckpt: string;
   positive: string;
@@ -129,12 +135,16 @@ function buildComfyWorkflow(a: {
   width: number;
   height: number;
   seed: number;
+  loraName?: string;
 }): Record<string, unknown> {
-  return {
+  // When a LoRA is present, node 30 (LoraLoader) intercepts model+clip outputs.
+  const modelRef: [string, number] = a.loraName ? ["30", 0] : ["4", 0];
+  const clipRef: [string, number] = a.loraName ? ["30", 1] : ["4", 1];
+  const g: Record<string, unknown> = {
     "4": { class_type: "CheckpointLoaderSimple", inputs: { ckpt_name: a.ckpt } },
     "5": { class_type: "EmptyLatentImage", inputs: { width: a.width, height: a.height, batch_size: 1 } },
-    "6": { class_type: "CLIPTextEncode", inputs: { text: a.positive, clip: ["4", 1] } },
-    "7": { class_type: "CLIPTextEncode", inputs: { text: a.negative, clip: ["4", 1] } },
+    "6": { class_type: "CLIPTextEncode", inputs: { text: a.positive, clip: clipRef } },
+    "7": { class_type: "CLIPTextEncode", inputs: { text: a.negative, clip: clipRef } },
     "3": {
       class_type: "KSampler",
       inputs: {
@@ -144,7 +154,7 @@ function buildComfyWorkflow(a: {
         sampler_name: COMFY.samplerName,
         scheduler: COMFY.scheduler,
         denoise: 1,
-        model: ["4", 0],
+        model: modelRef,
         positive: ["6", 0],
         negative: ["7", 0],
         latent_image: ["5", 0],
@@ -153,6 +163,19 @@ function buildComfyWorkflow(a: {
     "8": { class_type: "VAEDecode", inputs: { samples: ["3", 0], vae: ["4", 2] } },
     "9": { class_type: "SaveImage", inputs: { filename_prefix: "poppy", images: ["8", 0] } },
   };
+  if (a.loraName) {
+    g["30"] = {
+      class_type: "LoraLoader",
+      inputs: {
+        model: ["4", 0],
+        clip: ["4", 1],
+        lora_name: a.loraName,
+        strength_model: 0.85,
+        strength_clip: 0.85,
+      },
+    };
+  }
+  return g;
 }
 
 interface ComfyImageRef {
@@ -165,7 +188,8 @@ async function generateWithComfyUI(p: GenerateParams): Promise<GenerateResult> {
   const base = await resolvePoppyBaseUrl("juggernaut"); // http://<ip>:8188
   const start = performance.now();
   const size = IMAGE_SIZE[p.style];
-  const ckpt = process.env.POPPY_JUGGERNAUT_CHECKPOINT ?? COMFY.checkpoint;
+  // ckptOverride takes precedence (e.g. RealVisXL when the LoRA was trained on it).
+  const ckpt = p.ckptOverride ?? process.env.POPPY_JUGGERNAUT_CHECKPOINT ?? COMFY.checkpoint;
   const seed = p.seed ?? Math.floor(Math.random() * 1_000_000_000_000);
   const workflow = buildComfyWorkflow({
     ckpt,
@@ -174,6 +198,7 @@ async function generateWithComfyUI(p: GenerateParams): Promise<GenerateResult> {
     width: size.width,
     height: size.height,
     seed,
+    loraName: p.loraName,
   });
 
   const q = await fetch(`${base}/prompt`, {
@@ -217,7 +242,7 @@ async function generateWithComfyUI(p: GenerateParams): Promise<GenerateResult> {
     buffer,
     provider: "comfyui",
     latencyMs: Math.round(performance.now() - start),
-    meta: { seed, model: ckpt, promptId },
+    meta: { seed, model: ckpt, promptId, ...(p.loraName ? { lora: p.loraName } : {}) },
   };
 }
 
@@ -276,6 +301,12 @@ function buildInstantIdWorkflow(a: {
   flags?: ImageWorkflowFlags;
   poseHint: string;
   scene: string;
+  // When the caller already resolved a skeleton name (e.g. from poseSchemaToSkeleton),
+  // it takes precedence over the free-text matchPoseSkeleton result.
+  poseSkeletonOverride?: string;
+  // Per-character LoRA filename (e.g. "lora-abc123.safetensors"). Passed through to
+  // assembleConsistentWorkflow which gates it on flags.lora + node availability.
+  loraName?: string;
   skipFaceSwap?: boolean;
   refineBlend?: boolean;
   refineDenoise?: number;
@@ -291,10 +322,12 @@ function buildInstantIdWorkflow(a: {
     skipFaceSwap: a.skipFaceSwap,
     refineBlend: a.refineBlend,
     refineDenoise: a.refineDenoise,
+    loraName: a.loraName,
     // Yaw is inferred from the head descriptor; the body pose skeleton (if any)
-    // is matched against the user's scene request.
+    // is matched against the user's scene request. A typed skeleton override takes
+    // precedence when the caller resolved it from poseSchemaToSkeleton.
     yawDeg: estimateYawFromPoseHint(a.poseHint),
-    poseSkeletonName: matchPoseSkeleton(a.scene) ?? undefined,
+    poseSkeletonName: a.poseSkeletonOverride ?? matchPoseSkeleton(a.scene) ?? undefined,
   });
 }
 
@@ -325,6 +358,12 @@ export async function generateWithComfyUIConsistent(p: {
   referenceBytes: Buffer;
   seed?: number;
   poseHint?: string;
+  // Structured pose from poseSchema; mapped to a skeleton file for the ControlNet.
+  pose?: Pose;
+  // Flag overrides (e.g. lora: true when a ready CharacterLora exists).
+  flagOverrides?: Partial<ImageWorkflowFlags>;
+  // Per-character LoRA from the character's newest ready CharacterLora.
+  loraName?: string;
   // Video restyle can drop the inswapper faceswap paste (skipFaceSwap) OR keep it
   // for the exact face and blend the paste seam with a low-denoise refiner
   // (refineBlend + optional refineDenoise). The video path uses refineBlend.
@@ -347,17 +386,29 @@ export async function generateWithComfyUIConsistent(p: {
   const refName = ((await up.json()) as { name?: string }).name;
   if (!refName) throw new Error("comfyui_upload_no_name");
 
+  // Resolve skeleton for the typed pose (if any) so the ControlNet block
+  // gets the filename. Precedence: structured pose > free-text scene match.
+  const typedSkeleton = p.pose ? poseSchemaToSkeleton(p.pose) : undefined;
+
+  // Merge flag overrides (e.g. lora:true from the handler) into env-resolved flags.
+  const flags = resolveImageFlags(p.flagOverrides);
+
   const workflow = buildInstantIdWorkflow({
     ckpt,
     positive: `${pose}, ${CONSISTENT.qualityPrefix}${p.prompt}`,
     negative: p.negativePrompt,
     refName,
     seed,
+    flags,
     poseHint: pose,
     scene: p.prompt,
+    // When a typed skeleton was resolved, it takes precedence over the free-text
+    // scene match done inside buildInstantIdWorkflow.
+    poseSkeletonOverride: typedSkeleton ?? undefined,
     skipFaceSwap: p.skipFaceSwap,
     refineBlend: p.refineBlend,
     refineDenoise: p.refineDenoise,
+    loraName: p.loraName,
   });
   const q = await fetch(`${base}/prompt`, {
     method: "POST",

@@ -3,6 +3,7 @@ import { buildImagePrompt, buildImageCaption } from "./prompt";
 import { shouldSendImage } from "./decision";
 import { assertCharacterAdult, rejectMinorReference, ImageSafetyError } from "./safety";
 import { SAFETY_NEGATIVE } from "./constants";
+import type { Expression } from "@buttercupp/shared";
 
 const SHEET = {
   stylePrompt: "cinematic portrait, soft light",
@@ -68,6 +69,15 @@ describe("buildImagePrompt", () => {
     for (const p of prompts) {
       expect(p.startsWith(prefix)).toBe(true);
     }
+  });
+  it("appends an expression fragment and keeps trigger ordering", () => {
+    const { prompt: positive } = buildImagePrompt({
+      appearanceSheet: SHEET,
+      style: "realistic",
+      userRequest: "on a beach",
+      expression: "seductive" as Expression,
+    });
+    expect(positive).toMatch(/seductive/);
   });
 });
 
