@@ -10,6 +10,7 @@ import { instantIdNodes } from "./instantid";
 import { faceSwapNode } from "./faceswap";
 import { faceDetailerNodes, FACEDETAILER_GPEN_VISIBILITY } from "./facedetailer";
 import { handDetailerNodes } from "./handdetailer";
+import { upscaleNodes } from "./upscale";
 import { poseControlNetNodes, POSE } from "./pose-controlnet";
 import { pulidNodes } from "./pulid";
 import { loraNode } from "./lora";
@@ -149,6 +150,17 @@ export function assembleConsistentWorkflow(a: AssembleArgs): Record<string, unkn
     const hd = handDetailerNodes({ inputImage: lastImage });
     Object.assign(g, hd.nodes);
     lastImage = [hd.outId, 0];
+  }
+
+  // Task 5: optional 2x latent upscale + low-denoise skin-texture pass. Runs
+  // after all detailers so texture sharpening does not fight face/hand re-diff.
+  if (a.flags.upscaleTail && has("LatentUpscaleBy")) {
+    const up = upscaleNodes({
+      inputImage: lastImage, positive: ["6", 0], negative: ["7", 0],
+      vae: ["4", 2], model: modelRef, seed: a.seed,
+    });
+    Object.assign(g, up.nodes);
+    lastImage = [up.outId, 0];
   }
 
   // Video restyle: light full-frame img2img refiner over the swapped image. The
