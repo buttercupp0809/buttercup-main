@@ -43,6 +43,8 @@ export async function promoteLora({
 }: PromoteLoraArgs): Promise<void> {
   if (result.pass) {
     // Update CharacterLora to ready, capturing characterVersionId for the mirror.
+    // The explicit select types characterVersionId via Prisma so a future
+    // schema rename surfaces as a type error here.
     const loraRow = await prisma.characterLora.update({
       where: { id: loraId },
       data: {
@@ -52,12 +54,12 @@ export async function promoteLora({
         checkpointStep: result.bestStep,
         arcfaceScore: result.meanScore,
       },
+      select: { id: true, characterVersionId: true },
     });
 
     // Mirror s3Key into AppearanceSheet.loraRef so the generation read-path
     // picks up the new LoRA without a separate lookup.
-    const characterVersionId = (loraRow as { characterVersionId?: string | null })
-      .characterVersionId;
+    const characterVersionId = loraRow.characterVersionId;
 
     if (characterVersionId) {
       const version = await prisma.characterVersion.findUnique({
