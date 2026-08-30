@@ -15,7 +15,7 @@
 // box clients exist. See DEFERRED_WIRING note below.
 
 import { prisma } from "@buttercupp/database";
-import type { TrainLoraJobPayload } from "@buttercupp/shared";
+import type { TrainLoraJobPayload, LoraStatus } from "@buttercupp/shared";
 import { makeTriggerToken } from "./caption";
 import type { BuildDatasetResult } from "./dataset";
 import type { TrainingResult } from "./train";
@@ -118,7 +118,7 @@ const PRODUCTION_HANDLER_DEPS: HandlerDeps = {
 
 async function setStatus(
   loraId: string,
-  status: string,
+  status: LoraStatus,
   extra: Record<string, unknown> = {},
 ): Promise<void> {
   await prisma.characterLora.update({
@@ -155,6 +155,11 @@ export async function runTrainLoraJob(
   //    "pending" row before enqueuing and passes loraId via the payload.
   //    As a safety net, we also handle the case where the row does not
   //    yet exist (create it here).
+  //
+  //    This resolution is intentionally OUTSIDE the try/catch below: if we
+  //    have no row, there is nowhere to record a "failed" status, so a throw
+  //    here should surface to BullMQ (whose own `failed` event covers it)
+  //    rather than be swallowed into a status write that has no target.
   // ------------------------------------------------------------------
   let loraRow = await prisma.characterLora.findFirst({
     where: { characterId, characterVersionId },

@@ -50,14 +50,12 @@ const PASS_RESULT = {
   pass: true,
 };
 
-// A fake ValidateLoraResult that signals FAIL.
-const FAIL_RESULT = {
-  bestStep: 500,
-  bestKey: "lora/char-1/ckpt-500.safetensors",
-  meanScore: 0.5,
-  baselineScore: 0.7,
-  pass: false,
-};
+// NOTE: no FAIL_RESULT fixture here. In this suite promoteLora is a FAKE
+// (vi.fn()), so a pass:false validation result would never actually exercise
+// the real rejected DB path - it would just be handed to a stub. The
+// pass:false -> "rejected" logic lives in promoteLora and is covered by
+// promote.test.ts against the mocked prisma singleton. Keeping a FAIL_RESULT
+// here would be a misleading dead fixture, so it is deliberately omitted.
 
 // Helper: build fake deps where all stages succeed.
 function buildSuccessDeps(): HandlerDeps {
@@ -232,6 +230,29 @@ describe("runTrainLoraJob", () => {
       );
       expect(failCall).toBeDefined();
       expect(failCall![0].data.error).toContain("S3 unavailable");
+    });
+
+    it("sets status to failed if captionImage throws", async () => {
+      const findFirstMock = await getPrismaFindFirstMock();
+      const createMock = await getPrismaCreateMock();
+      const updateMock = await getPrismaUpdateMock();
+
+      findFirstMock.mockResolvedValue(null);
+      createMock.mockResolvedValue({ id: "lora-fail-caption" });
+      updateMock.mockResolvedValue({ id: "lora-fail-caption" });
+
+      const deps = buildSuccessDeps();
+      (deps.captionImage as ReturnType<typeof vi.fn>).mockRejectedValue(
+        new Error("VLM captioner unavailable"),
+      );
+
+      await runTrainLoraJob(PAYLOAD, deps);
+
+      const failCall = updateMock.mock.calls.find(
+        (c: [{ data: { status: string } }]) => c[0].data.status === "failed",
+      );
+      expect(failCall).toBeDefined();
+      expect(failCall![0].data.error).toContain("VLM captioner unavailable");
     });
 
     it("sets status to failed if runTraining throws", async () => {
