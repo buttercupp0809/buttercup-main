@@ -145,6 +145,36 @@ describe("POST /admin/lora/train", () => {
     expect(body.error).toBe("forbidden");
   });
 
+  it("fails closed: when ADMIN_SECRET is unset, ANY x-admin-secret header is still 403", async () => {
+    // Highest-risk case: a misconfigured env (no ADMIN_SECRET) must NOT let a
+    // caller in by supplying an empty header that could match an empty env var.
+    delete process.env.ADMIN_SECRET;
+    // Empty-string header (the value most likely to collide with an unset env).
+    const req = makeReq({ adminSecret: "", body: VALID_BODY });
+    const { res, captured, done } = makeRes();
+    const handled = await handleLoraAdminRoute(req, res);
+    await done;
+    expect(handled).toBe(true);
+    expect(captured.status).toBe(403);
+    const body = JSON.parse(captured.body);
+    expect(body.error).toBe("forbidden");
+    expect(prismaCreateMock).not.toHaveBeenCalled();
+    expect(enqueueTrainLoraJobMock).not.toHaveBeenCalled();
+  });
+
+  it("fails closed: when ADMIN_SECRET is empty, a non-empty x-admin-secret is still 403", async () => {
+    process.env.ADMIN_SECRET = "";
+    const req = makeReq({ adminSecret: "anything", body: VALID_BODY });
+    const { res, captured, done } = makeRes();
+    const handled = await handleLoraAdminRoute(req, res);
+    await done;
+    expect(handled).toBe(true);
+    expect(captured.status).toBe(403);
+    const body = JSON.parse(captured.body);
+    expect(body.error).toBe("forbidden");
+    expect(prismaCreateMock).not.toHaveBeenCalled();
+  });
+
   it("returns 400 on an invalid body (missing characterId)", async () => {
     const req = makeReq({
       adminSecret: VALID_ADMIN_SECRET,
@@ -255,6 +285,17 @@ describe("GET /admin/lora/:characterId", () => {
     expect(prismaFindManyMock).toHaveBeenCalledWith(
       expect.objectContaining({ where: { characterId: "char-1" } }),
     );
+  });
+
+  it("does NOT treat the literal 'train' segment as a characterId (returns not-handled, no findMany)", async () => {
+    // The "train" path segment is reserved for the POST action. A GET to
+    // /admin/lora/train must not be captured by the :characterId regex and
+    // must not run an empty findMany on a bogus "train" id.
+    const req = makeReq({ method: "GET", url: "/admin/lora/train", adminSecret: VALID_ADMIN_SECRET });
+    const { res } = makeRes();
+    const handled = await handleLoraAdminRoute(req, res);
+    expect(handled).toBe(false);
+    expect(prismaFindManyMock).not.toHaveBeenCalled();
   });
 });
 

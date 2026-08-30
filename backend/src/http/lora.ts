@@ -174,6 +174,13 @@ export async function handleLoraAdminRoute(
     return true;
   }
 
+  // The "train" segment is reserved for the POST action above. Do not let the
+  // status-lookup regex treat the literal "/admin/lora/train" as a characterId
+  // (which would otherwise return an empty findMany for a bogus "train" id).
+  if (req.url === "/admin/lora/train" || req.url === "/admin/lora/train/") {
+    return false;
+  }
+
   const statusMatch = req.url.match(/^\/admin\/lora\/([A-Za-z0-9_-]{1,64})\/?$/);
   if (statusMatch && req.method === "GET") {
     await handleStatus(req, res, statusMatch[1]);
