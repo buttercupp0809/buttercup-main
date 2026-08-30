@@ -154,19 +154,33 @@ export async function getGeneratedSignedUrl(s3Key: string, ttlSeconds = 15 * 60)
   return deps.getSignedUrl(deps.client, cmd, { expiresIn: ttlSeconds });
 }
 
+// Lower-level PutObject against the shared singleton S3 client. Callers that
+// already know the exact bucket + key (e.g. the LoRA dataset manifest uploader)
+// use this instead of constructing their own S3Client. Reuses loadS3() so the
+// forcePathStyle / S3_ENDPOINT / region logic stays in one place.
+// Throws if the AWS SDK is unavailable.
+export async function putRawToS3(
+  bucket: string,
+  key: string,
+  body: Buffer,
+  contentType: string,
+): Promise<void> {
+  const deps = loadS3();
+  if (!deps) throw new Error("aws sdk not available");
+  const PutCtor = deps.PutObjectCommand as new (args: Record<string, unknown>) => unknown;
+  const cmd = new PutCtor({ Bucket: bucket, Key: key, Body: body, ContentType: contentType });
+  const send = (deps.client as { send: (c: unknown) => Promise<unknown> }).send.bind(deps.client);
+  await send(cmd);
+}
+
 // Uploads to the generated-assets bucket (POPPY_S3_BUCKET_GENERATED or S3_BUCKET fallback).
 // Returns the s3Key. Throws if neither bucket env var is set.
 export async function uploadGenerated(buffer: Buffer, ctx: UploadContext): Promise<string> {
   const bucket = process.env.POPPY_S3_BUCKET_GENERATED ?? process.env.S3_BUCKET;
   if (!bucket) throw new Error("POPPY_S3_BUCKET_GENERATED not configured");
-  const deps = loadS3();
-  if (!deps) throw new Error("aws sdk not available");
   const ext = extensionFor(ctx.contentType);
   const key = `${ctx.kind}s/${ctx.userId}/${crypto.randomUUID()}.${ext}`;
-  const PutCtor = deps.PutObjectCommand as new (args: Record<string, unknown>) => unknown;
-  const cmd = new PutCtor({ Bucket: bucket, Key: key, Body: buffer, ContentType: ctx.contentType });
-  const send = (deps.client as { send: (c: unknown) => Promise<unknown> }).send.bind(deps.client);
-  await send(cmd);
+  await putRawToS3(bucket, key, buffer, ctx.contentType);
   return key;
 }
 

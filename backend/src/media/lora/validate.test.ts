@@ -104,6 +104,28 @@ describe("validateLora", () => {
     expect(capturedRefKey).toBe("custom_ref_123");
   });
 
+  it("throws a clear error when given an empty checkpoint list", async () => {
+    let scoreChainCalled = false;
+    await expect(
+      validateLora(
+        {
+          referenceKey: "r",
+          checkpoints: [],
+          promptSet: ["p"],
+        },
+        {
+          baseline: async () => 0.7,
+          scoreChain: async () => {
+            scoreChainCalled = true;
+            return 0.8;
+          },
+        },
+      ),
+    ).rejects.toThrow("no checkpoints produced by training");
+    // Must fail fast before touching the scoring deps.
+    expect(scoreChainCalled).toBe(false);
+  });
+
   it("calls scoreChain once per checkpoint", async () => {
     let callCount = 0;
     await validateLora(

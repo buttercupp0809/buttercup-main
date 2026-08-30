@@ -64,25 +64,28 @@ export async function genTurntableImages(
   const count = turntableCount();
   const poses = TURNTABLE_POSES.slice(0, count);
 
-  const keys = await Promise.all(
-    poses.map(async (poseHint, idx) => {
-      const seed = idx * 1_000_000 + Math.floor(Math.random() * 1_000_000);
-      const result = await generateWithComfyUIConsistent({
-        prompt: `${poseHint}, full body shot, professional lighting, high detail`,
-        negativePrompt:
-          "blurry, low quality, bad anatomy, extra limbs, deformed, watermark",
-        referenceBytes,
-        seed,
-        poseHint,
-      });
-      const key = await uploadGenerated(result.buffer, {
-        userId: `lora-turntable-${characterId}`,
-        kind: "turntable",
-        contentType: "image/png",
-      });
-      return key;
-    }),
-  );
+  // Generate sequentially. The image box serves ONE ComfyUI workflow at a time
+  // (single GPU); firing all shots via Promise.all would overload it and cascade
+  // into poll timeouts. A simple for-await loop keeps exactly one render in flight.
+  const keys: string[] = [];
+  for (let idx = 0; idx < poses.length; idx++) {
+    const poseHint = poses[idx];
+    const seed = idx * 1_000_000 + Math.floor(Math.random() * 1_000_000);
+    const result = await generateWithComfyUIConsistent({
+      prompt: `${poseHint}, full body shot, professional lighting, high detail`,
+      negativePrompt:
+        "blurry, low quality, bad anatomy, extra limbs, deformed, watermark",
+      referenceBytes,
+      seed,
+      poseHint,
+    });
+    const key = await uploadGenerated(result.buffer, {
+      userId: `lora-turntable-${characterId}`,
+      kind: "turntable",
+      contentType: "image/png",
+    });
+    keys.push(key);
+  }
 
   return keys;
 }

@@ -81,6 +81,14 @@ export async function validateLora(
   { referenceKey, checkpoints, promptSet }: ValidateLoraArgs,
   deps: Deps,
 ): Promise<ValidateLoraResult> {
+  // Guard: an empty checkpoint list has no "best" to select. This happens when
+  // the training box completes but does not report any checkpoint artifacts.
+  // Throw a clear error so the handler marks the CharacterLora "failed" cleanly
+  // instead of surfacing a cryptic reduce-of-empty-array TypeError.
+  if (checkpoints.length === 0) {
+    throw new Error("validateLora: no checkpoints produced by training");
+  }
+
   // Score each checkpoint.
   const scoredCheckpoints = await Promise.all(
     checkpoints.map(async (cp) => {
