@@ -5,6 +5,7 @@
 // character has trained weights.
 
 import { prisma } from "@buttercupp/database";
+import { expressionSchema, poseSchema, type Expression, type Pose } from "@buttercupp/shared";
 import type { MediaJobData } from "@buttercupp/shared";
 import type { HandlerOutput } from "./index";
 import { buildImagePrompt } from "../image/prompt";
@@ -18,6 +19,22 @@ import {
 import { getSignedUrl } from "../storage";
 import { resolveImageFlags } from "../image/flags";
 import { resolveCharacterLora, resolveCheckpointForBaseModel } from "../lora/resolve";
+
+// Parse an optional expression from the opaque job payload. Returns undefined
+// when the field is absent or invalid (so the invariant holds: a payload
+// without expression produces the same output as before).
+function parseExpressionFromPayload(payload: Record<string, unknown>): Expression | undefined {
+  if (!("expression" in payload)) return undefined;
+  const result = expressionSchema.safeParse(payload.expression);
+  return result.success ? result.data : undefined;
+}
+
+// Parse an optional pose from the opaque job payload. Same semantics as above.
+function parsePoseFromPayload(payload: Record<string, unknown>): Pose | undefined {
+  if (!("pose" in payload)) return undefined;
+  const result = poseSchema.safeParse(payload.pose);
+  return result.success ? result.data : undefined;
+}
 
 export const imageHandler = async (job: MediaJobData): Promise<HandlerOutput> => {
   if (!job.characterId) throw new Error("image_missing_character");
@@ -50,6 +67,13 @@ export const imageHandler = async (job: MediaJobData): Promise<HandlerOutput> =>
     typeof job.payload.userRequest === "string" ? job.payload.userRequest : "";
   rejectMinorReference(userRequest);
 
+  // Read optional expression and pose from the opaque payload. These are
+  // validated by their zod schemas inside the helpers; an absent or invalid
+  // value returns undefined so the invariant holds: payloads without
+  // expression/pose produce output identical to before this change.
+  const expression = parseExpressionFromPayload(job.payload);
+  const pose = parsePoseFromPayload(job.payload);
+
   const sheet = character.currentVersion.appearanceSheet;
   const style = character.style === "threeD" ? "3d" : (character.style as "realistic" | "anime");
 
@@ -73,6 +97,8 @@ export const imageHandler = async (job: MediaJobData): Promise<HandlerOutput> =>
     },
     style,
     userRequest,
+    expression,
+    pose,
   });
 
   // Prepend trigger token to the positive prompt so all providers activate the

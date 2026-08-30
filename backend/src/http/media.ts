@@ -10,13 +10,18 @@
 
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { jwtVerify } from "jose";
+import { z } from "zod";
 import {
   enqueueMediaRequestSchema,
   mediaKindSchema,
   MEDIA_TOKEN_COSTS,
   CREATION_IMAGE_COUNT,
+  expressionSchema,
+  poseSchema,
   type EnqueueMediaResponse,
+  type Expression,
   type MediaKind,
+  type Pose,
   type CreationImageJobPayload,
 } from "@buttercupp/shared";
 import { prisma } from "@buttercupp/database";
@@ -27,6 +32,15 @@ import { isRedisConfigured } from "../queue/connection";
 import { assertSafeId } from "../utils/safe-types";
 import { assertCanConsumeMedia, PaywallError } from "../subscription/enforce";
 import { writeAuditLog } from "../utils/audit";
+
+// Optional body accepted by POST /media/character/:id/creation-images.
+// expression and pose are forwarded into each job's CreationImageJobPayload so
+// the image handler can drive expression and ControlNet pose on creation images.
+// An empty body (or no body) is valid; both fields default to absent.
+const creationImagesRequestSchema = z.object({
+  expression: expressionSchema.optional(),
+  pose: poseSchema.optional(),
+}).optional();
 
 function parseCookies(header: string | undefined): Record<string, string> {
   const out: Record<string, string> = {};
@@ -171,6 +185,18 @@ async function handleCreationImagesEnqueue(
     return send(res, 400, { error: "invalid_id" });
   }
 
+  // Parse the optional request body for expression/pose. An absent or empty
+  // body is valid (both default to undefined). Invalid values are rejected with
+  // a 400 so zod enforces the trust boundary here.
+  let reqBody: { expression?: Expression; pose?: Pose } | undefined;
+  try {
+    const raw = await readBody(req);
+    const isEmpty = raw === null || (typeof raw === "object" && raw !== null && Object.keys(raw as object).length === 0);
+    reqBody = creationImagesRequestSchema.parse(isEmpty ? undefined : raw) ?? undefined;
+  } catch (e) {
+    return send(res, 400, { error: "invalid_body", message: String(e) });
+  }
+
   const character = await prisma.character.findUnique({
     where: { id: characterId },
     select: { id: true, ownerUserId: true, currentVersionId: true },
@@ -205,6 +231,12 @@ async function handleCreationImagesEnqueue(
       characterVersionId,
       variant,
       userRequest: "",
+      // Thread expression/pose from the API request body into each job's payload
+      // so the image handler can inject the expression fragment + resolve the
+      // pose skeleton. When absent from the request, they are simply omitted and
+      // the handler produces the same output as before (invariant preserved).
+      ...(reqBody?.expression ? { expression: reqBody.expression } : {}),
+      ...(reqBody?.pose ? { pose: reqBody.pose } : {}),
     };
     // Creation images are free: tokenCost 0 (see token-ledger.ts's
     // zero-delta short-circuit). Only chat selfies debit IMAGE_TOKEN_COST.

@@ -1,9 +1,12 @@
-// Tests for the image handler's CharacterLora wiring. Focus: the edge case
-// where a ready CharacterLora row exists but its s3Key is null. Behavior must be
-// a TRUE no-op vs the pre-refactor code:
+// Tests for the image handler's CharacterLora wiring and expression/pose threading.
+// Focus: the edge case where a ready CharacterLora row exists but its s3Key is null.
+// Behavior must be a TRUE no-op vs the pre-refactor code:
 //   - a ready ROW existing (regardless of s3Key) overrides the sheet's loraRef
 //     and checkpoint (loraRef = row.s3Key ?? null, ckpt = from row.baseModel)
 //   - generation activation (loraName + IMG_LORA lora flag) stays gated on s3Key
+//
+// Also verifies: expression/pose from job payload are threaded into buildImagePrompt;
+// when absent, buildImagePrompt is called with expression/pose undefined (invariant).
 //
 // All heavy collaborators (Prisma, providers, WebP, S3, safety, flags) are
 // mocked so no live DB / GPU / S3 is required.
@@ -40,9 +43,11 @@ vi.mock("../storage", () => ({
 }));
 
 // buildImagePrompt: return a deterministic base prompt so trigger-token prepend
-// is observable.
+// is observable. The mock is captured so expression/pose threading tests can
+// inspect the args passed to it.
+const buildImagePromptMock = vi.fn(() => ({ prompt: "BASE_PROMPT", negativePrompt: "NEG" }));
 vi.mock("../image/prompt", () => ({
-  buildImagePrompt: vi.fn(() => ({ prompt: "BASE_PROMPT", negativePrompt: "NEG" })),
+  buildImagePrompt: (...a: unknown[]) => buildImagePromptMock(...a),
 }));
 
 // IMG_LORA flag: default off; individual tests override.
@@ -92,6 +97,7 @@ beforeEach(() => {
     meta: {},
   });
   resolveImageFlagsMock.mockReset().mockReturnValue({ lora: false });
+  buildImagePromptMock.mockReset().mockReturnValue({ prompt: "BASE_PROMPT", negativePrompt: "NEG" });
 });
 
 describe("imageHandler CharacterLora wiring", () => {
@@ -190,5 +196,81 @@ describe("imageHandler CharacterLora wiring", () => {
     expect(args.prompt).toBe("BASE_PROMPT");
     // conditioning reflects the sheet loraRef.
     expect(out.meta.conditioning).toBe("lora");
+  });
+});
+
+describe("imageHandler expression/pose threading", () => {
+  it("invariant: payload WITHOUT expression/pose calls buildImagePrompt with both undefined", async () => {
+    await imageHandler(makeJob());
+
+    expect(buildImagePromptMock).toHaveBeenCalledTimes(1);
+    const promptInput = buildImagePromptMock.mock.calls[0][0];
+    expect(promptInput.expression).toBeUndefined();
+    expect(promptInput.pose).toBeUndefined();
+  });
+
+  it("threads expression from payload into buildImagePrompt", async () => {
+    const job = {
+      ...makeJob(),
+      payload: { userRequest: "on a beach", seed: 123, expression: "smiling" },
+    } as unknown as import("@buttercupp/shared").MediaJobData;
+
+    await imageHandler(job);
+
+    const promptInput = buildImagePromptMock.mock.calls[0][0];
+    expect(promptInput.expression).toBe("smiling");
+    expect(promptInput.pose).toBeUndefined();
+  });
+
+  it("threads pose from payload into buildImagePrompt", async () => {
+    const job = {
+      ...makeJob(),
+      payload: { userRequest: "on a beach", seed: 123, pose: "sitting" },
+    } as unknown as import("@buttercupp/shared").MediaJobData;
+
+    await imageHandler(job);
+
+    const promptInput = buildImagePromptMock.mock.calls[0][0];
+    expect(promptInput.pose).toBe("sitting");
+    expect(promptInput.expression).toBeUndefined();
+  });
+
+  it("threads both expression and pose from payload into buildImagePrompt", async () => {
+    const job = {
+      ...makeJob(),
+      payload: { userRequest: "on a beach", seed: 123, expression: "seductive", pose: "lying" },
+    } as unknown as import("@buttercupp/shared").MediaJobData;
+
+    await imageHandler(job);
+
+    const promptInput = buildImagePromptMock.mock.calls[0][0];
+    expect(promptInput.expression).toBe("seductive");
+    expect(promptInput.pose).toBe("lying");
+  });
+
+  it("ignores an invalid expression value (parse helper returns undefined, invariant holds)", async () => {
+    const job = {
+      ...makeJob(),
+      payload: { userRequest: "on a beach", seed: 123, expression: "not-valid-expression" },
+    } as unknown as import("@buttercupp/shared").MediaJobData;
+
+    await imageHandler(job);
+
+    const promptInput = buildImagePromptMock.mock.calls[0][0];
+    // Invalid value is silently dropped; undefined is passed so output is
+    // identical to a payload without expression.
+    expect(promptInput.expression).toBeUndefined();
+  });
+
+  it("ignores an invalid pose value (parse helper returns undefined, invariant holds)", async () => {
+    const job = {
+      ...makeJob(),
+      payload: { userRequest: "on a beach", seed: 123, pose: "standing-on-one-foot" },
+    } as unknown as import("@buttercupp/shared").MediaJobData;
+
+    await imageHandler(job);
+
+    const promptInput = buildImagePromptMock.mock.calls[0][0];
+    expect(promptInput.pose).toBeUndefined();
   });
 });
