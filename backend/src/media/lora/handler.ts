@@ -77,36 +77,39 @@ import { runTraining as _runTraining } from "./train";
 import { validateLora as _validateLora } from "./validate";
 import { promoteLora as _promoteLora } from "./promote";
 
+// Real sub-dep clients (Task 13 / seam-11 wiring).
+import { listGalleryImages } from "./clients/gallery";
+import { genTurntableImages } from "./clients/turntable";
+import { uploadManifestToS3 } from "./clients/manifest-s3";
+import { scoreImages, getBaseline, scoreChain } from "./clients/arcface-client";
+import { vlmCaption } from "./clients/caption-client";
+import { submitJob, collectCheckpoints } from "./clients/training-client";
+
 const PRODUCTION_HANDLER_DEPS: HandlerDeps = {
   buildDataset: (args) =>
     _buildDataset(args, {
-      // DEFERRED: replace with real S3 + box clients.
-      listGallery: () => Promise.reject(new Error("listGallery: box client not wired")),
-      score: () => Promise.reject(new Error("score: arcface client not wired")),
-      genTurntable: () => Promise.reject(new Error("genTurntable: box client not wired")),
-      uploadManifest: () => Promise.reject(new Error("uploadManifest: S3 client not wired")),
+      listGallery: (characterId) => listGalleryImages(characterId),
+      score: (refKey, candidateKey) => scoreImages(refKey, candidateKey),
+      genTurntable: (characterId, characterVersionId) =>
+        genTurntableImages(characterId, characterVersionId),
+      uploadManifest: (manifest) => uploadManifestToS3(manifest),
     }),
 
   captionImage: (args) =>
     _captionImage(args, {
-      // DEFERRED: replace with real VLM client.
-      vlmCaption: () => Promise.reject(new Error("vlmCaption: VLM client not wired")),
+      vlmCaption: (imageKey) => vlmCaption(imageKey),
     }),
 
   runTraining: (args) =>
     _runTraining(args, {
-      // DEFERRED: replace with real box HTTP client.
-      submitJob: () => Promise.reject(new Error("submitJob: box client not wired")),
-      collectCheckpoints: () =>
-        Promise.reject(new Error("collectCheckpoints: box client not wired")),
+      submitJob: (config) => submitJob(config),
+      collectCheckpoints: (jobId) => collectCheckpoints(jobId),
     }),
 
   validateLora: (args) =>
     _validateLora(args, {
-      // DEFERRED: replace with real ArcFace + box clients.
-      baseline: () => Promise.reject(new Error("baseline: arcface client not wired")),
-      scoreChain: () =>
-        Promise.reject(new Error("scoreChain: arcface+box client not wired")),
+      baseline: () => getBaseline(args.referenceKey),
+      scoreChain: (referenceKey, checkpointKey) => scoreChain(referenceKey, checkpointKey),
     }),
 
   promoteLora: (args) => _promoteLora(args),
