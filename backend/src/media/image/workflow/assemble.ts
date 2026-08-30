@@ -12,6 +12,7 @@ import { faceDetailerNodes, FACEDETAILER_GPEN_VISIBILITY } from "./facedetailer"
 import { handDetailerNodes } from "./handdetailer";
 import { poseControlNetNodes, POSE } from "./pose-controlnet";
 import { pulidNodes } from "./pulid";
+import { loraNode } from "./lora";
 import { YAW_GATE_DEG } from "../yaw";
 import type { ImageWorkflowFlags } from "../flags";
 
@@ -26,6 +27,14 @@ export interface AssembleArgs {
   poseSkeletonName?: string;
   ipWeight?: number;
   gpenVisibility?: number;
+  // Per-character LoRA (Task 4). When lora flag is on and a LoraLoader is
+  // available, the named LoRA is inserted between the checkpoint and the
+  // CLIP/model consumers, and InstantID ip_weight is lowered so it does not
+  // fight the LoRA identity.
+  loraName?: string;
+  loraStrength?: number;
+  // Default ip_weight when the LoRA is active but pose is not overriding.
+  loraIpWeight?: number;
   // When provided (a live inventory of the box's ComfyUI node classes), an
   // enabled block whose key node is missing is SKIPPED so the job still renders
   // on the current graph instead of failing. Undefined => trust the flags.
@@ -47,9 +56,21 @@ export function assembleConsistentWorkflow(a: AssembleArgs): Record<string, unkn
   // A block runs only if its flag is on AND (no inventory given OR the box has
   // the block's key node class).
   const has = (cls: string): boolean => !a.availableNodes || a.availableNodes.has(cls);
-  const g: Record<string, unknown> = {
-    ...baseNodes({ ckpt: a.ckpt, positive: a.positive, negative: a.negative }),
-  };
+  const g: Record<string, unknown> = {};
+
+  // LoRA block (node 30). Compute BEFORE baseNodes so clipRef is available.
+  // When off, clipRef is undefined and baseNodes falls back to ["4",1] (byte-identical).
+  const useLora = a.flags.lora && Boolean(a.loraName) && has("LoraLoader");
+  let clipRef: [string, number] | undefined;
+  let loraModelRef: [string, number] | undefined;
+  if (useLora) {
+    const lora = loraNode({ loraName: a.loraName as string, strength: a.loraStrength });
+    Object.assign(g, lora.nodes);
+    clipRef = lora.clipRef;
+    loraModelRef = lora.modelRef;
+  }
+
+  Object.assign(g, baseNodes({ ckpt: a.ckpt, positive: a.positive, negative: a.negative, clipRef }));
 
   // Fix 4: when pose control is on AND a skeleton matched, add the body OpenPose
   // ControlNet (head keypoints stripped) and feed its conditioning into
@@ -75,8 +96,18 @@ export function assembleConsistentWorkflow(a: AssembleArgs): Record<string, unkn
     Object.assign(g, pulid.nodes);
     modelRef = pulid.outModelRef;
   }
+  // LoRA model becomes the InstantID model source when nothing else (pose/pulid)
+  // already claimed modelRef.
+  if (!modelRef && loraModelRef) modelRef = loraModelRef;
+
   const usePose = a.flags.poseControlNet && Boolean(a.poseSkeletonName) && has("ControlNetApplyAdvanced");
-  const ipWeight = usePose ? a.ipWeight ?? POSE.ipWeight : a.ipWeight;
+  // Lower ip_weight when the LoRA is active (and pose is not overriding) so
+  // InstantID does not fight the LoRA identity conditioning.
+  const ipWeight = usePose
+    ? a.ipWeight ?? POSE.ipWeight
+    : useLora
+      ? a.loraIpWeight ?? 0.6
+      : a.ipWeight;
 
   Object.assign(
     g,
