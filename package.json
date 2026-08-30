@@ -26,6 +26,7 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "verify:memory": "tsx backend/src/scripts/memory-rag-verify.ts",
+    "lora:train": "tsx backend/scripts/train-lora.ts",
     "lint": "eslint .",
     "check:no-em-dash": "node scripts/check-no-em-dash.mjs"
   },
