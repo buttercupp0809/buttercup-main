@@ -18,6 +18,7 @@ import {
 } from "../image/safety";
 import { getSignedUrl } from "../storage";
 import { COMFY } from "../image/constants";
+import { resolveImageFlags } from "../image/flags";
 
 // Checkpoint filenames per base-model id. JUGGERNAUT_CHECKPOINT matches
 // COMFY.checkpoint so both code paths stay in sync. REALVISXL_CHECKPOINT is
@@ -102,10 +103,13 @@ export const imageHandler = async (job: MediaJobData): Promise<HandlerOutput> =>
   const seed =
     typeof job.payload.seed === "number" ? (job.payload.seed as number) : Math.floor(Math.random() * 1_000_000_000);
 
-  // When a ready CharacterLora exists, wire the LoRA into the ComfyUI basic
-  // workflow (loraName) and override the checkpoint to match the training base
-  // model. Cloud providers (fal/replicate) continue using loraRef.
-  const loraName = characterLora?.s3Key ? path.basename(characterLora.s3Key) : undefined;
+  // When a ready CharacterLora exists AND the IMG_LORA kill-switch is on, wire
+  // the LoRA into the ComfyUI basic workflow (loraName) and override the
+  // checkpoint to match the training base model. Without the flag the basic path
+  // emits no LoRA node (byte-identical to today). Cloud providers (fal/replicate)
+  // continue using loraRef regardless of this flag.
+  const loraFlag = resolveImageFlags().lora;
+  const loraName = loraFlag && characterLora?.s3Key ? path.basename(characterLora.s3Key) : undefined;
   const ckptOverride = characterLora ? resolveCheckpointForBaseModel(characterLora.baseModel) : undefined;
 
   const out = await generateImage({

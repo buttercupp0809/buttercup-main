@@ -128,7 +128,8 @@ async function generateWithReplicate(p: GenerateParams): Promise<GenerateResult>
 // SDXL txt2img graph, queues it on /prompt, polls /history until the image is
 // ready, then downloads it from /view. When loraName is provided, a LoraLoader
 // node (30) is injected between the checkpoint and the CLIP/model consumers.
-function buildComfyWorkflow(a: {
+// Exported with _ prefix for unit tests only; not part of the public API.
+export function _buildComfyWorkflow(a: {
   ckpt: string;
   positive: string;
   negative: string;
@@ -191,7 +192,7 @@ async function generateWithComfyUI(p: GenerateParams): Promise<GenerateResult> {
   // ckptOverride takes precedence (e.g. RealVisXL when the LoRA was trained on it).
   const ckpt = p.ckptOverride ?? process.env.POPPY_JUGGERNAUT_CHECKPOINT ?? COMFY.checkpoint;
   const seed = p.seed ?? Math.floor(Math.random() * 1_000_000_000_000);
-  const workflow = buildComfyWorkflow({
+  const workflow = _buildComfyWorkflow({
     ckpt,
     positive: COMFY.qualityPrefix + p.prompt,
     negative: p.negativePrompt,

@@ -167,7 +167,6 @@ describe("promoteLora", () => {
     it("updates CharacterLora with status rejected and sets error", async () => {
       const { prisma } = await import("@buttercupp/database");
       const updateMock = prisma.characterLora.update as ReturnType<typeof vi.fn>;
-      const sheetUpdateMock = prisma.appearanceSheet.update as ReturnType<typeof vi.fn>;
 
       updateMock.mockResolvedValue({ id: "lora-4", status: "rejected" });
 
