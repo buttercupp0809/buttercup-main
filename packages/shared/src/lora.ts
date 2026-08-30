@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+export const LORA_QUEUE_NAME = "buttercupp-lora";
+
 export const expressionSchema = z.enum([
   "neutral", "smiling", "happy", "sad", "seductive", "laughing", "surprised",
 ]);
