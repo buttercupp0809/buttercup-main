@@ -1,5 +1,7 @@
--- CharacterLora: per-character LoRA tracking table.
--- Additive (new table); safe to apply against a live DB.
+-- Additive migration: creates the CharacterLora table.
+-- NOTE: updatedAt is managed by Prisma's @updatedAt at the application layer
+-- (no SQL default). Insert/update rows through Prisma, not raw SQL.
+-- Apply to a LOCAL database only, then: prisma migrate resolve --applied 20260830000000_add_character_lora
 CREATE TABLE "CharacterLora" (
     "id"                 TEXT NOT NULL,
     "characterId"        TEXT NOT NULL,
