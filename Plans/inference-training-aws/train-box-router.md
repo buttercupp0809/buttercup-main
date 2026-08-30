@@ -72,7 +72,8 @@ Mirrors `Plans/inference-aws/router/lambda_function.py` (same handler pattern).
 Differences:
 - `INSTANCE_ID` is the training box instance (not the inference box).
 - `/wake` endpoint: returns `{ status, ip, eta_seconds, endpoints }` where
-  `endpoints.trainingApi = "http://<ip>:8282"` instead of stheno/juggernaut.
+  `endpoints.trainingApi = "http://<ip>:8282"`, `endpoints.arcfaceApi = "http://<ip>:8184"`,
+  and `endpoints.captionApi = "http://<ip>:8185"` instead of stheno/juggernaut.
 - `WARM_ETA_SECONDS` default: 120 (model downloads already baked into AMI;
   only Docker startup + service ready check adds latency after a stop/start).
 
@@ -140,10 +141,25 @@ The backend reads the IP from the router response; no hardcoded IP anywhere.
 
 ---
 
+## Backend env vars required when training box is up
+
+Set these in the backend's environment (ECS task definition / Amplify env / local .env):
+
+| Env var | Value | Purpose |
+|---|---|---|
+| `POPPY_TRAINING_URL` | `http://<box-ip>:8282` | Training job submit + status poll |
+| `POPPY_ARCFACE_URL` | `http://<box-ip>:8184` | ArcFace scoring (POST /score, POST /baseline) |
+| `POPPY_CAPTION_URL` | `http://<box-ip>:8185` | WD14 tagger (POST /caption) |
+
+The `<box-ip>` is the public IP returned by the router `/wake` and `/status` responses.
+The backend BullMQ worker should read it from the router response each time (no Elastic IP).
+
 ## Reference
 
 - Queue name: `buttercupp-lora` (from `LORA_QUEUE_NAME` in `packages/shared/src/lora.ts`)
 - Training API port: `8282` (not public; backend SG inbound only)
+- ArcFace scoring port: `8184` (not public; backend SG inbound only)
+- Caption/WD14 tagger port: `8185` (not public; backend SG inbound only)
 - ComfyUI (validation) port: `8188`
 - Router pattern: mirrors `Plans/inference-aws/router/lambda_function.py`
 - Idle check pattern: mirrors `Plans/inference-aws/user-data.sh` idle-check section
