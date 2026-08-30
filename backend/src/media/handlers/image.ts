@@ -4,7 +4,6 @@
 // via signed S3 URLs (IP-Adapter conditioning) or a LoRA ref when the
 // character has trained weights.
 
-import path from "node:path";
 import { prisma } from "@buttercupp/database";
 import type { MediaJobData } from "@buttercupp/shared";
 import type { HandlerOutput } from "./index";
@@ -17,27 +16,14 @@ import {
   ImageSafetyError,
 } from "../image/safety";
 import { getSignedUrl } from "../storage";
-import { COMFY } from "../image/constants";
 import { resolveImageFlags } from "../image/flags";
-
-// Checkpoint filenames per base-model id. JUGGERNAUT_CHECKPOINT matches
-// COMFY.checkpoint so both code paths stay in sync. REALVISXL_CHECKPOINT is
-// a named constant because the file must be present on the box at inference
-// time (deferred/infra task: upload realvisxlV50.safetensors to ComfyUI models/).
-const JUGGERNAUT_CHECKPOINT = COMFY.checkpoint; // "juggernautXL_v9.safetensors"
-const REALVISXL_CHECKPOINT = "realvisxlV50.safetensors";
-
-function resolveCheckpointForBaseModel(baseModel: string): string {
-  if (baseModel === "realvisxl_v5") return REALVISXL_CHECKPOINT;
-  // juggernaut_xl_v9 and any unknown base model fall back to the box default.
-  return JUGGERNAUT_CHECKPOINT;
-}
+import { resolveCharacterLora } from "../lora/resolve";
 
 export const imageHandler = async (job: MediaJobData): Promise<HandlerOutput> => {
   if (!job.characterId) throw new Error("image_missing_character");
   const characterId = job.characterId;
 
-  const [character, characterLora] = await Promise.all([
+  const [character, loraResolution] = await Promise.all([
     prisma.character.findUnique({
       where: { id: characterId },
       include: {
@@ -47,10 +33,7 @@ export const imageHandler = async (job: MediaJobData): Promise<HandlerOutput> =>
       },
     }),
     // Resolve the newest ready trained LoRA for this character (if any).
-    prisma.characterLora.findFirst({
-      where: { characterId, status: "ready" },
-      orderBy: { createdAt: "desc" },
-    }),
+    resolveCharacterLora(characterId),
   ]);
 
   if (!character || !character.currentVersion?.appearanceSheet) {
@@ -67,7 +50,7 @@ export const imageHandler = async (job: MediaJobData): Promise<HandlerOutput> =>
 
   // Inject the LoRA trigger token into the prompt when a ready LoRA exists so
   // the identity token is active across all providers.
-  const triggerToken = characterLora?.triggerToken ?? null;
+  const triggerToken = loraResolution?.triggerToken ?? null;
 
   const { prompt: basePrompt, negativePrompt } = buildImagePrompt({
     appearanceSheet: {
@@ -109,8 +92,8 @@ export const imageHandler = async (job: MediaJobData): Promise<HandlerOutput> =>
   // emits no LoRA node (byte-identical to today). Cloud providers (fal/replicate)
   // continue using loraRef regardless of this flag.
   const loraFlag = resolveImageFlags().lora;
-  const loraName = loraFlag && characterLora?.s3Key ? path.basename(characterLora.s3Key) : undefined;
-  const ckptOverride = characterLora ? resolveCheckpointForBaseModel(characterLora.baseModel) : undefined;
+  const loraName = loraFlag && loraResolution ? loraResolution.loraName : undefined;
+  const ckptOverride = loraResolution?.ckptOverride;
 
   const out = await generateImage({
     prompt,
@@ -119,7 +102,7 @@ export const imageHandler = async (job: MediaJobData): Promise<HandlerOutput> =>
     referenceImageUrls,
     // Cloud providers still use the legacy loraRef from the appearance sheet.
     // When a CharacterLora exists, it takes precedence.
-    loraRef: characterLora ? (characterLora.s3Key ?? null) : (sheet.loraRef ?? null),
+    loraRef: loraResolution ? loraResolution.s3Key : (sheet.loraRef ?? null),
     seed,
     loraName,
     ckptOverride,
@@ -127,7 +110,7 @@ export const imageHandler = async (job: MediaJobData): Promise<HandlerOutput> =>
 
   const { buffer, contentType } = await toWebP(out.buffer);
 
-  const conditioning = characterLora
+  const conditioning = loraResolution
     ? "character_lora"
     : sheet.loraRef
       ? "lora"
@@ -143,7 +126,7 @@ export const imageHandler = async (job: MediaJobData): Promise<HandlerOutput> =>
       latencyMs: out.latencyMs,
       seed,
       conditioning,
-      ...(loraName ? { loraName, loraBaseModel: characterLora?.baseModel } : {}),
+      ...(loraName ? { loraName, loraBaseModel: loraResolution?.baseModel } : {}),
       ...out.meta,
     },
   };

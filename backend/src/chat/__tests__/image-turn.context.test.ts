@@ -20,6 +20,19 @@ vi.mock("@buttercupp/database", () => ({
   },
 }));
 
+// LoRA resolution mock: returned by resolveCharacterLora(characterId). Tests
+// override resolveCharacterLoraMock to exercise the LoRA activation path.
+const resolveCharacterLoraMock = vi.fn();
+vi.mock("../../media/lora/resolve", () => ({
+  resolveCharacterLora: (...a: unknown[]) => resolveCharacterLoraMock(...a),
+}));
+
+// Image flags mock: lets individual tests control the IMG_LORA kill-switch.
+const resolveImageFlagsMock = vi.fn();
+vi.mock("../../media/image/flags", () => ({
+  resolveImageFlags: (...a: unknown[]) => resolveImageFlagsMock(...a),
+}));
+
 const getLatestSummaryMock = vi.fn();
 vi.mock("../../llm/memory-retriever", () => ({
   getLatestSummary: getLatestSummaryMock,
@@ -38,6 +51,12 @@ vi.mock("../../media/image/providers", () => ({
 
 vi.mock("../../media/image/convert", () => ({
   toWebP: vi.fn().mockResolvedValue({ buffer: Buffer.from("webp-bytes"), contentType: "image/webp" }),
+}));
+
+// Character reference bytes mock: controls whether consistent or faceless path fires.
+const resolveCharacterReferenceBytesMock = vi.fn();
+vi.mock("../../media/reference", () => ({
+  resolveCharacterReferenceBytes: (...a: unknown[]) => resolveCharacterReferenceBytesMock(...a),
 }));
 
 vi.mock("../../media/storage", () => ({
@@ -79,6 +98,12 @@ beforeEach(() => {
   generateConsistentMock.mockReset();
   // Default: a successful non-hardcoded enrichment. Individual tests override.
   callLLMMock.mockReset().mockResolvedValue({ text: "teaser", provider: "openrouter" });
+  // Default: no ready LoRA (flag tests override). IMG_LORA off by default.
+  resolveCharacterLoraMock.mockReset().mockResolvedValue(null);
+  resolveImageFlagsMock.mockReset().mockReturnValue({ lora: false });
+  // Default: no reference bytes (consistent path inactive). Tests that need
+  // the consistent path must override this.
+  resolveCharacterReferenceBytesMock.mockReset().mockResolvedValue(null);
 });
 
 afterEach(() => {
@@ -242,5 +267,110 @@ describe("generateChatImage", () => {
     // Also assert the cleaned prompt (which would be the fallback) is not what
     // we sent, guarding against a regression where enrichment gets bypassed.
     expect(args.prompt).not.toContain("send me a photo");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// LoRA activation tests: verifies that the chat selfie path wires the per-
+// character LoRA into generateWithComfyUIConsistent exactly like the media-job
+// handler, and that the invariant (no-LoRA path unchanged) holds.
+// ---------------------------------------------------------------------------
+describe("generateChatImage - LoRA activation", () => {
+  const REF_BYTES = Buffer.from("fake-reference-face-bytes");
+  const LORA_RESOLUTION = {
+    loraName: "lora-abc123.safetensors",
+    triggerToken: "aria_v1",
+    ckptOverride: "realvisxlV50.safetensors",
+    s3Key: "loras/chars/char-1/lora-abc123.safetensors",
+    baseModel: "realvisxl_v5",
+  };
+
+  function mockConvWithChar(characterId: string) {
+    conversationFindUnique.mockResolvedValue({
+      characterId,
+      character: { name: "Aria" },
+    });
+    messageFindMany.mockResolvedValue([]);
+  }
+
+  it("passes loraName, flagOverrides {lora:true}, and trigger token in prompt when ready LoRA + flag on", async () => {
+    mockConvWithChar("char-1");
+    resolveCharacterReferenceBytesMock.mockResolvedValue(REF_BYTES);
+    resolveCharacterLoraMock.mockResolvedValue(LORA_RESOLUTION);
+    resolveImageFlagsMock.mockReturnValue({ lora: true });
+    // Enrichment returns a stable string so we can assert trigger token prepend.
+    callLLMMock.mockResolvedValue({ text: "a woman on a beach", provider: "openrouter" });
+    generateConsistentMock.mockResolvedValue({
+      buffer: Buffer.from("img"),
+      provider: "comfyui",
+      meta: { seed: 7 },
+    });
+
+    await generateChatImage("send me a selfie", "conv-1", "user-1");
+
+    expect(generateConsistentMock).toHaveBeenCalledTimes(1);
+    const args = generateConsistentMock.mock.calls[0][0];
+
+    // Trigger token prepended to prompt.
+    expect(args.prompt).toMatch(/^aria_v1,\s/);
+
+    // loraName forwarded.
+    expect(args.loraName).toBe("lora-abc123.safetensors");
+
+    // flagOverrides enables lora.
+    expect(args.flagOverrides).toEqual({ lora: true });
+  });
+
+  it("does NOT pass loraName or flagOverrides when IMG_LORA flag is off (even with a ready LoRA)", async () => {
+    mockConvWithChar("char-1");
+    resolveCharacterReferenceBytesMock.mockResolvedValue(REF_BYTES);
+    resolveCharacterLoraMock.mockResolvedValue(LORA_RESOLUTION);
+    // Flag is off.
+    resolveImageFlagsMock.mockReturnValue({ lora: false });
+    callLLMMock.mockResolvedValue({ text: "a woman on a beach", provider: "openrouter" });
+    generateConsistentMock.mockResolvedValue({
+      buffer: Buffer.from("img"),
+      provider: "comfyui",
+      meta: { seed: 8 },
+    });
+
+    await generateChatImage("send me a selfie", "conv-1", "user-1");
+
+    expect(generateConsistentMock).toHaveBeenCalledTimes(1);
+    const args = generateConsistentMock.mock.calls[0][0];
+
+    // No loraName when flag is off.
+    expect(args.loraName).toBeUndefined();
+    expect(args.flagOverrides).toBeUndefined();
+    // Trigger token must NOT be prepended (no lora => no token injection).
+    expect(args.prompt).not.toMatch(/^aria_v1/);
+  });
+
+  it("is byte-identical to pre-LoRA behavior when no LoRA exists (invariant)", async () => {
+    mockConvWithChar("char-1");
+    resolveCharacterReferenceBytesMock.mockResolvedValue(REF_BYTES);
+    // No ready LoRA.
+    resolveCharacterLoraMock.mockResolvedValue(null);
+    resolveImageFlagsMock.mockReturnValue({ lora: true });
+    const ENRICHED = "a woman laughing at a cafe";
+    callLLMMock.mockResolvedValue({ text: ENRICHED, provider: "openrouter" });
+    generateConsistentMock.mockResolvedValue({
+      buffer: Buffer.from("img"),
+      provider: "comfyui",
+      meta: { seed: 9 },
+    });
+
+    await generateChatImage("send me a selfie", "conv-1", "user-1");
+
+    expect(generateConsistentMock).toHaveBeenCalledTimes(1);
+    const args = generateConsistentMock.mock.calls[0][0];
+
+    // No loraName, no flagOverrides, prompt unchanged from enriched output.
+    expect(args.loraName).toBeUndefined();
+    expect(args.flagOverrides).toBeUndefined();
+    // Prompt is the enriched prompt (possibly with guard tokens appended), NOT
+    // prepended with any trigger token.
+    expect(args.prompt).toContain(ENRICHED);
+    expect(args.prompt).not.toMatch(/^aria_v1/);
   });
 });
