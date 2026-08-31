@@ -17,7 +17,7 @@ import {
   type Plan,
   type PlanConfig,
 } from "./plans";
-import { planPeriodKey, type PlanCounterKind } from "./period";
+import { freeChatPeriodKey, planPeriodKey, type PlanCounterKind } from "./period";
 import { incrementCounter as incrementMetric } from "../metrics";
 
 export class PaywallError extends Error {
@@ -115,6 +115,10 @@ export interface PaywallInfo {
   limit: number;
   plans: PlanConfig[];
   upgradeUrl: string;
+  // ISO UTC timestamp of the next quota reset (free plan: next UTC
+  // midnight; paid plans: null). Lets the paywall UI render a live
+  // "resets in Xh Ym" countdown for the free-daily case.
+  resetsAt: string | null;
 }
 
 function planCatalog(): PlanConfig[] {
@@ -141,6 +145,7 @@ export function paywallBody(
     limit: bucket.limit,
     plans: planCatalog(),
     upgradeUrl: "/billing?upgrade=1",
+    resetsAt: ent.resetsAt,
   };
 }
 
@@ -223,9 +228,12 @@ export async function assertCanConsumeMedia(
   }
 }
 
-// Atomic column increment. `prisma.user.update` with a numeric increment
-// compiles to `UPDATE ... SET freeMessagesUsed = freeMessagesUsed + 1`, so
-// two concurrent turns cannot lose an update.
+// Atomic column increment on the legacy lifetime column. The daily free
+// chat counter is now the authoritative gate (see `consumeFreeChatDaily`),
+// but we keep incrementing this column for backward compatibility with
+// dashboards and older callers. Two concurrent turns cannot lose an update
+// because Prisma compiles `{ increment: 1 }` to
+// `UPDATE ... SET freeMessagesUsed = freeMessagesUsed + 1`.
 export async function consumeFreeMessage(userId: string): Promise<number> {
   const u = await prisma.user.update({
     where: { id: userId },
@@ -233,6 +241,24 @@ export async function consumeFreeMessage(userId: string): Promise<number> {
     select: { freeMessagesUsed: true },
   });
   return u.freeMessagesUsed;
+}
+
+// Atomic upsert increment for the free-plan daily chat counter. Same
+// (userId, counterType, period) unique index as `consumePlanQuota`, so the
+// upsert is the atomic primitive under concurrent turns. Period rolls at
+// UTC midnight (see `freeChatPeriodKey`), which is what gives free users a
+// fresh 15-chat allowance every day.
+export async function consumeFreeChatDaily(
+  userId: string,
+  now: Date = new Date(),
+): Promise<number> {
+  const period = freeChatPeriodKey(now);
+  const row = await prisma.usageCounter.upsert({
+    where: { userId_counterType_period: { userId, counterType: "chat", period } },
+    create: { userId, counterType: "chat", period, count: 1 },
+    update: { count: { increment: 1 } },
+  });
+  return row.count;
 }
 
 // Atomic upsert increment. Reuses the existing UsageCounter pattern; the
@@ -264,6 +290,11 @@ export async function recordChatConsumption(userId: string): Promise<void> {
       const expires = ent.expiresAt ? new Date(ent.expiresAt) : null;
       await consumePlanQuota(userId, "chat", ent.plan, expires);
     } else {
+      // Free path: authoritative counter is the per-UTC-day UsageCounter
+      // row read back by `entitlementsFor`. We ALSO bump the legacy
+      // lifetime column so existing dashboards and any older code paths
+      // that still read `User.freeMessagesUsed` keep working.
+      await consumeFreeChatDaily(userId);
       await consumeFreeMessage(userId);
     }
   } catch {

@@ -22,6 +22,8 @@ import type { TransportPaywallPlan } from "@/lib/chat-transport";
 import { PaywallHero } from "@/components/paywall/PaywallHero";
 import { ModalOverlay } from "@/components/ui/Modal";
 import { trackCta } from "@/lib/track-cta";
+import { formatResetIn } from "@/lib/bond";
+import { trackPurchase } from "@/lib/marketing/meta-pixel";
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:4000";
 
@@ -41,15 +43,20 @@ export interface PaywallModalProps {
 
 interface EntitlementsShape {
   active: boolean;
+  // Optional daily-reset timestamp forwarded by the backend for free-plan
+  // users. When present we render a "Comes back in Xh Ym" line so the user
+  // knows they are not permanently locked out.
+  resetsAt?: string | null;
+  plan?: string;
 }
 
 export function PaywallModal({
   avatarUrl,
   characterName,
   onResumed,
+  scope,
   // Silence unused warnings; the values are part of the transport contract
   // and may drive analytics in a follow-up.
-  scope: _scope,
   kind: _kind,
   used: _used,
   limit: _limit,
@@ -57,6 +64,7 @@ export function PaywallModal({
 }: PaywallModalProps) {
   const [dismissed, setDismissed] = React.useState(false);
   const [mounted, setMounted] = React.useState(false);
+  const [resetsAt, setResetsAt] = React.useState<string | null>(null);
 
   React.useEffect(() => setMounted(true), []);
 
@@ -65,12 +73,34 @@ export function PaywallModal({
   // Keeps running even while dismissed so ESC never blocks the resume.
   React.useEffect(() => {
     let cancelled = false;
+    // Tracks whether we have observed an inactive entitlement in this poll
+    // session. Purchase tracking only fires when we see a transition from
+    // inactive -> active, so we do not double-count for users who land on
+    // the paywall already active (edge case) or for the initial poll on
+    // recently-upgraded sessions.
+    let wasInactive = false;
+    let purchaseFired = false;
     const tick = async () => {
       try {
         const r = await fetch(`${BACKEND_URL}/billing/entitlements`, { credentials: "include" });
         if (!r.ok) return;
         const ent = (await r.json()) as EntitlementsShape;
-        if (!cancelled && ent.active) onResumed();
+        if (cancelled) return;
+        if (typeof ent.resetsAt === "string") setResetsAt(ent.resetsAt);
+        if (!ent.active) {
+          wasInactive = true;
+        } else {
+          // Only fire Purchase when we actually observed an upgrade in
+          // this modal's lifetime AND the sku is one we know how to
+          // value. Free-plan "active" state (rare, but possible under
+          // future contract changes) is filtered out. The helper itself
+          // dedupes per browser session against the paywall page's fire.
+          if (wasInactive && !purchaseFired && ent.plan && ent.plan !== "free") {
+            purchaseFired = true;
+            trackPurchase({ sku: ent.plan });
+          }
+          onResumed();
+        }
       } catch {
         // Silent: transient network blip should not throw the user out.
       }
@@ -146,6 +176,15 @@ export function PaywallModal({
         heroImageSrc={avatarUrl ?? "/personas/1.webp"}
         heroImageAlt={characterName ?? ""}
         contextLabel={characterName ?? undefined}
+        // Scope "free_trial" now means the daily allowance is exhausted
+        // (the name is retained for backward compat with the transport
+        // frame). Surface the "renews daily" promise so users understand
+        // this is a soft ceiling, not a permanent wall.
+        dailyResetNote={
+          scope === "free_trial"
+            ? buildDailyResetNote(resetsAt)
+            : null
+        }
         onClose={() => {
           trackCta("paywall_modal_close", "paywall_modal");
           setDismissed(true);
@@ -154,4 +193,18 @@ export function PaywallModal({
       />
     </ModalOverlay>
   );
+}
+
+// Builds the small explainer sentence rendered above the CTA when the
+// daily free allowance is what triggered the paywall. When the backend
+// includes resetsAt we append a live countdown; otherwise we keep the
+// generic "renews daily" line so the promise still lands.
+function buildDailyResetNote(resetsAt: string | null): string {
+  const base = "Your free chats renew daily.";
+  if (!resetsAt) return base;
+  const formatted = formatResetIn(resetsAt);
+  if (!formatted) return base;
+  if (formatted === "resets shortly") return `${base} Comes back shortly.`;
+  const tail = formatted.replace(/^resets in /, "");
+  return `${base} Comes back in ${tail}.`;
 }

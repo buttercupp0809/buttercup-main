@@ -6,6 +6,7 @@ import {
   assertCanChat,
   assertCanImage,
   assertCanConsumeMedia,
+  consumeFreeChatDaily,
   consumeFreeMessage,
   recordChatConsumption,
   recordImageConsumption,
@@ -13,7 +14,7 @@ import {
 } from "../enforce";
 import { activatePlan } from "../grant";
 import { PLANS, type Plan } from "../plans";
-import { planPeriodKey, type PlanCounterKind } from "../period";
+import { freeChatPeriodKey, planPeriodKey, type PlanCounterKind } from "../period";
 import { entitlementsFor } from "../entitlements";
 import { dbReachable } from "../../test-utils/db";
 
@@ -47,23 +48,36 @@ async function setPlanUsage(
   });
 }
 
+async function readFreeDailyChatCount(userId: string): Promise<number> {
+  const row = await prisma.usageCounter.findUnique({
+    where: {
+      userId_counterType_period: {
+        userId,
+        counterType: "chat",
+        period: freeChatPeriodKey(),
+      },
+    },
+  });
+  return row?.count ?? 0;
+}
+
 describe.skipIf(!DB_UP)("assertCanChat: free trial", () => {
-  it("allows 10 messages, blocks the 11th with free_trial scope", async () => {
+  it("allows FREE_MESSAGE_LIMIT messages per day, blocks the next with free_trial scope", async () => {
     const userId = await makeUser(0);
     for (let i = 0; i < FREE_MESSAGE_LIMIT; i++) {
       await assertCanChat(userId);
       await recordChatConsumption(userId);
     }
-    // 11th should throw.
+    // Next call should throw.
     await expect(assertCanChat(userId)).rejects.toMatchObject({
       name: "PaywallError",
       body: expect.objectContaining({ scope: "free_trial", kind: "chat" }),
     });
-    const u = await prisma.user.findUnique({ where: { id: userId } });
-    expect(u?.freeMessagesUsed).toBe(FREE_MESSAGE_LIMIT);
+    // Daily counter reflects the exact number of consumed chats.
+    expect(await readFreeDailyChatCount(userId)).toBe(FREE_MESSAGE_LIMIT);
   });
 
-  it("crisis intervention (no consumeChat call) does NOT bump the counter", async () => {
+  it("crisis intervention (no consumeChat call) does NOT bump the daily counter", async () => {
     const userId = await makeUser(0);
     // Simulate three "consumedChat=false" turns: recordChatConsumption is
     // skipped by callers, so the counter never moves.
@@ -71,8 +85,30 @@ describe.skipIf(!DB_UP)("assertCanChat: free trial", () => {
       await assertCanChat(userId);
       // Deliberately no recordChatConsumption() call.
     }
-    const u = await prisma.user.findUnique({ where: { id: userId } });
-    expect(u?.freeMessagesUsed).toBe(0);
+    expect(await readFreeDailyChatCount(userId)).toBe(0);
+  });
+
+  it("paywall body carries resetsAt (next UTC midnight)", async () => {
+    const userId = await makeUser(0);
+    // Exhaust the daily counter in one write.
+    await consumeFreeChatDaily(userId);
+    // Seed to the limit directly.
+    await prisma.usageCounter.update({
+      where: {
+        userId_counterType_period: {
+          userId, counterType: "chat", period: freeChatPeriodKey(),
+        },
+      },
+      data: { count: FREE_MESSAGE_LIMIT },
+    });
+    try {
+      await assertCanChat(userId);
+      throw new Error("expected paywall");
+    } catch (err) {
+      const body = (err as PaywallError).body as { resetsAt?: string };
+      expect(typeof body.resetsAt).toBe("string");
+      expect(new Date(body.resetsAt!).getTime()).toBeGreaterThan(Date.now());
+    }
   });
 });
 
@@ -89,11 +125,24 @@ describe.skipIf(!DB_UP)("assertCanChat: active plan", () => {
   });
 
   it("expired active row falls back to free trial gate", async () => {
-    const userId = await makeUser(FREE_MESSAGE_LIMIT);
+    const userId = await makeUser(0);
     await activatePlan(userId, "weekly");
     await prisma.subscription.update({
       where: { userId },
       data: { currentPeriodEnd: new Date(Date.now() - 60_000) },
+    });
+    // Exhaust the free-plan daily chat counter so the free_trial gate fires.
+    await prisma.usageCounter.upsert({
+      where: {
+        userId_counterType_period: {
+          userId, counterType: "chat", period: freeChatPeriodKey(),
+        },
+      },
+      create: {
+        userId, counterType: "chat", period: freeChatPeriodKey(),
+        count: FREE_MESSAGE_LIMIT,
+      },
+      update: { count: FREE_MESSAGE_LIMIT },
     });
     // Free trial exhausted -> paywall with free_trial scope.
     await expect(assertCanChat(userId)).rejects.toMatchObject({

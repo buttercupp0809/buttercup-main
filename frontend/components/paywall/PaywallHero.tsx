@@ -70,6 +70,10 @@ export interface PaywallHeroProps {
   onClose?: () => void;
   closeAriaLabel?: string;
   contextLabel?: string;
+  // Optional single-line note surfaced above the primary CTA, e.g. when the
+  // paywall is triggered by the daily free-quota running out. Wraps to two
+  // lines on narrow screens; kept small so it never competes with the CTA.
+  dailyResetNote?: string | null;
 }
 
 export function PaywallHero({
@@ -84,6 +88,7 @@ export function PaywallHero({
   onClose,
   closeAriaLabel = "Close",
   contextLabel,
+  dailyResetNote,
 }: PaywallHeroProps) {
   const [plans, setPlans] = React.useState<PlanConfig[] | null>(null);
   const [interval, setInterval] = React.useState<BillingInterval>(initialInterval);
@@ -237,6 +242,14 @@ export function PaywallHero({
         )}
 
         <div className="flex flex-col gap-3">
+          {dailyResetNote ? (
+            <p
+              className="text-center text-xs font-medium leading-relaxed text-[hsl(var(--bc-fg))]/85"
+              data-testid="paywall-hero-daily-reset"
+            >
+              {dailyResetNote}
+            </p>
+          ) : null}
           <Button
             variant="default"
             size="xl"

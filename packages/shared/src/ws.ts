@@ -116,6 +116,9 @@ export interface PaywallEvent {
   limit: number; // -1 = unlimited (will not fire for chat)
   plans: PaywallPlanOption[];
   upgradeUrl: string;
+  // ISO UTC timestamp of the next quota reset. Set for the free plan
+  // (next UTC midnight, daily auto-renew); null for paid plans.
+  resetsAt?: string | null;
 }
 
 export type WSServerEvent =

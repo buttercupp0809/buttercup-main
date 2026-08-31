@@ -384,6 +384,7 @@ export function attachWsGateway(httpServer: HttpServer): WebSocketServer {
                   limit: body.limit,
                   plans: body.plans,
                   upgradeUrl: body.upgradeUrl,
+                  resetsAt: body.resetsAt,
                 });
                 writeAuditLog({
                   userId: session.userId,
@@ -416,6 +417,7 @@ export function attachWsGateway(httpServer: HttpServer): WebSocketServer {
                 limit: body.limit,
                 plans: body.plans,
                 upgradeUrl: body.upgradeUrl,
+                resetsAt: body.resetsAt,
               });
               writeAuditLog({
                 userId: session.userId,

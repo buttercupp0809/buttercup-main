@@ -49,7 +49,7 @@ describe("SignupDto", () => {
   });
 
   it.each([
-    ["under-12 length", "Ab1!short"],
+    ["under-8 length", "Ab1!aB"],
     ["missing uppercase", "correct-horse4battery"],
     ["missing lowercase", "CORRECT-HORSE4BATTERY"],
     ["missing digit", "Correct-horse!battery"],
@@ -59,8 +59,8 @@ describe("SignupDto", () => {
     expect(res.success).toBe(false);
   });
 
-  it("accepts a strong password (>=12, upper+lower+digit+symbol)", () => {
-    const res = SignupDto.safeParse({ ...base, password: "Correct-horse4Battery" });
+  it("accepts a strong password (>=8, upper+lower+digit+symbol)", () => {
+    const res = SignupDto.safeParse({ ...base, password: "Ab1!abcd" });
     expect(res.success).toBe(true);
   });
 

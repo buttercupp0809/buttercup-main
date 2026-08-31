@@ -209,18 +209,21 @@ function longestRun(days: Set<string>): number {
 // ---------------------------------------------------------------------------
 
 /**
- * The free tier allows 5 chats (backend `PLANS.free.chats`). The backend owns
+ * The free tier allows 15 chats per day, resets daily (UTC). The backend owns
  * enforcement; this is presentation only, so the user sees the wall coming
- * instead of hitting it mid-sentence on message five. Duplicated as a constant
- * rather than imported because frontend must not reach into backend/.
+ * instead of hitting it mid-sentence on the last message. Duplicated as a
+ * constant rather than imported because frontend must not reach into backend/.
  */
-export const FREE_CHAT_ALLOWANCE = 5;
+export const FREE_CHAT_ALLOWANCE = 15;
 
 export interface Headroom {
   used: number;
   limit: number;
   left: number;
-  /** Warn from three remaining: enough runway to act, late enough to matter. */
+  /**
+   * Warn from three remaining. With 15 chats per day, three left is late
+   * enough to convey urgency but early enough to still act on it.
+   */
   warn: boolean;
   exhausted: boolean;
 }
@@ -228,5 +231,34 @@ export interface Headroom {
 export function freeHeadroom(used: number, limit = FREE_CHAT_ALLOWANCE): Headroom {
   const u = Math.max(0, Math.floor(used || 0));
   const left = Math.max(0, limit - u);
-  return { used: u, limit, left, warn: left > 0 && left <= 5, exhausted: left === 0 };
+  return { used: u, limit, left, warn: left > 0 && left <= 3, exhausted: left === 0 };
+}
+
+// ---------------------------------------------------------------------------
+// Reset countdown formatting
+// ---------------------------------------------------------------------------
+
+/**
+ * Formats the time remaining until the free-chat quota resets. Backend
+ * returns an ISO UTC datetime on the entitlements payload; this helper turns
+ * it into a short human string used inline in copy ("resets in 3h 42m").
+ *
+ * Buckets:
+ *   >= 1h    -> "resets in Xh Ym"
+ *   >= 1m    -> "resets in Xm"
+ *   < 1m     -> "resets shortly"
+ *
+ * Returns null when the input is not a parseable date, so callers can drop
+ * the string entirely rather than render an "Invalid Date" placeholder.
+ */
+export function formatResetIn(resetsAtIso: string, now: Date = new Date()): string | null {
+  const target = new Date(resetsAtIso);
+  if (Number.isNaN(target.getTime())) return null;
+  const diffMs = target.getTime() - now.getTime();
+  if (diffMs <= 60_000) return "resets shortly";
+  const totalMinutes = Math.floor(diffMs / 60_000);
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+  if (hours <= 0) return `resets in ${minutes}m`;
+  return `resets in ${hours}h ${minutes}m`;
 }

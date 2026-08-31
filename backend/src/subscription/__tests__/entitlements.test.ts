@@ -3,7 +3,7 @@ import crypto from "node:crypto";
 import { prisma } from "@buttercupp/database";
 import { entitlementsFor } from "../entitlements";
 import { activatePlan } from "../grant";
-import { planPeriodKey } from "../period";
+import { freeChatPeriodKey, planPeriodKey } from "../period";
 import { FREE_MESSAGE_LIMIT, PLANS } from "../plans";
 import { dbReachable } from "../../test-utils/db";
 
@@ -19,22 +19,43 @@ async function makeUser(freeUsed = 0): Promise<string> {
   return u.id;
 }
 
+async function setFreeChatsUsed(userId: string, count: number): Promise<void> {
+  const period = freeChatPeriodKey();
+  await prisma.usageCounter.upsert({
+    where: { userId_counterType_period: { userId, counterType: "chat", period } },
+    create: { userId, counterType: "chat", period, count },
+    update: { count },
+  });
+}
+
 describe.skipIf(!DB_UP)("entitlementsFor", () => {
-  it("fresh free user: 10 chats, 0 media, inactive", async () => {
+  it("fresh free user: 15 chats, 0 media, inactive, resetsAt set", async () => {
     const userId = await makeUser(0);
     const ent = await entitlementsFor(userId);
     expect(ent.plan).toBe("free");
     expect(ent.active).toBe(false);
     expect(ent.expiresAt).toBeNull();
-    expect(ent.chats).toEqual({ limit: FREE_MESSAGE_LIMIT, used: 0, remaining: 10 });
-    expect(ent.images.limit).toBe(0);
+    expect(ent.chats).toEqual({ limit: FREE_MESSAGE_LIMIT, used: 0, remaining: 15 });
+    expect(ent.images.limit).toBe(PLANS.free.images);
     expect(ent.videos.limit).toBe(0);
+    expect(ent.resetsAt).not.toBeNull();
+    expect(new Date(ent.resetsAt!).getTime()).toBeGreaterThan(Date.now());
   });
 
-  it("free user with used == limit has 0 remaining", async () => {
-    const userId = await makeUser(FREE_MESSAGE_LIMIT);
+  it("free user with today's daily counter == limit has 0 remaining", async () => {
+    const userId = await makeUser(0);
+    await setFreeChatsUsed(userId, FREE_MESSAGE_LIMIT);
     const ent = await entitlementsFor(userId);
+    expect(ent.chats.used).toBe(FREE_MESSAGE_LIMIT);
     expect(ent.chats.remaining).toBe(0);
+  });
+
+  it("legacy freeMessagesUsed no longer gates chat", async () => {
+    // A user whose lifetime counter is far above the daily limit but who
+    // has NOT chatted today should still see the full daily allowance.
+    const userId = await makeUser(1000);
+    const ent = await entitlementsFor(userId);
+    expect(ent.chats.remaining).toBe(FREE_MESSAGE_LIMIT);
   });
 
   it("active daily pass: quotas minus UsageCounter counts", async () => {
@@ -88,5 +109,12 @@ describe.skipIf(!DB_UP)("entitlementsFor", () => {
     const ent = await entitlementsFor(userId);
     expect(ent.plan).toBe("free");
     expect(ent.active).toBe(false);
+  });
+
+  it("paid plan has null resetsAt (paid-plan reset is expiresAt / monthly key)", async () => {
+    const userId = await makeUser(0);
+    await activatePlan(userId, "daily");
+    const ent = await entitlementsFor(userId);
+    expect(ent.resetsAt).toBeNull();
   });
 });

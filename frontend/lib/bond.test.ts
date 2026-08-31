@@ -4,6 +4,7 @@ import {
   bondProgress,
   bondScore,
   computeStreak,
+  formatResetIn,
   freeHeadroom,
   shiftDayKey,
   tierForScore,
@@ -167,25 +168,46 @@ describe("computeStreak", () => {
 describe("freeHeadroom", () => {
   it("reports a full allowance for a new user", () => {
     const h = freeHeadroom(0);
-    expect(h.left).toBe(10);
+    expect(h.left).toBe(15);
+    expect(h.limit).toBe(15);
     expect(h.warn).toBe(false);
     expect(h.exhausted).toBe(false);
   });
 
   it("warns from three remaining", () => {
-    expect(freeHeadroom(6).warn).toBe(false);
-    expect(freeHeadroom(7).warn).toBe(true);
-    expect(freeHeadroom(9).warn).toBe(true);
+    expect(freeHeadroom(11).warn).toBe(false);
+    expect(freeHeadroom(12).warn).toBe(true);
+    expect(freeHeadroom(14).warn).toBe(true);
   });
 
   it("reports exhaustion without warning at zero left", () => {
-    const h = freeHeadroom(10);
+    const h = freeHeadroom(15);
     expect(h.left).toBe(0);
     expect(h.exhausted).toBe(true);
     expect(h.warn).toBe(false);
   });
 
   it("never goes negative when the backend counted past the limit", () => {
-    expect(freeHeadroom(45).left).toBe(0);
+    expect(freeHeadroom(50).left).toBe(0);
+  });
+});
+
+describe("formatResetIn", () => {
+  const now = new Date("2026-08-18T10:00:00.000Z");
+
+  it("formats hours and minutes", () => {
+    expect(formatResetIn("2026-08-18T13:42:00.000Z", now)).toBe("resets in 3h 42m");
+  });
+
+  it("formats minutes only when under an hour", () => {
+    expect(formatResetIn("2026-08-18T10:12:00.000Z", now)).toBe("resets in 12m");
+  });
+
+  it("collapses to 'resets shortly' under a minute", () => {
+    expect(formatResetIn("2026-08-18T10:00:30.000Z", now)).toBe("resets shortly");
+  });
+
+  it("returns null for an unparseable date", () => {
+    expect(formatResetIn("not-a-date", now)).toBeNull();
   });
 });

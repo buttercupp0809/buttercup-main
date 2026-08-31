@@ -1,8 +1,10 @@
 import { notFound } from "next/navigation";
+import { cookies } from "next/headers";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { prisma, CHARACTER_MEDIA_ORDER_BY } from "@buttercupp/database";
 import { requireAuth } from "@/lib/auth";
+import { AUTH_COOKIE } from "@/lib/constants";
 import { ChatWindow } from "@/components/chat/ChatWindow";
 import { ChatList, ChatListMobileTrigger } from "@/components/chat/ChatList";
 import { PersonaPanel, PersonaPanelMobileTrigger, type PanelMedia } from "@/components/chat/PersonaPanel";
@@ -10,7 +12,7 @@ import { getRelationship } from "@/lib/relationship";
 import { listConversations } from "@/lib/chats";
 import { getCompanionBond } from "@/lib/progress";
 import { getCompanionMemories } from "@/lib/memories";
-import { freeHeadroom } from "@/lib/bond";
+import { freeHeadroom, FREE_CHAT_ALLOWANCE, type Headroom } from "@/lib/bond";
 import { signAssetUrl } from "@/lib/cdn";
 import { dedupeByIdentity, excludeHeroIdentity } from "@/lib/character-media";
 
@@ -115,12 +117,11 @@ export default async function ChatPage({
     listConversations(user.id, CHAT_SIDEBAR_LIMIT),
     getCompanionBond(user.id, characterId),
     getCompanionMemories(user.id, characterId),
-    // Read-only view of the free-trial counter the backend enforces. Presentation
-    // only: the server still decides when to refuse a turn.
+    // Read-only view of the subscription state the backend enforces.
+    // Presentation only: the server still decides when to refuse a turn.
     prisma.user.findUnique({
       where: { id: user.id },
       select: {
-        freeMessagesUsed: true,
         subscription: { select: { plan: true, status: true, currentPeriodEnd: true } },
       },
     }),
@@ -132,7 +133,13 @@ export default async function ChatPage({
     quota.subscription.plan !== "free" &&
     (quota.subscription.currentPeriodEnd === null ||
       quota.subscription.currentPeriodEnd.getTime() > Date.now());
-  const headroom = onPaidPass ? null : freeHeadroom(quota?.freeMessagesUsed ?? 0);
+
+  // Headroom badge for the composer. Under the new daily-reset model the
+  // authoritative "chats left today" number lives in the backend
+  // entitlements payload (chats.remaining), not the User.freeMessagesUsed
+  // column (which is now a LIFETIME counter and would silently misrepresent
+  // today's usage). Best effort: any fetch failure just hides the badge.
+  const headroom = onPaidPass ? null : await fetchFreeHeadroom();
 
   // Persona panel media: images -> carousel, videos -> assets strip. Local
   // paths (starting with /) are Next.js public/ static files (seed stock
@@ -250,4 +257,36 @@ export default async function ChatPage({
       </div>
     </div>
   );
+}
+
+// Server-side pull of the daily free-chat headroom from the backend
+// entitlements endpoint. Kept local to this route because it is the only
+// place a server component needs a live headroom read; on failure we return
+// null so the composer badge simply hides instead of showing a wrong count.
+async function fetchFreeHeadroom(): Promise<Headroom | null> {
+  const jar = await cookies();
+  const auth = jar.get(AUTH_COOKIE)?.value;
+  const backend = process.env.BACKEND_URL ?? "http://localhost:4000";
+  try {
+    const r = await fetch(`${backend}/billing/entitlements`, {
+      headers: auth ? { cookie: `${AUTH_COOKIE}=${encodeURIComponent(auth)}` } : {},
+      cache: "no-store",
+    });
+    if (!r.ok) return null;
+    const data = (await r.json()) as {
+      chats?: { limit?: number; remaining?: number };
+    };
+    const limit =
+      typeof data.chats?.limit === "number" && data.chats.limit > 0
+        ? data.chats.limit
+        : FREE_CHAT_ALLOWANCE;
+    const remaining =
+      typeof data.chats?.remaining === "number"
+        ? Math.max(0, data.chats.remaining)
+        : limit;
+    const used = Math.max(0, limit - remaining);
+    return freeHeadroom(used, limit);
+  } catch {
+    return null;
+  }
 }

@@ -783,7 +783,7 @@ export function ChatWindow({
                 localHeadroom.left <= 1 ? "text-[hsl(var(--bc-amber))]" : "text-[hsl(var(--bc-muted))]"
               }`}
             >
-              {localHeadroom.left} left
+              {localHeadroom.left} left today
             </span>
           ) : null}
           <button

@@ -24,7 +24,7 @@ const emailField = z.string().trim().toLowerCase().email().max(320);
 // and the server route validators MUST use this list; do not duplicate the
 // regexes in the UI. The frontend imports PASSWORD_RULES / passwordChecklist
 // directly, so any change here is reflected in the checklist automatically.
-export const PASSWORD_MIN = 12;
+export const PASSWORD_MIN = 8;
 
 export interface PasswordRule {
   id: "min" | "upper" | "lower" | "digit" | "symbol";
@@ -50,7 +50,7 @@ export function passwordChecklist(input: string): PasswordCheckResult[] {
   return PASSWORD_RULES.map((r) => ({ id: r.id, label: r.label, ok: r.test(input) }));
 }
 
-// SIGNUP passwordField: strong rule (min 12 + upper + lower + digit + symbol).
+// SIGNUP passwordField: strong rule (min 8 + upper + lower + digit + symbol).
 // Every failing rule is surfaced as its own issue so the client-side checklist
 // and the server response line up. New accounts pay the strong-rule cost.
 const passwordField = z

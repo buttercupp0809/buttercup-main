@@ -3,10 +3,10 @@
 // webhooks, enforce.ts in Phase 21, the billing UI via the /billing/plans
 // endpoint) reads from here. Do NOT hardcode plan numbers anywhere else.
 //
-// Free is a lifetime free trial (10 chats total, no media). Daily/Weekly/
-// Monthly are duration passes that grant a fixed quota for `durationDays`.
-// Numbers for the paid plans are TUNE placeholders; the human sets the
-// final values before launch.
+// Free grants 15 chats per UTC calendar day (auto-renewing daily) plus a
+// small lifetime image allowance. Daily/Weekly/Monthly are duration passes
+// that grant a fixed quota for `durationDays`. Numbers for the paid plans
+// are TUNE placeholders; the human sets the final values before launch.
 //
 // PLAN QUOTA TYPE: counterType strings map onto quota keys as follows:
 //   "chat"  -> chats
@@ -94,8 +94,9 @@ export const PLANS: Record<Plan, PlanConfig> = {
   },
 };
 
-// Phase 21 imports this exact constant so the free-trial number lives in
-// exactly ONE place.
+// The free-plan daily chat cap (15 chats per UTC day, auto-renewing).
+// Phase 21 imports this exact constant so the free number lives in one
+// place. Historical name preserved for compatibility with existing callers.
 export const FREE_MESSAGE_LIMIT = PLANS.free.chats;
 
 const PLAN_SET: ReadonlySet<Plan> = new Set(PLANS_ORDER);

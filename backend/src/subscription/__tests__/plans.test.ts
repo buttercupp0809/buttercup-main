@@ -61,9 +61,9 @@ describe("PLANS constants", () => {
     expect(idxSubYearly).toBeGreaterThan(idxSubMonthly);
   });
 
-  it("FREE_MESSAGE_LIMIT is 10 and matches PLANS.free.chats", () => {
-    expect(FREE_MESSAGE_LIMIT).toBe(10);
-    expect(PLANS.free.chats).toBe(10);
+  it("FREE_MESSAGE_LIMIT is 15 and matches PLANS.free.chats", () => {
+    expect(FREE_MESSAGE_LIMIT).toBe(15);
+    expect(PLANS.free.chats).toBe(15);
   });
 
   it("TUNE placeholders are numeric even before final tuning", () => {
