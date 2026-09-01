@@ -20,6 +20,8 @@ import { uploadGenerated, canUploadToS3, getGeneratedSignedUrl } from "../media/
 import { createReadyAsset } from "../media/asset";
 import { resolvePoppyBaseUrl } from "../inference/poppyEndpoint";
 import { getLatestSummary } from "../llm/memory-retriever";
+import { resolveCharacterLora } from "../media/lora/resolve";
+import { resolveImageFlags } from "../media/image/flags";
 
 // Number of most recent chat turns fed into the image enrichment call as
 // background context. Clamped to [10, 20]: fewer than 10 turns loses too much
@@ -358,6 +360,21 @@ export async function generateChatImage(
     }
   }
 
+  // Resolve the newest ready CharacterLora for this character (if any). The chat
+  // consistent path has no cloud loraRef fallback, so it only needs the derived
+  // resolution (present only when the ready row has usable weights / s3Key). The
+  // IMG_LORA kill-switch must also be on for the LoRA to be activated; without it
+  // the consistent-face path is byte-identical to the pre-LoRA behavior.
+  const loraResolution = characterId ? (await resolveCharacterLora(characterId)).resolution : null;
+  const loraFlag = resolveImageFlags().lora;
+  // Both the LoRA node activation and the trigger token injection are gated on
+  // IMG_LORA so flag-off behavior is byte-identical to today (invariant). The
+  // media-job handler always injects the trigger token even when flag is off
+  // (cloud providers use it via loraRef), but the chat consistent path has no
+  // cloud fallback so the trigger token is only useful when the LoRA node fires.
+  const chatLoraName = loraFlag && loraResolution ? loraResolution.loraName : undefined;
+  const chatTriggerToken = loraFlag && loraResolution ? (loraResolution.triggerToken ?? null) : null;
+
   async function persistAndSign(
     rawBuffer: Buffer,
     provider: string,
@@ -433,11 +450,20 @@ export async function generateChatImage(
 
   if (referenceBytes) {
     const poseHint = extractPoseHint(userText);
+    // Prepend the trigger token to the positive prompt when a ready LoRA exists
+    // so the identity embedding is active (same ordering as the media-job handler).
+    // Prepend so CLIP weights it highest; enrichedPrompt follows.
+    const consistentPrompt = chatTriggerToken ? `${chatTriggerToken}, ${enrichedPrompt}` : enrichedPrompt;
     const res = await generateWithComfyUIConsistent({
-      prompt: enrichedPrompt,
+      prompt: consistentPrompt,
       negativePrompt: NEGATIVE,
       referenceBytes,
       poseHint: poseHint ?? undefined,
+      // When a ready LoRA exists and IMG_LORA is on, activate the LoRA node in
+      // the consistent workflow. No LoRA => flagOverrides omitted => behavior
+      // unchanged from today (invariant: chat selfies without a LoRA are identical
+      // to the pre-LoRA baseline).
+      ...(chatLoraName ? { loraName: chatLoraName, flagOverrides: { lora: true } } : {}),
     });
     return persistAndSign(res.buffer, res.provider, true, typeof res.meta.seed === "number" ? res.meta.seed : undefined);
   }

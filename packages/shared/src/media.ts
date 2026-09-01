@@ -3,6 +3,7 @@
 // wire shapes.
 
 import { z } from "zod";
+import { expressionSchema, poseSchema } from "./lora";
 
 export const MEDIA_QUEUE_NAME = "buttercupp-media";
 
@@ -74,6 +75,11 @@ export const creationImageJobPayloadSchema = z.object({
   characterVersionId: z.string().min(1).max(64),
   variant: z.number().int().min(0),
   userRequest: z.string().max(500).optional(),
+  // Optional expression and pose for the generated image. When absent the
+  // handler uses its existing defaults (no expression fragment, no skeleton
+  // override). Both are validated at the trust boundary by zod.
+  expression: expressionSchema.optional(),
+  pose: poseSchema.optional(),
 });
 export type CreationImageJobPayload = z.infer<typeof creationImageJobPayloadSchema>;
 

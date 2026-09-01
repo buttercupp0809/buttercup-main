@@ -1,0 +1,53 @@
+# kohya_ss SDXL LoRA reference config template.
+#
+# This file documents the canonical training settings for per-character LoRA
+# runs. The runtime generates a config from this template via buildKohyaConfig
+# in backend/src/media/lora/train.ts; it substitutes datasetDir, outputName,
+# and rank at job-submission time.
+#
+# DO NOT use this file directly for training. It is a reference template only.
+#
+# Settings rationale:
+#   network_dim = 32       Rank 32 balances capacity vs. file size for characters.
+#   network_alpha = 16     Alpha at half rank (16) gives a stable effective LR.
+#   resolution = "1024,1024"  SDXL native resolution; no upscale artifacts.
+#   max_train_steps = 1500    Sufficient for 15-20 curated images per character.
+#   save_every_n_steps = 500  Three checkpoints: 500, 1000, 1500.
+#   mixed_precision = "bf16"  A10G/A100 bf16 is faster and numerically stable.
+#   lr_scheduler = "cosine_with_restarts"  Better final quality than constant LR.
+#   enable_bucket = true      Dynamic aspect-ratio bucketing for varied crops.
+
+[general]
+enable_bucket = true
+
+[model]
+pretrained_model_name_or_path = "stabilityai/stable-diffusion-xl-base-1.0"
+mixed_precision = "bf16"
+
+[dataset]
+train_data_dir = "${datasetDir}"
+resolution = "1024,1024"
+
+[output]
+output_name = "${outputName}"
+output_dir = "${datasetDir}/output"
+save_every_n_steps = 500
+save_model_as = "safetensors"
+
+[training]
+max_train_steps = 1500
+learning_rate = 1e-4
+unet_lr = 1e-4
+text_encoder_lr = 5e-5
+lr_scheduler = "cosine_with_restarts"
+lr_warmup_steps = 100
+train_batch_size = 1
+gradient_accumulation_steps = 1
+gradient_checkpointing = true
+mixed_precision = "bf16"
+seed = 42
+
+[network]
+network_module = "networks.lora"
+network_dim = 32
+network_alpha = 16

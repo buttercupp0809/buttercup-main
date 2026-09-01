@@ -7,7 +7,7 @@ const base = { ckpt: "juggernautXL_v9.safetensors", positive: "p", negative: "n"
 // vitest.setup.ts loads backend/.env, which may enable flags operationally.
 // Clear them so resolveImageFlags() reflects true defaults in these tests.
 beforeEach(() => {
-  for (const k of ["IMG_FACEDETAILER", "IMG_HAND_DETAILER", "IMG_POSE_CONTROLNET", "IMG_YAW_GATE", "IMG_PULID"]) {
+  for (const k of ["IMG_FACEDETAILER", "IMG_HAND_DETAILER", "IMG_POSE_CONTROLNET", "IMG_YAW_GATE", "IMG_PULID", "IMG_LORA", "IMG_UPSCALE_TAIL"]) {
     delete process.env[k];
   }
 });
@@ -80,5 +80,62 @@ describe("assembleConsistentWorkflow (all flags off = current graph)", () => {
     expect(classes).not.toContain("DetailerForEach");
     // GPEN visibility is not dropped when FaceDetailer could not be added.
     expect((g["50"] as { inputs: Record<string, unknown> }).inputs.gpen_visibility).toBeUndefined();
+  });
+
+  it("is byte-identical when the lora flag is off (regression guard)", () => {
+    const off = assembleConsistentWorkflow({
+      ckpt: "juggernautXL_v9.safetensors", positive: "p", negative: "n",
+      refName: "r.png", seed: 1, flags: resolveImageFlags(),
+    });
+    expect(off["30"]).toBeUndefined();
+    expect((off["6"] as any).inputs.clip).toEqual(["4", 1]);
+  });
+
+  it("inserts LoRA node 30, reroutes clip, lowers ipWeight when lora on", () => {
+    const on = assembleConsistentWorkflow({
+      ckpt: "realvisxlV50.safetensors", positive: "ch_abc woman", negative: "n",
+      refName: "r.png", seed: 1, flags: resolveImageFlags({ lora: true }),
+      loraName: "ch_abc.safetensors",
+      availableNodes: new Set(["LoraLoader", "ApplyInstantIDAdvanced"]),
+    });
+    expect((on["30"] as any).class_type).toBe("LoraLoader");
+    expect((on["6"] as any).inputs.clip).toEqual(["30", 1]);
+    expect((on["23"] as any).inputs.model).toEqual(["30", 0]);
+    expect((on["23"] as any).inputs.ip_weight).toBe(0.6);
+  });
+
+  it("byte-identical when upscaleTail is off: node 110 absent and lastImage unchanged", () => {
+    const g = assembleConsistentWorkflow({ ...base, flags: resolveImageFlags() });
+    // Node 110 (VAEEncode for upscale) must be absent when upscaleTail is off.
+    expect(g["110"]).toBeUndefined();
+    expect(g["111"]).toBeUndefined();
+    expect(g["112"]).toBeUndefined();
+    expect(g["113"]).toBeUndefined();
+    // SaveImage still consumes faceswap output (lastImage unchanged).
+    expect((g["9"] as { inputs: { images: [string, number] } }).inputs.images).toEqual(["50", 0]);
+  });
+
+  it("adds upscale nodes 110-113 and advances SaveImage when upscaleTail on", () => {
+    const g = assembleConsistentWorkflow({
+      ...base, flags: resolveImageFlags({ upscaleTail: true }),
+      availableNodes: new Set(["LatentUpscaleBy"]),
+    });
+    expect((g["110"] as any).class_type).toBe("VAEEncode");
+    expect((g["113"] as any).class_type).toBe("LatentUpscaleBy");
+    expect((g["111"] as any).class_type).toBe("KSampler");
+    expect((g["111"] as any).inputs.denoise).toBeLessThanOrEqual(0.35);
+    expect((g["112"] as any).class_type).toBe("VAEDecode");
+    // SaveImage now consumes the upscale VAEDecode output.
+    expect((g["9"] as { inputs: { images: [string, number] } }).inputs.images).toEqual(["112", 0]);
+  });
+
+  it("skips upscale block when LatentUpscaleBy not in availableNodes", () => {
+    const g = assembleConsistentWorkflow({
+      ...base, flags: resolveImageFlags({ upscaleTail: true }),
+      availableNodes: new Set<string>(), // empty: LatentUpscaleBy unavailable
+    });
+    expect(g["110"]).toBeUndefined();
+    // SaveImage still consumes faceswap output (no upscale).
+    expect((g["9"] as { inputs: { images: [string, number] } }).inputs.images).toEqual(["50", 0]);
   });
 });
