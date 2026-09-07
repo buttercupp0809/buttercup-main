@@ -186,4 +186,50 @@ describe("streamLLM", () => {
     expect(res.provider).toBe("anthropic");
     expect(tokens.join("")).toBe("Anthropic serves");
   });
+
+  // Regression: the 1.5s intent classifier aborts poppy on every message. An
+  // abort must NOT trip the breaker, or the real chat turn that follows finds
+  // poppy circuit-open and cascades to the hardcoded fallback.
+  it("an abort does NOT trip the circuit breaker (classifier poisoning fix)", async () => {
+    let attempt = 0;
+    const flaky = {
+      chat: {
+        completions: {
+          create: async () => {
+            attempt += 1;
+            if (attempt === 1) {
+              // Simulate the caller's 1.5s classify signal firing.
+              const e = new Error("Request was aborted.");
+              e.name = "AbortError";
+              throw e;
+            }
+            return {
+              async *[Symbol.asyncIterator]() {
+                yield { choices: [{ delta: { content: "poppy is healthy" } }] };
+              },
+            };
+          },
+        },
+      },
+    };
+    _setTestClients({ poppy: flaky });
+
+    // First call: poppy aborts, chain falls through to hardcoded.
+    const t1: string[] = [];
+    const r1 = await streamLLM(
+      { purpose: "extract", systemPrompt: "sp", messages: [{ role: "user", content: "hi" }], maxTokens: 16, temperature: 0, contentRating: "mature" },
+      (t) => t1.push(t),
+    );
+    expect(r1.provider).toBe("hardcoded");
+
+    // Second call (the real chat turn): poppy breaker must still be CLOSED, so
+    // poppy is retried and now succeeds instead of being skipped.
+    const t2: string[] = [];
+    const r2 = await streamLLM(
+      { purpose: "chat", systemPrompt: "sp", messages: [{ role: "user", content: "hi" }], maxTokens: 16, temperature: 0.7, contentRating: "mature" },
+      (t) => t2.push(t),
+    );
+    expect(r2.provider).toBe("poppy");
+    expect(t2.join("")).toBe("poppy is healthy");
+  });
 });

@@ -107,6 +107,21 @@ function isRateLimitError(err: unknown): boolean {
   return false;
 }
 
+// An abort reflects the CALLER's timeout or cancellation (e.g. the 1.5s intent
+// classifier signal, or a client disconnect), NOT the provider being unhealthy.
+// We must NOT trip the circuit breaker on an abort: the intent classifier runs
+// on every message with a 1.5s signal and mature routing (poppy first), so
+// treating its aborts as provider failures would open the poppy + openrouter
+// breakers and poison the REAL chat turn that follows milliseconds later.
+function isAbortError(err: unknown): boolean {
+  if (err instanceof Error) {
+    if (err.name === "AbortError") return true;
+    const m = err.message.toLowerCase();
+    return m.includes("aborted") || m.includes("was aborted");
+  }
+  return false;
+}
+
 async function callWithRateLimitRetry<T>(fn: () => Promise<T>): Promise<T> {
   try {
     return await fn();
@@ -486,9 +501,16 @@ export async function streamLLM(
       return { text, provider, model, fallback };
     } catch (err) {
       const elapsed = Date.now() - startedAt;
-      markFailed(provider);
-      recordProviderOutcome({ provider, success: false });
       const emsg = err instanceof Error ? err.message : String(err);
+      const aborted = isAbortError(err);
+      // Only a genuine provider failure trips the breaker. An abort is the
+      // caller's timeout/cancellation (notably the 1.5s intent classifier),
+      // not provider health; tripping the breaker on it would wrongly open a
+      // healthy provider for the real chat turn that follows.
+      if (!aborted) {
+        markFailed(provider);
+        recordProviderOutcome({ provider, success: false });
+      }
       if (emittedAny) {
         // Partial stream. Do not fall through to another provider; return what
         // we streamed so the client sees a clean end even on failure.
@@ -496,7 +518,7 @@ export async function streamLLM(
         return { text: "", provider, model, fallback: false };
       }
       // No tokens yet, safe to try the next provider.
-      logWarn("LLM", `${provider} failed after ${elapsed}ms, falling through`, { err: emsg });
+      logWarn("LLM", `${provider} ${aborted ? "aborted" : "failed"} after ${elapsed}ms, falling through`, { err: emsg });
     }
   }
 
