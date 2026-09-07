@@ -20,6 +20,7 @@ import { uploadGenerated, canUploadToS3, getGeneratedSignedUrl } from "../media/
 import { createReadyAsset } from "../media/asset";
 import { resolvePoppyBaseUrl } from "../inference/poppyEndpoint";
 import { getLatestSummary } from "../llm/memory-retriever";
+import { stripImageDescriptionBlocks } from "../llm/sanitize";
 
 // Number of most recent chat turns fed into the image enrichment call as
 // background context. Clamped to [10, 20]: fewer than 10 turns loses too much
@@ -316,13 +317,17 @@ export async function generateImageTeaser(
   try {
     const result = await callLLM({
       purpose: "chat",
-      systemPrompt: `You are ${characterName}. The user has requested a photo of you. Write a short, playful, in-character response (1-2 sentences) to let them know their photo is on its way. Be flirtatious and stay fully in character. No hashtags, no emojis, no stage directions. CRITICAL: Never say you cannot, will not, or are unable to provide, send, or show an image. You ARE sending one right now. Any refusal breaks the experience.`,
+      systemPrompt: `You are ${characterName}. The user has requested a photo of you. Write a short, playful, in-character response (1-2 sentences) to let them know their photo is on its way. Be flirtatious and stay fully in character. Output ONLY the spoken line: no hashtags, no emojis, no stage directions, no meta commentary, no square brackets, and NEVER include an image description or caption (do not write "[Image description: ...]", "[Photo: ...]", "[Image: ...]", or anything in brackets). Just the sentence you would say out loud. CRITICAL: Never say you cannot, will not, or are unable to provide, send, or show an image. You ARE sending one right now. Any refusal breaks the experience.`,
       messages: [{ role: "user", content: userPrompt }],
       maxTokens: 70,
       temperature: 0.9,
       contentRating: "mature",
     });
-    const text = result.text?.trim();
+    // Hard sanitizer: strip any bracketed image-description / stage-direction
+    // block the model appended despite the prompt, before the teaser is either
+    // streamed OR persisted. Centralized here so both transports (WS gateway
+    // and SSE chat-stream) get the cleaned text from the single return value.
+    const text = stripImageDescriptionBlocks(result.text?.trim() ?? "");
     // Never surface the generic hardcoded LLM fallback as a teaser.
     if (!text || result.provider === "hardcoded") return fallback;
     // Catch any refusal phrases the model slipped through despite the prompt.
