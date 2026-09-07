@@ -260,11 +260,15 @@ async function resolvePoppyChatClient(): Promise<OpenAILike | null> {
         apiKey: process.env.POPPY_API_KEY ?? "sk-none",
         baseURL: `${base}/v1`,
         // Fast-fail when the GPU box is down/unreachable. Without a cap a hung
-        // box stalls the whole turn ~30s before falling through to OpenRouter,
-        // which the user feels as lag. A healthy Stheno streams its first token
-        // well under this, so it only trims the dead wait, never a live stream.
-        // maxRetries: 0 because the routing loop already handles fallthrough.
-        timeout: Number(process.env.POPPY_TIMEOUT_MS ?? 12000),
+        // box stalls the whole turn before falling through to OpenRouter, which
+        // the user feels as lag. Prod currently cannot reach the box at all, so
+        // every poppy attempt hangs to this timeout; keep it tight (4s) so the
+        // failover to OpenRouter is quick. A healthy, reachable Stheno streams
+        // its first token well under 4s, so this only trims the dead wait, never
+        // a live stream. maxRetries: 0 because the routing loop handles
+        // fallthrough. Override with POPPY_TIMEOUT_MS if the box is ever wired
+        // over a slower path.
+        timeout: Number(process.env.POPPY_TIMEOUT_MS ?? 4000),
         maxRetries: 0,
       });
       _poppyBase = base;
