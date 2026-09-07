@@ -120,6 +120,27 @@ async function callWithRateLimitRetry<T>(fn: () => Promise<T>): Promise<T> {
   }
 }
 
+// Merge a caller-supplied AbortSignal with a per-request timeout so cloud
+// provider calls never block indefinitely when a network stall prevents the
+// connection from closing. The shorter of the two signals wins.
+function makeCallSignal(callerSignal: AbortSignal | undefined, timeoutMs: number): AbortSignal {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  controller.signal.addEventListener("abort", () => clearTimeout(timer), { once: true });
+  if (callerSignal) {
+    if (callerSignal.aborted) {
+      clearTimeout(timer);
+      controller.abort(callerSignal.reason);
+    } else {
+      callerSignal.addEventListener("abort", () => {
+        clearTimeout(timer);
+        controller.abort(callerSignal.reason);
+      }, { once: true });
+    }
+  }
+  return controller.signal;
+}
+
 // ============================================================================
 // Lazy client accessors (all optional dependencies)
 // ============================================================================
@@ -441,13 +462,19 @@ export async function streamLLM(
       emittedAny = true;
       onToken(d);
     };
+    // Cloud providers have no built-in per-request timeout; merge a timeout
+    // signal so a stalled connection doesn't block the chain indefinitely.
+    // poppy's client already has a 12s timeout set at construction time.
+    const callParams = provider === "poppy"
+      ? params
+      : { ...params, signal: makeCallSignal(params.signal, params.timeoutMs ?? 30_000) };
     const startedAt = Date.now();
     try {
       const text = await callWithRateLimitRetry(async () => {
         if (provider === "anthropic") {
-          return streamAnthropic(client as AnthropicLike, params, model, wrappedOnToken);
+          return streamAnthropic(client as AnthropicLike, callParams, model, wrappedOnToken);
         }
-        return streamOpenAICompatible(client as OpenAILike, params, model, wrappedOnToken);
+        return streamOpenAICompatible(client as OpenAILike, callParams, model, wrappedOnToken);
       });
       const elapsed = Date.now() - startedAt;
       const fallback = provider !== routing.order[0];
@@ -476,7 +503,10 @@ export async function streamLLM(
   logWarn("LLM", `all providers unavailable for ${params.purpose} -> hardcoded fallback`);
   incrementCounter("llm_provider:hardcoded");
   recordProviderOutcome({ provider: "hardcoded", success: false, fallback: true });
-  onToken(HARDCODED_FALLBACK_TEXT);
+  // Do NOT stream the fallback text as tokens: engine.ts detects
+  // provider:"hardcoded" and throws so the transport delivers an error frame
+  // with a retry button instead of a fake character bubble that would be
+  // persisted to history and consume the user's quota.
   return { text: HARDCODED_FALLBACK_TEXT, provider: "hardcoded", model: "hardcoded", fallback: true };
 }
 

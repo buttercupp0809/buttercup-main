@@ -131,7 +131,7 @@ describe("streamLLM", () => {
     expect(res.fallback).toBe(true);
   });
 
-  it("emits the hardcoded fallback when every provider fails", async () => {
+  it("returns hardcoded result without emitting tokens when every provider fails", async () => {
     _setTestClients({
       poppy: makeOpenAIFailing(),
       openrouter: makeOpenAIFailing(),
@@ -158,7 +158,11 @@ describe("streamLLM", () => {
       (t) => tokens.push(t),
     );
     expect(res.provider).toBe("hardcoded");
-    expect(tokens.join("")).toContain("lost the thread");
+    // engine.ts detects provider:"hardcoded" and throws before using res.text,
+    // so we must NOT emit the fallback string as tokens (that would render it
+    // as a fake character bubble and persist it to conversation history).
+    expect(tokens.join("")).toBe("");
+    expect(res.text).toContain("lost the thread");
   });
 
   it("skips a provider whose client is not configured", async () => {
