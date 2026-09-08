@@ -154,6 +154,20 @@ export async function getGeneratedSignedUrl(s3Key: string, ttlSeconds = 15 * 60)
   return deps.getSignedUrl(deps.client, cmd, { expiresIn: ttlSeconds });
 }
 
+// Lower-level GetObject against the shared singleton S3 client. Returns the raw
+// body bytes. Throws if the AWS SDK is unavailable or the key does not exist.
+export async function getRawFromS3(bucket: string, key: string): Promise<Buffer> {
+  const deps = loadS3();
+  if (!deps) throw new Error("aws sdk not available");
+  const GetCtor = deps.GetObjectCommand as new (args: Record<string, unknown>) => unknown;
+  const cmd = new GetCtor({ Bucket: bucket, Key: key });
+  const send = (deps.client as { send: (c: unknown) => Promise<unknown> }).send.bind(deps.client);
+  const result = await send(cmd) as { Body?: { transformToByteArray(): Promise<Uint8Array> } };
+  if (!result.Body) throw new Error(`empty body for s3://${bucket}/${key}`);
+  const bytes = await result.Body.transformToByteArray();
+  return Buffer.from(bytes);
+}
+
 // Lower-level PutObject against the shared singleton S3 client. Callers that
 // already know the exact bucket + key (e.g. the LoRA dataset manifest uploader)
 // use this instead of constructing their own S3Client. Reuses loadS3() so the

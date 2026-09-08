@@ -60,6 +60,7 @@ const PASS_RESULT = {
 // Helper: build fake deps where all stages succeed.
 function buildSuccessDeps(): HandlerDeps {
   return {
+    uploadReferenceImage: vi.fn().mockResolvedValue("ref/char-1/ver-1"),
     buildDataset: vi.fn().mockResolvedValue({
       images: [{ key: "img.jpg", kind: "gallery", arcfaceScore: 0.9 }],
       manifestKey: "manifest.json",
@@ -209,6 +210,29 @@ describe("runTrainLoraJob", () => {
   // Failure paths
   // -------------------------------------------------------------------------
   describe("failure path", () => {
+    it("sets status to failed if uploadReferenceImage throws", async () => {
+      const findFirstMock = await getPrismaFindFirstMock();
+      const createMock = await getPrismaCreateMock();
+      const updateMock = await getPrismaUpdateMock();
+
+      findFirstMock.mockResolvedValue(null);
+      createMock.mockResolvedValue({ id: "lora-fail-ref" });
+      updateMock.mockResolvedValue({ id: "lora-fail-ref" });
+
+      const deps = buildSuccessDeps();
+      (deps.uploadReferenceImage as ReturnType<typeof vi.fn>).mockRejectedValue(
+        new Error("no image found for character char-1"),
+      );
+
+      await runTrainLoraJob(PAYLOAD, deps);
+
+      const failCall = updateMock.mock.calls.find(
+        (c: [{ data: { status: string } }]) => c[0].data.status === "failed",
+      );
+      expect(failCall).toBeDefined();
+      expect(failCall![0].data.error).toContain("no image found for character");
+    });
+
     it("sets status to failed if buildDataset throws", async () => {
       const findFirstMock = await getPrismaFindFirstMock();
       const createMock = await getPrismaCreateMock();

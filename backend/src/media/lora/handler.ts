@@ -33,6 +33,13 @@ import type { PromoteLoraArgs } from "./promote";
 // ---------------------------------------------------------------------------
 
 export interface HandlerDeps {
+  /**
+   * Pre-Stage 1: upload the character's primary image to S3 under the LoRA
+   * reference key (ref/<characterId>/<characterVersionId>) so the training-box
+   * ArcFace scorer can use it as the identity ground truth.
+   */
+  uploadReferenceImage(characterId: string, characterVersionId: string): Promise<string>;
+
   /** Stage 1: build the curated training dataset. */
   buildDataset(args: {
     characterId: string;
@@ -84,8 +91,12 @@ import { uploadManifestToS3 } from "./clients/manifest-s3";
 import { scoreImages, getBaseline, scoreChain } from "./clients/arcface-client";
 import { vlmCaption } from "./clients/caption-client";
 import { submitJob, collectCheckpoints } from "./clients/training-client";
+import { uploadReferenceImage as _uploadReferenceImage } from "./clients/reference-upload";
 
 const PRODUCTION_HANDLER_DEPS: HandlerDeps = {
+  uploadReferenceImage: (characterId, characterVersionId) =>
+    _uploadReferenceImage(characterId, characterVersionId),
+
   buildDataset: (args) =>
     _buildDataset(args, {
       listGallery: (characterId) => listGalleryImages(characterId),
@@ -187,6 +198,11 @@ export async function runTrainLoraJob(
   // 2. Pipeline: each stage updates status before running.
   // ------------------------------------------------------------------
   try {
+    // Pre-Stage 1: upload the character's primary image as the ArcFace reference.
+    // The training box reads ref/<characterId>/<versionId> from the generated
+    // bucket to score identity similarity throughout dataset curation and validation.
+    await deps.uploadReferenceImage(characterId, characterVersionId);
+
     // Stage 1: Build dataset
     await setStatus(loraId, "building");
     const datasetResult = await deps.buildDataset({
