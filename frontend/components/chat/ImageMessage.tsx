@@ -1,22 +1,33 @@
 "use client";
 
-// Inline image bubble. Shows a loading skeleton while generating, then a
-// natural-aspect thumbnail. Clicking opens a lightbox that shows ONLY the
-// full image (no caption, no paywall, no CTA). The upsell lives elsewhere
-// (the in-conversation "Want more photos" nudge and the quota PaywallModal),
-// never inside the click-to-expand view of a chat-generated image.
+// Inline image bubble for chat-generated images.
+//
+// Shows a loading skeleton while generating, then a thumbnail. Clicking opens
+// a modal whose content depends on the viewer's plan:
+//
+//   Paid (isPremium=true):  image-only lightbox -- the photo inside a rounded
+//     ModalCard, nothing else. No text, no CTA, no upgrade nudge.
+//
+//   Free (isPremium=false): UpgradeModal -- the generated photo fills the
+//     hero background and the upgrade/subscribe section overlays at the
+//     bottom, matching the same visual pattern used in the gallery paywall.
 
 import * as React from "react";
-import { ModalOverlay, ModalCloseButton } from "@/components/ui/Modal";
+import { ModalOverlay, ModalCard, ModalCloseButton } from "@/components/ui/Modal";
+import { UpgradeModal } from "@/components/ui/UpgradeModal";
 
 interface Props {
   mediaAssetId: string;
   url: string | null;
   caption?: string;
   error?: string | null;
+  /** True when the viewer holds an active paid subscription. */
+  isPremium?: boolean;
+  /** Character name forwarded to the upgrade modal title and alt text. */
+  characterName?: string;
 }
 
-export function ImageMessage({ mediaAssetId, url, caption, error }: Props) {
+export function ImageMessage({ mediaAssetId, url, caption, error, isPremium = false, characterName }: Props) {
   const [open, setOpen] = React.useState(false);
   // Tracks a load failure so a broken/expired signed URL renders as a
   // retryable placeholder instead of the browser's default broken-image
@@ -74,13 +85,6 @@ export function ImageMessage({ mediaAssetId, url, caption, error }: Props) {
           style={{ maxWidth: "200px" }}
           aria-label="View image"
         >
-          {/*
-            Alt text is intentionally empty (or the user's caption). A
-            literal "generated" fallback leaks into the message bubble as
-            broken-image text if the URL ever 404s, which is confusing to
-            the user; the image is decorative from an a11y standpoint
-            (the surrounding message says the character sent a photo).
-          */}
           <img
             key={retryKey}
             src={url}
@@ -96,18 +100,26 @@ export function ImageMessage({ mediaAssetId, url, caption, error }: Props) {
       </div>
 
       {open ? (
-        <ImageModal url={url} onClose={() => setOpen(false)} />
+        isPremium ? (
+          <PaidImageModal url={url} onClose={() => setOpen(false)} />
+        ) : (
+          <UpgradeModal
+            imageSrc={url}
+            imageAlt={characterName ?? ""}
+            imageBlurred={false}
+            title="Unlock Premium Photos"
+            onClose={() => setOpen(false)}
+          />
+        )
       ) : null}
     </>
   );
 }
 
-// Image-only lightbox for a chat-generated image. Deliberately bare: just the
-// whole image (object-contain, capped to the viewport), a dark backdrop, a
-// close button, and click-outside / Escape to dismiss. No caption, no paywall,
-// no CTA. This is intentionally NOT built on ModalCard (which paints a rose
-// gradient + hairline + corner glows) so nothing frames the image.
-function ImageModal({
+// Image-only lightbox for paid users. Shows the full photo inside the standard
+// product ModalCard (rounded-3xl corners, glass gradient bg, rose+violet
+// shadow) with nothing else -- no caption, no CTA, no upgrade nudge.
+function PaidImageModal({
   url,
   onClose,
 }: {
@@ -126,18 +138,17 @@ function ImageModal({
     <ModalOverlay
       role="dialog"
       aria-modal
-      backdropOpacity={0.92}
-      disableAmbientGlow
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
-      <div className="relative my-auto flex max-h-[90vh] max-w-[92vw] items-center justify-center">
+      <ModalCard size="md" className="overflow-hidden">
         <ModalCloseButton onClick={onClose} />
         <img
           src={url}
           alt=""
-          className="block max-h-[90vh] max-w-[92vw] w-auto h-auto object-contain"
+          className="block w-full h-auto"
+          style={{ maxHeight: "80vh", objectFit: "contain" }}
         />
-      </div>
+      </ModalCard>
     </ModalOverlay>
   );
 }

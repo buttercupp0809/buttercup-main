@@ -57,6 +57,12 @@ export interface ChatWindowProps {
   /** Remaining free messages, so the wall is visible before it is hit. */
   headroom?: Headroom | null;
   /**
+   * True when the viewer holds an active paid subscription. Controls whether
+   * clicking a generated image opens a bare image lightbox (paid) or the
+   * full upgrade modal with the image as the hero background (free).
+   */
+  isPremium?: boolean;
+  /**
    * Controls hosted inside the header below xl, where the side panels are
    * hidden and their triggers have nowhere else to live. Rendering them here
    * instead of in a second strip keeps mobile to a single chat bar.
@@ -76,6 +82,7 @@ export function ChatWindow({
   bond,
   greeting,
   headroom,
+  isPremium = false,
   mobileLeading,
   mobileTrailing,
 }: ChatWindowProps) {
@@ -661,7 +668,7 @@ export function ChatWindow({
           if (m.imageUrl || inlineDataImage) {
             return (
               <div key={m.id} className="flex justify-start" data-testid="bubble-image">
-                <ImageMessage mediaAssetId={m.id} url={m.imageUrl ?? m.content} />
+                <ImageMessage mediaAssetId={m.id} url={m.imageUrl ?? m.content} isPremium={isPremium} characterName={characterName} />
               </div>
             );
           }

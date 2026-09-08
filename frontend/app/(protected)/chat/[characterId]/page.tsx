@@ -210,6 +210,7 @@ export default async function ChatPage({
             bond={bond}
             greeting={character.currentVersion?.greeting ?? null}
             headroom={headroom}
+            isPremium={onPaidPass}
             mobileLeading={
               <>
                 <Link
