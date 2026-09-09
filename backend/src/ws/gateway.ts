@@ -18,11 +18,15 @@ import { prisma } from "@buttercupp/database";
 import {
   assertCanChat,
   assertCanImage,
+  assertCanTease,
   recordChatConsumption,
   recordImageConsumption,
   PaywallError,
   type PaywallInfo,
 } from "../subscription/enforce";
+import { entitlementsFor } from "../subscription/entitlements";
+import { ctaLineFor } from "../subscription/teaser-cta";
+import { blurredDataUriForKey } from "../media/blur";
 import { writeAuditLog } from "../utils/audit";
 import { createWorkerConnection } from "../queue/connection";
 import { userChannel, type WsBridgeMessage } from "../queue/ws-notify";
@@ -265,109 +269,210 @@ export function attachWsGateway(httpServer: HttpServer): WebSocketServer {
           //   4. Generate the image
           //   5. Save assistant image message to DB
           //   6. Send media.ready with the result
+          //
+          // Free-tier teaser path: free users get a real image generated but
+          // delivered locked (blurred + CTA). Paid users are unchanged.
           if ((await classifyMessageIntent(parsed.text)) === "image") {
             logInfo("ws", `image request conv=${parsed.conversationId}`, { userId: session.userId });
             try {
-              // 0. Paywall gate. Runs BEFORE any persistence or GPU work so a
-              //    blocked user never generates and does not accrue a stray
-              //    message. A thrown PaywallError becomes the same `paywall`
-              //    frame the text path emits (see the catch below).
-              await assertCanImage(session.userId);
+              // 0. Entitlement check: branch on free vs paid.
+              const ent = await entitlementsFor(session.userId);
+              const isFreeUser = !ent.active;
 
-              // 1. Save user message
-              await prisma.message.create({
-                data: {
-                  conversationId: parsed.conversationId,
-                  role: "user",
-                  content: parsed.text,
-                },
-              });
+              if (isFreeUser) {
+                // Free-teaser path.
+                const convRowFree = await prisma.conversation.findUnique({
+                  where: { id: parsed.conversationId },
+                  select: { characterId: true, character: { select: { name: true } } },
+                });
+                const characterName = convRowFree?.character?.name ?? "companion";
+                const characterId = convRowFree?.characterId ?? null;
 
-              // 2. Look up character name for teaser
-              const convRow = await prisma.conversation.findUnique({
-                where: { id: parsed.conversationId },
-                select: { character: { select: { name: true } } },
-              });
-              const characterName = convRow?.character?.name ?? "companion";
+                const teaserDecision = await assertCanTease(session.userId, characterId);
 
-              // 3. Get in-character teaser from Steno and stream it as tokens
-              const teaser = await generateImageTeaser(characterName, parsed.text);
-              send(ws, { type: "chat.token", conversationId: parsed.conversationId, delta: teaser });
-
-              // 4. Save teaser as assistant message
-              const teaserMsg = await prisma.message.create({
-                data: {
-                  conversationId: parsed.conversationId,
-                  role: "assistant",
-                  content: teaser,
-                },
-              });
-
-              // 5. Signal that an image is being generated (frontend shows skeleton)
-              send(ws, {
-                type: "chat.done",
-                conversationId: parsed.conversationId,
-                messageId: teaserMsg.id,
-                provider: "stheno",
-                model: "image-pending",
-              });
-
-              // 6. Generate the image
-              const img = await generateChatImage(parsed.text, parsed.conversationId, session.userId);
-
-              // 7. Save assistant image message so it persists across page reloads.
-              //    Production: use MediaAsset ID as the message PK and link via
-              //    mediaAssetId so the page can sign the S3 URL on reload.
-              //    Local dev (no S3): store the data URL in content directly so
-              //    the message still persists (it won't look great in DB but it
-              //    works until S3 is wired up).
-              const imgMsgId = img.mediaAssetId ?? `img-${Date.now()}`;
-              if (img.mediaAssetId) {
+                // 1. Save user message.
                 await prisma.message.create({
-                  data: {
-                    id: img.mediaAssetId,
-                    conversationId: parsed.conversationId,
-                    role: "assistant",
-                    content: "",
-                    mediaAssetId: img.mediaAssetId,
-                  },
+                  data: { conversationId: parsed.conversationId, role: "user", content: parsed.text },
+                });
+
+                // 2. In-character teaser streamed as tokens.
+                const teaser = await generateImageTeaser(characterName, parsed.text);
+                send(ws, { type: "chat.token", conversationId: parsed.conversationId, delta: teaser });
+
+                // 3. Save teaser, signal pending.
+                const teaserMsg = await prisma.message.create({
+                  data: { conversationId: parsed.conversationId, role: "assistant", content: teaser },
+                });
+                send(ws, {
+                  type: "chat.done",
+                  conversationId: parsed.conversationId,
+                  messageId: teaserMsg.id,
+                  provider: "stheno",
+                  model: "image-pending",
+                });
+
+                let imgAssetId: string;
+                // s3Key of the delivered teaser, resolved to compute the live
+                // inline blur. Null only when generation fell back to base64.
+                let teaserS3Key: string | null = null;
+
+                if (teaserDecision.action === "generate") {
+                  // assertCanTease already atomically incremented the daily
+                  // counter; do NOT increment again.
+                  // 4. Generate a real image.
+                  const img = await generateChatImage(parsed.text, parsed.conversationId, session.userId);
+                  imgAssetId = img.mediaAssetId ?? `img-${Date.now()}`;
+                  if (img.mediaAssetId) {
+                    const asset = await prisma.mediaAsset.findUnique({
+                      where: { id: img.mediaAssetId },
+                      select: { s3Key: true },
+                    });
+                    teaserS3Key = asset?.s3Key ?? null;
+                    await prisma.message.create({
+                      data: {
+                        id: img.mediaAssetId,
+                        conversationId: parsed.conversationId,
+                        role: "assistant",
+                        content: "",
+                        mediaAssetId: img.mediaAssetId,
+                      },
+                    });
+                  } else {
+                    await prisma.message.create({
+                      data: {
+                        id: imgAssetId,
+                        conversationId: parsed.conversationId,
+                        role: "assistant",
+                        content: "[shared a photo]",
+                      },
+                    });
+                  }
+                } else {
+                  // Over daily cap: re-serve an existing teaser asset.
+                  imgAssetId = teaserDecision.existingAssetId;
+                  logInfo("ws", `free_teaser over cap, reusing asset ${imgAssetId}`, { userId: session.userId });
+                  const asset = await prisma.mediaAsset.findUnique({
+                    where: { id: imgAssetId },
+                    select: { s3Key: true },
+                  });
+                  teaserS3Key = asset?.s3Key ?? null;
+                  await prisma.message.create({
+                    data: {
+                      id: `reuse-${Date.now()}`,
+                      conversationId: parsed.conversationId,
+                      role: "assistant",
+                      content: "",
+                      mediaAssetId: imgAssetId,
+                    },
+                  });
+                }
+
+                await prisma.conversation.update({
+                  where: { id: parsed.conversationId },
+                  data: { lastMessageAt: new Date() },
+                });
+
+                // 5. Deliver locked media.ready with the REAL inline blur (C-1).
+                //    The blur module always returns a valid data URI. NO real
+                //    URL or s3Key is sent to the client.
+                const blurUri = teaserS3Key ? await blurredDataUriForKey(teaserS3Key) : undefined;
+                const ctaText = ctaLineFor(imgAssetId, characterName);
+                send(ws, {
+                  type: "media.ready",
+                  conversationId: parsed.conversationId,
+                  mediaAssetId: imgAssetId,
+                  url: "",
+                  kind: "image",
+                  locked: true,
+                  blurUri,
+                  ctaText,
                 });
               } else {
-                // Fallback (no S3 mediaAsset): NEVER persist a base64 data URL
-                // in content. A 2MB+ data URL here gets pulled into the chat
-                // sidebar preview (listConversations) and SSR history, blowing
-                // the Amplify/Lambda 6MB response limit -> HTTP 413 on every
-                // chat page. The live image was already delivered over the
-                // socket above; persist only a small marker.
+                // Paid user: existing flow unchanged.
+                await assertCanImage(session.userId);
+
+                // 1. Save user message
                 await prisma.message.create({
                   data: {
-                    id: imgMsgId,
                     conversationId: parsed.conversationId,
-                    role: "assistant",
-                    content: img.url.startsWith("data:") ? "[shared a photo]" : img.url,
+                    role: "user",
+                    content: parsed.text,
                   },
                 });
+
+                // 2. Look up character name for teaser
+                const convRow = await prisma.conversation.findUnique({
+                  where: { id: parsed.conversationId },
+                  select: { character: { select: { name: true } } },
+                });
+                const characterName = convRow?.character?.name ?? "companion";
+
+                // 3. Get in-character teaser from Steno and stream it as tokens
+                const teaser = await generateImageTeaser(characterName, parsed.text);
+                send(ws, { type: "chat.token", conversationId: parsed.conversationId, delta: teaser });
+
+                // 4. Save teaser as assistant message
+                const teaserMsg = await prisma.message.create({
+                  data: {
+                    conversationId: parsed.conversationId,
+                    role: "assistant",
+                    content: teaser,
+                  },
+                });
+
+                // 5. Signal that an image is being generated (frontend shows skeleton)
+                send(ws, {
+                  type: "chat.done",
+                  conversationId: parsed.conversationId,
+                  messageId: teaserMsg.id,
+                  provider: "stheno",
+                  model: "image-pending",
+                });
+
+                // 6. Generate the image
+                const img = await generateChatImage(parsed.text, parsed.conversationId, session.userId);
+
+                // 7. Save assistant image message so it persists across page reloads.
+                const imgMsgId = img.mediaAssetId ?? `img-${Date.now()}`;
+                if (img.mediaAssetId) {
+                  await prisma.message.create({
+                    data: {
+                      id: img.mediaAssetId,
+                      conversationId: parsed.conversationId,
+                      role: "assistant",
+                      content: "",
+                      mediaAssetId: img.mediaAssetId,
+                    },
+                  });
+                } else {
+                  await prisma.message.create({
+                    data: {
+                      id: imgMsgId,
+                      conversationId: parsed.conversationId,
+                      role: "assistant",
+                      content: img.url.startsWith("data:") ? "[shared a photo]" : img.url,
+                    },
+                  });
+                }
+
+                // 8. Update conversation timestamp
+                await prisma.conversation.update({
+                  where: { id: parsed.conversationId },
+                  data: { lastMessageAt: new Date() },
+                });
+
+                // 9. Deliver image to the client (full URL for paid users).
+                send(ws, {
+                  type: "media.ready",
+                  conversationId: parsed.conversationId,
+                  mediaAssetId: imgMsgId,
+                  url: img.url,
+                  kind: "image",
+                });
+
+                // 10. Meter the image.
+                void recordImageConsumption(session.userId);
               }
-
-              // 8. Update conversation timestamp
-              await prisma.conversation.update({
-                where: { id: parsed.conversationId },
-                data: { lastMessageAt: new Date() },
-              });
-
-              // 9. Deliver image to the client
-              send(ws, {
-                type: "media.ready",
-                conversationId: parsed.conversationId,
-                mediaAssetId: imgMsgId,
-                url: img.url,
-                kind: "image",
-              });
-
-              // 10. Meter the image (image turns consume an IMAGE, not a chat;
-              //     text and image are separate counters). Best-effort, mirrors
-              //     the chat path.
-              void recordImageConsumption(session.userId);
             } catch (err) {
               // A paywall block emits the SAME `paywall` frame the text path
               // uses so the client's existing handler renders the upgrade

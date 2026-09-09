@@ -25,9 +25,15 @@ interface Props {
   isPremium?: boolean;
   /** Character name forwarded to the upgrade modal title and alt text. */
   characterName?: string;
+  /** When true the image is locked: render the blurUri + CTA overlay instead of the real image. */
+  locked?: boolean;
+  /** Server-computed blurred inline data URI for locked teasers. */
+  blurUri?: string;
+  /** Character-voiced CTA copy for locked teasers. */
+  ctaText?: string;
 }
 
-export function ImageMessage({ mediaAssetId, url, caption, error, isPremium = false, characterName }: Props) {
+export function ImageMessage({ mediaAssetId, url, caption, error, isPremium = false, characterName, locked = false, blurUri, ctaText }: Props) {
   const [open, setOpen] = React.useState(false);
   // Tracks a load failure so a broken/expired signed URL renders as a
   // retryable placeholder instead of the browser's default broken-image
@@ -42,6 +48,59 @@ export function ImageMessage({ mediaAssetId, url, caption, error, isPremium = fa
       <div className="rounded-[var(--bc-radius-sm)] border border-[hsl(var(--bc-danger)/0.35)] bg-[hsl(var(--bc-danger)/0.1)] p-2 text-xs text-[hsl(2_84%_78%)]">
         Image failed ({error}).
       </div>
+    );
+  }
+
+  // Locked teaser: render the blurred placeholder with a character-voiced CTA.
+  // Tapping anywhere opens the UpgradeModal routed to /billing. The real URL
+  // is never sent to this component (only `blurUri` if available, or a dark
+  // gradient fallback from the server).
+  if (locked) {
+    const overlayCtaText = ctaText ?? "Unlock to see this photo";
+    return (
+      <>
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          data-media-id={mediaAssetId}
+          className="relative overflow-hidden rounded-[var(--bc-radius-lg)] border border-[hsl(var(--bc-border))] hover:opacity-90 transition-opacity"
+          style={{ width: "200px", aspectRatio: "9 / 16", minHeight: "12rem" }}
+          aria-label="Unlock photo"
+        >
+          {blurUri ? (
+            <img
+              src={blurUri}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover"
+              aria-hidden="true"
+            />
+          ) : (
+            <div
+              className="absolute inset-0"
+              style={{ background: "linear-gradient(135deg, #2a2533, #1a1720)" }}
+              aria-hidden="true"
+            />
+          )}
+          {/* Frosted CTA overlay */}
+          <div className="absolute inset-0 flex flex-col items-center justify-end gap-2 p-4 bg-gradient-to-t from-black/80 via-black/30 to-transparent">
+            <span className="text-center text-xs font-medium text-white/90 leading-tight">
+              {overlayCtaText}
+            </span>
+            <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+              Unlock
+            </span>
+          </div>
+        </button>
+        {open ? (
+          <UpgradeModal
+            imageSrc={blurUri ?? ""}
+            imageAlt={characterName ?? ""}
+            imageBlurred
+            title="Unlock Premium Photos"
+            onClose={() => setOpen(false)}
+          />
+        ) : null}
+      </>
     );
   }
 

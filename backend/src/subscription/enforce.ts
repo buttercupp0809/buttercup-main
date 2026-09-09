@@ -31,7 +31,7 @@ export class PaywallError extends Error {
   }
 }
 
-export type CounterType = "chat_daily" | "image_daily" | "voice_daily";
+export type CounterType = "chat_daily" | "image_daily" | "voice_daily" | "free_teaser_image";
 export type Feature = "voice" | "image" | "premiumModel";
 
 function todayKey(now = new Date()): string {
@@ -226,6 +226,90 @@ export async function assertCanConsumeMedia(
       paywallBody("plan_quota", kind, ent) as unknown as Record<string, unknown>,
     );
   }
+}
+
+// ---------------------------------------------------------------------------
+// Free-tier teaser path. Called BEFORE the in-chat image generation for free
+// users. Never throws a PaywallError: under the daily cap it allows a new
+// generation; at/over cap it signals "reuse existing teaser". The first ask
+// from a user who has no prior teaser is always allowed regardless of the
+// counter value so the experience is never a dead end.
+// ---------------------------------------------------------------------------
+
+export const FREE_TEASER_DAILY_CAP = 25;
+
+export type TeaserResult =
+  | { action: "generate" }
+  | { action: "reuse"; existingAssetId: string };
+
+// Atomic increment of the teaser counter. Returns the NEW count after the
+// increment (i.e. 1 for the first call today). The upsert compiles to an
+// INSERT..ON CONFLICT DO UPDATE SET count = count + 1 RETURNING count, so a
+// burst of concurrent requests can never all read the same pre-increment
+// value: each one gets a distinct post-increment count under the unique
+// (userId, counterType, period) index.
+export async function incrementTeaserCounter(userId: string): Promise<number> {
+  const period = todayKey();
+  const row = await prisma.usageCounter.upsert({
+    where: { userId_counterType_period: { userId, counterType: "free_teaser_image", period } },
+    create: { userId, counterType: "free_teaser_image", period, count: 1 },
+    update: { count: { increment: 1 } },
+  });
+  return row.count;
+}
+
+// Guard for free-user in-chat image requests. Returns a discriminated union:
+//   { action: "generate" }                    -- enqueue a new job
+//   { action: "reuse", existingAssetId: id }  -- serve a previous teaser
+//
+// Atomicity (I-1): the counter is incremented FIRST and the returned
+// post-increment count is what decides generate-vs-reuse. This closes the
+// read-then-write race where a burst of concurrent asks could all observe
+// count < cap and each generate, overrunning the GPU safety cap. Because the
+// upsert is a single atomic INCREMENT..RETURNING, exactly one caller sees
+// count == cap+1 first; every caller past the cap is routed to reuse.
+//
+// The characterId parameter is optional; pass it when available so an
+// over-cap user gets the most-recent ready teaser for that character.
+// Falls through to "generate" when there is no prior teaser to reuse
+// (so the very first request is always satisfied regardless of the cap).
+//
+// Callers MUST NOT separately call incrementTeaserCounter: this function
+// already performs the (single) increment for the request.
+export async function assertCanTease(
+  userId: string,
+  characterId?: string | null,
+): Promise<TeaserResult> {
+  const count = await incrementTeaserCounter(userId);
+
+  if (count <= FREE_TEASER_DAILY_CAP) {
+    return { action: "generate" };
+  }
+
+  // Over cap: look for the most-recent ready image asset for this user
+  // (and optionally this character) so we can re-serve it as a locked teaser.
+  // s3Key: { not: null } (M-2) ensures the reused asset has real bytes to
+  // blur; a ready-but-keyless row would fall back to the gradient placeholder
+  // instead of a real blurred image.
+  const existing = await prisma.mediaAsset.findFirst({
+    where: {
+      userId,
+      kind: "image",
+      status: "ready",
+      s3Key: { not: null },
+      ...(characterId ? { characterId } : {}),
+    },
+    orderBy: { createdAt: "desc" },
+    select: { id: true },
+  });
+
+  if (existing) {
+    return { action: "reuse", existingAssetId: existing.id };
+  }
+
+  // No existing teaser: allow one generation regardless of the cap so the
+  // first photo ask is never a dead end for a new user.
+  return { action: "generate" };
 }
 
 // Atomic column increment on the legacy lifetime column. The daily free

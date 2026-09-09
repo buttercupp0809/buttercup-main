@@ -155,6 +155,11 @@ model User {
   lastLoginAt            DateTime?
   lastLoginDeviceType    String?
   lastLoginUserAgent     String?
+  // Email nurture pipeline: per-user unsubscribe state.
+  // unsubscribedAt: set on one-click unsubscribe; non-null suppresses all future nurture sends.
+  // unsubscribeToken: HMAC-signed token, minted lazily on first nurture send.
+  unsubscribedAt         DateTime?
+  unsubscribeToken       String?              @unique
   createdAt              DateTime             @default(now())
   updatedAt              DateTime             @updatedAt
 
@@ -171,13 +176,11 @@ model User {
   magicLinks             MagicLink[]
   reelLikes              ReelLike[]
   profile                UserProfile?
-  // Phase 30: memory graph back-relations (see model MemoryEntity / MemoryEdge
-  // below). Additive; every read/write on these is also scoped by characterId.
   memoryEntities         MemoryEntity[]
   memoryEdges            MemoryEdge[]
-  // Phase 30: user-set conversational rulebook (see model UserRule below).
   userRules              UserRule[]
   unlockedMedia          UserUnlockedMedia[]
+  emailSendLogs          EmailSendLog[]
 }
 
 // Phase 24: additive 1:1 onboarding profile. Kept separate from User because
@@ -787,4 +790,27 @@ model UserRule {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId, characterId, status])
+}
+
+// =============================================================================
+// Email nurture pipeline (Phase email-nurture)
+// =============================================================================
+// status: "sent" | "dry_run" | "failed"
+// segment: 1 | 2 | 3 | 4 (four lifecycle segments)
+// campaign: free-text slug
+model EmailSendLog {
+  id                String   @id @default(uuid())
+  userId            String
+  segment           Int
+  campaign          String
+  provider          String   @default("brevo")
+  providerMessageId String?
+  sentAt            DateTime @default(now())
+  status            String   @default("sent")
+
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, segment, sentAt])
+  @@index([sentAt])
+  @@index([status, sentAt])
 }

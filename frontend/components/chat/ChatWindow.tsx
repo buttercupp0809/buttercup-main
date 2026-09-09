@@ -33,6 +33,11 @@ interface HistoryMessage {
   createdAt: string;
   // When set, this message renders as a generated image instead of text.
   imageUrl?: string;
+  // Free-tier paywall teaser: the real image is withheld. The bubble renders
+  // the blurred placeholder (blurUri) with a CTA overlay instead.
+  locked?: boolean;
+  blurUri?: string;
+  ctaText?: string;
 }
 
 export interface ChatWindowProps {
@@ -235,7 +240,10 @@ export function ChatWindow({
                   id: evt.mediaAssetId,
                   role: "assistant",
                   content: "",
-                  imageUrl: evt.url,
+                  imageUrl: evt.locked ? undefined : evt.url,
+                  locked: evt.locked,
+                  blurUri: evt.blurUri,
+                  ctaText: evt.ctaText,
                   createdAt: new Date().toISOString(),
                 },
               ],
@@ -665,6 +673,21 @@ export function ChatWindow({
           // Plans/cursor-prompt/35-major-fixes-batch.md #E.
           const inlineDataImage =
             !m.imageUrl && typeof m.content === "string" && m.content.startsWith("data:image/");
+          if (m.locked) {
+            return (
+              <div key={m.id} className="flex justify-start" data-testid="bubble-image">
+                <ImageMessage
+                  mediaAssetId={m.id}
+                  url={null}
+                  locked
+                  blurUri={m.blurUri}
+                  ctaText={m.ctaText}
+                  isPremium={isPremium}
+                  characterName={characterName}
+                />
+              </div>
+            );
+          }
           if (m.imageUrl || inlineDataImage) {
             return (
               <div key={m.id} className="flex justify-start" data-testid="bubble-image">

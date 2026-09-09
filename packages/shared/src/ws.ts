@@ -74,6 +74,11 @@ export interface MediaReadyEvent {
   mediaAssetId: string;
   url: string;
   kind: "image" | "voice" | "video";
+  // Set when the viewer is free: the real URL is withheld. The client
+  // renders a blurred placeholder from blurUri with a character-voiced CTA.
+  locked?: boolean;
+  blurUri?: string;
+  ctaText?: string;
 }
 export interface RelationshipUpdateEvent {
   type: "relationship.update";
