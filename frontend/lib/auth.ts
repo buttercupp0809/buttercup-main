@@ -187,12 +187,16 @@ export async function recordLogin(
 ): Promise<void> {
   try {
     const ua = req.headers.get("user-agent");
+    // CloudFront-Viewer-Country is injected by Amplify's CloudFront distribution
+    // at the edge before the request reaches origin — no IP lookup library needed.
+    const country = req.headers.get("cloudfront-viewer-country");
     await prisma.user.update({
       where: { id: userId },
       data: {
         lastLoginAt: new Date(),
         lastLoginDeviceType: classifyDevice(ua),
         lastLoginUserAgent: truncateUserAgent(ua),
+        lastLoginCountry: country ?? null,
       },
     });
   } catch (err) {

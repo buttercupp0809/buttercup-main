@@ -155,6 +155,10 @@ model User {
   lastLoginAt            DateTime?
   lastLoginDeviceType    String?
   lastLoginUserAgent     String?
+  //   - lastLoginCountry: ISO-3166-1 alpha-2 code from the CloudFront-Viewer-Country
+  //     header (injected by Amplify's CloudFront distribution at edge; no IP
+  //     lookup library needed). Null for logins before this field was added.
+  lastLoginCountry       String?
   // Email nurture pipeline: per-user unsubscribe state.
   // unsubscribedAt: set on one-click unsubscribe; non-null suppresses all future nurture sends.
   // unsubscribeToken: HMAC-signed token, minted lazily on first nurture send.
