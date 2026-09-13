@@ -10,23 +10,38 @@
 
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { jwtVerify } from "jose";
+import { z } from "zod";
 import {
   enqueueMediaRequestSchema,
   mediaKindSchema,
   MEDIA_TOKEN_COSTS,
   CREATION_IMAGE_COUNT,
+  expressionSchema,
+  poseSchema,
   type EnqueueMediaResponse,
+  type Expression,
   type MediaKind,
+  type Pose,
   type CreationImageJobPayload,
 } from "@buttercupp/shared";
 import { prisma } from "@buttercupp/database";
 import { createQueuedAsset } from "../media/asset";
 import { enqueueMediaJob } from "../queue/media-queue";
+import { startCharacterLoraTraining } from "../media/lora/start";
 import { getSignedUrl } from "../media/storage";
 import { isRedisConfigured } from "../queue/connection";
 import { assertSafeId } from "../utils/safe-types";
 import { assertCanConsumeMedia, PaywallError } from "../subscription/enforce";
 import { writeAuditLog } from "../utils/audit";
+
+// Optional body accepted by POST /media/character/:id/creation-images.
+// expression and pose are forwarded into each job's CreationImageJobPayload so
+// the image handler can drive expression and ControlNet pose on creation images.
+// An empty body (or no body) is valid; both fields default to absent.
+const creationImagesRequestSchema = z.object({
+  expression: expressionSchema.optional(),
+  pose: poseSchema.optional(),
+}).optional();
 
 function parseCookies(header: string | undefined): Record<string, string> {
   const out: Record<string, string> = {};
@@ -171,6 +186,18 @@ async function handleCreationImagesEnqueue(
     return send(res, 400, { error: "invalid_id" });
   }
 
+  // Parse the optional request body for expression/pose. An absent or empty
+  // body is valid (both default to undefined). Invalid values are rejected with
+  // a 400 so zod enforces the trust boundary here.
+  let reqBody: { expression?: Expression; pose?: Pose } | undefined;
+  try {
+    const raw = await readBody(req);
+    const isEmpty = raw === null || (typeof raw === "object" && raw !== null && Object.keys(raw as object).length === 0);
+    reqBody = creationImagesRequestSchema.parse(isEmpty ? undefined : raw) ?? undefined;
+  } catch (e) {
+    return send(res, 400, { error: "invalid_body", message: String(e) });
+  }
+
   const character = await prisma.character.findUnique({
     where: { id: characterId },
     select: { id: true, ownerUserId: true, currentVersionId: true },
@@ -205,6 +232,12 @@ async function handleCreationImagesEnqueue(
       characterVersionId,
       variant,
       userRequest: "",
+      // Thread expression/pose from the API request body into each job's payload
+      // so the image handler can inject the expression fragment + resolve the
+      // pose skeleton. When absent from the request, they are simply omitted and
+      // the handler produces the same output as before (invariant preserved).
+      ...(reqBody?.expression ? { expression: reqBody.expression } : {}),
+      ...(reqBody?.pose ? { pose: reqBody.pose } : {}),
     };
     // Creation images are free: tokenCost 0 (see token-ledger.ts's
     // zero-delta short-circuit). Only chat selfies debit IMAGE_TOKEN_COST.
@@ -246,6 +279,51 @@ async function handleStatus(req: IncomingMessage, res: ServerResponse, id: strin
   });
 }
 
+// Kicks off a per-character LoRA training run for a character the caller owns.
+// Auth + ownership are the same as creation-images; the duplicate guard lives
+// in startCharacterLoraTraining so a re-publish (or double POST) is idempotent.
+// Non-blocking by contract: callers (e.g. the publish route) treat any non-2xx
+// as "training did not start" and carry on.
+async function handleCharacterTrainEnqueue(
+  req: IncomingMessage,
+  res: ServerResponse,
+  rawCharacterId: string,
+) {
+  const userId = await authenticate(req);
+  if (!userId) return send(res, 401, { error: "unauthorized" });
+
+  let characterId: string;
+  try {
+    characterId = assertSafeId(rawCharacterId, "characterId");
+  } catch {
+    return send(res, 400, { error: "invalid_id" });
+  }
+
+  const character = await prisma.character.findUnique({
+    where: { id: characterId },
+    select: { id: true, ownerUserId: true, currentVersionId: true },
+  });
+  if (!character) return send(res, 404, { error: "character_not_found" });
+  if (character.ownerUserId !== userId) return send(res, 403, { error: "forbidden" });
+  if (!character.currentVersionId) return send(res, 409, { error: "no_current_version" });
+
+  // No worker can drain the LoRA queue without Redis; skip rather than leave a
+  // pending row that never advances (mirrors the creation-images degradation).
+  if (!isRedisConfigured()) {
+    return send(res, 200, {
+      status: "unavailable",
+      message: "REDIS_URL not configured; LoRA training is skipped in this environment.",
+    });
+  }
+
+  const result = await startCharacterLoraTraining({
+    characterId,
+    characterVersionId: character.currentVersionId,
+    requestedBy: "auto-publish",
+  });
+  return send(res, 202, result);
+}
+
 // Route matcher. Returns true if a media route matched and was handled.
 export async function handleMediaRoute(req: IncomingMessage, res: ServerResponse): Promise<boolean> {
   if (!req.url) return false;
@@ -258,6 +336,11 @@ export async function handleMediaRoute(req: IncomingMessage, res: ServerResponse
   const creationMatch = req.url.match(/^\/media\/character\/([A-Za-z0-9_-]{1,64})\/creation-images\/?$/);
   if (creationMatch && req.method === "POST") {
     await handleCreationImagesEnqueue(req, res, creationMatch[1]);
+    return true;
+  }
+  const trainMatch = req.url.match(/^\/media\/character\/([A-Za-z0-9_-]{1,64})\/train-lora\/?$/);
+  if (trainMatch && req.method === "POST") {
+    await handleCharacterTrainEnqueue(req, res, trainMatch[1]);
     return true;
   }
   const statusMatch = req.url.match(/^\/media\/([A-Za-z0-9_-]{1,64})\/?$/);

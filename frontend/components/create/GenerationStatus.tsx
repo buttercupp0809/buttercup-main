@@ -16,6 +16,14 @@ const MAX_POLLS = 60; // ~2 minutes; generation should finish long before this
 
 type SlotState = "pending" | "generating" | "ready" | "failed";
 
+// LoRA statuses that mean a per-character training run is still in flight, so
+// the "Training your character..." badge should show. Once it flips to "ready"
+// (or is "none"/"failed"/"rejected") the badge disappears.
+const TRAINING_IN_FLIGHT = ["pending", "building", "training", "validating"] as const;
+function isTrainingInFlight(status: GenerationStatusResponse | null): boolean {
+  return status !== null && (TRAINING_IN_FLIGHT as readonly string[]).includes(status.loraStatus);
+}
+
 function slotsFrom(status: GenerationStatusResponse | null): SlotState[] {
   if (!status) return Array(CREATION_IMAGE_COUNT).fill("pending");
   const slots: SlotState[] = [];
@@ -138,6 +146,20 @@ export function GenerationStatus({ characterId }: GenerationStatusProps) {
             : "Generating a first set of photos. You can start chatting right away, they will fill in as they finish."}
         </p>
       </div>
+
+      {isTrainingInFlight(status) && (
+        <div
+          className="flex items-center gap-2 rounded-md px-3 py-2 text-xs font-medium"
+          style={{
+            borderColor: "hsl(var(--bc-amber) / 0.4)",
+            backgroundColor: "hsl(var(--bc-amber) / 0.12)",
+            color: "hsl(var(--bc-amber))",
+          }}
+        >
+          <span className="inline-block h-2 w-2 animate-pulse rounded-full" style={{ backgroundColor: "hsl(var(--bc-amber))" }} />
+          Training your character for sharper, more consistent photos. This runs in the background, you can keep chatting.
+        </div>
+      )}
 
       {primaryImageUrl && (
         <div

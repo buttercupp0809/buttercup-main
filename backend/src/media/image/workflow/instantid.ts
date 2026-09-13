@@ -13,17 +13,30 @@ export const INSTANTID_DEFAULTS = {
   scheduler: "karras",
   instantidFile: "ip-adapter.bin",
   controlnetFile: "instantid_control.safetensors",
+  // ip_weight used when a per-character LoRA is also active, lowered so InstantID
+  // does not fight the LoRA's identity conditioning. (Was a bare 0.6 in assemble.)
+  ipWeightWithLora: 0.6,
+  // On full-body / pose shots InstantID's keypoint ControlNet is given a small
+  // non-zero strength so the face persists through the pose change (identity
+  // drift is worst on full-body). Tune via A/B: higher = stiffer face-lock,
+  // lower = more pose freedom. Applies ONLY on the pose branch; the default
+  // (no-pose) graph keeps cn_strength at 0 and stays byte-identical.
+  cnStrengthFullBody: 0.25,
 } as const;
 
 export function instantIdNodes(a: {
   refName: string;
   seed: number;
   ipWeight?: number;
+  // Override InstantID's keypoint ControlNet strength (default 0). Used by the
+  // pose branch to raise identity persistence on full-body shots.
+  cnStrength?: number;
   modelRef?: [string, number];
   posePositive?: [string, number];
   poseNegative?: [string, number];
 }): Record<string, unknown> {
   const ipWeight = a.ipWeight ?? INSTANTID_DEFAULTS.ipWeight;
+  const cnStrength = a.cnStrength ?? INSTANTID_DEFAULTS.cnStrength;
   return {
     "10": { class_type: "LoadImage", inputs: { image: a.refName } },
     "20": { class_type: "InstantIDModelLoader", inputs: { instantid_file: INSTANTID_DEFAULTS.instantidFile } },
@@ -40,7 +53,7 @@ export function instantIdNodes(a: {
         positive: a.posePositive ?? ["6", 0],
         negative: a.poseNegative ?? ["7", 0],
         ip_weight: ipWeight,
-        cn_strength: INSTANTID_DEFAULTS.cnStrength,
+        cn_strength: cnStrength,
         start_at: 0.0,
         end_at: INSTANTID_DEFAULTS.endAt,
         noise: 0.0,

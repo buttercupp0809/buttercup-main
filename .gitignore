@@ -87,3 +87,6 @@ backend/prod-persona-backup-*.json
 backend/backup-*.sql
 __pycache__/
 *.pyc
+
+# SDD subagent workspace (ledger, briefs, review packages)
+.superpowers/

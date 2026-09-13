@@ -6,6 +6,8 @@ export interface ImageWorkflowFlags {
   poseControlNet: boolean;
   yawGate: boolean;
   pulid: boolean;
+  lora: boolean;
+  upscaleTail: boolean;
 }
 
 function envOn(name: string): boolean {
@@ -20,6 +22,8 @@ export function resolveImageFlags(override?: Partial<ImageWorkflowFlags>): Image
     poseControlNet: envOn("IMG_POSE_CONTROLNET"),
     yawGate: envOn("IMG_YAW_GATE"),
     pulid: envOn("IMG_PULID"),
+    lora: envOn("IMG_LORA"),
+    upscaleTail: envOn("IMG_UPSCALE_TAIL"),
   };
   return { ...fromEnv, ...(override ?? {}) };
 }

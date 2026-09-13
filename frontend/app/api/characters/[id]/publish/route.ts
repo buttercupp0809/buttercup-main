@@ -4,11 +4,31 @@
 
 import { NextResponse } from "next/server";
 import { prisma } from "@buttercupp/database";
-import { requireAuth } from "@/lib/auth";
+import { requireAuth, signAuthToken } from "@/lib/auth";
 import { assertSafeId } from "@/lib/safe-types";
 import { jsonError } from "@/lib/api-helpers";
 import { moderateCharacter } from "@/lib/character-snapshot";
+import { AUTH_COOKIE } from "@/lib/constants";
 import type { CreateCharacterInput } from "@buttercupp/shared";
+
+// Fire-and-forget: ask the backend to start a per-character LoRA training run
+// once a character goes public. BullMQ lives in the backend workspace (frontend
+// has no queue dep), so we proxy over the same short-lived-token call the
+// creation-images flow uses. Non-blocking + best-effort: publish already
+// succeeded, and the backend's duplicate guard makes a repeat publish idempotent.
+async function triggerLoraTraining(characterId: string, userId: string): Promise<void> {
+  const backendUrl = process.env.BACKEND_URL ?? "http://localhost:4000";
+  try {
+    const token = await signAuthToken(userId);
+    await fetch(`${backendUrl}/media/character/${characterId}/train-lora`, {
+      method: "POST",
+      headers: { cookie: `${AUTH_COOKIE}=${token}` },
+    });
+  } catch {
+    // Backend unreachable (e.g. not running this dev session). Training simply
+    // does not start; the user can trigger it later. Never blocks publish.
+  }
+}
 
 export const runtime = "nodejs";
 
@@ -78,6 +98,10 @@ export async function POST(_req: Request, ctx: { params: Promise<{ id: string }>
       visibility: "public",
     },
   });
+
+  // Auto-train the character's LoRA now that it is public (on-publish policy).
+  // Best-effort; never blocks the publish response.
+  await triggerLoraTraining(id, user.id);
 
   return NextResponse.json({ ok: true });
 }

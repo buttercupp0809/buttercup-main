@@ -6,6 +6,7 @@
 
 import "./load-env";
 import { startMediaWorker } from "./queue/media-worker";
+import { startLoraWorker } from "./queue/lora-worker";
 import { isRedisConfigured } from "./queue/connection";
 import { logInfo, logError } from "./utils/log";
 
@@ -40,8 +41,19 @@ async function main() {
     }
     process.exit(1);
   }
+
+  // LoRA training worker (concurrency 1, serial GPU training).
+  // Null return is non-fatal: the process keeps running to serve media jobs.
+  // A null here means Redis is absent, BullMQ is missing, or another lora
+  // worker already holds the single-worker lock.
+  const loraWorker = await startLoraWorker();
+  if (!loraWorker) {
+    logInfo("worker", "lora worker not started (Redis absent, lock held, or BullMQ unavailable); media worker continues");
+  }
+
   const shutdown = async (signal: string) => {
     logInfo("worker", `${signal} received, shutting down`);
+    if (loraWorker) await loraWorker.close();
     await worker.close();
     process.exit(0);
   };
