@@ -16,6 +16,7 @@ import {
 } from "../media/asset";
 import { debitTokens, refundTokens, InsufficientTokensError } from "../media/token-ledger";
 import { uploadMedia } from "../media/storage";
+import { blurredDataUriForKey } from "../media/blur";
 import { handlers } from "../media/handlers";
 import { consumePlanQuota } from "../subscription/enforce";
 import { entitlementsFor } from "../subscription/entitlements";
@@ -137,23 +138,29 @@ export async function processJob(job: JobLike): Promise<{ ok: boolean; s3Key?: s
   });
   await markProcessing(data.mediaAssetId, job.id);
 
-  // 1. Atomic debit. InsufficientTokensError is terminal (no retry).
-  try {
-    await debitTokens({
-      userId: data.userId,
-      delta: data.tokenCost,
-      reason: data.kind === "voice" ? "voice_gen" : "image_gen",
-      refId: data.mediaAssetId,
-    });
-  } catch (err) {
-    if (err instanceof InsufficientTokensError) {
-      logWarn("media", `job ${job.id} aborted: insufficient_tokens`, { userId: data.userId });
-      recordMediaJobOutcome({ kind: data.kind, status: "failed" });
-      await markFailed(data.mediaAssetId, "insufficient_tokens");
-      await notifyMediaError(data.userId, data.mediaAssetId, "insufficient_tokens");
-      return { ok: false };
+  // 1. Atomic debit. Free-teaser jobs carry billing:"free_teaser" and tokenCost:0;
+  //    skip debitTokens entirely so free users (tokenBalance=0) never hit
+  //    InsufficientTokensError. All other jobs go through the normal debit path.
+  if (data.billing !== "free_teaser") {
+    try {
+      await debitTokens({
+        userId: data.userId,
+        delta: data.tokenCost,
+        reason: data.kind === "voice" ? "voice_gen" : "image_gen",
+        refId: data.mediaAssetId,
+      });
+    } catch (err) {
+      if (err instanceof InsufficientTokensError) {
+        logWarn("media", `job ${job.id} aborted: insufficient_tokens`, { userId: data.userId });
+        recordMediaJobOutcome({ kind: data.kind, status: "failed" });
+        await markFailed(data.mediaAssetId, "insufficient_tokens");
+        await notifyMediaError(data.userId, data.mediaAssetId, "insufficient_tokens");
+        return { ok: false };
+      }
+      throw err;
     }
-    throw err;
+  } else {
+    logInfo("media", `job ${job.id} billing=free_teaser: skipping token debit`, { userId: data.userId });
   }
 
   // 2. Handler + upload, wrapped in the media retry preset. Handler errors
@@ -221,8 +228,9 @@ export async function processJob(job: JobLike): Promise<{ ok: boolean; s3Key?: s
     // called exactly once (the row's status flips from processing -> ready),
     // so a BullMQ retry cannot reach here twice; that + the atomic upsert
     // in consumePlanQuota is our double-count defense. Voice is not
-    // plan-quota-gated; only image + video.
-    if (data.kind === "image" || data.kind === "video") {
+    // plan-quota-gated; only image + video. Free-teaser jobs skip quota
+    // consumption: they are not plan-billed.
+    if ((data.kind === "image" || data.kind === "video") && data.billing !== "free_teaser") {
       try {
         const ent = await entitlementsFor(data.userId);
         if (ent.active && ent.plan !== "free") {
@@ -240,12 +248,18 @@ export async function processJob(job: JobLike): Promise<{ ok: boolean; s3Key?: s
     // URL). The proxy respects S3_ENDPOINT + bucket routing and works
     // uniformly across local MinIO dev, mobile clients, and prod CDN
     // without leaking backend-only host names into the browser.
+    //
+    // Free-teaser jobs: mark locked=true and send the REAL inline blur so the
+    // bubble renders the blurred teaser immediately (never the real s3Key).
     const url = `/api/media?k=${encodeURIComponent(s3Key)}`;
+    const isFreeTeaser = data.billing === "free_teaser";
+    const blurUri = isFreeTeaser ? await blurredDataUriForKey(s3Key) : undefined;
     await notifyMediaReady(data.userId, {
       mediaAssetId: data.mediaAssetId,
-      url,
+      url: isFreeTeaser ? "" : url,
       kind: data.kind,
       conversationId: data.conversationId,
+      ...(isFreeTeaser ? { locked: true, blurUri } : {}),
     });
     logInfo("media", `job ${job.id} ready kind=${data.kind}`, { userId: data.userId, s3Key });
     recordMediaJobOutcome({ kind: data.kind, status: "ok" });

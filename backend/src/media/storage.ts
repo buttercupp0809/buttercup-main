@@ -198,6 +198,28 @@ export async function uploadGenerated(buffer: Buffer, ctx: UploadContext): Promi
   return key;
 }
 
+// Fetch the raw object bytes for an s3Key from whichever bucket owns it
+// (bucketForKey). Returns null when storage is not configured or the object
+// cannot be read. Used by the server-side blur path so a free viewer never
+// receives the full-resolution bytes; only a downscaled+blurred thumbnail.
+export async function fetchObjectBytes(s3Key: string): Promise<Buffer | null> {
+  const deps = loadS3();
+  if (!deps) return null;
+  const bucket = bucketForKey(s3Key);
+  if (!bucket) return null;
+  try {
+    const GetCtor = deps.GetObjectCommand as new (args: Record<string, unknown>) => unknown;
+    const cmd = new GetCtor({ Bucket: bucket, Key: s3Key });
+    const send = (deps.client as { send: (c: unknown) => Promise<unknown> }).send.bind(deps.client);
+    const obj = (await send(cmd)) as { Body?: { transformToByteArray?: () => Promise<Uint8Array> } };
+    const body = obj.Body;
+    if (!body?.transformToByteArray) return null;
+    return Buffer.from(await body.transformToByteArray());
+  } catch {
+    return null;
+  }
+}
+
 // 15-minute TTL by default; safe for a chat UI that renders a media asset
 // once. Callers can override for long-form embeds.
 export async function getSignedUrl(s3Key: string, ttlSeconds = 15 * 60): Promise<string> {

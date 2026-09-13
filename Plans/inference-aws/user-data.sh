@@ -227,6 +227,11 @@ cat >/etc/systemd/system/poppy-stheno.service <<EOF
 Description=poppy Stheno (llama.cpp) API :8001
 After=docker.service
 Requires=docker.service
+# StartLimitIntervalSec=0 disables systemd's default 5-starts/10s limiter so a
+# fast crash-loop can never mark the unit failed and leave it dead for days
+# despite Restart=always. RestartSec=5 paces the retries. (A HANG - process
+# alive but not serving - is caught separately by poppy-health-watchdog below.)
+StartLimitIntervalSec=0
 
 [Service]
 Restart=always
@@ -286,6 +291,9 @@ cat >/etc/systemd/system/poppy-juggernaut.service <<EOF
 Description=poppy Juggernaut (ComfyUI + InstantID + FaceDetailer + FaceSwap) :8188
 After=docker.service
 Requires=docker.service
+# See poppy-stheno above: disable the start-limit lockout so Restart=always can
+# retry a crash-loop indefinitely. Hangs are handled by poppy-health-watchdog.
+StartLimitIntervalSec=0
 
 [Service]
 Restart=always
@@ -367,10 +375,81 @@ OnUnitActiveSec=5min
 WantedBy=timers.target
 EOF
 
+# ============================================================
+# Health watchdog - restarts a HUNG GPU service (process alive but
+# not serving). Restart=always only catches a process EXIT; the
+# 2026-09-07 outage was a hang (llama.cpp up ~20 days, :8001 dead,
+# systemd NRestarts=0), which only an endpoint probe can detect.
+# ============================================================
+cat >/opt/poppy/health-watchdog.sh <<'EOF'
+#!/usr/bin/env bash
+# Probes both GPU endpoints and restarts a unit that has stopped responding.
+# Runs from poppy-health-watchdog.timer every 2 min, as root (for systemctl).
+set -uo pipefail
+
+PROBES=3        # consecutive failures required before we call it hung
+PROBE_GAP=8     # seconds between probes
+GRACE=200       # skip a unit that (re)started < this many seconds ago: a cold
+                # llama.cpp GGUF load / ComfyUI boot can take >90s and must not
+                # be mistaken for a hang (which would cause a restart loop).
+
+# Seconds since a unit last entered the active state, via CLOCK_MONOTONIC so it
+# is immune to wall-clock jumps. Returns a big number if unknown.
+active_age() {
+  local unit="$1" started_us now_us
+  started_us=$(systemctl show "$unit" -p ActiveEnterTimestampMonotonic --value 2>/dev/null)
+  [[ -z "$started_us" || "$started_us" == "0" ]] && { echo 999999; return; }
+  now_us=$(awk '{printf "%d", $1*1000000}' /proc/uptime)
+  echo $(( (now_us - started_us) / 1000000 ))
+}
+
+check() {
+  local unit="$1" url="$2" age i
+  age=$(active_age "$unit")
+  if (( age < GRACE )); then
+    echo "$unit active ${age}s (< ${GRACE}s grace); skipping probe"
+    return 0
+  fi
+  for i in $(seq 1 "$PROBES"); do
+    if curl -fsS --max-time 5 "$url" >/dev/null 2>&1; then
+      return 0
+    fi
+    [[ $i -lt $PROBES ]] && sleep "$PROBE_GAP"
+  done
+  logger -t poppy-health "$unit UNRESPONSIVE at $url after ${PROBES} probes; restarting"
+  echo "$unit UNRESPONSIVE at $url; restarting"
+  systemctl restart "$unit"
+}
+
+check poppy-stheno     http://localhost:8001/v1/models
+check poppy-juggernaut http://localhost:8188/system_stats
+EOF
+chmod +x /opt/poppy/health-watchdog.sh
+
+cat >/etc/systemd/system/poppy-health-watchdog.service <<'EOF'
+[Unit]
+Description=poppy GPU health watchdog (restarts a hung Stheno/ComfyUI)
+After=poppy-stheno.service poppy-juggernaut.service
+[Service]
+Type=oneshot
+ExecStart=/opt/poppy/health-watchdog.sh
+EOF
+cat >/etc/systemd/system/poppy-health-watchdog.timer <<'EOF'
+[Unit]
+Description=run poppy health watchdog every 2 min
+[Timer]
+OnBootSec=3min
+OnUnitActiveSec=2min
+AccuracySec=15s
+[Install]
+WantedBy=timers.target
+EOF
+
 # ---- enable + start everything -----------------------------
 systemctl daemon-reload
 systemctl enable --now poppy-stheno.service
 systemctl enable --now poppy-juggernaut.service
+systemctl enable --now poppy-health-watchdog.timer
 # Idle auto-stop is OFF in 24/7 mode. Only enable the timer if explicitly asked
 # (ENABLE_IDLE_STOP=true). The unit files are always written so it can be
 # switched on later with: systemctl enable --now poppy-idle.timer

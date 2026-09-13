@@ -81,14 +81,26 @@ function frontendOrigin(req: IncomingMessage): string {
   return "http://localhost:3000";
 }
 
-function defaultUrls(req: IncomingMessage, body: { successUrl?: string; cancelUrl?: string }): {
-  successUrl: string; cancelUrl: string;
-} {
+function defaultUrls(
+  req: IncomingMessage,
+  body: { successUrl?: string; cancelUrl?: string },
+  ctx?: { plan?: string; pack?: string },
+): { successUrl: string; cancelUrl: string } {
   const origin = frontendOrigin(req);
+  // Encode the purchased SKU into the success URL so the billing page can
+  // fire a Meta Pixel Purchase event with the correct value / currency after
+  // Dodo redirects back. The webhook remains the authoritative source of
+  // truth for grants; this is purely for client-side conversion tracking.
+  const sku = ctx?.plan
+    ? `&plan=${encodeURIComponent(ctx.plan)}`
+    : ctx?.pack
+      ? `&pack=${encodeURIComponent(ctx.pack)}`
+      : "";
+  const defaultSuccess = `/billing?success=1${sku}`;
   const abs = (u: string | undefined, path: string): string =>
     u && /^https?:\/\//.test(u) ? u : `${origin}${u && u.startsWith("/") ? u : path}`;
   return {
-    successUrl: abs(body.successUrl, "/billing?success=1"),
+    successUrl: abs(body.successUrl, defaultSuccess),
     cancelUrl: abs(body.cancelUrl, "/billing?cancel=1"),
   };
 }
@@ -98,7 +110,7 @@ async function handleSubscribe(req: IncomingMessage, res: ServerResponse) {
   if (!userId) return send(res, 401, { error: "unauthorized" });
   const { json } = await readBody(req);
   const body = json as { plan?: string; tier?: string; successUrl?: string; cancelUrl?: string };
-  const urls = defaultUrls(req, body);
+  const urls = defaultUrls(req, body, { plan: body.plan });
 
   // Phase 20 preferred path: `{ plan: "daily" | "weekly" | "monthly" }`.
   // Falls through to the legacy tier body if `plan` is absent, so pre-Phase-20
@@ -185,7 +197,7 @@ async function handleBuyTokens(req: IncomingMessage, res: ServerResponse) {
   const { json } = await readBody(req);
   const body = json as { packId?: string; successUrl?: string; cancelUrl?: string };
   if (!body.packId || !TOKEN_PACKS[body.packId]) return send(res, 400, { error: "invalid_pack" });
-  const urls = defaultUrls(req, body);
+  const urls = defaultUrls(req, body, { pack: body.packId });
   try {
     const resp = await createCheckoutSession({
       userId,

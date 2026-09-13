@@ -12,7 +12,13 @@ import {
   isUnlimited,
   type Plan,
 } from "./plans";
-import { counterTypeFor, planPeriodKey, type PlanCounterKind } from "./period";
+import {
+  counterTypeFor,
+  freeChatPeriodKey,
+  nextUtcMidnight,
+  planPeriodKey,
+  type PlanCounterKind,
+} from "./period";
 
 export interface QuotaBucket {
   limit: number; // -1 = unlimited
@@ -28,6 +34,11 @@ export interface Entitlements {
   images: QuotaBucket;
   videos: QuotaBucket;
   freeMessagesUsed: number;
+  // ISO UTC timestamp of the next chat-quota reset. For the free plan this
+  // is the next UTC midnight (daily auto-renew). For paid plans it is null
+  // because paid quota resets are already surfaced via `expiresAt` (passes)
+  // or the current calendar month (recurring subs).
+  resetsAt: string | null;
 }
 
 // Sentinel used both for `limit` (from PLANS) and for `remaining` when a
@@ -99,22 +110,39 @@ export async function entitlementsFor(userId: string, now: Date = new Date()): P
       images: bucket(cfg.images, usage.image),
       videos: bucket(cfg.videos, usage.video),
       freeMessagesUsed,
+      resetsAt: null,
     };
   }
 
-  // Free plan: chats use the lifetime counter on User. Images use a small
-  // metered allowance tracked in UsageCounter under the stable free-plan
-  // period key (planPeriodKey("free", null) === "free:none"), so free image
-  // usage accrues and paywalls once the allowance is spent. Video stays 0.
+  // Free plan: chats use a per-UTC-day counter in UsageCounter (auto-
+  // renewing at UTC midnight, 15 chats/day). Images use a small metered
+  // allowance under the stable free-plan period key
+  // (planPeriodKey("free", null) === "free:none") so free image usage
+  // accrues lifetime and paywalls once the allowance is spent. Video
+  // stays 0.
   const freeCfg = PLANS.free;
-  const freeUsage = await usageForPlan(userId, "free", null);
+  const [freeImageUsage, chatRow] = await Promise.all([
+    usageForPlan(userId, "free", null),
+    prisma.usageCounter.findUnique({
+      where: {
+        userId_counterType_period: {
+          userId,
+          counterType: counterTypeFor("chat"),
+          period: freeChatPeriodKey(now),
+        },
+      },
+      select: { count: true },
+    }),
+  ]);
+  const freeChatsUsed = chatRow?.count ?? 0;
   return {
     plan: "free",
     active: false,
     expiresAt: null,
-    chats: bucket(FREE_MESSAGE_LIMIT, freeMessagesUsed),
-    images: bucket(freeCfg.images, freeUsage.image),
+    chats: bucket(FREE_MESSAGE_LIMIT, freeChatsUsed),
+    images: bucket(freeCfg.images, freeImageUsage.image),
     videos: bucket(freeCfg.videos, 0),
     freeMessagesUsed,
+    resetsAt: nextUtcMidnight(now).toISOString(),
   };
 }

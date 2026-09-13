@@ -107,6 +107,21 @@ function isRateLimitError(err: unknown): boolean {
   return false;
 }
 
+// An abort reflects the CALLER's timeout or cancellation (e.g. the 1.5s intent
+// classifier signal, or a client disconnect), NOT the provider being unhealthy.
+// We must NOT trip the circuit breaker on an abort: the intent classifier runs
+// on every message with a 1.5s signal and mature routing (poppy first), so
+// treating its aborts as provider failures would open the poppy + openrouter
+// breakers and poison the REAL chat turn that follows milliseconds later.
+function isAbortError(err: unknown): boolean {
+  if (err instanceof Error) {
+    if (err.name === "AbortError") return true;
+    const m = err.message.toLowerCase();
+    return m.includes("aborted") || m.includes("was aborted");
+  }
+  return false;
+}
+
 async function callWithRateLimitRetry<T>(fn: () => Promise<T>): Promise<T> {
   try {
     return await fn();
@@ -118,6 +133,27 @@ async function callWithRateLimitRetry<T>(fn: () => Promise<T>): Promise<T> {
     }
     throw err;
   }
+}
+
+// Merge a caller-supplied AbortSignal with a per-request timeout so cloud
+// provider calls never block indefinitely when a network stall prevents the
+// connection from closing. The shorter of the two signals wins.
+function makeCallSignal(callerSignal: AbortSignal | undefined, timeoutMs: number): AbortSignal {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  controller.signal.addEventListener("abort", () => clearTimeout(timer), { once: true });
+  if (callerSignal) {
+    if (callerSignal.aborted) {
+      clearTimeout(timer);
+      controller.abort(callerSignal.reason);
+    } else {
+      callerSignal.addEventListener("abort", () => {
+        clearTimeout(timer);
+        controller.abort(callerSignal.reason);
+      }, { once: true });
+    }
+  }
+  return controller.signal;
 }
 
 // ============================================================================
@@ -224,11 +260,15 @@ async function resolvePoppyChatClient(): Promise<OpenAILike | null> {
         apiKey: process.env.POPPY_API_KEY ?? "sk-none",
         baseURL: `${base}/v1`,
         // Fast-fail when the GPU box is down/unreachable. Without a cap a hung
-        // box stalls the whole turn ~30s before falling through to OpenRouter,
-        // which the user feels as lag. A healthy Stheno streams its first token
-        // well under this, so it only trims the dead wait, never a live stream.
-        // maxRetries: 0 because the routing loop already handles fallthrough.
-        timeout: Number(process.env.POPPY_TIMEOUT_MS ?? 12000),
+        // box stalls the whole turn before falling through to OpenRouter, which
+        // the user feels as lag. Prod currently cannot reach the box at all, so
+        // every poppy attempt hangs to this timeout; keep it tight (4s) so the
+        // failover to OpenRouter is quick. A healthy, reachable Stheno streams
+        // its first token well under 4s, so this only trims the dead wait, never
+        // a live stream. maxRetries: 0 because the routing loop handles
+        // fallthrough. Override with POPPY_TIMEOUT_MS if the box is ever wired
+        // over a slower path.
+        timeout: Number(process.env.POPPY_TIMEOUT_MS ?? 4000),
         maxRetries: 0,
       });
       _poppyBase = base;
@@ -441,13 +481,19 @@ export async function streamLLM(
       emittedAny = true;
       onToken(d);
     };
+    // Cloud providers have no built-in per-request timeout; merge a timeout
+    // signal so a stalled connection doesn't block the chain indefinitely.
+    // poppy's client already has a 12s timeout set at construction time.
+    const callParams = provider === "poppy"
+      ? params
+      : { ...params, signal: makeCallSignal(params.signal, params.timeoutMs ?? 30_000) };
     const startedAt = Date.now();
     try {
       const text = await callWithRateLimitRetry(async () => {
         if (provider === "anthropic") {
-          return streamAnthropic(client as AnthropicLike, params, model, wrappedOnToken);
+          return streamAnthropic(client as AnthropicLike, callParams, model, wrappedOnToken);
         }
-        return streamOpenAICompatible(client as OpenAILike, params, model, wrappedOnToken);
+        return streamOpenAICompatible(client as OpenAILike, callParams, model, wrappedOnToken);
       });
       const elapsed = Date.now() - startedAt;
       const fallback = provider !== routing.order[0];
@@ -459,9 +505,16 @@ export async function streamLLM(
       return { text, provider, model, fallback };
     } catch (err) {
       const elapsed = Date.now() - startedAt;
-      markFailed(provider);
-      recordProviderOutcome({ provider, success: false });
       const emsg = err instanceof Error ? err.message : String(err);
+      const aborted = isAbortError(err);
+      // Only a genuine provider failure trips the breaker. An abort is the
+      // caller's timeout/cancellation (notably the 1.5s intent classifier),
+      // not provider health; tripping the breaker on it would wrongly open a
+      // healthy provider for the real chat turn that follows.
+      if (!aborted) {
+        markFailed(provider);
+        recordProviderOutcome({ provider, success: false });
+      }
       if (emittedAny) {
         // Partial stream. Do not fall through to another provider; return what
         // we streamed so the client sees a clean end even on failure.
@@ -469,14 +522,17 @@ export async function streamLLM(
         return { text: "", provider, model, fallback: false };
       }
       // No tokens yet, safe to try the next provider.
-      logWarn("LLM", `${provider} failed after ${elapsed}ms, falling through`, { err: emsg });
+      logWarn("LLM", `${provider} ${aborted ? "aborted" : "failed"} after ${elapsed}ms, falling through`, { err: emsg });
     }
   }
 
   logWarn("LLM", `all providers unavailable for ${params.purpose} -> hardcoded fallback`);
   incrementCounter("llm_provider:hardcoded");
   recordProviderOutcome({ provider: "hardcoded", success: false, fallback: true });
-  onToken(HARDCODED_FALLBACK_TEXT);
+  // Do NOT stream the fallback text as tokens: engine.ts detects
+  // provider:"hardcoded" and throws so the transport delivers an error frame
+  // with a retry button instead of a fake character bubble that would be
+  // persisted to history and consume the user's quota.
   return { text: HARDCODED_FALLBACK_TEXT, provider: "hardcoded", model: "hardcoded", fallback: true };
 }
 

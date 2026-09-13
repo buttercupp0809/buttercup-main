@@ -33,6 +33,11 @@ interface HistoryMessage {
   createdAt: string;
   // When set, this message renders as a generated image instead of text.
   imageUrl?: string;
+  // Free-tier paywall teaser: the real image is withheld. The bubble renders
+  // the blurred placeholder (blurUri) with a CTA overlay instead.
+  locked?: boolean;
+  blurUri?: string;
+  ctaText?: string;
 }
 
 export interface ChatWindowProps {
@@ -57,6 +62,12 @@ export interface ChatWindowProps {
   /** Remaining free messages, so the wall is visible before it is hit. */
   headroom?: Headroom | null;
   /**
+   * True when the viewer holds an active paid subscription. Controls whether
+   * clicking a generated image opens a bare image lightbox (paid) or the
+   * full upgrade modal with the image as the hero background (free).
+   */
+  isPremium?: boolean;
+  /**
    * Controls hosted inside the header below xl, where the side panels are
    * hidden and their triggers have nowhere else to live. Rendering them here
    * instead of in a second strip keeps mobile to a single chat bar.
@@ -76,6 +87,7 @@ export function ChatWindow({
   bond,
   greeting,
   headroom,
+  isPremium = false,
   mobileLeading,
   mobileTrailing,
 }: ChatWindowProps) {
@@ -228,7 +240,10 @@ export function ChatWindow({
                   id: evt.mediaAssetId,
                   role: "assistant",
                   content: "",
-                  imageUrl: evt.url,
+                  imageUrl: evt.locked ? undefined : evt.url,
+                  locked: evt.locked,
+                  blurUri: evt.blurUri,
+                  ctaText: evt.ctaText,
                   createdAt: new Date().toISOString(),
                 },
               ],
@@ -658,10 +673,25 @@ export function ChatWindow({
           // Plans/cursor-prompt/35-major-fixes-batch.md #E.
           const inlineDataImage =
             !m.imageUrl && typeof m.content === "string" && m.content.startsWith("data:image/");
+          if (m.locked) {
+            return (
+              <div key={m.id} className="flex justify-start" data-testid="bubble-image">
+                <ImageMessage
+                  mediaAssetId={m.id}
+                  url={null}
+                  locked
+                  blurUri={m.blurUri}
+                  ctaText={m.ctaText}
+                  isPremium={isPremium}
+                  characterName={characterName}
+                />
+              </div>
+            );
+          }
           if (m.imageUrl || inlineDataImage) {
             return (
               <div key={m.id} className="flex justify-start" data-testid="bubble-image">
-                <ImageMessage mediaAssetId={m.id} url={m.imageUrl ?? m.content} />
+                <ImageMessage mediaAssetId={m.id} url={m.imageUrl ?? m.content} isPremium={isPremium} characterName={characterName} />
               </div>
             );
           }
@@ -783,7 +813,7 @@ export function ChatWindow({
                 localHeadroom.left <= 1 ? "text-[hsl(var(--bc-amber))]" : "text-[hsl(var(--bc-muted))]"
               }`}
             >
-              {localHeadroom.left} left
+              {localHeadroom.left} left today
             </span>
           ) : null}
           <button

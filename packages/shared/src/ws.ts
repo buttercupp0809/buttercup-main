@@ -74,6 +74,11 @@ export interface MediaReadyEvent {
   mediaAssetId: string;
   url: string;
   kind: "image" | "voice" | "video";
+  // Set when the viewer is free: the real URL is withheld. The client
+  // renders a blurred placeholder from blurUri with a character-voiced CTA.
+  locked?: boolean;
+  blurUri?: string;
+  ctaText?: string;
 }
 export interface RelationshipUpdateEvent {
   type: "relationship.update";
@@ -116,6 +121,9 @@ export interface PaywallEvent {
   limit: number; // -1 = unlimited (will not fire for chat)
   plans: PaywallPlanOption[];
   upgradeUrl: string;
+  // ISO UTC timestamp of the next quota reset. Set for the free plan
+  // (next UTC midnight, daily auto-renew); null for paid plans.
+  resetsAt?: string | null;
 }
 
 export type WSServerEvent =

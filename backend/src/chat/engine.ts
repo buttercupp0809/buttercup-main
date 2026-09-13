@@ -272,6 +272,17 @@ export async function runChatTurn(params: RunChatTurnParams): Promise<RunChatTur
     },
     forwardedTokens,
   );
+
+  // Every provider in the chain failed. Clean up the already-persisted user
+  // message so the DB has no dangling half-turn, then surface the failure as
+  // an error so both transports emit an error frame. The client's existing
+  // handler shows "She did not get that one / Send again" instead of a fake
+  // character bubble. Quota is not consumed and memory extraction is skipped.
+  if (result.provider === "hardcoded") {
+    await prisma.message.delete({ where: { id: userMessage.id } }).catch(() => null);
+    throw new Error("llm_unavailable");
+  }
+
   const trailing = guard.end();
   if (trailing.length > 0) onToken(trailing);
 

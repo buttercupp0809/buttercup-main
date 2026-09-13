@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { stripThinkingBlocks, StreamGuard, isMetaCommentary } from "./sanitize";
+import {
+  stripThinkingBlocks,
+  stripImageDescriptionBlocks,
+  StreamGuard,
+  isMetaCommentary,
+} from "./sanitize";
 
 describe("stripThinkingBlocks", () => {
   it("removes closed <think>...</think>", () => {
@@ -26,6 +31,60 @@ describe("stripThinkingBlocks", () => {
   });
   it("leaves normal text alone", () => {
     expect(stripThinkingBlocks("Hey, how are you today?")).toBe("Hey, how are you today?");
+  });
+});
+
+describe("stripImageDescriptionBlocks", () => {
+  it("strips a trailing [Image description: ...] block and keeps the teaser", () => {
+    const input =
+      "Here you go, baby! Hope this snap makes your day as bright as my smile.\n\n[Image description: A photo of Ariana in a red dress standing on a beach at sunset.]";
+    expect(stripImageDescriptionBlocks(input)).toBe(
+      "Here you go, baby! Hope this snap makes your day as bright as my smile.",
+    );
+  });
+
+  it("strips [Image: ...], [Photo: ...], and [Pic: ...] variants case-insensitively", () => {
+    expect(stripImageDescriptionBlocks("Coming right up! [Image: a selfie]")).toBe("Coming right up!");
+    expect(stripImageDescriptionBlocks("Say cheese! [PHOTO: a close up]")).toBe("Say cheese!");
+    expect(stripImageDescriptionBlocks("Here. [pic: me smiling]")).toBe("Here.");
+  });
+
+  it("strips a block that spans newlines", () => {
+    const input = "Sending it now.\n[Image description: a woman\nstanding\nin the rain]";
+    expect(stripImageDescriptionBlocks(input)).toBe("Sending it now.");
+  });
+
+  it("strips an UNCLOSED trailing block (teaser cut off by max_tokens)", () => {
+    // The teaser is capped at a small token budget, so the model is often cut
+    // off mid-description with no closing "]". This must still be stripped.
+    const input =
+      "Here you go, baby! Hope this snap makes your day as bright as my smile.\n\n[Image description: A photo of Ariana";
+    expect(stripImageDescriptionBlocks(input)).toBe(
+      "Here you go, baby! Hope this snap makes your day as bright as my smile.",
+    );
+  });
+
+  it("strips *image of ...* asterisk stage directions", () => {
+    expect(stripImageDescriptionBlocks("Enjoy! *image of a sunset*")).toBe("Enjoy!");
+  });
+
+  it("leaves a normal sentence with unrelated brackets alone", () => {
+    expect(stripImageDescriptionBlocks("I love you [so much] baby.")).toBe(
+      "I love you [so much] baby.",
+    );
+  });
+
+  it("leaves a clean teaser untouched", () => {
+    const clean = "Give me just a moment to get that perfect shot ready for you...";
+    expect(stripImageDescriptionBlocks(clean)).toBe(clean);
+  });
+});
+
+describe("stripThinkingBlocks folds in image-description stripping", () => {
+  it("removes a leaked [Image description: ...] from a main reply", () => {
+    expect(
+      stripThinkingBlocks("Here you go, love.\n\n[Image description: A photo of me smiling.]"),
+    ).toBe("Here you go, love.");
   });
 });
 

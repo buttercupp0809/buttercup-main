@@ -29,6 +29,9 @@ export const mediaJobDataSchema = z.object({
   kind: mediaKindSchema,
   tokenCost: z.number().int().min(0).max(10000),
   payload: z.record(z.unknown()),
+  // Optional discriminator. When "free_teaser", the worker skips debitTokens
+  // and consumePlanQuota (free users have 0 tokens; billing is not applicable).
+  billing: z.enum(["free_teaser"]).optional(),
 });
 export type MediaJobData = z.infer<typeof mediaJobDataSchema>;
 
@@ -57,6 +60,11 @@ export interface MediaReadyEventPayload {
   url: string;
   kind: MediaKind;
   conversationId: string | null;
+  // Set when the viewer is free: the real URL is withheld and a blurred inline
+  // data URI is sent instead. The client renders the blur in the chat bubble.
+  locked?: boolean;
+  blurUri?: string;
+  ctaText?: string;
 }
 
 // ============================================================================

@@ -38,6 +38,10 @@ const entitlementsResponseSchema = z.object({
   images: quotaBucketSchema,
   videos: quotaBucketSchema,
   freeMessagesUsed: z.number(),
+  // When the free-plan daily quota rolls over (UTC midnight). Optional so
+  // paid plans and older backend builds still parse; the client degrades
+  // gracefully when absent.
+  resetsAt: z.string().nullable().optional(),
 });
 
 const BACKEND_URL = process.env.BACKEND_URL ?? "http://localhost:4000";
@@ -91,6 +95,7 @@ export async function GET() {
       chats: ent.chats,
       images: ent.images,
       videos: ent.videos,
+      resetsAt: ent.resetsAt ?? null,
     },
     // Derived from the resolved tier only (voice/image gate on any paid
     // tier; premiumModel gates on "pro"), matching

@@ -54,9 +54,26 @@ export async function POST(req: Request) {
       // lib/public-url.ts.
       const link = publicUrl(req, `/api/auth/verify-email?token=${encodeURIComponent(rawToken)}`);
       const { subject, html, text } = buildVerifyEmail(link);
-      await sendEmail({ to: email, subject, html, text });
-    } catch {
+      const sendResult = await sendEmail({ to: email, subject, html, text });
+      if (!sendResult.ok) {
+        // Do not block signup, but surface the failure so it does not vanish
+        // silently the way it did pre-fix. sendEmail already logs the Resend
+        // response body; this line makes the correlation with a specific
+        // signup obvious in the server logs.
+        console.error("[signup] verification email send returned ok=false", {
+          userId: user.id,
+          to: email,
+        });
+      }
+    } catch (err) {
       // Best-effort: never block signup on email issues; the user can resend.
+      const e = err as { name?: string; message?: string } | undefined;
+      console.error("[signup] verification email threw", {
+        userId: user.id,
+        to: email,
+        name: e?.name,
+        message: e?.message,
+      });
     }
 
     const token = await signAuthToken(user.id);

@@ -27,7 +27,16 @@ export type TransportEvent =
       plans: TransportPaywallPlan[];
       upgradeUrl: string;
     }
-  | { type: "image"; conversationId: string; url: string; mediaAssetId: string }
+  | {
+      type: "image";
+      conversationId: string;
+      url: string;
+      mediaAssetId: string;
+      // Set when the viewer is free: the real image is withheld, client renders blur.
+      locked?: boolean;
+      blurUri?: string;
+      ctaText?: string;
+    }
   | { type: "image_generating"; conversationId: string; messageId: string }
   // Terminal frame for the entry check-in stream: the conversation is not
   // eligible, so the UI should render nothing.
@@ -118,7 +127,7 @@ export function createChatTransport(options: ChatTransportOptions = {}): ChatTra
             plans: data.plans,
             upgradeUrl: data.upgradeUrl,
           });
-        else if (data.type === "media.ready") emit({ type: "image", conversationId: data.conversationId, url: data.url, mediaAssetId: data.mediaAssetId });
+        else if (data.type === "media.ready") emit({ type: "image", conversationId: data.conversationId, url: data.url ?? "", mediaAssetId: data.mediaAssetId, locked: data.locked, blurUri: data.blurUri, ctaText: data.ctaText });
         else if (data.type === "error") emit({ type: "error", message: data.message });
       } catch {
         emit({ type: "error", message: "bad_frame" });
@@ -174,7 +183,7 @@ export function createChatTransport(options: ChatTransportOptions = {}): ChatTra
             plans: data.plans,
             upgradeUrl: data.upgradeUrl,
           });
-        else if (evt === "image") emit({ type: "image", conversationId, url: data.url, mediaAssetId: data.mediaAssetId });
+        else if (evt === "image") emit({ type: "image", conversationId, url: data.url ?? "", mediaAssetId: data.mediaAssetId, locked: data.locked, blurUri: data.blurUri, ctaText: data.ctaText });
         else if (evt === "error") emit({ type: "error", message: data.message });
       }
     }

@@ -26,6 +26,7 @@
 // does not lock legitimate users out.
 
 import * as React from "react";
+import { usePathname } from "next/navigation";
 import { PaywallHero } from "@/components/paywall/PaywallHero";
 import { ModalOverlay } from "@/components/ui/Modal";
 import { trackCta } from "@/lib/track-cta";
@@ -64,14 +65,53 @@ function isFreeViewer(status: BillingStatus | null): boolean {
 export interface CreateFlowPaywallProps {
   children: React.ReactNode;
   headline?: string;
+  // Single S3/CloudFront URL. Retained for callers outside the create
+  // wizard (none today) that want to pin a specific hero image.
   heroImageSrc?: string;
+  // Pool of S3/CloudFront character portraits, hydrated by the server
+  // layout. The paywall rotates through this pool per wizard step so the
+  // hero visibly changes as the user moves style -> identity -> appearance,
+  // instead of the same static face repeating on every step. Must be
+  // remote URLs; the server layout filters out any local /personas/*.webp
+  // assets before it hands the pool over. Empty pool falls back to the
+  // singular heroImageSrc, then to PaywallHero's own default as last
+  // resort.
+  heroImagePool?: string[];
+}
+
+// Turns a string into a small stable integer, so the same wizard step
+// always maps to the same hero image within a single load (no flicker on
+// re-render) while different steps map to different images. Standard
+// djb2-ish hash, adequate for the "pick one of N buckets" case.
+function stableIndex(input: string, mod: number): number {
+  if (mod <= 0) return 0;
+  let h = 5381;
+  for (let i = 0; i < input.length; i++) {
+    h = (h * 33) ^ input.charCodeAt(i);
+  }
+  return Math.abs(h) % mod;
 }
 
 export function CreateFlowPaywall({
   children,
   headline,
   heroImageSrc,
+  heroImagePool,
 }: CreateFlowPaywallProps) {
+  const pathname = usePathname();
+  // Compose a per-mount salt so a full page load rotates the pool origin,
+  // then let pathname drive the offset so each wizard step reads a different
+  // portrait deterministically within that load.
+  const mountSalt = React.useMemo(
+    () => Math.floor(Math.random() * 1_000_000).toString(),
+    [],
+  );
+  const rotatingHero = React.useMemo<string | undefined>(() => {
+    if (!heroImagePool || heroImagePool.length === 0) return undefined;
+    const key = `${mountSalt}:${pathname ?? ""}`;
+    return heroImagePool[stableIndex(key, heroImagePool.length)];
+  }, [heroImagePool, mountSalt, pathname]);
+  const resolvedHero = rotatingHero ?? heroImageSrc;
   const [status, setStatus] = React.useState<BillingStatus | null>(null);
   const [ready, setReady] = React.useState(false);
   const [dismissed, setDismissed] = React.useState(false);
@@ -166,7 +206,7 @@ export function CreateFlowPaywall({
         >
           <PaywallHero
             variant="passes"
-            heroImageSrc={heroImageSrc}
+            heroImageSrc={resolvedHero}
             headline={headline ?? "Create your own version of her"}
             seeAllLabel="See all plans"
             onClose={() => {

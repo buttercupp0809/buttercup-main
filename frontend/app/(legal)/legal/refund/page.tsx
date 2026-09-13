@@ -38,8 +38,9 @@ export default function RefundPage() {
 
       <h2>4. Free chats</h2>
       <p>
-        The 10 free chats are complimentary; they are not a purchased good
-        and are not eligible for refund or cash equivalent.
+        The 15 daily free chats are complimentary and refresh every 24 hours;
+        they are not a purchased good and are not eligible for refund or cash
+        equivalent.
       </p>
 
       <h2>5. How to request</h2>

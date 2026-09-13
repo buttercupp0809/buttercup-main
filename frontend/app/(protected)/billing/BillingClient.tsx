@@ -18,10 +18,13 @@ import {
   Mic,
   type LucideIcon,
 } from "lucide-react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { TokenStore } from "./TokenStore";
 import { Tabs, type TabItem } from "@/components/ui/Tabs";
 import { PASS_COPY, type PassCopy } from "@/lib/pass-copy";
 import { trackCta } from "@/lib/track-cta";
+import { formatResetIn } from "@/lib/bond";
+import { trackPurchase } from "@/lib/marketing/meta-pixel";
 
 // Feature flag: hide the pay-as-you-go token packs section for now. Kept as
 // a trivially flippable constant (and TokenStore.tsx is preserved) so the
@@ -105,7 +108,12 @@ interface Entitlements {
   chats: QuotaBucket;
   images: QuotaBucket;
   videos: QuotaBucket;
+  // Kept for backward compatibility; now a LIFETIME counter under the daily
+  // free-quota model and no longer subtracted from chats.limit in the UI.
   freeMessagesUsed: number;
+  // ISO UTC datetime when the free-plan daily quota resets. Optional: older
+  // backend builds omit it and paid plans do not need it.
+  resetsAt?: string | null;
 }
 
 // Premium benefits list. Each perk renders a lucide-react icon in the warm
@@ -229,6 +237,29 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
     void refreshEntitlements();
   }, [refreshEntitlements]);
 
+  // Meta Pixel: post-checkout Purchase (and Subscribe for recurring SKUs).
+  // The backend encodes the SKU into the Dodo return URL as
+  // /billing?success=1&plan=<sku>   for subscriptions and passes, or
+  // /billing?success=1&pack=<packId> for token packs. We fire the event
+  // once (helper dedupes via sessionStorage), then strip the params so a
+  // reload cannot re-fire and users do not see the noise in their URL bar.
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  React.useEffect(() => {
+    if (!searchParams) return;
+    if (searchParams.get("success") !== "1") return;
+    const planSku = searchParams.get("plan");
+    const packSku = searchParams.get("pack");
+    const sku = planSku ?? packSku;
+    if (!sku) return;
+    // Prefer live price from the loaded plan catalog when we can find it,
+    // so any Dodo runtime override flows through to Meta accurately.
+    const livePrice =
+      planSku && plans ? plans.find((p) => p.plan === planSku)?.priceUsd : undefined;
+    trackPurchase({ sku, valueUsd: livePrice });
+    router.replace("/billing", { scroll: false });
+  }, [searchParams, plans, router]);
+
   async function subscribe(plan: Plan) {
     trackCta(`billing_${plan}`, "billing_page");
     setPending(plan);
@@ -236,7 +267,7 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
     try {
       const r = await post(`${BACKEND_URL}/billing/subscribe`, { plan });
       if (r.checkoutUrl) window.location.href = r.checkoutUrl;
-      else setError(`Checkout unavailable: ${r.error ?? "unknown"}${r.message ? ` — ${r.message}` : ""}`);
+      else setError(`Checkout unavailable: ${r.error ?? "unknown"}${r.message ? ` (${r.message})` : ""}`);
     } finally {
       setPending(null);
     }
@@ -277,8 +308,8 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
           `grid-cols-[1fr_auto_1fr]` gives both side cells equal width
           so the tabs (auto-sized middle cell) sit perfectly centered
           regardless of how much content the trust badge or plan pill
-          carry — the wide "Monthly Subscription · Active · 4985 chats"
-          pill in the premium state and the empty state both keep the
+          carry (the wide "Monthly Subscription · Active · 4985 chats"
+          pill) in the premium state and the empty state both keep the
           tabs on the exact viewport center. Falls back to a stack on
           very narrow screens where each cell wraps to its own row. */}
       <div
@@ -308,6 +339,14 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
           <CurrentPlanPill ent={ent} plans={plans} />
         </div>
       </div>
+
+      {/* Free-tier explainer. Only surfaces for users who are not on an
+          active paid plan; makes the daily-reset promise legible so the
+          upgrade decision is a genuine one, not a rescue from a mystery
+          limit. */}
+      {ent && (ent.plan === "free" || !ent.active) ? (
+        <FreeDailyCard ent={ent} />
+      ) : null}
 
       {/* Passes: one-time duration passes. Section heading intentionally
           omitted; the tab strip already carries the "Passes" label so a
@@ -817,8 +856,9 @@ function FeatureLine({ children }: { children: React.ReactNode }) {
 // to the trust / ratings strip. It carries the live plan label plus a
 // compact remaining-quota readout ("chats N · images N · videos N") so
 // users can see what they still have without scrolling. On Free it falls
-// back to "X of 10 chats left". Kept small on purpose so the pricing
-// tiles remain the hero above the fold.
+// back to "X of 15 chats left today" (server-authoritative under the
+// daily-reset model). Kept small on purpose so the pricing tiles remain
+// the hero above the fold.
 function formatBucketRemaining(bucket: QuotaBucket): string {
   if (bucket.limit === -1) return "unlimited";
   return String(Math.max(0, bucket.remaining));
@@ -829,7 +869,9 @@ function CurrentPlanPill({ ent, plans }: { ent: Entitlements | null; plans: Plan
   const planLabel =
     plans?.find((p) => p.plan === ent.plan)?.label ?? (ent.plan === "free" ? "Free" : ent.plan);
   const isFree = ent.plan === "free" || !ent.active;
-  const freeChatsLeft = Math.max(0, ent.chats.limit - ent.freeMessagesUsed);
+  // Server-authoritative daily remainder. Do NOT subtract freeMessagesUsed
+  // here: that column is now a lifetime counter and does not reflect today.
+  const freeChatsLeft = Math.max(0, ent.chats.remaining);
   return (
     <div
       className="flex flex-wrap items-center justify-center gap-2 text-xs"
@@ -879,10 +921,117 @@ function CurrentPlanPill({ ent, plans }: { ent: Entitlements | null; plans: Plan
         ) : isFree ? (
           <span style={{ color: "hsl(var(--bc-muted))" }}>
             <strong style={{ color: "hsl(var(--bc-fg))" }}>{freeChatsLeft}</strong> of{" "}
-            {ent.chats.limit} chats left
+            {ent.chats.limit} chats left today
           </span>
         ) : null}
       </span>
+    </div>
+  );
+}
+
+// Free-tier hero card. Explains the daily-reset promise so free users
+// know the ceiling refills tomorrow, not the end of a lifetime allowance.
+// Follows the buttercupp design language: warm glass surface with an amber
+// hairline glow, display serif on the headline, honey accent on the count.
+function FreeDailyCard({ ent }: { ent: Entitlements }) {
+  const [resetLabel, setResetLabel] = React.useState<string | null>(() =>
+    ent.resetsAt ? formatResetIn(ent.resetsAt) : null,
+  );
+
+  // Refresh the countdown every 60s so the "resets in Xh Ym" copy stays
+  // honest while the user lingers on the page. Recomputes from the same
+  // ISO string, so a stale poll cycle cannot make the number tick backwards.
+  React.useEffect(() => {
+    if (!ent.resetsAt) {
+      setResetLabel(null);
+      return;
+    }
+    setResetLabel(formatResetIn(ent.resetsAt));
+    const id = window.setInterval(() => {
+      setResetLabel(ent.resetsAt ? formatResetIn(ent.resetsAt) : null);
+    }, 60_000);
+    return () => window.clearInterval(id);
+  }, [ent.resetsAt]);
+
+  const remaining = Math.max(0, ent.chats.remaining);
+  const limit = ent.chats.limit;
+
+  return (
+    <div
+      data-testid="free-daily-card"
+      className="buttercupp-glass relative flex flex-col items-start gap-4 overflow-hidden rounded-3xl px-6 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8"
+    >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          background:
+            "radial-gradient(28rem 18rem at 0% 100%, hsl(var(--bc-amber) / 0.18), transparent 60%)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-8 top-0 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, hsl(var(--bc-amber) / 0.6), transparent)",
+        }}
+      />
+
+      <div className="flex min-w-0 flex-col gap-1.5">
+        <span
+          className="inline-flex w-fit items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.14em]"
+          style={{
+            color: "hsl(var(--bc-honey))",
+            backgroundColor: "hsl(var(--bc-honey) / 0.14)",
+            borderColor: "hsl(var(--bc-honey) / 0.35)",
+          }}
+        >
+          <span
+            aria-hidden
+            className="h-1.5 w-1.5 rounded-full"
+            style={{ backgroundColor: "hsl(var(--bc-honey))" }}
+          />
+          Free plan
+        </span>
+        <p
+          className="font-display text-2xl font-bold leading-tight tracking-tight sm:text-3xl"
+          style={{ color: "hsl(var(--bc-fg))" }}
+        >
+          15 chats every day, on the house.
+        </p>
+        <p className="text-sm" style={{ color: "hsl(var(--bc-muted))" }}>
+          Resets automatically every 24 hours.
+        </p>
+      </div>
+
+      <div
+        className="flex shrink-0 flex-col items-start gap-1 rounded-2xl border px-4 py-3 sm:items-end"
+        style={{
+          borderColor: "hsl(var(--bc-border))",
+          backgroundColor: "hsl(var(--bc-surface-2) / 0.7)",
+        }}
+      >
+        <span
+          className="text-[10px] font-semibold uppercase tracking-[0.14em]"
+          style={{ color: "hsl(var(--bc-muted))" }}
+        >
+          Today
+        </span>
+        <span className="tabular font-display text-2xl font-extrabold leading-none">
+          <span style={{ color: "hsl(var(--bc-honey))" }}>{remaining}</span>
+          <span style={{ color: "hsl(var(--bc-muted))" }}> / {limit} left</span>
+        </span>
+        {resetLabel ? (
+          <span
+            className="text-xs"
+            style={{ color: "hsl(var(--bc-muted))" }}
+            data-testid="free-daily-reset-label"
+          >
+            {resetLabel}
+          </span>
+        ) : null}
+      </div>
     </div>
   );
 }

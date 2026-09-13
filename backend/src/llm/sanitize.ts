@@ -39,11 +39,51 @@ export function isMetaCommentary(text: string): boolean {
   return META_PATTERNS.some((p) => p.test(firstLine));
 }
 
+// Bracketed image-description / stage-direction blocks that the image model
+// (Stheno or the OpenRouter fallback) sometimes appends after the spoken line,
+// e.g. "[Image description: A photo of Ariana ...]" or "[Photo: ...]". These
+// must never reach the user or the DB: only the natural in-character sentence
+// should remain. Kept deliberately conservative so a normal sentence that
+// happens to contain brackets is not eaten.
+//
+//   - Matches a leading label (Image description, Image, Photo, Picture, Pic,
+//     Selfie, Snap, Scene, Visual) inside square brackets, across newlines,
+//     case-insensitive.
+//   - Also matches an asterisk-wrapped "*image of ...*" style stage direction.
+const BRACKET_IMAGE_BLOCKS: RegExp[] = [
+  /\[\s*(?:image\s*description|image|photo|picture|pic|selfie|snap|scene|visual)\s*:[\s\S]*?\]/gi,
+  /\*\s*(?:image|photo|picture|pic|selfie|snap|scene)\s+of\b[\s\S]*?\*/gi,
+];
+
+// Fallback for an UNCLOSED label block that runs to the end of the text. The
+// teaser is capped at a small max_tokens, so the model is often cut off mid
+// "[Image description: ..." with no closing "]"; the closed-bracket patterns
+// above cannot match that, so strip from the open label to end-of-string.
+const UNCLOSED_IMAGE_BLOCK =
+  /\[\s*(?:image\s*description|image|photo|picture|pic|selfie|snap|scene|visual)\s*:[\s\S]*$/i;
+
+// Remove any bracketed image-description / stage-direction block from a piece
+// of assistant text, then trim trailing whitespace and newlines. Applied to
+// the image-turn teaser (both WS and SSE transports) and folded into
+// stripThinkingBlocks so the main chat reply is covered too.
+export function stripImageDescriptionBlocks(text: string): string {
+  let result = text;
+  for (const re of BRACKET_IMAGE_BLOCKS) result = result.replace(re, "");
+  result = result.replace(UNCLOSED_IMAGE_BLOCK, "");
+  // Collapse any whitespace/newlines left where a block was removed, then trim.
+  return result.replace(/[ \t]+\n/g, "\n").replace(/\n{3,}/g, "\n\n").trim();
+}
+
 export function stripThinkingBlocks(text: string): string {
   let result = text;
 
   // 1. Tagged reasoning blocks.
   for (const re of TAG_BLOCKS) result = result.replace(re, "").trim();
+
+  // 1b. Bracketed image-description / stage-direction blocks. The main reply
+  //     can occasionally emit these too (same models as the image teaser), so
+  //     strip them here as well.
+  result = stripImageDescriptionBlocks(result);
 
   // 2. Unclosed <think>: drop from the open tag onward.
   const openThink = result.indexOf("<think>");
