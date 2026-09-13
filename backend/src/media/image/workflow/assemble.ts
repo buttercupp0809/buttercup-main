@@ -6,7 +6,7 @@
 // Blocks are added in later tasks (FaceDetailer, hand detailer, pose ControlNet,
 // PuLID). This file is extended per task; the all-off path never changes.
 import { baseNodes } from "./base";
-import { instantIdNodes } from "./instantid";
+import { instantIdNodes, INSTANTID_DEFAULTS } from "./instantid";
 import { faceSwapNode } from "./faceswap";
 import { faceDetailerNodes, FACEDETAILER_GPEN_VISIBILITY } from "./facedetailer";
 import { handDetailerNodes } from "./handdetailer";
@@ -107,12 +107,17 @@ export function assembleConsistentWorkflow(a: AssembleArgs): Record<string, unkn
   const ipWeight = usePose
     ? a.ipWeight ?? POSE.ipWeight
     : useLora
-      ? a.loraIpWeight ?? 0.6
+      ? a.loraIpWeight ?? INSTANTID_DEFAULTS.ipWeightWithLora
       : a.ipWeight;
+
+  // On the pose (full-body) branch, give InstantID a small keypoint-ControlNet
+  // strength so the face persists through the pose change (drift is worst on
+  // full-body). Off the pose branch, cn_strength stays 0 (byte-identical).
+  const cnStrength = usePose ? INSTANTID_DEFAULTS.cnStrengthFullBody : undefined;
 
   Object.assign(
     g,
-    instantIdNodes({ refName: a.refName, seed: a.seed, ipWeight, modelRef, posePositive, poseNegative }),
+    instantIdNodes({ refName: a.refName, seed: a.seed, ipWeight, cnStrength, modelRef, posePositive, poseNegative }),
   );
 
   // Terminal image node: starts as the VAEDecode (node 8). Each post-process

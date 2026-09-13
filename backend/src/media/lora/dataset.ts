@@ -92,12 +92,20 @@ export async function buildDataset(
     ...turntableKeys.map((k) => ({ key: k, kind: "turntable" as const })),
   ];
 
-  const scored = await Promise.all(
-    allCandidates.map(async ({ key, kind }) => {
-      const arcfaceScore = await deps.score(refKey, key);
-      return { key, kind, arcfaceScore } satisfies DatasetImage;
-    }),
-  );
+  const scored = (
+    await Promise.all(
+      allCandidates.map(async ({ key, kind }) => {
+        try {
+          const arcfaceScore = await deps.score(refKey, key);
+          return { key, kind, arcfaceScore } satisfies DatasetImage;
+        } catch {
+          // Skip images where ArcFace cannot detect a face (no-face, corrupt,
+          // wrong format). The ARCFACE_MIN filter below handles low-scoring ones.
+          return null;
+        }
+      }),
+    )
+  ).filter((item): item is DatasetImage => item !== null);
 
   // Filter, sort descending, cap.
   const curated = scored

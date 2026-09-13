@@ -59,14 +59,20 @@ describe("listGalleryImages", () => {
     expect(keys).toEqual([]);
   });
 
-  it("includes https:// URLs as-is", async () => {
+  it("filters out absolute-path and http(s) URLs, keeping only bare S3 keys", async () => {
+    // The training dataset needs bare S3 keys the box can fetch. Legacy rows may
+    // hold external URLs ("https://...") or absolute paths ("/personas/1.webp");
+    // those are dropped so only valid S3 keys reach the trainer.
     const { prisma } = await import("@buttercupp/database");
     const mockFind = prisma.characterMedia.findMany as ReturnType<typeof vi.fn>;
     mockFind.mockResolvedValue([
+      { url: "images/char/face.webp" },
       { url: "https://cdn.example.com/char/face.jpg" },
+      { url: "http://legacy.example.com/x.png" },
+      { url: "/personas/legacy.webp" },
     ]);
 
     const keys = await listGalleryImages("char-cdn");
-    expect(keys).toEqual(["https://cdn.example.com/char/face.jpg"]);
+    expect(keys).toEqual(["images/char/face.webp"]);
   });
 });

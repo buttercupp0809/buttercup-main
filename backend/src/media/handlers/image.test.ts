@@ -1,9 +1,12 @@
 // Tests for the image handler's CharacterLora wiring and expression/pose threading.
-// Focus: the edge case where a ready CharacterLora row exists but its s3Key is null.
-// Behavior must be a TRUE no-op vs the pre-refactor code:
-//   - a ready ROW existing (regardless of s3Key) overrides the sheet's loraRef
-//     and checkpoint (loraRef = row.s3Key ?? null, ckpt = from row.baseModel)
-//   - generation activation (loraName + IMG_LORA lora flag) stays gated on s3Key
+// Contract (Blocker 3 fix): IMG_LORA is the MASTER kill switch for the whole
+// character-LoRA feature. A LoRA is "active" only when the flag is on AND a ready
+// row with usable weights (s3Key) exists. When active, all LoRA inputs flow
+// (ComfyUI loraName + checkpoint override; cloud loraRef; trigger token). When
+// NOT active (flag off, or no usable weights) the feature is fully inert and
+// generation is byte-identical to the no-LoRA baseline on EVERY provider: no
+// checkpoint swap, no LoRA node, no cloud loraRef override, no orphan trigger
+// token; loraRef falls back to the appearance sheet.
 //
 // Also verifies: expression/pose from job payload are threaded into buildImagePrompt;
 // when absent, buildImagePrompt is called with expression/pose undefined (invariant).
@@ -101,8 +104,10 @@ beforeEach(() => {
 });
 
 describe("imageHandler CharacterLora wiring", () => {
-  it("ready row with null s3Key: loraRef=null (NOT sheet.loraRef), ckpt from row, NO loraName/flag", async () => {
-    // A ready row exists but has no weights yet.
+  it("ready row with null s3Key: LoRA not usable => byte-identical baseline (no ckpt/token, sheet.loraRef)", async () => {
+    // A ready row exists but has no weights yet (no s3Key). With no usable LoRA
+    // the feature must be fully inert: no checkpoint swap and no orphan trigger
+    // token that no provider can actually resolve.
     characterLoraFindFirst.mockResolvedValue({
       id: "lora-1",
       characterId: "char-1",
@@ -111,7 +116,7 @@ describe("imageHandler CharacterLora wiring", () => {
       triggerToken: "aria_v1",
       baseModel: "realvisxl_v5",
     });
-    // Even with IMG_LORA on, no s3Key => no LoRA node.
+    // Even with IMG_LORA on, no s3Key => no usable LoRA => baseline.
     resolveImageFlagsMock.mockReturnValue({ lora: true });
 
     const out = await imageHandler(makeJob());
@@ -119,19 +124,16 @@ describe("imageHandler CharacterLora wiring", () => {
     expect(generateImageMock).toHaveBeenCalledTimes(1);
     const args = generateImageMock.mock.calls[0][0];
 
-    // Row existence overrides the sheet: loraRef is null (row.s3Key ?? null),
-    // NOT the sheet's loraRef. This is the pre-refactor behavior being preserved.
-    expect(args.loraRef).toBeNull();
-    // Checkpoint override is derived from the ready row's base model.
-    expect(args.ckptOverride).toBe("realvisxlV50.safetensors");
+    // No usable LoRA => loraRef falls back to the appearance sheet (baseline).
+    expect(args.loraRef).toBe("sheet-lora-ref.safetensors");
+    // No checkpoint override without a LoRA to match it (would degrade output).
+    expect(args.ckptOverride).toBeUndefined();
     // No generation activation without weights.
     expect(args.loraName).toBeUndefined();
-    // Trigger token is still injected into the prompt when a ready row exists
-    // (matches pre-refactor: token injected regardless of s3Key/flag).
-    expect(args.prompt).toBe("aria_v1, BASE_PROMPT");
-    // conditioning reflects the ready row.
-    expect(out.meta.conditioning).toBe("character_lora");
-    // No loraName in meta (activation did not happen).
+    // No orphan trigger token in the prompt.
+    expect(args.prompt).toBe("BASE_PROMPT");
+    // conditioning reflects the sheet loraRef, not an inactive character LoRA.
+    expect(out.meta.conditioning).toBe("lora");
     expect(out.meta.loraName).toBeUndefined();
   });
 
@@ -158,7 +160,11 @@ describe("imageHandler CharacterLora wiring", () => {
     expect(out.meta.loraBaseModel).toBe("realvisxl_v5");
   });
 
-  it("normal ready row (with s3Key) + IMG_LORA off: loraName omitted, loraRef + ckpt still from row", async () => {
+  it("ready row (with s3Key) + IMG_LORA off: master kill switch => baseline on ALL providers", async () => {
+    // Blocker 3 fix: IMG_LORA is the master switch. When off, the character-LoRA
+    // feature is fully inert everywhere (self-hosted AND cloud) so generation is
+    // byte-identical to the no-LoRA baseline: no checkpoint swap, no ComfyUI LoRA
+    // node, no cloud loraRef, no orphan trigger token.
     characterLoraFindFirst.mockResolvedValue({
       id: "lora-3",
       characterId: "char-1",
@@ -172,12 +178,16 @@ describe("imageHandler CharacterLora wiring", () => {
     const out = await imageHandler(makeJob());
 
     const args = generateImageMock.mock.calls[0][0];
-    // Cloud providers still use loraRef regardless of the flag.
-    expect(args.loraRef).toBe("loras/chars/char-1/lora-abc.safetensors");
-    expect(args.ckptOverride).toBe("juggernautXL_v9.safetensors");
+    // Flag off => cloud LoRA also suppressed; loraRef falls back to the sheet.
+    expect(args.loraRef).toBe("sheet-lora-ref.safetensors");
+    // No checkpoint override on the self-hosted path (no LoRA to match).
+    expect(args.ckptOverride).toBeUndefined();
     // ComfyUI LoRA node not activated when flag is off.
     expect(args.loraName).toBeUndefined();
-    expect(out.meta.conditioning).toBe("character_lora");
+    // No orphan trigger token.
+    expect(args.prompt).toBe("BASE_PROMPT");
+    // conditioning reflects the sheet, not an inactive character LoRA.
+    expect(out.meta.conditioning).toBe("lora");
   });
 
   it("no ready row: falls through to sheet.loraRef, no ckptOverride, sheet conditioning", async () => {

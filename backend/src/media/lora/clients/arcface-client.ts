@@ -44,7 +44,8 @@ export async function scoreImages(refKey: string, candidateKey: string): Promise
     body: JSON.stringify({ ref_key: refKey, candidate_key: candidateKey }),
   });
   if (!res.ok) {
-    throw new Error(`arcface /score returned ${res.status}`);
+    const errBody = await res.text().catch(() => "");
+    throw new Error(`arcface /score returned ${res.status}: ${errBody}`);
   }
   const body = (await res.json()) as { similarity?: number };
   const score = body.similarity;

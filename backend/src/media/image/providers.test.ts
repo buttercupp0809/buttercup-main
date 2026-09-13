@@ -5,8 +5,8 @@
 // node 30 whenever loraName is present, and omits it when loraName is absent.
 // The tests below verify both layers.
 
-import { describe, it, expect, beforeEach, afterEach } from "vitest";
-import { _buildComfyWorkflow } from "./providers";
+import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
+import { _buildComfyWorkflow, fetchComfyNodeInventory, _resetNodeInventoryCache } from "./providers";
 import { resolveImageFlags } from "./flags";
 
 const IMG_FLAG_ENV = [
@@ -86,5 +86,72 @@ describe("basic path: IMG_LORA flag gate (simulating handlers/image.ts gating)",
     const g = _buildComfyWorkflow({ ...baseArgs, loraName });
     expect((g["30"] as any).class_type).toBe("LoraLoader");
     expect((g["3"] as any).inputs.model).toEqual(["30", 0]);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// fetchComfyNodeInventory: live inventory of the box's ComfyUI node classes,
+// used by assembleConsistentWorkflow's has() gate so an enabled block whose
+// custom node is missing on the box is SKIPPED (graceful degrade) instead of
+// failing the whole render. Must never throw: on any error it returns undefined
+// so callers fall back to "trust the flags" (current behavior).
+// ---------------------------------------------------------------------------
+describe("fetchComfyNodeInventory", () => {
+  beforeEach(() => {
+    _resetNodeInventoryCache();
+  });
+  afterEach(() => {
+    vi.restoreAllMocks();
+    vi.unstubAllGlobals();
+    _resetNodeInventoryCache();
+  });
+
+  it("parses /object_info keys into a Set of node class names", async () => {
+    const json = { LoraLoader: {}, FaceDetailer: {}, KSampler: {}, LatentUpscaleBy: {} };
+    vi.stubGlobal("fetch", vi.fn(async () => ({ ok: true, json: async () => json })));
+    const inv = await fetchComfyNodeInventory("http://box:8188");
+    expect(inv).toBeInstanceOf(Set);
+    expect(inv?.has("LoraLoader")).toBe(true);
+    expect(inv?.has("LatentUpscaleBy")).toBe(true);
+    expect(inv?.has("NotARealNode")).toBe(false);
+  });
+
+  it("returns undefined when the fetch throws (callers then trust the flags)", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () => {
+      throw new Error("network down");
+    }));
+    const inv = await fetchComfyNodeInventory("http://box:8188");
+    expect(inv).toBeUndefined();
+  });
+
+  it("returns undefined on a non-ok response", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () => ({ ok: false, status: 500 })));
+    const inv = await fetchComfyNodeInventory("http://box:8188");
+    expect(inv).toBeUndefined();
+  });
+
+  it("caches the inventory per base so a second call does not refetch", async () => {
+    const json = { KSampler: {} };
+    const f = vi.fn(async () => ({ ok: true, json: async () => json }));
+    vi.stubGlobal("fetch", f);
+    await fetchComfyNodeInventory("http://box:8188");
+    await fetchComfyNodeInventory("http://box:8188");
+    expect(f).toHaveBeenCalledTimes(1);
+  });
+
+  it("does not cache failures (a later successful fetch still populates)", async () => {
+    const good = { KSampler: {} };
+    const f = vi
+      .fn()
+      .mockImplementationOnce(async () => {
+        throw new Error("network down");
+      })
+      .mockImplementationOnce(async () => ({ ok: true, json: async () => good }));
+    vi.stubGlobal("fetch", f);
+    const first = await fetchComfyNodeInventory("http://box:8188");
+    const second = await fetchComfyNodeInventory("http://box:8188");
+    expect(first).toBeUndefined();
+    expect(second?.has("KSampler")).toBe(true);
+    expect(f).toHaveBeenCalledTimes(2);
   });
 });

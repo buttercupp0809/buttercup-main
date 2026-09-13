@@ -1,5 +1,6 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { assembleConsistentWorkflow } from "./assemble";
+import { INSTANTID_DEFAULTS } from "./instantid";
 import { resolveImageFlags } from "../flags";
 
 const base = { ckpt: "juggernautXL_v9.safetensors", positive: "p", negative: "n", refName: "chat-ref.png", seed: 1 };
@@ -137,5 +138,36 @@ describe("assembleConsistentWorkflow (all flags off = current graph)", () => {
     expect(g["110"]).toBeUndefined();
     // SaveImage still consumes faceswap output (no upscale).
     expect((g["9"] as { inputs: { images: [string, number] } }).inputs.images).toEqual(["50", 0]);
+  });
+});
+
+describe("InstantID hardening (Move 1: named LoRA ip_weight + full-body identity lever)", () => {
+  it("the LoRA-coexistence ip_weight comes from INSTANTID_DEFAULTS, not a bare literal", () => {
+    // Named constant must exist and stay 0.6 so the existing behavior is preserved.
+    expect(INSTANTID_DEFAULTS.ipWeightWithLora).toBe(0.6);
+    const on = assembleConsistentWorkflow({
+      ...base, flags: resolveImageFlags({ lora: true }),
+      loraName: "ch_abc.safetensors",
+      availableNodes: new Set(["LoraLoader", "ApplyInstantIDAdvanced"]),
+    });
+    expect((on["23"] as any).inputs.ip_weight).toBe(INSTANTID_DEFAULTS.ipWeightWithLora);
+  });
+
+  it("full-body (pose) shots raise InstantID cn_strength to persist identity across poses", () => {
+    // The drift fix: on a pose shot, InstantID's keypoint ControlNet gets a small
+    // non-zero cn_strength so the face survives the pose change.
+    expect(INSTANTID_DEFAULTS.cnStrengthFullBody).toBeGreaterThan(0);
+    const g = assembleConsistentWorkflow({
+      ...base,
+      flags: resolveImageFlags({ poseControlNet: true }),
+      poseSkeletonName: "standing.png",
+      availableNodes: new Set(["ControlNetApplyAdvanced", "ApplyInstantIDAdvanced"]),
+    });
+    expect((g["23"] as any).inputs.cn_strength).toBe(INSTANTID_DEFAULTS.cnStrengthFullBody);
+  });
+
+  it("default (no pose) graph keeps cn_strength at 0 (byte-identity guard)", () => {
+    const g = assembleConsistentWorkflow({ ...base, flags: resolveImageFlags() });
+    expect((g["23"] as any).inputs.cn_strength).toBe(0);
   });
 });

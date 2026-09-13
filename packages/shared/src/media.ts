@@ -3,7 +3,7 @@
 // wire shapes.
 
 import { z } from "zod";
-import { expressionSchema, poseSchema } from "./lora";
+import { expressionSchema, poseSchema, type LoraStatus } from "./lora";
 
 export const MEDIA_QUEUE_NAME = "buttercupp-media";
 
@@ -124,4 +124,9 @@ export interface GenerationStatusResponse {
   ready: number;
   failed: number;
   primaryReady: boolean;
+  // Per-character LoRA training progress for this character's newest LoRA row,
+  // or "none" when no training has been requested. Lets the finish screen / chat
+  // header show a "Training your character..." badge while a LoRA is in flight
+  // and switch to the high-fidelity path once it flips to "ready".
+  loraStatus: LoraStatus | "none";
 }

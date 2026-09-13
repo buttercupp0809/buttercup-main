@@ -6,7 +6,7 @@
 // character's free-display asset is ready.
 import { NextResponse } from "next/server";
 import { prisma } from "@buttercupp/database";
-import type { GenerationStatusResponse } from "@buttercupp/shared";
+import type { GenerationStatusResponse, LoraStatus } from "@buttercupp/shared";
 import { requireAuth } from "@/lib/auth";
 import { assertSafeId } from "@/lib/safe-types";
 import { jsonError } from "@/lib/api-helpers";
@@ -32,7 +32,7 @@ export async function GET(_req: Request, ctx: { params: Promise<{ id: string }> 
   if (!character) return jsonError(404, "not_found");
   if (character.ownerUserId !== user.id) return jsonError(403, "forbidden");
 
-  const [grouped, display] = await Promise.all([
+  const [grouped, display, lora] = await Promise.all([
     prisma.mediaAsset.groupBy({
       by: ["status"],
       where: {
@@ -47,6 +47,11 @@ export async function GET(_req: Request, ctx: { params: Promise<{ id: string }> 
       // schema.prisma.
       where: { characterId, isDisplay: true, hidden: false },
       select: { id: true },
+    }),
+    prisma.characterLora.findFirst({
+      where: { characterId },
+      orderBy: { createdAt: "desc" },
+      select: { status: true },
     }),
   ]);
 
@@ -68,6 +73,10 @@ export async function GET(_req: Request, ctx: { params: Promise<{ id: string }> 
     // specified against); it reflects CharacterMedia.isDisplay, the
     // Phase-26 free-display flag, not CharacterMedia.isPrimary.
     primaryReady: display !== null,
+    // Newest LoRA row's status, or "none" if this character has never been
+    // queued for training. Drives the "Training your character..." badge.
+    // status is a Prisma String column; narrow it to the shared LoraStatus union.
+    loraStatus: (lora?.status as LoraStatus | undefined) ?? "none",
   };
   return NextResponse.json(body);
 }

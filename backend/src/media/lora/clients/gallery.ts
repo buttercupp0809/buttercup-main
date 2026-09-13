@@ -25,5 +25,7 @@ export async function listGalleryImages(characterId: string): Promise<string[]> 
     orderBy: [{ isPrimary: "desc" }, { sort: "asc" }],
     select: { url: true },
   });
-  return rows.map((r) => r.url);
+  // Filter out legacy rows with absolute paths or external URLs that are not
+  // valid bare S3 keys (e.g. "/personas/1.webp" or "https://...").
+  return rows.map((r) => r.url).filter((url) => !url.startsWith("/") && !url.startsWith("http"));
 }

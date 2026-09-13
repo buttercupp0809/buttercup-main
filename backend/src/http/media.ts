@@ -27,6 +27,7 @@ import {
 import { prisma } from "@buttercupp/database";
 import { createQueuedAsset } from "../media/asset";
 import { enqueueMediaJob } from "../queue/media-queue";
+import { startCharacterLoraTraining } from "../media/lora/start";
 import { getSignedUrl } from "../media/storage";
 import { isRedisConfigured } from "../queue/connection";
 import { assertSafeId } from "../utils/safe-types";
@@ -278,6 +279,51 @@ async function handleStatus(req: IncomingMessage, res: ServerResponse, id: strin
   });
 }
 
+// Kicks off a per-character LoRA training run for a character the caller owns.
+// Auth + ownership are the same as creation-images; the duplicate guard lives
+// in startCharacterLoraTraining so a re-publish (or double POST) is idempotent.
+// Non-blocking by contract: callers (e.g. the publish route) treat any non-2xx
+// as "training did not start" and carry on.
+async function handleCharacterTrainEnqueue(
+  req: IncomingMessage,
+  res: ServerResponse,
+  rawCharacterId: string,
+) {
+  const userId = await authenticate(req);
+  if (!userId) return send(res, 401, { error: "unauthorized" });
+
+  let characterId: string;
+  try {
+    characterId = assertSafeId(rawCharacterId, "characterId");
+  } catch {
+    return send(res, 400, { error: "invalid_id" });
+  }
+
+  const character = await prisma.character.findUnique({
+    where: { id: characterId },
+    select: { id: true, ownerUserId: true, currentVersionId: true },
+  });
+  if (!character) return send(res, 404, { error: "character_not_found" });
+  if (character.ownerUserId !== userId) return send(res, 403, { error: "forbidden" });
+  if (!character.currentVersionId) return send(res, 409, { error: "no_current_version" });
+
+  // No worker can drain the LoRA queue without Redis; skip rather than leave a
+  // pending row that never advances (mirrors the creation-images degradation).
+  if (!isRedisConfigured()) {
+    return send(res, 200, {
+      status: "unavailable",
+      message: "REDIS_URL not configured; LoRA training is skipped in this environment.",
+    });
+  }
+
+  const result = await startCharacterLoraTraining({
+    characterId,
+    characterVersionId: character.currentVersionId,
+    requestedBy: "auto-publish",
+  });
+  return send(res, 202, result);
+}
+
 // Route matcher. Returns true if a media route matched and was handled.
 export async function handleMediaRoute(req: IncomingMessage, res: ServerResponse): Promise<boolean> {
   if (!req.url) return false;
@@ -290,6 +336,11 @@ export async function handleMediaRoute(req: IncomingMessage, res: ServerResponse
   const creationMatch = req.url.match(/^\/media\/character\/([A-Za-z0-9_-]{1,64})\/creation-images\/?$/);
   if (creationMatch && req.method === "POST") {
     await handleCreationImagesEnqueue(req, res, creationMatch[1]);
+    return true;
+  }
+  const trainMatch = req.url.match(/^\/media\/character\/([A-Za-z0-9_-]{1,64})\/train-lora\/?$/);
+  if (trainMatch && req.method === "POST") {
+    await handleCharacterTrainEnqueue(req, res, trainMatch[1]);
     return true;
   }
   const statusMatch = req.url.match(/^\/media\/([A-Za-z0-9_-]{1,64})\/?$/);

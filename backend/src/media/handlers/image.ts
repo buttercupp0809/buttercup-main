@@ -77,11 +77,22 @@ export const imageHandler = async (job: MediaJobData): Promise<HandlerOutput> =>
   const sheet = character.currentVersion.appearanceSheet;
   const style = character.style === "threeD" ? "3d" : (character.style as "realistic" | "anime");
 
-  // Inject the LoRA trigger token into the prompt when a ready LoRA ROW exists so
-  // the identity token is active across all providers (matches pre-refactor
-  // behavior: the token was injected whenever a ready row existed, independent of
-  // s3Key or the IMG_LORA flag; cloud providers rely on it via loraRef).
-  const triggerToken = loraRow?.triggerToken ?? null;
+  // IMG_LORA is the MASTER kill switch for the character-LoRA feature. A LoRA is
+  // "active" only when the flag is on AND the ready row has usable weights
+  // (loraResolution is present only when s3Key exists). When active, every LoRA
+  // input flows (ComfyUI loraName + checkpoint override, cloud loraRef, trigger
+  // token). When NOT active (flag off, or no usable weights) the feature is fully
+  // inert and generation is byte-identical to the no-LoRA baseline on ALL
+  // providers: no checkpoint swap, no LoRA node, no cloud loraRef override, and no
+  // orphan trigger token that no provider can resolve. This closes the prior gap
+  // where a ready row swapped the checkpoint + injected the token even with the
+  // kill switch off, degrading the self-hosted (primary) ComfyUI path.
+  const activeLora =
+    resolveImageFlags().lora && loraResolution && loraRow
+      ? { resolution: loraResolution, row: loraRow }
+      : null;
+
+  const triggerToken = activeLora ? activeLora.row.triggerToken : null;
 
   const { prompt: basePrompt, negativePrompt } = buildImagePrompt({
     appearanceSheet: {
@@ -119,26 +130,23 @@ export const imageHandler = async (job: MediaJobData): Promise<HandlerOutput> =>
   const seed =
     typeof job.payload.seed === "number" ? (job.payload.seed as number) : Math.floor(Math.random() * 1_000_000_000);
 
-  // When a ready CharacterLora with usable weights exists AND the IMG_LORA
-  // kill-switch is on, wire the LoRA into the ComfyUI basic workflow (loraName).
-  // Without the flag (or without a usable s3Key) the basic path emits no LoRA
-  // node (byte-identical to today). The checkpoint override and loraRef are
-  // driven by the ROW existing, not by s3Key, so a ready row overrides the
-  // sheet's checkpoint/loraRef exactly as before this refactor. Cloud providers
-  // (fal/replicate) use loraRef regardless of the IMG_LORA flag.
-  const loraFlag = resolveImageFlags().lora;
-  const loraName = loraFlag && loraResolution ? loraResolution.loraName : undefined;
-  const ckptOverride = loraRow ? resolveCheckpointForBaseModel(loraRow.baseModel) : undefined;
+  // All LoRA generation inputs key off `activeLora` (flag on + usable weights),
+  // so the IMG_LORA kill switch is a true global off: when inactive, the ComfyUI
+  // basic workflow gets no LoRA node and no checkpoint override, and cloud
+  // providers fall back to the appearance sheet's loraRef (byte-identical
+  // baseline). The checkpoint override only applies alongside the ComfyUI LoRA
+  // node it is meant to match, never on its own.
+  const loraName = activeLora ? activeLora.resolution.loraName : undefined;
+  const ckptOverride = activeLora ? resolveCheckpointForBaseModel(activeLora.row.baseModel) : undefined;
 
   const out = await generateImage({
     prompt,
     negativePrompt,
     style,
     referenceImageUrls,
-    // Cloud providers still use the legacy loraRef from the appearance sheet.
-    // When a CharacterLora row exists, it takes precedence (even with a null
-    // s3Key, which yields loraRef: null and suppresses the sheet ref).
-    loraRef: loraRow ? (loraRow.s3Key ?? null) : (sheet.loraRef ?? null),
+    // When the LoRA is active, cloud providers load it via the row's s3Key;
+    // otherwise loraRef falls back to the appearance sheet (or null).
+    loraRef: activeLora ? (activeLora.row.s3Key ?? null) : (sheet.loraRef ?? null),
     seed,
     loraName,
     ckptOverride,
@@ -146,7 +154,7 @@ export const imageHandler = async (job: MediaJobData): Promise<HandlerOutput> =>
 
   const { buffer, contentType } = await toWebP(out.buffer);
 
-  const conditioning = loraRow
+  const conditioning = activeLora
     ? "character_lora"
     : sheet.loraRef
       ? "lora"

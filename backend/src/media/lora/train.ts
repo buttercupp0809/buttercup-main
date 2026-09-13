@@ -51,6 +51,7 @@ export function buildKohyaConfig(args: BuildKohyaConfigArgs): string {
     "[dataset]",
     `train_data_dir = "${datasetDir}"`,
     `resolution = "1024,1024"`,
+    `caption_extension = ".txt"`,
     "",
     "[output]",
     `output_name = "${outputName}"`,

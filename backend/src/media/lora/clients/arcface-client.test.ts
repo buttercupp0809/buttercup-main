@@ -55,16 +55,20 @@ describe("arcface-client", () => {
       );
     });
 
-    it("throws when the endpoint returns a non-2xx status", async () => {
+    it("throws when the endpoint returns a non-2xx status, surfacing the response body", async () => {
       process.env.POPPY_ARCFACE_URL = "http://box:5000";
       global.fetch = vi.fn().mockResolvedValue({
         ok: false,
         status: 503,
         json: async () => ({}),
+        // The client reads the body text to include it in the error message.
+        text: async () => "no face detected",
       });
 
       const { scoreImages } = await loadClient();
-      await expect(scoreImages("ref", "cand")).rejects.toThrow("arcface /score returned 503");
+      await expect(scoreImages("ref", "cand")).rejects.toThrow(
+        "arcface /score returned 503: no face detected",
+      );
     });
 
     it("throws when the response is missing the similarity field", async () => {

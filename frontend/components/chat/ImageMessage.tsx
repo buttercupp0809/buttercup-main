@@ -1,12 +1,13 @@
 "use client";
 
 // Inline image bubble. Shows a loading skeleton while generating, then a
-// natural-aspect thumbnail. Clicking opens a modal with the full image on
-// the left and an upgrade / browse CTA on the right.
+// natural-aspect thumbnail. Clicking opens a lightbox that shows ONLY the
+// full image (no caption, no paywall, no CTA). The upsell lives elsewhere
+// (the in-conversation "Want more photos" nudge and the quota PaywallModal),
+// never inside the click-to-expand view of a chat-generated image.
 
 import * as React from "react";
-import { Lock } from "lucide-react";
-import { ModalOverlay, ModalCard, ModalCloseButton } from "@/components/ui/Modal";
+import { ModalOverlay, ModalCloseButton } from "@/components/ui/Modal";
 
 interface Props {
   mediaAssetId: string;
@@ -95,19 +96,22 @@ export function ImageMessage({ mediaAssetId, url, caption, error }: Props) {
       </div>
 
       {open ? (
-        <ImageModal url={url} caption={caption} onClose={() => setOpen(false)} />
+        <ImageModal url={url} onClose={() => setOpen(false)} />
       ) : null}
     </>
   );
 }
 
+// Image-only lightbox for a chat-generated image. Deliberately bare: just the
+// whole image (object-contain, capped to the viewport), a dark backdrop, a
+// close button, and click-outside / Escape to dismiss. No caption, no paywall,
+// no CTA. This is intentionally NOT built on ModalCard (which paints a rose
+// gradient + hairline + corner glows) so nothing frames the image.
 function ImageModal({
   url,
-  caption,
   onClose,
 }: {
   url: string;
-  caption?: string;
   onClose: () => void;
 }) {
   React.useEffect(() => {
@@ -122,123 +126,18 @@ function ImageModal({
     <ModalOverlay
       role="dialog"
       aria-modal
-      backdropOpacity={0.82}
+      backdropOpacity={0.92}
+      disableAmbientGlow
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
-      <ModalCard size="xl" className="max-h-[90vh]">
+      <div className="relative my-auto flex max-h-[90vh] max-w-[92vw] items-center justify-center">
         <ModalCloseButton onClick={onClose} />
-
-        <div className="relative flex flex-col md:flex-row">
-          {/* Left: image. Chat images are always 9:16 (portrait); we lock
-              the left panel to that aspect and use object-cover so the
-              image fills edge-to-edge with no letterbox bar showing the
-              ModalCard's rose gradient behind it. On mobile it takes
-              full modal width; on md+ it is a 45% column. */}
-          <div
-            className="relative w-full flex-none overflow-hidden md:w-[45%]"
-            style={{ aspectRatio: "9 / 16", backgroundColor: "hsl(var(--buttercupp-bg))" }}
-          >
-            <img
-              src={url}
-              alt={caption ?? ""}
-              className="absolute inset-0 h-full w-full object-cover object-center"
-            />
-          </div>
-
-          {/* Right: upgrade CTA. Divider stacks (border-top) on mobile and
-              becomes a vertical rule (border-left) side-by-side on md+. */}
-          <div
-            className="flex flex-1 flex-col justify-center gap-5 border-t p-6 sm:p-7 md:border-l md:border-t-0"
-            style={{ borderColor: "hsl(var(--buttercupp-border))" }}
-          >
-          <div
-            className="flex h-11 w-11 items-center justify-center rounded-full"
-            style={{
-              background: "linear-gradient(135deg, hsl(var(--bc-amber) / 0.25), hsl(var(--bc-honey) / 0.25))",
-            }}
-          >
-            <Lock className="h-5 w-5" style={{ color: "hsl(var(--bc-amber))" }} />
-          </div>
-
-          <div>
-            <h2
-              className="font-display text-xl font-semibold leading-snug"
-              style={{ color: "hsl(0 0% 98%)" }}
-            >
-              Unlock unlimited images
-            </h2>
-            <p className="mt-2 text-sm leading-relaxed" style={{ color: "hsl(var(--bc-muted))" }}>
-              Upgrade to Premium for unlimited image generation, exclusive content, and deeper connections with your companions.
-            </p>
-          </div>
-
-          <a
-            href="/billing"
-            className="flex items-center justify-center rounded-[var(--bc-radius)] px-5 py-3 text-sm font-semibold text-[hsl(28_45%_9%)] shadow-sm transition-opacity hover:opacity-90"
-            style={{
-              backgroundImage: "var(--bc-gradient-brand-h)",
-            }}
-          >
-            Upgrade to Premium
-          </a>
-
-          <div>
-            <p className="mb-3 text-xs font-medium uppercase tracking-wider" style={{ color: "hsl(var(--bc-muted))" }}>
-              Or chat for free with:
-            </p>
-            <div className="flex flex-col gap-2">
-              <a
-                href="/discover"
-                className="flex items-center gap-3 rounded-xl p-3 transition-colors"
-                style={{
-                  backgroundColor: "hsl(var(--bc-surface-2))",
-                  border: "1px solid hsl(var(--bc-border))",
-                  color: "hsl(0 0% 98%)",
-                }}
-              >
-                <div
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-semibold"
-                  style={{
-                    background: "linear-gradient(135deg, hsl(var(--bc-amber) / 0.3), hsl(var(--bc-honey) / 0.3))",
-                    color: "hsl(var(--bc-amber))",
-                  }}
-                >
-                  S
-                </div>
-                <div>
-                  <p className="text-sm font-medium">Explore Free Companions</p>
-                  <p className="text-xs" style={{ color: "hsl(var(--bc-muted))" }}>Browse all available characters</p>
-                </div>
-              </a>
-
-              <a
-                href="/gallery"
-                className="flex items-center gap-3 rounded-xl p-3 transition-colors"
-                style={{
-                  backgroundColor: "hsl(var(--bc-surface-2))",
-                  border: "1px solid hsl(var(--bc-border))",
-                  color: "hsl(0 0% 98%)",
-                }}
-              >
-                <div
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-semibold"
-                  style={{
-                    background: "linear-gradient(135deg, hsl(var(--bc-honey) / 0.3), hsl(var(--bc-amber) / 0.3))",
-                    color: "hsl(var(--bc-honey))",
-                  }}
-                >
-                  G
-                </div>
-                <div>
-                  <p className="text-sm font-medium">Community Gallery</p>
-                  <p className="text-xs" style={{ color: "hsl(var(--bc-muted))" }}>Discover community-created companions</p>
-                </div>
-              </a>
-            </div>
-          </div>
-          </div>
-        </div>
-      </ModalCard>
+        <img
+          src={url}
+          alt=""
+          className="block max-h-[90vh] max-w-[92vw] w-auto h-auto object-contain"
+        />
+      </div>
     </ModalOverlay>
   );
 }

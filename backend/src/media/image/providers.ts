@@ -38,6 +38,36 @@ export function _resetImageDisabled(): void {
   disabled.replicate = false;
 }
 
+// Live inventory of a box's ComfyUI node classes, fetched from GET /object_info.
+// assembleConsistentWorkflow's has() gate uses this to SKIP an enabled block
+// whose custom node is not installed on the box (graceful degrade) instead of
+// sending a workflow the box will reject. Cached per base for a short TTL so we
+// do not hit /object_info on every render. Never throws: on any error it returns
+// undefined, and callers then fall back to "trust the flags" (the prior behavior).
+const NODE_INVENTORY_TTL_MS = 5 * 60 * 1000;
+const nodeInventoryCache = new Map<string, { value: Set<string>; expiresAt: number }>();
+
+export function _resetNodeInventoryCache(): void {
+  nodeInventoryCache.clear();
+}
+
+export async function fetchComfyNodeInventory(base: string): Promise<Set<string> | undefined> {
+  const cached = nodeInventoryCache.get(base);
+  if (cached && cached.expiresAt > Date.now()) return cached.value;
+  try {
+    const res = await fetch(`${base}/object_info`);
+    if (!res.ok) return undefined;
+    const json = (await res.json()) as Record<string, unknown>;
+    const value = new Set(Object.keys(json));
+    nodeInventoryCache.set(base, { value, expiresAt: Date.now() + NODE_INVENTORY_TTL_MS });
+    return value;
+  } catch {
+    // Inventory is a best-effort optimization; a fetch failure must never block a
+    // render. Return undefined so the caller trusts the configured flags.
+    return undefined;
+  }
+}
+
 function isAuthError(status: number | undefined): boolean {
   return status === 401 || status === 403;
 }
@@ -311,6 +341,10 @@ function buildInstantIdWorkflow(a: {
   skipFaceSwap?: boolean;
   refineBlend?: boolean;
   refineDenoise?: number;
+  // Live ComfyUI node inventory (from fetchComfyNodeInventory). When present, a
+  // flag-enabled block whose key node is missing on the box is skipped instead
+  // of failing the render. Undefined => trust the flags (prior behavior).
+  availableNodes?: Set<string>;
 }): Record<string, unknown> {
   const flags = a.flags ?? resolveImageFlags();
   return assembleConsistentWorkflow({
@@ -320,6 +354,7 @@ function buildInstantIdWorkflow(a: {
     refName: a.refName,
     seed: a.seed,
     flags,
+    availableNodes: a.availableNodes,
     skipFaceSwap: a.skipFaceSwap,
     refineBlend: a.refineBlend,
     refineDenoise: a.refineDenoise,
@@ -394,6 +429,17 @@ export async function generateWithComfyUIConsistent(p: {
   // Merge flag overrides (e.g. lora:true from the handler) into env-resolved flags.
   const flags = resolveImageFlags(p.flagOverrides);
 
+  // Only pay the /object_info round-trip when a gated block is actually enabled;
+  // the all-off path stays byte-identical and hits the box just once (for /prompt).
+  const anyGatedFlagOn =
+    flags.lora ||
+    flags.faceDetailer ||
+    flags.handDetailer ||
+    flags.poseControlNet ||
+    flags.pulid ||
+    flags.upscaleTail;
+  const availableNodes = anyGatedFlagOn ? await fetchComfyNodeInventory(base) : undefined;
+
   const workflow = buildInstantIdWorkflow({
     ckpt,
     positive: `${pose}, ${CONSISTENT.qualityPrefix}${p.prompt}`,
@@ -401,6 +447,7 @@ export async function generateWithComfyUIConsistent(p: {
     refName,
     seed,
     flags,
+    availableNodes,
     poseHint: pose,
     scene: p.prompt,
     // When a typed skeleton was resolved, it takes precedence over the free-text
