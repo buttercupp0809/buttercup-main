@@ -100,7 +100,6 @@ export function UpgradeModalProvider({ children }: { children: React.ReactNode }
     // active is intentionally excluded: the poll reads the latest via closure
     // through the ref/state guards, and re-subscribing the interval on every
     // open/close would reset the cadence.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleClose = React.useCallback(() => {

@@ -131,7 +131,6 @@ export function GenerationStatus({ characterId }: GenerationStatusProps) {
     };
     // primaryImageUrl intentionally excluded: it is a fetch-once side
     // effect, not something that should restart the polling loop.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [characterId]);
 
   const slots = slotsFrom(status);

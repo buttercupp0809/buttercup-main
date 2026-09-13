@@ -185,7 +185,6 @@ export function PaywallHero({
           rarely-rendered UI, so the optimizer's savings are negligible
           compared to the deployment-time risk of a broken paywall
           whenever CDN hostnames change. */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={heroImageSrc}
         alt={heroImageAlt}
@@ -333,7 +332,6 @@ function TrustBadge() {
   // surface than this single trust chip warrants.
   return (
     <div className="mx-auto">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/brand/high-rated.svg"
         alt="Highly rated by over 1000 users"

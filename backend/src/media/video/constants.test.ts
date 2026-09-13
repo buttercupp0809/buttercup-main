@@ -29,17 +29,20 @@ describe("video constants (Wan additive)", () => {
     expect(WAN_STEPS.fast.high.loraStrength).toBe(1.0);
     expect(WAN_STEPS.fast.low.loraStrength).toBe(1.0);
   });
-  it("balanced weakens the high-expert LoRA to 0.7 (motion) and keeps the low LoRA full at cfg 1.0", () => {
+  it("balanced drops Lightning (loraStrength 0) and runs full cfg 3.5 on both experts", () => {
+    // KEY FIX 2026-08-26: quality tiers no longer run Lightning at cfg 3.5
+    // (which caused artifacts); they drop the LoRA and use real cfg instead.
     expect(WAN_STEPS.balanced.high.cfg).toBe(3.5);
-    expect(WAN_STEPS.balanced.high.loraStrength).toBe(0.7);
-    expect(WAN_STEPS.balanced.low.cfg).toBe(1.0);
-    expect(WAN_STEPS.balanced.low.loraStrength).toBe(1.0);
+    expect(WAN_STEPS.balanced.high.loraStrength).toBe(0.0);
+    expect(WAN_STEPS.balanced.low.cfg).toBe(3.5);
+    expect(WAN_STEPS.balanced.low.loraStrength).toBe(0.0);
   });
-  it("max is 720p HD with a weakened high-expert LoRA (fast enough to be practical)", () => {
+  it("max is 720p HD with Lightning dropped and a higher high-noise cfg", () => {
     expect(WAN_STEPS.max.hq).toBe(true);
-    expect(WAN_STEPS.max.high.loraStrength).toBeGreaterThan(0);
-    expect(WAN_STEPS.max.high.loraStrength).toBeLessThan(1);
-    expect(WAN_STEPS.max.low.loraStrength).toBe(1.0);
+    expect(WAN_STEPS.max.high.loraStrength).toBe(0.0);
+    expect(WAN_STEPS.max.low.loraStrength).toBe(0.0);
+    // High-noise expert runs a slightly higher cfg than the low-noise expert.
+    expect(WAN_STEPS.max.high.cfg).toBeGreaterThan(WAN_STEPS.max.low.cfg);
   });
   it("self-host is configured when POPPY_WAN_URL is set", () => {
     process.env.POPPY_WAN_URL = "http://1.2.3.4:8188";
@@ -48,11 +51,9 @@ describe("video constants (Wan additive)", () => {
 });
 
 describe("wan presets v2", () => {
-  it("high-noise expert weakens the Lightning LoRA on balanced and max; fast keeps it full", () => {
-    expect(WAN_STEPS.balanced.high.loraStrength).toBeGreaterThan(0);
-    expect(WAN_STEPS.balanced.high.loraStrength).toBeLessThan(1);
-    expect(WAN_STEPS.max.high.loraStrength).toBeGreaterThan(0);
-    expect(WAN_STEPS.max.high.loraStrength).toBeLessThan(1);
+  it("quality tiers (balanced/max) drop the Lightning LoRA; fast keeps it full", () => {
+    expect(WAN_STEPS.balanced.high.loraStrength).toBe(0.0);
+    expect(WAN_STEPS.max.high.loraStrength).toBe(0.0);
     expect(WAN_STEPS.fast.high.loraStrength).toBe(1.0);
   });
   it("interpolation on for balanced/max, off for fast", () => {

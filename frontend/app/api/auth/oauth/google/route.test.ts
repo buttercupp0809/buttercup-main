@@ -17,6 +17,7 @@ const update = vi.fn();
 const ageVerificationCreate = vi.fn();
 const signAuthToken = vi.fn().mockResolvedValue("signed-jwt");
 const setAuthCookie = vi.fn();
+const recordLogin = vi.fn();
 const jwtVerify = vi.fn();
 
 vi.mock("@buttercupp/database", () => ({
@@ -35,6 +36,7 @@ vi.mock("@buttercupp/database", () => ({
 vi.mock("@/lib/auth", () => ({
   signAuthToken: (...args: unknown[]) => signAuthToken(...args),
   setAuthCookie: (...args: unknown[]) => setAuthCookie(...args),
+  recordLogin: (...args: unknown[]) => recordLogin(...args),
 }));
 
 vi.mock("jose", async () => {

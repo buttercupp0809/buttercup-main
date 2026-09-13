@@ -320,7 +320,6 @@ export function BillingClient({ highlightPlan }: BillingClientProps) {
         }}
       >
         <div className="flex justify-center sm:justify-start">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/brand/high-rated.svg"
             alt="Highly rated by over 1000 users"
