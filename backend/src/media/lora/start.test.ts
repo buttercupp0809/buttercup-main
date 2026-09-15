@@ -24,7 +24,7 @@ vi.mock("@buttercupp/database", () => ({
   },
 }));
 
-const { startCharacterLoraTraining } = await import("./start");
+const { startCharacterLoraTraining, loraAutotrainEnabled } = await import("./start");
 
 beforeEach(() => {
   loraFindFirstMock.mockReset();
@@ -33,6 +33,33 @@ beforeEach(() => {
 });
 afterEach(() => {
   vi.restoreAllMocks();
+});
+
+describe("loraAutotrainEnabled", () => {
+  const prev = process.env.LORA_AUTOTRAIN;
+  afterEach(() => {
+    if (prev === undefined) delete process.env.LORA_AUTOTRAIN;
+    else process.env.LORA_AUTOTRAIN = prev;
+  });
+
+  it("defaults to OFF when LORA_AUTOTRAIN is unset", () => {
+    delete process.env.LORA_AUTOTRAIN;
+    expect(loraAutotrainEnabled()).toBe(false);
+  });
+
+  it("is on for '1' or 'true'", () => {
+    process.env.LORA_AUTOTRAIN = "1";
+    expect(loraAutotrainEnabled()).toBe(true);
+    process.env.LORA_AUTOTRAIN = "true";
+    expect(loraAutotrainEnabled()).toBe(true);
+  });
+
+  it("is off for any other value", () => {
+    process.env.LORA_AUTOTRAIN = "false";
+    expect(loraAutotrainEnabled()).toBe(false);
+    process.env.LORA_AUTOTRAIN = "0";
+    expect(loraAutotrainEnabled()).toBe(false);
+  });
 });
 
 describe("startCharacterLoraTraining", () => {

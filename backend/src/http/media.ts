@@ -27,7 +27,7 @@ import {
 import { prisma } from "@buttercupp/database";
 import { createQueuedAsset } from "../media/asset";
 import { enqueueMediaJob } from "../queue/media-queue";
-import { startCharacterLoraTraining } from "../media/lora/start";
+import { startCharacterLoraTraining, loraAutotrainEnabled } from "../media/lora/start";
 import { getSignedUrl } from "../media/storage";
 import { isRedisConfigured } from "../queue/connection";
 import { assertSafeId } from "../utils/safe-types";
@@ -291,6 +291,13 @@ async function handleCharacterTrainEnqueue(
 ) {
   const userId = await authenticate(req);
   if (!userId) return send(res, 401, { error: "unauthorized" });
+
+  // Auto-train master switch (default off). When off, this endpoint is a no-op
+  // so the feature ships dormant: no rows created, no jobs enqueued. The admin
+  // route (/admin/lora/train) is unaffected and can still trigger runs manually.
+  if (!loraAutotrainEnabled()) {
+    return send(res, 200, { status: "disabled", message: "LORA_AUTOTRAIN is off" });
+  }
 
   let characterId: string;
   try {

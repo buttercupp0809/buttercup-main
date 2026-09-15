@@ -21,6 +21,16 @@ type BaseModel = TrainLoraJobPayload["baseModel"];
 // enqueue would be wasteful. "ready" is handled separately (already trained).
 const ACTIVE_STATUSES: readonly LoraStatus[] = ["pending", "building", "training", "validating"];
 
+// Master switch for AUTOMATIC training (the on-publish trigger). Defaults OFF so
+// the feature can be deployed dormant: with it off, publishing a character does
+// NOT enqueue a run (no failed rows / no queue churn when the training box or
+// its env is not yet wired). The admin route stays ungated. Turn on with
+// LORA_AUTOTRAIN=true once the training box + POPPY_TRAINING_URL are live.
+export function loraAutotrainEnabled(): boolean {
+  const v = process.env.LORA_AUTOTRAIN;
+  return v === "1" || v === "true";
+}
+
 export interface StartCharacterLoraTrainingArgs {
   characterId: string;
   /** Omit to resolve the character's currentVersionId. */
