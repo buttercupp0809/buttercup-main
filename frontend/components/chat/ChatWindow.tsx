@@ -335,7 +335,6 @@ export function ChatWindow({
     // the shared streaming buffer (see `send`), so an early send cannot
     // interleave with an in-flight check-in stream.
     t.checkin(conversationId, characterId);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Seed the pagination cursor from the SSR history: the OLDEST initial message
@@ -347,7 +346,6 @@ export function ChatWindow({
     } else {
       olderExhaustedRef.current = true;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Fetch the next older page and PREPEND it, preserving the on-screen scroll

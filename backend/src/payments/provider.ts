@@ -89,7 +89,7 @@ export async function createCheckoutSession(req: CheckoutRequest): Promise<Check
   }
 
   // Build the most specific error reason possible for the frontend.
-  // Avoid relying on instanceof Error — the SDK may bundle its own Error class.
+  // Avoid relying on instanceof Error (the SDK may bundle its own Error class).
   let reason: string;
   if (!attempted) {
     reason = "no_provider_configured";

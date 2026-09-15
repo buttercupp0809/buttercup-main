@@ -125,7 +125,6 @@ export function CharacterWizardProvider({ children }: { children: React.ReactNod
     setHydrated(true);
     // Only re-run if the edit target changes; step-to-step navigation within
     // /create/* must not re-trigger a hydration fetch.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams?.get("editCharacterId")]);
 
   React.useEffect(() => {

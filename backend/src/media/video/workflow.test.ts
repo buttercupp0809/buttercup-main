@@ -40,45 +40,43 @@ describe("buildWanWorkflow", () => {
     expect(() => buildWanWorkflow({ ...base, mode: "i2v", preset: "fast", interpolate: false })).toThrow();
   });
 
-  it("max preset applies the weakened high + full low Lightning LoRAs (720p, practical speed)", () => {
+  it("max preset drops the Lightning LoRAs (full cfg, 720p)", () => {
     const g = buildWanWorkflow({ ...base, mode: "t2v", preset: "max", interpolate: true });
     const classes = Object.values(g).map((n) => (n as { class_type: string }).class_type);
-    expect(classes.filter((c) => c === "LoraLoaderModelOnly")).toHaveLength(2);
-    // High-expert LoRA is weakened (< 1), low-expert stays full.
-    expect((g["30"] as { inputs: { strength_model: number } }).inputs.strength_model).toBeLessThan(1);
-    expect((g["31"] as { inputs: { strength_model: number } }).inputs.strength_model).toBe(1.0);
+    // Quality tiers no longer run Lightning: neither LoRA loader node is emitted.
+    expect(classes.filter((c) => c === "LoraLoaderModelOnly")).toHaveLength(0);
+    expect(g["30"]).toBeUndefined();
+    expect(g["31"]).toBeUndefined();
   });
 
-  it("balanced weakens the high-expert LoRA to 0.7 (cfg 3.5), keeps the low LoRA full at cfg 1.0", () => {
+  it("balanced drops Lightning (no LoRA nodes) and runs both experts at cfg 3.5", () => {
     const g = buildWanWorkflow({ ...base, mode: "t2v", preset: "balanced", interpolate: true });
     const { all, high, low } = samplers(g);
     expect(all).toHaveLength(2);
     expect(high?.inputs.cfg).toBe(3.5);
-    expect(low?.inputs.cfg).toBe(1.0);
-    // Both LoRA nodes exist: high (30) at 0.7 strength, low (31) at 1.0.
+    expect(low?.inputs.cfg).toBe(3.5);
+    // No Lightning: neither LoRA node exists.
     const classes = Object.values(g).map((n) => (n as { class_type: string }).class_type);
-    expect(classes.filter((c) => c === "LoraLoaderModelOnly")).toHaveLength(2);
-    const highLora = g["30"] as { inputs: { strength_model: number } };
-    expect(highLora.inputs.strength_model).toBe(0.7);
-    const lowLora = g["31"] as { inputs: { strength_model: number } };
-    expect(lowLora.inputs.strength_model).toBe(1.0);
-    // Each expert's ModelSamplingSD3 feeds off its own LoRA node.
+    expect(classes.filter((c) => c === "LoraLoaderModelOnly")).toHaveLength(0);
+    expect(g["30"]).toBeUndefined();
+    expect(g["31"]).toBeUndefined();
+    // Each expert's ModelSamplingSD3 feeds off its base UNET loader (no LoRA).
     const highSampling = g["50"] as { inputs: { model: [string, number] } };
-    expect(highSampling.inputs.model).toEqual(["30", 0]);
+    expect(highSampling.inputs.model).toEqual(["20", 0]);
     const lowSampling = g["52"] as { inputs: { model: [string, number] } };
-    expect(lowSampling.inputs.model).toEqual(["31", 0]);
+    expect(lowSampling.inputs.model).toEqual(["21", 0]);
   });
 
   it("uses per-expert step boundaries (start/end)", () => {
     const g = buildWanWorkflow({ ...base, mode: "t2v", preset: "balanced", interpolate: true });
     const { high, low } = samplers(g);
-    // balanced: high 4 steps, low 4 steps, total 8.
+    // balanced: high 6 steps, low 6 steps, total 12.
     expect(high?.inputs.start_at_step).toBe(0);
-    expect(high?.inputs.end_at_step).toBe(4);
-    expect(high?.inputs.steps).toBe(8);
-    expect(low?.inputs.start_at_step).toBe(4);
-    expect(low?.inputs.end_at_step).toBe(8);
-    expect(low?.inputs.steps).toBe(8);
+    expect(high?.inputs.end_at_step).toBe(6);
+    expect(high?.inputs.steps).toBe(12);
+    expect(low?.inputs.start_at_step).toBe(6);
+    expect(low?.inputs.end_at_step).toBe(12);
+    expect(low?.inputs.steps).toBe(12);
   });
 
   it("maps aspect to width/height (landscape swaps dims)", () => {
@@ -136,8 +134,8 @@ describe("buildWanWorkflow", () => {
     const i2v = Object.values(g).find((n: any) => n.class_type === "WanImageToVideo") as any;
     expect(i2v.inputs.width).toBe(480);
     expect(i2v.inputs.height).toBe(832);
-    // balanced weakens the high-expert LoRA rather than removing it: a LoRA node exists.
+    // balanced drops Lightning entirely: no LoRA nodes.
     const loras = Object.values(g).filter((n: any) => n.class_type === "LoraLoaderModelOnly") as any[];
-    expect(loras.length).toBe(2);
+    expect(loras.length).toBe(0);
   });
 });

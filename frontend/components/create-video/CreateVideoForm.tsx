@@ -520,7 +520,6 @@ function CharacterAvatar({ character, size = 9 }: { character: CreateVideoCharac
       style={{ height: `${size * 0.25}rem`, width: `${size * 0.25}rem`, backgroundColor: "hsl(var(--bc-surface-3))" }}
     >
       {character.avatarUrl ? (
-        // eslint-disable-next-line @next/next/no-img-element
         <img src={character.avatarUrl} alt={character.name} className="h-full w-full object-cover object-top" />
       ) : (
         <span>{character.name[0]?.toUpperCase() ?? "?"}</span>
