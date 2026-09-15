@@ -4,13 +4,25 @@
 #
 # Using Juggernaut XL (photorealistic SDXL). Natural language works fine.
 # The quality prefix is prepended automatically by the pipeline.
+# With VARIANTS_PER_PROMPT=1 (default), each prompt below produces exactly 1 image.
+# 10 prompts below = 10 images per character.
 
-Sex on the kitchen counter What are you going to do with all that cake? Cook up something fun by taking your sex game to the kitchen counter. You can place your partner on the edge of the counter and go missionary. It’s not a bad idea to start with some foreplay by kissing your partner’s neck while they’re stirring up dinner or baking. That could really turn up the heat in a hurry. What’s for dessert? Why don’t you and your partner find out?
+prompt 1
 
-Sex at your parents’ (or grandparents’) house Some people love to try quiet or sneaky sex. You and your partner will almost certainly have to do just that if you’re home for the holidays and hoping Mom and Dad don’t hear. Make sure your parents or grandparents are preoccupied and come up with a time-wasting strategy, so you avoid getting caught in a potentially compromising position!
+prompt 2
 
-Sex in a limousine Who said limos have to be elegant or classy? They can also be sexy. Hopefully your driver has the privacy screen fully closed. If you’re going to take this chance, you’ll have to be discreet. Try starting with some touching before proceeding to oral stimulation. If you are attempting intercourse, then doing cowgirl (mostly) clothed may be the way to go.
+prompt 3
 
-Do it on top of the washer/dryer This could make for more of an organic vibrator. Place your partner on top of the washer or dryer and get them humming with pleasure. Put them in a spin cycle via added oral stimulation or by trying missionary.
+prompt 4
 
-Sex in a swimming pool or hot tub Swimming pools don’t have to be about merely laying out for a tan or taking a quick dip. Try out your sexual version of water aerobics in the pool or cozy up next to the jets in the hot tub as you engage in pulsating pleasure.
+prompt 5
+
+prompt 6
+
+prompt 7
+
+prompt 8
+
+prompt 9
+
+prompt 10
