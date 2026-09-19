@@ -17,6 +17,7 @@ import { signAssetUrl } from "@/lib/cdn";
 import { dedupeByIdentity, excludeHeroIdentity } from "@/lib/character-media";
 import { blurredDataUri } from "@/lib/media-blur";
 import { ctaLineFor } from "@buttercupp/shared";
+import { isUserPaid } from "@/lib/subscription";
 
 export const dynamic = "force-dynamic";
 
@@ -86,12 +87,7 @@ export default async function ChatPage({
     }),
   ]);
 
-  const onPaidPass =
-    quota?.subscription?.status === "active" &&
-    quota.subscription.plan !== null &&
-    quota.subscription.plan !== "free" &&
-    (quota.subscription.currentPeriodEnd === null ||
-      quota.subscription.currentPeriodEnd.getTime() > Date.now());
+  const onPaidPass = isUserPaid(user.subscriptionTier, quota?.subscription ?? null);
 
   // History window shrunk from 50 to 25 (see Plans/cursor-prompt/35-major-fixes-batch.md #I.3).
   // ChatWindow's client-side lazy loader picks up older turns on scroll-up.

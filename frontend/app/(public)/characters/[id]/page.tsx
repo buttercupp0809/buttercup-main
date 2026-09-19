@@ -9,6 +9,7 @@ import { GalleryPaywall } from "@/components/gallery/GalleryPaywall";
 import { blurMany } from "@/lib/media-blur";
 import { taglineFrom } from "@/lib/marketing";
 import { prisma } from "@buttercupp/database";
+import { isUserPaid } from "@/lib/subscription";
 
 export const dynamic = "force-dynamic";
 
@@ -48,17 +49,20 @@ export default async function CharacterDetailPage({
   let hasActivePlan = false;
   let unlockedMediaIds: string[] = [];
   if (viewer.id && galleryMediaIds.length > 0) {
-    const [sub, unlocked] = await Promise.all([
-      prisma.subscription.findUnique({
-        where: { userId: viewer.id },
-        select: { status: true },
+    const [userWithSub, unlocked] = await Promise.all([
+      prisma.user.findUnique({
+        where: { id: viewer.id },
+        select: {
+          subscriptionTier: true,
+          subscription: { select: { status: true, plan: true, currentPeriodEnd: true } },
+        },
       }),
       prisma.userUnlockedMedia.findMany({
         where: { userId: viewer.id, characterMediaId: { in: galleryMediaIds } },
         select: { characterMediaId: true },
       }),
     ]);
-    hasActivePlan = sub?.status === "active";
+    hasActivePlan = isUserPaid(userWithSub?.subscriptionTier ?? "free", userWithSub?.subscription ?? null);
     unlockedMediaIds = unlocked.map((u) => u.characterMediaId);
   }
 
