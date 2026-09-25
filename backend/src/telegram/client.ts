@@ -102,3 +102,25 @@ export async function setMyPhoto(botToken: string, photoUrl: string): Promise<vo
     });
   }
 }
+
+// Sets the bot's profile photo from a pre-downloaded image buffer.
+// Use this when the source is a private S3 object: fetchObjectBytes -> setMyPhotoFromBuffer.
+export async function setMyPhotoFromBuffer(botToken: string, imageBuffer: Buffer): Promise<void> {
+  try {
+    const blob = new Blob([imageBuffer], { type: "image/jpeg" });
+    const form = new FormData();
+    form.append("photo", blob, "photo.jpg");
+    const apiRes = await fetch(buildApiUrl(botToken, "setMyPhoto"), {
+      method: "POST",
+      body: form,
+    });
+    if (!apiRes.ok) {
+      const text = await apiRes.text().catch(() => "");
+      logWarn("telegram", `setMyPhotoFromBuffer api error status=${apiRes.status}`, { body: text });
+    }
+  } catch (err) {
+    logWarn("telegram", `setMyPhotoFromBuffer error`, {
+      err: err instanceof Error ? err.message : String(err),
+    });
+  }
+}

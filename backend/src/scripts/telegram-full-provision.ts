@@ -1,21 +1,26 @@
 // Integrated Telegram bot provisioning script.
-// For each character in prod DB that lacks a TelegramBot:
+// For each character in prod DB that lacks a TelegramBotConfig:
 //   1. Creates the bot via BotFather (gramjs MTProto)
 //   2. Writes TelegramBotConfig to PROD DB
 //   3. Registers webhook with Telegram
 //   4. Sets bot name, description, short description, commands
-//   5. Sets bot profile photo from the character's display image
+//   5. Sets bot profile photo from the character's S3 display image
 //   6. Waits 30s before the next character
 //
 // Required env vars (in backend/.env):
-//   PROD_DATABASE_URL  - production Postgres URL
-//   TELEGRAM_API_ID    - from my.telegram.org
-//   TELEGRAM_API_HASH  - from my.telegram.org
-//   TELEGRAM_SESSION   - gramjs session string (from --auth-only run)
-//   TELEGRAM_PHONE     - your phone number (fallback for first-time auth)
+//   PROD_DATABASE_URL   - production Postgres URL
+//   TELEGRAM_API_ID     - from my.telegram.org
+//   TELEGRAM_API_HASH   - from my.telegram.org
+//   TELEGRAM_SESSION    - gramjs session string for account 1
+//   TELEGRAM_PHONE      - phone for account 1 (fallback for first-time auth)
+//
+// Additional sessions to rotate through when rate-limited:
+//   TELEGRAM_SESSION_2 / TELEGRAM_PHONE_2
+//   TELEGRAM_SESSION_3 / TELEGRAM_PHONE_3
+//   ... up to TELEGRAM_SESSION_10 / TELEGRAM_PHONE_10
 //
 // Optional:
-//   BACKEND_URL        - defaults to https://api.buttercupp.fun
+//   BACKEND_URL         - defaults to https://api.buttercupp.fun
 //
 // Usage:
 //   npm run telegram:full-provision -- [--limit N] [--dry-run] [--skip-photo]
@@ -33,14 +38,14 @@ import { TelegramClient } from "telegram";
 import { StringSession } from "telegram/sessions";
 import { NewMessage } from "telegram/events";
 import type { NewMessageEvent } from "telegram/events/NewMessage";
-import { setWebhook, setMyPhoto } from "../telegram/client";
+import { setWebhook } from "../telegram/client";
 import {
   setMyName,
   setMyDescription,
   setMyShortDescription,
   setMyCommands,
 } from "../telegram/client-configure";
-import { getSignedUrl } from "../media/storage";
+import { fetchObjectBytes } from "../media/storage";
 
 // ---------------------------------------------------------------------------
 // CLI args
@@ -75,6 +80,21 @@ function requireEnv(name: string): string {
   return val;
 }
 
+// Collect all available sessions from env. Returns list of { sessionStr, phone }.
+function collectSessions(): Array<{ sessionStr: string; phone: string | undefined }> {
+  const sessions: Array<{ sessionStr: string; phone: string | undefined }> = [];
+
+  const primary = process.env.TELEGRAM_SESSION;
+  if (primary) sessions.push({ sessionStr: primary, phone: process.env.TELEGRAM_PHONE });
+
+  for (let n = 2; n <= 10; n++) {
+    const s = process.env[`TELEGRAM_SESSION_${n}`];
+    if (s) sessions.push({ sessionStr: s, phone: process.env[`TELEGRAM_PHONE_${n}`] });
+  }
+
+  return sessions;
+}
+
 // ---------------------------------------------------------------------------
 // Flood-wait error (BotFather rate limit)
 // ---------------------------------------------------------------------------
@@ -82,6 +102,13 @@ function requireEnv(name: string): string {
 class FloodWaitError extends Error {
   constructor(public readonly seconds: number) {
     super(`BotFather flood wait: ${seconds}s`);
+  }
+}
+
+// Exhausted means every session we have returned a flood wait for the current attempt.
+class AllSessionsExhaustedError extends Error {
+  constructor() {
+    super("All Telegram sessions are rate-limited by BotFather");
   }
 }
 
@@ -151,6 +178,47 @@ function makeBotUsername(name: string, attempt: number): string {
   return username.length >= 5 && username.length <= 32 ? username : `bc_bot_${Date.now()}`;
 }
 
+async function setBotPhotoViaBotFather(
+  client: TelegramClient,
+  botUsername: string,
+  imageBuffer: Buffer,
+): Promise<void> {
+  await client.sendMessage("BotFather", { message: "/setuserpic" });
+  const selectPrompt = await waitForBotFatherReply(client);
+  if (
+    !selectPrompt.toLowerCase().includes("choose") &&
+    !selectPrompt.toLowerCase().includes("bot") &&
+    !selectPrompt.toLowerCase().includes("which")
+  ) {
+    throw new Error(`Unexpected BotFather /setuserpic response: ${selectPrompt.slice(0, 120)}`);
+  }
+
+  await client.sendMessage("BotFather", { message: `@${botUsername}` });
+  const photoPrompt = await waitForBotFatherReply(client);
+  if (
+    !photoPrompt.toLowerCase().includes("photo") &&
+    !photoPrompt.toLowerCase().includes("pic") &&
+    !photoPrompt.toLowerCase().includes("image")
+  ) {
+    throw new Error(`Unexpected BotFather /setuserpic response after username: ${photoPrompt.slice(0, 120)}`);
+  }
+
+  await (client as TelegramClient & { sendFile: (to: string, opts: { file: Buffer; caption: string }) => Promise<unknown> }).sendFile("BotFather", {
+    file: imageBuffer,
+    caption: "",
+  });
+
+  const confirmation = await waitForBotFatherReply(client, 60_000);
+  if (
+    !confirmation.toLowerCase().includes("updated") &&
+    !confirmation.toLowerCase().includes("success") &&
+    !confirmation.toLowerCase().includes("profile picture") &&
+    !confirmation.toLowerCase().includes("photo")
+  ) {
+    throw new Error(`BotFather photo not confirmed: ${confirmation.slice(0, 120)}`);
+  }
+}
+
 async function createBotInBotFather(
   client: TelegramClient,
   character: { id: string; name: string },
@@ -212,6 +280,35 @@ async function createBotInBotFather(
 }
 
 // ---------------------------------------------------------------------------
+// Session management
+// ---------------------------------------------------------------------------
+
+async function connectSession(
+  sessionStr: string,
+  apiId: number,
+  apiHash: string,
+  phone: string | undefined,
+  index: number,
+): Promise<TelegramClient> {
+  const label = index === 0 ? "primary" : `account ${index + 1}`;
+  console.log(`  Connecting Telegram session (${label})...`);
+  const client = new TelegramClient(new StringSession(sessionStr), apiId, apiHash, {
+    connectionRetries: 5,
+  });
+  await client.start({
+    phoneNumber: async () => phone ?? prompt(`Phone for ${label}: `),
+    password: async () => prompt(`2FA password for ${label} (blank if none): `),
+    phoneCode: async () => prompt(`Telegram OTP for ${label}: `),
+    onError: (err) => console.error(`Auth error (${label}):`, err),
+  });
+  const saved = client.session.save() as unknown as string;
+  if (!sessionStr) {
+    console.log(`[IMPORTANT] Add to .env: TELEGRAM_SESSION${index === 0 ? "" : `_${index + 1}`}=${saved}`);
+  }
+  return client;
+}
+
+// ---------------------------------------------------------------------------
 // Log file helpers
 // ---------------------------------------------------------------------------
 
@@ -244,11 +341,20 @@ async function main() {
   const PROD_DB_URL = requireEnv("PROD_DATABASE_URL");
   const API_ID = parseInt(requireEnv("TELEGRAM_API_ID"), 10);
   const API_HASH = requireEnv("TELEGRAM_API_HASH");
-  const SESSION_STR = process.env.TELEGRAM_SESSION ?? "";
-  const PHONE = process.env.TELEGRAM_PHONE;
   const BACKEND_URL = process.env.BACKEND_URL ?? "https://api.buttercupp.fun";
 
-  // Prod DB connection (separate from the app singleton).
+  const availableSessions = collectSessions();
+  if (availableSessions.length === 0) {
+    console.error("No TELEGRAM_SESSION found in env. Set at least TELEGRAM_SESSION.");
+    process.exit(1);
+  }
+  console.log(`\nTelegram Full Provision`);
+  console.log(`=======================`);
+  console.log(`Available sessions: ${availableSessions.length}`);
+
+  // PrismaClient used directly here because this script connects to a SEPARATE
+  // prod database, not the singleton's DATABASE_URL (which points at local dev).
+  // This is a one-shot admin script that calls $disconnect() before exit.
   const prodPrisma = new PrismaClient({ datasources: { db: { url: PROD_DB_URL } } });
 
   // Query characters without a TelegramBotConfig in prod DB.
@@ -269,8 +375,6 @@ async function main() {
     take: limit,
   });
 
-  console.log(`\nTelegram Full Provision`);
-  console.log(`=======================`);
   console.log(`Found ${characters.length} character(s) to provision (limit: ${limit})`);
   if (dryRun) console.log(`DRY RUN - no changes will be written\n`);
 
@@ -288,29 +392,24 @@ async function main() {
     return;
   }
 
-  // Connect gramjs.
-  const session = new StringSession(SESSION_STR);
-  const gramClient = new TelegramClient(session, API_ID, API_HASH, {
-    connectionRetries: 5,
-  });
-
-  await gramClient.start({
-    phoneNumber: async () => PHONE ?? prompt("Phone number: "),
-    password: async () => prompt("2FA password (blank if none): "),
-    phoneCode: async () => prompt("Telegram OTP: "),
-    onError: (err) => console.error("Auth error:", err),
-  });
-
-  const savedSession = gramClient.session.save() as unknown as string;
-  if (!SESSION_STR) {
-    console.log("\n[IMPORTANT] Add to .env: TELEGRAM_SESSION=" + savedSession + "\n");
-  }
+  // Connect the first session.
+  let activeSessionIndex = 0;
+  let gramClient = await connectSession(
+    availableSessions[0].sessionStr,
+    API_ID,
+    API_HASH,
+    availableSessions[0].phone,
+    0,
+  );
 
   let successCount = 0;
   let failCount = 0;
   const INTER_BOT_DELAY_MS = 30_000;
+  let allSessionsExhausted = false;
 
   for (let i = 0; i < characters.length; i++) {
+    if (allSessionsExhausted) break;
+
     const char = characters[i];
     const label = `[${i + 1}/${characters.length}] "${char.name}"`;
     console.log(`\n${label}`);
@@ -319,47 +418,69 @@ async function main() {
     let botUsername: string | null = null;
     let photoSet = false;
 
-    // Step 1: Create bot in BotFather (up to 3 retries on flood wait).
-    let attempts = 0;
-    while (attempts < 3) {
+    // Step 1: Create bot in BotFather. On flood wait, rotate to next session.
+    let botCreated = false;
+    let botCreateFailed = false;
+
+    while (!botCreated && !botCreateFailed && !allSessionsExhausted) {
       try {
         const result = await createBotInBotFather(gramClient, char);
         botToken = result.botToken;
         botUsername = result.botUsername;
-        console.log(`  [1/5] BotFather: @${botUsername} created`);
-        break;
+        console.log(`  [1/5] BotFather: @${botUsername} created (session ${activeSessionIndex + 1})`);
+        botCreated = true;
       } catch (err) {
-        if (err instanceof FloodWaitError) {
-          attempts++;
-          const wait = err.seconds + 5;
-          console.log(`  [1/5] Flood wait ${err.seconds}s. Waiting ${wait}s (attempt ${attempts}/3)...`);
-          await sleep(wait * 1000);
-          continue;
+        const isFlood =
+          err instanceof FloodWaitError ||
+          (err instanceof Error && err.message.toUpperCase().includes("FLOOD_WAIT"));
+
+        if (isFlood) {
+          const secs = err instanceof FloodWaitError ? err.seconds : 0;
+          console.log(
+            `  [1/5] Session ${activeSessionIndex + 1} flood-waited (${secs}s). Rotating session...`,
+          );
+
+          try {
+            await gramClient.disconnect();
+          } catch {
+            // ignore disconnect errors
+          }
+
+          activeSessionIndex++;
+          if (activeSessionIndex >= availableSessions.length) {
+            console.log("  All sessions exhausted. Stopping batch.");
+            allSessionsExhausted = true;
+            break;
+          }
+
+          gramClient = await connectSession(
+            availableSessions[activeSessionIndex].sessionStr,
+            API_ID,
+            API_HASH,
+            availableSessions[activeSessionIndex].phone,
+            activeSessionIndex,
+          );
+          // Retry same character with new session (loop continues).
+        } else {
+          const msg = err instanceof Error ? err.message : String(err);
+          console.error(`  [1/5] FAILED to create bot: ${msg}`);
+          appendLog(logPath, {
+            characterId: char.id,
+            characterName: char.name,
+            botUsername: "",
+            botToken: "",
+            status: "failed",
+            photoSet: false,
+            error: msg,
+            createdAt: new Date().toISOString(),
+          });
+          failCount++;
+          botCreateFailed = true;
         }
-        const msg = err instanceof Error ? err.message : String(err);
-        if (msg.toUpperCase().includes("FLOOD_WAIT")) {
-          attempts++;
-          const secs = parseInt(msg.match(/(\d+)/)?.[1] ?? "60", 10) + 5;
-          console.log(`  [1/5] gramjs FloodWait. Waiting ${secs}s (attempt ${attempts}/3)...`);
-          await sleep(secs * 1000);
-          continue;
-        }
-        console.error(`  [1/5] FAILED to create bot: ${msg}`);
-        appendLog(logPath, {
-          characterId: char.id,
-          characterName: char.name,
-          botUsername: "",
-          botToken: "",
-          status: "failed",
-          photoSet: false,
-          error: msg,
-          createdAt: new Date().toISOString(),
-        });
-        failCount++;
-        break;
       }
     }
 
+    if (allSessionsExhausted) break;
     if (!botToken || !botUsername) {
       if (i < characters.length - 1) {
         console.log(`  Waiting ${INTER_BOT_DELAY_MS / 1000}s before next character...`);
@@ -393,27 +514,35 @@ async function main() {
       ]);
       console.log(`  [4/5] Bot API: name, description, commands set`);
 
-      // Step 5: Set bot profile photo from character's display image.
+      // Step 5: Set bot profile photo via BotFather /setuserpic.
+      // Bot API setMyPhoto does not exist for regular bots (returns 404).
       if (!skipPhoto && char.media[0]?.url) {
         const rawUrl = char.media[0].url;
         try {
-          let photoUrl: string;
+          let imageBuffer: Buffer | null = null;
           if (rawUrl.startsWith("http://") || rawUrl.startsWith("https://")) {
-            photoUrl = rawUrl;
-          } else if (rawUrl.startsWith("/")) {
-            throw new Error("local static path, skipping");
+            const r = await fetch(rawUrl);
+            if (r.ok) imageBuffer = Buffer.from(await r.arrayBuffer());
+            else throw new Error(`HTTP ${r.status} fetching photo URL`);
           } else {
-            photoUrl = await getSignedUrl(rawUrl, 900);
+            imageBuffer = await fetchObjectBytes(rawUrl);
           }
-          await setMyPhoto(botToken, photoUrl);
-          photoSet = true;
-          console.log(`  [5/5] Photo: set`);
+
+          if (imageBuffer) {
+            await setBotPhotoViaBotFather(gramClient, botUsername, imageBuffer);
+            photoSet = true;
+            console.log(`  [5/5] Photo: set via BotFather`);
+          } else {
+            console.log(`  [5/5] Photo: skipped (could not fetch image bytes)`);
+          }
         } catch (photoErr) {
           const msg = photoErr instanceof Error ? photoErr.message : String(photoErr);
           console.log(`  [5/5] Photo: skipped (${msg})`);
         }
       } else {
-        console.log(`  [5/5] Photo: skipped (${skipPhoto ? "--skip-photo flag" : "no display image"})`);
+        console.log(
+          `  [5/5] Photo: skipped (${skipPhoto ? "--skip-photo flag" : "no display image"})`,
+        );
       }
 
       console.log(`  Done: "${char.name}" @${botUsername}`);
@@ -450,11 +579,19 @@ async function main() {
   }
 
   console.log(`\n=== Summary ===`);
-  console.log(`Provisioned: ${successCount}`);
-  console.log(`Failed:      ${failCount}`);
-  console.log(`Log:         ${logPath}`);
+  console.log(`Sessions used:  ${activeSessionIndex + 1} / ${availableSessions.length}`);
+  console.log(`Provisioned:    ${successCount}`);
+  console.log(`Failed:         ${failCount}`);
+  console.log(`Log:            ${logPath}`);
+  if (allSessionsExhausted) {
+    console.log(`NOTE: All sessions hit BotFather rate limit. Re-run after ~24h, or add more sessions via TELEGRAM_SESSION_N env vars.`);
+  }
 
-  await gramClient.disconnect();
+  try {
+    await gramClient.disconnect();
+  } catch {
+    // ignore
+  }
   await prodPrisma.$disconnect();
 }
 

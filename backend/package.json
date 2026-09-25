@@ -17,7 +17,8 @@
     "telegram:bulk-register": "tsx src/scripts/telegram-bulk-register.ts",
     "telegram:provision": "tsx src/scripts/telegram-provision.ts",
     "telegram:status": "tsx src/scripts/telegram-status.ts",
-    "telegram:provision-existing": "tsx src/scripts/telegram-provision-existing.ts"
+    "telegram:provision-existing": "tsx src/scripts/telegram-provision-existing.ts",
+    "telegram:set-photos": "tsx src/scripts/telegram-set-photos.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.115.0",
