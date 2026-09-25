@@ -343,11 +343,17 @@ export async function generateImageTeaser(
 // Generate an image from the user's chat text. When conversationId maps to a
 // character with a reference image, the exact face is locked in (consistent);
 // otherwise a plain scene is generated.
+//
+// The optional opts.billing field is metadata for the caller (e.g. "free_first_image"
+// to signal unblurred delivery). It does not affect how the image is generated here
+// since this path does not go through BullMQ.
 export async function generateChatImage(
   userText: string,
   conversationId?: string,
   userId?: string,
+  opts?: { billing?: "free_teaser" | "free_first_image" },
 ): Promise<ChatImageResult> {
+  void opts; // billing is caller metadata; generation is identical regardless
   const prompt = cleanImagePrompt(userText);
   const context = conversationId ? await buildImageContext(conversationId, userId) : undefined;
   const enrichedPrompt = await enrichImagePrompt(prompt, context);

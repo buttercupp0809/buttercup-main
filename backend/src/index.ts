@@ -10,6 +10,7 @@ import { handleBillingRoute } from "./http/billing";
 import { handleGalleryRoute } from "./http/gallery";
 import { handleAnalyticsRoute } from "./http/analytics";
 import { handleLoraAdminRoute } from "./http/lora";
+import { handleTelegramRoute } from "./http/telegram";
 import { applyCors } from "./http/cors";
 import { getHealthSnapshot } from "./metrics";
 import { getQueueHealth } from "./queue/queue-health";
@@ -76,6 +77,7 @@ const server = http.createServer(async (req, res) => {
   if (await handleGalleryRoute(req, res)) return;
   if (await handleAnalyticsRoute(req, res)) return;
   if (await handleLoraAdminRoute(req, res)) return;
+  if (await handleTelegramRoute(req, res)) return;
   res.writeHead(404, { "Content-Type": "application/json" });
   res.end(JSON.stringify({ error: "not_found" }));
 });

@@ -8,7 +8,14 @@
     "worker": "tsx watch src/worker.ts",
     "build": "tsc && node -e \"const{cpSync,mkdirSync,existsSync}=require('fs');const p='dist/llm/prompt-templates';mkdirSync(p,{recursive:true});cpSync('src/llm/prompt-templates',p,{recursive:true,filter:(s)=>s.endsWith('.md')||!s.includes('.')});\"",
     "start": "node dist/index.js",
-    "start:worker": "node dist/worker.js"
+    "start:worker": "node dist/worker.js",
+    "telegram:register-webhooks": "tsx src/scripts/register-telegram-webhooks.ts",
+    "telegram:create-bots": "tsx src/scripts/telegram-create-bots.ts",
+    "telegram:full-provision": "tsx src/scripts/telegram-full-provision.ts",
+    "telegram:generate-template": "tsx src/scripts/telegram-generate-template.ts",
+    "telegram:bulk-register": "tsx src/scripts/telegram-bulk-register.ts",
+    "telegram:provision": "tsx src/scripts/telegram-provision.ts",
+    "telegram:status": "tsx src/scripts/telegram-status.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.115.0",
@@ -29,6 +36,7 @@
   "devDependencies": {
     "@types/node": "^20.14.0",
     "@types/ws": "^8.5.12",
+    "telegram": "^2.25.15",
     "tsx": "^4.19.0",
     "typescript": "^5.6.0"
   }

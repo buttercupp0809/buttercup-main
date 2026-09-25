@@ -23,6 +23,7 @@ import {
   assertCanChat,
   assertCanImage,
   assertCanTease,
+  consumeFirstFreeImage,
   recordChatConsumption,
   recordImageConsumption,
   PaywallError,
@@ -174,8 +175,6 @@ export async function handleChatStream(req: IncomingMessage, res: ServerResponse
       const isFreeUser = !ent.active;
 
       if (isFreeUser) {
-        // Free-teaser path: never throws PaywallError, so a blocked user still
-        // sees a blur of an existing photo rather than an error.
         const convRowFree = await prisma.conversation.findUnique({
           where: { id: body.conversationId },
           select: { characterId: true, character: { select: { name: true } } },
@@ -183,6 +182,67 @@ export async function handleChatStream(req: IncomingMessage, res: ServerResponse
         const characterName = convRowFree?.character?.name ?? "companion";
         const characterId = convRowFree?.characterId ?? null;
 
+        // Lifetime free image: the very first image a user ever generates is
+        // delivered without blur. consumeFirstFreeImage atomically increments
+        // the "first_image_delivered" counter; it returns true exactly once.
+        const isFirstImage = await consumeFirstFreeImage(userId);
+
+        if (isFirstImage) {
+          // Persist user message.
+          await prisma.message.create({
+            data: { conversationId: body.conversationId, role: "user", content: body.text },
+          });
+          // In-character acknowledgment, streamed and persisted.
+          const teaser = await generateImageTeaser(characterName, body.text);
+          sseWrite(res, "token", { delta: teaser });
+          const teaserMsg = await prisma.message.create({
+            data: { conversationId: body.conversationId, role: "assistant", content: teaser },
+          });
+          sseWrite(res, "done", {
+            messageId: teaserMsg.id,
+            provider: "stheno",
+            model: "image-pending",
+          });
+          // Generate with free_first_image billing so the worker delivers real URL.
+          const img = await generateChatImage(body.text, body.conversationId, userId, {
+            billing: "free_first_image",
+          });
+          const id = img.mediaAssetId ?? `img-${Date.now()}`;
+          if (img.mediaAssetId) {
+            await prisma.message.create({
+              data: {
+                id: img.mediaAssetId,
+                conversationId: body.conversationId,
+                role: "assistant",
+                content: "",
+                mediaAssetId: img.mediaAssetId,
+              },
+            });
+          } else {
+            await prisma.message.create({
+              data: {
+                id,
+                conversationId: body.conversationId,
+                role: "assistant",
+                content: img.url.startsWith("data:") ? "[shared a photo]" : img.url,
+              },
+            });
+          }
+          await prisma.conversation.update({
+            where: { id: body.conversationId },
+            data: { lastMessageAt: new Date() },
+          });
+          // Deliver: NOT locked, full URL.
+          sseWrite(res, "image", {
+            url: img.url,
+            mediaAssetId: id,
+            provider: "free_first_image",
+          });
+          res.end();
+          return true;
+        }
+
+        // Existing teaser path (second image onwards).
         const teaserDecision = await assertCanTease(userId, characterId);
 
         // 1. Persist user message.

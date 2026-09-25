@@ -185,6 +185,8 @@ model User {
   userRules              UserRule[]
   unlockedMedia          UserUnlockedMedia[]
   emailSendLogs          EmailSendLog[]
+  telegramUserLinks      TelegramUserLink[]
+  telegramLinkTokens     TelegramLinkToken[]
 }
 
 // Phase 24: additive 1:1 onboarding profile. Kept separate from User because
@@ -274,6 +276,8 @@ model Character {
   currentVersion    CharacterVersion?  @relation("CharacterCurrentVersion", fields: [currentVersionId], references: [id], onDelete: SetNull)
   conversations     Conversation[]
   media             CharacterMedia[]
+  telegramBotConfig TelegramBotConfig?
+  telegramUserLinks TelegramUserLink[]
 
   @@index([visibility, moderationStatus])
   @@index([contentRating])
@@ -358,6 +362,7 @@ model Conversation {
   characterVersionId   String
   lastMessageAt        DateTime?
   messageCount         Int               @default(0)
+  source               String?           @default("web")
   createdAt            DateTime          @default(now())
   updatedAt            DateTime          @updatedAt
 
@@ -837,4 +842,62 @@ model EmailSendLog {
   @@index([userId, segment, sentAt])
   @@index([sentAt])
   @@index([status, sentAt])
+}
+
+// =============================================================================
+// Telegram integration
+// =============================================================================
+
+// One bot registration per character. Bot tokens are secrets; never expose
+// to the frontend. webhookSecret is sent by Telegram as the
+// X-Telegram-Bot-Api-Secret-Token header on every webhook call.
+model TelegramBotConfig {
+  id            String   @id @default(uuid())
+  characterId   String   @unique
+  botToken      String   @unique
+  botUsername   String
+  webhookSecret String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  character     Character          @relation(fields: [characterId], references: [id], onDelete: Cascade)
+  userLinks     TelegramUserLink[]
+}
+
+// Links an app user to a character's Telegram bot. A user can be linked to
+// multiple characters' bots but only one link per (user, character) pair.
+model TelegramUserLink {
+  id             String   @id @default(uuid())
+  userId         String
+  characterId    String
+  telegramUserId String
+  telegramChatId String
+  username       String?
+  linkedAt       DateTime @default(now())
+
+  user           User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  character      Character         @relation(fields: [characterId], references: [id], onDelete: Cascade)
+  botConfig      TelegramBotConfig @relation(fields: [characterId], references: [characterId], onDelete: Cascade, map: "TelegramUserLink_botConfig_characterId_fkey")
+
+  @@unique([userId, characterId])
+  @@unique([telegramUserId, characterId])
+  @@index([userId])
+  @@index([telegramUserId])
+}
+
+// One-time link tokens. Minted when the user clicks "Connect on Telegram";
+// consumed when the Telegram /start handler validates and creates the link.
+model TelegramLinkToken {
+  id          String    @id @default(uuid())
+  token       String    @unique
+  userId      String
+  characterId String
+  expiresAt   DateTime
+  usedAt      DateTime?
+  createdAt   DateTime  @default(now())
+
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([token])
+  @@index([expiresAt])
 }

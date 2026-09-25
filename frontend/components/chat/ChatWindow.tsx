@@ -74,6 +74,8 @@ export interface ChatWindowProps {
    */
   mobileLeading?: React.ReactNode;
   mobileTrailing?: React.ReactNode;
+  /** Content rendered on the right side of the header on all screen sizes. */
+  headerActions?: React.ReactNode;
 }
 
 export function ChatWindow({
@@ -90,6 +92,7 @@ export function ChatWindow({
   isPremium = false,
   mobileLeading,
   mobileTrailing,
+  headerActions,
 }: ChatWindowProps) {
   const [messages, setMessages] = React.useState<HistoryMessage[]>(initialMessages);
   const [streaming, setStreaming] = React.useState("");
@@ -619,6 +622,9 @@ export function ChatWindow({
             ) : null}
           </div>
         </div>
+        {headerActions ? (
+          <div className="flex shrink-0 items-center">{headerActions}</div>
+        ) : null}
         {mobileTrailing ? (
           <div className="flex shrink-0 items-center gap-1 xl:hidden">{mobileTrailing}</div>
         ) : null}

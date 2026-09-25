@@ -18,6 +18,7 @@ import { dedupeByIdentity, excludeHeroIdentity } from "@/lib/character-media";
 import { blurredDataUri } from "@/lib/media-blur";
 import { ctaLineFor } from "@buttercupp/shared";
 import { isUserPaid } from "@/lib/subscription";
+import { TelegramHeaderButton } from "@/components/telegram/TelegramHeaderButton";
 
 export const dynamic = "force-dynamic";
 
@@ -223,7 +224,8 @@ export default async function ChatPage({
       <div className="flex flex-1 overflow-hidden">
         <ChatList conversations={conversations} activeCharacterId={characterId} />
 
-        <div className="min-w-0 flex-1">
+        <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
+          <div className="min-h-0 flex-1 overflow-hidden">
           <ChatWindow
             conversationId={conv.id}
             characterId={characterId}
@@ -236,6 +238,9 @@ export default async function ChatPage({
             greeting={character.currentVersion?.greeting ?? null}
             headroom={headroom}
             isPremium={onPaidPass}
+            headerActions={
+              <TelegramHeaderButton characterId={characterId} characterName={character.name} />
+            }
             mobileLeading={
               <>
                 <Link
@@ -266,6 +271,7 @@ export default async function ChatPage({
               />
             }
           />
+          </div>
         </div>
 
         <PersonaPanel

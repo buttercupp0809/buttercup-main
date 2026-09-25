@@ -21,6 +21,7 @@ import { handlers } from "../media/handlers";
 import { consumePlanQuota } from "../subscription/enforce";
 import { entitlementsFor } from "../subscription/entitlements";
 import { notifyMediaReady, notifyMediaError } from "./ws-notify";
+import { notifyTelegramImage } from "../telegram/image-notify";
 import { createWorkerConnection, getRedisConnection } from "./connection";
 import { MEDIA_QUEUE_NAME } from "@buttercupp/shared";
 import { prisma } from "@buttercupp/database";
@@ -138,10 +139,11 @@ export async function processJob(job: JobLike): Promise<{ ok: boolean; s3Key?: s
   });
   await markProcessing(data.mediaAssetId, job.id);
 
-  // 1. Atomic debit. Free-teaser jobs carry billing:"free_teaser" and tokenCost:0;
+  // 1. Atomic debit. Free-teaser and free_first_image jobs carry tokenCost:0;
   //    skip debitTokens entirely so free users (tokenBalance=0) never hit
   //    InsufficientTokensError. All other jobs go through the normal debit path.
-  if (data.billing !== "free_teaser") {
+  const isFreeJob = data.billing === "free_teaser" || data.billing === "free_first_image";
+  if (!isFreeJob) {
     try {
       await debitTokens({
         userId: data.userId,
@@ -160,7 +162,7 @@ export async function processJob(job: JobLike): Promise<{ ok: boolean; s3Key?: s
       throw err;
     }
   } else {
-    logInfo("media", `job ${job.id} billing=free_teaser: skipping token debit`, { userId: data.userId });
+    logInfo("media", `job ${job.id} billing=${data.billing}: skipping token debit`, { userId: data.userId });
   }
 
   // 2. Handler + upload, wrapped in the media retry preset. Handler errors
@@ -228,9 +230,13 @@ export async function processJob(job: JobLike): Promise<{ ok: boolean; s3Key?: s
     // called exactly once (the row's status flips from processing -> ready),
     // so a BullMQ retry cannot reach here twice; that + the atomic upsert
     // in consumePlanQuota is our double-count defense. Voice is not
-    // plan-quota-gated; only image + video. Free-teaser jobs skip quota
-    // consumption: they are not plan-billed.
-    if ((data.kind === "image" || data.kind === "video") && data.billing !== "free_teaser") {
+    // plan-quota-gated; only image + video. Free-teaser and free_first_image
+    // jobs skip quota consumption: they are not plan-billed.
+    if (
+      (data.kind === "image" || data.kind === "video") &&
+      data.billing !== "free_teaser" &&
+      data.billing !== "free_first_image"
+    ) {
       try {
         const ent = await entitlementsFor(data.userId);
         if (ent.active && ent.plan !== "free") {
@@ -261,6 +267,8 @@ export async function processJob(job: JobLike): Promise<{ ok: boolean; s3Key?: s
       conversationId: data.conversationId,
       ...(isFreeTeaser ? { locked: true, blurUri } : {}),
     });
+    // Best-effort Telegram push for linked users.
+    void notifyTelegramImage(data.userId, data.characterId ?? null, s3Key);
     logInfo("media", `job ${job.id} ready kind=${data.kind}`, { userId: data.userId, s3Key });
     recordMediaJobOutcome({ kind: data.kind, status: "ok" });
     return { ok: true, s3Key, url };

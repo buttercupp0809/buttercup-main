@@ -31,7 +31,7 @@ export class PaywallError extends Error {
   }
 }
 
-export type CounterType = "chat_daily" | "image_daily" | "voice_daily" | "free_teaser_image";
+export type CounterType = "chat_daily" | "image_daily" | "voice_daily" | "free_teaser_image" | "first_image_delivered";
 export type Feature = "voice" | "image" | "premiumModel";
 
 function todayKey(now = new Date()): string {
@@ -310,6 +310,25 @@ export async function assertCanTease(
   // No existing teaser: allow one generation regardless of the cap so the
   // first photo ask is never a dead end for a new user.
   return { action: "generate" };
+}
+
+// Atomically claims the lifetime "first free image" slot for a user.
+// Returns true exactly once, on the first call: the upsert returns count=1.
+// All subsequent calls return false (count >= 2). The atomic increment
+// means concurrent image requests cannot both receive true.
+export async function consumeFirstFreeImage(userId: string): Promise<boolean> {
+  const row = await prisma.usageCounter.upsert({
+    where: {
+      userId_counterType_period: {
+        userId,
+        counterType: "first_image_delivered",
+        period: "lifetime",
+      },
+    },
+    create: { userId, counterType: "first_image_delivered", period: "lifetime", count: 1 },
+    update: { count: { increment: 1 } },
+  });
+  return row.count === 1;
 }
 
 // Atomic column increment on the legacy lifetime column. The daily free

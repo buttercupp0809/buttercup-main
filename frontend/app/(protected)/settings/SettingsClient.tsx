@@ -18,6 +18,7 @@ import {
   Trash2,
   ArrowUpRight,
   Lock,
+  Send,
 } from "lucide-react";
 import { TRUST_CHIPS } from "@/components/trust/copy";
 import { Button } from "@/components/ui/button";
@@ -291,6 +292,20 @@ export function SettingsClient(props: Props) {
           </Link>
         </div>
       </div>
+
+      {/* Telegram */}
+      <SectionCard
+        index={2}
+        title="Telegram"
+        subtitle="Connect your AI companions to Telegram for a native messaging experience."
+        icon={<Send className="h-4 w-4" />}
+      >
+        <Link href="/settings/telegram">
+          <Button size="sm" variant="outline" type="button">
+            Manage Telegram <ArrowUpRight className="h-3 w-3" />
+          </Button>
+        </Link>
+      </SectionCard>
 
       {/* Data + Session */}
       <div className="grid grid-cols-1 gap-6">

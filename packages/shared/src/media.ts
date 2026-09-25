@@ -31,7 +31,7 @@ export const mediaJobDataSchema = z.object({
   payload: z.record(z.unknown()),
   // Optional discriminator. When "free_teaser", the worker skips debitTokens
   // and consumePlanQuota (free users have 0 tokens; billing is not applicable).
-  billing: z.enum(["free_teaser"]).optional(),
+  billing: z.enum(["free_teaser", "free_first_image"]).optional(),
 });
 export type MediaJobData = z.infer<typeof mediaJobDataSchema>;
 
