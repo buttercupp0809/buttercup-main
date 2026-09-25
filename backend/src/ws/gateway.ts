@@ -19,6 +19,7 @@ import {
   assertCanChat,
   assertCanImage,
   assertCanTease,
+  consumeFirstFreeImage,
   recordChatConsumption,
   recordImageConsumption,
   PaywallError,
@@ -287,6 +288,65 @@ export function attachWsGateway(httpServer: HttpServer): WebSocketServer {
                 });
                 const characterName = convRowFree?.character?.name ?? "companion";
                 const characterId = convRowFree?.characterId ?? null;
+
+                // Lifetime free image: the very first image a user ever generates
+                // is delivered without blur. consumeFirstFreeImage atomically
+                // increments the counter and returns true exactly once.
+                const isFirstImage = await consumeFirstFreeImage(session.userId);
+                if (isFirstImage) {
+                  await prisma.message.create({
+                    data: { conversationId: parsed.conversationId, role: "user", content: parsed.text },
+                  });
+                  const teaser = await generateImageTeaser(characterName, parsed.text);
+                  send(ws, { type: "chat.token", conversationId: parsed.conversationId, delta: teaser });
+                  const teaserMsg = await prisma.message.create({
+                    data: { conversationId: parsed.conversationId, role: "assistant", content: teaser },
+                  });
+                  send(ws, {
+                    type: "chat.done",
+                    conversationId: parsed.conversationId,
+                    messageId: teaserMsg.id,
+                    provider: "stheno",
+                    model: "image-pending",
+                  });
+                  const img = await generateChatImage(parsed.text, parsed.conversationId, session.userId, {
+                    billing: "free_first_image",
+                  });
+                  const id = img.mediaAssetId ?? `img-${Date.now()}`;
+                  if (img.mediaAssetId) {
+                    await prisma.message.create({
+                      data: {
+                        id: img.mediaAssetId,
+                        conversationId: parsed.conversationId,
+                        role: "assistant",
+                        content: "",
+                        mediaAssetId: img.mediaAssetId,
+                      },
+                    });
+                  } else {
+                    await prisma.message.create({
+                      data: {
+                        id,
+                        conversationId: parsed.conversationId,
+                        role: "assistant",
+                        content: img.url.startsWith("data:") ? "[shared a photo]" : img.url,
+                      },
+                    });
+                  }
+                  await prisma.conversation.update({
+                    where: { id: parsed.conversationId },
+                    data: { lastMessageAt: new Date() },
+                  });
+                  // Deliver unblurred: no locked flag, real URL.
+                  send(ws, {
+                    type: "media.ready",
+                    conversationId: parsed.conversationId,
+                    mediaAssetId: id,
+                    url: img.url,
+                    kind: "image",
+                  });
+                  return;
+                }
 
                 const teaserDecision = await assertCanTease(session.userId, characterId);
 

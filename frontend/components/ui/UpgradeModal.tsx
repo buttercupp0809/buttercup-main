@@ -72,10 +72,13 @@ export function UpgradeModal({
     >
       <div className={imageBlurred ? "contents [&_img]:!blur-md [&_img]:!scale-110" : "contents"}>
         <PaywallHero
+          variant="passes"
+          passPlans={["daily", "weekly"]}
+          initialPass="daily"
           heroImageSrc={imageSrc ?? "/personas/1.webp"}
           heroImageAlt={imageAlt ?? ""}
           contextLabel={!imageBlurred && imageAlt ? imageAlt : undefined}
-          headline={headline}
+          headline={headline ?? "Chat with your favourite friend"}
           onClose={onClose}
           closeAriaLabel="Close"
         />
