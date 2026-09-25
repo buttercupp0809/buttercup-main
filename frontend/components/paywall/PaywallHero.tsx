@@ -62,6 +62,10 @@ export interface PaywallHeroProps {
   // For variant="passes": which pass tab to pre-select. Defaults to
   // "monthly" (highest value, matches the "Best value" chip).
   initialPass?: PassPlan;
+  // For variant="passes": ordered list of pass plans to show in the selector.
+  // Defaults to PASS_PLAN_ORDER (daily/weekly/monthly). Pass a subset to
+  // limit the selector (e.g. ["daily","weekly"] for the quota-exhausted popup).
+  passPlans?: readonly PassPlan[];
   heroImageSrc?: string;
   heroImageAlt?: string;
   seeAllHref?: string;
@@ -80,6 +84,7 @@ export function PaywallHero({
   variant = "subscription",
   initialInterval = "year",
   initialPass = "monthly",
+  passPlans = PASS_PLAN_ORDER,
   heroImageSrc = "/personas/1.webp",
   heroImageAlt = "",
   seeAllHref = "/billing",
@@ -235,6 +240,7 @@ export function PaywallHero({
             value={passPlan}
             onChange={setPassPlan}
             plansByKey={passPlansByKey}
+            planOrder={passPlans}
           />
         ) : (
           <IntervalToggle value={interval} onChange={setInterval} savings={savings} />
@@ -350,10 +356,12 @@ function PassSelector({
   value,
   onChange,
   plansByKey,
+  planOrder = PASS_PLAN_ORDER,
 }: {
   value: PassPlan;
   onChange: (next: PassPlan) => void;
   plansByKey: Partial<Record<PassPlan, PlanConfig>>;
+  planOrder?: readonly PassPlan[];
 }) {
   return (
     <div
@@ -362,9 +370,9 @@ function PassSelector({
       className="mx-auto flex w-full max-w-sm items-stretch gap-2"
       data-testid="paywall-pass-selector"
     >
-      {PASS_PLAN_ORDER.map((key) => {
+      {planOrder.map((key) => {
         const isActive = value === key;
-        const isBest = key === "monthly";
+        const isBest = key === "monthly" && planOrder.includes("monthly");
         const plan = plansByKey[key];
         return (
           <button

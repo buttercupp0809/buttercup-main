@@ -11,11 +11,13 @@
     "start:worker": "node dist/worker.js",
     "telegram:register-webhooks": "tsx src/scripts/register-telegram-webhooks.ts",
     "telegram:create-bots": "tsx src/scripts/telegram-create-bots.ts",
+    "telegram:apply-migration": "tsx src/scripts/telegram-apply-migration.ts",
     "telegram:full-provision": "tsx src/scripts/telegram-full-provision.ts",
     "telegram:generate-template": "tsx src/scripts/telegram-generate-template.ts",
     "telegram:bulk-register": "tsx src/scripts/telegram-bulk-register.ts",
     "telegram:provision": "tsx src/scripts/telegram-provision.ts",
-    "telegram:status": "tsx src/scripts/telegram-status.ts"
+    "telegram:status": "tsx src/scripts/telegram-status.ts",
+    "telegram:provision-existing": "tsx src/scripts/telegram-provision-existing.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.115.0",

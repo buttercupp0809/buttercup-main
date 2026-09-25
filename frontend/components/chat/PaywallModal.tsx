@@ -173,6 +173,10 @@ export function PaywallModal({
       }}
     >
       <PaywallHero
+        variant="passes"
+        passPlans={["daily", "weekly"]}
+        initialPass="daily"
+        headline="Chat with your favourite friend"
         heroImageSrc={avatarUrl ?? "/personas/1.webp"}
         heroImageAlt={characterName ?? ""}
         contextLabel={characterName ?? undefined}

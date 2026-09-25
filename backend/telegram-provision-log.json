@@ -1,0 +1,29 @@
+[
+  {
+    "characterId": "5f46574f-7463-4af5-abb6-1e913a79c25f",
+    "characterName": "Aisling",
+    "botUsername": "bc_aisling_bot",
+    "botToken": "8779776017:AAF4-QNVLo-X9Lw35HdgMX3JyLLOsb3Qgmk",
+    "status": "ok",
+    "photoSet": true,
+    "createdAt": "2026-09-25T10:06:43.287Z"
+  },
+  {
+    "characterId": "37aa4551-9df0-401a-b88e-98989c4a32c2",
+    "characterName": "Alba",
+    "botUsername": "bc_alba_bot",
+    "botToken": "8657579018:AAG5s591dbR8le9uzZZ3m6g6ng5tuja_KS0",
+    "status": "ok",
+    "photoSet": true,
+    "createdAt": "2026-09-25T10:07:21.875Z"
+  },
+  {
+    "characterId": "9b890f76-d4fc-48fc-9661-3c49ab06c9de",
+    "characterName": "Anaya",
+    "botUsername": "bc_anaya_bot",
+    "botToken": "8925798912:AAHsyFskmbJKPYLlRIi2NBBxsU3NLd8M-ms",
+    "status": "ok",
+    "photoSet": true,
+    "createdAt": "2026-09-25T10:11:39.281Z"
+  }
+]
